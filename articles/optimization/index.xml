@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Optimization | My Notes</title>
+    <link>https://chunxy.github.io/notes/articles/optimization/</link>
+      <atom:link href="https://chunxy.github.io/notes/articles/optimization/index.xml" rel="self" type="application/rss+xml" />
+    <description>Optimization</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <image>
+      <url>https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>Optimization</title>
+      <link>https://chunxy.github.io/notes/articles/optimization/</link>
+    </image>
+    
+    <item>
+      <title>Convex Optimization</title>
+      <link>https://chunxy.github.io/notes/articles/optimization/convex-optimization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/convex-optimization/</guid>
+      <description>&lt;h2 id=&#34;convex-optimization&#34;&gt;Convex Optimization&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Convex Set&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt; is called a convex set if &lt;span class=&#34;math inline&#34;&gt;\(x^{(1)}, x^{(2)} \in \mathcal X\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\forall \alpha \in [0,1], \alpha x^{(1)} + (1 - \alpha)x^{(2)} \in \mathcal X\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Convex Function&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A function &lt;span class=&#34;math inline&#34;&gt;\(f: \R^N \mapsto \R\)&lt;/span&gt; is convex if &lt;span class=&#34;math inline&#34;&gt;\(dom(f)\)&lt;/span&gt; is a convex set and &lt;span class=&#34;math display&#34;&gt;\[
+f(\alpha x^{(1)} + (1 - \alpha)x^{(2)}) \le \alpha f(x^{(1)}) + (1 - \alpha)f(x^{(2)}), \forall x^{(1)}, x^{(2)} \in dom(f), \alpha \in [0,1]
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is concave is &lt;span class=&#34;math inline&#34;&gt;\(-f\)&lt;/span&gt; is convex.&lt;/p&gt;
+&lt;p&gt;Differentiable function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; with a convex domain is convex if and only if &lt;span class=&#34;math display&#34;&gt;\[
+f(y) \ge f(x) + \nabla^T f(x)(y - x), \forall x, y \in dom(f)
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is twice differentiable if &lt;span class=&#34;math inline&#34;&gt;\(\nabla^2f(x)_{ij} = \frac{\partial^2f(x)}{\partial x_ix_j}\)&lt;/span&gt; exists at each &lt;span class=&#34;math inline&#34;&gt;\(x \in dom(f)\)&lt;/span&gt; the Hessian &lt;span class=&#34;math inline&#34;&gt;\(\nabla^2f(x) \in \mathbb S^N\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is convex if and only if &lt;span class=&#34;math display&#34;&gt;\[
+\nabla^2f(x) \succeq 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;theorem&#34;&gt;Theorem&lt;/h3&gt;
+&lt;p&gt;Any local minima of a convex function &lt;span class=&#34;math inline&#34;&gt;\(f: \R^N \mapsto R\)&lt;/span&gt; is also a global minima.&lt;/p&gt;
+&lt;h3 id=&#34;proof&#34;&gt;Proof&lt;/h3&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is a local minima. Then there exists a number &lt;span class=&#34;math inline&#34;&gt;\(r &amp;gt; 0\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\forall x \in dom(f), ||x-y||_2 \le r \Rightarrow f(x) \ge f(y)\)&lt;/span&gt;. Suppose instead there exists a global minima &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;. Then it must hold that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+||y-z||_2 &amp;gt; r \\
+0 &amp;lt; \frac{r}{||y-z||_2} &amp;lt; 1
+\end{gather}
+\]&lt;/span&gt; There exists some &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \epsilon &amp;lt; r\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \theta = 1 - \frac{r - \epsilon}{||y-z||_2} &amp;lt; 1\)&lt;/span&gt;. Then the distance from &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; to point &lt;span class=&#34;math inline&#34;&gt;\((\theta y + (1 - \theta)z)\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+||y - (\theta y + (1 - \theta)z)||_2 = (1 - \theta)||y-z||_2 = \frac{r - \epsilon}{||y-z||_2}||y-z||_2 &amp;lt; r
+\]&lt;/span&gt; That is to say &lt;span class=&#34;math display&#34;&gt;\[
+f(\theta y + (1 - \theta)z) \ge f(y)
+\]&lt;/span&gt; However, since &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is convex and &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \theta &amp;lt; 1\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+f(\theta y + (1 - \theta)z) \le \theta f(y) + (1 - \theta)f(z)
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is the global minima, therefore, &lt;span class=&#34;math display&#34;&gt;\[
+f(\theta y + (1 - \theta)z) \le \theta f(y) + (1 - \theta)f(z) &amp;lt; \theta f(y) + (1 - \theta)f(y) = f(y)
+\]&lt;/span&gt; which contradicts that &lt;span class=&#34;math inline&#34;&gt;\(f(\theta y + (1 - \theta)z) \ge f(y)\)&lt;/span&gt; derived. In other words, &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is a global minima.&lt;/p&gt;
+&lt;h3 id=&#34;standard-form-of-the-convex-optimization-problem&#34;&gt;Standard Form of the Convex Optimization Problem&lt;/h3&gt;
+&lt;p&gt;Standard form of the optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\min f_0(x) \\
+s.t.\quad &amp;amp;f_i(x) \le 0, i = 1,\dots,r \\
+&amp;amp;h_i(x) = 0, i = 1,\dots,s \\
+\end{aligned}
+\]&lt;/span&gt; Standard form of the convex optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\min f_0(x) \\
+s.t.\quad &amp;amp;f_i(x) \le 0, i = 1,\dots,r \\
+&amp;amp;a_i^Tx = b_i (Ax = b), i = 1,\dots,s \\
+&amp;amp;\text{$f_0,\dots,f_r$ are convex, and $a_0,\dots,a_s \in \R^N$}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Coordinate Descent</title>
+      <link>https://chunxy.github.io/notes/articles/optimization/coordinate-descent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/coordinate-descent/</guid>
+      <description>&lt;h2 id=&#34;coordinate-descent&#34;&gt;Coordinate Descent&lt;/h2&gt;
+&lt;h3 id=&#34;convex-and-differentiable-function&#34;&gt;Convex and Differentiable Function&lt;/h3&gt;
+&lt;p&gt;Given a convex, differentiable &lt;span class=&#34;math inline&#34;&gt;\(f: \R^n \mapsto \R\)&lt;/span&gt;, if we are at a point &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; is minimized along each coordinate axis, have we found a global minima? That is, does &lt;span class=&#34;math display&#34;&gt;\[
+\forall d, i,f(x + d \cdot e_i) \ge f(x) \Rightarrow f(x) = \min_zf(z), \text{ where $e_i$ is the $i$-th standard basis ?}
+\]&lt;/span&gt; The answer is yes. This is because &lt;span class=&#34;math display&#34;&gt;\[
+\nabla f(x) = \left[
+\begin{array} \\
+\frac{\partial f}{\partial x_1},
+\cdots,
+\frac{\partial f}{\partial x_n}
+\end{array}
+\right]
+= 0
+\]&lt;/span&gt; ### Convex and Non-differentiable Function, but Non-smooth Separable&lt;/p&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is only convex but not differentiable, the above will not necessarily hold. However, if &lt;span class=&#34;math display&#34;&gt;\[
+f(x) = g(x) + \sum_{i=1}^nh_i(x_i)
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(g(x)\)&lt;/span&gt; is convex and differentiable, and each &lt;span class=&#34;math inline&#34;&gt;\(h_i(x_i)\)&lt;/span&gt; is convex, the global minima still holds. For any &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(y) - f(x) &amp;amp;= g(y) - g(x) + \sum_{i=1}^nh_i(y_i) - \sum_{i=1}^nh_i(x_i) \\
+&amp;amp;\ge \nabla g(x)^T(y - x) + \sum_{i=1}^n[h_i(y_i) - h_i(x_i)] \\
+&amp;amp;= \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)]
+\end{aligned}
+\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; obtains minimum along each axes, for any &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x + d \cdot e_k) &amp;amp;\ge f(x) \\
+g(x + d \cdot e_k) + \sum_{i=1,i\ne k}^nh_i(x_i) + h_k(x_k + d) &amp;amp;\ge g(x) + \sum_{i=1}^nh_i(x_i) \\
+g_k(x_k + d) - g_k(x_k) + h_k(x_k + d) - h_k(x_k) &amp;amp;\ge 0 \\
+\end{aligned}
+\]&lt;/span&gt; By [[Subgradient#Properties|the linearity of subgradient]], &lt;span class=&#34;math inline&#34;&gt;\(0 \in \partial(g_k + h_k) = \nabla_k g + \partial h_k \Rightarrow -\nabla_k g \in \partial h_k\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
+h_k(y_k) - h_k(x_k) \ge -\nabla_k g(x)(y_k - x_k)
+\]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
+f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;[[Coordinate Descent.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/&#34;&gt;Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Expectation Maximization</title>
+      <link>https://chunxy.github.io/notes/articles/optimization/expectation-maximization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/expectation-maximization/</guid>
+      <description>&lt;h2 id=&#34;expectation-maximization&#34;&gt;Expectation Maximization&lt;/h2&gt;
+&lt;p&gt;If a probabilistic model contains only observable variables, Maximum likelihood estimation or Bayesian methods can be adopted to derive the model parameters. However it is also possible that a probabilistic model contains unobservable variables, or called latent variables. Latent variables are those that you cannot observe but you know its existence and effect in the model. In such case, Lagrange Multipliers may be hard to apply because of the existence of the “log of sum” term.&lt;/p&gt;
+&lt;p&gt;Given samples &lt;span class=&#34;math inline&#34;&gt;\(X = \{x^{(1)}, x^{(2)}, ..., x^{(m)}\} \in \mathcal{X}\)&lt;/span&gt;, and their corresponding latent variables &lt;span class=&#34;math inline&#34;&gt;\(Z = \{z^{(1)}, z^{(2)}, ..., z^{(m)}\} \in \mathcal{Z}\)&lt;/span&gt;, denoting the data as &lt;span class=&#34;math inline&#34;&gt;\(D = \{(x^{(1)}, z^{(1)}), (x^{(2)}, z^{(2)}), ..., (x^{(m)}, z^{(m)})\}\)&lt;/span&gt; try to the find best parameters &lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+\hat \theta = arg\max_{\theta}\log(p(X;\theta))
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The log-likelihood function is &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+l(\theta) &amp;amp;= \log p(X;\theta) \\
+&amp;amp;= \log\sum_{Z \in \mathcal{Z}}p(X, Z;\theta) \\
+&amp;amp;= \log\sum_{Z \in \mathcal{Z}}p(Z;\theta)\frac{p(X, Z;\theta)}{p(Z;\theta)} \\
+&amp;amp;\ge \sum_{Z \in \mathcal{Z}}p(Z;\theta)\log\frac{p(X, Z;\theta)}{p(Z;\theta)} \text{, by Jensen&amp;#39;s Inequality} \\
+&amp;amp;= E_{Z \sim q}[\log\frac{p(X, Z;\theta)}{q(Z)}] \text{, where $q(Z) = p(Z;\theta)$}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If we maximize the &lt;span class=&#34;math inline&#34;&gt;\(E_{Z \sim q}[\log\frac{p(X, Z;\theta)}{q(Z)}]\)&lt;/span&gt;, the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; can be maximized, which gives us a good guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; will increase monotonically. &lt;span class=&#34;math inline&#34;&gt;\(E_{z \sim q}[\log\frac{p(X, z;\theta)}{q(z)}]\)&lt;/span&gt; is a function of &lt;span class=&#34;math inline&#34;&gt;\((q, \theta)\)&lt;/span&gt;, firstly we maximize it w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, and then w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, and then back and forth, making a Coordinate Ascent process.&lt;/p&gt;
+&lt;p&gt;The first step of Coordinate Ascent, i.e. maximizing over &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, happens by having &lt;span class=&#34;math inline&#34;&gt;\(E_{Z \sim q}[\log\frac{p(X, Z;\theta)}{q(Z)}]\)&lt;/span&gt; reach its upper bound when the equality in Jensen’s Inequality holds, where &lt;span class=&#34;math inline&#34;&gt;\(\log\frac{p(X, Z;\theta)}{q(Z)}\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(\frac{p(X, Z;\theta)}{q(Z)}\)&lt;/span&gt; is a constant &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(Z \in \mathcal{Z}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+p(X,Z;\theta) &amp;amp;= cq(Z) \\
+\sum_Zp(X,Z;\theta) &amp;amp;= c\sum_zq(Z) \\
+\sum_Zp(X,Z;\theta) &amp;amp;= c \\
+\end{aligned}
+\]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
+q(Z) = \frac{p(X, Z;\theta)}{c} = \frac{p(X, Z;\theta)}{\sum_Zp(X,Z;\theta)} = \frac{p(X, Z;\theta)}{p(X;\theta)} = p(Z|X;\theta)
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(p(Z|X;\theta)\)&lt;/span&gt; is a shorthand for &lt;span class=&#34;math inline&#34;&gt;\(\frac{p(X, Z;\theta)}{p(X;\theta)}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+p(Z|X;\theta) = \frac{p(X, Z;\theta)}{p(X;\theta)} = \frac{\prod_{i=1}^m \sum_{z^{(i)}}p(x^{(i)}, z^{(i)})}{\prod_{i=1}^m p(x^{(i)})} = \prod_{i=1}^m \sum_{z^{(i)}}p(z^{(i)}|x^{(i)})
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/306016801/answer/624061631&#34;&gt;good comparison of latent variables&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gradient Descent</title>
+      <link>https://chunxy.github.io/notes/articles/optimization/gradient-descent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/gradient-descent/</guid>
+      <description>&lt;h2 id=&#34;gradient-descent&#34;&gt;Gradient Descent&lt;/h2&gt;
+&lt;p&gt;If a convex function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; will converge by gradient descent.&lt;/p&gt;
+&lt;h3 id=&#34;l-smoothness&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smoothness&lt;/h3&gt;
+&lt;p&gt;Qualitatively, smoothness means that the gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; changes in a controlled, bounded manner. Quantitatively, smoothness assumes that &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; has a Lipschitz gradient. That means there exists an &lt;span class=&#34;math inline&#34;&gt;\(L &amp;gt; 0\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+||\nabla f(x) - \nabla f(y)||_2 \le L||x - y||_2, \forall x,y \in \mathrm{dom}(f)
+\]&lt;/span&gt; We will say that such function is &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smooth or strongly smooth. &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smoothness is equivalent to &lt;span class=&#34;math display&#34;&gt;\[
+f(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; /&gt;
+Proof&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Further, &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smoothness is equivalent to &lt;span class=&#34;math inline&#34;&gt;\(\frac{L}{2}||x||^2_2 - f(x)\)&lt;/span&gt; being convex.&lt;/p&gt;
+&lt;p&gt;With the smoothness, or the Lipschitz gradient, we can bound &lt;span class=&#34;math inline&#34;&gt;\(f(y)\)&lt;/span&gt; from above.&lt;/p&gt;
+&lt;p&gt;We will assume &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smoothness in all cases below. Meanwhile, the local minima (in convex case, the global minima) is denoted as &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;convergence-with-convexity&#34;&gt;Convergence with Convexity&lt;/h3&gt;
+&lt;p&gt;With convexity, we can bound &lt;span class=&#34;math inline&#34;&gt;\(f(y)\)&lt;/span&gt; from below with linear approximation: &lt;span class=&#34;math display&#34;&gt;\[
+f(y) \ge f(x) + (y - x)^T \nabla f(x)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;convergence-rate&#34;&gt;Convergence Rate&lt;/h4&gt;
+&lt;h5 id=&#34;fixed-step-size&#34;&gt;Fixed Step Size&lt;/h5&gt;
+&lt;p&gt;Now consider a &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smooth function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;. We adopt a fixed step size &lt;span class=&#34;math inline&#34;&gt;\(\alpha = \frac{1}{L}\)&lt;/span&gt; so that the update in each iteration will be &lt;span class=&#34;math display&#34;&gt;\[
+x_{k+1} = x_k - \frac{1}{L}\nabla f(x)
+\]&lt;/span&gt; By the definition of &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smoothness, &lt;span class=&#34;math display&#34;&gt;\[
+\label{diff} \begin{aligned} 
+ f(x_{k+1}) &amp;amp;\le f(x_k) + (-\frac{1}{L}\nabla f(x_k))^T \nabla f(x_k) + \frac{L}{2}||-\frac{1}{L}\nabla f(x_k)||^2_2 \\
+&amp;amp;= f(x_k) - \frac{1}{2L}||\nabla f(x_k)||^2_2 
+\end{aligned}
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(f(x_{k+1}) \le f(x_k)\)&lt;/span&gt; holds in each iteration.&lt;/p&gt;
+&lt;p&gt;By the convexity of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+f(x^\star) \ge f(x_k) + (x^\star - x_k)^T \nabla f(x_k) \\
+\label{convexity} f(x_k) \le f(x^\star) + (x_k - x^\star)^T \nabla f(x_k)
+\end{gather}
+\]&lt;/span&gt; Substituting the result back to the right-hand side of equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{diff}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x_{k+1}) &amp;amp;\le f(x^\star) + (x_k - x^\star)^T \nabla f(x_k) - \frac{1}{2M}||\nabla f(x_k)||^2_2 \\
+f(x_{k+1}) - f(x^\star) &amp;amp;&amp;lt; (x_k - x^\star)^T L(x_k - x_{k+1}) - \frac{1}{2M}||L(x_k - x_{k+1})||^2_2 \\
+f(x_{k+1}) - f(x^\star) &amp;amp;&amp;lt; \frac{L}{2}(2(x_k - x^\star)^T(x_k - x_{k+1}) - ||(x_k - x_{k+1})||^2_2) \\
+\end{aligned}
+\]&lt;/span&gt; By using the fact that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+||a - b||^2_2 = ||a||^2_2 - 2a^Tb + ||b||^2_2 \\
+2a^Tb - ||b||^2_2 = ||a||^2_2 - ||a - b||^2_2
+\end{aligned}
+\]&lt;/span&gt; We have &lt;span class=&#34;math display&#34;&gt;\[
+\label{closer} f(x_{k+1}) - f(x^\star) \le \frac{L}{2}(||x_k - x^\star||^2_2 - ||x_{k+1} - x^\star||^2_2)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This indicates that &lt;span class=&#34;math inline&#34;&gt;\(x_{k+1}\)&lt;/span&gt; is closer to the global minima &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; than &lt;span class=&#34;math inline&#34;&gt;\(x_k\)&lt;/span&gt;. In addition, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\sum_{i=0}^k [f(x_{i+1}) - f(x^\star)] &amp;amp;\le \sum_{i=0}^k \frac{L}{2}(||x_i - x^\star||^2_2 - ||x_{i+1} - x^\star||^2_2) \\
+&amp;amp;= \frac{L}{2}(||x_0 - x^\star||^2_2 - ||x_{k+1} - x^\star||^2_2) \\
+&amp;amp;\le \frac{L}{2}||x_0 - x^\star||^2_2
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Because &lt;span class=&#34;math inline&#34;&gt;\(f(x_{i+1}) \le f(x_i), \forall i=0,\dots,k\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(f(x_{k+1}) \le f(x_i), \forall i=0,\dots,k\)&lt;/span&gt;, then &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+k(f(x_{k+1}) - f(x^\star)) \le \frac{L}{2}||x_0 - x^\star||^2_2 \\
+f(x_{k+1}) - f(x^\star) \le \frac{L}{2k}||x_0 - x^\star||^2_2
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h5 id=&#34;variant-step-size&#34;&gt;Variant Step Size&lt;/h5&gt;
+&lt;p&gt;In real application scenario, it may be difficult to know &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; exactly. However, as long as we choose &lt;span class=&#34;math inline&#34;&gt;\(\alpha_k \le \frac{1}{L}\)&lt;/span&gt; in each iteration, the convergence and the rate still holds. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x_{k+1}) &amp;amp;\le f(x_k) + (-\alpha_k \nabla f(x_k))^T \nabla f(x_k) + \frac{L}{2}||-\alpha_k \nabla f(x_k)||^2_2 \\
+&amp;amp;= f(x_k) - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2 \\
+f(x_{k+1}) &amp;amp;\le f(x_k) - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2 \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x_{k+1}) - f(x^\star) &amp;amp;\le f(x_k) - f(x^\star) - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2 \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\eta_{k+1} = f(x_{k+1}) - f(x^\star) \ge 0\)&lt;/span&gt;, the above becomes &lt;span class=&#34;math inline&#34;&gt;\(\eta_{k+1} \le \eta_{k} - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2\)&lt;/span&gt;. From equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{convexity}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\eta_k = f(x_k) - f(x^\star) \le (x_k - x^\star)^T \nabla f(x_k) \le ||x_k - x^\star||_2||\nabla f(x_k)||_2 \\
+0 \le \frac{\eta_k}{||x_k - x^\star||_2} \le ||\nabla f(x_k)||_2 \\
+-||\nabla f(x_k)||^2_2 \le -\frac{\eta^2_k}{||x_k - x^\star||^2_2} \\
+\end{gather}
+\]&lt;/span&gt; Substituting it back to give &lt;span class=&#34;math display&#34;&gt;\[
+\eta_{k+1} \le \eta_k - \frac{(\alpha_k - \frac{L}{2}\alpha^2_k) \eta^2_k}{||x_k - x^\star||^2_2}
+\]&lt;/span&gt; From equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{closer}\)&lt;/span&gt; we already have &lt;span class=&#34;math display&#34;&gt;\[
+||x_{k+1} - x^\star||^2_2 \le ||x_k - x^\star||^2_2 \le \dots \le ||x_0 - x^\star||^2_2
+\]&lt;/span&gt; Thus, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\eta_{k+1} &amp;amp;\le \eta_k - \frac{(\alpha_k - \frac{L}{2}\alpha^2_k) \eta^2_k}{||x_0 - x^\star||^2_2} \\
+\frac{1}{\eta_k} &amp;amp;\le \frac{1}{\eta_{k+1}} - \frac{(\alpha_k - \frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \cdot \frac{\eta_k}{\eta_{k+1}} \\
+\frac{1}{\eta_{k+1}} - \frac{1}{\eta_k} &amp;amp;\ge \frac{(\alpha_k - \frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \cdot \frac{\eta_k}{\eta_{k+1}} \\
+\frac{1}{\eta_{k+1}} - \frac{1}{\eta_k} &amp;amp;\ge \frac{(\alpha_k - \frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \text{, by } \eta_k \ge \eta_{k+1} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\sum_{i=0}^k (\frac{1}{\eta_{i+1}} - \frac{1}{\eta_i}) &amp;amp;\ge \sum_{i=0}^k \frac{(\alpha_i - \frac{L}{2}\alpha^2_i)}{||x_0 - x^\star||^2_2} \\
+\frac{1}{\eta_{k+1}} - \frac{1}{\eta_0} &amp;amp;\ge \frac{\sum_{i=0}^k (\alpha_i - \frac{L}{2}\alpha^2_i)}{||x_0 - x^\star||^2_2} \\
+\frac{1}{\eta_{k+1}} &amp;amp;\ge \frac{\sum_{i=0}^k (\alpha_i - \frac{L}{2}\alpha^2_i)}{||x_0 - x^\star||^2_2} \\
+f(x_{k+1} - f(x^\star)) &amp;amp;\le \frac{||x_0 - x^\star||^2_2}{\sum_{i=0}^k (\alpha_i - \frac{L}{2}\alpha^2_i)}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k \alpha_i = \infty\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k \alpha^2_i &amp;lt; \infty\)&lt;/span&gt;, the Variant Step Size can be shown to converge. Particularly when &lt;span class=&#34;math inline&#34;&gt;\(\alpha_k = \frac{1}{k}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+f(x_{k+1} - f(x^\star)) \le \Theta(\frac{1}{\log k})||x_0 - x^\star||^2_2
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;convergence-with-strong-convexity&#34;&gt;Convergence with Strong Convexity&lt;/h3&gt;
+&lt;h4 id=&#34;strong-convexity&#34;&gt;Strong Convexity&lt;/h4&gt;
+&lt;p&gt;A function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is strongly convex if there exists a &lt;span class=&#34;math inline&#34;&gt;\(l &amp;gt; 0\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+f(y) \ge f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2, \forall x,y \in \mathrm{dom}(f)
+\]&lt;/span&gt; Further, strong convexity is equivalent to &lt;span class=&#34;math inline&#34;&gt;\(f(x) - \frac{l}{2}||x||^2_2\)&lt;/span&gt; being convex.&lt;/p&gt;
+&lt;p&gt;With strong convexity, we can bound &lt;span class=&#34;math inline&#34;&gt;\(f(y)\)&lt;/span&gt; from below with a convex quadratic approximation.&lt;/p&gt;
+&lt;h4 id=&#34;convergence-rate-1&#34;&gt;Convergence Rate&lt;/h4&gt;
+&lt;h5 id=&#34;fixed-step-size-1&#34;&gt;Fixed Step Size&lt;/h5&gt;
+&lt;p&gt;We have assumed that &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smooth above. That is &lt;span class=&#34;math display&#34;&gt;\[
+\label{sm} f(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2, \forall x,y \in \mathrm{dom}(f)
+\]&lt;/span&gt; In this section we further assume that &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smooth as well as strong convex: &lt;span class=&#34;math display&#34;&gt;\[
+\label{sc} f(y) \ge f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2, \forall x,y \in \mathrm{dom}(f)
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(F(y) = f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2\)&lt;/span&gt;. Take derivative of &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\nabla f(x) + l(y - x) = 0 \\
+y_0 - x = -\frac{\nabla f(x)}{l}
+\end{aligned}
+\]&lt;/span&gt; Because the second derivative of &lt;span class=&#34;math inline&#34;&gt;\(F(y)\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(l \succeq 0\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(F(y)\)&lt;/span&gt; reaches global minimum at the local minima &lt;span class=&#34;math inline&#34;&gt;\(y_0\)&lt;/span&gt;. Substitute &lt;span class=&#34;math inline&#34;&gt;\(y_0\)&lt;/span&gt; back to &lt;span class=&#34;math inline&#34;&gt;\(F(y)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+f(y) \ge F(y) \ge F(y_0) = f(x) - \frac{1}{2l}||\nabla f(x)||^2_2
+\]&lt;/span&gt; This holds when &lt;span class=&#34;math inline&#34;&gt;\(y = x^\star\)&lt;/span&gt;. That is, &lt;span class=&#34;math display&#34;&gt;\[
+f(x^\star) \ge f(x) - \frac{1}{2l}||\nabla f(x)||^2_2 \\
+||\nabla f(x)||^2_2 \ge 2l(f(x) - f(x^\star))
+\]&lt;/span&gt; The above inequality is referred to as Polyak-Lojasiewicz Inequality. By combining it with &lt;span class=&#34;math inline&#34;&gt;\(\eqref{diff}\)&lt;/span&gt;, where we implicitly assume a fixed step-size &lt;span class=&#34;math inline&#34;&gt;\(\alpha = \frac{1}{L}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x_{k+1}) &amp;amp;\le f(x_k) - \frac{1}{2L}||\nabla f(x_k)||^2_2 \\
+f(x_{k+1}) - f(x^\star) &amp;amp;\le f(x_k) - f(x^\star) + \frac{1}{2L}(-||\nabla f(x_k)||^2_2) \\ 
+f(x_{k+1}) - f(x^\star) &amp;amp;\le f(x_k) - f(x^\star) + \frac{1}{2L}(-2l(f(x) - f(x^\star))) \\
+&amp;amp;= (1 - \frac{l}{L}) (f(x_k) - f(x^\star))
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x_{k+1}) - f(x^\star) &amp;amp;\le (1 - \frac{l}{L}) (f(x_k) - f(x^\star)) \\
+&amp;amp;\le (1 - \frac{l}{L})(1 - \frac{l}{L}) (f(x_{k-1}) - f(x^\star)) \\
+&amp;amp;\le \dots \\
+&amp;amp;\le (1 - \frac{l}{L})^{k+1} (f(x_0) - f(x^\star))
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;From equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{sm}\)&lt;/span&gt; and equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{sc}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2 \le f&amp;amp;(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2 \\
+l &amp;amp;\le L \\
+\end{aligned}
+\]&lt;/span&gt; Usually it would be the case that &lt;span class=&#34;math inline&#34;&gt;\(l &amp;lt; L\)&lt;/span&gt;, thus &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; 1 - \frac{l}{L} &amp;lt; 1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;non-convex-case&#34;&gt;Non-convex Case&lt;/h3&gt;
+&lt;p&gt;Without convexity condition, we can still exploit the property of &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smoothness. Sum up on both sides of equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{diff}\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\(k = 0\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned} 
+\sum_{i=0}^k f(x_{k+1}) &amp;amp;\le \sum_{i=0}^k f(x_k) - \frac{1}{2L}||\nabla f(x_k)||^2_2 \\
+\sum_{i=0}^k f(x_{k+1}) - f(x_k) &amp;amp;\le -\frac{1}{2L} \sum_{i=0}^k ||\nabla f(x_k)||^2_2 \\
+f(x_{k+1}) &amp;amp;\le f(x_0) - \frac{1}{2L}\sum_{i=0}^k ||\nabla f(x_k)||^2_2
+\end{aligned}
+\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; is a local minima, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x^\star) \le f(x_{k+1}) &amp;amp;\le f(x_0) - \frac{1}{2L}\sum_{i=0}^k ||\nabla f(x_k)||^2_2 \\
+f(x^\star) - f(x_0) &amp;amp;\le - \frac{1}{2L}\sum_{i=0}^k ||\nabla f(x_k)||^2_2 \\
+\sum_{i=0}^k ||\nabla f(x_k)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
+\end{aligned}
+\]&lt;/span&gt; In this case, the error is measured by the first derivative. Suppose &lt;span class=&#34;math inline&#34;&gt;\(\tilde x = \arg \min_i ||\nabla f(x_i)||^2_2\)&lt;/span&gt;, where the first derivative of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is the closest to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
+||\nabla f(\tilde x)||^2_2 &amp;amp;\le \frac{2L(f(x_0) - f(x^\star))}{k} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;[[Convergence of Gradient Descent.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://rkganti.wordpress.com/2015/08/21/convergence-rate-of-gradient-descent-algorithm/&#34;&gt;Convergence rate of gradient descent algorithm | bps/Hz (wordpress.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://xingyuzhou.org/blog/notes/strong-convexity&#34;&gt;Strong convexity · Xingyu Zhou’s blog&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lagrange Multiplier</title>
+      <link>https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/</guid>
+      <description>&lt;h2 id=&#34;lagrange-multiplier&#34;&gt;Lagrange Multiplier&lt;/h2&gt;
+&lt;p&gt;Standard form of the optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\min f_0(x) \\
+s.t.\quad &amp;amp;f_i(x) \le 0, i = 1,\dots,r \\
+&amp;amp;h_i(x) = 0, i = 1,\dots,s \\
+\end{aligned}
+\]&lt;/span&gt; Denote the feasible set of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; that satisfies all the requirements in original problem as &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The Lagrangian function is &lt;span class=&#34;math inline&#34;&gt;\(L:\R^N \times \R^r \times \R^s \mapsto \R\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(dom(L) = \mathcal X \times \R^r \times \R^s\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+L(x, \lambda, \mu) = f_0(x) + \sum_{i=1}^r\lambda_if_i(x) + \sum_{i=1}^s\mu_ih_i(x)
+\]&lt;/span&gt; Define the function &lt;span class=&#34;math inline&#34;&gt;\(P: \mathcal X \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
+P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
+\]&lt;/span&gt; The primal problem is &lt;span class=&#34;math display&#34;&gt;\[
+\min_{x \in \mathcal X} P(x)
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(P(x) =f_0(x)\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Thus the primal problem is equivalent to the original problem. Denote its optimal value as &lt;span class=&#34;math inline&#34;&gt;\(p^\star\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Define the Lagrangian dual function &lt;span class=&#34;math inline&#34;&gt;\(D: \R^r \times \R^s \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
+D(\lambda, \mu) = \inf_{x \in \mathcal X}L(x, \lambda, \mu)
+\]&lt;/span&gt; The Lagrangian dual problem is &lt;span class=&#34;math display&#34;&gt;\[
+\max_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \\
+\]&lt;/span&gt; Denote its optimal value as &lt;span class=&#34;math inline&#34;&gt;\(d^\star\)&lt;/span&gt;. We always have &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
+&lt;p&gt;For any feasible &lt;span class=&#34;math inline&#34;&gt;\(x \in \mathcal X, (\lambda, \mu) \in dom(D)\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu) \ge L(x,\lambda,\mu) \ge \inf_{x \in \mathcal X}L(x, \lambda, \mu) =D (\lambda, \mu)
+\]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt; is condition called weak duality because it always holds. &lt;span class=&#34;math inline&#34;&gt;\(p^\star = d^\star\)&lt;/span&gt; is called a strong duality because it does not hold in general. But it does hold in general in [[Convex Optimization|convex optimization]] where &lt;span class=&#34;math inline&#34;&gt;\(f_1,\dots,f_r\)&lt;/span&gt; are convex and &lt;span class=&#34;math inline&#34;&gt;\(h_1,\dots,h_s\)&lt;/span&gt; are affine transformations of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, i.e. in the form of &lt;span class=&#34;math inline&#34;&gt;\(Ax + b\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;strong-duality&#34;&gt;Strong Duality&lt;/h3&gt;
+&lt;p&gt;Assume a strong duality holds, &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; is the primal optima, &lt;span class=&#34;math inline&#34;&gt;\((\lambda^\star, \mu^\star)\)&lt;/span&gt; is the dual optima, then &lt;span class=&#34;math display&#34;&gt;\[
+f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) \\
+\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+f_0(x^\star) = D(\lambda^\star, \mu^\star) = \inf_{x \in \mathcal X}L(x,\lambda^\star,\mu^\star) \le L(x^\star,\lambda^\star,\mu^\star) \\
+f_0(x^\star) = P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x^\star,\lambda,\mu) \ge L(x^\star,\lambda^\star,\mu^\star) \\
+L(x^\star,\lambda^\star,\mu^\star) \le f_0(x^\star) \le L(x^\star,\lambda^\star,\mu^\star)
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\star,\mu^\star)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;karush-kuhn-tucker-conditions&#34;&gt;Karush-Kuhn-Tucker Conditions&lt;/h4&gt;
+&lt;p&gt;In standard optimization problem, KKT conditions refer to the below four:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Primal Constraints: &lt;span class=&#34;math inline&#34;&gt;\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Dual Constraints: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1,\dots,\lambda_r \ge 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Complementary Constraints: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Gradient of Lagrangian w.r.t &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; vanishes: &lt;span class=&#34;math display&#34;&gt;\[
+\nabla f_0(x) + \sum_{i=1}^r\lambda_i\nabla f_i(x) + \sum_{i=1}^s\mu_i\nabla h_i(x) = 0
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If the strong duality holds and &lt;span class=&#34;math inline&#34;&gt;\((x,\lambda,\mu)\)&lt;/span&gt; is the optima, they must satisfy the KKT conditions.&lt;/p&gt;
+&lt;p&gt;Note that KKT conditions do not imply the existence of a strong duality or optima point.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Least Angle Regression</title>
+      <link>https://chunxy.github.io/notes/articles/optimization/least-angle-regression/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/least-angle-regression/</guid>
+      <description>&lt;h2 id=&#34;least-angle-regression&#34;&gt;Least Angle Regression&lt;/h2&gt;
+&lt;h3 id=&#34;forward-selection&#34;&gt;Forward Selection&lt;/h3&gt;
+&lt;p&gt;In cases where we are to solve &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Y = XW\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\)&lt;/span&gt;, we can do it in an iterative and greedy way.&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}\)&lt;/span&gt; initially.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Select among &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Then for each &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(i)}\)&lt;/span&gt; from left to right, do the following:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat Y = \frac{\mathrm x^{(k)} \cdot Y}{||\mathrm x ^{(k)}||_2} \mathrm x ^{(k)} \\
+Y_{res} = Y_{res} - \hat Y
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34; type=&#34;1&#34;&gt;
+&lt;li&gt;Remove &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;. Go to step 2 until &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt; reaches &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; or we have used all columns in &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Apparently this algorithm is efficient. However, it does not guarantee an exact solution, even when &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; lies in the column space of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;forward-stagewise&#34;&gt;Forward Stagewise&lt;/h3&gt;
+&lt;p&gt;Like Forward Selection, Forward Stagewise selects a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Unlike Forward Selection, Forward Selection does not subtract the whole projection from &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Instead, it proceeds along &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; with a small step.&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\},\eta\text{ is a small constant}\)&lt;/span&gt; initially.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Select among &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Then for each &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(i)}\)&lt;/span&gt; from left to right, do the following:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat Y = \eta \frac{\mathrm x^{(k)} \cdot Y}{||\mathrm x ^{(k)}||_2} \mathrm x ^{(k)} \\
+Y_{res} = Y_{res} - \hat Y
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34; type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;del&gt;Remove &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;.&lt;/del&gt; Go to step 2 until &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt; is sufficiently small.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Apparently Forward Stagewise gives an exact solution when &lt;span class=&#34;math inline&#34;&gt;\(\eta\)&lt;/span&gt; is small enough. But it is more time-consuming.&lt;/p&gt;
+&lt;h3 id=&#34;least-angle-regression-1&#34;&gt;Least Angle Regression&lt;/h3&gt;
+&lt;p&gt;LARS a is compromise of Forward Selection and Forward Stagewise. Likewise, LARS selects a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. LARS proceeds stagewise like Forward Stagewise, however with its own methodology to determine the step size.&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}, \mathrm d = \arg\max_{\mathrm x \in C}\frac{Y \cdot \mathrm x }{||\mathrm x||_2}\)&lt;/span&gt; initially.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Then do the following: &lt;span class=&#34;math display&#34;&gt;\[
+\hat Y = \eta \frac{\mathrm d \cdot Y}{||\mathrm d||_2} \mathrm d \\
+Y_{res} = Y_{res} - \hat Y
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\eta\)&lt;/span&gt; is determined such that there is some &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)} \in C\)&lt;/span&gt; onto which the projection of &lt;span class=&#34;math inline&#34;&gt;\((Y - \hat Y)\)&lt;/span&gt; is the same as that onto &lt;span class=&#34;math inline&#34;&gt;\(\mathrm d\)&lt;/span&gt;. Or in other words, &lt;span class=&#34;math inline&#34;&gt;\((Y - \hat Y)\)&lt;/span&gt; lies on the bisector hyper-plane between &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mathrm d\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\mathrm d\)&lt;/span&gt; be along this bisector.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Go to step 2 until &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt; is sufficiently small.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Subgradient</title>
+      <link>https://chunxy.github.io/notes/articles/optimization/subgradient/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/subgradient/</guid>
+      <description>&lt;h2 id=&#34;subgradient&#34;&gt;Subgradient&lt;/h2&gt;
+&lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
+&lt;p&gt;Subgradient of a function &lt;span class=&#34;math inline&#34;&gt;\(f: \R^n \mapsto \R\)&lt;/span&gt; at &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
+\partial f(x) = \{g|f(y) \ge f(x) + g^T(y - x), \forall y \in dom(f) \}
+\]&lt;/span&gt; Or put it another way, the subgradient defines a hyper-plane &lt;span class=&#34;math display&#34;&gt;\[
+\left[
+\begin{array} \\
+g \\
+-1 \\
+\end{array}
+\right]^T
+\Big(
+\left[
+\begin{array} \\
+y \\
+t \\
+\end{array}
+\right] -
+\left[
+\begin{array} \\
+x \\
+f(x) \\
+\end{array}
+\right]
+\Big)
+= 0,
+\left[
+\begin{array} \\
+y \in \R^n \\
+t \in \R \\
+\end{array}
+\right]
+\]&lt;/span&gt; of which &lt;span class=&#34;math display&#34;&gt;\[
+\left[
+\begin{array} \\
+g \\
+-1 \\
+\end{array}
+\right]^T
+\Big(
+\left[
+\begin{array} \\
+y \\
+t \\
+\end{array}
+\right] -
+\left[
+\begin{array} \\
+x \\
+f(x) \\
+\end{array}
+\right]
+\Big)
+\le 0, \forall (y, t) \in epi(f)
+\]&lt;/span&gt; by definition: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+g^T(y - x) - (f(y) - f(x)) &amp;amp;\le 0 &amp;amp;\Rightarrow \\
+g^T(y - x) - (t - f(x)) &amp;amp;\le 0, t \ge f(y) &amp;amp;\Rightarrow \\
+g^T(y - x) - (t - f(x)) &amp;amp;\le 0, t \ge f(y) &amp;amp;\Rightarrow \\
+\left[
+\begin{array} \\
+g \\
+-1 \\
+\end{array}
+\right]^T
+\Big(
+\left[
+\begin{array} \\
+y \\
+t \\
+\end{array}
+\right] -
+\left[
+\begin{array} \\
+x \\
+f(x) \\
+\end{array}
+\right]
+\Big)
+&amp;amp;\le 0, \forall (y, t) \in epi(f)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;properties&#34;&gt;Properties&lt;/h3&gt;
+&lt;p&gt;The subgradient &lt;span class=&#34;math inline&#34;&gt;\(\partial f(x)\)&lt;/span&gt; is a set, instead of a single number like the gradient.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Subgradient is a monotonic operator: &lt;span class=&#34;math display&#34;&gt;\[
+(u - v)^T(y - x) \ge 0, \forall u \in \partial f(y), \forall v \in \partial f(x)
+\]&lt;/span&gt; This can be shown by: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\left.
+\begin{array} \\
+f(y) \ge f(x) + v^T(y - x) \\
+f(x) \ge f(y) + u^T(x - y) \\
+\end{array}
+\right\}
+&amp;amp;\Rightarrow 
+f(y) + f(x) \ge f(x) + f(y) - (u - v)^T(y - x) \\
+&amp;amp;\Rightarrow (u - v)^T(y - x) \ge 0
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(x^\star = \arg \min_x f(x) \iff 0 \in \partial f(x^\star)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is differentiable at &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\partial f(x) = \{\nabla f(x)\}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(p \ne \nabla f(x) \and p \in \partial f(x)\)&lt;/span&gt;, then for &lt;span class=&#34;math inline&#34;&gt;\(y = x + r(p - \nabla f(x))\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(y) - f(x) &amp;amp;\ge p^T(y - x) \\
+f(x + r(p - \nabla f(x))) - f(x) &amp;amp;\ge rp^T(p - \nabla f(x)) \\
+\frac{f(x + r(p - \nabla f(x))) - f(x)}{r} &amp;amp;\ge p^T(p - \nabla f(x)) \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+
+(p - \nabla f(x))^T(p - \nabla f(x)) &amp;amp;\le \frac{f(x + r(p - \nabla f(x))) - f(x)}{r} - \nabla f(x)^T(p - \nabla f(x)) \\
+||p - \nabla f(x)||^2_2 &amp;amp;\le \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \\
+\end{aligned}\]&lt;/span&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;p&gt;Take limit on &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; on both sides to give &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{r \to 0}||p - \nabla f(x)||^2_2 \le \lim_{r \to 0}\Big( \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \Big) \\
+\]&lt;/span&gt; By the definition of gradient, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f&amp;amp;(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x)) \\
+&amp;amp;= \mathcal{O}(||r(p - \nabla f(x))||^2_2) \\
+&amp;amp;= ||p - \nabla f(x)||^2\mathcal{O}(r^2) \\
+&amp;amp;= \mathcal{O}(r^2)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\lim_{r \to 0}\Big( \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \Big) = \lim_{r \to 0}\frac{\mathcal{O}(r^2)}{r} = 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+||p - \nabla f(x)||^2_2 \le 0 \\
+0 \le ||p - \nabla f(x)||^2_2 \le 0 \\
+||p - \nabla f(x)||^2_2 = 0
+\end{gather} 
+\]&lt;/span&gt; , contradicting the assumption that &lt;span class=&#34;math inline&#34;&gt;\(p \ne \nabla f(x)\)&lt;/span&gt;. Thus, &lt;span class=&#34;math inline&#34;&gt;\(p = \nabla f(x)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(f(x) = \alpha_1 f_1(x) + \alpha_2 f_2(x)\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\partial f(x) = \alpha_1 \partial f_1(x) + \alpha_2 f_2(x)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/139083837&#34;&gt;凸优化笔记16：次梯度 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

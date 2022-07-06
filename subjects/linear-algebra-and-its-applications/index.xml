@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linear Algebra and Its Applications | My Notes</title>
+    <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/</link>
+      <atom:link href="https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/index.xml" rel="self" type="application/rss+xml" />
+    <description>Linear Algebra and Its Applications</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <image>
+      <url>https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <title>Linear Algebra and Its Applications</title>
+      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/</link>
+    </image>
+    
+    <item>
+      <title>Coordinate System and Change of Basis</title>
+      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</guid>
+      <description>&lt;h2 id=&#34;coordinate-system-and-change-of-basis&#34;&gt;Coordinate System and Change of Basis&lt;/h2&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B} = \{b_1, b_2, ..., b_n\}\)&lt;/span&gt; be a basis for a vector space &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;. Then for &lt;span class=&#34;math inline&#34;&gt;\(x = [x_1, x_2, ..., x_n]^T\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;, there exists a unique set of scalars &lt;span class=&#34;math inline&#34;&gt;\(q_1, q_2, ..., p_n\)&lt;/span&gt; such that: &lt;span class=&#34;math display&#34;&gt;\[
+x = q_1b_1 + q_2b_2 + ... + q_nb_n
+\]&lt;/span&gt; These scalars are called the coordinates of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; relative to the basis &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+[x]_\mathcal{B} = 
+\begin{bmatrix}
+q_1 \\
+\vdots \\
+q_n
+\end{bmatrix}
+\]&lt;/span&gt; is the coordinate vectors of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; relative to &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;. The mapping &lt;span class=&#34;math inline&#34;&gt;\(x \mapsto [x]_\mathcal{B}\)&lt;/span&gt; is called the coordinate mapping determined by &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(P_\mathcal{B} = [b_1, b_2, ..., b_n]\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(x = P_\mathcal{B}[x]_\mathcal{B}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{C}\)&lt;/span&gt; both be an basis for an n-dimensional vector space &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;. Then there is a unique &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{C \leftarrow B}\)&lt;/span&gt; such that: &lt;span class=&#34;math display&#34;&gt;\[
+[x]_\mathcal{C} = \mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B}
+\]&lt;/span&gt; The columns of &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{C \leftarrow B}\)&lt;/span&gt; are the &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{C}\)&lt;/span&gt;-coordinate vectors of the vectors in the basis &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\mathop{P}\limits_\mathcal{C \leftarrow B} = [[b_1]_\mathcal{C}, [b_2]_\mathcal{C}, ..., [b_n]_\mathcal{C}]
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B} &amp;amp;=  P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}
+\begin{bmatrix}
+q_1 \\
+\vdots \\
+q_n
+\end{bmatrix} \\
+&amp;amp;= P_\mathcal{C}(q_1[b_1]_\mathcal{C} + q_2[b_2]_\mathcal{C} + ... + q_n[b_n]_\mathcal{C}) \\
+&amp;amp;= q_1P_\mathcal{C}[b_1]_\mathcal{C} + q_2P_\mathcal{C}[b_2]_\mathcal{C} + ... + q_nP_\mathcal{C}[b_n]_\mathcal{C} \\
+&amp;amp;= q_1b_1 + q_2b_2 + ... + q_nb_n \\
+&amp;amp;= x
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Specifically, when &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B} = \mathcal{I}\)&lt;/span&gt; is the standard basis, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\mathop{P}\limits_\mathcal{C \leftarrow I} &amp;amp;= [[e_1]_\mathcal{C}, [e_2]_\mathcal{C}, ..., [e_n]_\mathcal{C}] \\
+P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow I} &amp;amp;= P_\mathcal{C}[[e_1]_\mathcal{C}, [e_2]_\mathcal{C}, ..., [e_n]_\mathcal{C}] \\
+&amp;amp;= [e_1, e_2, ..., e_n] \\
+&amp;amp;= I
+\end{aligned}
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(P_\mathcal{C}\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{C \leftarrow I} = P_\mathcal{C}^{-1}\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\([x]_\mathcal{B} = P_\mathcal{B}^{-1}x\)&lt;/span&gt; in equation (2)&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned} \\
+[x]_\mathcal{C} &amp;amp;= \mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B} \\
+(\mathop{P}\limits_\mathcal{C \leftarrow B})^{-1}[x]_\mathcal{C} &amp;amp;= (\mathop{P}\limits_\mathcal{C \leftarrow B})^{-1}\mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B} \\
+[x]_\mathcal{B} &amp;amp;= (\mathop{P}\limits_\mathcal{C \leftarrow B})^{-1}[x]_\mathcal{C}  \\
+\end{aligned}
+\]&lt;/span&gt; In other words, &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{B \leftarrow C} = (\mathop{P}\limits_\mathcal{C \leftarrow B})^{-1}, \mathop{P}\limits_\mathcal{B \leftarrow C}\mathop{P}\limits_\mathcal{C \leftarrow B} = I\)&lt;/span&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Least Squares</title>
+      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/least-squares/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/least-squares/</guid>
+      <description>&lt;h2 id=&#34;least-squares&#34;&gt;Least Squares&lt;/h2&gt;
+&lt;p&gt;Suppose we are solving the &lt;span class=&#34;math inline&#34;&gt;\(Ax = b\)&lt;/span&gt; problem. &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt; does not always lie in the column space of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;. However, we can try to find within &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s column space a vector &lt;span class=&#34;math inline&#34;&gt;\(\hat x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\hat x\)&lt;/span&gt; best approximates &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;. By best approximation we mean to minimize the &lt;span class=&#34;math inline&#34;&gt;\(||Ax - b||\)&lt;/span&gt; over all &lt;span class=&#34;math inline&#34;&gt;\(x \in \R^n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The best approximation can be achieved when &lt;span class=&#34;math inline&#34;&gt;\(Ax = \hat b = \mathop{proj}_{Col(A)}b\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Instead of finding a orthogonal basis for &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, computing &lt;span class=&#34;math inline&#34;&gt;\(\hat b\)&lt;/span&gt; and then solving &lt;span class=&#34;math inline&#34;&gt;\(Ax = \hat b\)&lt;/span&gt;, we can derive &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; in this way: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+(b - \hat b) \perp Col(A) \iff (b - \hat b) \in Nul(A^T)\iff A^T(b - \hat b) = 0 \\
+A^T(b - Ax) = 0 \\
+A^TAx = A^Tb
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We will show that if columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent, then the least-square solution &lt;span class=&#34;math inline&#34;&gt;\(\hat x\)&lt;/span&gt; is uniquely given by &lt;span class=&#34;math inline&#34;&gt;\((A^TA)^{-1}A^Tb\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Firstly, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = Nul(A^TA)\)&lt;/span&gt;. This is because &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+Ax = 0 \iff A^TAx = A^T0 = 0 \\
+A^TAx = 0 \iff x^TA^TAx = 0 \iff (Ax)^TAx = 0 \iff Ax = 0
+\end{gather}
+\]&lt;/span&gt; When columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = 0\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Nul(A^TA) = 0\)&lt;/span&gt;, which indicates that equation (1) has the unique solution. Conversely, when &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A^TA) = 0\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = 0\)&lt;/span&gt;, which indicates that columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Orthogonality and Projection</title>
+      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/orthogonality-and-projection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/orthogonality-and-projection/</guid>
+      <description>&lt;h2 id=&#34;orthogonality-and-projection&#34;&gt;Orthogonality and Projection&lt;/h2&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(\{u_1, u_2, ..., u_k\}\)&lt;/span&gt; are orthogonal to each other, then they are independent with each other.&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\{u_1, u_2, ..., u_k\}\)&lt;/span&gt; be an orthogonal basis for a subspace &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; of &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;. Then for each &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;, the weights in the linear combination &lt;span class=&#34;math display&#34;&gt;\[
+y = c_1u_1 + c_2u_2 + ... + c_ku_k
+\]&lt;/span&gt; are given by &lt;span class=&#34;math display&#34;&gt;\[
+c_1 = \frac{y_1 \cdot u_1}{u_1 \cdot u_1}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Given a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt; and another vector &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;, we wish to decompose &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+y = \hat y + z
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\hat y = \alpha u\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is some vector orthogonal to &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+z &amp;amp;= y - \hat y \\
+z \cdot u &amp;amp;= (y - \alpha u) \cdot u \\
+y \cdot u - \alpha u \cdot u &amp;amp;= 0 \\
+\alpha &amp;amp;= \frac{y \cdot u}{u \cdot u}
+\end{aligned}
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\hat y = \frac{y \cdot u}{u \cdot u}u\)&lt;/span&gt; is called the orthogonal projection of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; onto &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(z = y - \hat y\)&lt;/span&gt; is called the component of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; orthogonal to &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The projection of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; onto &lt;span class=&#34;math inline&#34;&gt;\(cu\)&lt;/span&gt; for any scalar &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; is the same as that onto &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;. Therefore &lt;span class=&#34;math inline&#34;&gt;\(\hat y\)&lt;/span&gt; is the projection onto the subspace &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; spanned by &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;. In this sense, &lt;span class=&#34;math inline&#34;&gt;\(\hat y\)&lt;/span&gt; is also denoted as &lt;span class=&#34;math inline&#34;&gt;\(\mathop{proj}_Ly\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; be a subspace of &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;, then each &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt; can be uniquely written in the form: &lt;span class=&#34;math display&#34;&gt;\[
+y = \hat y + z
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\hat y\)&lt;/span&gt; is in &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is in &lt;span class=&#34;math inline&#34;&gt;\(W^\perp\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\hat y\)&lt;/span&gt; is called the orthogonal projection of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; onto &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;, denoted as &lt;span class=&#34;math inline&#34;&gt;\(\mathop{proj}_Wy\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;This projection can be found by finding an arbitrary orthogonal basis of &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; and then computing weights using equation (2).&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\hat y\)&lt;/span&gt; is also the closest point in &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, in the sense that: &lt;span class=&#34;math display&#34;&gt;\[
+||y - \hat y|| &amp;lt; ||y - v||, \forall v \in W \text{ and } v \ne \hat y
+\]&lt;/span&gt; In this case, &lt;span class=&#34;math inline&#34;&gt;\(\hat y\)&lt;/span&gt; is called the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; by elements of &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Above can be seen by &lt;span class=&#34;math display&#34;&gt;\[
+y - v = (y - \hat y) + (\hat y - v)
+\]&lt;/span&gt; which gives &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+||y - v||^2 &amp;amp;= ||(y - \hat y) + (\hat y - v)|| \\
+&amp;amp;= ||(y - \hat y)||^2 + ||(\hat y - v)||^2 + 2(y - \hat y) \cdot (\hat y - v) \\
+&amp;amp;= ||(y - \hat y)||^2 + ||(\hat y - v)||^2 \text{($y - \hat y$ is in $W^\perp$, $\hat y - v$ is in $W$)} \\
+&amp;amp;&amp;gt; ||(y - \hat y)||^2
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;A &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; has orthonormal columns if and only if &lt;span class=&#34;math inline&#34;&gt;\(U^TU = I\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;An orthogonal matrix is a square invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(U^{-1} = U^T\)&lt;/span&gt;. By its definition, it has orthonormal columns and orthonormal rows.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Schmit-Gram Orthogonalization</title>
+      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</guid>
+      <description>&lt;h2 id=&#34;schmit-gram-orthogonalization&#34;&gt;Schmit-Gram Orthogonalization&lt;/h2&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

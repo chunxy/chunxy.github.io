@@ -1,0 +1,1596 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Support Vector Machine Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/notes/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/notes/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/notes/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/notes/css/wowchemy.832f4349361bf479dece6e8aacc6bfa5.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/notes/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="My Notes" />
+  <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/" />
+  <meta property="og:title" content="Support Vector Machine | My Notes" />
+  <meta property="og:description" content="Support Vector Machine Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+  
+
+  <head>
+
+<script type="text/javascript" async>
+    window.MathJax = {
+		startup: {
+			typeset: true,
+		},
+		tex: {
+			macros: {
+				
+
+				
+				R: "\\mathbb{R}", E: "\\mathrm{E}", x: "\\mathrm{x}", y: "\\mathrm{y}", 
+				d: "\\mathrm{d}", Var: "\\mathrm{Var}", Cov: "\\mathrm{Cov}",
+			},
+			maxBuffer: 10*1024,
+			processEscapes: false,
+			
+        }
+    }
+</script>
+
+<script id="MathJax-script" defer="defer"
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+</head>
+
+
+  <title>Support Vector Machine | My Notes</title>
+</head>
+
+
+<body id="top" data-spy="scroll"  data-target="#TableOfContents" class="page-wrapper   no-navbar" data-wc-page-id="a4a750a58d791238845d1cd9005c8773" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/notes/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Machine Learning
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+    <ul class="nav docs-sidenav">
+      <li class=""><a href="/notes/">content</a></li>
+    </ul>
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/">Articles</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/information-theory/">Information Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/differentiation/">Differentiation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/machine-learning/">Machine Learning</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/ransac/">RANSAC</a></li>
+
+
+
+  <li class="active"><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/">Mathematics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/calculus/">Calculus</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/spherical-coordinates/">Spherical Coordinates</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/">Linear Algebra</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/">Laplace Expansion</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/">Measures</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/numerical-analysis/">Numerical Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/">Statistics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/optimization/">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/coordinate-descent/">Coordinate Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/papers/">Papers</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/noise-contrastive-estimation/">Noise Contrastive Estimation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/subjects/">Subjects</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/subjects/information-theory-inference-and-learning-algorithms/">Information Theory, Inference and Learning Algorithms</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/subjects/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/subjects/linear-algebra-and-its-applications/">Linear Algebra and Its Applications</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/subjects/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/linear-algebra-and-its-applications/orthogonality-and-projection/">Orthogonality and Projection</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/linear-algebra-and-its-applications/schmit-gram-orthogonalization/">Schmit-Gram Orthogonalization</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">概率论与数理统计</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/">Unconscious Statistics</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+
+
+  <li class=""><a href="/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/subjects/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/subjects/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/articles/">
+        
+          Articles
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/articles/machine-learning/">
+        
+          Machine Learning
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        Support Vector Machine
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>Support Vector Machine</h1>
+
+          <div class="article-style">
+            <h2 id="support-vector-machine">Support Vector Machine</h2>
+<p>Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary. These points are called <strong>support vectors</strong>.</p>
+<h3 id="hard-margin-svm">Hard Margin SVM</h3>
+<p>Suppose the data <span class="math inline">\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1, \dots, M\}\)</span>, and is linearly separable. The separation hyperplane will be in the form of <span class="math inline">\(w^Tx + b = 0\)</span>. Let <span class="math inline">\(y^{(i)} = 1\)</span> when <span class="math inline">\(x^{(i)}\)</span> is above the hyperplane (<span class="math inline">\(w^Tx^{(i)} + b &gt; 0\)</span>), <span class="math inline">\(y^{(i)} = -1\)</span> when <span class="math inline">\(x^{(i)}\)</span> is below the hyperplane (<span class="math inline">\(w^Tx^{(i)} + b &lt; 0\)</span>).</p>
+<p>The distance (margin) from a data point to the separation hyperplane will be <span class="math display">\[
+d^{(i)} = \frac{|w^Tx^{(i)} + b|}{||w||_2} = \frac{y^{(i)}(w^Tx^{(i)} + b)}{||w||_2}\\
+\]</span> <span class="math inline">\(d^{(i)}\)</span> is called the geometric distance, while <span class="math inline">\(|w^Tx^{(i)} + b|\)</span> is called the functional distance.</p>
+<p>The margin of the hyperplane <span class="math inline">\(w^Tx + b = 0\)</span> will be <span class="math display">\[
+d = \min\limits_{i \in \{1,\dots,M\}} d^{(i)} = \min\limits_{i \in \{1,\dots,M\}} \frac{y^{(i)}(w^Tx^{(i)}+b)}{||w||_2}
+\]</span> The maximum margin solution is found by solving <span class="math display">\[
+\max\limits_{w,b} \min\limits_{i \in \{1,\dots,M\}} \frac{y^{(i)}(w^Tx^{(i)}+b)}{||w||_2}
+\]</span> Suppose <span class="math inline">\((w^\prime, b^\prime)\)</span> is one solution to the above. Then <span class="math inline">\((\lambda w^\prime, \lambda b^\prime)\)</span> is also a solution, because <span class="math display">\[
+\frac{y^{(i)}(\lambda (w^{\prime})^Tx^{(i)} + \lambda b^\prime)}{||\lambda w^\prime||_2} = \frac{\lambda y^{(i)}((w^{\prime})^Tx^{(i)} + b^\prime)}{\lambda ||w^\prime||_2} = \frac{y^{(i)}((w^{\prime})^Tx^{(i)} + b^\prime)}{||w^\prime||_2}
+\]</span> There is an extra degree of freedom in this problem. Therefore, we may impose <span class="math display">\[
+\min\limits_{i \in \{1,\dots,M\}} y^{(i)}(w^Tx^{(i)}+b) = 1
+\]</span> to consume this freedom. Consequently, the problem becomes <span class="math display">\[
+\begin{gather}
+\max \frac{1}{||w||_2} \iff \min \frac{1}{2}||w||^2_2 \\
+s.t.\quad y^{(i)}(w^Tx^{(i)} + b) \ge 1, i = 1,\dots,M
+\end{gather}
+\]</span></p>
+<h3 id="soft-margin-svm">Soft Margin SVM</h3>
+<p>It may not happen that the real data are linearly-separable, or there may exist noisy samples that disrupt this linear separability. In such case, we may allow some samples to violate the margin. We define some slack variables <span class="math inline">\(\xi_i \ge 0\)</span>. <span class="math inline">\(\xi_i &gt; 0\)</span> means that the sample is inside the margin (or even this sample will be misclassified), <span class="math inline">\(\xi_i = 0\)</span> means that the sample is outside the margin.</p>
+<p>Of course, these slack variables should be as small as possible. Then the problem becomes <span class="math display">\[
+\begin{gather}
+\min \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M\xi_i \\
+s.t.\quad y^{(i)}(w^Tx^{(i)} + b) \ge 1 - \xi_i, \xi_i \ge 0, i=1,\dots,M
+\end{gather}
+\]</span> <span class="math inline">\(C\)</span> is a penalty factor on violating the margin. To some extent, it avoid overfitting.</p>
+<p>To solve this, first convert the problem into the standard form: <span class="math display">\[
+\begin{aligned}
+\min \frac{1}{2}||w||^2_2 &amp;+ C\sum_{i=1}^M\xi_i \\
+s.t.\quad 1 - \xi_i - y^{(i)}(w^Tx^{(i)} + b) &amp;\le 0, i=1,\dots,M \\
+-\xi_i &amp;\le 0, i=1,\dots,M
+\end{aligned}
+\]</span> This problem gives a strong duality. The solution will satisfy the KKT conditions. We first write down the Lagrangian: <span class="math display">\[
+L(w,b,\xi,\lambda,\mu) = \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M\xi_i + \sum_{i=1}^M\lambda_i(1 - \xi_i - y^{(i)}(w^Tx^{(i)} + b)) - \sum_{i=1}^M\mu_i\xi_i
+\]</span> Then we form the dual problem: <span class="math display">\[
+\max_{\lambda,\mu;\lambda_i,\mu_i \ge 0} \min_{w,b,\xi}L(w,b,\xi,\lambda,\mu)
+\]</span> Take derivative w.r.t. <span class="math inline">\(w\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(\xi\)</span> to give <span class="math display">\[
+\begin{gather}
+\frac{\partial L}{\partial w} = w - \sum_{i=1}^M\lambda_iy^{(i)}x^{(i)}, \frac{\partial^2 L}{\partial w\partial w} = I \succeq 0 \\
+\frac{\partial L}{\partial b} = -\sum_{i=1}^M\lambda_iy^{(i)}, \frac{\partial^2 L}{\partial b\partial b} = 0 \succeq 0 \\
+\frac{\partial L}{\partial \xi} = C - \lambda - \mu, \frac{\partial^2 L}{\partial \xi\partial \xi} = 0 \succeq 0
+\end{gather}
+\]</span> The Hessian matrices of <span class="math inline">\(L\)</span> w.r.t. <span class="math inline">\(w\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(\xi\)</span> are positive semi-definite. Therefore, <span class="math inline">\(\min\limits_{w,b,\xi}L(w,\xi,\lambda,\mu)\)</span> is obtained at its local minimum, i.e. where its first-order derivative meets <span class="math inline">\(0\)</span>: <span class="math display">\[
+w = \sum_{i=1}^M\lambda_iy^{(i)}x^{(i)} \\
+\sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
+\lambda + \mu = C
+\]</span> Substitute above back to <span class="math inline">\(L\)</span> to transform the dual problem into <span class="math display">\[
+\begin{gather}
+\max_{\lambda,\mu} \frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)} + C\sum_{i=1}^M\xi_i - \sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)} + \sum_{i=1}^M\lambda_i(1 - \xi_i - y^{(i)}b) + \sum_{i=1}^M(\lambda_i - C)\xi_i \\
+s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
+\lambda_i,\mu_i \ge 0, i=1,\dots,M \\
+\Downarrow \\
+\max_{\lambda,\mu}D(\lambda,\mu) = -\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)} + \sum_{i=1}^M\lambda_i \\
+s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
+0 &lt; \lambda_i &lt; C, i=1,\dots,M \\
+\end{gather}
+\]</span> Since we know the optimal solution exists, instead of taking derivative of <span class="math inline">\(D\)</span> w.r.t. <span class="math inline">\(\lambda\)</span> to solve it, we assume the solution to above problem is <span class="math inline">\(\lambda^\star\)</span>. Then, <span class="math display">\[
+w^\star = \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)} \\
+\mu^\star = C - \lambda^\star
+\]</span> Complementary constraints will give <span class="math display">\[
+\lambda^\star_i(1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star)) = 0 \\
+\mu_i\xi_i = 0
+\]</span> There is at least one <span class="math inline">\(\lambda^\star_j &gt; 0\)</span> or else <span class="math inline">\(w^\star = \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)} = 0\)</span>, which means the primal constraints <span class="math display">\[
+1 - \xi_i - y^{(i)}((w^\star)^Tx^{(i)} + b^\star) =  1 - \xi_i - y^{(i)}b^\star\le 0
+\]</span> won’t hold no matter what value <span class="math inline">\(b^\star\)</span> takes. This specific <span class="math inline">\(\lambda^\star_j\)</span>’s slackness complementary will give</p>
+<p><span class="math display">\[
+\begin{aligned}
+0 &amp;= (1 - \xi^\star_j - y^{(j)}((w^\star)^Tx^{(j)} + b^\star)) \\
+b^\star &amp;= \frac{1 - \xi^\star_j}{y^{(j)}} - (w^\star)^Tx^{(j)} \\
+&amp;= \frac{1 - \xi^\star_j}{y^{(j)}} - \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)}\cdot x^{(j)}
+\end{aligned}
+\]</span></p>
+According to the value of <span class="math inline">\(\lambda^\star_i\)</span> (not know yet), added with primal constraints and the complementary constraints, <span class="math display">\[
+\begin{gather}
+1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 0 \\
+\xi_i \ge 0 \\
+\lambda^\star_i(1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star)) = 0 \\
+\mu^\star_i\xi^\star_i = 0 \\
+\lambda^\star_i + \mu^\star_i = C
+\end{gather}
+\]</span> we can make interpretations on the value of <span class="math inline">\(\lambda^\star_i\)</span>: $$
+<span class="math display">\[\begin{aligned}
+\lambda^\star_i = 0 &amp;\Rightarrow 
+\begin{cases}
+\mu^\star_i = C \Rightarrow \xi^\star_i = 0 \\
+1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 0
+\end{cases}
+ \Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) \ge 1 \\
+ 0 &lt; \lambda^\star_i &lt; C &amp;\Rightarrow
+\begin{cases}
+\mu^\star_i &gt; 0 \Rightarrow \xi^\star_i = 0 \\
+1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) = 0
+\end{cases}
+\Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) = 1 \\
+\lambda^\star_i = C &amp;\Rightarrow 
+\begin{cases}
+\mu^\star_i = 0 \Rightarrow \xi^\star_i \ge 0 \\
+1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) = 0
+\end{cases}
+\Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 1 \\
+
+\end{aligned}\]</span>
+<p>$$ They corresponds to cases where sample <span class="math inline">\(x^{(i)}\)</span> is outside margin, is on the margin, violates the margin, respectively.</p>
+<p>The key to the above derivation is <span class="math inline">\(\lambda^\star\)</span>, which is to be solved in Solving SVM section.</p>
+<p>Soft Margin SVM is equivalent to <span class="math display">\[
+\min \frac{1}{C}||w||^2_2 + \sum_{i=1}^M\max(0, 1 - y^{(i)}(w^Tx^{(i)} + b))
+\]</span> where <span class="math inline">\(l_h(z) = \max(0, 1 - z)\)</span> is called Hinge loss.</p>
+<h3 id="kernel-svm">Kernel SVM</h3>
+<p>The term <span class="math inline">\(x^{(i)} \cdot x^{(j)}\)</span> in <span class="math inline">\(D(\lambda,\mu)\)</span> is the inner product between two samples. We can make a table storing these inner products. This naturally introduces the kernel trick, which means we can manipulate the entry in this table by remapping the <span class="math inline">\((x^{(i)}, x^{(j)})\)</span> so that the entry represents the inner product of some higher-dimensional features. <span class="math display">\[
+\mathcal K(x^{(i)}, x^{(j)}) = \phi(x^{(i)}), \phi(x^{(j)})
+\]</span> This saves us from explicitly defining the mapping <span class="math inline">\(\phi\)</span> of <span class="math inline">\(x\)</span> to a higher-dimensional feature. This also saves the time of the computation of the inner products of these higher-dimensional features, than that of transform-then-inner-product method.</p>
+<p>SVM is a linear classifier, which means its decision boundary is a linear hyperplane in input feature space. By applying kernel trick, we implicitly map the input feature to a higher dimensional one. Therefore the decision boundary would become a linear hyperplane in this higher-dimensional space: <span class="math display">\[
+w_\phi\phi(x) + b_\phi = 0
+\]</span> And thus this hyperplane is not linear in original feature space.</p>
+<h4 id="polynomial-kernel">Polynomial Kernel</h4>
+<ul>
+<li><p>Input feature <span class="math inline">\(x = [x_1,\dots,x_N] \in \R^N\)</span></p></li>
+<li><p>Kernel between two features is a <span class="math inline">\(p\)</span>-th order polynomial: <span class="math display">\[
+\mathcal K(x, x^\prime) = (x^Tx^\prime)^p = (\sum_{i=1}^Nx_ix^\prime_i)^p
+\]</span></p></li>
+<li><p>For example, when <span class="math inline">\(p = 2\)</span>, <span class="math display">\[
+K(x,x^\prime) = (\sum_{i=1}^Nx_ix^\prime_i)^2 = (\sum_{i=1}^N\sum_{j=1}^Nx_ix_jx^\prime_ix^\prime_j)^2 = \phi(x)\phi(x^\prime)
+\]</span> The transformation applied on original input feature will be <span class="math display">\[
+\phi(x) = [x_1x_1,x_1x_2,\dots,x_1x_N,x_2x_1,\dots x_2x_N,\dots,x_Nx_1,\dots,x_Nx_N] \in \R^{N^2}
+\]</span></p></li>
+</ul>
+<h4 id="radial-basis-function-kernel">Radial Basis Function Kernel</h4>
+<ul>
+<li><p>Kernel between two features is similar to a Gaussian <span class="math display">\[
+\mathcal K(x,x^\prime) = e^{-\gamma||x - x^\prime||^2_2}
+\]</span> where <span class="math inline">\(\gamma\)</span> is a hyper-parameter to be determined.</p></li>
+<li><p>This kernel is the case where it is hard to define the transformation <span class="math inline">\(\phi\)</span> explicitly.</p></li>
+</ul>
+<h3 id="solving-svm">Solving SVM</h3>
+<p><span class="math inline">\(\lambda^\star\)</span> is the key to the final solution and by far it is still remained unsolved: <span class="math display">\[
+\begin{gather}
+\max_{\lambda,\mu}D(\lambda,\mu) = -\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)} + \sum_{i=1}^M\lambda_i \\
+s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
+0 &lt; \lambda_i &lt; C, i=1,\dots,M \\
+\end{gather}
+\]</span> We attack it by Sequential Minimal Optimization.</p>
+<h3 id="multiclass-svm">Multiclass SVM</h3>
+<ul>
+<li><p>1-vs-1</p>
+<p>Train 1-vs-1 SVM for all pairs of classes. Then decide by majority voting.</p></li>
+<li><p>1-vs-rest</p>
+<p>Train 1-vs-rest SVM for all classes. Choose the class with the largest geometric margin (<span class="math inline">\(y = 1\)</span> when <span class="math inline">\(x\)</span> belongs to the “1”).</p></li>
+</ul>
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/notes/articles/machine-learning/ransac/" rel="next">RANSAC</a>
+  </div>
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jan 1, 0001</p>
+
+          
+
+
+
+
+
+  
+
+<p class="edit-page">
+  <a href="https://github.com/wowchemy/hugo-notes-theme/edit/main/content/Articles/Machine%20Learning/Support%20Vector%20Machine.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/notes/js/vendor-bundle.min.46271ef31da3f018e9cd1b59300aa265.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/notes/en/js/wowchemy.min.facbc6b9f26be25721c463b7030d1299.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>
