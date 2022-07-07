@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>content | My Notes</title>
+    <title>Chunxy&#39; notes | My Notes</title>
     <link>https://chunxy.github.io/notes/</link>
       <atom:link href="https://chunxy.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
-    <description>content</description>
+    <description>Chunxy&#39; notes</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
     <image>
       <url>https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
-      <title>content</title>
+      <title>Chunxy&#39; notes</title>
       <link>https://chunxy.github.io/notes/</link>
     </image>
     
@@ -17,7 +17,9 @@
       <link>https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/</guid>
-      <description>&lt;h2 id=&#34;bias-variance-decomposition&#34;&gt;Bias-variance Decomposition&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;bias-variance-decomposition&#34;&gt;Bias-variance Decomposition&lt;/h2&gt;
 &lt;p&gt;The notation used is as follows:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -82,6 +84,8 @@ E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
 &amp;amp;= \underbrace{E[(f(x) - \bar f(x))^2]}_{variance} + \underbrace{E[(\bar f(x) - \bar y)^2]}_{bias^2} + \underbrace{E[(y - y_\mathcal D)^2]}_{noise} + \underbrace{E[(\bar y - y)^2]}_{scatter} \\
 \end{aligned}
 \]&lt;/span&gt; &lt;a href=&#34;https://medium.com/analytics-vidhya/5-ways-to-achieve-right-balance-of-bias-and-variance-in-ml-model-f734fea6116&#34;&gt;5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -90,7 +94,9 @@ E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
       <link>https://chunxy.github.io/notes/papers/bounding-mutual-information/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/papers/bounding-mutual-information/</guid>
-      <description>&lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
 &lt;p&gt;The very basic bound on the Mutual Information is based on the non-negativity of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) = &amp;amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
@@ -202,6 +208,8 @@ I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fra
 &amp;amp;= I(X_1;Y) - \log(K-1) + \log K
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -210,7 +218,9 @@ I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fra
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/</guid>
-      <description>&lt;h2 id=&#34;chebyshev-distance&#34;&gt;Chebyshev Distance&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;chebyshev-distance&#34;&gt;Chebyshev Distance&lt;/h2&gt;
 &lt;h3 id=&#34;discrete-form&#34;&gt;Discrete form&lt;/h3&gt;
 &lt;p&gt;Chebyshev distance is a specific form of Minkowski norm (&lt;span class=&#34;math inline&#34;&gt;\(l_p\)&lt;/span&gt; norm): &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -261,6 +271,8 @@ d_p(x, x^\prime) &amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p
 \lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = S = \sup\limits_{x \in (a,b)}|f(x)|
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/267575473&#34;&gt;p范数的极限（无穷范数）为什么是极大值范数？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -269,7 +281,9 @@ d_p(x, x^\prime) &amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p
       <link>https://chunxy.github.io/notes/articles/machine-learning/clustering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/clustering/</guid>
-      <description>&lt;h2 id=&#34;clustering&#34;&gt;Clustering&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;clustering&#34;&gt;Clustering&lt;/h2&gt;
 &lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\)&lt;/span&gt;, a clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; of the &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; points into &lt;span class=&#34;math inline&#34;&gt;\(K (K \le M)\)&lt;/span&gt; clusters is a partitioning of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; disjoint groups &lt;span class=&#34;math inline&#34;&gt;\(\{C_1,\dots,C_K\}\)&lt;/span&gt;. Suppose we have a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluates the clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
 \arg \min_{\mathcal C} f(\mathcal C)
 \]&lt;/span&gt; The number of all possibilities of clustering with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements is called the Bell number, denoted as &lt;span class=&#34;math inline&#34;&gt;\(B_M\)&lt;/span&gt;. The calculation of the Bell number is based on dynamic programming. The number of ways to cluster &lt;span class=&#34;math inline&#34;&gt;\(M+1\)&lt;/span&gt; elements is the sum of number of ways to:&lt;/p&gt;
@@ -409,15 +423,19 @@ p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}
 \alpha^{(i)}_j = p(z^{(i)} = j | x^{(i)}) = \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I) \frac{1}{K}}{\frac{1}{K} \sum_{k=1}^K \mathcal N(x;\mu_k, I)} = \frac{\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2)}{\sum_{k=1}^K \exp(-\frac{1}{2}||x^{(k)}-\mu_j||^2_2)}
 \end{gather}
 \]&lt;/span&gt; The “Soft K-means” comes from the softmax of the Euclidean distance.&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Common Distributions</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</guid>
-      <description>&lt;h2 id=&#34;poisson-distribution&#34;&gt;Poisson Distribution&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</guid>
+      <description>
+
+&lt;h2 id=&#34;poisson-distribution&#34;&gt;Poisson Distribution&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather*}
 P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!} \\
@@ -443,6 +461,8 @@ B(1,p) = p, B(0,p) = 1 - p \\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
 &lt;p&gt;Refer to [&lt;a href=&#34;#gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/a&gt;].&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -451,10 +471,14 @@ B(1,p) = p, B(0,p) = 1 - p \\
       <link>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</guid>
-      <description>&lt;h2 id=&#34;conditional-entropy&#34;&gt;Conditional Entropy&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;conditional-entropy&#34;&gt;Conditional Entropy&lt;/h2&gt;
 &lt;p&gt;The Conditional Entropy measures the the amount of information needed to describe the outcome of a random variable &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; given that the value of another random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is known. The entropy of &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; conditioned on &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 H(Y|X) = -\sum_{(x,y) \in X \times Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -463,7 +487,9 @@ H(Y|X) = -\sum_{(x,y) \in X \times Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{
       <link>https://chunxy.github.io/notes/papers/contrastive-predictive-coding/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/papers/contrastive-predictive-coding/</guid>
-      <description>&lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
 &lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the data. The original data can either be the original data before the encoding, or the future data with different steps.&lt;/p&gt;
 &lt;p&gt;CPC learns the representation by minimizing the following loss function: &lt;span class=&#34;math display&#34;&gt;\[
 \newcommand{\c}{\mathrm{c}}
@@ -502,6 +528,8 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt;|&lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt;|&lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -510,7 +538,9 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
       <link>https://chunxy.github.io/notes/articles/optimization/convex-optimization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/convex-optimization/</guid>
-      <description>&lt;h2 id=&#34;convex-optimization&#34;&gt;Convex Optimization&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;convex-optimization&#34;&gt;Convex Optimization&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Convex Set&lt;/li&gt;
 &lt;/ul&gt;
@@ -559,6 +589,8 @@ s.t.\quad &amp;amp;f_i(x) \le 0, i = 1,\dots,r \\
 &amp;amp;\text{$f_0,\dots,f_r$ are convex, and $a_0,\dots,a_s \in \R^N$}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -567,7 +599,9 @@ s.t.\quad &amp;amp;f_i(x) \le 0, i = 1,\dots,r \\
       <link>https://chunxy.github.io/notes/articles/optimization/coordinate-descent/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/coordinate-descent/</guid>
-      <description>&lt;h2 id=&#34;coordinate-descent&#34;&gt;Coordinate Descent&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;coordinate-descent&#34;&gt;Coordinate Descent&lt;/h2&gt;
 &lt;h3 id=&#34;convex-and-differentiable-function&#34;&gt;Convex and Differentiable Function&lt;/h3&gt;
 &lt;p&gt;Given a convex, differentiable &lt;span class=&#34;math inline&#34;&gt;\(f: \R^n \mapsto \R\)&lt;/span&gt;, if we are at a point &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; is minimized along each coordinate axis, have we found a global minima? That is, does &lt;span class=&#34;math display&#34;&gt;\[
 \forall d, i,f(x + d \cdot e_i) \ge f(x) \Rightarrow f(x) = \min_zf(z), \text{ where $e_i$ is the $i$-th standard basis ?}
@@ -602,15 +636,19 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;[[Coordinate Descent.pdf]]&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/&#34;&gt;Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Coordinate System and Change of Basis</title>
-      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</link>
+      <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</guid>
-      <description>&lt;h2 id=&#34;coordinate-system-and-change-of-basis&#34;&gt;Coordinate System and Change of Basis&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</guid>
+      <description>
+
+&lt;h2 id=&#34;coordinate-system-and-change-of-basis&#34;&gt;Coordinate System and Change of Basis&lt;/h2&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B} = \{b_1, b_2, ..., b_n\}\)&lt;/span&gt; be a basis for a vector space &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;. Then for &lt;span class=&#34;math inline&#34;&gt;\(x = [x_1, x_2, ..., x_n]^T\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;, there exists a unique set of scalars &lt;span class=&#34;math inline&#34;&gt;\(q_1, q_2, ..., p_n\)&lt;/span&gt; such that: &lt;span class=&#34;math display&#34;&gt;\[
 x = q_1b_1 + q_2b_2 + ... + q_nb_n
 \]&lt;/span&gt; These scalars are called the coordinates of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; relative to the basis &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
@@ -656,6 +694,8 @@ P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow I} &amp;amp;= P_\mathcal{C}
 [x]_\mathcal{B} &amp;amp;= (\mathop{P}\limits_\mathcal{C \leftarrow B})^{-1}[x]_\mathcal{C}  \\
 \end{aligned}
 \]&lt;/span&gt; In other words, &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{B \leftarrow C} = (\mathop{P}\limits_\mathcal{C \leftarrow B})^{-1}, \mathop{P}\limits_\mathcal{B \leftarrow C}\mathop{P}\limits_\mathcal{C \leftarrow B} = I\)&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -664,11 +704,15 @@ P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow I} &amp;amp;= P_\mathcal{C}
       <link>https://chunxy.github.io/notes/articles/information-theory/cross-entropy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/cross-entropy/</guid>
-      <description>&lt;h2 id=&#34;cross-entropy&#34;&gt;Cross Entropy&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;cross-entropy&#34;&gt;Cross Entropy&lt;/h2&gt;
 &lt;p&gt;The Cross Entropy between two distributions over the same underlying set of events measures the average number of bits to identify the event drawn from the set if a coding scheme is used for the set is optimized for probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, instead of the true distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The Cross Entropy of distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; relative to a distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 H(p||q) = -\mathrm{E}_{x \sim p} \log q(x)
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -677,7 +721,9 @@ H(p||q) = -\mathrm{E}_{x \sim p} \log q(x)
       <link>https://chunxy.github.io/notes/articles/information-theory/differentiation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/differentiation/</guid>
-      <description>&lt;p&gt;Both [[Cross Entropy]] and [[KL-divergence]] describe the relationship between &lt;strong&gt;two distributions&lt;/strong&gt;.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;Both [[Cross Entropy]] and [[KL-divergence]] describe the relationship between &lt;strong&gt;two distributions&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Both [[Conditional Entropy]] and [[Mutual Information]] describe the relationship between &lt;strong&gt;two random variables&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Both [[Conditional Entropy]] and [[Cross Entropy]] would better be applied on discrete random variables.&lt;/p&gt;
 &lt;p&gt;Both [[Mutual Information]] and [[KL-divergence]] can be applied on either discrete or continuous random variables&lt;/p&gt;
@@ -708,6 +754,8 @@ I(X;Y) &amp;amp;= \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)
 &amp;amp;= \E_{y \in Y} D_{KL}[p(x|y), p(x)] \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -716,7 +764,9 @@ I(X;Y) &amp;amp;= \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)
       <link>https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/</guid>
-      <description>&lt;h2 id=&#34;dimension-reduction&#34;&gt;Dimension Reduction&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;dimension-reduction&#34;&gt;Dimension Reduction&lt;/h2&gt;
 &lt;p&gt;Dimension Reduction&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;reduces computational cost&lt;/li&gt;
@@ -798,6 +848,8 @@ K \ge \frac{8\log M}{\epsilon^2}
 &lt;p&gt;We can introduce the feature mapping to handle the non-linearity problem in Dimension Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case. [[Principal Component Analysis#Kernel PCA]] is just such an example.&lt;/p&gt;
 &lt;h2 id=&#34;supervised-dimension-reduction&#34;&gt;Supervised Dimension Reduction&lt;/h2&gt;
 &lt;p&gt;There is no guarantee that the unsupervised Dimension Reduction can throw insight into the classification problem. It may or may not help. Otherwise supervised Dimension Reduction such as [[Fisher’s Linear Discriminant]] finds a lower-dimensional space so as to minimize the class overlap.&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -806,7 +858,9 @@ K \ge \frac{8\log M}{\epsilon^2}
       <link>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</guid>
-      <description>&lt;h2 id=&#34;eckart-young-mirsky-theorem&#34;&gt;Eckart-Young-Mirsky Theorem&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;eckart-young-mirsky-theorem&#34;&gt;Eckart-Young-Mirsky Theorem&lt;/h2&gt;
 &lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as [[Frobenius Normalization|Frobenius norm]]: &lt;span class=&#34;math display&#34;&gt;\[
 ||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
 \]&lt;/span&gt; Firstly we prove that, if &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is orthogonal, then &lt;span class=&#34;math inline&#34;&gt;\(||UA||_F = ||AU||_F = ||A||_F\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
@@ -839,6 +893,8 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 \end{gather}
 \]&lt;/span&gt; Such &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; exists when &lt;span class=&#34;math inline&#34;&gt;\(Y = U\Sigma_KV^T\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Eckart-Young-Mirsky Theorem also holds for [[Spectral Normalization|Spectral norm]] .&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -847,7 +903,9 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</guid>
-      <description>&lt;h2 id=&#34;eigenvectors-and-eigenvalues&#34;&gt;Eigenvectors and Eigenvalues&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;eigenvectors-and-eigenvalues&#34;&gt;Eigenvectors and Eigenvalues&lt;/h2&gt;
 &lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
 &lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue.&lt;/p&gt;
 &lt;h3 id=&#34;similarity&#34;&gt;Similarity&lt;/h3&gt;
@@ -910,6 +968,8 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;[[The Eigen Decomposition.pdf]]&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -918,12 +978,16 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
       <link>https://chunxy.github.io/notes/articles/information-theory/entropy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/entropy/</guid>
-      <description>&lt;h2 id=&#34;entropy&#34;&gt;Entropy&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;entropy&#34;&gt;Entropy&lt;/h2&gt;
 &lt;p&gt;The Entropy of discrete distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (probability mass function) is defined as &lt;span class=&#34;math display&#34;&gt;\[
 H(p) = -\mathrm{E}_{x \sim p}\log p(x)
 \]&lt;/span&gt; The Entropy of continuous distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; (probability density function) is usually similarly defined as &lt;span class=&#34;math display&#34;&gt;\[
 H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx
 \]&lt;/span&gt; This is actually the &lt;strong&gt;Differential Entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -932,7 +996,9 @@ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx
       <link>https://chunxy.github.io/notes/articles/optimization/expectation-maximization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/expectation-maximization/</guid>
-      <description>&lt;h2 id=&#34;expectation-maximization&#34;&gt;Expectation Maximization&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;expectation-maximization&#34;&gt;Expectation Maximization&lt;/h2&gt;
 &lt;p&gt;If a probabilistic model contains only observable variables, Maximum likelihood estimation or Bayesian methods can be adopted to derive the model parameters. However it is also possible that a probabilistic model contains unobservable variables, or called latent variables. Latent variables are those that you cannot observe but you know its existence and effect in the model. In such case, Lagrange Multipliers may be hard to apply because of the existence of the “log of sum” term.&lt;/p&gt;
 &lt;p&gt;Given samples &lt;span class=&#34;math inline&#34;&gt;\(X = \{x^{(1)}, x^{(2)}, ..., x^{(m)}\} \in \mathcal{X}\)&lt;/span&gt;, and their corresponding latent variables &lt;span class=&#34;math inline&#34;&gt;\(Z = \{z^{(1)}, z^{(2)}, ..., z^{(m)}\} \in \mathcal{Z}\)&lt;/span&gt;, denoting the data as &lt;span class=&#34;math inline&#34;&gt;\(D = \{(x^{(1)}, z^{(1)}), (x^{(2)}, z^{(2)}), ..., (x^{(m)}, z^{(m)})\}\)&lt;/span&gt; try to the find best parameters &lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
 \hat \theta = arg\max_{\theta}\log(p(X;\theta))
@@ -959,6 +1025,8 @@ q(Z) = \frac{p(X, Z;\theta)}{c} = \frac{p(X, Z;\theta)}{\sum_Zp(X,Z;\theta)} = \
 p(Z|X;\theta) = \frac{p(X, Z;\theta)}{p(X;\theta)} = \frac{\prod_{i=1}^m \sum_{z^{(i)}}p(x^{(i)}, z^{(i)})}{\prod_{i=1}^m p(x^{(i)})} = \prod_{i=1}^m \sum_{z^{(i)}}p(z^{(i)}|x^{(i)})
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/306016801/answer/624061631&#34;&gt;good comparison of latent variables&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -967,7 +1035,9 @@ p(Z|X;\theta) = \frac{p(X, Z;\theta)}{p(X;\theta)} = \frac{\prod_{i=1}^m \sum_{z
       <link>https://chunxy.github.io/notes/articles/information-theory/f-divergence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/f-divergence/</guid>
-      <description>&lt;h2 id=&#34;f-divergence&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;f-divergence&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence can be treated as the generalization of the KL-divergence. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
 D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; has to satisfy that &lt;span class=&#34;math inline&#34;&gt;\(f(1) = 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is a convex function. The reason for these two constraints is that we hope &lt;span class=&#34;math display&#34;&gt;\[
@@ -990,6 +1060,8 @@ D_f (p||q) &amp;amp;= \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \\
 &amp;amp;= \sup_{T:\mathcal X \to \R} \{ \E_p[f(x)] + \E_q[f^* \circ T(x)] \}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -998,7 +1070,9 @@ D_f (p||q) &amp;amp;= \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \\
       <link>https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/</guid>
-      <description>&lt;h2 id=&#34;fishers-linear-discriminant&#34;&gt;Fisher’s Linear Discriminant&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;fishers-linear-discriminant&#34;&gt;Fisher’s Linear Discriminant&lt;/h2&gt;
 &lt;h3 id=&#34;two-class&#34;&gt;Two-class&lt;/h3&gt;
 &lt;p&gt;Assume we have a set of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;-dimensional samples &lt;span class=&#34;math inline&#34;&gt;\(D = \{x^{(i)}\}^M_{i=1}\)&lt;/span&gt; , &lt;span class=&#34;math inline&#34;&gt;\(M_1\)&lt;/span&gt; of which belong to Class &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(M_2\)&lt;/span&gt; to Class &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(M_1 + M_2 = M\)&lt;/span&gt;). We seek to obtain a scalar &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; by projecting &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; onto a unit vector &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)} = v^Tx^{(i)}\)&lt;/span&gt;. Of all the possibilities we would like to select the one that maximizes the separability of the scalars between classes.&lt;/p&gt;
 &lt;p&gt;The mean of each class in the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-space and the &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space is &lt;span class=&#34;math display&#34;&gt;\[
@@ -1044,6 +1118,8 @@ v = S^{-1}_W(\mu_1 - \mu_2)
 S^{-1}_WS_B\underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v = S^{-1}_W\alpha(\mu_1 - \mu_2) = \underbrace{\alpha}_{J(v)} \underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v \\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;multi-class&#34;&gt;Multi-class&lt;/h3&gt;
+
+
 </description>
     </item>
     
@@ -1052,7 +1128,9 @@ S^{-1}_WS_B\underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v = S^{-1}_W\alpha(\mu_1 - \mu_2
       <link>https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/fourier-transform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/fourier-transform/</guid>
-      <description>&lt;h2 id=&#34;continuous-time-fourier-transform&#34;&gt;Continuous-time Fourier Transform&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;continuous-time-fourier-transform&#34;&gt;Continuous-time Fourier Transform&lt;/h2&gt;
 &lt;h3 id=&#34;fourier-series&#34;&gt;Fourier Series&lt;/h3&gt;
 &lt;p&gt;In Euclidean space, we usually represent a vector by a set of independent and orthogonal base vectors (basis). Orthogonality means the inner product between two basis is zero. Inner product can also be defined on some common interval between two functions, and thus the orthogonality.&lt;/p&gt;
 &lt;h4 id=&#34;frequency-domain&#34;&gt;Frequency Domain&lt;/h4&gt;
@@ -1187,14 +1265,16 @@ s(x) = \int_{-\infty}^{+\infty} \hat s(f) e^{i 2\pi f x} \d f
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is the “frequency”. &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is in the unit of cycles/sample. &lt;span class=&#34;math inline&#34;&gt;\(\hat s(f)\)&lt;/span&gt; is the weight of the component which walks &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; cycles between two signal samples.&lt;/p&gt;
 &lt;h2 id=&#34;todo&#34;&gt;TODO&lt;/h2&gt;
 &lt;ul class=&#34;task-list&#34;&gt;
-&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; /&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34;/&gt;
 Laplace Transform&lt;/li&gt;
-&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; /&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34;/&gt;
 &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;-transform&lt;/li&gt;
-&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; /&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34;/&gt;
 Fast Fourier Transform&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://charlesliuyx.github.io/2018/02/18/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E8%AE%A9%E4%BD%A0%E6%B0%B8%E8%BF%9C%E5%BF%98%E4%B8%8D%E4%BA%86%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E8%A7%A3%E6%9E%90/&#34;&gt;傅立叶变换与群&lt;/a&gt;|&lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/1119070975&#34;&gt;如何理解傅里叶变换公式？ - 苗华栋的回答 - 知乎&lt;/a&gt;|&lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/334686351&#34;&gt;如何理解傅里叶变换公式？ - 马同学的回答 - 知乎&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Fourier_transform&#34;&gt;Wiki&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1203,7 +1283,9 @@ Fast Fourier Transform&lt;/li&gt;
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/</guid>
-      <description>&lt;h2 id=&#34;frobenius-normalization&#34;&gt;Frobenius Normalization&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;frobenius-normalization&#34;&gt;Frobenius Normalization&lt;/h2&gt;
 &lt;p&gt;Frobenius Normalization of an &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 ||A||_F = \sqrt{\sum_{ij}A_{ij}^2}
 \]&lt;/span&gt; It can be found that &lt;span class=&#34;math display&#34;&gt;\[
@@ -1216,15 +1298,19 @@ Fast Fourier Transform&lt;/li&gt;
 &amp;amp;= tr(AA^T) = tr(A^TA)
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Function of Random Variable</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</guid>
-      <description>&lt;h2 id=&#34;function-of-random-variable&#34;&gt;Function of Random Variable&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</guid>
+      <description>
+
+&lt;h2 id=&#34;function-of-random-variable&#34;&gt;Function of Random Variable&lt;/h2&gt;
 &lt;p&gt;Suppose we have a 1-D random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim p_X\)&lt;/span&gt; and a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, what will &lt;span class=&#34;math inline&#34;&gt;\(f(X)\)&lt;/span&gt;’s distribution and expectation be like?&lt;/p&gt;
 &lt;h3 id=&#34;distribution&#34;&gt;Distribution&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(Y = f(X)\)&lt;/span&gt; and suppose &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonic, then &lt;span class=&#34;math display&#34;&gt;\[
@@ -1257,15 +1343,19 @@ p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(p_Y(y) = p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)|\)&lt;/span&gt;.&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Gaussian Distribution</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</guid>
-      <description>&lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</guid>
+      <description>
+
+&lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
 &lt;h3 id=&#34;one-dimensional&#34;&gt;One-dimensional&lt;/h3&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;-d random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim \mathcal{N}(\mu, \sigma^2)\)&lt;/span&gt;, then its density function is &lt;span class=&#34;math display&#34;&gt;\[
 p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}
@@ -1354,6 +1444,8 @@ p_Z(z) &amp;amp;= p_X(f^{-1}(z))|J| \\
 p(z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}}e^{-\frac{1}{2}(z-\mu)^T\Sigma_Z^{-1}(z-\mu)}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/40225646&#34;&gt;Integration&lt;/a&gt;|&lt;a href=&#34;https://zhuanlan.zhihu.com/p/58987388&#34;&gt;Multi-variate&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Integration_by_substitution&#34;&gt;Change of variable&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1362,7 +1454,9 @@ p(z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}}e^{-\frac{1}{2}(z-\mu)^T\Sigma_Z^{-1}(
       <link>https://chunxy.github.io/notes/articles/optimization/gradient-descent/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/gradient-descent/</guid>
-      <description>&lt;h2 id=&#34;gradient-descent&#34;&gt;Gradient Descent&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;gradient-descent&#34;&gt;Gradient Descent&lt;/h2&gt;
 &lt;p&gt;If a convex function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; will converge by gradient descent.&lt;/p&gt;
 &lt;h3 id=&#34;l-smoothness&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smoothness&lt;/h3&gt;
 &lt;p&gt;Qualitatively, smoothness means that the gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; changes in a controlled, bounded manner. Quantitatively, smoothness assumes that &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; has a Lipschitz gradient. That means there exists an &lt;span class=&#34;math inline&#34;&gt;\(L &amp;gt; 0\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
@@ -1371,7 +1465,7 @@ p(z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}}e^{-\frac{1}{2}(z-\mu)^T\Sigma_Z^{-1}(
 f(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&#34;task-list&#34;&gt;
-&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; /&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34;/&gt;
 Proof&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Further, &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-smoothness is equivalent to &lt;span class=&#34;math inline&#34;&gt;\(\frac{L}{2}||x||^2_2 - f(x)\)&lt;/span&gt; being convex.&lt;/p&gt;
@@ -1531,6 +1625,8 @@ k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
 &lt;p&gt;[[Convergence of Gradient Descent.pdf]]&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://rkganti.wordpress.com/2015/08/21/convergence-rate-of-gradient-descent-algorithm/&#34;&gt;Convergence rate of gradient descent algorithm | bps/Hz (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://xingyuzhou.org/blog/notes/strong-convexity&#34;&gt;Strong convexity · Xingyu Zhou’s blog&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1539,7 +1635,9 @@ k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
       <link>https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/</guid>
-      <description>&lt;h2 id=&#34;independent-component-analysis&#34;&gt;Independent Component Analysis&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;independent-component-analysis&#34;&gt;Independent Component Analysis&lt;/h2&gt;
 &lt;p&gt;Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;) &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\)&lt;/span&gt;, find the &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; mixing matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X = AS\)&lt;/span&gt;. Columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are the propagation weights from a signal source to observers. Therefore they are considered independent (and are thus called independent components).&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is called mixing matrix and &lt;span class=&#34;math inline&#34;&gt;\(W = A^{-1}\)&lt;/span&gt; is called unmixing matrix because &lt;span class=&#34;math inline&#34;&gt;\(S = WX\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = U\Sigma V^T\)&lt;/span&gt; by [[Singular Value Decomposition|SVD]]. Assume observations are pre-centered:&lt;/p&gt;
@@ -1595,6 +1693,8 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 &lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its isodensity maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the stacked eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
 &lt;p&gt;The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html&#34;&gt;ICA&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1603,7 +1703,9 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
       <link>https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/</guid>
-      <description>&lt;h2 id=&#34;jacobian-matrix&#34;&gt;Jacobian Matrix&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;jacobian-matrix&#34;&gt;Jacobian Matrix&lt;/h2&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(f: \R^n \to \R^m\)&lt;/span&gt;, with input &lt;span class=&#34;math inline&#34;&gt;\(x \in \R^n\)&lt;/span&gt; and output &lt;span class=&#34;math inline&#34;&gt;\(y \in \R^m\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 f = 
 \begin{cases}
@@ -1688,6 +1790,8 @@ dx_1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
 dy_1 \dots dy_n &amp;amp;= |J|dx_1 \dots dx_n \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1696,7 +1800,9 @@ dy_1 \dots dy_n &amp;amp;= |J|dx_1 \dots dx_n \\
       <link>https://chunxy.github.io/notes/articles/information-theory/kl-divergence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/kl-divergence/</guid>
-      <description>&lt;h2 id=&#34;kl-divergence&#34;&gt;KL-divergence&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;kl-divergence&#34;&gt;KL-divergence&lt;/h2&gt;
 &lt;p&gt;KL-divergence, &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p\|q)\)&lt;/span&gt; is statistical distance, measuring how the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is different from the reference probability distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, both defined on the probability space &lt;span class=&#34;math inline&#34;&gt;\(X \in \mathcal{X}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In information theory, it measures the &lt;strong&gt;relative entropy&lt;/strong&gt; from &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, which is the average number of extra bits required to represent a message with &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In discrete form, &lt;span class=&#34;math display&#34;&gt;\[
@@ -1704,6 +1810,8 @@ D_{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x 
 \]&lt;/span&gt; In continuous form, &lt;span class=&#34;math display&#34;&gt;\[
 D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1712,7 +1820,9 @@ D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_
       <link>https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/</guid>
-      <description>&lt;h2 id=&#34;lagrange-multiplier&#34;&gt;Lagrange Multiplier&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;lagrange-multiplier&#34;&gt;Lagrange Multiplier&lt;/h2&gt;
 &lt;p&gt;Standard form of the optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 &amp;amp;\min f_0(x) \\
@@ -1764,6 +1874,8 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
 &lt;/ul&gt;
 &lt;p&gt;If the strong duality holds and &lt;span class=&#34;math inline&#34;&gt;\((x,\lambda,\mu)\)&lt;/span&gt; is the optima, they must satisfy the KKT conditions.&lt;/p&gt;
 &lt;p&gt;Note that KKT conditions do not imply the existence of a strong duality or optima point.&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1772,8 +1884,12 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</guid>
-      <description>&lt;h2 id=&#34;laplace-expansion&#34;&gt;Laplace Expansion&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;laplace-expansion&#34;&gt;Laplace Expansion&lt;/h2&gt;
 &lt;p&gt;Also known as Cofactor Expansion, Laplace Expansion is an expression of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix as the weighted sum of determinants of some &lt;span class=&#34;math inline&#34;&gt;\((n-1) \times (n-1)\)&lt;/span&gt; sub-matrices.&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1782,7 +1898,9 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
       <link>https://chunxy.github.io/notes/articles/optimization/least-angle-regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/least-angle-regression/</guid>
-      <description>&lt;h2 id=&#34;least-angle-regression&#34;&gt;Least Angle Regression&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;least-angle-regression&#34;&gt;Least Angle Regression&lt;/h2&gt;
 &lt;h3 id=&#34;forward-selection&#34;&gt;Forward Selection&lt;/h3&gt;
 &lt;p&gt;In cases where we are to solve &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Y = XW\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\)&lt;/span&gt;, we can do it in an iterative and greedy way.&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
@@ -1821,15 +1939,19 @@ Y_{res} = Y_{res} - \hat Y
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\eta\)&lt;/span&gt; is determined such that there is some &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)} \in C\)&lt;/span&gt; onto which the projection of &lt;span class=&#34;math inline&#34;&gt;\((Y - \hat Y)\)&lt;/span&gt; is the same as that onto &lt;span class=&#34;math inline&#34;&gt;\(\mathrm d\)&lt;/span&gt;. Or in other words, &lt;span class=&#34;math inline&#34;&gt;\((Y - \hat Y)\)&lt;/span&gt; lies on the bisector hyper-plane between &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mathrm d\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\mathrm d\)&lt;/span&gt; be along this bisector.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Go to step 2 until &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt; is sufficiently small.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Least Squares</title>
-      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/least-squares/</link>
+      <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/least-squares/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/least-squares/</guid>
-      <description>&lt;h2 id=&#34;least-squares&#34;&gt;Least Squares&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/least-squares/</guid>
+      <description>
+
+&lt;h2 id=&#34;least-squares&#34;&gt;Least Squares&lt;/h2&gt;
 &lt;p&gt;Suppose we are solving the &lt;span class=&#34;math inline&#34;&gt;\(Ax = b\)&lt;/span&gt; problem. &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt; does not always lie in the column space of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;. However, we can try to find within &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s column space a vector &lt;span class=&#34;math inline&#34;&gt;\(\hat x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\hat x\)&lt;/span&gt; best approximates &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;. By best approximation we mean to minimize the &lt;span class=&#34;math inline&#34;&gt;\(||Ax - b||\)&lt;/span&gt; over all &lt;span class=&#34;math inline&#34;&gt;\(x \in \R^n\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The best approximation can be achieved when &lt;span class=&#34;math inline&#34;&gt;\(Ax = \hat b = \mathop{proj}_{Col(A)}b\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Instead of finding a orthogonal basis for &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, computing &lt;span class=&#34;math inline&#34;&gt;\(\hat b\)&lt;/span&gt; and then solving &lt;span class=&#34;math inline&#34;&gt;\(Ax = \hat b\)&lt;/span&gt;, we can derive &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; in this way: &lt;span class=&#34;math display&#34;&gt;\[
@@ -1846,15 +1968,19 @@ Ax = 0 \iff A^TAx = A^T0 = 0 \\
 A^TAx = 0 \iff x^TA^TAx = 0 \iff (Ax)^TAx = 0 \iff Ax = 0
 \end{gather}
 \]&lt;/span&gt; When columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = 0\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Nul(A^TA) = 0\)&lt;/span&gt;, which indicates that equation (1) has the unique solution. Conversely, when &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A^TA) = 0\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = 0\)&lt;/span&gt;, which indicates that columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent.&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Limit Computing Tricks</title>
-      <link>https://chunxy.github.io/notes/subjects/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/</link>
+      <link>https://chunxy.github.io/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/</guid>
-      <description>&lt;h2 id=&#34;composited-exponential-functions&#34;&gt;Composited Exponential Functions&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/</guid>
+      <description>
+
+&lt;h2 id=&#34;composited-exponential-functions&#34;&gt;Composited Exponential Functions&lt;/h2&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(\lim_{x \to x_0}f(x) = A, \lim_{x \to x_0}g(x) = B\)&lt;/span&gt;, then suppose &lt;span class=&#34;math inline&#34;&gt;\(\lim_{x \to x_0}f(x)^{g(x)}\)&lt;/span&gt; exists, then, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \ln(\lim_{x \to x_0}f(x)^{g(x)}) &amp;amp;= \lim_{x \to x_0}\ln(f(x)^{g(x)}) \\
@@ -1872,6 +1998,8 @@ A^TAx = 0 \iff x^TA^TAx = 0 \iff (Ax)^TAx = 0 \iff Ax = 0
 y^{p-1} (1-y)^{q-1} = y^{p-1} \sum_{i=0}^{q-1} {q-1 \choose i} 1 ^{i} (-y)^{q-1-i} \\
 = \sum_{i=0}^{q-1} {q-1 \choose i} 1 ^{i} (-y)^{q-1-i} \\
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1880,7 +2008,9 @@ y^{p-1} (1-y)^{q-1} = y^{p-1} \sum_{i=0}^{q-1} {q-1 \choose i} 1 ^{i} (-y)^{q-1-
       <link>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</guid>
-      <description>&lt;h2 id=&#34;linear-discriminant-analysis&#34;&gt;Linear Discriminant Analysis&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;linear-discriminant-analysis&#34;&gt;Linear Discriminant Analysis&lt;/h2&gt;
 &lt;p&gt;Linear Discriminant Analysis is another approximation to the Bayes optimal classifier. Instead of assuming independence between each pair of input dimensions given certain label, LDA assumes a single common shared covariance matrix among the input dimensions, no matter the label is. Take the Gaussian distribution as an example: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 p(x|y=C_j) &amp;amp;= \mathcal{N}(x;\mu_j, \Sigma) \\
@@ -1944,6 +2074,8 @@ J(\varphi, \lambda) = \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varph
 \]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
 \varphi_j = \frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{M}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1952,7 +2084,9 @@ J(\varphi, \lambda) = \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varph
       <link>https://chunxy.github.io/notes/articles/machine-learning/linear-regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-regression/</guid>
-      <description>&lt;h2 id=&#34;linear-regression&#34;&gt;Linear Regression&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;linear-regression&#34;&gt;Linear Regression&lt;/h2&gt;
 &lt;p&gt;Given a dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \in \R^N\)&lt;/span&gt; is the feature vector and &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} \in R\)&lt;/span&gt; is the output, learn a linear function &lt;span class=&#34;math inline&#34;&gt;\(f = w^Tx + b: \R^N \mapsto \R\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(w \in \R^N, b \in \R\)&lt;/span&gt;, that best predicts the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; for any feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. The “best” is usually measured by the Mean Square Error: &lt;span class=&#34;math display&#34;&gt;\[
 MSE(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} - f(x^{(i)}))^2
 \]&lt;/span&gt;&lt;/p&gt;
@@ -2075,6 +2209,8 @@ W^\star = \arg \max_W p(W|X,Y)
 \]&lt;/span&gt; The above problem can be efficiently solved using Coordinate Descent or [[Least Angle Regression]].&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6018889.html&#34;&gt;Lasso回归算法： 坐标轴下降法与最小角回归法小结 - 刘建平Pinard - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/76055830&#34;&gt;LASSO回归求解 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2083,7 +2219,9 @@ W^\star = \arg \max_W p(W|X,Y)
       <link>https://chunxy.github.io/notes/articles/mathematics/calculus/lipschitz-continuity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/calculus/lipschitz-continuity/</guid>
-      <description>&lt;h2 id=&#34;lipschitz-continuity&#34;&gt;Lipschitz Continuity&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;lipschitz-continuity&#34;&gt;Lipschitz Continuity&lt;/h2&gt;
 &lt;p&gt;For a continuous mapping &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, it is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;-Lipschitz continuous if there exists a number &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\forall x,y \in dom(f)\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
 ||f(x) - f(y)|| \le K||x - y||
 \]&lt;/span&gt; If the gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;-Lipschitz continuous, we further say &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;-smooth.&lt;/p&gt;
@@ -2109,6 +2247,8 @@ W^\star = \arg \max_W p(W|X,Y)
 \end{aligned}
 \]&lt;/span&gt; In other words, &lt;span class=&#34;math inline&#34;&gt;\(||f \circ g||_{Lip} = ||f||_{Lip} \cdot ||g||_{Lip}\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://homes.cs.washington.edu/~marcotcr/blog/lipschitz/&#34;&gt;Lipschitz Continuity, convexity, subgradients – Marco Tulio Ribeiro – (washington.edu)&lt;/a&gt; &lt;a href=&#34;https://xingyuzhou.org/blog/notes/Lipschitz-gradient&#34;&gt;Lipschitz continuous gradient · Xingyu Zhou’s blog&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2117,7 +2257,9 @@ W^\star = \arg \max_W p(W|X,Y)
       <link>https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/</guid>
-      <description>&lt;h2 id=&#34;logistic-regression&#34;&gt;Logistic Regression&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;logistic-regression&#34;&gt;Logistic Regression&lt;/h2&gt;
 &lt;p&gt;A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is &lt;span class=&#34;math inline&#34;&gt;\(\R^N\)&lt;/span&gt;, then we will process the feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; with a feature extractor function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = w^Tx + b\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(w \in \R^N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(b \in \R\)&lt;/span&gt;, and then operate on &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt;, without directly depending on &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; anymore.&lt;/p&gt;
 &lt;p&gt;Logistic Regression is a binary linear classifier, which takes a probabilistic approach. It maps the &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; to a probability value between &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; by applying a sigmoid function &lt;span class=&#34;math inline&#34;&gt;\(\sigma(z) = \frac{1}{1 + e^{-z}}\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -2168,6 +2310,8 @@ p(y = c|x) =\frac{exp(w^{(c)}\cdot x + b^{(c)})}{\sum_{i=1}^Cexp(w^{(i)} \cdot x
 &lt;p&gt;To prevent overfitting, a prior distribution is usually added to &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;. Suppose each dimension of &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; is independently sampled from a Gaussian distribution &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(0, \frac{C}{2})\)&lt;/span&gt;, then, &lt;span class=&#34;math display&#34;&gt;\[
 p(w) \propto \exp(-\frac{1}{C}w^Tw)
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2176,7 +2320,9 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
       <link>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</guid>
-      <description>&lt;h2 id=&#34;machine-learning-bullet-points&#34;&gt;Machine Learning Bullet Points&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;machine-learning-bullet-points&#34;&gt;Machine Learning Bullet Points&lt;/h2&gt;
 &lt;p&gt;This document lists out miscellaneous points besides the machine learning algorithms that are worth noting.&lt;/p&gt;
 &lt;h3 id=&#34;data-and-feature&#34;&gt;Data and Feature&lt;/h3&gt;
 &lt;ul&gt;
@@ -2202,6 +2348,8 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h3&gt;
+
+
 </description>
     </item>
     
@@ -2210,7 +2358,9 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/</guid>
-      <description>&lt;h2 id=&#34;matrix-identity&#34;&gt;Matrix Identity&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;matrix-identity&#34;&gt;Matrix Identity&lt;/h2&gt;
 &lt;p&gt;A useful matrix identity &lt;span class=&#34;math display&#34;&gt;\[
 (P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
 \]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
@@ -2234,6 +2384,8 @@ A &amp;amp;= A(I_M + BA)(I_M + BA)^{-1} \iff\\
 A &amp;amp;= A
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2242,7 +2394,9 @@ A &amp;amp;= A
       <link>https://chunxy.github.io/notes/articles/information-theory/mutual-information/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/mutual-information/</guid>
-      <description>&lt;h2 id=&#34;mutual-information&#34;&gt;Mutual Information&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;mutual-information&#34;&gt;Mutual Information&lt;/h2&gt;
 &lt;p&gt;Mutual Information of &lt;strong&gt;two random variables&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
 \]&lt;/span&gt; By its definition, &lt;span class=&#34;math display&#34;&gt;\[
@@ -2254,6 +2408,8 @@ I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \times p_Y)
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2262,7 +2418,9 @@ I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
       <link>https://chunxy.github.io/notes/papers/noise-contrastive-estimation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/papers/noise-contrastive-estimation/</guid>
-      <description>&lt;h2 id=&#34;three-perspectives-on-nce&#34;&gt;Three Perspectives on NCE&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;three-perspectives-on-nce&#34;&gt;Three Perspectives on NCE&lt;/h2&gt;
 &lt;h3 id=&#34;non-parametric-estimation&#34;&gt;Non-parametric estimation&lt;/h3&gt;
 &lt;p&gt;The traditional log-likelihood function will be &lt;span class=&#34;math inline&#34;&gt;\(\ell = \sum_x \ln p_\theta(x)\)&lt;/span&gt;. In NCE, we learn &lt;span class=&#34;math display&#34;&gt;\[
 p_\theta(1|x) = \sigma(G(x;\theta) - \gamma) = \frac{1}{1 + e^{-G(x;\theta) + \gamma}}
@@ -2341,6 +2499,8 @@ r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) - \ln q(
 &lt;p&gt;&lt;a href=&#34;https://github.com/Stonesjtu/Pytorch-NCE&#34;&gt;PyTorch-NCE&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;other-reference&#34;&gt;Other Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/334772391&#34;&gt;NCE与语言模型&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2349,7 +2509,9 @@ r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) - \ln q(
       <link>https://chunxy.github.io/notes/articles/machine-learning/non-linear-regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/non-linear-regression/</guid>
-      <description>&lt;h2 id=&#34;non-linear-regression&#34;&gt;Non-linear Regression&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;non-linear-regression&#34;&gt;Non-linear Regression&lt;/h2&gt;
 &lt;p&gt;The basic idea about non-linear regression is to perform the feature mapping &lt;span class=&#34;math inline&#34;&gt;\(\phi(x)\)&lt;/span&gt;, followed by linear regression in the new feature space.&lt;/p&gt;
 &lt;h3 id=&#34;polynomial-regression&#34;&gt;Polynomial Regression&lt;/h3&gt;
 &lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is a scalar, the feature mapping in &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;-th order Polynomial Regression is &lt;span class=&#34;math display&#34;&gt;\[
@@ -2416,15 +2578,19 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;[[Support Vector Regression.pdf]]&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Orthogonality and Projection</title>
-      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/orthogonality-and-projection/</link>
+      <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/orthogonality-and-projection/</guid>
-      <description>&lt;h2 id=&#34;orthogonality-and-projection&#34;&gt;Orthogonality and Projection&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/</guid>
+      <description>
+
+&lt;h2 id=&#34;orthogonality-and-projection&#34;&gt;Orthogonality and Projection&lt;/h2&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(\{u_1, u_2, ..., u_k\}\)&lt;/span&gt; are orthogonal to each other, then they are independent with each other.&lt;/p&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\{u_1, u_2, ..., u_k\}\)&lt;/span&gt; be an orthogonal basis for a subspace &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; of &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;. Then for each &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;, the weights in the linear combination &lt;span class=&#34;math display&#34;&gt;\[
 y = c_1u_1 + c_2u_2 + ... + c_ku_k
@@ -2461,6 +2627,8 @@ y - v = (y - \hat y) + (\hat y - v)
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;A &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; has orthonormal columns if and only if &lt;span class=&#34;math inline&#34;&gt;\(U^TU = I\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;An orthogonal matrix is a square invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(U^{-1} = U^T\)&lt;/span&gt;. By its definition, it has orthonormal columns and orthonormal rows.&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2469,7 +2637,9 @@ y - v = (y - \hat y) + (\hat y - v)
       <link>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</guid>
-      <description>&lt;h2 id=&#34;principal-component-analysis&#34;&gt;Principal Component Analysis&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;principal-component-analysis&#34;&gt;Principal Component Analysis&lt;/h2&gt;
 &lt;p&gt;Given a data matrix &lt;span class=&#34;math inline&#34;&gt;\(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)&lt;/span&gt;, the goal of PCA is to identify the directions of maximum variance contained in the data (compared with directional derivative, this is directional variance).&lt;/p&gt;
 &lt;h3 id=&#34;linear-principal-component-analysis&#34;&gt;Linear Principal Component Analysis&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(v \in \mathbb R^{N \times 1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt;, the variance in the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is given by &lt;span class=&#34;math display&#34;&gt;\[
@@ -2584,6 +2754,8 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
 \frac{1}{M}\sum_{i=1}^k v_i^TXX^Tv_i \ge \tau \sum_{i=1}^N \sigma_i^2
 \]&lt;/span&gt; &lt;a href=&#34;%5B数据降维:%20核主成分分析(Kernel%20PCA)原理解析%20-%20知乎%20(zhihu.com)%5D(https://zhuanlan.zhihu.com/p/59775730)&#34;&gt;Kernel PCA&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/22569/pca-and-proportion-of-variance-explained&#34;&gt;Explained variance&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2592,13 +2764,17 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
       <link>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</guid>
-      <description>&lt;h2 id=&#34;probability-estimation&#34;&gt;Probability Estimation&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;probability-estimation&#34;&gt;Probability Estimation&lt;/h2&gt;
 &lt;h3 id=&#34;probability-function-estimation&#34;&gt;Probability Function Estimation&lt;/h3&gt;
 &lt;h4 id=&#34;monte-carlo-method&#34;&gt;Monte Carlo Method&lt;/h4&gt;
 &lt;h3 id=&#34;probability-density-function-estimation&#34;&gt;Probability Density Function Estimation&lt;/h3&gt;
 &lt;h4 id=&#34;histogram&#34;&gt;Histogram&lt;/h4&gt;
 &lt;h4 id=&#34;parzen-window&#34;&gt;Parzen Window&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/aminor/p/13851150.html&#34;&gt;作图直观理解Parzen窗估计（附Python代码） - aminor - 博客园 (cnblogs.com)&lt;/a&gt; &lt;a href=&#34;https://stats.stackexchange.com/questions/244012/can-you-explain-parzen-window-kernel-density-estimation-in-laymans-terms/244023&#34;&gt;Can you explain Parzen window (kernel) density estimation in layman’s terms? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2607,7 +2783,9 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
       <link>https://chunxy.github.io/notes/articles/machine-learning/ransac/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/ransac/</guid>
-      <description>&lt;h2 id=&#34;ransac&#34;&gt;RANSAC&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;ransac&#34;&gt;RANSAC&lt;/h2&gt;
 &lt;p&gt;Outliers (noises) in the data can diverge the regression model to reduce prediction errors for them, instead of the majority real data points. &lt;strong&gt;RAN&lt;/strong&gt;dom &lt;strong&gt;SA&lt;/strong&gt;mple &lt;strong&gt;C&lt;/strong&gt;onsensus is a methodology to robustly fit the model in the presence of outliers.&lt;/p&gt;
 &lt;p&gt;RANSAC does the following:&lt;/p&gt;
 &lt;ul&gt;
@@ -2637,6 +2815,8 @@ T &amp;gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
 \end{gather}
 \]&lt;/span&gt; The threshold &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is usually set as the median absolute deviation of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xingshansi/p/6763668.html&#34;&gt;随机抽样一致算法（Random sample consensus，RANSAC） - 桂。 - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2645,7 +2825,9 @@ T &amp;gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/</guid>
-      <description>&lt;h2 id=&#34;real-symmetric-matrix&#34;&gt;Real Symmetric Matrix&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;real-symmetric-matrix&#34;&gt;Real Symmetric Matrix&lt;/h2&gt;
 &lt;p&gt;Assume &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; real-valued symmetric matrix, then&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;its eigenvalues and thus eigenvectors are real-valued&lt;/p&gt;
@@ -2701,15 +2883,21 @@ A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 &lt;li&gt;&lt;p&gt;it is positive semi-definite &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; its eigenvalues are non-negative&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zybuluo.com/fsfzp888/note/1112344&#34;&gt;real-valued eigenvalues and orthogonal eigenvectors&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Schmit-Gram Orthogonalization</title>
-      <link>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</link>
+      <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</guid>
-      <description>&lt;h2 id=&#34;schmit-gram-orthogonalization&#34;&gt;Schmit-Gram Orthogonalization&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</guid>
+      <description>
+
+&lt;h2 id=&#34;schmit-gram-orthogonalization&#34;&gt;Schmit-Gram Orthogonalization&lt;/h2&gt;
+
+
 </description>
     </item>
     
@@ -2718,7 +2906,9 @@ A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/</guid>
-      <description>&lt;h2 id=&#34;singular-value-decomposition&#34;&gt;Singular Value Decomposition&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;singular-value-decomposition&#34;&gt;Singular Value Decomposition&lt;/h2&gt;
 &lt;h3 id=&#34;theorem&#34;&gt;Theorem&lt;/h3&gt;
 &lt;p&gt;Any &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; can be decomposed into &lt;span class=&#34;math inline&#34;&gt;\(U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -2834,15 +3024,19 @@ AA^TU_2 = 0 = 0U_2
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[[Singular Value Decomposition.pdf]]&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Source Coding Theory</title>
-      <link>https://chunxy.github.io/notes/subjects/information-theory-inference-and-learning-algorithms/source-coding-theory/</link>
+      <link>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/information-theory-inference-and-learning-algorithms/source-coding-theory/</guid>
-      <description>&lt;h2 id=&#34;notations-and-concepts&#34;&gt;Notations and Concepts&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/</guid>
+      <description>
+
+&lt;h2 id=&#34;notations-and-concepts&#34;&gt;Notations and Concepts&lt;/h2&gt;
 &lt;p&gt;An &lt;strong&gt;ensemble &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt; is a triple &lt;span class=&#34;math inline&#34;&gt;\((X, \newcommand{A}{\mathcal A} \newcommand{P}{\mathcal P} \A_X, \P_X)\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the outcome of a random variable, which takes on values from &lt;span class=&#34;math inline&#34;&gt;\(\A_X = \{a_1, a_1, \dots \}\)&lt;/span&gt;, that has probability &lt;span class=&#34;math inline&#34;&gt;\(\P_X = \{p_1, p_2, \dots \}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The raw bit content&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
 H_0(X) = \log |\mathcal A_X|
@@ -2933,6 +3127,8 @@ L(C,X) = -\sum_i [p_i \log (q_iz)] &amp;amp;= -\sum_i [p_i \log (q_i)] \\
 \end{aligned}
 \]&lt;/span&gt; where the cost is the extra &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p || q)\)&lt;/span&gt; bits, which is brought by instead treating &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; as the real distribution. &lt;span class=&#34;math inline&#34;&gt;\(D_{KL(p||q)}\)&lt;/span&gt; is termed as relative entropy or the [[KL-divergence]].&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+
 </description>
     </item>
     
@@ -2941,7 +3137,9 @@ L(C,X) = -\sum_i [p_i \log (q_iz)] &amp;amp;= -\sum_i [p_i \log (q_i)] \\
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/</guid>
-      <description>&lt;h2 id=&#34;spectral-normalization&#34;&gt;Spectral Normalization&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;spectral-normalization&#34;&gt;Spectral Normalization&lt;/h2&gt;
 &lt;p&gt;Spectral Normalization of an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A)
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\rm z \in \R^N\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\lambda_{\max}(A^TA)\)&lt;/span&gt; is the maximum eigenvalue of matrix &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{\max}(A)\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s largest singular value.&lt;/p&gt;
@@ -2975,6 +3173,8 @@ v_t &amp;amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
 ||A^TA \frac{v_t}{||v_t||}|| = ||A^TAu_1|| = ||\lambda_1 u_1|| = \lambda_1
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://math.stackexchange.com/questions/2723629/why-is-the-maximum-rayleigh-quotient-equal-to-the-maximum-eigenvalue&#34;&gt;matrices - Why is the maximum Rayleigh quotient equal to the maximum eigenvalue? - Mathematics Stack Exchange&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -2983,7 +3183,9 @@ v_t &amp;amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
       <link>https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/</guid>
-      <description>&lt;h2 id=&#34;spherical-coordinates&#34;&gt;Spherical Coordinates&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;spherical-coordinates&#34;&gt;Spherical Coordinates&lt;/h2&gt;
 &lt;p&gt;The conversion between the 2-d Cartesian coordinate system and the 2-d polar coordinate system can be extended to a higher dimension, say &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;-d. In &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;-d case, their conversion can be described as below:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Cartesian-to-spherical &lt;span class=&#34;math display&#34;&gt;\[
@@ -3038,6 +3240,8 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/N-sphere#Spherical_coordinates&#34;&gt;Wiki&lt;/a&gt;|&lt;a href=&#34;https://wuli.wiki//online/SphCar.html&#34;&gt;3d Case Blog 1&lt;/a&gt;|&lt;a href=&#34;https://www.cnblogs.com/hans_gis/archive/2012/11/21/2755126.html&#34;&gt;3d Case Blog 2&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -3046,7 +3250,9 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
       <link>https://chunxy.github.io/notes/articles/optimization/subgradient/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/subgradient/</guid>
-      <description>&lt;h2 id=&#34;subgradient&#34;&gt;Subgradient&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;subgradient&#34;&gt;Subgradient&lt;/h2&gt;
 &lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
 &lt;p&gt;Subgradient of a function &lt;span class=&#34;math inline&#34;&gt;\(f: \R^n \mapsto \R\)&lt;/span&gt; at &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 \partial f(x) = \{g|f(y) \ge f(x) + g^T(y - x), \forall y \in dom(f) \}
@@ -3185,6 +3391,8 @@ f&amp;amp;(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x)) \\
 &lt;li&gt;&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(f(x) = \alpha_1 f_1(x) + \alpha_2 f_2(x)\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\partial f(x) = \alpha_1 \partial f_1(x) + \alpha_2 f_2(x)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/139083837&#34;&gt;凸优化笔记16：次梯度 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -3193,7 +3401,9 @@ f&amp;amp;(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x)) \\
       <link>https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/</guid>
-      <description>&lt;h2 id=&#34;support-vector-machine&#34;&gt;Support Vector Machine&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;support-vector-machine&#34;&gt;Support Vector Machine&lt;/h2&gt;
 &lt;p&gt;Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary. These points are called &lt;strong&gt;support vectors&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;hard-margin-svm&#34;&gt;Hard Margin SVM&lt;/h3&gt;
 &lt;p&gt;Suppose the data &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1, \dots, M\}\)&lt;/span&gt;, and is linearly separable. The separation hyperplane will be in the form of &lt;span class=&#34;math inline&#34;&gt;\(w^Tx + b = 0\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is above the hyperplane (&lt;span class=&#34;math inline&#34;&gt;\(w^Tx^{(i)} + b &amp;gt; 0\)&lt;/span&gt;), &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} = -1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is below the hyperplane (&lt;span class=&#34;math inline&#34;&gt;\(w^Tx^{(i)} + b &amp;lt; 0\)&lt;/span&gt;).&lt;/p&gt;
@@ -3344,15 +3554,19 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 &lt;li&gt;&lt;p&gt;1-vs-rest&lt;/p&gt;
 &lt;p&gt;Train 1-vs-rest SVM for all classes. Choose the class with the largest geometric margin (&lt;span class=&#34;math inline&#34;&gt;\(y = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; belongs to the “1”).&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>Unconscious Statistics</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/</guid>
-      <description>&lt;h2 id=&#34;law-of-the-unconscious-statistician&#34;&gt;Law of the Unconscious Statistician&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/</guid>
+      <description>
+
+&lt;h2 id=&#34;law-of-the-unconscious-statistician&#34;&gt;Law of the Unconscious Statistician&lt;/h2&gt;
 &lt;p&gt;In probability theory and statistics, the &lt;strong&gt;law of the unconscious statistician&lt;/strong&gt; (LOTUS), is a theorem used to calculate the expected value of a function &lt;span class=&#34;math inline&#34;&gt;\(g(X)\)&lt;/span&gt; of a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; when one knows the probability distribution of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; but one does not know the distribution of &lt;span class=&#34;math inline&#34;&gt;\(g(X)\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;If the probability mass function is known, it is &lt;span class=&#34;math display&#34;&gt;\[
 \E[g(X)] = \sum_x g(x) p(x)
@@ -3399,15 +3613,19 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; be the PDF and &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; be the CDF of a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(Q = F^{-1}\)&lt;/span&gt; be the inverse of &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt; is also called the &lt;strong&gt;quantile function&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \int_0^1 Q(p)\ \d p \stackrel{p=F(x)}{\Longrightarrow} = \int_{-\infty}^{+\infty} x f(x)\ \d x = \E(X) 
 \]&lt;/span&gt; &lt;a href=&#34;https://stats.stackexchange.com/a/18439&#34;&gt;StackExchange Answer&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>三大分布与正态总体的抽样分布</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</guid>
-      <description>&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布都从正态分布中衍生出来，之前介绍的常用统计量在正态总体的假设下，都与这三种分布有关，所以他们在正态总体的统计推断中起着很大的作用。&lt;/p&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</guid>
+      <description>
+
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布都从正态分布中衍生出来，之前介绍的常用统计量在正态总体的假设下，都与这三种分布有关，所以他们在正态总体的统计推断中起着很大的作用。&lt;/p&gt;
 &lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
 &lt;h3 id=&#34;gamma函数&#34;&gt;Gamma函数&lt;/h3&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -3531,15 +3749,19 @@ p_Z(z) = \begin{cases}
 \text{$\bar X$与$S^2$相互独立，$\bar X$与$S_n^2$相互独立}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>协方差与相关系数</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
-      <description>&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
+      <description>
+
+&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
 &lt;h3 id=&#34;协方差以二维随机变量为例&#34;&gt;协方差（以二维随机变量为例）&lt;/h3&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X, Y)\)&lt;/span&gt;为二维随机变量，如果&lt;span class=&#34;math inline&#34;&gt;\(\mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}\)&lt;/span&gt;存在，则称 &lt;span class=&#34;math display&#34;&gt;\[
 \notag \mathrm {Cov}(X, Y) \triangleq \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}
@@ -3557,15 +3779,19 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
 \]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{cov}(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数 &lt;span class=&#34;math display&#34;&gt;\[
 \rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\mathrm{cov}(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>参数估计</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</guid>
-      <description>&lt;h2 id=&#34;点估计&#34;&gt;点估计&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</guid>
+      <description>
+
+&lt;h2 id=&#34;点估计&#34;&gt;点估计&lt;/h2&gt;
 &lt;p&gt;设总体&lt;span class=&#34;math inline&#34;&gt;\(X \sim p(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;未知。设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;为总体的一个样本，若用一个统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;来估计&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。&lt;/p&gt;
 &lt;h3 id=&#34;矩估计&#34;&gt;矩估计&lt;/h3&gt;
 &lt;p&gt;矩估计的思想就是就是替换思想，即用样本原点矩替换总体原点矩，设总体的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;span class=&#34;math inline&#34;&gt;\(\mu_k = \E(X^k)\)&lt;/span&gt;，样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩为&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac 1 n \sum_{i=1}^n X_i^k\)&lt;/span&gt;，如果未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta = \varphi(\mu_1, \dots, \mu_m)\)&lt;/span&gt;，则其估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \varphi(A_1, \dots, A_m)\)&lt;/span&gt;，这种估计总体未知参数的方法叫作矩估计法。&lt;/p&gt;
@@ -3642,15 +3868,19 @@ P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
 P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}\)&lt;/span&gt;可改写为对应的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;的形式，且&lt;span class=&#34;math inline&#34;&gt;\(A, B\)&lt;/span&gt;仅与估计量和两个分位点有关，&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;就构成了&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个置信水平为&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha\)&lt;/span&gt;的置信区间。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>大数定律和中心极限定理</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</guid>
-      <description>&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</guid>
+      <description>
+
+&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
 &lt;h3 id=&#34;chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定理&lt;/p&gt;
@@ -3737,15 +3967,19 @@ P(|X-\E(X)| \ge \epsilon) &amp;amp;= \mathop \sum_{|x - \E(x)| \ge \epsilon} P(x
 &lt;p&gt;前面的Bernoulli大数定律告诉我们可以用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n} \sum_{i=1}^n X_i\)&lt;/span&gt;近似&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;，而至于近似程度如何，却不得而知。de Moivre-Laplace中心极限定理则告诉我们近似程度如何： &lt;span class=&#34;math display&#34;&gt;\[
 P(|\frac{1}{n}\sum_{i=1}^n X_i - p| &amp;lt; \epsilon) = P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| &amp;lt; \frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) = 2N(0,1,\frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) - 1
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>特征函数</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</guid>
-      <description>&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</guid>
+      <description>
+
+&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
 &lt;h3 id=&#34;感性认知&#34;&gt;感性认知&lt;/h3&gt;
 &lt;p&gt;根据泰勒级数我们可以得知，两个函数&lt;span class=&#34;math inline&#34;&gt;\(f(x),g(x)\)&lt;/span&gt;，如果它们各阶导数相等的越多，它们就越相似，换言之 &lt;span class=&#34;math display&#34;&gt;\[
 \text{各阶导数都相同} \Rightarrow f(x) = g(x)
@@ -3778,15 +4012,19 @@ F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/23686709&#34;&gt;特征函数的理解&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
     <item>
       <title>统计量</title>
-      <link>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/</link>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/subjects/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/</guid>
-      <description>&lt;ul&gt;
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/</guid>
+      <description>
+
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X_1,\dots,X_n)\)&lt;/span&gt;为取自总体的一个样本，若函数&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;不直接包含总体分布中的任何参数，则称&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;为&lt;strong&gt;统计量&lt;/strong&gt;。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -3842,6 +4080,8 @@ p_{X_{(1)}}(u) = n \big( 1 - P_X(u) \big)^{n-1} p_X(u) \\
 p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
 \end{gather}
 \]&lt;/span&gt; 记&lt;span class=&#34;math inline&#34;&gt;\(X_{(k)}\)&lt;/span&gt;的概率密度函数为&lt;span class=&#34;math inline&#34;&gt;\(p_{X_{(k)}}\)&lt;/span&gt;，则…&lt;/p&gt;
+
+
 </description>
     </item>
     

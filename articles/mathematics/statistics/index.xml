@@ -17,13 +17,17 @@
       <link>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</guid>
-      <description>&lt;h2 id=&#34;probability-estimation&#34;&gt;Probability Estimation&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;probability-estimation&#34;&gt;Probability Estimation&lt;/h2&gt;
 &lt;h3 id=&#34;probability-function-estimation&#34;&gt;Probability Function Estimation&lt;/h3&gt;
 &lt;h4 id=&#34;monte-carlo-method&#34;&gt;Monte Carlo Method&lt;/h4&gt;
 &lt;h3 id=&#34;probability-density-function-estimation&#34;&gt;Probability Density Function Estimation&lt;/h3&gt;
 &lt;h4 id=&#34;histogram&#34;&gt;Histogram&lt;/h4&gt;
 &lt;h4 id=&#34;parzen-window&#34;&gt;Parzen Window&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/aminor/p/13851150.html&#34;&gt;作图直观理解Parzen窗估计（附Python代码） - aminor - 博客园 (cnblogs.com)&lt;/a&gt; &lt;a href=&#34;https://stats.stackexchange.com/questions/244012/can-you-explain-parzen-window-kernel-density-estimation-in-laymans-terms/244023&#34;&gt;Can you explain Parzen window (kernel) density estimation in layman’s terms? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     

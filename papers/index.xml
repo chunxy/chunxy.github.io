@@ -17,7 +17,9 @@
       <link>https://chunxy.github.io/notes/papers/bounding-mutual-information/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/papers/bounding-mutual-information/</guid>
-      <description>&lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
 &lt;p&gt;The very basic bound on the Mutual Information is based on the non-negativity of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) = &amp;amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
@@ -129,6 +131,8 @@ I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fra
 &amp;amp;= I(X_1;Y) - \log(K-1) + \log K
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -137,7 +141,9 @@ I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fra
       <link>https://chunxy.github.io/notes/papers/contrastive-predictive-coding/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/papers/contrastive-predictive-coding/</guid>
-      <description>&lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
 &lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the data. The original data can either be the original data before the encoding, or the future data with different steps.&lt;/p&gt;
 &lt;p&gt;CPC learns the representation by minimizing the following loss function: &lt;span class=&#34;math display&#34;&gt;\[
 \newcommand{\c}{\mathrm{c}}
@@ -176,6 +182,8 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt;|&lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt;|&lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -184,7 +192,9 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
       <link>https://chunxy.github.io/notes/papers/noise-contrastive-estimation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/papers/noise-contrastive-estimation/</guid>
-      <description>&lt;h2 id=&#34;three-perspectives-on-nce&#34;&gt;Three Perspectives on NCE&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;three-perspectives-on-nce&#34;&gt;Three Perspectives on NCE&lt;/h2&gt;
 &lt;h3 id=&#34;non-parametric-estimation&#34;&gt;Non-parametric estimation&lt;/h3&gt;
 &lt;p&gt;The traditional log-likelihood function will be &lt;span class=&#34;math inline&#34;&gt;\(\ell = \sum_x \ln p_\theta(x)\)&lt;/span&gt;. In NCE, we learn &lt;span class=&#34;math display&#34;&gt;\[
 p_\theta(1|x) = \sigma(G(x;\theta) - \gamma) = \frac{1}{1 + e^{-G(x;\theta) + \gamma}}
@@ -263,6 +273,8 @@ r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) - \ln q(
 &lt;p&gt;&lt;a href=&#34;https://github.com/Stonesjtu/Pytorch-NCE&#34;&gt;PyTorch-NCE&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;other-reference&#34;&gt;Other Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/334772391&#34;&gt;NCE与语言模型&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     

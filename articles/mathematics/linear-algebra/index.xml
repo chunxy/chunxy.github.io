@@ -17,7 +17,9 @@
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</guid>
-      <description>&lt;h2 id=&#34;eigenvectors-and-eigenvalues&#34;&gt;Eigenvectors and Eigenvalues&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;eigenvectors-and-eigenvalues&#34;&gt;Eigenvectors and Eigenvalues&lt;/h2&gt;
 &lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
 &lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue.&lt;/p&gt;
 &lt;h3 id=&#34;similarity&#34;&gt;Similarity&lt;/h3&gt;
@@ -80,6 +82,8 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;[[The Eigen Decomposition.pdf]]&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -88,8 +92,12 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</guid>
-      <description>&lt;h2 id=&#34;laplace-expansion&#34;&gt;Laplace Expansion&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;laplace-expansion&#34;&gt;Laplace Expansion&lt;/h2&gt;
 &lt;p&gt;Also known as Cofactor Expansion, Laplace Expansion is an expression of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix as the weighted sum of determinants of some &lt;span class=&#34;math inline&#34;&gt;\((n-1) \times (n-1)\)&lt;/span&gt; sub-matrices.&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -98,7 +106,9 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/</guid>
-      <description>&lt;h2 id=&#34;matrix-identity&#34;&gt;Matrix Identity&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;matrix-identity&#34;&gt;Matrix Identity&lt;/h2&gt;
 &lt;p&gt;A useful matrix identity &lt;span class=&#34;math display&#34;&gt;\[
 (P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
 \]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
@@ -122,6 +132,8 @@ A &amp;amp;= A(I_M + BA)(I_M + BA)^{-1} \iff\\
 A &amp;amp;= A
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -130,7 +142,9 @@ A &amp;amp;= A
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/</guid>
-      <description>&lt;h2 id=&#34;real-symmetric-matrix&#34;&gt;Real Symmetric Matrix&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;real-symmetric-matrix&#34;&gt;Real Symmetric Matrix&lt;/h2&gt;
 &lt;p&gt;Assume &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; real-valued symmetric matrix, then&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;its eigenvalues and thus eigenvectors are real-valued&lt;/p&gt;
@@ -186,6 +200,8 @@ A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 &lt;li&gt;&lt;p&gt;it is positive semi-definite &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; its eigenvalues are non-negative&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zybuluo.com/fsfzp888/note/1112344&#34;&gt;real-valued eigenvalues and orthogonal eigenvectors&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -194,7 +210,9 @@ A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/</guid>
-      <description>&lt;h2 id=&#34;singular-value-decomposition&#34;&gt;Singular Value Decomposition&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;singular-value-decomposition&#34;&gt;Singular Value Decomposition&lt;/h2&gt;
 &lt;h3 id=&#34;theorem&#34;&gt;Theorem&lt;/h3&gt;
 &lt;p&gt;Any &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; can be decomposed into &lt;span class=&#34;math inline&#34;&gt;\(U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -310,6 +328,8 @@ AA^TU_2 = 0 = 0U_2
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[[Singular Value Decomposition.pdf]]&lt;/p&gt;
+
+
 </description>
     </item>
     

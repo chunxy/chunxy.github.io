@@ -17,7 +17,9 @@
       <link>https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/</guid>
-      <description>&lt;h2 id=&#34;bias-variance-decomposition&#34;&gt;Bias-variance Decomposition&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;bias-variance-decomposition&#34;&gt;Bias-variance Decomposition&lt;/h2&gt;
 &lt;p&gt;The notation used is as follows:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -82,6 +84,8 @@ E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
 &amp;amp;= \underbrace{E[(f(x) - \bar f(x))^2]}_{variance} + \underbrace{E[(\bar f(x) - \bar y)^2]}_{bias^2} + \underbrace{E[(y - y_\mathcal D)^2]}_{noise} + \underbrace{E[(\bar y - y)^2]}_{scatter} \\
 \end{aligned}
 \]&lt;/span&gt; &lt;a href=&#34;https://medium.com/analytics-vidhya/5-ways-to-achieve-right-balance-of-bias-and-variance-in-ml-model-f734fea6116&#34;&gt;5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -90,7 +94,9 @@ E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
       <link>https://chunxy.github.io/notes/articles/machine-learning/clustering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/clustering/</guid>
-      <description>&lt;h2 id=&#34;clustering&#34;&gt;Clustering&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;clustering&#34;&gt;Clustering&lt;/h2&gt;
 &lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\)&lt;/span&gt;, a clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; of the &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; points into &lt;span class=&#34;math inline&#34;&gt;\(K (K \le M)\)&lt;/span&gt; clusters is a partitioning of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; disjoint groups &lt;span class=&#34;math inline&#34;&gt;\(\{C_1,\dots,C_K\}\)&lt;/span&gt;. Suppose we have a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluates the clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
 \arg \min_{\mathcal C} f(\mathcal C)
 \]&lt;/span&gt; The number of all possibilities of clustering with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements is called the Bell number, denoted as &lt;span class=&#34;math inline&#34;&gt;\(B_M\)&lt;/span&gt;. The calculation of the Bell number is based on dynamic programming. The number of ways to cluster &lt;span class=&#34;math inline&#34;&gt;\(M+1\)&lt;/span&gt; elements is the sum of number of ways to:&lt;/p&gt;
@@ -230,6 +236,8 @@ p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}
 \alpha^{(i)}_j = p(z^{(i)} = j | x^{(i)}) = \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I) \frac{1}{K}}{\frac{1}{K} \sum_{k=1}^K \mathcal N(x;\mu_k, I)} = \frac{\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2)}{\sum_{k=1}^K \exp(-\frac{1}{2}||x^{(k)}-\mu_j||^2_2)}
 \end{gather}
 \]&lt;/span&gt; The “Soft K-means” comes from the softmax of the Euclidean distance.&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -238,7 +246,9 @@ p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}
       <link>https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/</guid>
-      <description>&lt;h2 id=&#34;dimension-reduction&#34;&gt;Dimension Reduction&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;dimension-reduction&#34;&gt;Dimension Reduction&lt;/h2&gt;
 &lt;p&gt;Dimension Reduction&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;reduces computational cost&lt;/li&gt;
@@ -320,6 +330,8 @@ K \ge \frac{8\log M}{\epsilon^2}
 &lt;p&gt;We can introduce the feature mapping to handle the non-linearity problem in Dimension Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case. [[Principal Component Analysis#Kernel PCA]] is just such an example.&lt;/p&gt;
 &lt;h2 id=&#34;supervised-dimension-reduction&#34;&gt;Supervised Dimension Reduction&lt;/h2&gt;
 &lt;p&gt;There is no guarantee that the unsupervised Dimension Reduction can throw insight into the classification problem. It may or may not help. Otherwise supervised Dimension Reduction such as [[Fisher’s Linear Discriminant]] finds a lower-dimensional space so as to minimize the class overlap.&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -328,7 +340,9 @@ K \ge \frac{8\log M}{\epsilon^2}
       <link>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</guid>
-      <description>&lt;h2 id=&#34;eckart-young-mirsky-theorem&#34;&gt;Eckart-Young-Mirsky Theorem&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;eckart-young-mirsky-theorem&#34;&gt;Eckart-Young-Mirsky Theorem&lt;/h2&gt;
 &lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as [[Frobenius Normalization|Frobenius norm]]: &lt;span class=&#34;math display&#34;&gt;\[
 ||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
 \]&lt;/span&gt; Firstly we prove that, if &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is orthogonal, then &lt;span class=&#34;math inline&#34;&gt;\(||UA||_F = ||AU||_F = ||A||_F\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
@@ -361,6 +375,8 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 \end{gather}
 \]&lt;/span&gt; Such &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; exists when &lt;span class=&#34;math inline&#34;&gt;\(Y = U\Sigma_KV^T\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Eckart-Young-Mirsky Theorem also holds for [[Spectral Normalization|Spectral norm]] .&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -369,7 +385,9 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
       <link>https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/</guid>
-      <description>&lt;h2 id=&#34;fishers-linear-discriminant&#34;&gt;Fisher’s Linear Discriminant&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;fishers-linear-discriminant&#34;&gt;Fisher’s Linear Discriminant&lt;/h2&gt;
 &lt;h3 id=&#34;two-class&#34;&gt;Two-class&lt;/h3&gt;
 &lt;p&gt;Assume we have a set of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;-dimensional samples &lt;span class=&#34;math inline&#34;&gt;\(D = \{x^{(i)}\}^M_{i=1}\)&lt;/span&gt; , &lt;span class=&#34;math inline&#34;&gt;\(M_1\)&lt;/span&gt; of which belong to Class &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(M_2\)&lt;/span&gt; to Class &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(M_1 + M_2 = M\)&lt;/span&gt;). We seek to obtain a scalar &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; by projecting &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; onto a unit vector &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)} = v^Tx^{(i)}\)&lt;/span&gt;. Of all the possibilities we would like to select the one that maximizes the separability of the scalars between classes.&lt;/p&gt;
 &lt;p&gt;The mean of each class in the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-space and the &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space is &lt;span class=&#34;math display&#34;&gt;\[
@@ -415,6 +433,8 @@ v = S^{-1}_W(\mu_1 - \mu_2)
 S^{-1}_WS_B\underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v = S^{-1}_W\alpha(\mu_1 - \mu_2) = \underbrace{\alpha}_{J(v)} \underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v \\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;multi-class&#34;&gt;Multi-class&lt;/h3&gt;
+
+
 </description>
     </item>
     
@@ -423,7 +443,9 @@ S^{-1}_WS_B\underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v = S^{-1}_W\alpha(\mu_1 - \mu_2
       <link>https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/</guid>
-      <description>&lt;h2 id=&#34;independent-component-analysis&#34;&gt;Independent Component Analysis&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;independent-component-analysis&#34;&gt;Independent Component Analysis&lt;/h2&gt;
 &lt;p&gt;Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;) &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\)&lt;/span&gt;, find the &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; mixing matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X = AS\)&lt;/span&gt;. Columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are the propagation weights from a signal source to observers. Therefore they are considered independent (and are thus called independent components).&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is called mixing matrix and &lt;span class=&#34;math inline&#34;&gt;\(W = A^{-1}\)&lt;/span&gt; is called unmixing matrix because &lt;span class=&#34;math inline&#34;&gt;\(S = WX\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = U\Sigma V^T\)&lt;/span&gt; by [[Singular Value Decomposition|SVD]]. Assume observations are pre-centered:&lt;/p&gt;
@@ -479,6 +501,8 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 &lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its isodensity maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the stacked eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
 &lt;p&gt;The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html&#34;&gt;ICA&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -487,7 +511,9 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
       <link>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</guid>
-      <description>&lt;h2 id=&#34;linear-discriminant-analysis&#34;&gt;Linear Discriminant Analysis&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;linear-discriminant-analysis&#34;&gt;Linear Discriminant Analysis&lt;/h2&gt;
 &lt;p&gt;Linear Discriminant Analysis is another approximation to the Bayes optimal classifier. Instead of assuming independence between each pair of input dimensions given certain label, LDA assumes a single common shared covariance matrix among the input dimensions, no matter the label is. Take the Gaussian distribution as an example: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 p(x|y=C_j) &amp;amp;= \mathcal{N}(x;\mu_j, \Sigma) \\
@@ -551,6 +577,8 @@ J(\varphi, \lambda) = \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varph
 \]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
 \varphi_j = \frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{M}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -559,7 +587,9 @@ J(\varphi, \lambda) = \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varph
       <link>https://chunxy.github.io/notes/articles/machine-learning/linear-regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-regression/</guid>
-      <description>&lt;h2 id=&#34;linear-regression&#34;&gt;Linear Regression&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;linear-regression&#34;&gt;Linear Regression&lt;/h2&gt;
 &lt;p&gt;Given a dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \in \R^N\)&lt;/span&gt; is the feature vector and &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} \in R\)&lt;/span&gt; is the output, learn a linear function &lt;span class=&#34;math inline&#34;&gt;\(f = w^Tx + b: \R^N \mapsto \R\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(w \in \R^N, b \in \R\)&lt;/span&gt;, that best predicts the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; for any feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. The “best” is usually measured by the Mean Square Error: &lt;span class=&#34;math display&#34;&gt;\[
 MSE(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} - f(x^{(i)}))^2
 \]&lt;/span&gt;&lt;/p&gt;
@@ -682,6 +712,8 @@ W^\star = \arg \max_W p(W|X,Y)
 \]&lt;/span&gt; The above problem can be efficiently solved using Coordinate Descent or [[Least Angle Regression]].&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6018889.html&#34;&gt;Lasso回归算法： 坐标轴下降法与最小角回归法小结 - 刘建平Pinard - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/76055830&#34;&gt;LASSO回归求解 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -690,7 +722,9 @@ W^\star = \arg \max_W p(W|X,Y)
       <link>https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/</guid>
-      <description>&lt;h2 id=&#34;logistic-regression&#34;&gt;Logistic Regression&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;logistic-regression&#34;&gt;Logistic Regression&lt;/h2&gt;
 &lt;p&gt;A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is &lt;span class=&#34;math inline&#34;&gt;\(\R^N\)&lt;/span&gt;, then we will process the feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; with a feature extractor function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = w^Tx + b\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(w \in \R^N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(b \in \R\)&lt;/span&gt;, and then operate on &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt;, without directly depending on &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; anymore.&lt;/p&gt;
 &lt;p&gt;Logistic Regression is a binary linear classifier, which takes a probabilistic approach. It maps the &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; to a probability value between &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; by applying a sigmoid function &lt;span class=&#34;math inline&#34;&gt;\(\sigma(z) = \frac{1}{1 + e^{-z}}\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -741,6 +775,8 @@ p(y = c|x) =\frac{exp(w^{(c)}\cdot x + b^{(c)})}{\sum_{i=1}^Cexp(w^{(i)} \cdot x
 &lt;p&gt;To prevent overfitting, a prior distribution is usually added to &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;. Suppose each dimension of &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; is independently sampled from a Gaussian distribution &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(0, \frac{C}{2})\)&lt;/span&gt;, then, &lt;span class=&#34;math display&#34;&gt;\[
 p(w) \propto \exp(-\frac{1}{C}w^Tw)
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -749,7 +785,9 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
       <link>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</guid>
-      <description>&lt;h2 id=&#34;machine-learning-bullet-points&#34;&gt;Machine Learning Bullet Points&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;machine-learning-bullet-points&#34;&gt;Machine Learning Bullet Points&lt;/h2&gt;
 &lt;p&gt;This document lists out miscellaneous points besides the machine learning algorithms that are worth noting.&lt;/p&gt;
 &lt;h3 id=&#34;data-and-feature&#34;&gt;Data and Feature&lt;/h3&gt;
 &lt;ul&gt;
@@ -775,6 +813,8 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h3&gt;
+
+
 </description>
     </item>
     
@@ -783,7 +823,9 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
       <link>https://chunxy.github.io/notes/articles/machine-learning/non-linear-regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/non-linear-regression/</guid>
-      <description>&lt;h2 id=&#34;non-linear-regression&#34;&gt;Non-linear Regression&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;non-linear-regression&#34;&gt;Non-linear Regression&lt;/h2&gt;
 &lt;p&gt;The basic idea about non-linear regression is to perform the feature mapping &lt;span class=&#34;math inline&#34;&gt;\(\phi(x)\)&lt;/span&gt;, followed by linear regression in the new feature space.&lt;/p&gt;
 &lt;h3 id=&#34;polynomial-regression&#34;&gt;Polynomial Regression&lt;/h3&gt;
 &lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is a scalar, the feature mapping in &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;-th order Polynomial Regression is &lt;span class=&#34;math display&#34;&gt;\[
@@ -850,6 +892,8 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;[[Support Vector Regression.pdf]]&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -858,7 +902,9 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
       <link>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</guid>
-      <description>&lt;h2 id=&#34;principal-component-analysis&#34;&gt;Principal Component Analysis&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;principal-component-analysis&#34;&gt;Principal Component Analysis&lt;/h2&gt;
 &lt;p&gt;Given a data matrix &lt;span class=&#34;math inline&#34;&gt;\(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)&lt;/span&gt;, the goal of PCA is to identify the directions of maximum variance contained in the data (compared with directional derivative, this is directional variance).&lt;/p&gt;
 &lt;h3 id=&#34;linear-principal-component-analysis&#34;&gt;Linear Principal Component Analysis&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(v \in \mathbb R^{N \times 1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt;, the variance in the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is given by &lt;span class=&#34;math display&#34;&gt;\[
@@ -973,6 +1019,8 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
 \frac{1}{M}\sum_{i=1}^k v_i^TXX^Tv_i \ge \tau \sum_{i=1}^N \sigma_i^2
 \]&lt;/span&gt; &lt;a href=&#34;%5B数据降维:%20核主成分分析(Kernel%20PCA)原理解析%20-%20知乎%20(zhihu.com)%5D(https://zhuanlan.zhihu.com/p/59775730)&#34;&gt;Kernel PCA&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/22569/pca-and-proportion-of-variance-explained&#34;&gt;Explained variance&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -981,7 +1029,9 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
       <link>https://chunxy.github.io/notes/articles/machine-learning/ransac/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/ransac/</guid>
-      <description>&lt;h2 id=&#34;ransac&#34;&gt;RANSAC&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;ransac&#34;&gt;RANSAC&lt;/h2&gt;
 &lt;p&gt;Outliers (noises) in the data can diverge the regression model to reduce prediction errors for them, instead of the majority real data points. &lt;strong&gt;RAN&lt;/strong&gt;dom &lt;strong&gt;SA&lt;/strong&gt;mple &lt;strong&gt;C&lt;/strong&gt;onsensus is a methodology to robustly fit the model in the presence of outliers.&lt;/p&gt;
 &lt;p&gt;RANSAC does the following:&lt;/p&gt;
 &lt;ul&gt;
@@ -1011,6 +1061,8 @@ T &amp;gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
 \end{gather}
 \]&lt;/span&gt; The threshold &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is usually set as the median absolute deviation of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xingshansi/p/6763668.html&#34;&gt;随机抽样一致算法（Random sample consensus，RANSAC） - 桂。 - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -1019,7 +1071,9 @@ T &amp;gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
       <link>https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/</guid>
-      <description>&lt;h2 id=&#34;support-vector-machine&#34;&gt;Support Vector Machine&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;support-vector-machine&#34;&gt;Support Vector Machine&lt;/h2&gt;
 &lt;p&gt;Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary. These points are called &lt;strong&gt;support vectors&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;hard-margin-svm&#34;&gt;Hard Margin SVM&lt;/h3&gt;
 &lt;p&gt;Suppose the data &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1, \dots, M\}\)&lt;/span&gt;, and is linearly separable. The separation hyperplane will be in the form of &lt;span class=&#34;math inline&#34;&gt;\(w^Tx + b = 0\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is above the hyperplane (&lt;span class=&#34;math inline&#34;&gt;\(w^Tx^{(i)} + b &amp;gt; 0\)&lt;/span&gt;), &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} = -1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is below the hyperplane (&lt;span class=&#34;math inline&#34;&gt;\(w^Tx^{(i)} + b &amp;lt; 0\)&lt;/span&gt;).&lt;/p&gt;
@@ -1170,6 +1224,8 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 &lt;li&gt;&lt;p&gt;1-vs-rest&lt;/p&gt;
 &lt;p&gt;Train 1-vs-rest SVM for all classes. Choose the class with the largest geometric margin (&lt;span class=&#34;math inline&#34;&gt;\(y = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; belongs to the “1”).&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+
 </description>
     </item>
     

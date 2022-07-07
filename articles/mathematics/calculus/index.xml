@@ -17,7 +17,9 @@
       <link>https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/</guid>
-      <description>&lt;h2 id=&#34;jacobian-matrix&#34;&gt;Jacobian Matrix&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;jacobian-matrix&#34;&gt;Jacobian Matrix&lt;/h2&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(f: \R^n \to \R^m\)&lt;/span&gt;, with input &lt;span class=&#34;math inline&#34;&gt;\(x \in \R^n\)&lt;/span&gt; and output &lt;span class=&#34;math inline&#34;&gt;\(y \in \R^m\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 f = 
 \begin{cases}
@@ -102,6 +104,8 @@ dx_1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
 dy_1 \dots dy_n &amp;amp;= |J|dx_1 \dots dx_n \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -110,7 +114,9 @@ dy_1 \dots dy_n &amp;amp;= |J|dx_1 \dots dx_n \\
       <link>https://chunxy.github.io/notes/articles/mathematics/calculus/lipschitz-continuity/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/calculus/lipschitz-continuity/</guid>
-      <description>&lt;h2 id=&#34;lipschitz-continuity&#34;&gt;Lipschitz Continuity&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;lipschitz-continuity&#34;&gt;Lipschitz Continuity&lt;/h2&gt;
 &lt;p&gt;For a continuous mapping &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, it is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;-Lipschitz continuous if there exists a number &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\forall x,y \in dom(f)\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
 ||f(x) - f(y)|| \le K||x - y||
 \]&lt;/span&gt; If the gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;-Lipschitz continuous, we further say &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;-smooth.&lt;/p&gt;
@@ -136,6 +142,8 @@ dy_1 \dots dy_n &amp;amp;= |J|dx_1 \dots dx_n \\
 \end{aligned}
 \]&lt;/span&gt; In other words, &lt;span class=&#34;math inline&#34;&gt;\(||f \circ g||_{Lip} = ||f||_{Lip} \cdot ||g||_{Lip}\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://homes.cs.washington.edu/~marcotcr/blog/lipschitz/&#34;&gt;Lipschitz Continuity, convexity, subgradients – Marco Tulio Ribeiro – (washington.edu)&lt;/a&gt; &lt;a href=&#34;https://xingyuzhou.org/blog/notes/Lipschitz-gradient&#34;&gt;Lipschitz continuous gradient · Xingyu Zhou’s blog&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
@@ -144,7 +152,9 @@ dy_1 \dots dy_n &amp;amp;= |J|dx_1 \dots dx_n \\
       <link>https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/</guid>
-      <description>&lt;h2 id=&#34;spherical-coordinates&#34;&gt;Spherical Coordinates&lt;/h2&gt;
+      <description>
+
+&lt;h2 id=&#34;spherical-coordinates&#34;&gt;Spherical Coordinates&lt;/h2&gt;
 &lt;p&gt;The conversion between the 2-d Cartesian coordinate system and the 2-d polar coordinate system can be extended to a higher dimension, say &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;-d. In &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;-d case, their conversion can be described as below:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Cartesian-to-spherical &lt;span class=&#34;math display&#34;&gt;\[
@@ -199,6 +209,8 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/N-sphere#Spherical_coordinates&#34;&gt;Wiki&lt;/a&gt;|&lt;a href=&#34;https://wuli.wiki//online/SphCar.html&#34;&gt;3d Case Blog 1&lt;/a&gt;|&lt;a href=&#34;https://www.cnblogs.com/hans_gis/archive/2012/11/21/2755126.html&#34;&gt;3d Case Blog 2&lt;/a&gt;&lt;/p&gt;
+
+
 </description>
     </item>
     
