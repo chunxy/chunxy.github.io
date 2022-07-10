@@ -5,9 +5,9 @@
     <link>https://chunxy.github.io/notes/papers/</link>
       <atom:link href="https://chunxy.github.io/notes/papers/index.xml" rel="self" type="application/rss+xml" />
     <description>Papers</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
     <image>
-      <url>https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <url>https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
       <title>Papers</title>
       <link>https://chunxy.github.io/notes/papers/</link>
     </image>
@@ -15,7 +15,7 @@
     <item>
       <title>Bounding Mutual Information</title>
       <link>https://chunxy.github.io/notes/papers/bounding-mutual-information/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Jun 2022 14:01:20 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/papers/bounding-mutual-information/</guid>
       <description>
 
@@ -137,60 +137,9 @@ I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fra
     </item>
     
     <item>
-      <title>Contrastive Predictive Coding</title>
-      <link>https://chunxy.github.io/notes/papers/contrastive-predictive-coding/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/papers/contrastive-predictive-coding/</guid>
-      <description>
-
-&lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
-&lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the data. The original data can either be the original data before the encoding, or the future data with different steps.&lt;/p&gt;
-&lt;p&gt;CPC learns the representation by minimizing the following loss function: &lt;span class=&#34;math display&#34;&gt;\[
-\newcommand{\c}{\mathrm{c}}
-\mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(t = (\ell, \x_1, \dots, \x_{N+1}, \c^*)\)&lt;/span&gt; is a tuple of random variables and &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; is the distribution from which &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is drawn. &lt;span class=&#34;math inline&#34;&gt;\((\x:\c)_{1:N+1}\)&lt;/span&gt; are drawn from the joint distribution &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(\x,\c)\)&lt;/span&gt;. All &lt;span class=&#34;math inline&#34;&gt;\(\c_i\)&lt;/span&gt;’s but one randomly-chosen &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; are trimmed from the original samples. &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; is known but it is unknown which sample it is associated with. Denote by &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; the index of this unique sample we are trying to predict.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\x_{1:N+1}\)&lt;/span&gt; consists of one positive sample &lt;span class=&#34;math inline&#34;&gt;\(\x^*\)&lt;/span&gt; that is matched with &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; and more other independent negative (noise) samples &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt;’s that are not matched with &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the fixed ratio of the number of negative samples to the number of positive samples. Let &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*)\)&lt;/span&gt; represent the probability that &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt; is the positive sample given &lt;span class=&#34;math inline&#34;&gt;\(\x_1, \dots x_{N+1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Substitute &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*) = P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)}{\sum_{j=1}^{N+1} [P(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} P(\x_k)]} \\
-&amp;amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
-&amp;amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
-\end{aligned}
-\]&lt;/span&gt; The loss function is in fact the expectation of Categorical Cross Entropy of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
-f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{p_d(\x^\prime|\c)}{p_n(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
-f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;bounding-the-mutual-information&#34;&gt;Bounding the Mutual Information&lt;/h2&gt;
-&lt;p&gt;CPC helps estimate the lower bound of the mutual information when optimizing the InfoNCE loss. &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\mathcal L_N^{\text{opt}} &amp;amp;= -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} {\sum_{\x&amp;#39; \in X} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} \\
-&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)} + \sum_{\x&amp;#39; \in X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} {\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} \\
-&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} \sum_{\x&amp;#39; \in X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)} \big) \\
-&amp;amp;\approx \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \E_{\tilde p_X(\x&amp;#39;)} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)} \big) \\
-&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
-&amp;amp;\ge \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
-&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} [\log \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)}] + \log (N - 1) \\
-&amp;amp;= -I(\x;\c^*) + \log (N - 1)
-\end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt;|&lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt;|&lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Noise Contrastive Estimation</title>
       <link>https://chunxy.github.io/notes/papers/noise-contrastive-estimation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 12 May 2022 11:26:01 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/papers/noise-contrastive-estimation/</guid>
       <description>
 
@@ -273,6 +222,57 @@ r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) - \ln q(
 &lt;p&gt;&lt;a href=&#34;https://github.com/Stonesjtu/Pytorch-NCE&#34;&gt;PyTorch-NCE&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;other-reference&#34;&gt;Other Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/334772391&#34;&gt;NCE与语言模型&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Contrastive Predictive Coding</title>
+      <link>https://chunxy.github.io/notes/papers/contrastive-predictive-coding/</link>
+      <pubDate>Fri, 29 Apr 2022 11:32:02 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/papers/contrastive-predictive-coding/</guid>
+      <description>
+
+&lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
+&lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the data. The original data can either be the original data before the encoding, or the future data with different steps.&lt;/p&gt;
+&lt;p&gt;CPC learns the representation by minimizing the following loss function: &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\c}{\mathrm{c}}
+\mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(t = (\ell, \x_1, \dots, \x_{N+1}, \c^*)\)&lt;/span&gt; is a tuple of random variables and &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; is the distribution from which &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is drawn. &lt;span class=&#34;math inline&#34;&gt;\((\x:\c)_{1:N+1}\)&lt;/span&gt; are drawn from the joint distribution &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(\x,\c)\)&lt;/span&gt;. All &lt;span class=&#34;math inline&#34;&gt;\(\c_i\)&lt;/span&gt;’s but one randomly-chosen &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; are trimmed from the original samples. &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; is known but it is unknown which sample it is associated with. Denote by &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; the index of this unique sample we are trying to predict.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\x_{1:N+1}\)&lt;/span&gt; consists of one positive sample &lt;span class=&#34;math inline&#34;&gt;\(\x^*\)&lt;/span&gt; that is matched with &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; and more other independent negative (noise) samples &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt;’s that are not matched with &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the fixed ratio of the number of negative samples to the number of positive samples. Let &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*)\)&lt;/span&gt; represent the probability that &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt; is the positive sample given &lt;span class=&#34;math inline&#34;&gt;\(\x_1, \dots x_{N+1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Substitute &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*) = P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)}{\sum_{j=1}^{N+1} [P(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} P(\x_k)]} \\
+&amp;amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
+&amp;amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
+\end{aligned}
+\]&lt;/span&gt; The loss function is in fact the expectation of Categorical Cross Entropy of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
+f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{p_d(\x^\prime|\c)}{p_n(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
+f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bounding-the-mutual-information&#34;&gt;Bounding the Mutual Information&lt;/h2&gt;
+&lt;p&gt;CPC helps estimate the lower bound of the mutual information when optimizing the InfoNCE loss. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\mathcal L_N^{\text{opt}} &amp;amp;= -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} {\sum_{\x&amp;#39; \in X} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} \\
+&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)} + \sum_{\x&amp;#39; \in X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} {\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} \\
+&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} \sum_{\x&amp;#39; \in X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)} \big) \\
+&amp;amp;\approx \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \E_{\tilde p_X(\x&amp;#39;)} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)} \big) \\
+&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
+&amp;amp;\ge \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
+&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} [\log \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)}] + \log (N - 1) \\
+&amp;amp;= -I(\x;\c^*) + \log (N - 1)
+\end{aligned}
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt;|&lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt;|&lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

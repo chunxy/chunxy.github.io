@@ -225,7 +225,7 @@
   
   
   
-  <link rel="stylesheet" href="/notes/css/wowchemy.832f4349361bf479dece6e8aacc6bfa5.css" />
+  <link rel="stylesheet" href="/notes/css/wowchemy.a6ff4fb59dc177c756cb7b356ebf51e4.css" />
 
   
 
@@ -254,8 +254,8 @@
     <link rel="manifest" href="/notes/manifest.webmanifest" />
   
 
-  <link rel="icon" type="image/png" href="/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_32x32_fill_lanczos_center_3.png" />
-  <link rel="apple-touch-icon" type="image/png" href="/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_180x180_fill_lanczos_center_3.png" />
+  <link rel="icon" type="image/png" href="/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
 
   <link rel="canonical" href="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" />
 
@@ -285,9 +285,11 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" />
   <meta property="og:title" content="概率论与数理统计 | My Notes" />
-  <meta property="og:description" content="A highly-customizable Hugo notes theme powered by Wowchemy website builder." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" />
-    <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:description" content="A highly-customizable Hugo notes theme powered by Wowchemy website builder." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
+    
+      <meta property="og:updated_time" content="2022-07-10T12:58:49&#43;00:00" />
     
   
 
@@ -301,20 +303,18 @@
 
 <script type="text/javascript" async>
     window.MathJax = {
-		startup: {
-			typeset: true,
-		},
 		tex: {
 			macros: {
-				
-
-				
 				R: "\\mathbb{R}", E: "\\mathrm{E}", x: "\\mathrm{x}", y: "\\mathrm{y}", 
 				d: "\\mathrm{d}", Var: "\\mathrm{Var}", Cov: "\\mathrm{Cov}",
+				rank: "\\mathrm{rank}", tr: "\\mathrm{tr}",
+				arccot: "\\mathrm{arccot}"
 			},
+			displayMath: [['$$','$$'], ['\\[','\\]']],
+			inlineMath: [['$','$'], ['\\(','\\)']],
 			maxBuffer: 10*1024,
-			processEscapes: false,
-			
+			processEscapes: true,
+			processEnvironments: true,
         }
     }
 </script>
@@ -438,7 +438,7 @@
   
     
     <ul class="nav docs-sidenav">
-      <li class=""><a href="/notes/">Chunxy&#39; notes</a></li>
+      <li class=""><a href="/notes/">content</a></li>
     </ul>
 
 
@@ -478,19 +478,7 @@
       
 
 
-  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/information-theory/differentiation/">Differentiation</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
 
 
 
@@ -498,11 +486,23 @@
 
 
 
+  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
+
+
+
   <li class=""><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+  <li class=""><a href="/notes/articles/information-theory/differentiation/">Differentiation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
 
       
         </ul>
@@ -533,51 +533,7 @@
       
 
 
-  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
-
-
-
   <li class=""><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
 
 
 
@@ -585,7 +541,51 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
 
       
         </ul>
@@ -638,11 +638,11 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
-
-
-
   <li class=""><a href="/notes/articles/mathematics/calculus/spherical-coordinates/">Spherical Coordinates</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
 
       
         </ul>
@@ -673,18 +673,6 @@
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/">Laplace Expansion</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
-
-
-
   
     
     
@@ -703,7 +691,7 @@
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
 
 
 
@@ -711,7 +699,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
 
       
         </ul>
@@ -724,11 +712,23 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/">Laplace Expansion</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
 
       
         </ul>
@@ -830,6 +830,22 @@
       
 
 
+  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
+
+
+
   <li class=""><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></li>
 
 
@@ -838,23 +854,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
-
-
-
   <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
 
       
         </ul>
@@ -943,7 +943,7 @@
       
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/">Schmit-Gram Orthogonalization</a></li>
 
 
 
@@ -955,7 +955,7 @@
 
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/">Schmit-Gram Orthogonalization</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
 
       
         </ul>
@@ -986,31 +986,19 @@
       
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian Distribution</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/">Unconscious Statistics</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></li>
 
 
 
@@ -1022,7 +1010,19 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/">Unconscious Statistics</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></li>
 
       
         </ul>
@@ -1097,11 +1097,11 @@
 
 
 
-  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
-
-
-
   <li class=""><a href="/notes/papers/noise-contrastive-estimation/">Noise Contrastive Estimation</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
 
       
         </ul>
@@ -1189,15 +1189,34 @@
   <ul class="list-unstyled">
     
       <li>
+        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></h5>
+        <p>\(\chi^2\)分布、\(t\)分布、\(F\)分布都从</p>
+      </li>
+    
+      <li>
+        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></h5>
+        <p>点估计 设总体\(X \sim p(x;\theta)\)的分布形式已知</p>
+      </li>
+    
+      <li>
+        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></h5>
+        <p>定义 设\((X_1,\dots,X_n)\)为取自总体的一个</p>
+      </li>
+    
+      <li>
         <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></h5>
         <p>Poisson Distribution \[ \begin{gather*} P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!} \\ \E[X] = \lambda \\ \Var[X] = \lambda \end{gather*} \]
 Binomial Distribution \[ \begin{gather*} P(x;p,N) = {N \choose x} p^x (1-p)^{N-x} \\ \E[X] = Np \\ \Var[X] = Np(1-p) \end{gather*} \]</p>
       </li>
     
       <li>
-        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></h5>
-        <p>Function of Random Variable Suppose we have a 1-D random variable \(X \sim p_X\) and a function \(f\), what will \(f(X)\)’s distribution and expectation be like?
-Distribution Let \(Y = f(X)\) and suppose \(f\) is monotonic, then \[ P_Y(y) = P_Y(Y \le y) = P_X(f(X) \le y) \]</p>
+        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></h5>
+        <p>前置知识 Chebyshev不等式 定理 设随机变量\(X\)的期</p>
+      </li>
+    
+      <li>
+        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></h5>
+        <p>定义 感性认知 根据泰勒级数我们可以得知，两个函数\(f(x),</p>
       </li>
     
       <li>
@@ -1212,43 +1231,14 @@ Distribution Let \(Y = f(X)\) and suppose \(f\) is monotonic, then \[ P_Y(y) = P
       </li>
     
       <li>
-        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></h5>
-        <p>\(\chi^2\)分布、\(t\)分布、\(F\)分布都从正态分布中衍生出来，之前介绍的常用统计量在正态总体的假设下，都与这三种分布有关，所以他们在正态总体的统计推断中起着很大的作用。
-前置知识 Gamma函数 \[ \Gamma (x) = \int_0^{+\infty} e^{-t} t^{x-1} dt \quad (x &gt; 0) \]
-\(\Gamma\)函数具有\(\Gamma(x + 1) = x \Gamma(x)\)的性质：
-\[ \Gamma (x+1) = \int_0^{+\infty} e^{-t} t^{x} dt = [-e^{-t} t^x] \bigg|^{+\infty}_{t=0} - \int_0^{+\infty} -e^{-t} xt^{x-1} dt \] 根据洛必达法则，\(\lim_{t \to +\infty} = \frac{-t^x}{e^t} = \lim_{t \to +\infty} \frac{x!</p>
-      </li>
-    
-      <li>
         <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></h5>
-        <p>定义 协方差（以二维随机变量为例） 设\((X, Y)\)为二维随机变量，如果\(\mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}\)存在，则称 \[ \notag \mathrm {Cov}(X, Y) \triangleq \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\} \] 为随机变量X和Y的协方差。 在实际中计算协方差时，更多的是使用以下公式： \[ \begin{aligned} \mathrm {Cov}(X, Y) &amp;= \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\} \\ &amp;= \mathrm E[XY - X\mathrm E(Y) - \mathrm E(X)Y + \mathrm E(X) \mathrm E(Y)] \\ &amp;= \mathrm E(XY) - \mathrm E(X)\mathrm E(Y) - \mathrm E(X)\mathrm E(Y) + \mathrm E(X) \mathrm E(Y) \\ &amp;= \mathrm E(XY) - \mathrm E(X) \mathrm E(Y) \end{aligned} \]</p>
+        <p>定义 协方差（以二维随机变量为例） 设\((X, Y)\)为二维随</p>
       </li>
     
       <li>
-        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></h5>
-        <p>点估计 设总体\(X \sim p(x;\theta)\)的分布形式已知，但其参数\(\theta\)未知。设\(X_1, \dots, X_n\)为总体的一个样本，若用一个统计量\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)来估计\(\theta\)，则称\(\hat \theta\)为参数\(\theta\)的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。
-矩估计 矩估计的思想就是就是替换思想，即用样本原点矩替换总体原点矩，设总体的\(k\)阶原点矩\(\mu_k = \E(X^k)\)，样本的\(k\)阶原点矩为\(A_k = \frac 1 n \sum_{i=1}^n X_i^k\)，如果未知参数\(\theta = \varphi(\mu_1, \dots, \mu_m)\)，则其估计量\(\hat \theta = \varphi(A_1, \dots, A_m)\)，这种估计总体未知参数的方法叫作矩估计法。</p>
-      </li>
-    
-      <li>
-        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></h5>
-        <p>前置知识 Chebyshev不等式  定理
-设随机变量\(X\)的期望\(\E(X)\)及方差\(\Var(X)\)存在，则对于任意\(\epsilon &gt; 0\)，有 \[ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} \]
- 证明
-\(X\)为连续型随机变量 \[ \begin{aligned} P(|X-\E(X)| \ge \epsilon) &amp;= \mathop \int_{|x - \E(x)| \ge \epsilon} p(x)dx \\ &amp;\le \mathop \int_{|x - \E(x)| \ge \epsilon} \bigg( \frac{X - \E(x)}{\epsilon} \bigg)^2 p(x)dx \\ &amp;= \frac{1}{\epsilon^2} \mathop \int_{|x - \E(x)| \ge \epsilon} \big( X - \E(x) \big)^2 p(x)dx \\ &amp;\le \frac{1}{\epsilon^2} \mathop \int_{x \in X} \big( X - \E(x) \big)^2 p(x)dx \\ &amp;= \frac{\Var(X)}{\epsilon^2} \\ \end{aligned} \]</p>
-      </li>
-    
-      <li>
-        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></h5>
-        <p>定义 感性认知 根据泰勒级数我们可以得知，两个函数\(f(x),g(x)\)，如果它们各阶导数相等的越多，它们就越相似，换言之 \[ \text{各阶导数都相同} \Rightarrow f(x) = g(x) \] 可以说，函数的各阶导数即是它们的特征。
-对于随机变量来说，这样的“特征”也存在。随机变量的特征即是它的各阶矩，即 \[ \text{各阶矩都相同} \Rightarrow \text{随机变量对应的分布相同} \] 对于随机变量\(X\)，其特征函数定义为 \[ \varphi(t) = \E[e^{itX}] \] \(e^{itX}\)的泰勒级数为 \[ e^{itX} = 1 + \frac{itX}{1!</p>
-      </li>
-    
-      <li>
-        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></h5>
-        <p>定义
-设\((X_1,\dots,X_n)\)为取自总体的一个样本，若函数\(g(X_1,\dots,X_n)\)不直接包含总体分布中的任何参数，则称\(g(X_1,\dots,X_n)\)为统计量。
-  样本均值和样本方差 \[ \begin{gather} \mathbb{样本均值}:\bar X = \frac{1}{n} \sum_{i=1}^n X_i \\ \mathbb{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2) \end{gather} \]</p>
+        <h5><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></h5>
+        <p>Function of Random Variable Suppose we have a 1-D random variable \(X \sim p_X\) and a function \(f\), what will \(f(X)\)’s distribution and expectation be like?
+Distribution Let \(Y = f(X)\) and suppose \(f\) is monotonic, then \[ P_Y(y) = P_Y(Y \le y) = P_X(f(X) \le y) \]</p>
       </li>
     
   </ul>
@@ -1275,7 +1265,7 @@ Distribution Let \(Y = f(X)\) and suppose \(f\) is monotonic, then \[ P_Y(y) = P
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Jan 1, 0001</p>
+          <p>Last updated on Jul 10, 2022</p>
 
           
 
@@ -1361,19 +1351,7 @@ Distribution Let \(Y = f(X)\) and suppose \(f\) is monotonic, then \[ P_Y(y) = P
 
 
 
-  <p class="powered-by">
-    
-    
-    
-      
-      
-      
-      
-      
-      
-      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
-    
-  </p>
+  
 </footer>
 
 

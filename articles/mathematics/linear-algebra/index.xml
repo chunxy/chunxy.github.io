@@ -5,92 +5,17 @@
     <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/</link>
       <atom:link href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
     <description>Linear Algebra</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
     <image>
-      <url>https://chunxy.github.io/notes/media/icon_hua2ec155b4296a9c9791d015323e16eb5_11927_512x512_fill_lanczos_center_3.png</url>
+      <url>https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
       <title>Linear Algebra</title>
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/</link>
     </image>
     
     <item>
-      <title>Eigenvectors and Eigenvalues</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</guid>
-      <description>
-
-&lt;h2 id=&#34;eigenvectors-and-eigenvalues&#34;&gt;Eigenvectors and Eigenvalues&lt;/h2&gt;
-&lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
-&lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue.&lt;/p&gt;
-&lt;h3 id=&#34;similarity&#34;&gt;Similarity&lt;/h3&gt;
-&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrices, then &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is similar to &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; if there is an invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(PAP^{-1} = B\)&lt;/span&gt;, or equivalently &lt;span class=&#34;math inline&#34;&gt;\(P^{-1}BP = A\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are similar, then they have the same characteristic polynomial and hence then the same eigenvalues: &lt;span class=&#34;math display&#34;&gt;\[
-B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\det(B - \lambda I) &amp;amp;= \det(P(A - \lambda I)P^{-1}) \\
-&amp;amp;= \det(P) \cdot \det(A - \lambda I) \cdot \det(P^{-1}) \\
-&amp;amp;= \det(A - \lambda I)
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;independence-between-eigenvectors&#34;&gt;Independence between Eigenvectors&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Theorem&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are the eigenvectors corresponding to the distinct eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, ..., \lambda_r\)&lt;/span&gt; of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_r\}\)&lt;/span&gt; is linearly independent.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Proof&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Suppose instead these vectors are dependent. Let &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; be the least index such that &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is a linear combination of previous vectors. Then there exists scalars &lt;span class=&#34;math inline&#34;&gt;\(c_1, c_2, ..., c_r\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
-c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1}
-\]&lt;/span&gt; Multiply both sides with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; to obtain &lt;span class=&#34;math display&#34;&gt;\[
-c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1}
-\]&lt;/span&gt; Multiply both sides of &lt;span class=&#34;math inline&#34;&gt;\((1)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda_{p+1}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1}
-\]&lt;/span&gt; Subtract &lt;span class=&#34;math inline&#34;&gt;\((3)\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\((2)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0
-\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_p\}\)&lt;/span&gt; is independent, the weights in &lt;span class=&#34;math inline&#34;&gt;\((4)\)&lt;/span&gt; are all zero. None of &lt;span class=&#34;math inline&#34;&gt;\((\lambda_i - \lambda_{p+1})\)&lt;/span&gt; is zero, so &lt;span class=&#34;math inline&#34;&gt;\(c_i = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(i = 1,...p\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\((1)\)&lt;/span&gt; says &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which is impossible.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Note&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; is nonzero so that equation (1) can hold&lt;/p&gt;
-&lt;h3 id=&#34;diagonalization&#34;&gt;Diagonalization&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Theorem&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has n independent eigenvectors.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Necessity&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(AP = PD\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(P = [\rm p_1, \rm p_2, ..., \rm p_N]\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; is a diagonal matrix, &lt;span class=&#34;math display&#34;&gt;\[
-AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22}\mathrm p_2, ..., D_{NN}\mathrm p_N]
-\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent eigenvectors&lt;/p&gt;
-&lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the corresponding eigen diagonal matrix.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Sufficiency&lt;/p&gt;
-&lt;p&gt;Easy to show.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;linear-transformation&#34;&gt;Linear Transformation&lt;/h4&gt;
-&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then the transformation &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x \mapsto A\mathrm x\)&lt;/span&gt; in coordinate system formed by &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s columns can be viewed as &lt;span class=&#34;math inline&#34;&gt;\([\mathrm x]_{\cal B} \mapsto D[\mathrm x]_\cal B\)&lt;/span&gt; in coordinate system &lt;span class=&#34;math inline&#34;&gt;\(\cal B\)&lt;/span&gt;, which is formed by &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;’s columns.&lt;/p&gt;
-&lt;h3 id=&#34;eigenvalues&#34;&gt;Eigenvalues&lt;/h3&gt;
-&lt;h4 id=&#34;rank-trace-and-determinant&#34;&gt;Rank, trace and determinant&lt;/h4&gt;
-&lt;p&gt;Since the characteristic equation of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix involves a polynomial of degree &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, the equation always has exactly &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; roots, counting multiplicities, including complex roots. There are some relations between eigenvalues and matrix’s rank, trace and determinant: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\rank = \text{the number of non-zero, real eigenvalues, including multiplicities} \\
-\tr = \text{sum of the eigenvalues} \\
-\det = \text{product of the eigenvalues}
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[The Eigen Decomposition.pdf]]&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Laplace Expansion</title>
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 17 Jun 2022 11:45:52 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</guid>
       <description>
 
@@ -102,45 +27,9 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
     </item>
     
     <item>
-      <title>Matrix Identity</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/</guid>
-      <description>
-
-&lt;h2 id=&#34;matrix-identity&#34;&gt;Matrix Identity&lt;/h2&gt;
-&lt;p&gt;A useful matrix identity &lt;span class=&#34;math display&#34;&gt;\[
-(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
-\]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} &amp;amp;= PB^T(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (P^{-1}+B^TR^{-1}B)PB^T(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (P^{-1}PB^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (B^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (B^TR^{-1}R+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= B^TR^{-1}(R+BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= B^TR^{-1} \\
-\end{aligned}
-\]&lt;/span&gt; Its reduced form &lt;span class=&#34;math display&#34;&gt;\[
-(I_N+AB)^{-1}A = A(I_M+BA)^{-1}
-\]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-(I_N+AB)^{-1}A &amp;amp;= A(I_M+BA)^{-1} \iff\\
-A &amp;amp;= (I_N + AB)A(I_M + BA)^{-1} \iff\\
-A &amp;amp;= (A + ABA)(I_M + BA)^{-1} \iff\\
-A &amp;amp;= A(I_M + BA)(I_M + BA)^{-1} \iff\\
-A &amp;amp;= A
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Real Symmetric Matrix</title>
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 30 Jan 2022 13:46:12 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/</guid>
       <description>
 
@@ -208,7 +97,7 @@ A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
     <item>
       <title>Singular Value Decomposition</title>
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 07 Jan 2022 12:55:32 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/</guid>
       <description>
 
@@ -328,6 +217,117 @@ AA^TU_2 = 0 = 0U_2
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[[Singular Value Decomposition.pdf]]&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Eigenvectors and Eigenvalues</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</link>
+      <pubDate>Sat, 25 Dec 2021 20:08:33 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</guid>
+      <description>
+
+&lt;h2 id=&#34;eigenvectors-and-eigenvalues&#34;&gt;Eigenvectors and Eigenvalues&lt;/h2&gt;
+&lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
+&lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue.&lt;/p&gt;
+&lt;h3 id=&#34;similarity&#34;&gt;Similarity&lt;/h3&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrices, then &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is similar to &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; if there is an invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(PAP^{-1} = B\)&lt;/span&gt;, or equivalently &lt;span class=&#34;math inline&#34;&gt;\(P^{-1}BP = A\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are similar, then they have the same characteristic polynomial and hence then the same eigenvalues: &lt;span class=&#34;math display&#34;&gt;\[
+B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\det(B - \lambda I) &amp;amp;= \det(P(A - \lambda I)P^{-1}) \\
+&amp;amp;= \det(P) \cdot \det(A - \lambda I) \cdot \det(P^{-1}) \\
+&amp;amp;= \det(A - \lambda I)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;independence-between-eigenvectors&#34;&gt;Independence between Eigenvectors&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Theorem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are the eigenvectors corresponding to the distinct eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, ..., \lambda_r\)&lt;/span&gt; of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_r\}\)&lt;/span&gt; is linearly independent.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Proof&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Suppose instead these vectors are dependent. Let &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; be the least index such that &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is a linear combination of previous vectors. Then there exists scalars &lt;span class=&#34;math inline&#34;&gt;\(c_1, c_2, ..., c_r\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1}
+\]&lt;/span&gt; Multiply both sides with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; to obtain &lt;span class=&#34;math display&#34;&gt;\[
+c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1}
+\]&lt;/span&gt; Multiply both sides of &lt;span class=&#34;math inline&#34;&gt;\((1)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda_{p+1}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1}
+\]&lt;/span&gt; Subtract &lt;span class=&#34;math inline&#34;&gt;\((3)\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\((2)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_p\}\)&lt;/span&gt; is independent, the weights in &lt;span class=&#34;math inline&#34;&gt;\((4)\)&lt;/span&gt; are all zero. None of &lt;span class=&#34;math inline&#34;&gt;\((\lambda_i - \lambda_{p+1})\)&lt;/span&gt; is zero, so &lt;span class=&#34;math inline&#34;&gt;\(c_i = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(i = 1,...p\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\((1)\)&lt;/span&gt; says &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which is impossible.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Note&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; is nonzero so that equation (1) can hold&lt;/p&gt;
+&lt;h3 id=&#34;diagonalization&#34;&gt;Diagonalization&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Theorem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has n independent eigenvectors.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Necessity&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(AP = PD\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(P = [\rm p_1, \rm p_2, ..., \rm p_N]\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; is a diagonal matrix, &lt;span class=&#34;math display&#34;&gt;\[
+AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22}\mathrm p_2, ..., D_{NN}\mathrm p_N]
+\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent eigenvectors&lt;/p&gt;
+&lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the corresponding eigen diagonal matrix.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Sufficiency&lt;/p&gt;
+&lt;p&gt;Easy to show.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;linear-transformation&#34;&gt;Linear Transformation&lt;/h4&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then the transformation &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x \mapsto A\mathrm x\)&lt;/span&gt; in coordinate system formed by &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s columns can be viewed as &lt;span class=&#34;math inline&#34;&gt;\([\mathrm x]_{\cal B} \mapsto D[\mathrm x]_\cal B\)&lt;/span&gt; in coordinate system &lt;span class=&#34;math inline&#34;&gt;\(\cal B\)&lt;/span&gt;, which is formed by &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;’s columns.&lt;/p&gt;
+&lt;h3 id=&#34;eigenvalues&#34;&gt;Eigenvalues&lt;/h3&gt;
+&lt;h4 id=&#34;rank-trace-and-determinant&#34;&gt;Rank, trace and determinant&lt;/h4&gt;
+&lt;p&gt;Since the characteristic equation of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix involves a polynomial of degree &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, the equation always has exactly &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; roots, counting multiplicities, including complex roots. There are some relations between eigenvalues and matrix’s rank, trace and determinant: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\rank = \text{the number of non-zero, real eigenvalues, including multiplicities} \\
+\tr = \text{sum of the eigenvalues} \\
+\det = \text{product of the eigenvalues}
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;[[The Eigen Decomposition.pdf]]&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Matrix Identity</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/</link>
+      <pubDate>Wed, 22 Dec 2021 15:51:42 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/</guid>
+      <description>
+
+&lt;h2 id=&#34;matrix-identity&#34;&gt;Matrix Identity&lt;/h2&gt;
+&lt;p&gt;A useful matrix identity &lt;span class=&#34;math display&#34;&gt;\[
+(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
+\]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} &amp;amp;= PB^T(BPB^T+R)^{-1} \iff\\
+B^TR^{-1} &amp;amp;= (P^{-1}+B^TR^{-1}B)PB^T(BPB^T+R)^{-1} \iff\\
+B^TR^{-1} &amp;amp;= (P^{-1}PB^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
+B^TR^{-1} &amp;amp;= (B^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
+B^TR^{-1} &amp;amp;= (B^TR^{-1}R+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
+B^TR^{-1} &amp;amp;= B^TR^{-1}(R+BPB^T)(BPB^T+R)^{-1} \iff\\
+B^TR^{-1} &amp;amp;= B^TR^{-1} \\
+\end{aligned}
+\]&lt;/span&gt; Its reduced form &lt;span class=&#34;math display&#34;&gt;\[
+(I_N+AB)^{-1}A = A(I_M+BA)^{-1}
+\]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+(I_N+AB)^{-1}A &amp;amp;= A(I_M+BA)^{-1} \iff\\
+A &amp;amp;= (I_N + AB)A(I_M + BA)^{-1} \iff\\
+A &amp;amp;= (A + ABA)(I_M + BA)^{-1} \iff\\
+A &amp;amp;= A(I_M + BA)(I_M + BA)^{-1} \iff\\
+A &amp;amp;= A
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 
 
 </description>
