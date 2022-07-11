@@ -13,19 +13,6 @@
     </image>
     
     <item>
-      <title>Schmit-Gram Orthogonalization</title>
-      <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</link>
-      <pubDate>Fri, 01 Apr 2022 17:08:51 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</guid>
-      <description>
-
-&lt;h2 id=&#34;schmit-gram-orthogonalization&#34;&gt;Schmit-Gram Orthogonalization&lt;/h2&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Least Squares</title>
       <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/least-squares/</link>
       <pubDate>Fri, 07 Jan 2022 12:53:45 +0000</pubDate>
@@ -156,6 +143,19 @@ P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow I} &amp;amp;= P_\mathcal{C}
 [x]_\mathcal{B} &amp;amp;= (\mathop{P}\limits_\mathcal{C \leftarrow B})^{-1}[x]_\mathcal{C}  \\
 \end{aligned}
 \]&lt;/span&gt; In other words, &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{B \leftarrow C} = (\mathop{P}\limits_\mathcal{C \leftarrow B})^{-1}, \mathop{P}\limits_\mathcal{B \leftarrow C}\mathop{P}\limits_\mathcal{C \leftarrow B} = I\)&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Schmit-Gram Orthogonalization</title>
+      <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</link>
+      <pubDate>Fri, 01 Apr 2022 17:08:51 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</guid>
+      <description>
+
+&lt;h2 id=&#34;schmit-gram-orthogonalization&#34;&gt;Schmit-Gram Orthogonalization&lt;/h2&gt;
 
 
 </description>

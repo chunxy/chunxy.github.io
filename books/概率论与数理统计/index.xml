@@ -13,6 +13,377 @@
     </image>
     
     <item>
+      <title>Common Distributions</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</link>
+      <pubDate>Fri, 20 May 2022 09:58:37 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</guid>
+      <description>
+
+&lt;h2 id=&#34;poisson-distribution&#34;&gt;Poisson Distribution&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather*}
+P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!} \\
+\E[X] = \lambda \\
+\Var[X] = \lambda
+\end{gather*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;binomial-distribution&#34;&gt;Binomial Distribution&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather*}
+P(x;p,N) = {N \choose x} p^x (1-p)^{N-x} \\
+\E[X] = Np \\
+\Var[X] = Np(1-p)
+\end{gather*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bernoulli-distribution&#34;&gt;Bernoulli Distribution&lt;/h2&gt;
+&lt;p&gt;Bernoulli Distribution &lt;span class=&#34;math inline&#34;&gt;\(B(\{0,1\};p)\)&lt;/span&gt; is a special case of Binomial Distribution when &lt;span class=&#34;math inline&#34;&gt;\(N=1\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather*}
+B(1,p) = p, B(0,p) = 1 - p \\
+\E[X] = p \\
+\Var[X] = p(1 - p)
+\end{gather*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
+&lt;p&gt;Refer to [&lt;a href=&#34;#gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/a&gt;].&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Gaussian Distribution</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</link>
+      <pubDate>Sun, 08 May 2022 19:09:42 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</guid>
+      <description>
+
+&lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
+&lt;h3 id=&#34;one-dimensional&#34;&gt;One-dimensional&lt;/h3&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;-d random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim \mathcal{N}(\mu, \sigma^2)\)&lt;/span&gt;, then its density function is &lt;span class=&#34;math display&#34;&gt;\[
+p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-\infty}^{+\infty}p(x)dx &amp;amp;= \sqrt{(\int_{-\infty}^{+\infty}p(x)dx) \cdot (\int_{-\infty}^{+\infty}p(y)dy)} \\
+&amp;amp;= \sqrt{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}p(x)p(y)dxdy} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(I^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}p(x)p(y)dxdy\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\int_{-\infty}^{+\infty}p(x)dx = \sqrt{I^2} \\
+I^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{y - \mu}{\sigma})^2}dxdy
+\end{gather}
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(u = \frac{x-\mu}{\sigma}, v = \frac{y-\mu}{\sigma}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I^2 &amp;amp;= \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}u^2}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}v^2}\sigma^2dudv \\
+&amp;amp;= \frac{1}{2\pi}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}e^{-\frac{1}{2}(u^2+v^2)}dudv
+\end{aligned}
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(u = r\sin\theta, v = r\cos\theta\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}e^{-\frac{1}{2}(u^2+v^2)}dudv &amp;amp;= 
+\int_{0}^{2\pi}\int_{0}^{+\infty}e^{-\frac{1}{2}(r^2\sin^2\theta+r^2\cos^2\theta)}rdrd\theta \\
+&amp;amp;= \int_{0}^{2\pi}\int_{0}^{+\infty}-e^{-\frac{1}{2}r^2}d(-\frac{1}{2}r^2)d\theta \\
+&amp;amp;= \int_{0}^{2\pi}-e^{t}\Big|_{t=0}^{t=-\infty}d\theta \\
+&amp;amp;= \int_{0}^{2\pi}d\theta \\
+&amp;amp;= 2\pi
+\end{aligned}
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I^2 = \frac{1}{2\pi}2\pi = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\int_{-\infty}^{+\infty}p(x)dx = \sqrt{I^2} = 1\)&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;independent-standard-n-dimensional&#34;&gt;Independent standard &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional&lt;/h3&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;, suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution, we can derive the joint distribution density function for random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; to be &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+p(z) &amp;amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z_i^2} \\
+&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}z^Tz} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;n-dimensional&#34;&gt;N-dimensional&lt;/h3&gt;
+&lt;p&gt;We have given the joint distribution function of independent &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional standard Gaussian distribution. What about these &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; dimensions are not independent with each other, but are only correlated in first order?&lt;/p&gt;
+&lt;p&gt;Formally, &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;. Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are not independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{N}(\mu_i, \sigma_i^2)\)&lt;/span&gt;. We would like to linearly transform &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X_i, X_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(X_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution.&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix is &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is [[Real Symmetric Matrix|real-symmetric]] and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+X = B^{-1}(Z - \mu) \\
+Z = BX + \mu \\
+X \sim \mathcal{N}(0, I)
+\]&lt;/span&gt; then, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+p_X(x) &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}x^Tx} 
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is to take on values in &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;, which is a subset of &lt;span class=&#34;math inline&#34;&gt;\(\R^{n}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+P_Z(Z \in S) = \int_Sp_Z(z)dz
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate [[Jacobian Matrix|Jacobian transformation]]: &lt;span class=&#34;math display&#34;&gt;\[
+J(X \to Z) = B^{-1} \\
+\]&lt;/span&gt; with its determinant &lt;span class=&#34;math inline&#34;&gt;\(J = |J(X \to Z)| = |B^{-1}| = |B|^{-1}\)&lt;/span&gt;. Note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+|J| &amp;amp;= \sqrt{|B|^{-1}|B|^{-1}} \\
+&amp;amp;= \sqrt{|B|^{-1}|B^T|^{-1}} \\
+&amp;amp;= \sqrt{|BB^T|^{-1}} \\
+&amp;amp;= |BB^T|^{-\frac{1}{2}}
+\end{aligned}
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+P_Z(Z \in S) &amp;amp;= P_X(X \in f^{-1}(S)) \\
+&amp;amp;= \int_{f^{-1}(S)}p_X(x)dx \\
+&amp;amp;= [\int_Sp_X(f^{-1}(z))|J|dz]_{x=f^{-1}(z)} \\
+&amp;amp;= \int_Sp_X(f^{-1}(z))|J|dz \\
+\int_Sp_Z(z)dz &amp;amp;= \int_Sp_X(f^{-1}(z))|J|dz \\
+p_Z(z) &amp;amp;= p_X(f^{-1}(z))|J| \\
+&amp;amp;= p_X(B^{-1}(z-\mu)|J| \\
+&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(B^{-1})^TB^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
+&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(B^T)^{-1}B^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
+&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(BB^T)^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
+&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}|BB^T|^\frac{1}{2}}e^{-\frac{1}{2}(z-\mu)^T(BB^T)^{-1}(z-\mu)} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Also note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Sigma_Z &amp;amp;= E[(z-\mu)(z-\mu)^T] \\
+&amp;amp;= E[BXX^TB^T] \\
+&amp;amp;= BE[XX^T]B^T \\
+&amp;amp;= BIB^T \\
+&amp;amp;= BB^T
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then, &lt;span class=&#34;math display&#34;&gt;\[
+p(z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}}e^{-\frac{1}{2}(z-\mu)^T\Sigma_Z^{-1}(z-\mu)}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/40225646&#34;&gt;Integration&lt;/a&gt;|&lt;a href=&#34;https://zhuanlan.zhihu.com/p/58987388&#34;&gt;Multi-variate&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Integration_by_substitution&#34;&gt;Change of variable&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Function of Random Variable</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</link>
+      <pubDate>Thu, 31 Mar 2022 10:08:24 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</guid>
+      <description>
+
+&lt;h2 id=&#34;function-of-random-variable&#34;&gt;Function of Random Variable&lt;/h2&gt;
+&lt;p&gt;Suppose we have a 1-D random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim p_X\)&lt;/span&gt; and a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, what will &lt;span class=&#34;math inline&#34;&gt;\(f(X)\)&lt;/span&gt;’s distribution and expectation be like?&lt;/p&gt;
+&lt;h3 id=&#34;distribution&#34;&gt;Distribution&lt;/h3&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(Y = f(X)\)&lt;/span&gt; and suppose &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonic, then &lt;span class=&#34;math display&#34;&gt;\[
+P_Y(y) = P_Y(Y \le y) = P_X(f(X) \le y)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;if &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonically increasing: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+P_X(f(X) \le y) = P_X(X \le f^{-1}(y)) = P_X(f^{-1}(y)) \\ 
+\nonumber \\
+\begin{split}
+p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
+&amp;amp;= \frac{\partial P_X(f^{-1}(y))}{\partial y} \\
+&amp;amp;= P_X(f^{-1}(y)) \cdot (f^{-1})^\prime (y) \\
+&amp;amp;= P_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)| \\
+\end{split}
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;if &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonically decreasing: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+P_X(f(X) \le y) = P_X(X \ge f^{-1}(y)) = 1 - P_X(X \le f^{-1}(y)) = 1 - P_X(f^{-1}(y)) \\ 
+\nonumber \\
+\begin{split}
+p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
+&amp;amp;= \frac{\partial [1 - P_X(f^{-1}(y))]}{\partial y} \\
+&amp;amp;= -p_X(f^{-1}(y)) \cdot (f^{-1})^\prime (y) \\
+&amp;amp;= p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)| \\
+\end{split}
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(p_Y(y) = p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)|\)&lt;/span&gt;.&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>协方差与相关系数</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
+      <pubDate>Sun, 01 May 2022 10:41:15 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
+      <description>
+
+&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
+&lt;h3 id=&#34;协方差以二维随机变量为例&#34;&gt;协方差（以二维随机变量为例）&lt;/h3&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X, Y)\)&lt;/span&gt;为二维随机变量，如果&lt;span class=&#34;math inline&#34;&gt;\(\mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}\)&lt;/span&gt;存在，则称 &lt;span class=&#34;math display&#34;&gt;\[
+\notag \mathrm {Cov}(X, Y) \triangleq \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}
+\]&lt;/span&gt; 为随机变量X和Y的协方差。 在实际中计算协方差时，更多的是使用以下公式： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\mathrm {Cov}(X, Y) &amp;amp;= \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\} \\
+&amp;amp;= \mathrm E[XY - X\mathrm E(Y) - \mathrm E(X)Y + \mathrm E(X) \mathrm E(Y)] \\
+&amp;amp;= \mathrm E(XY) - \mathrm E(X)\mathrm E(Y) - \mathrm E(X)\mathrm E(Y) + \mathrm E(X) \mathrm E(Y) \\
+&amp;amp;= \mathrm E(XY) - \mathrm E(X) \mathrm E(Y)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;相关系数&#34;&gt;相关系数&lt;/h3&gt;
+&lt;p&gt;协方差考察了随机变量之间协同变化的关系，但如果采取不同的量纲，同样的数据产生的协方差相差非常大。为避免这种情况发生，我们首先将随机变量标准化： &lt;span class=&#34;math display&#34;&gt;\[
+X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\Var(Y)}}
+\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{cov}(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数 &lt;span class=&#34;math display&#34;&gt;\[
+\rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\mathrm{cov}(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>统计量</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/</link>
+      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X_1,\dots,X_n)\)&lt;/span&gt;为取自总体的一个样本，若函数&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;不直接包含总体分布中的任何参数，则称&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;为&lt;strong&gt;统计量&lt;/strong&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;样本均值和样本方差&#34;&gt;样本均值和样本方差&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\mathbb{样本均值}:\bar X = \frac{1}{n} \sum_{i=1}^n X_i \\
+\mathbb{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac{1}{n} \sum_{i=1}^n X_i^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(M_k = \frac{1}{n} \sum_{i=1}^n (X_i - \bar X)^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶中心矩&lt;/strong&gt;，当&lt;span class=&#34;math inline&#34;&gt;\(k=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(S_n^2 \triangleq M_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;由于统计量是随机变量的函数，故统计量也是随机变量。设总体&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的均值&lt;span class=&#34;math inline&#34;&gt;\(\E(X) = \mu, \Var(X) = \sigma^2\)&lt;/span&gt;，关于统计量有如下定理： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+&amp;amp; \E(\bar X) = \mu, \Var(\bar X) = \frac{\sigma^2}{n} \\
+\notag \\
+&amp;amp; \E(S^2) = \sigma^2, \E(S_n^2) = \frac{n-1}{n} \sigma^2 \\
+\notag \\
+&amp;amp; \bar X \stackrel{P}{\to} \mu, S^2 \stackrel{P}{\to} \sigma^2, S_n^2 \stackrel{P}{\to} \sigma^2
+\end{gather}
+\]&lt;/span&gt; 有关证明如下： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\E(\bar X) = \E (\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n} \sum_{i=1}^n \E(X_i) = \mu \\
+\Var(\bar X) = \Var(\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n^2} \sum_{i=1}^n D(X_i) = \frac{\sigma^2}{n}
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;$$ &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
+\begin{aligned}[t]
+\E(S^2) &amp;amp;= \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
+&amp;amp;= \frac{1}{n-1} \big( \sum_{i=1}^n \E (X_i^2 ) - n \E(\bar X^2) \big) \\
+&amp;amp;\Downarrow_ {\E(X_i^2) = \Var(X_i) + \E^2(X_i) = \sigma^2 + \mu^2, \E(\bar X^2) = \Var(\bar X) + \E^2(\bar X) = \frac{\sigma^2}{n} + \mu^2} \\
+&amp;amp;= \frac{1}{n-1} \big( \sum_{i=1}^n (\sigma^2 + \mu^2) - n (\frac{\sigma^2}{n} + \mu^2) \big) \\
+&amp;amp;= \sigma^2
+\end{aligned}
+
+\begin{aligned}[t]
+\E(S_n^2) &amp;amp;= \E [\frac{n-1}{n} \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
+&amp;amp;= \frac{n-1}{n} \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
+&amp;amp;= \frac{n-1}{n} \sigma^2
+\end{aligned}
+\end{gather}\]&lt;/span&gt; $$&lt;/p&gt;
+&lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。&lt;/p&gt;
+&lt;p&gt;根据[[大数定律和中心极限定理#相互独立同分布大数定律|相互独立同分布大数定律]]， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \mu \\
+\frac{1}{n} \sum_{i=1}^n X_i^2 \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E (X_i^2) = \sigma^2 + \mu^2
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;次序统计量&#34;&gt;次序统计量&lt;/h2&gt;
+&lt;p&gt;令&lt;span class=&#34;math inline&#34;&gt;\((X_{(1)}, \dots, X_{(n)})\)&lt;/span&gt;为样本&lt;span class=&#34;math inline&#34;&gt;\((X_1, \dots, X_n)\)&lt;/span&gt;排序后的结果，则&lt;span class=&#34;math inline&#34;&gt;\(X_{(1)} = \min (X_1, \dots, X_n), X_{(n)} = \max (X_1, \dots, X_n)\)&lt;/span&gt;亦是统计量。&lt;/p&gt;
+&lt;p&gt;记&lt;span class=&#34;math inline&#34;&gt;\(X_{(1)}, X_{(n)}\)&lt;/span&gt;的概率密度函数分别为&lt;span class=&#34;math inline&#34;&gt;\(p_{X_{(1)}}, p_{X_{(n)}}\)&lt;/span&gt;，则 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+p_{X_{(1)}}(u) = n \big( 1 - P_X(u) \big)^{n-1} p_X(u) \\
+p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
+\end{gather}
+\]&lt;/span&gt; 记&lt;span class=&#34;math inline&#34;&gt;\(X_{(k)}\)&lt;/span&gt;的概率密度函数为&lt;span class=&#34;math inline&#34;&gt;\(p_{X_{(k)}}\)&lt;/span&gt;，则…&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>参数估计</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</link>
+      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</guid>
+      <description>
+
+&lt;h2 id=&#34;点估计&#34;&gt;点估计&lt;/h2&gt;
+&lt;p&gt;设总体&lt;span class=&#34;math inline&#34;&gt;\(X \sim p(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;未知。设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;为总体的一个样本，若用一个统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;来估计&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。&lt;/p&gt;
+&lt;h3 id=&#34;矩估计&#34;&gt;矩估计&lt;/h3&gt;
+&lt;p&gt;矩估计的思想就是就是替换思想，即用样本原点矩替换总体原点矩，设总体的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;span class=&#34;math inline&#34;&gt;\(\mu_k = \E(X^k)\)&lt;/span&gt;，样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩为&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac 1 n \sum_{i=1}^n X_i^k\)&lt;/span&gt;，如果未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta = \varphi(\mu_1, \dots, \mu_m)\)&lt;/span&gt;，则其估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \varphi(A_1, \dots, A_m)\)&lt;/span&gt;，这种估计总体未知参数的方法叫作矩估计法。&lt;/p&gt;
+&lt;p&gt;矩估计法往往不唯一，如设&lt;span class=&#34;math inline&#34;&gt;\(X \sim P(\lambda)\)&lt;/span&gt;，则由于&lt;span class=&#34;math inline&#34;&gt;\(\E(X) = \lambda\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\hat \lambda\)&lt;/span&gt;可写作&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;；又&lt;span class=&#34;math inline&#34;&gt;\(\Var(X) = \lambda\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\hat \lambda\)&lt;/span&gt;可写作&lt;span class=&#34;math inline&#34;&gt;\(\frac 1 n \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。此时往往采用较低阶的矩来估计未知参数。&lt;/p&gt;
+&lt;h3 id=&#34;最大似然估计&#34;&gt;最大似然估计&lt;/h3&gt;
+&lt;p&gt;设总体有分布律&lt;span class=&#34;math inline&#34;&gt;\(X \sim P(X=x;\theta)\)&lt;/span&gt;或密度函数&lt;span class=&#34;math inline&#34;&gt;\(X \sim p(x;\theta)\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_n\)&lt;/span&gt;为取自总体的一个样本的观测值，将样本的联合分布律或联合密度函数看作&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的函数： &lt;span class=&#34;math display&#34;&gt;\[
+L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n p(x_i;\theta)
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(L(\theta)\)&lt;/span&gt;又称作&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的似然函数，似然函数满足关系式&lt;span class=&#34;math inline&#34;&gt;\(L(\hat \theta) = \max_{\theta} L(\theta)\)&lt;/span&gt;的解&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的最大似然估计量&lt;/p&gt;
+&lt;h3 id=&#34;优良性评判&#34;&gt;优良性评判&lt;/h3&gt;
+&lt;h4 id=&#34;无偏性unbiased&#34;&gt;无偏性（Unbiased）&lt;/h4&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个估计量，&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的取值空间为&lt;span class=&#34;math inline&#34;&gt;\(\Theta\)&lt;/span&gt;，若对任意的&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\E [\hat \theta(X_1, \dots, X_n)] = \theta
+\]&lt;/span&gt; 则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个无偏估计（量），否则则称作有偏估计（量）。如果有 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} \E [\hat \theta(X_1, \dots, X_n)] = \theta
+\]&lt;/span&gt; 则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个渐进无偏估计（量）。&lt;/p&gt;
+&lt;p&gt;估计的无偏性是指，估计量相对于未知参数真值来说，取某些样本时估计值偏大，取另一些样本时估计量偏小，多次取样本进行估计，平均来讲偏差为&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;。如果估计量不具有无偏性，则无论取多少次样本，其平均值与真值也有偏差，亦即系统误差。&lt;/p&gt;
+&lt;h4 id=&#34;最小方差minimum-variance&#34;&gt;最小方差（Minimum-variance）&lt;/h4&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_1 = \hat \theta_2\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的两个估计量，&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的取值空间为&lt;span class=&#34;math inline&#34;&gt;\(\Theta\)&lt;/span&gt;，若对任意的&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(\Var(\hat \theta_1) \le \Var(\hat \theta_2)\)&lt;/span&gt;，且至少有一个&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;使得该不等式严格成立，则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_1\)&lt;/span&gt;比&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_2\)&lt;/span&gt;有效。&lt;/p&gt;
+&lt;h4 id=&#34;一致性consistent&#34;&gt;一致性（Consistent）&lt;/h4&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个估计量，若对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} P(|\hat \theta - \theta| \ge \epsilon) = 0, \text{亦即} \hat \theta \stackrel{P}{\to} \theta
+\]&lt;/span&gt; 则称估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;具有一致性。一致性是一个很基本的要求，随着样本数量增加，如果估计量不能够将偏差缩小到任意指定精度，那么这个估计通常是不好的。不满足一致性的估计量一般不予考虑。&lt;/p&gt;
+&lt;h3 id=&#34;cramer-rao不等式&#34;&gt;Cramer-Rao不等式&lt;/h3&gt;
+&lt;p&gt;实际上，点估计量不仅仅可以估计未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;本身（假设为一元情况），更可以估计未知参数的某个函数&lt;span class=&#34;math inline&#34;&gt;\(g(\theta)\)&lt;/span&gt;，即给定总体的一个样本&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;，用统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat g = \hat g(X_1, \dots, X_n)\)&lt;/span&gt;估计&lt;span class=&#34;math inline&#34;&gt;\(g(\theta)\)&lt;/span&gt;。估计量最好的效果便是达到最小方差无偏（minimum-variance unbiased &amp;lt;MVU&amp;gt;）估计，Cramer-Rao不等式给出了点估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat g\)&lt;/span&gt;方差的一个下界。 &lt;span class=&#34;math display&#34;&gt;\[
+\label{cr} \Var(\hat g) \ge (g&amp;#39;(\theta))^2 / (nI(\theta))
+\]&lt;/span&gt; 其中，&lt;span class=&#34;math inline&#34;&gt;\(I(\theta) = \int [(\frac{\partial p(x;\theta)}{\partial \theta})^2 / p(x;\theta)] \d x\)&lt;/span&gt;为Fisher Information。当&lt;span class=&#34;math inline&#34;&gt;\(g(\theta) = \theta\)&lt;/span&gt;，即只估计未知参数本身时，有&lt;span class=&#34;math inline&#34;&gt;\(\Var(\hat g) \ge 1 / (nI(\theta))\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cr}\)&lt;/span&gt;成立有一定的条件，其本身就暗含了&lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial p(x;\theta)}{\partial \theta}\)&lt;/span&gt;存在及&lt;span class=&#34;math inline&#34;&gt;\(g&amp;#39;(\theta)\)&lt;/span&gt;存在的&lt;strong&gt;条件&lt;/strong&gt;。记 &lt;span class=&#34;math display&#34;&gt;\[
+S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln p(X_i;\theta)} {\partial \theta} = \sum_{i=1}^n [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)]
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\int p(x;\theta)\ \d x = 1\)&lt;/span&gt;，此式两边同时对&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;求导，并&lt;strong&gt;假定&lt;/strong&gt;此处求导可以移至积分号内部，可得到&lt;span class=&#34;math inline&#34;&gt;\(\int \frac{\partial p(x;\theta)}{\partial \theta} \d x = 0\)&lt;/span&gt;。根据[[Unconscious Statistics#Law of the Unconscious Statistician|LOTUS]]， &lt;span class=&#34;math display&#34;&gt;\[
+\E [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] 
+= \int [\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta)] p(x;\theta)\ \d x
+= \int \frac{\partial p(x;\theta)} {\partial \theta}\d x = 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;由于&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;的独立性， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Var(S) &amp;amp;= \sum_{i=1}^n \Var [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] \\
+&amp;amp;= \sum_{i=1}^n \{ \E [\big (\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta) \big)^2] - \E^2 [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] \} \\
+&amp;amp;= \sum_{i=1}^n \E [\big (\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta) \big)^2] \\
+&amp;amp;= n \int \big (\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta) \big)^2 p(x;\theta)\ \d x \\
+&amp;amp;= n I(\theta)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;根据协方差的性质， &lt;span class=&#34;math display&#34;&gt;\[
+\label{cov_prop} [\Cov(\hat g, S)]^2 \le \Var(\hat g) \Var(S) = \Var(\hat g) n I(\theta)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;又&lt;span class=&#34;math inline&#34;&gt;\(\E(S) = 0\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Cov(\hat g, S) = \E (\hat g S) &amp;amp;= \int \dots \int \hat g(x_1, \dots, x_n) \sum_{i=1}^n [\frac{\partial p(x_i;\theta)} {\partial \theta} / p(x_i;\theta)] \prod_{i=1}^n p(x_1;\theta)\ \d x_1 \dots \d x_n \\
+&amp;amp;= \int \dots \int \hat g(x_1, \dots, x_n) \frac{\partial p(x_1;\theta) \dots p(x_n;\theta)} {\partial \theta}\ \d x_1 \dots \d x_n 
+\end{aligned}
+\]&lt;/span&gt; &lt;strong&gt;假定&lt;/strong&gt;此处对&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;求导可以移至积分号外部， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Cov(\hat g, S) 
+&amp;amp;= \frac \partial{\partial \theta} \int \dots \int \hat g(x_1, \dots, x_n) p(x_1;\theta) \dots p(x_n;\theta)\ \d x_1 \dots \d x_n \\
+&amp;amp;= \frac \partial{\partial \theta} g(\theta) = g&amp;#39;(\theta)
+\end{aligned}
+\]&lt;/span&gt; 将上式重新带入&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cov_prop}\)&lt;/span&gt;，从而得到&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cr}\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;参考&#34;&gt;参考&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/56411276/answer/204992057&#34;&gt;对Cramer-Rao不等式的理解&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound&#34;&gt;Wiki (see the multi-variate case)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;区间估计&#34;&gt;区间估计&lt;/h2&gt;
+&lt;p&gt;点估计得到是未知参数的某个特定值，然而实际上由于点估计的方差因素，我们不可能得到完全准确的估计值。如果我们能够给出一个区间，使得我们有较大把握参数的真实值落在这个区间范围内，则显得我们的估计更加有效、可信，这个区间也叫作&lt;strong&gt;置信区间&lt;/strong&gt;（confidence interval）。&lt;/p&gt;
+&lt;p&gt;设总体&lt;span class=&#34;math inline&#34;&gt;\(X \sim f(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;未知。设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;为总体的一个样本，给定一个很小的数&lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \alpha &amp;lt; 1\)&lt;/span&gt;，若有统计量&lt;span class=&#34;math inline&#34;&gt;\(\theta_l = \theta_l (X_1, \dots, X_n) \le \theta_r(X_1, \dots, X_n) = \theta_r\)&lt;/span&gt;，使得 &lt;span class=&#34;math display&#34;&gt;\[
+P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
+\]&lt;/span&gt; 我们称&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\([\theta_;, \theta_r]\)&lt;/span&gt;的&lt;strong&gt;置信水平&lt;/strong&gt;（confidence level），&lt;span class=&#34;math inline&#34;&gt;\(\theta_l\)&lt;/span&gt;为&lt;strong&gt;置信下限&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\theta_r\)&lt;/span&gt;为&lt;strong&gt;置信上限&lt;/strong&gt;。一般来说置信水平不唯一，因为若&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;是某个区间的置信水平，则对于任意&lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;lt; \tilde \alpha &amp;lt; 1\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(1 - \tilde \alpha\)&lt;/span&gt;亦是该区间的置信水平。故一般的“置信水平”是这一系列置信水平中的最大者。&lt;/p&gt;
+&lt;p&gt;区间估计的一般步骤为：&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;构造&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个点估计&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;（如&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;构造&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;的一个函数&lt;span class=&#34;math inline&#34;&gt;\(G = G(\theta, \hat \theta)\)&lt;/span&gt;（称作主元（pivot）函数），且&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;的分布函数&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;完全已知，且其分布与&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;无关，&lt;/li&gt;
+&lt;li&gt;对任何常数&lt;span class=&#34;math inline&#34;&gt;\(a &amp;lt; b\)&lt;/span&gt;，不等式&lt;span class=&#34;math inline&#34;&gt;\(a \le G(\theta, \hat \theta) \le b\)&lt;/span&gt;能够改写成等价的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;，且&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;仅与&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta,a,b\)&lt;/span&gt;有关，与&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;无关。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;取&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;的上&lt;span class=&#34;math inline&#34;&gt;\(\alpha/2\)&lt;/span&gt;分位点&lt;span class=&#34;math inline&#34;&gt;\(w_{\alpha/2}\)&lt;/span&gt;及上&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha/2\)&lt;/span&gt;分位点&lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2}\)&lt;/span&gt;，此时有&lt;span class=&#34;math inline&#34;&gt;\(F(w_{\alpha/2}) - F(w_{1-w_{\alpha/2}}) = 1 - \alpha\)&lt;/span&gt;，即 &lt;span class=&#34;math display&#34;&gt;\[
+P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}\)&lt;/span&gt;可改写为对应的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;的形式，且&lt;span class=&#34;math inline&#34;&gt;\(A, B\)&lt;/span&gt;仅与估计量和两个分位点有关，&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;就构成了&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个置信水平为&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha\)&lt;/span&gt;的置信区间。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>三大分布与正态总体的抽样分布</title>
       <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</link>
       <pubDate>Sat, 09 Jul 2022 22:21:22 +0000</pubDate>
@@ -145,201 +516,6 @@ p_Z(z) = \begin{cases}
 \text{$\bar X$与$S^2$相互独立，$\bar X$与$S_n^2$相互独立}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>参数估计</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</link>
-      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</guid>
-      <description>
-
-&lt;h2 id=&#34;点估计&#34;&gt;点估计&lt;/h2&gt;
-&lt;p&gt;设总体&lt;span class=&#34;math inline&#34;&gt;\(X \sim p(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;未知。设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;为总体的一个样本，若用一个统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;来估计&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。&lt;/p&gt;
-&lt;h3 id=&#34;矩估计&#34;&gt;矩估计&lt;/h3&gt;
-&lt;p&gt;矩估计的思想就是就是替换思想，即用样本原点矩替换总体原点矩，设总体的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;span class=&#34;math inline&#34;&gt;\(\mu_k = \E(X^k)\)&lt;/span&gt;，样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩为&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac 1 n \sum_{i=1}^n X_i^k\)&lt;/span&gt;，如果未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta = \varphi(\mu_1, \dots, \mu_m)\)&lt;/span&gt;，则其估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \varphi(A_1, \dots, A_m)\)&lt;/span&gt;，这种估计总体未知参数的方法叫作矩估计法。&lt;/p&gt;
-&lt;p&gt;矩估计法往往不唯一，如设&lt;span class=&#34;math inline&#34;&gt;\(X \sim P(\lambda)\)&lt;/span&gt;，则由于&lt;span class=&#34;math inline&#34;&gt;\(\E(X) = \lambda\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\hat \lambda\)&lt;/span&gt;可写作&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;；又&lt;span class=&#34;math inline&#34;&gt;\(\Var(X) = \lambda\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\hat \lambda\)&lt;/span&gt;可写作&lt;span class=&#34;math inline&#34;&gt;\(\frac 1 n \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。此时往往采用较低阶的矩来估计未知参数。&lt;/p&gt;
-&lt;h3 id=&#34;最大似然估计&#34;&gt;最大似然估计&lt;/h3&gt;
-&lt;p&gt;设总体有分布律&lt;span class=&#34;math inline&#34;&gt;\(X \sim P(X=x;\theta)\)&lt;/span&gt;或密度函数&lt;span class=&#34;math inline&#34;&gt;\(X \sim p(x;\theta)\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_n\)&lt;/span&gt;为取自总体的一个样本的观测值，将样本的联合分布律或联合密度函数看作&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的函数： &lt;span class=&#34;math display&#34;&gt;\[
-L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n p(x_i;\theta)
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(L(\theta)\)&lt;/span&gt;又称作&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的似然函数，似然函数满足关系式&lt;span class=&#34;math inline&#34;&gt;\(L(\hat \theta) = \max_{\theta} L(\theta)\)&lt;/span&gt;的解&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的最大似然估计量&lt;/p&gt;
-&lt;h3 id=&#34;优良性评判&#34;&gt;优良性评判&lt;/h3&gt;
-&lt;h4 id=&#34;无偏性unbiased&#34;&gt;无偏性（Unbiased）&lt;/h4&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个估计量，&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的取值空间为&lt;span class=&#34;math inline&#34;&gt;\(\Theta\)&lt;/span&gt;，若对任意的&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\E [\hat \theta(X_1, \dots, X_n)] = \theta
-\]&lt;/span&gt; 则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个无偏估计（量），否则则称作有偏估计（量）。如果有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} \E [\hat \theta(X_1, \dots, X_n)] = \theta
-\]&lt;/span&gt; 则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个渐进无偏估计（量）。&lt;/p&gt;
-&lt;p&gt;估计的无偏性是指，估计量相对于未知参数真值来说，取某些样本时估计值偏大，取另一些样本时估计量偏小，多次取样本进行估计，平均来讲偏差为&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;。如果估计量不具有无偏性，则无论取多少次样本，其平均值与真值也有偏差，亦即系统误差。&lt;/p&gt;
-&lt;h4 id=&#34;最小方差minimum-variance&#34;&gt;最小方差（Minimum-variance）&lt;/h4&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_1 = \hat \theta_2\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的两个估计量，&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的取值空间为&lt;span class=&#34;math inline&#34;&gt;\(\Theta\)&lt;/span&gt;，若对任意的&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(\Var(\hat \theta_1) \le \Var(\hat \theta_2)\)&lt;/span&gt;，且至少有一个&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;使得该不等式严格成立，则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_1\)&lt;/span&gt;比&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_2\)&lt;/span&gt;有效。&lt;/p&gt;
-&lt;h4 id=&#34;一致性consistent&#34;&gt;一致性（Consistent）&lt;/h4&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个估计量，若对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} P(|\hat \theta - \theta| \ge \epsilon) = 0, \text{亦即} \hat \theta \stackrel{P}{\to} \theta
-\]&lt;/span&gt; 则称估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;具有一致性。一致性是一个很基本的要求，随着样本数量增加，如果估计量不能够将偏差缩小到任意指定精度，那么这个估计通常是不好的。不满足一致性的估计量一般不予考虑。&lt;/p&gt;
-&lt;h3 id=&#34;cramer-rao不等式&#34;&gt;Cramer-Rao不等式&lt;/h3&gt;
-&lt;p&gt;实际上，点估计量不仅仅可以估计未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;本身（假设为一元情况），更可以估计未知参数的某个函数&lt;span class=&#34;math inline&#34;&gt;\(g(\theta)\)&lt;/span&gt;，即给定总体的一个样本&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;，用统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat g = \hat g(X_1, \dots, X_n)\)&lt;/span&gt;估计&lt;span class=&#34;math inline&#34;&gt;\(g(\theta)\)&lt;/span&gt;。估计量最好的效果便是达到最小方差无偏（minimum-variance unbiased &amp;lt;MVU&amp;gt;）估计，Cramer-Rao不等式给出了点估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat g\)&lt;/span&gt;方差的一个下界。 &lt;span class=&#34;math display&#34;&gt;\[
-\label{cr} \Var(\hat g) \ge (g&amp;#39;(\theta))^2 / (nI(\theta))
-\]&lt;/span&gt; 其中，&lt;span class=&#34;math inline&#34;&gt;\(I(\theta) = \int [(\frac{\partial p(x;\theta)}{\partial \theta})^2 / p(x;\theta)] \d x\)&lt;/span&gt;为Fisher Information。当&lt;span class=&#34;math inline&#34;&gt;\(g(\theta) = \theta\)&lt;/span&gt;，即只估计未知参数本身时，有&lt;span class=&#34;math inline&#34;&gt;\(\Var(\hat g) \ge 1 / (nI(\theta))\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cr}\)&lt;/span&gt;成立有一定的条件，其本身就暗含了&lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial p(x;\theta)}{\partial \theta}\)&lt;/span&gt;存在及&lt;span class=&#34;math inline&#34;&gt;\(g&amp;#39;(\theta)\)&lt;/span&gt;存在的&lt;strong&gt;条件&lt;/strong&gt;。记 &lt;span class=&#34;math display&#34;&gt;\[
-S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln p(X_i;\theta)} {\partial \theta} = \sum_{i=1}^n [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)]
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\int p(x;\theta)\ \d x = 1\)&lt;/span&gt;，此式两边同时对&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;求导，并&lt;strong&gt;假定&lt;/strong&gt;此处求导可以移至积分号内部，可得到&lt;span class=&#34;math inline&#34;&gt;\(\int \frac{\partial p(x;\theta)}{\partial \theta} \d x = 0\)&lt;/span&gt;。根据[[Unconscious Statistics#Law of the Unconscious Statistician|LOTUS]]， &lt;span class=&#34;math display&#34;&gt;\[
-\E [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] 
-= \int [\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta)] p(x;\theta)\ \d x
-= \int \frac{\partial p(x;\theta)} {\partial \theta}\d x = 0
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;由于&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;的独立性， &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\Var(S) &amp;amp;= \sum_{i=1}^n \Var [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] \\
-&amp;amp;= \sum_{i=1}^n \{ \E [\big (\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta) \big)^2] - \E^2 [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] \} \\
-&amp;amp;= \sum_{i=1}^n \E [\big (\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta) \big)^2] \\
-&amp;amp;= n \int \big (\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta) \big)^2 p(x;\theta)\ \d x \\
-&amp;amp;= n I(\theta)
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;根据协方差的性质， &lt;span class=&#34;math display&#34;&gt;\[
-\label{cov_prop} [\Cov(\hat g, S)]^2 \le \Var(\hat g) \Var(S) = \Var(\hat g) n I(\theta)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;又&lt;span class=&#34;math inline&#34;&gt;\(\E(S) = 0\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\Cov(\hat g, S) = \E (\hat g S) &amp;amp;= \int \dots \int \hat g(x_1, \dots, x_n) \sum_{i=1}^n [\frac{\partial p(x_i;\theta)} {\partial \theta} / p(x_i;\theta)] \prod_{i=1}^n p(x_1;\theta)\ \d x_1 \dots \d x_n \\
-&amp;amp;= \int \dots \int \hat g(x_1, \dots, x_n) \frac{\partial p(x_1;\theta) \dots p(x_n;\theta)} {\partial \theta}\ \d x_1 \dots \d x_n 
-\end{aligned}
-\]&lt;/span&gt; &lt;strong&gt;假定&lt;/strong&gt;此处对&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;求导可以移至积分号外部， &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\Cov(\hat g, S) 
-&amp;amp;= \frac \partial{\partial \theta} \int \dots \int \hat g(x_1, \dots, x_n) p(x_1;\theta) \dots p(x_n;\theta)\ \d x_1 \dots \d x_n \\
-&amp;amp;= \frac \partial{\partial \theta} g(\theta) = g&amp;#39;(\theta)
-\end{aligned}
-\]&lt;/span&gt; 将上式重新带入&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cov_prop}\)&lt;/span&gt;，从而得到&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cr}\)&lt;/span&gt;。&lt;/p&gt;
-&lt;h4 id=&#34;参考&#34;&gt;参考&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/56411276/answer/204992057&#34;&gt;对Cramer-Rao不等式的理解&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound&#34;&gt;Wiki (see the multi-variate case)&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;区间估计&#34;&gt;区间估计&lt;/h2&gt;
-&lt;p&gt;点估计得到是未知参数的某个特定值，然而实际上由于点估计的方差因素，我们不可能得到完全准确的估计值。如果我们能够给出一个区间，使得我们有较大把握参数的真实值落在这个区间范围内，则显得我们的估计更加有效、可信，这个区间也叫作&lt;strong&gt;置信区间&lt;/strong&gt;（confidence interval）。&lt;/p&gt;
-&lt;p&gt;设总体&lt;span class=&#34;math inline&#34;&gt;\(X \sim f(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;未知。设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;为总体的一个样本，给定一个很小的数&lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \alpha &amp;lt; 1\)&lt;/span&gt;，若有统计量&lt;span class=&#34;math inline&#34;&gt;\(\theta_l = \theta_l (X_1, \dots, X_n) \le \theta_r(X_1, \dots, X_n) = \theta_r\)&lt;/span&gt;，使得 &lt;span class=&#34;math display&#34;&gt;\[
-P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
-\]&lt;/span&gt; 我们称&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\([\theta_;, \theta_r]\)&lt;/span&gt;的&lt;strong&gt;置信水平&lt;/strong&gt;（confidence level），&lt;span class=&#34;math inline&#34;&gt;\(\theta_l\)&lt;/span&gt;为&lt;strong&gt;置信下限&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\theta_r\)&lt;/span&gt;为&lt;strong&gt;置信上限&lt;/strong&gt;。一般来说置信水平不唯一，因为若&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;是某个区间的置信水平，则对于任意&lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;lt; \tilde \alpha &amp;lt; 1\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(1 - \tilde \alpha\)&lt;/span&gt;亦是该区间的置信水平。故一般的“置信水平”是这一系列置信水平中的最大者。&lt;/p&gt;
-&lt;p&gt;区间估计的一般步骤为：&lt;/p&gt;
-&lt;ol type=&#34;1&#34;&gt;
-&lt;li&gt;&lt;p&gt;构造&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个点估计&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;（如&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;）&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;构造&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;的一个函数&lt;span class=&#34;math inline&#34;&gt;\(G = G(\theta, \hat \theta)\)&lt;/span&gt;（称作主元（pivot）函数），且&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;的分布函数&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;完全已知，且其分布与&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;无关，&lt;/li&gt;
-&lt;li&gt;对任何常数&lt;span class=&#34;math inline&#34;&gt;\(a &amp;lt; b\)&lt;/span&gt;，不等式&lt;span class=&#34;math inline&#34;&gt;\(a \le G(\theta, \hat \theta) \le b\)&lt;/span&gt;能够改写成等价的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;，且&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;仅与&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta,a,b\)&lt;/span&gt;有关，与&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;无关。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;取&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;的上&lt;span class=&#34;math inline&#34;&gt;\(\alpha/2\)&lt;/span&gt;分位点&lt;span class=&#34;math inline&#34;&gt;\(w_{\alpha/2}\)&lt;/span&gt;及上&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha/2\)&lt;/span&gt;分位点&lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2}\)&lt;/span&gt;，此时有&lt;span class=&#34;math inline&#34;&gt;\(F(w_{\alpha/2}) - F(w_{1-w_{\alpha/2}}) = 1 - \alpha\)&lt;/span&gt;，即 &lt;span class=&#34;math display&#34;&gt;\[
-P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}\)&lt;/span&gt;可改写为对应的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;的形式，且&lt;span class=&#34;math inline&#34;&gt;\(A, B\)&lt;/span&gt;仅与估计量和两个分位点有关，&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;就构成了&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个置信水平为&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha\)&lt;/span&gt;的置信区间。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>统计量</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/</link>
-      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/</guid>
-      <description>
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X_1,\dots,X_n)\)&lt;/span&gt;为取自总体的一个样本，若函数&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;不直接包含总体分布中的任何参数，则称&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;为&lt;strong&gt;统计量&lt;/strong&gt;。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;样本均值和样本方差&#34;&gt;样本均值和样本方差&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\mathbb{样本均值}:\bar X = \frac{1}{n} \sum_{i=1}^n X_i \\
-\mathbb{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac{1}{n} \sum_{i=1}^n X_i^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(M_k = \frac{1}{n} \sum_{i=1}^n (X_i - \bar X)^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶中心矩&lt;/strong&gt;，当&lt;span class=&#34;math inline&#34;&gt;\(k=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(S_n^2 \triangleq M_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;由于统计量是随机变量的函数，故统计量也是随机变量。设总体&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的均值&lt;span class=&#34;math inline&#34;&gt;\(\E(X) = \mu, \Var(X) = \sigma^2\)&lt;/span&gt;，关于统计量有如下定理： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-&amp;amp; \E(\bar X) = \mu, \Var(\bar X) = \frac{\sigma^2}{n} \\
-\notag \\
-&amp;amp; \E(S^2) = \sigma^2, \E(S_n^2) = \frac{n-1}{n} \sigma^2 \\
-\notag \\
-&amp;amp; \bar X \stackrel{P}{\to} \mu, S^2 \stackrel{P}{\to} \sigma^2, S_n^2 \stackrel{P}{\to} \sigma^2
-\end{gather}
-\]&lt;/span&gt; 有关证明如下： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\E(\bar X) = \E (\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n} \sum_{i=1}^n \E(X_i) = \mu \\
-\Var(\bar X) = \Var(\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n^2} \sum_{i=1}^n D(X_i) = \frac{\sigma^2}{n}
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;$$ &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
-\begin{aligned}[t]
-\E(S^2) &amp;amp;= \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
-&amp;amp;= \frac{1}{n-1} \big( \sum_{i=1}^n \E (X_i^2 ) - n \E(\bar X^2) \big) \\
-&amp;amp;\Downarrow_ {\E(X_i^2) = \Var(X_i) + \E^2(X_i) = \sigma^2 + \mu^2, \E(\bar X^2) = \Var(\bar X) + \E^2(\bar X) = \frac{\sigma^2}{n} + \mu^2} \\
-&amp;amp;= \frac{1}{n-1} \big( \sum_{i=1}^n (\sigma^2 + \mu^2) - n (\frac{\sigma^2}{n} + \mu^2) \big) \\
-&amp;amp;= \sigma^2
-\end{aligned}
-
-\begin{aligned}[t]
-\E(S_n^2) &amp;amp;= \E [\frac{n-1}{n} \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
-&amp;amp;= \frac{n-1}{n} \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
-&amp;amp;= \frac{n-1}{n} \sigma^2
-\end{aligned}
-\end{gather}\]&lt;/span&gt; $$&lt;/p&gt;
-&lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。&lt;/p&gt;
-&lt;p&gt;根据[[大数定律和中心极限定理#相互独立同分布大数定律|相互独立同分布大数定律]]， &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \mu \\
-\frac{1}{n} \sum_{i=1}^n X_i^2 \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E (X_i^2) = \sigma^2 + \mu^2
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;次序统计量&#34;&gt;次序统计量&lt;/h2&gt;
-&lt;p&gt;令&lt;span class=&#34;math inline&#34;&gt;\((X_{(1)}, \dots, X_{(n)})\)&lt;/span&gt;为样本&lt;span class=&#34;math inline&#34;&gt;\((X_1, \dots, X_n)\)&lt;/span&gt;排序后的结果，则&lt;span class=&#34;math inline&#34;&gt;\(X_{(1)} = \min (X_1, \dots, X_n), X_{(n)} = \max (X_1, \dots, X_n)\)&lt;/span&gt;亦是统计量。&lt;/p&gt;
-&lt;p&gt;记&lt;span class=&#34;math inline&#34;&gt;\(X_{(1)}, X_{(n)}\)&lt;/span&gt;的概率密度函数分别为&lt;span class=&#34;math inline&#34;&gt;\(p_{X_{(1)}}, p_{X_{(n)}}\)&lt;/span&gt;，则 &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-p_{X_{(1)}}(u) = n \big( 1 - P_X(u) \big)^{n-1} p_X(u) \\
-p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
-\end{gather}
-\]&lt;/span&gt; 记&lt;span class=&#34;math inline&#34;&gt;\(X_{(k)}\)&lt;/span&gt;的概率密度函数为&lt;span class=&#34;math inline&#34;&gt;\(p_{X_{(k)}}\)&lt;/span&gt;，则…&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Common Distributions</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</link>
-      <pubDate>Fri, 20 May 2022 09:58:37 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</guid>
-      <description>
-
-&lt;h2 id=&#34;poisson-distribution&#34;&gt;Poisson Distribution&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather*}
-P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!} \\
-\E[X] = \lambda \\
-\Var[X] = \lambda
-\end{gather*}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;binomial-distribution&#34;&gt;Binomial Distribution&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather*}
-P(x;p,N) = {N \choose x} p^x (1-p)^{N-x} \\
-\E[X] = Np \\
-\Var[X] = Np(1-p)
-\end{gather*}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;bernoulli-distribution&#34;&gt;Bernoulli Distribution&lt;/h2&gt;
-&lt;p&gt;Bernoulli Distribution &lt;span class=&#34;math inline&#34;&gt;\(B(\{0,1\};p)\)&lt;/span&gt; is a special case of Binomial Distribution when &lt;span class=&#34;math inline&#34;&gt;\(N=1\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather*}
-B(1,p) = p, B(0,p) = 1 - p \\
-\E[X] = p \\
-\Var[X] = p(1 - p)
-\end{gather*}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
-&lt;p&gt;Refer to [&lt;a href=&#34;#gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/a&gt;].&lt;/p&gt;
 
 
 </description>
@@ -490,107 +666,6 @@ F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
     </item>
     
     <item>
-      <title>Gaussian Distribution</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</link>
-      <pubDate>Sun, 08 May 2022 19:09:42 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</guid>
-      <description>
-
-&lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
-&lt;h3 id=&#34;one-dimensional&#34;&gt;One-dimensional&lt;/h3&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;-d random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim \mathcal{N}(\mu, \sigma^2)\)&lt;/span&gt;, then its density function is &lt;span class=&#34;math display&#34;&gt;\[
-p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\int_{-\infty}^{+\infty}p(x)dx &amp;amp;= \sqrt{(\int_{-\infty}^{+\infty}p(x)dx) \cdot (\int_{-\infty}^{+\infty}p(y)dy)} \\
-&amp;amp;= \sqrt{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}p(x)p(y)dxdy} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(I^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}p(x)p(y)dxdy\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\int_{-\infty}^{+\infty}p(x)dx = \sqrt{I^2} \\
-I^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{y - \mu}{\sigma})^2}dxdy
-\end{gather}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(u = \frac{x-\mu}{\sigma}, v = \frac{y-\mu}{\sigma}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I^2 &amp;amp;= \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}u^2}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}v^2}\sigma^2dudv \\
-&amp;amp;= \frac{1}{2\pi}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}e^{-\frac{1}{2}(u^2+v^2)}dudv
-\end{aligned}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(u = r\sin\theta, v = r\cos\theta\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}e^{-\frac{1}{2}(u^2+v^2)}dudv &amp;amp;= 
-\int_{0}^{2\pi}\int_{0}^{+\infty}e^{-\frac{1}{2}(r^2\sin^2\theta+r^2\cos^2\theta)}rdrd\theta \\
-&amp;amp;= \int_{0}^{2\pi}\int_{0}^{+\infty}-e^{-\frac{1}{2}r^2}d(-\frac{1}{2}r^2)d\theta \\
-&amp;amp;= \int_{0}^{2\pi}-e^{t}\Big|_{t=0}^{t=-\infty}d\theta \\
-&amp;amp;= \int_{0}^{2\pi}d\theta \\
-&amp;amp;= 2\pi
-\end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I^2 = \frac{1}{2\pi}2\pi = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\int_{-\infty}^{+\infty}p(x)dx = \sqrt{I^2} = 1\)&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;independent-standard-n-dimensional&#34;&gt;Independent standard &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional&lt;/h3&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;, suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution, we can derive the joint distribution density function for random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; to be &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p(z) &amp;amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z_i^2} \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}z^Tz} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;n-dimensional&#34;&gt;N-dimensional&lt;/h3&gt;
-&lt;p&gt;We have given the joint distribution function of independent &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional standard Gaussian distribution. What about these &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; dimensions are not independent with each other, but are only correlated in first order?&lt;/p&gt;
-&lt;p&gt;Formally, &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;. Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are not independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{N}(\mu_i, \sigma_i^2)\)&lt;/span&gt;. We would like to linearly transform &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X_i, X_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(X_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution.&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix is &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is [[Real Symmetric Matrix|real-symmetric]] and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
-X = B^{-1}(Z - \mu) \\
-Z = BX + \mu \\
-X \sim \mathcal{N}(0, I)
-\]&lt;/span&gt; then, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p_X(x) &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}x^Tx} 
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is to take on values in &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;, which is a subset of &lt;span class=&#34;math inline&#34;&gt;\(\R^{n}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-P_Z(Z \in S) = \int_Sp_Z(z)dz
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate [[Jacobian Matrix|Jacobian transformation]]: &lt;span class=&#34;math display&#34;&gt;\[
-J(X \to Z) = B^{-1} \\
-\]&lt;/span&gt; with its determinant &lt;span class=&#34;math inline&#34;&gt;\(J = |J(X \to Z)| = |B^{-1}| = |B|^{-1}\)&lt;/span&gt;. Note that &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-|J| &amp;amp;= \sqrt{|B|^{-1}|B|^{-1}} \\
-&amp;amp;= \sqrt{|B|^{-1}|B^T|^{-1}} \\
-&amp;amp;= \sqrt{|BB^T|^{-1}} \\
-&amp;amp;= |BB^T|^{-\frac{1}{2}}
-\end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-P_Z(Z \in S) &amp;amp;= P_X(X \in f^{-1}(S)) \\
-&amp;amp;= \int_{f^{-1}(S)}p_X(x)dx \\
-&amp;amp;= [\int_Sp_X(f^{-1}(z))|J|dz]_{x=f^{-1}(z)} \\
-&amp;amp;= \int_Sp_X(f^{-1}(z))|J|dz \\
-\int_Sp_Z(z)dz &amp;amp;= \int_Sp_X(f^{-1}(z))|J|dz \\
-p_Z(z) &amp;amp;= p_X(f^{-1}(z))|J| \\
-&amp;amp;= p_X(B^{-1}(z-\mu)|J| \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(B^{-1})^TB^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(B^T)^{-1}B^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(BB^T)^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}|BB^T|^\frac{1}{2}}e^{-\frac{1}{2}(z-\mu)^T(BB^T)^{-1}(z-\mu)} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Also note that &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\Sigma_Z &amp;amp;= E[(z-\mu)(z-\mu)^T] \\
-&amp;amp;= E[BXX^TB^T] \\
-&amp;amp;= BE[XX^T]B^T \\
-&amp;amp;= BIB^T \\
-&amp;amp;= BB^T
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Then, &lt;span class=&#34;math display&#34;&gt;\[
-p(z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}}e^{-\frac{1}{2}(z-\mu)^T\Sigma_Z^{-1}(z-\mu)}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/40225646&#34;&gt;Integration&lt;/a&gt;|&lt;a href=&#34;https://zhuanlan.zhihu.com/p/58987388&#34;&gt;Multi-variate&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Integration_by_substitution&#34;&gt;Change of variable&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Unconscious Statistics</title>
       <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/</link>
       <pubDate>Tue, 03 May 2022 10:50:54 +0000</pubDate>
@@ -644,81 +719,6 @@ p(z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}}e^{-\frac{1}{2}(z-\mu)^T\Sigma_Z^{-1}(
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; be the PDF and &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; be the CDF of a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(Q = F^{-1}\)&lt;/span&gt; be the inverse of &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt; is also called the &lt;strong&gt;quantile function&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \int_0^1 Q(p)\ \d p \stackrel{p=F(x)}{\Longrightarrow} = \int_{-\infty}^{+\infty} x f(x)\ \d x = \E(X) 
 \]&lt;/span&gt; &lt;a href=&#34;https://stats.stackexchange.com/a/18439&#34;&gt;StackExchange Answer&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>协方差与相关系数</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
-      <pubDate>Sun, 01 May 2022 10:41:15 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
-      <description>
-
-&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
-&lt;h3 id=&#34;协方差以二维随机变量为例&#34;&gt;协方差（以二维随机变量为例）&lt;/h3&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X, Y)\)&lt;/span&gt;为二维随机变量，如果&lt;span class=&#34;math inline&#34;&gt;\(\mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}\)&lt;/span&gt;存在，则称 &lt;span class=&#34;math display&#34;&gt;\[
-\notag \mathrm {Cov}(X, Y) \triangleq \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}
-\]&lt;/span&gt; 为随机变量X和Y的协方差。 在实际中计算协方差时，更多的是使用以下公式： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\mathrm {Cov}(X, Y) &amp;amp;= \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\} \\
-&amp;amp;= \mathrm E[XY - X\mathrm E(Y) - \mathrm E(X)Y + \mathrm E(X) \mathrm E(Y)] \\
-&amp;amp;= \mathrm E(XY) - \mathrm E(X)\mathrm E(Y) - \mathrm E(X)\mathrm E(Y) + \mathrm E(X) \mathrm E(Y) \\
-&amp;amp;= \mathrm E(XY) - \mathrm E(X) \mathrm E(Y)
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;相关系数&#34;&gt;相关系数&lt;/h3&gt;
-&lt;p&gt;协方差考察了随机变量之间协同变化的关系，但如果采取不同的量纲，同样的数据产生的协方差相差非常大。为避免这种情况发生，我们首先将随机变量标准化： &lt;span class=&#34;math display&#34;&gt;\[
-X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\Var(Y)}}
-\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{cov}(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数 &lt;span class=&#34;math display&#34;&gt;\[
-\rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\mathrm{cov}(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
-\]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Function of Random Variable</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</link>
-      <pubDate>Thu, 31 Mar 2022 10:08:24 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</guid>
-      <description>
-
-&lt;h2 id=&#34;function-of-random-variable&#34;&gt;Function of Random Variable&lt;/h2&gt;
-&lt;p&gt;Suppose we have a 1-D random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim p_X\)&lt;/span&gt; and a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, what will &lt;span class=&#34;math inline&#34;&gt;\(f(X)\)&lt;/span&gt;’s distribution and expectation be like?&lt;/p&gt;
-&lt;h3 id=&#34;distribution&#34;&gt;Distribution&lt;/h3&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(Y = f(X)\)&lt;/span&gt; and suppose &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonic, then &lt;span class=&#34;math display&#34;&gt;\[
-P_Y(y) = P_Y(Y \le y) = P_X(f(X) \le y)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;if &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonically increasing: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-P_X(f(X) \le y) = P_X(X \le f^{-1}(y)) = P_X(f^{-1}(y)) \\ 
-\nonumber \\
-\begin{split}
-p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
-&amp;amp;= \frac{\partial P_X(f^{-1}(y))}{\partial y} \\
-&amp;amp;= P_X(f^{-1}(y)) \cdot (f^{-1})^\prime (y) \\
-&amp;amp;= P_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)| \\
-\end{split}
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;if &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonically decreasing: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-P_X(f(X) \le y) = P_X(X \ge f^{-1}(y)) = 1 - P_X(X \le f^{-1}(y)) = 1 - P_X(f^{-1}(y)) \\ 
-\nonumber \\
-\begin{split}
-p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
-&amp;amp;= \frac{\partial [1 - P_X(f^{-1}(y))]}{\partial y} \\
-&amp;amp;= -p_X(f^{-1}(y)) \cdot (f^{-1})^\prime (y) \\
-&amp;amp;= p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)| \\
-\end{split}
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(p_Y(y) = p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)|\)&lt;/span&gt;.&lt;/p&gt;
 
 
 </description>

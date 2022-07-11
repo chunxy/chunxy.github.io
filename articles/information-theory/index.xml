@@ -13,6 +13,57 @@
     </image>
     
     <item>
+      <title>Entropy</title>
+      <link>https://chunxy.github.io/notes/articles/information-theory/entropy/</link>
+      <pubDate>Thu, 28 Apr 2022 22:47:16 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/information-theory/entropy/</guid>
+      <description>
+
+&lt;h2 id=&#34;entropy&#34;&gt;Entropy&lt;/h2&gt;
+&lt;p&gt;The Entropy of discrete distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (probability mass function) is defined as &lt;span class=&#34;math display&#34;&gt;\[
+H(p) = -\mathrm{E}_{x \sim p}\log p(x)
+\]&lt;/span&gt; The Entropy of continuous distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; (probability density function) is usually similarly defined as &lt;span class=&#34;math display&#34;&gt;\[
+H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx
+\]&lt;/span&gt; This is actually the &lt;strong&gt;Differential Entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Conditional Entropy</title>
+      <link>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</link>
+      <pubDate>Wed, 13 Apr 2022 15:03:21 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</guid>
+      <description>
+
+&lt;h2 id=&#34;conditional-entropy&#34;&gt;Conditional Entropy&lt;/h2&gt;
+&lt;p&gt;The Conditional Entropy measures the the amount of information needed to describe the outcome of a random variable &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; given that the value of another random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is known. The entropy of &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; conditioned on &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
+H(Y|X) = -\sum_{(x,y) \in X \times Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Cross Entropy</title>
+      <link>https://chunxy.github.io/notes/articles/information-theory/cross-entropy/</link>
+      <pubDate>Mon, 25 Apr 2022 16:39:46 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/information-theory/cross-entropy/</guid>
+      <description>
+
+&lt;h2 id=&#34;cross-entropy&#34;&gt;Cross Entropy&lt;/h2&gt;
+&lt;p&gt;The Cross Entropy between two distributions over the same underlying set of events measures the average number of bits to identify the event drawn from the set if a coding scheme is used for the set is optimized for probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, instead of the true distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The Cross Entropy of distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; relative to a distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
+H(p||q) = -\mathrm{E}_{x \sim p} \log q(x)
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Mutual Information</title>
       <link>https://chunxy.github.io/notes/articles/information-theory/mutual-information/</link>
       <pubDate>Thu, 19 May 2022 12:20:04 +0000</pubDate>
@@ -30,6 +81,26 @@ I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \times p_Y)
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>KL-divergence</title>
+      <link>https://chunxy.github.io/notes/articles/information-theory/kl-divergence/</link>
+      <pubDate>Mon, 25 Apr 2022 16:39:15 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/information-theory/kl-divergence/</guid>
+      <description>
+
+&lt;h2 id=&#34;kl-divergence&#34;&gt;KL-divergence&lt;/h2&gt;
+&lt;p&gt;KL-divergence, &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p\|q)\)&lt;/span&gt; is statistical distance, measuring how the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is different from the reference probability distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, both defined on the probability space &lt;span class=&#34;math inline&#34;&gt;\(X \in \mathcal{X}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In information theory, it measures the &lt;strong&gt;relative entropy&lt;/strong&gt; from &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, which is the average number of extra bits required to represent a message with &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In discrete form, &lt;span class=&#34;math display&#34;&gt;\[
+D_{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x \in \mathcal{X}} p(x)\log \frac{p(x)}{q(x)}
+\]&lt;/span&gt; In continuous form, &lt;span class=&#34;math display&#34;&gt;\[
+D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -65,61 +136,6 @@ D_f (p||q) &amp;amp;= \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \\
 &amp;amp;= \sup_{T:\mathcal X \to \R} \int [p(x) T(x) - f^*(T(x)) q(x)]\ \d x \\
 &amp;amp;= \sup_{T:\mathcal X \to \R} \{ \E_p[f(x)] + \E_q[f^* \circ T(x)] \}
 \end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Entropy</title>
-      <link>https://chunxy.github.io/notes/articles/information-theory/entropy/</link>
-      <pubDate>Thu, 28 Apr 2022 22:47:16 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/information-theory/entropy/</guid>
-      <description>
-
-&lt;h2 id=&#34;entropy&#34;&gt;Entropy&lt;/h2&gt;
-&lt;p&gt;The Entropy of discrete distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (probability mass function) is defined as &lt;span class=&#34;math display&#34;&gt;\[
-H(p) = -\mathrm{E}_{x \sim p}\log p(x)
-\]&lt;/span&gt; The Entropy of continuous distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; (probability density function) is usually similarly defined as &lt;span class=&#34;math display&#34;&gt;\[
-H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx
-\]&lt;/span&gt; This is actually the &lt;strong&gt;Differential Entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Cross Entropy</title>
-      <link>https://chunxy.github.io/notes/articles/information-theory/cross-entropy/</link>
-      <pubDate>Mon, 25 Apr 2022 16:39:46 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/information-theory/cross-entropy/</guid>
-      <description>
-
-&lt;h2 id=&#34;cross-entropy&#34;&gt;Cross Entropy&lt;/h2&gt;
-&lt;p&gt;The Cross Entropy between two distributions over the same underlying set of events measures the average number of bits to identify the event drawn from the set if a coding scheme is used for the set is optimized for probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, instead of the true distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;The Cross Entropy of distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; relative to a distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
-H(p||q) = -\mathrm{E}_{x \sim p} \log q(x)
-\]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>KL-divergence</title>
-      <link>https://chunxy.github.io/notes/articles/information-theory/kl-divergence/</link>
-      <pubDate>Mon, 25 Apr 2022 16:39:15 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/information-theory/kl-divergence/</guid>
-      <description>
-
-&lt;h2 id=&#34;kl-divergence&#34;&gt;KL-divergence&lt;/h2&gt;
-&lt;p&gt;KL-divergence, &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p\|q)\)&lt;/span&gt; is statistical distance, measuring how the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is different from the reference probability distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, both defined on the probability space &lt;span class=&#34;math inline&#34;&gt;\(X \in \mathcal{X}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;In information theory, it measures the &lt;strong&gt;relative entropy&lt;/strong&gt; from &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, which is the average number of extra bits required to represent a message with &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;In discrete form, &lt;span class=&#34;math display&#34;&gt;\[
-D_{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x \in \mathcal{X}} p(x)\log \frac{p(x)}{q(x)}
-\]&lt;/span&gt; In continuous form, &lt;span class=&#34;math display&#34;&gt;\[
-D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -163,22 +179,6 @@ I(X;Y) &amp;amp;= \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)
 &amp;amp;= \E_{x \in X} D_{KL}[p(y|x), p(y)] \\
 &amp;amp;= \E_{y \in Y} D_{KL}[p(x|y), p(x)] \\
 \end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Conditional Entropy</title>
-      <link>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</link>
-      <pubDate>Wed, 13 Apr 2022 15:03:21 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</guid>
-      <description>
-
-&lt;h2 id=&#34;conditional-entropy&#34;&gt;Conditional Entropy&lt;/h2&gt;
-&lt;p&gt;The Conditional Entropy measures the the amount of information needed to describe the outcome of a random variable &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; given that the value of another random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is known. The entropy of &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; conditioned on &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
-H(Y|X) = -\sum_{(x,y) \in X \times Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
 \]&lt;/span&gt;&lt;/p&gt;
 
 

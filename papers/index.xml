@@ -13,130 +13,6 @@
     </image>
     
     <item>
-      <title>Bounding Mutual Information</title>
-      <link>https://chunxy.github.io/notes/papers/bounding-mutual-information/</link>
-      <pubDate>Thu, 02 Jun 2022 14:01:20 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/papers/bounding-mutual-information/</guid>
-      <description>
-
-&lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;The very basic bound on the Mutual Information is based on the non-negativity of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I(X;Y) = &amp;amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
-= &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)p(x|y)}{p(x)q(x|y)} \\
-= &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)}{p(x)} + \\
-&amp;amp;\underbrace{\E_{p(x,y)} \log \frac{p(x|y)}{q(x|y)}}_{\E_{p(y)} D_{KL}(p(x|y) || q(x|y)} \\
-\ge &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)}{p(x)} \\
-= &amp;amp;\E_{p(x,y)} \log q(x|y) + H(X) \triangleq I_\text{BA}
-\end{aligned}
-\]&lt;/span&gt; This bound is not usually tractable since &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(H(X)\)&lt;/span&gt; has no closed-form expression.&lt;/p&gt;
-&lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) = p(x|y)\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;i_textuba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; is replaced with an unnormalized model, that is &lt;span class=&#34;math display&#34;&gt;\[
-q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)}, \text{where } Z(y) = \E_{p(x)} e^{f(x,y)}
-\]&lt;/span&gt; Substituting this back to the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt; will give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I(X;Y) &amp;amp;\ge \E_{p(x,y)} \log \frac{p(x) e^{f(x,y)}}{p(x) Z(y)} \\
-&amp;amp;= \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \triangleq I_\text{UBA}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Note that by scaling &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;, the &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; term is cancelled.&lt;/p&gt;
-&lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)} = p(x|y)\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-e^{f(x,y)} &amp;amp;= \frac{p(x, y)}{p(x)p(y)} Z(y) \\
-e^{f(x,y)} &amp;amp;= \frac{Z(y)}{p(y)} p(y|x) \\
-f(x,y) &amp;amp;= \ln p(y|x) + \underbrace{\ln \frac{Z(y)}{p(y)}}_{c(y)}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;i_textdv&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{DV}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;By further applying Jensen’s inequality to the &lt;span class=&#34;math inline&#34;&gt;\(\E_{p(y)} Z(y)\)&lt;/span&gt; term in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt;, we get &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
-&amp;amp;\ge \E_{p(x,y)} f(x,y) - \log\E_{p(y)} [Z(y)] \triangleq I_\text{DV}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;i_texttuba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\log\)&lt;/span&gt; function also has the following property: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\forall x,a&amp;gt;0,\log(x) &amp;amp;\le \frac{x}{a} + \log(a) - 1 &amp;amp;\iff \\
-a + a\log(x) &amp;amp;\le x + a\log(a) &amp;amp;\iff \\
-a\log(x) - x &amp;amp;\le a\log(a) - a \\
-\end{aligned}
-\]&lt;/span&gt; Therefore, we can insert the inequality &lt;span class=&#34;math inline&#34;&gt;\(\log Z(y) \le \frac{Z(y)}{a(y)} + \log a(y) - 1\)&lt;/span&gt; into the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; to get &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
-&amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) - 1 \big)] \triangleq I_\text{TUBA}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;This bound is tight when&lt;/p&gt;
-&lt;ol type=&#34;1&#34;&gt;
-&lt;li&gt;the tight condition of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; holds: &lt;span class=&#34;math inline&#34;&gt;\(f(x,y) = \log p(y|x) + \underbrace{\log \frac{Z(y)}{p(y)}}_{c(y)}\)&lt;/span&gt;, and&lt;/li&gt;
-&lt;li&gt;the tight condition of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt; holds: &lt;span class=&#34;math inline&#34;&gt;\(a(y) = Z(y)\)&lt;/span&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;i_textnwj&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;By setting &lt;span class=&#34;math inline&#34;&gt;\(a(y) = e\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;, we get &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) - 1 \big)] \\
-&amp;amp;\ge \E_{p(x,y)} f(x,y) - e^{-1}\E_{p(y)} Z(y)\triangleq I_\text{NWJ}
-\end{aligned}
-\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt; is a special case of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;, its bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(Z(y)\)&lt;/span&gt; self-normalizes to &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;. In this case &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-f(x,y) &amp;amp;= \log p(y|x) + \log \frac{e}{p(y)} \\
-&amp;amp;= 1 + \log \frac{p(y|x)}{p(y)} \\
-&amp;amp;= 1 + \log \frac{p(x|y)}{p(x)}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;i_textnce&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;Our goal is to estimate the &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y)\)&lt;/span&gt; given one sample from &lt;span class=&#34;math inline&#34;&gt;\(p(x_1)p(y|x_1)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(K-1\)&lt;/span&gt; additional independent samples &lt;span class=&#34;math inline&#34;&gt;\(x_{2:K} \sim p^{K-1}(x_{2:K})\)&lt;/span&gt;. For any random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; that is independent from &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I(X_1,Z;Y) &amp;amp;= \E_{p(x_1,z,y)} \frac{p(x_1,z,y)}{p(x_1,z) p(y)} \\
-&amp;amp;= \E_{p(x_1,z,y)} \frac{p(x_1,y) p(z)}{p(x_1) p(z) p(y)} \\
-&amp;amp;= I(X_1;Y)
-\end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y) = I(X_1,X_{2:K};Y)\)&lt;/span&gt;. Bounding &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y)\)&lt;/span&gt; becomes bounding &lt;span class=&#34;math inline&#34;&gt;\(I(X_1,X_{2:K};Y)\)&lt;/span&gt;, which can be estimated using any of the preceding methods.&lt;/p&gt;
-&lt;p&gt;Set the critic to &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 + \overbrace{\log \frac{e^{g(x,y)}} {a(y;x_{1:K})}}^{h(x_{1:K},y)}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the sample among &lt;span class=&#34;math inline&#34;&gt;\(x_{1:K}\)&lt;/span&gt; that is paired with &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;. Usually &lt;span class=&#34;math inline&#34;&gt;\((x,y)_{1:K}\)&lt;/span&gt; are sampled from the same marginal distribution of &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(x,y)\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is then uniformly drawn among &lt;span class=&#34;math inline&#34;&gt;\(y_{1:K}\)&lt;/span&gt;. Substitute these to the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
-\label{infonce} \begin{aligned} 
-I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K},y)} f(x_{1:K},y) - e^{-1}\E_{p(y)} Z(y) \\
-&amp;amp;= \E_{p(x_{1:K},y)} [1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [\E_{p(x_{1:K})} e^{1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}}] \\
-&amp;amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [e\E_{p(x_{1:K})} \frac{e^{g(x,y)}}{a(y,x_{1:K})}] \\
-&amp;amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - \E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} \\
-\end{aligned}
-\]&lt;/span&gt; Further set &lt;span class=&#34;math inline&#34;&gt;\(a(y;x_{1:K}) = \frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)}\)&lt;/span&gt;. Substitute this into the last term in equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{infonce}\)&lt;/span&gt; will give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} &amp;amp;= \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}}{\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} } \\
-&amp;amp;\stackrel{P}{\to} \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}} {\E_{p(x_{1:K})} e^{g(x,y)} } \\
-&amp;amp;= 1
-\end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} }] \\
-&amp;amp;\approx \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)} }] \triangleq I_\text{NCE}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;On the other hand, &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt; is tightly bounded by &lt;span class=&#34;math inline&#34;&gt;\(\log K\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I_{NCE} &amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
-&amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K (\log \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} )] + \log K \\
-&amp;amp;\le \E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} ]} + \log K \\
-&amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\sum_{i=1}^K e^{g(x_i, y_j)}} {e^{g(x_j,y_j)}} ]} + \log K
-\end{aligned}
-\]&lt;/span&gt; The equality is reached when &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 + {h(x_{1:K},y)} = 1 + \log \frac{p(x|y)}{p(x)}\)&lt;/span&gt; as in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;. In this case, it can be derived that &lt;span class=&#34;math inline&#34;&gt;\(g(x,y) = g^\star(x,y) = \frac{p(y|x)}{p(y)}\)&lt;/span&gt;. And then, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
-&amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K (1 + \frac{p(y_j)}{p(y_j|x_j)} \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}) ]} + \log K \\
-&amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(1 + \frac{p(y_j)}{p(y_j|x_j)} (K-1) \E_{p(y)} \frac{p(y|x_i)}{p(y)} \big) ]} + \log K \\
-&amp;amp;= -\E_{p(x_{1:K})} \log {[1 + \frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
-&amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
-&amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{p(y_j)}{p(y_j|x_j)} ]} - \log(K-1) + \log K \\
-&amp;amp;= I(X_1;Y) - \log(K-1) + \log K
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Noise Contrastive Estimation</title>
       <link>https://chunxy.github.io/notes/papers/noise-contrastive-estimation/</link>
       <pubDate>Thu, 12 May 2022 11:26:01 +0000</pubDate>
@@ -273,6 +149,130 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt;|&lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt;|&lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Bounding Mutual Information</title>
+      <link>https://chunxy.github.io/notes/papers/bounding-mutual-information/</link>
+      <pubDate>Thu, 02 Jun 2022 14:01:20 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/papers/bounding-mutual-information/</guid>
+      <description>
+
+&lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;The very basic bound on the Mutual Information is based on the non-negativity of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I(X;Y) = &amp;amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
+= &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)p(x|y)}{p(x)q(x|y)} \\
+= &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)}{p(x)} + \\
+&amp;amp;\underbrace{\E_{p(x,y)} \log \frac{p(x|y)}{q(x|y)}}_{\E_{p(y)} D_{KL}(p(x|y) || q(x|y)} \\
+\ge &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)}{p(x)} \\
+= &amp;amp;\E_{p(x,y)} \log q(x|y) + H(X) \triangleq I_\text{BA}
+\end{aligned}
+\]&lt;/span&gt; This bound is not usually tractable since &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(H(X)\)&lt;/span&gt; has no closed-form expression.&lt;/p&gt;
+&lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) = p(x|y)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;i_textuba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; is replaced with an unnormalized model, that is &lt;span class=&#34;math display&#34;&gt;\[
+q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)}, \text{where } Z(y) = \E_{p(x)} e^{f(x,y)}
+\]&lt;/span&gt; Substituting this back to the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt; will give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I(X;Y) &amp;amp;\ge \E_{p(x,y)} \log \frac{p(x) e^{f(x,y)}}{p(x) Z(y)} \\
+&amp;amp;= \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \triangleq I_\text{UBA}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Note that by scaling &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;, the &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; term is cancelled.&lt;/p&gt;
+&lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)} = p(x|y)\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+e^{f(x,y)} &amp;amp;= \frac{p(x, y)}{p(x)p(y)} Z(y) \\
+e^{f(x,y)} &amp;amp;= \frac{Z(y)}{p(y)} p(y|x) \\
+f(x,y) &amp;amp;= \ln p(y|x) + \underbrace{\ln \frac{Z(y)}{p(y)}}_{c(y)}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;i_textdv&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{DV}\)&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;By further applying Jensen’s inequality to the &lt;span class=&#34;math inline&#34;&gt;\(\E_{p(y)} Z(y)\)&lt;/span&gt; term in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt;, we get &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
+&amp;amp;\ge \E_{p(x,y)} f(x,y) - \log\E_{p(y)} [Z(y)] \triangleq I_\text{DV}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;i_texttuba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\log\)&lt;/span&gt; function also has the following property: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\forall x,a&amp;gt;0,\log(x) &amp;amp;\le \frac{x}{a} + \log(a) - 1 &amp;amp;\iff \\
+a + a\log(x) &amp;amp;\le x + a\log(a) &amp;amp;\iff \\
+a\log(x) - x &amp;amp;\le a\log(a) - a \\
+\end{aligned}
+\]&lt;/span&gt; Therefore, we can insert the inequality &lt;span class=&#34;math inline&#34;&gt;\(\log Z(y) \le \frac{Z(y)}{a(y)} + \log a(y) - 1\)&lt;/span&gt; into the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; to get &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
+&amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) - 1 \big)] \triangleq I_\text{TUBA}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This bound is tight when&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;the tight condition of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; holds: &lt;span class=&#34;math inline&#34;&gt;\(f(x,y) = \log p(y|x) + \underbrace{\log \frac{Z(y)}{p(y)}}_{c(y)}\)&lt;/span&gt;, and&lt;/li&gt;
+&lt;li&gt;the tight condition of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt; holds: &lt;span class=&#34;math inline&#34;&gt;\(a(y) = Z(y)\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;i_textnwj&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;By setting &lt;span class=&#34;math inline&#34;&gt;\(a(y) = e\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;, we get &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) - 1 \big)] \\
+&amp;amp;\ge \E_{p(x,y)} f(x,y) - e^{-1}\E_{p(y)} Z(y)\triangleq I_\text{NWJ}
+\end{aligned}
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt; is a special case of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;, its bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(Z(y)\)&lt;/span&gt; self-normalizes to &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;. In this case &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(x,y) &amp;amp;= \log p(y|x) + \log \frac{e}{p(y)} \\
+&amp;amp;= 1 + \log \frac{p(y|x)}{p(y)} \\
+&amp;amp;= 1 + \log \frac{p(x|y)}{p(x)}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;i_textnce&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Our goal is to estimate the &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y)\)&lt;/span&gt; given one sample from &lt;span class=&#34;math inline&#34;&gt;\(p(x_1)p(y|x_1)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(K-1\)&lt;/span&gt; additional independent samples &lt;span class=&#34;math inline&#34;&gt;\(x_{2:K} \sim p^{K-1}(x_{2:K})\)&lt;/span&gt;. For any random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; that is independent from &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I(X_1,Z;Y) &amp;amp;= \E_{p(x_1,z,y)} \frac{p(x_1,z,y)}{p(x_1,z) p(y)} \\
+&amp;amp;= \E_{p(x_1,z,y)} \frac{p(x_1,y) p(z)}{p(x_1) p(z) p(y)} \\
+&amp;amp;= I(X_1;Y)
+\end{aligned}
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y) = I(X_1,X_{2:K};Y)\)&lt;/span&gt;. Bounding &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y)\)&lt;/span&gt; becomes bounding &lt;span class=&#34;math inline&#34;&gt;\(I(X_1,X_{2:K};Y)\)&lt;/span&gt;, which can be estimated using any of the preceding methods.&lt;/p&gt;
+&lt;p&gt;Set the critic to &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 + \overbrace{\log \frac{e^{g(x,y)}} {a(y;x_{1:K})}}^{h(x_{1:K},y)}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the sample among &lt;span class=&#34;math inline&#34;&gt;\(x_{1:K}\)&lt;/span&gt; that is paired with &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;. Usually &lt;span class=&#34;math inline&#34;&gt;\((x,y)_{1:K}\)&lt;/span&gt; are sampled from the same marginal distribution of &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(x,y)\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is then uniformly drawn among &lt;span class=&#34;math inline&#34;&gt;\(y_{1:K}\)&lt;/span&gt;. Substitute these to the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\label{infonce} \begin{aligned} 
+I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K},y)} f(x_{1:K},y) - e^{-1}\E_{p(y)} Z(y) \\
+&amp;amp;= \E_{p(x_{1:K},y)} [1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [\E_{p(x_{1:K})} e^{1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}}] \\
+&amp;amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [e\E_{p(x_{1:K})} \frac{e^{g(x,y)}}{a(y,x_{1:K})}] \\
+&amp;amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - \E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} \\
+\end{aligned}
+\]&lt;/span&gt; Further set &lt;span class=&#34;math inline&#34;&gt;\(a(y;x_{1:K}) = \frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)}\)&lt;/span&gt;. Substitute this into the last term in equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{infonce}\)&lt;/span&gt; will give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} &amp;amp;= \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}}{\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} } \\
+&amp;amp;\stackrel{P}{\to} \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}} {\E_{p(x_{1:K})} e^{g(x,y)} } \\
+&amp;amp;= 1
+\end{aligned}
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} }] \\
+&amp;amp;\approx \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)} }] \triangleq I_\text{NCE}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;On the other hand, &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt; is tightly bounded by &lt;span class=&#34;math inline&#34;&gt;\(\log K\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I_{NCE} &amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
+&amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K (\log \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} )] + \log K \\
+&amp;amp;\le \E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} ]} + \log K \\
+&amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\sum_{i=1}^K e^{g(x_i, y_j)}} {e^{g(x_j,y_j)}} ]} + \log K
+\end{aligned}
+\]&lt;/span&gt; The equality is reached when &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 + {h(x_{1:K},y)} = 1 + \log \frac{p(x|y)}{p(x)}\)&lt;/span&gt; as in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;. In this case, it can be derived that &lt;span class=&#34;math inline&#34;&gt;\(g(x,y) = g^\star(x,y) = \frac{p(y|x)}{p(y)}\)&lt;/span&gt;. And then, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
+&amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K (1 + \frac{p(y_j)}{p(y_j|x_j)} \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}) ]} + \log K \\
+&amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(1 + \frac{p(y_j)}{p(y_j|x_j)} (K-1) \E_{p(y)} \frac{p(y|x_i)}{p(y)} \big) ]} + \log K \\
+&amp;amp;= -\E_{p(x_{1:K})} \log {[1 + \frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
+&amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
+&amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{p(y_j)}{p(y_j|x_j)} ]} - \log(K-1) + \log K \\
+&amp;amp;= I(X_1;Y) - \log(K-1) + \log K
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 
 
 </description>

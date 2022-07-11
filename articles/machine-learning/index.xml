@@ -13,6 +13,120 @@
     </image>
     
     <item>
+      <title>Machine Learning Bullet Points</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</link>
+      <pubDate>Sun, 19 Dec 2021 13:59:49 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</guid>
+      <description>
+
+&lt;h2 id=&#34;machine-learning-bullet-points&#34;&gt;Machine Learning Bullet Points&lt;/h2&gt;
+&lt;p&gt;This document lists out miscellaneous points besides the machine learning algorithms that are worth noting.&lt;/p&gt;
+&lt;h3 id=&#34;data-and-feature&#34;&gt;Data and Feature&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Data splitting method&lt;/li&gt;
+&lt;li&gt;Feature extraction&lt;/li&gt;
+&lt;li&gt;Feature normalization&lt;/li&gt;
+&lt;li&gt;Imbalanced data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;model&#34;&gt;Model&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Discriminative and generative model&lt;/li&gt;
+&lt;li&gt;Regularization and overfitting&lt;/li&gt;
+&lt;li&gt;Multi-class classification with binary classifier&lt;/li&gt;
+&lt;li&gt;Unsupervised learning
+&lt;ul&gt;
+&lt;li&gt;Discover inherent properties (latent variables) in the data&lt;/li&gt;
+&lt;li&gt;Including:
+&lt;ul&gt;
+&lt;li&gt;[[Clustering]]&lt;/li&gt;
+&lt;li&gt;[[Dimension Reduction|Dimension reduction]]&lt;/li&gt;
+&lt;li&gt;Manifold embedding&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h3&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Linear Discriminant Analysis</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</link>
+      <pubDate>Fri, 07 Jan 2022 12:42:22 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</guid>
+      <description>
+
+&lt;h2 id=&#34;linear-discriminant-analysis&#34;&gt;Linear Discriminant Analysis&lt;/h2&gt;
+&lt;p&gt;Linear Discriminant Analysis is another approximation to the Bayes optimal classifier. Instead of assuming independence between each pair of input dimensions given certain label, LDA assumes a single common shared covariance matrix among the input dimensions, no matter the label is. Take the Gaussian distribution as an example: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+p(x|y=C_j) &amp;amp;= \mathcal{N}(x;\mu_j, \Sigma) \\
+&amp;amp;= \frac{1}{\sqrt{(2\pi)^n|\Sigma|}}e^{-\frac{1}{2}(x-\mu_j)^T\Sigma^{-1}(x-\mu_j)}
+\end{aligned}
+\]&lt;/span&gt; Then the classification function will be &lt;span class=&#34;math inline&#34;&gt;\(f_{LDA} = \arg \max\limits_{j}p(x|y=C_j)p(y=C_j)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;LDA’s parameters &lt;span class=&#34;math inline&#34;&gt;\(\theta = (\mu, \Sigma, \varphi)\)&lt;/span&gt; is also learned with Maximum Likelihood Estimation: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L(\theta) &amp;amp;= \prod_{i=1}^mp(x^{(i)}, y^{(i)};\theta) \\
+&amp;amp;= \prod_{i=1}^mp(x^{(i)}|y^{(i)};\theta)p(y^{(i)})
+\end{aligned}
+\]&lt;/span&gt; The log-likelihood function will be &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+l(\theta) &amp;amp;= \log L(\theta) \\
+&amp;amp;= \sum_{i=1}^m\log p(x^{(i)}|y^{(i)};\mu,\Sigma) + \sum_{i=1}^m\log p(y^{(i)}, \varphi) \\
+\end{aligned}
+\]&lt;/span&gt; We can maximize above two summations separately.&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+l_1(\mu,\Sigma) &amp;amp;= \sum_{i=1}^m\log p(x^{(i)}|y^{(i)};\mu,\Sigma) \\
+&amp;amp;= -\frac{1}{2}\sum_{i=1}^m(x^{(i)}-\mu_{j|y^{(i)}})^T\Sigma^{-1}(x^{(i)}-\mu_{j|y^{(i)}}) + \log|\Sigma| + n\log2\pi\\
+\end{aligned}
+\]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\mu_j\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{\partial l_1}{\partial \mu_j} = \sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)\Sigma^{-1}(x^{(i)} - \mu_j) \\
+\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)\Sigma^{-1}(x^{(i)} - \mu_j) &amp;amp;= 0 \\
+\Sigma^{-1}\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)(x^{(i)} - \mu_j) &amp;amp;= 0 \\
+\end{aligned}
+\]&lt;/span&gt; Since the covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt; is real-symmetric and invertible and thus its nullspace is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)(x^{(i)} - \mu_j) = 0 \\
+\mu_j = \frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)x^{(i)}}{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}
+\]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{\partial l_1}{\partial \Sigma} = -\frac{1}{2}\sum_{i=1}^m(\Sigma^{-1} -\Sigma^{-1}(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T\Sigma^{-1}) \\
+\sum_{i=1}^m(\Sigma^{-1} -\Sigma^{-1}(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T\Sigma^{-1}) = 0 \\
+\Sigma^{-1}\sum_{i=1}^m(I - \Sigma^{-1}(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T) = 0 \\
+\sum_{i=1}^m(I - \Sigma^{-1}(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T) = 0 \\
+\sum_{i=1}^mI = \Sigma^{-1}\sum_{i=1}^m(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T \\
+\sum_{i=1}^m\Sigma =  \Sigma\Sigma^{-1}\sum_{i=1}^m(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T \\
+\Sigma = \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T \\
+\end{aligned}
+\]&lt;/span&gt; Let &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+l_2(\varphi) &amp;amp;= \sum_{i=1}^m\log p(y^{(i)}; \varphi) \\
+&amp;amp;= \sum_{i=1}^m\log\prod_{j=1}^c\varphi_j^{\mathbb{I}(y^{(i)}=C_j)} \\
+&amp;amp;= \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varphi_j
+\end{aligned}
+\]&lt;/span&gt; Note that &lt;span class=&#34;math inline&#34;&gt;\(p(y^{(i)};\varphi) = \prod_{j=1}^c\varphi_j^{\mathbb{I}(y^{(i)}=C_j)} = \sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\varphi_j\)&lt;/span&gt;. We chose the product notation because it could be easily “logged”.&lt;/p&gt;
+&lt;p&gt;There is also a constraint in maximization of &lt;span class=&#34;math inline&#34;&gt;\(l_2\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^c\varphi_j = 1\)&lt;/span&gt;. We can form the corresponding Lagrangian function: &lt;span class=&#34;math display&#34;&gt;\[
+J(\varphi, \lambda) = \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varphi_j + \lambda(-1 + \sum_{j=1}^c\varphi_j)
+\]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\varphi_j\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{\varphi_j} + \lambda = 0 \\
+\varphi_j = -\frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{\lambda}
+\end{gather}
+\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^c\varphi_j = 1\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+-\frac{\sum_{j=1}^c\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{\lambda} = 1 \\
+\lambda = -M
+\end{gather}
+\]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
+\varphi_j = \frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{M}
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Logistic Regression</title>
       <link>https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/</link>
       <pubDate>Fri, 17 Jun 2022 20:32:59 +0000</pubDate>
@@ -70,597 +184,6 @@ p(y = c|x) =\frac{exp(w^{(c)}\cdot x + b^{(c)})}{\sum_{i=1}^Cexp(w^{(i)} \cdot x
 &lt;p&gt;To prevent overfitting, a prior distribution is usually added to &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;. Suppose each dimension of &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; is independently sampled from a Gaussian distribution &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(0, \frac{C}{2})\)&lt;/span&gt;, then, &lt;span class=&#34;math display&#34;&gt;\[
 p(w) \propto \exp(-\frac{1}{C}w^Tw)
 \]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>RANSAC</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/ransac/</link>
-      <pubDate>Wed, 20 Apr 2022 16:38:31 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/ransac/</guid>
-      <description>
-
-&lt;h2 id=&#34;ransac&#34;&gt;RANSAC&lt;/h2&gt;
-&lt;p&gt;Outliers (noises) in the data can diverge the regression model to reduce prediction errors for them, instead of the majority real data points. &lt;strong&gt;RAN&lt;/strong&gt;dom &lt;strong&gt;SA&lt;/strong&gt;mple &lt;strong&gt;C&lt;/strong&gt;onsensus is a methodology to robustly fit the model in the presence of outliers.&lt;/p&gt;
-&lt;p&gt;RANSAC does the following:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Randomly sample a subset of data of an fairly enough amount for training.&lt;/li&gt;
-&lt;li&gt;Fit a model to the this subset.&lt;/li&gt;
-&lt;li&gt;Determine data points in the whole data set as inliers or outliers by comparing the residuals (prediction errors) to a threshold. The set of inliers is called a consensus set.&lt;/li&gt;
-&lt;li&gt;Repeat above for some iterations and retrain the final model with the largest consensus set (since inliers should be the majority).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Parameters of RANSAC include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; - number of points to fit the model&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; - threshold of the residual&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt; - proportion the outliers&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt; - probability of success (at least one iteration is finished with no outlier)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt; - number of iterations to be determined&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Then,&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(p\text{(training subset has no outliers)} = (1 - e)^s\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(p\text{(training subset has at least one outlier)} = 1 - (1 - e)^s\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(p\text{(all T subsets have outliers)} = (1 - (1 - e)^s)^T\)&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;We want &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-p\text{(all T subsets have outliers)} = (1 - (1 - e)^s)^T &amp;lt; 1 - \delta \\
-T &amp;gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
-\end{gather}
-\]&lt;/span&gt; The threshold &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is usually set as the median absolute deviation of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xingshansi/p/6763668.html&#34;&gt;随机抽样一致算法（Random sample consensus，RANSAC） - 桂。 - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Clustering</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/clustering/</link>
-      <pubDate>Sat, 09 Apr 2022 14:32:03 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/clustering/</guid>
-      <description>
-
-&lt;h2 id=&#34;clustering&#34;&gt;Clustering&lt;/h2&gt;
-&lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\)&lt;/span&gt;, a clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; of the &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; points into &lt;span class=&#34;math inline&#34;&gt;\(K (K \le M)\)&lt;/span&gt; clusters is a partitioning of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; disjoint groups &lt;span class=&#34;math inline&#34;&gt;\(\{C_1,\dots,C_K\}\)&lt;/span&gt;. Suppose we have a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluates the clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
-\arg \min_{\mathcal C} f(\mathcal C)
-\]&lt;/span&gt; The number of all possibilities of clustering with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements is called the Bell number, denoted as &lt;span class=&#34;math inline&#34;&gt;\(B_M\)&lt;/span&gt;. The calculation of the Bell number is based on dynamic programming. The number of ways to cluster &lt;span class=&#34;math inline&#34;&gt;\(M+1\)&lt;/span&gt; elements is the sum of number of ways to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; element and cluster it, with the rest belong to a new cluster&lt;/li&gt;
-&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
-&lt;li&gt;…&lt;/li&gt;
-&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Therefore, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-B_{M+1} = \sum_{i=1}^M\binom{M}{0}B_i \\
-B_0 = 1
-\end{gather}
-\]&lt;/span&gt; The exhaustive method will be computationally intractable. We need either an approximation algorithm or a scoring function with special properties.&lt;/p&gt;
-&lt;h3 id=&#34;k-means&#34;&gt;K-means&lt;/h3&gt;
-&lt;p&gt;K-means assumes there are &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; clusters. This greatly eliminates many possibilities described above. Its objective is &lt;span class=&#34;math display&#34;&gt;\[
-\min_{c_1,\dots,c_K}\sum_{i=1}^M||x^{(i)} - c_{z^{(i)}}||^2_2, \text{ where }z^{(i)} = \arg \min_{j \in \{1,\dots,K\}}||x^{(i)}-c_j||^2_2
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)}\)&lt;/span&gt; is also the cluster center index &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is assigned to. K-means’ objective is assign each point to the closest cluster center and minimize the within-cluster square errors. If &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is known, let &lt;span class=&#34;math inline&#34;&gt;\(C_j = \{x^{(i)}|z^{(i)} = j\}\)&lt;/span&gt; be the set of points assigned to Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;, the cluster center of Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
-c_j = \frac{1}{|C_j|}\sum_{x^{(i)} \in C_j}x^{(i)}
-\]&lt;/span&gt; Initially, however, &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is not known. K-means solves this by randomly pick up initial cluster centers and enter the assign data points - update cluster centers loop, until the cluster centers converge or become satisfactory.&lt;/p&gt;
-&lt;p&gt;Rewrite the objective of K-means: &lt;span class=&#34;math display&#34;&gt;\[
-\min_{z,c}(l(z,c) = \sum_{i=1}^M||x^{(i)}- c_{z^{(i)}}||^2_2)
-\]&lt;/span&gt; K-means is in essence a coordinate descent of the objective &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. The main loop of K-means is:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Assign data points to its nearest cluster center, i.e. minimizing over &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;Update cluster centers according to the points assigned to, i.e. minimizing over &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is monotonically decreasing after each step in above loop. &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is also bounded by &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and thus K-means will converge finally.&lt;/p&gt;
-&lt;p&gt;One problem with K-means is that it assumes that each cluster has a circular shape because of the Euclidean distance it uses.&lt;/p&gt;
-&lt;h3 id=&#34;gaussian-mixture-model&#34;&gt;Gaussian Mixture Model&lt;/h3&gt;
-&lt;p&gt;A cluster can be modelled by a multi-variate Gaussian with elliptical shape. The elliptical shape controlled by the covariance matrix. The location is controlled by the mean. Gaussian Mixture Model a weighted sum of Gaussians: &lt;span class=&#34;math display&#34;&gt;\[
-p(x) = \sum_{j=1}^K\pi_j\mathcal N(x;\mu_j, \Sigma_j)
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\pi_j\)&lt;/span&gt; is the prior that a sample is generated from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(x;\mu_j, \Sigma_j)\)&lt;/span&gt; is the probability to generate the sample &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. Put it together, &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; is the total probability of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; over its latent &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, with &lt;span class=&#34;math inline&#34;&gt;\(z = j\)&lt;/span&gt; representing the prior condition that &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is sampled from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math display&#34;&gt;\[
-p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^Kp(x|z = j)p(z = j)
-\]&lt;/span&gt; GMM is learned by &lt;span class=&#34;math display&#34;&gt;\[
-\max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)})\Big) \\
-s.t.\quad \sum_{j=1}^K\pi_j = 1
-\]&lt;/span&gt; The log-likelihood function form will be &lt;span class=&#34;math display&#34;&gt;\[
-\max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) = \log L(\pi,\mu,\Sigma)\Big) \\
-s.t.\quad \sum_{j=1}^K\pi_j = 1
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;attempt-with-lagrange-multiplier&#34;&gt;Attempt with [[Lagrange Multiplier]]&lt;/h4&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)}) = \prod_{i=1}^M\sum_{j=1}^Kp(z_j)p(x|z = z_j) = \prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) \\
-l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j)\big)
-= \sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j)
-\end{gather}
-\]&lt;/span&gt; The Lagrangian function will be &lt;span class=&#34;math display&#34;&gt;\[
-J(\pi,\mu,\Sigma,\lambda) = -\sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) + \lambda(\sum_{j=1}^K\pi_j - 1)
-\]&lt;/span&gt; This expression is just too hard to zero the derivatives. For example, writing &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(x^{(i)};\mu_j, \Sigma_j)\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)}_j\)&lt;/span&gt;, then take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\frac{\partial J}{\partial \pi_j} = -\sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_j, \Sigma_j)} + \lambda \\
-\lambda = \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_1, \Sigma_1)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_1, \Sigma_1)} 
-= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_2, \Sigma_2)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_2, \Sigma_2} 
-= \dots 
-= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K, \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K}
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;attempt-with-expectation-maximization&#34;&gt;Attempt with [[Expectation Maximization]]&lt;/h4&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-L(\pi,\mu,\Sigma) = \prod_{i=1}^M p(x^{(i)}) = \prod_{i=1}^M \sum_{j=1}^K p(x^{(i)}, z^{(i)} = j) \\
-l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)\big)
-= \sum_{i=1}^M\log\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)
-\end{gather}
-\]&lt;/span&gt; By Jensen’s Inequality, if &lt;span class=&#34;math inline&#34;&gt;\(\forall j \in \{1,\dots,K\}, \alpha_j \ge 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^K\alpha_j = 1\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-l(\pi,\mu,\Sigma) &amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) \\
-&amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
-&amp;amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneqq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
-\end{aligned}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. If we can enlarge &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;, we can guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is increasing in this process. If we fix &lt;span class=&#34;math inline&#34;&gt;\(\pi,\mu,\Sigma\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; can be easily optimized by the equality condition of Jensen’s Inequality. The equality holds if and only if &lt;span class=&#34;math display&#34;&gt;\[
-\frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} = c^{(i)}, i=1,\dots M, j=1,\dots,K
-\]&lt;/span&gt; In this case, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\frac{\mathcal N(x^{(i)};\mu_1, \Sigma_1) \pi_j + \dots + \mathcal N(x^{(i)};\mu_K, \Sigma_j) \pi_K}{\alpha^{(i)}_1 + \dots + \alpha^{(i)}_K} = c^{(i)} \\
-c^{(i)} = \sum_{j=1}^K \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j \\
-\begin{aligned}
-\alpha^{(i)}_j &amp;amp;= \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\sum_{j=1}^K \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j} \\
-&amp;amp;= \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} \\
-&amp;amp;= \frac{p(x^{(i)}, z^{(i)} = j)}{p(x^{(i)})} \\
-&amp;amp;= p(z^{(i)} = j|x^{(i)})
-\end{aligned}
-\end{gather}
-\]&lt;/span&gt; If we fix &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-B(\alpha,\pi,\mu,\Sigma) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j - \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \alpha^{(i)}_j \\
-\end{aligned}
-\]&lt;/span&gt; Grouping terms in &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; that are relevant to &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;, we are to &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\max_\pi \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j \\
-s.t.\quad \sum_{i=1}^K \pi_j = 1
-\end{gather}
-\]&lt;/span&gt; We do this by Lagrangian Multipliers: &lt;span class=&#34;math display&#34;&gt;\[
-J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(1 - \sum_{i=1}^K\pi_i )
-\]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\pi_k\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
-\frac{\partial J}{\partial \pi_k} =\sum_{i=1}^M \frac{\alpha^{(i)}_k}{\pi_k} - \lambda \\
-\pi_k = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{\lambda}
-\]&lt;/span&gt; With the knowledge that &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^K \pi_j = 1, \sum_{i=1}^M\alpha^{(i)}_j = 1\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
-\pi_k = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{M}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\mu_k\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{\partial B}{\partial \mu_k} &amp;amp;= \frac{\partial \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\partial \mu_k} \\
-&amp;amp;= \frac{-\frac{1}{2} \partial \sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k)^T \Sigma_k^{-1} (x^{(i)} - \mu_k)}{\partial \mu_k} \\
-&amp;amp;= \sum_{i=1}^M \alpha^{(i)}_k \Sigma_k^{-1} (x^{(i)} - \mu_k) \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\sum_{i=1}^M \alpha^{(i)}_k \Sigma_k^{-1} (x^{(i)} - \mu_k) &amp;amp;= 0 \\
-\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) &amp;amp;= 0, \text{ by the invertibility of $\Sigma_j^{-1}$} \\
-\mu_k &amp;amp;= \frac{\sum_{i=1}^M \alpha^{(i)}_k x^{(i)}}{M}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_k\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{\partial B}{\partial \Sigma_k} &amp;amp;= \frac{\partial \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\partial \Sigma_k} \\
-&amp;amp;= \frac{-\frac{1}{2} \partial \sum_{i=1}^M \alpha^{(i)}_k ((x^{(i)} - \mu_k)^T \Sigma_k^{-1} (x^{(i)} - \mu_k) + \log|\Sigma_k|)}{\partial \Sigma_k} \\
-&amp;amp;= -\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
--\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) &amp;amp;= 0 \\
-\sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T + I) &amp;amp;= 0 \\
-\Sigma_k &amp;amp;= \frac{\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T}{\sum_{i=1}^M \alpha^{(i)}_k} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;soft-k-means&#34;&gt;Soft K-means&lt;/h3&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\alpha^{(i)}_j\)&lt;/span&gt; in GMM, which measures how likely the sample &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is generated from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian, can be viewed as a contribution of sample &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; to the Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;. That is, a sample can contribute different portions to different clusters and these portions add up to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;In cases where &lt;span class=&#34;math inline&#34;&gt;\(\pi_j = \frac{1}{K}, \Sigma_k = I\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}}\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2) \\
-\alpha^{(i)}_j = p(z^{(i)} = j | x^{(i)}) = \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I) \frac{1}{K}}{\frac{1}{K} \sum_{k=1}^K \mathcal N(x;\mu_k, I)} = \frac{\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2)}{\sum_{k=1}^K \exp(-\frac{1}{2}||x^{(k)}-\mu_j||^2_2)}
-\end{gather}
-\]&lt;/span&gt; The “Soft K-means” comes from the softmax of the Euclidean distance.&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Linear Regression</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/linear-regression/</link>
-      <pubDate>Fri, 14 Jan 2022 21:19:17 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-regression/</guid>
-      <description>
-
-&lt;h2 id=&#34;linear-regression&#34;&gt;Linear Regression&lt;/h2&gt;
-&lt;p&gt;Given a dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \in \R^N\)&lt;/span&gt; is the feature vector and &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} \in R\)&lt;/span&gt; is the output, learn a linear function &lt;span class=&#34;math inline&#34;&gt;\(f = w^Tx + b: \R^N \mapsto \R\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(w \in \R^N, b \in \R\)&lt;/span&gt;, that best predicts the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; for any feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. The “best” is usually measured by the Mean Square Error: &lt;span class=&#34;math display&#34;&gt;\[
-MSE(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} - f(x^{(i)}))^2
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;ordinary-least-squares&#34;&gt;Ordinary Least Squares&lt;/h3&gt;
-&lt;p&gt;OLS selects the linear regression parameters &lt;span class=&#34;math inline&#34;&gt;\(w, b\)&lt;/span&gt; the minimize the MSE: &lt;span class=&#34;math display&#34;&gt;\[
-w^\star, b^\star = \arg \min_{w,b}\frac{1}{M}\sum_{i=1}^M(y^{(i)} - w^Tx^{(i)} - b)^2
-\]&lt;/span&gt; This is equivalent to the below Least Squares problem. Let &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-X = 
-\left [
-\begin{array}{c|c}
-(x^{(1)})^T &amp;amp; 1 \\
-(x^{(2)})^T &amp;amp; 1 \\
-\vdots &amp;amp; \vdots \\
-(x^{(M)})^T &amp;amp; 1
-\end{array}
-\right ], 
-W = \begin{bmatrix}
-w \\
-b \\
-\end{bmatrix},
-Y = \begin{bmatrix}
-y^{(1)} \\
-y^{(2)} \\
-\vdots \\
-y^{(M)}
-\end{bmatrix} \\
-\\
-XW =  Y
-\end{gather}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; may not lie in the column space of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Therefore we have to approximate &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; by &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-X\hat W = proj_{Col(X)}Y \Rightarrow Y &amp;amp;- X\hat W \in Nul(X^T) \Rightarrow\\
-X^T(Y - X\hat W) &amp;amp;= 0 \\
-X^TX\hat W &amp;amp;= X^TY
-\end{aligned}
-\]&lt;/span&gt; Columns of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; are independent &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is not invertible, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt;. We can get one specific &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; by enforcing regularization on &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; or adding more samples when &lt;span class=&#34;math inline&#34;&gt;\(M &amp;lt; N + 1\)&lt;/span&gt;. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible, there is unique solution that &lt;span class=&#34;math inline&#34;&gt;\(\hat W = (X^TX)^{-1}X^TY\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;This gives the same result with minimizing the MSE: &lt;span class=&#34;math display&#34;&gt;\[
-W^\star = \arg \min_{W}MSE(W) = \frac{1}{M}(Y - XW)^T(Y - XW)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{\partial MSE}{\partial W} &amp;amp;= \frac{\partial(Y^TY - Y^TXW - W^TX^TY + W^TX^TXW)}{\partial W} \\
-&amp;amp;= \frac{\partial(Y^TY - Y^TXW - Y^TXW + (XW)^TXW)}{\partial W} \\
-&amp;amp;= -2X^TY + 2X^TXW \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-0 = -2X^TY + 2X^TXW^\star \\
-X^TXW^\star = X^TY 
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;There are chances that &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is too large, making equation (7) too computationally expensive. In this case, we can use gradient descent. The update rule will be &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-W^{(t+1)} &amp;amp;= W^{(t)} - \frac{\eta}{2}\nabla MSE(W^{(t)}) \\
-&amp;amp;= W^{(t)} - \eta(X^TXW^{(t)} -X^TY)
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;a-probabilistic-view&#34;&gt;A Probabilistic View&lt;/h4&gt;
-&lt;h5 id=&#34;maximum-likelihood-estimation&#34;&gt;Maximum Likelihood Estimation&lt;/h5&gt;
-&lt;p&gt;In classification task, &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the feature, &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is the label; in regression task, &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the ‘label’, &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is the ‘feature’. From a probabilistic point of view, we would like estimate &lt;span class=&#34;math inline&#34;&gt;\(p(feature|label)\)&lt;/span&gt;. In this case, we treat &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; as the ‘feature’ composed of a deterministic function with a noise sampled from an identical and independent Gaussian distribution, i.e., for random variable &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X, \mathcal Y\)&lt;/span&gt; (to distinguish from matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;), &lt;span class=&#34;math display&#34;&gt;\[
-\mathcal Y = \mathcal XW + \epsilon, \text{ where }p(\epsilon;\sigma^2) = \mathcal N(\epsilon;0, \sigma^2)
-\]&lt;/span&gt; Thus, &lt;span class=&#34;math display&#34;&gt;\[
-p(Y|X;W,\sigma^2) = p(\epsilon=Y - XW;\sigma^2) = \mathcal N(Y - XW;0,\sigma^2I)
-\]&lt;/span&gt; Then OLS can be attacked by Maximum Likelihood Estimation. The log-likelihood function will be&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-l(W,\sigma^2) &amp;amp;= \log(L(W, \sigma^2)) = \log(p(Y|X;W,\sigma^2)) = \log \mathcal N(Y - XW;0,\sigma^2I) \\
-&amp;amp;= \log(\frac{1}{\sqrt{(2\pi)^M|\sigma^2I|}}e^{-\frac{1}{2\sigma^2}(Y - XW)^T(Y - XW)}) \\
-&amp;amp;= -\frac{1}{2\sigma^2}(Y - XW)^T(Y - XW) - \frac{M}{2}\log \sigma^2 - \frac{M}{2}\log 2\pi
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\arg \max_{W,\sigma^2}l(W, \sigma^2) &amp;amp;= \arg \max_{W,\sigma^2}-\frac{1}{2\sigma^2}(Y - XW)^T(Y - XW) - \frac{M}{2}\log \sigma^2 - \frac{M}{2}\log 2\pi \\
-&amp;amp;= \arg \min_{W,\sigma^2}\frac{1}{2\sigma^2}(Y - XW)^T(Y - XW) + \frac{M}{2}\log \sigma^2 \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; and make it &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to give &lt;span class=&#34;math inline&#34;&gt;\(W^\star\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\frac{1}{\sigma^2}(X^TXW^\star - X^TY) = 0 \\
-X^TXW^\star = X^TY
-\end{gather}
-\]&lt;/span&gt; Substitute the solution &lt;span class=&#34;math inline&#34;&gt;\(W^\star\)&lt;/span&gt; back, take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; and make it &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to give &lt;span class=&#34;math inline&#34;&gt;\(\sigma^{\star2}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\frac{M}{2\sigma^{\star2}} - \frac{(Y - XW^\star)^T(Y - XW^\star)}{2(\sigma^{\star2})^2} = 0 \\
-\sigma^{\star2} = \frac{1}{M}(Y - XW^\star)^T(Y - XW^\star)
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h5 id=&#34;maximizing-a-posteriori&#34;&gt;Maximizing a Posteriori&lt;/h5&gt;
-&lt;p&gt;If we add a priori to &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; by &lt;span class=&#34;math inline&#34;&gt;\(W \sim \mathcal N(0,\frac{C}{2}I)\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(p(W) \propto \exp(-\frac{1}{C}W^TW)\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p(W|X, Y) &amp;amp;= \frac{p(W, X, Y)}{p(X, Y)} \\
-&amp;amp;= \frac{p(Y|X, W)P(X, W)}{P(X, Y)} \\
-&amp;amp;= \frac{p(Y|X, W)P(W)P(X)}{P(X, Y)} \\
-&amp;amp;= \frac{p(Y|X, W)P(W)}{P(Y|X)} \\
-&amp;amp;\propto p(Y|X,W)p(W)
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-W^\star = \arg \max_W p(W|X,Y)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;ridge-regression&#34;&gt;Ridge Regression&lt;/h3&gt;
-&lt;p&gt;By adding a regularization term to OLS objective we obtain the Ridge Regression: &lt;span class=&#34;math display&#34;&gt;\[
-\min_{W} \frac{1}{2}||Y - XW||^2_2 + \frac{\alpha}{2}||W||^2_2
-\]&lt;/span&gt; By regularization, we are “shrink” the amount of &lt;span class=&#34;math inline&#34;&gt;\(||W||_2\)&lt;/span&gt;, whose magnitude is controlled by the &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;. We prefer smaller weights because:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;smaller weights are more robust to the perturbations of input&lt;/li&gt;
-&lt;li&gt;there are better chances to zero out some dimensions of the input feature, which may be uninformative&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The constant term before the sum of square errors that before &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; are not of significance. We choose them to be &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{2}\)&lt;/span&gt; because this gives a nicer closed-form solution to &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;. Take derivative of the objective w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; and make it &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
--X^TY + X^TXW^\star + \alpha W^\star = 0 \\
-(X^TX + \alpha I)W^\star = X^TY
-\end{gather}
-\]&lt;/span&gt; The “ridge” comes from the &lt;span class=&#34;math inline&#34;&gt;\(\alpha I\)&lt;/span&gt; term, which is added to the diagonal of &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h3&gt;
-&lt;p&gt;In Ridge Regression, there is still chance that some weights are small but not zero, because the regularization term is small so far as the weights are fairly small. Think in this way: &lt;span class=&#34;math inline&#34;&gt;\(0.01^2 = 0.0001 \ll 0.01\)&lt;/span&gt;, though it is not rigid.&lt;/p&gt;
-&lt;p&gt;To get better regularization, we can change the regularization term to &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm: &lt;span class=&#34;math display&#34;&gt;\[
-\min_{W} \frac{1}{2}||Y - XW||^2_2 + \alpha||W||_1
-\]&lt;/span&gt; The above problem can be efficiently solved using Coordinate Descent or [[Least Angle Regression]].&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6018889.html&#34;&gt;Lasso回归算法： 坐标轴下降法与最小角回归法小结 - 刘建平Pinard - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/76055830&#34;&gt;LASSO回归求解 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Principal Component Analysis</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</link>
-      <pubDate>Tue, 11 Jan 2022 16:10:51 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</guid>
-      <description>
-
-&lt;h2 id=&#34;principal-component-analysis&#34;&gt;Principal Component Analysis&lt;/h2&gt;
-&lt;p&gt;Given a data matrix &lt;span class=&#34;math inline&#34;&gt;\(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)&lt;/span&gt;, the goal of PCA is to identify the directions of maximum variance contained in the data (compared with directional derivative, this is directional variance).&lt;/p&gt;
-&lt;h3 id=&#34;linear-principal-component-analysis&#34;&gt;Linear Principal Component Analysis&lt;/h3&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(v \in \mathbb R^{N \times 1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt;, the variance in the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is given by &lt;span class=&#34;math display&#34;&gt;\[
-\frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^Tx^{(i)} = v^T\bar x
-\]&lt;/span&gt; Under the assumption that data is pre-centered so that &lt;span class=&#34;math inline&#34;&gt;\(\bar x = \frac{1}{M}\sum_{i=1}^Mx^{(i)} = 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2 &amp;amp;= \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - v^T\bar x)^2 \\
-&amp;amp;= \frac{1}{M}\sum_{i=1}^Mv^T(x^{(i)} - \bar x)(x^{(i)} - \bar x)^Tv \\
-&amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M(x^{(i)} - \bar x)(x^{(i)} - \bar x)^T)v \\
-&amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^Mx^{(i)}(x^{(i)})^T)v \\
-&amp;amp;= \frac{1}{M}v^TXX^Tv \text{ (by column-row expansion)} \\
-\end{aligned}
-\]&lt;/span&gt; Suppose we want to identify the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; of the maximum variance, we can formulate the problem as &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\max_v \quad \frac{1}{M}v^TXX^Tv \\
-s.t.\quad v^Tv = 1
-\end{gather}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = \frac{1}{M}XX^T\)&lt;/span&gt;, which is real symmetric, we can form the Lagrangian function: &lt;span class=&#34;math display&#34;&gt;\[
-L(v, \lambda) = v^T\Sigma v + \lambda (1 - v^Tv)
-\]&lt;/span&gt; We represent the constraint as &lt;span class=&#34;math inline&#34;&gt;\(1 - v^Tv = 0\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(v^Tv - 1 = 0\)&lt;/span&gt;. The reason is if we take derivative w.r.t &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
-\frac{\partial L}{\partial v} = 2\Sigma v - 2\lambda v
-\]&lt;/span&gt; which is more intuitive than &lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial L}{\partial v} = 2\Sigma v + 2\lambda v\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Let the derivative be &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to have &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(v^tv = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v \ne 0\)&lt;/span&gt;, which means the optimal solution &lt;span class=&#34;math inline&#34;&gt;\((\lambda^*, v^*)\)&lt;/span&gt; must be a pair of nontrivial eigen of &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-v^* = v_i, \lambda^* = \lambda_i
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(v_i\)&lt;/span&gt; is rescaled to &lt;span class=&#34;math inline&#34;&gt;\(v_i^Tv_i = 1\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Substituting the result back to the objective to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{1}{M}v^TXX^Tv &amp;amp;= (v_i)^T\Sigma v_i \\
-&amp;amp;= (v_i)^T\lambda_iv_i \\
-&amp;amp;= \lambda_i(v_i)^Tv_i \\
-&amp;amp;= \lambda_i
-\end{aligned}
-\]&lt;/span&gt; So the &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; largest directions of variance will be the &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_N\)&lt;/span&gt;, corresponding to the eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 &amp;gt; \lambda_2 &amp;gt; ... &amp;gt; \lambda_N\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h4 id=&#34;another-view-on-pca&#34;&gt;Another view on PCA&lt;/h4&gt;
-&lt;p&gt;Finding &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; different &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; to &lt;span class=&#34;math display&#34;&gt;\[
-\max_{v} \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)})^2 \\
-\]&lt;/span&gt; is equivalent to finding &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; different &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; to &lt;span class=&#34;math display&#34;&gt;\[
-\min_{v} \frac{1}{M}\sum_{i=1}^M||x^{(i)} - v^Tx^{(i)}v||^2
-\]&lt;/span&gt; both subject to &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt; and inter-orthogonality. This second notation is essentially the projection of &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; because &lt;span class=&#34;math inline&#34;&gt;\(||v|| = 1\)&lt;/span&gt; and thus the objective indicates minimizing the overall approximation error.&lt;/p&gt;
-&lt;h3 id=&#34;kernel-pca&#34;&gt;Kernel PCA&lt;/h3&gt;
-&lt;p&gt;We can map the data to a higher-dimension space: &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \to \phi(x^{(i)})\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{X} = [\phi(x^{(1)}), \phi(x^{(2)}), ..., \phi(x^{(M)})]\)&lt;/span&gt;. Kernel tricks allow us not to explicitly define &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;, but to only focus on the inner product of mapped data: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal K(x^{(i)}, x^{(j)}) = \phi(x^{i})^T\phi(x^{j})\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Similarly, the variance along direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(v^Tv=1\)&lt;/span&gt;, is given by &lt;span class=&#34;math display&#34;&gt;\[
-\frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^T\phi (x^{(i)}) = v^T\bar\phi(x)
-\]&lt;/span&gt; Under the assumption that data is pre-centered so that &lt;span class=&#34;math inline&#34;&gt;\(\bar\phi(x) = \frac{1}{M}\sum_{i=1}^M\phi(x^{(i)}) = 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2 &amp;amp;= \frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - v^T\bar\phi(x))^2 \\
-&amp;amp;= \frac{1}{M}\sum_{i=1}^Mv^T(\phi(x^{(i)}) - \bar{\phi(x)})(\phi (x^{(i)}) - \bar\phi(x))^Tv \\
-&amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M(\phi(x^{(i)}) - \bar\phi(x))(\phi (x^{(i)}) - \bar\phi(x))^T)v \\
-&amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M\phi(x^{(i)})(\phi(x^{(i)})^T)v \\
-&amp;amp;= \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \text{ (by column-row expansion)} \\
-\end{aligned}
-\]&lt;/span&gt; Then comes the standard form of linear PCA. Let &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = \frac{1}{M}\mathcal{X}\mathcal{X}^T\)&lt;/span&gt;, we would like to solve &lt;span class=&#34;math display&#34;&gt;\[
-\max_v\quad \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \\
-s.t.\quad v^Tv=1
-\]&lt;/span&gt; This is equivalent to solving &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvectors. Unfortunately, this cannot be directly solved like linear PCA since we don’t have &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;. However note that&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\Sigma v &amp;amp;= \lambda v \\
-v &amp;amp;= \frac{1}{\lambda}\Sigma v \\
-&amp;amp;= \frac{1}{M\lambda}\sum_{i=1}^M\phi(x^{(i)})[(\phi(x^{(i)})^Tv] \\
-&amp;amp;= \frac{1}{M\lambda}\sum_{i=1}^M[(\phi(x^{(i)})^Tv]\phi(x^{(i)})
-\end{aligned}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is some linear combination of &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt; and can be written as &lt;span class=&#34;math display&#34;&gt;\[
-v = \mathcal{X}\alpha, \text{ where $\alpha$ is $N \times 1$}
-\]&lt;/span&gt; Substitute back to &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{1}{M}\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= \lambda\mathcal{X}\alpha \\
-\frac{1}{M}\mathcal{X}^T\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= \lambda\mathcal{X}^T\mathcal{X}\alpha \\
-\mathcal{X}^T\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= M\lambda\mathcal{X}^T\mathcal{X}\alpha \\
-\end{aligned}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(K = \mathcal{X}^T\mathcal{X}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; is invertible, therefore, &lt;span class=&#34;math display&#34;&gt;\[
-KK\alpha = M\lambda K\alpha \\
-K\alpha = M\lambda\alpha
-\]&lt;/span&gt; We can solve &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s eigenvector. Kernel trick can be applied since that &lt;span class=&#34;math inline&#34;&gt;\(K_{ij} = (\mathcal{X}^T\mathcal{X})_{ij} = \phi(x^{(i)})^T\phi(x^{(j)})\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(M\lambda\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s eigenvalue, which is proportional to &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvalue and thus the objective. So &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s largest &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; eigenvalues correspond to &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; largest objective respectively. &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(\alpha_1, \alpha_2, ..., \alpha_L\)&lt;/span&gt; has to be solved with constraint that &lt;span class=&#34;math inline&#34;&gt;\(\alpha_i^T\alpha_i = \frac{1}{M\lambda}\)&lt;/span&gt; because &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
-&amp;amp;= \alpha^T(\mathcal{X}^T\mathcal{X})\alpha \\
-&amp;amp;= \alpha^TK\alpha \\
-&amp;amp;= M\lambda\alpha^T\alpha \\
-&amp;amp;= 1
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Given a sample &lt;span class=&#34;math inline&#34;&gt;\(x^*\)&lt;/span&gt;, we first transform it with &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; and dot-product with &lt;span class=&#34;math inline&#34;&gt;\(v_1,\dots,v_L\)&lt;/span&gt; to get the new coordinates. To get its &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th coordinate, &lt;span class=&#34;math display&#34;&gt;\[
-\phi(x^*)^Tv_j = \phi(x^*)^T\mathcal X\alpha_j = [\mathcal K(x^*, x^{(1)}), \mathcal K(x^*, x^{(2)}), \dots, \mathcal K(x^*, x^{(M)})]\alpha_j
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;centralizing-in-kernel-trick&#34;&gt;Centralizing in Kernel Trick&lt;/h4&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\tilde\phi(x^{(i)}) = \phi(x^{(i)}) - \bar\phi(x), \tilde{\mathcal{X}} = [\tilde\phi(x^{(1)}), \tilde\phi(x^{(2)}), ..., \tilde\phi(x^{(M)})]\)&lt;/span&gt;. We have assumed that &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt; is pre-centered by subtracting &lt;span class=&#34;math inline&#34;&gt;\(\bar\phi(x)\)&lt;/span&gt;. However, as said, we didn’t explicitly define &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;, so there is no way to calculate &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt;, let alone &lt;span class=&#34;math inline&#34;&gt;\(\bar\phi(x)\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;From another perspective, the objective of pre-centering is to get &lt;span class=&#34;math inline&#34;&gt;\(\tilde K = \tilde{\mathcal{X}}\tilde{\mathcal{X}}^T = \sum_{i=1}^M\tilde\phi(x^{(i)})\tilde\phi(x^{(i)})^T\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{1}_{M \times 1}\)&lt;/span&gt; represent a &lt;span class=&#34;math inline&#34;&gt;\(M \times 1\)&lt;/span&gt; column vector with all elements being &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\bar\phi(x) = \frac{1}{M}(\phi(x^{(1)}) + \phi(x^{(2)}) + ... + \phi(x^{(M)})) = \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{1}_M\)&lt;/span&gt; represents a &lt;span class=&#34;math inline&#34;&gt;\(M \times M\)&lt;/span&gt; matrix with all elements being &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{M}\)&lt;/span&gt;. Pre-center all data to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\tilde{\mathcal{X}} &amp;amp;= [\tilde\phi(x^{(1)}), \tilde\phi(x^{(2)}), ..., \tilde\phi(x^{(M)})]\\
-&amp;amp;= [\phi(x_1) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}, \phi(x^{(2)}) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}, ..., \phi(x^{(M)}) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}] \\
-&amp;amp;= [\phi(x^{(1)}), \phi(x^{(2)}), ..., \phi(x^{(M)})] - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}\mathbb{1}_{M \times 1}^T \\
-&amp;amp;= \mathcal{X} - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}\mathbb{1}_{M \times 1}^T \\
-&amp;amp;= \mathcal{X} - \mathcal{X}\mathbb{1}_M \\
-\tilde K &amp;amp;= \tilde{\mathcal{X}}^T\tilde{\mathcal{X}} \\
-&amp;amp;= (\mathcal{X} - \mathcal{X}\mathbb{1}_M)^T(\mathcal{X} - \mathcal{X}\mathbb{1}_M) \\
-&amp;amp;= (\mathcal{X}(I - \mathbb{1}_M))^T\mathcal{X}(I - \mathbb{1}_M) \\
-&amp;amp;= (I - \mathbb{1}_M)^T\mathcal{X}^T\mathcal{X}(I - \mathbb{1}_M) \\
-&amp;amp;= (I - \mathbb{1}_M)K(I - \mathbb{1}_M) \\
-\tilde K_{ij} &amp;amp;= (\tilde{\mathcal{X}}^T\tilde{\mathcal{X}})_{ij} \\
-&amp;amp;= \tilde\phi(x^{(i)})^T\tilde\phi(x^{(j)})\\
-&amp;amp;= (\phi(x^{(i)}) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1})^T(\phi(x^{(j)}) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}) \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;explained-variance&#34;&gt;Explained Variance&lt;/h3&gt;
-&lt;p&gt;It is a question in real application that how many principal components to choose to represent the original data. Explained variance can be a good index on this. We can choose a number of principal components such that they “explains” a certain percentage &lt;span class=&#34;math inline&#34;&gt;\(\tau\)&lt;/span&gt; of the original data.&lt;/p&gt;
-&lt;p&gt;Specifically, &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{M}v_i^TXX^Tv_i\)&lt;/span&gt; is the directional variance explained along &lt;span class=&#34;math inline&#34;&gt;\(v_i\)&lt;/span&gt;, or the variance of the first dimension of transformed data samples. We may choose the first &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; principal components such that &lt;span class=&#34;math display&#34;&gt;\[
-\frac{1}{M}\sum_{i=1}^k v_i^TXX^Tv_i \ge \tau \sum_{i=1}^N \sigma_i^2
-\]&lt;/span&gt; &lt;a href=&#34;%5B数据降维:%20核主成分分析(Kernel%20PCA)原理解析%20-%20知乎%20(zhihu.com)%5D(https://zhuanlan.zhihu.com/p/59775730)&#34;&gt;Kernel PCA&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/22569/pca-and-proportion-of-variance-explained&#34;&gt;Explained variance&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Fisher&#39;s Linear Discriminant</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/</link>
-      <pubDate>Fri, 07 Jan 2022 13:50:38 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/</guid>
-      <description>
-
-&lt;h2 id=&#34;fishers-linear-discriminant&#34;&gt;Fisher’s Linear Discriminant&lt;/h2&gt;
-&lt;h3 id=&#34;two-class&#34;&gt;Two-class&lt;/h3&gt;
-&lt;p&gt;Assume we have a set of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;-dimensional samples &lt;span class=&#34;math inline&#34;&gt;\(D = \{x^{(i)}\}^M_{i=1}\)&lt;/span&gt; , &lt;span class=&#34;math inline&#34;&gt;\(M_1\)&lt;/span&gt; of which belong to Class &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(M_2\)&lt;/span&gt; to Class &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(M_1 + M_2 = M\)&lt;/span&gt;). We seek to obtain a scalar &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; by projecting &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; onto a unit vector &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)} = v^Tx^{(i)}\)&lt;/span&gt;. Of all the possibilities we would like to select the one that maximizes the separability of the scalars between classes.&lt;/p&gt;
-&lt;p&gt;The mean of each class in the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-space and the &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space is &lt;span class=&#34;math display&#34;&gt;\[
-\mu_c = \frac{\sum_{i=1}^M\mathbb I[y^{(i)} = c]x^{(i)}}{\sum_{i=1}^M\mathbb I[y^{(i)} = c]} \\
-\tilde \mu_c = \frac{\sum_{i=1}^M\mathbb I[y^{(i)} = c]v^T x^{(i)}}{\sum_{i=1}^M\mathbb I[y^{(i)} = c]} = v^T\mu_c\\
-\]&lt;/span&gt; The scatter of each class in the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-space and the &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space is defined as &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-S_c &amp;amp;= \sum_{i=1}^M \mathbb I[y^{(i)} = c](x^{(i)} - \mu_c)(x^{(i)} - \mu_c)^T \\
-\tilde s^2_c &amp;amp;= \sum_{i=1}^M\ \mathbb I[y^{(i)} = c](z^{(i)} - \tilde u_c)^2 \\
-&amp;amp;= \sum_{i=1}^M\ \mathbb I[y^{(i)} = c](v^Tx^{(i)} - v^Tu_c)^2 \\
-&amp;amp;= \sum_{i=1}^M\ \mathbb I[y^{(i)} = c]v^T(x^{(i)} - u_c)v^T(x^{(i)} - u_c) \\
-&amp;amp;= \sum_{i=1}^M\ \mathbb I[y^{(i)} = c]v^T(x^{(i)} - u_c)(x^{(i)} - u_c)^Tv \\
-&amp;amp;= v^TS_cv
-\end{aligned}
-\]&lt;/span&gt; FLD suggests in &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space maximizing the distance among the means of classes (inter-class scatter) and minimizing the variance over each class (within-class scatter), i.e. &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\max_v J(v) &amp;amp;\coloneqq \frac{(\tilde \mu_1 - \tilde \mu_2)^2}{\tilde s^2_1 + \tilde s^2_2} \\
-&amp;amp;= \frac{(v^T\mu_1 - v^T\mu_2)^2}{v^TS_1v + v^TS_2v} \\
-&amp;amp;= \frac{v^T(\mu_1 - \mu_2)(\mu_1 - \mu_2)^Tv}{v^T(S_1 + S_2)v} \\
-\end{aligned}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(S_W = S_1 + S_2\)&lt;/span&gt; is called within-class scatter, &lt;span class=&#34;math inline&#34;&gt;\(S_B = (\mu_1 - \mu_2)(\mu_1 - \mu_2)^T\)&lt;/span&gt; is called inter-class scatter. Then, &lt;span class=&#34;math display&#34;&gt;\[
-J(v) = \frac{v^TS_Bv}{v^TS_Wv} \\
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{\partial J}{\partial v} &amp;amp;= v^TS_Wv \frac{\partial v^TS_Bv}{\partial v} - v^TS_Bv \frac{\partial v^TS_Wv}{\partial v}&amp;amp; \\
-&amp;amp;= (v^TS_Wv) 2S_Bv- (v^TS_Bv) 2S_Wv  \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-(v^TS_Wv) 2S_Bv- (v^TS_Bv) 2S_Wv &amp;amp;= 0 \\
-S_Bv - \frac{(v^TS_Bv)}{(v^TS_Wv)} S_Wv &amp;amp;= 0 \\
-S_Bv &amp;amp;= J(v) S_Wv
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(S_W\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is some eigenvector of &lt;span class=&#34;math inline&#34;&gt;\(S^{-1}_WS_B\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-S^{-1}_WS_Bv = J(v) v
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(S_Bv = (\mu_1 - \mu_2)(\mu_1 - \mu_2)^Tv = \alpha(\mu_1 - \mu_2)\)&lt;/span&gt; always points to the same direction as &lt;span class=&#34;math inline&#34;&gt;\((\mu_1 - \mu_2)\)&lt;/span&gt;. Thus we can immediately give a &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; and verify: &lt;span class=&#34;math display&#34;&gt;\[
-v = S^{-1}_W(\mu_1 - \mu_2)
-\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
-S^{-1}_WS_B\underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v = S^{-1}_W\alpha(\mu_1 - \mu_2) = \underbrace{\alpha}_{J(v)} \underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v \\
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;multi-class&#34;&gt;Multi-class&lt;/h3&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Bias-variance Decomposition</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/</link>
-      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/</guid>
-      <description>
-
-&lt;h2 id=&#34;bias-variance-decomposition&#34;&gt;Bias-variance Decomposition&lt;/h2&gt;
-&lt;p&gt;The notation used is as follows:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th style=&#34;text-align: center;&#34;&gt;Symbol&lt;/th&gt;
-&lt;th style=&#34;text-align: left;&#34;&gt;Notation&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the dataset&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the sample&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(y_\mathcal D\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the observation of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt;, affected by noise&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the real value of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\bar y\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the mean of the real values&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the model learned with &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the prediction of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\bar f(x)\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the expectation of prediction of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(l(f(x), y_\mathcal D)\)&lt;/span&gt;&lt;/td&gt;
-&lt;td style=&#34;text-align: left;&#34;&gt;the loss function, chosen to be squared error&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;By assuming that the observation errors averages to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, the expectation of the error will be &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
-&amp;amp;= E[(f(x) - y_\mathcal D)^2] = E\{[(f(x) - \bar f(x) + (\bar f(x) - y_\mathcal D)]^2\} \\
-&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(\bar f(x) - y_\mathcal D)^2] + 2E[(f(x) - \bar f(x))(\bar f(x) - y_\mathcal D)] \\
-&amp;amp;= E[(f(x) - \bar f(x))^2] + E\{[(\bar f(x) - y) + (y - y_\mathcal D)]^2\} \\
-&amp;amp;\quad + 2\underbrace{E[f(x) - \bar f(x)]}_0 E[\bar f(x) - y_\mathcal D] \\
-&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(\bar f(x) - y)^2] + E[(y - y_\mathcal D)^2] + 2E[(\bar f(x) - y)(y - y_\mathcal D)] \\
-&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E\{[(\bar f(x) - \bar y) + (\bar y - y)]^2\} \\
-&amp;amp;\quad + 2E[\bar f(x) - y] \underbrace{E[y - y_\mathcal D]}_0 \\
-&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E\{[(\bar f(x) - \bar y) + (\bar y - y)]^2\} \\
-&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E[(\bar f(x) - \bar y)^2] + E[(\bar y - y)^2] + 2E[(\bar f(x) - \bar y)(\bar y - y)] \\
-&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E[(\bar f(x) - \bar y)^2] + E[(\bar y - y)^2] \\
-&amp;amp;\quad + 2E[\bar f(x) - \bar y]\underbrace{E[\bar y - y]}_0 \\
-&amp;amp;= \underbrace{E[(f(x) - \bar f(x))^2]}_{variance} + \underbrace{E[(\bar f(x) - \bar y)^2]}_{bias^2} + \underbrace{E[(y - y_\mathcal D)^2]}_{noise} + \underbrace{E[(\bar y - y)^2]}_{scatter} \\
-\end{aligned}
-\]&lt;/span&gt; &lt;a href=&#34;https://medium.com/analytics-vidhya/5-ways-to-achieve-right-balance-of-bias-and-variance-in-ml-model-f734fea6116&#34;&gt;5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -830,6 +353,141 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
     </item>
     
     <item>
+      <title>Linear Regression</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/linear-regression/</link>
+      <pubDate>Fri, 14 Jan 2022 21:19:17 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-regression/</guid>
+      <description>
+
+&lt;h2 id=&#34;linear-regression&#34;&gt;Linear Regression&lt;/h2&gt;
+&lt;p&gt;Given a dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \in \R^N\)&lt;/span&gt; is the feature vector and &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} \in R\)&lt;/span&gt; is the output, learn a linear function &lt;span class=&#34;math inline&#34;&gt;\(f = w^Tx + b: \R^N \mapsto \R\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(w \in \R^N, b \in \R\)&lt;/span&gt;, that best predicts the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; for any feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. The “best” is usually measured by the Mean Square Error: &lt;span class=&#34;math display&#34;&gt;\[
+MSE(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} - f(x^{(i)}))^2
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ordinary-least-squares&#34;&gt;Ordinary Least Squares&lt;/h3&gt;
+&lt;p&gt;OLS selects the linear regression parameters &lt;span class=&#34;math inline&#34;&gt;\(w, b\)&lt;/span&gt; the minimize the MSE: &lt;span class=&#34;math display&#34;&gt;\[
+w^\star, b^\star = \arg \min_{w,b}\frac{1}{M}\sum_{i=1}^M(y^{(i)} - w^Tx^{(i)} - b)^2
+\]&lt;/span&gt; This is equivalent to the below Least Squares problem. Let &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+X = 
+\left [
+\begin{array}{c|c}
+(x^{(1)})^T &amp;amp; 1 \\
+(x^{(2)})^T &amp;amp; 1 \\
+\vdots &amp;amp; \vdots \\
+(x^{(M)})^T &amp;amp; 1
+\end{array}
+\right ], 
+W = \begin{bmatrix}
+w \\
+b \\
+\end{bmatrix},
+Y = \begin{bmatrix}
+y^{(1)} \\
+y^{(2)} \\
+\vdots \\
+y^{(M)}
+\end{bmatrix} \\
+\\
+XW =  Y
+\end{gather}
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; may not lie in the column space of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Therefore we have to approximate &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; by &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+X\hat W = proj_{Col(X)}Y \Rightarrow Y &amp;amp;- X\hat W \in Nul(X^T) \Rightarrow\\
+X^T(Y - X\hat W) &amp;amp;= 0 \\
+X^TX\hat W &amp;amp;= X^TY
+\end{aligned}
+\]&lt;/span&gt; Columns of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; are independent &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is not invertible, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt;. We can get one specific &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; by enforcing regularization on &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; or adding more samples when &lt;span class=&#34;math inline&#34;&gt;\(M &amp;lt; N + 1\)&lt;/span&gt;. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible, there is unique solution that &lt;span class=&#34;math inline&#34;&gt;\(\hat W = (X^TX)^{-1}X^TY\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;This gives the same result with minimizing the MSE: &lt;span class=&#34;math display&#34;&gt;\[
+W^\star = \arg \min_{W}MSE(W) = \frac{1}{M}(Y - XW)^T(Y - XW)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{\partial MSE}{\partial W} &amp;amp;= \frac{\partial(Y^TY - Y^TXW - W^TX^TY + W^TX^TXW)}{\partial W} \\
+&amp;amp;= \frac{\partial(Y^TY - Y^TXW - Y^TXW + (XW)^TXW)}{\partial W} \\
+&amp;amp;= -2X^TY + 2X^TXW \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+0 = -2X^TY + 2X^TXW^\star \\
+X^TXW^\star = X^TY 
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;There are chances that &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is too large, making equation (7) too computationally expensive. In this case, we can use gradient descent. The update rule will be &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+W^{(t+1)} &amp;amp;= W^{(t)} - \frac{\eta}{2}\nabla MSE(W^{(t)}) \\
+&amp;amp;= W^{(t)} - \eta(X^TXW^{(t)} -X^TY)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;a-probabilistic-view&#34;&gt;A Probabilistic View&lt;/h4&gt;
+&lt;h5 id=&#34;maximum-likelihood-estimation&#34;&gt;Maximum Likelihood Estimation&lt;/h5&gt;
+&lt;p&gt;In classification task, &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the feature, &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is the label; in regression task, &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the ‘label’, &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is the ‘feature’. From a probabilistic point of view, we would like estimate &lt;span class=&#34;math inline&#34;&gt;\(p(feature|label)\)&lt;/span&gt;. In this case, we treat &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; as the ‘feature’ composed of a deterministic function with a noise sampled from an identical and independent Gaussian distribution, i.e., for random variable &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X, \mathcal Y\)&lt;/span&gt; (to distinguish from matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;), &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal Y = \mathcal XW + \epsilon, \text{ where }p(\epsilon;\sigma^2) = \mathcal N(\epsilon;0, \sigma^2)
+\]&lt;/span&gt; Thus, &lt;span class=&#34;math display&#34;&gt;\[
+p(Y|X;W,\sigma^2) = p(\epsilon=Y - XW;\sigma^2) = \mathcal N(Y - XW;0,\sigma^2I)
+\]&lt;/span&gt; Then OLS can be attacked by Maximum Likelihood Estimation. The log-likelihood function will be&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+l(W,\sigma^2) &amp;amp;= \log(L(W, \sigma^2)) = \log(p(Y|X;W,\sigma^2)) = \log \mathcal N(Y - XW;0,\sigma^2I) \\
+&amp;amp;= \log(\frac{1}{\sqrt{(2\pi)^M|\sigma^2I|}}e^{-\frac{1}{2\sigma^2}(Y - XW)^T(Y - XW)}) \\
+&amp;amp;= -\frac{1}{2\sigma^2}(Y - XW)^T(Y - XW) - \frac{M}{2}\log \sigma^2 - \frac{M}{2}\log 2\pi
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\arg \max_{W,\sigma^2}l(W, \sigma^2) &amp;amp;= \arg \max_{W,\sigma^2}-\frac{1}{2\sigma^2}(Y - XW)^T(Y - XW) - \frac{M}{2}\log \sigma^2 - \frac{M}{2}\log 2\pi \\
+&amp;amp;= \arg \min_{W,\sigma^2}\frac{1}{2\sigma^2}(Y - XW)^T(Y - XW) + \frac{M}{2}\log \sigma^2 \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; and make it &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to give &lt;span class=&#34;math inline&#34;&gt;\(W^\star\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\frac{1}{\sigma^2}(X^TXW^\star - X^TY) = 0 \\
+X^TXW^\star = X^TY
+\end{gather}
+\]&lt;/span&gt; Substitute the solution &lt;span class=&#34;math inline&#34;&gt;\(W^\star\)&lt;/span&gt; back, take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; and make it &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to give &lt;span class=&#34;math inline&#34;&gt;\(\sigma^{\star2}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\frac{M}{2\sigma^{\star2}} - \frac{(Y - XW^\star)^T(Y - XW^\star)}{2(\sigma^{\star2})^2} = 0 \\
+\sigma^{\star2} = \frac{1}{M}(Y - XW^\star)^T(Y - XW^\star)
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h5 id=&#34;maximizing-a-posteriori&#34;&gt;Maximizing a Posteriori&lt;/h5&gt;
+&lt;p&gt;If we add a priori to &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; by &lt;span class=&#34;math inline&#34;&gt;\(W \sim \mathcal N(0,\frac{C}{2}I)\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(p(W) \propto \exp(-\frac{1}{C}W^TW)\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+p(W|X, Y) &amp;amp;= \frac{p(W, X, Y)}{p(X, Y)} \\
+&amp;amp;= \frac{p(Y|X, W)P(X, W)}{P(X, Y)} \\
+&amp;amp;= \frac{p(Y|X, W)P(W)P(X)}{P(X, Y)} \\
+&amp;amp;= \frac{p(Y|X, W)P(W)}{P(Y|X)} \\
+&amp;amp;\propto p(Y|X,W)p(W)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+W^\star = \arg \max_W p(W|X,Y)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ridge-regression&#34;&gt;Ridge Regression&lt;/h3&gt;
+&lt;p&gt;By adding a regularization term to OLS objective we obtain the Ridge Regression: &lt;span class=&#34;math display&#34;&gt;\[
+\min_{W} \frac{1}{2}||Y - XW||^2_2 + \frac{\alpha}{2}||W||^2_2
+\]&lt;/span&gt; By regularization, we are “shrink” the amount of &lt;span class=&#34;math inline&#34;&gt;\(||W||_2\)&lt;/span&gt;, whose magnitude is controlled by the &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;. We prefer smaller weights because:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;smaller weights are more robust to the perturbations of input&lt;/li&gt;
+&lt;li&gt;there are better chances to zero out some dimensions of the input feature, which may be uninformative&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The constant term before the sum of square errors that before &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; are not of significance. We choose them to be &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{2}\)&lt;/span&gt; because this gives a nicer closed-form solution to &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;. Take derivative of the objective w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; and make it &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+-X^TY + X^TXW^\star + \alpha W^\star = 0 \\
+(X^TX + \alpha I)W^\star = X^TY
+\end{gather}
+\]&lt;/span&gt; The “ridge” comes from the &lt;span class=&#34;math inline&#34;&gt;\(\alpha I\)&lt;/span&gt; term, which is added to the diagonal of &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;lasso-regression&#34;&gt;Lasso Regression&lt;/h3&gt;
+&lt;p&gt;In Ridge Regression, there is still chance that some weights are small but not zero, because the regularization term is small so far as the weights are fairly small. Think in this way: &lt;span class=&#34;math inline&#34;&gt;\(0.01^2 = 0.0001 \ll 0.01\)&lt;/span&gt;, though it is not rigid.&lt;/p&gt;
+&lt;p&gt;To get better regularization, we can change the regularization term to &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm: &lt;span class=&#34;math display&#34;&gt;\[
+\min_{W} \frac{1}{2}||Y - XW||^2_2 + \alpha||W||_1
+\]&lt;/span&gt; The above problem can be efficiently solved using Coordinate Descent or [[Least Angle Regression]].&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6018889.html&#34;&gt;Lasso回归算法： 坐标轴下降法与最小角回归法小结 - 刘建平Pinard - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/76055830&#34;&gt;LASSO回归求解 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Non-linear Regression</title>
       <link>https://chunxy.github.io/notes/articles/machine-learning/non-linear-regression/</link>
       <pubDate>Fri, 07 Jan 2022 12:46:20 +0000</pubDate>
@@ -909,121 +567,152 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
     </item>
     
     <item>
-      <title>Linear Discriminant Analysis</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</link>
-      <pubDate>Fri, 07 Jan 2022 12:42:22 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</guid>
+      <title>Clustering</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/clustering/</link>
+      <pubDate>Sat, 09 Apr 2022 14:32:03 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/clustering/</guid>
       <description>
 
-&lt;h2 id=&#34;linear-discriminant-analysis&#34;&gt;Linear Discriminant Analysis&lt;/h2&gt;
-&lt;p&gt;Linear Discriminant Analysis is another approximation to the Bayes optimal classifier. Instead of assuming independence between each pair of input dimensions given certain label, LDA assumes a single common shared covariance matrix among the input dimensions, no matter the label is. Take the Gaussian distribution as an example: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p(x|y=C_j) &amp;amp;= \mathcal{N}(x;\mu_j, \Sigma) \\
-&amp;amp;= \frac{1}{\sqrt{(2\pi)^n|\Sigma|}}e^{-\frac{1}{2}(x-\mu_j)^T\Sigma^{-1}(x-\mu_j)}
-\end{aligned}
-\]&lt;/span&gt; Then the classification function will be &lt;span class=&#34;math inline&#34;&gt;\(f_{LDA} = \arg \max\limits_{j}p(x|y=C_j)p(y=C_j)\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;LDA’s parameters &lt;span class=&#34;math inline&#34;&gt;\(\theta = (\mu, \Sigma, \varphi)\)&lt;/span&gt; is also learned with Maximum Likelihood Estimation: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-L(\theta) &amp;amp;= \prod_{i=1}^mp(x^{(i)}, y^{(i)};\theta) \\
-&amp;amp;= \prod_{i=1}^mp(x^{(i)}|y^{(i)};\theta)p(y^{(i)})
-\end{aligned}
-\]&lt;/span&gt; The log-likelihood function will be &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-l(\theta) &amp;amp;= \log L(\theta) \\
-&amp;amp;= \sum_{i=1}^m\log p(x^{(i)}|y^{(i)};\mu,\Sigma) + \sum_{i=1}^m\log p(y^{(i)}, \varphi) \\
-\end{aligned}
-\]&lt;/span&gt; We can maximize above two summations separately.&lt;/p&gt;
-&lt;p&gt;Let &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-l_1(\mu,\Sigma) &amp;amp;= \sum_{i=1}^m\log p(x^{(i)}|y^{(i)};\mu,\Sigma) \\
-&amp;amp;= -\frac{1}{2}\sum_{i=1}^m(x^{(i)}-\mu_{j|y^{(i)}})^T\Sigma^{-1}(x^{(i)}-\mu_{j|y^{(i)}}) + \log|\Sigma| + n\log2\pi\\
-\end{aligned}
-\]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\mu_j\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{\partial l_1}{\partial \mu_j} = \sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)\Sigma^{-1}(x^{(i)} - \mu_j) \\
-\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)\Sigma^{-1}(x^{(i)} - \mu_j) &amp;amp;= 0 \\
-\Sigma^{-1}\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)(x^{(i)} - \mu_j) &amp;amp;= 0 \\
-\end{aligned}
-\]&lt;/span&gt; Since the covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt; is real-symmetric and invertible and thus its nullspace is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)(x^{(i)} - \mu_j) = 0 \\
-\mu_j = \frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)x^{(i)}}{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}
-\]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\frac{\partial l_1}{\partial \Sigma} = -\frac{1}{2}\sum_{i=1}^m(\Sigma^{-1} -\Sigma^{-1}(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T\Sigma^{-1}) \\
-\sum_{i=1}^m(\Sigma^{-1} -\Sigma^{-1}(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T\Sigma^{-1}) = 0 \\
-\Sigma^{-1}\sum_{i=1}^m(I - \Sigma^{-1}(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T) = 0 \\
-\sum_{i=1}^m(I - \Sigma^{-1}(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T) = 0 \\
-\sum_{i=1}^mI = \Sigma^{-1}\sum_{i=1}^m(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T \\
-\sum_{i=1}^m\Sigma =  \Sigma\Sigma^{-1}\sum_{i=1}^m(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T \\
-\Sigma = \frac{1}{m}\sum_{i=1}^m(x^{(i)}-\mu_j)(x^{(i)}-\mu_j)^T \\
-\end{aligned}
-\]&lt;/span&gt; Let &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-l_2(\varphi) &amp;amp;= \sum_{i=1}^m\log p(y^{(i)}; \varphi) \\
-&amp;amp;= \sum_{i=1}^m\log\prod_{j=1}^c\varphi_j^{\mathbb{I}(y^{(i)}=C_j)} \\
-&amp;amp;= \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varphi_j
-\end{aligned}
-\]&lt;/span&gt; Note that &lt;span class=&#34;math inline&#34;&gt;\(p(y^{(i)};\varphi) = \prod_{j=1}^c\varphi_j^{\mathbb{I}(y^{(i)}=C_j)} = \sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\varphi_j\)&lt;/span&gt;. We chose the product notation because it could be easily “logged”.&lt;/p&gt;
-&lt;p&gt;There is also a constraint in maximization of &lt;span class=&#34;math inline&#34;&gt;\(l_2\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^c\varphi_j = 1\)&lt;/span&gt;. We can form the corresponding Lagrangian function: &lt;span class=&#34;math display&#34;&gt;\[
-J(\varphi, \lambda) = \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varphi_j + \lambda(-1 + \sum_{j=1}^c\varphi_j)
-\]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\varphi_j\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h2 id=&#34;clustering&#34;&gt;Clustering&lt;/h2&gt;
+&lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\)&lt;/span&gt;, a clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; of the &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; points into &lt;span class=&#34;math inline&#34;&gt;\(K (K \le M)\)&lt;/span&gt; clusters is a partitioning of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; disjoint groups &lt;span class=&#34;math inline&#34;&gt;\(\{C_1,\dots,C_K\}\)&lt;/span&gt;. Suppose we have a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluates the clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
+\arg \min_{\mathcal C} f(\mathcal C)
+\]&lt;/span&gt; The number of all possibilities of clustering with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements is called the Bell number, denoted as &lt;span class=&#34;math inline&#34;&gt;\(B_M\)&lt;/span&gt;. The calculation of the Bell number is based on dynamic programming. The number of ways to cluster &lt;span class=&#34;math inline&#34;&gt;\(M+1\)&lt;/span&gt; elements is the sum of number of ways to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; element and cluster it, with the rest belong to a new cluster&lt;/li&gt;
+&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
+&lt;li&gt;…&lt;/li&gt;
+&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Therefore, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-\frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{\varphi_j} + \lambda = 0 \\
-\varphi_j = -\frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{\lambda}
+B_{M+1} = \sum_{i=1}^M\binom{M}{0}B_i \\
+B_0 = 1
 \end{gather}
-\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^c\varphi_j = 1\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
--\frac{\sum_{j=1}^c\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{\lambda} = 1 \\
-\lambda = -M
-\end{gather}
-\]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
-\varphi_j = \frac{\sum_{i=1}^m\mathbb{I}(y^{(i)}=C_j)}{M}
+\]&lt;/span&gt; The exhaustive method will be computationally intractable. We need either an approximation algorithm or a scoring function with special properties.&lt;/p&gt;
+&lt;h3 id=&#34;k-means&#34;&gt;K-means&lt;/h3&gt;
+&lt;p&gt;K-means assumes there are &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; clusters. This greatly eliminates many possibilities described above. Its objective is &lt;span class=&#34;math display&#34;&gt;\[
+\min_{c_1,\dots,c_K}\sum_{i=1}^M||x^{(i)} - c_{z^{(i)}}||^2_2, \text{ where }z^{(i)} = \arg \min_{j \in \{1,\dots,K\}}||x^{(i)}-c_j||^2_2
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)}\)&lt;/span&gt; is also the cluster center index &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is assigned to. K-means’ objective is assign each point to the closest cluster center and minimize the within-cluster square errors. If &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is known, let &lt;span class=&#34;math inline&#34;&gt;\(C_j = \{x^{(i)}|z^{(i)} = j\}\)&lt;/span&gt; be the set of points assigned to Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;, the cluster center of Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+c_j = \frac{1}{|C_j|}\sum_{x^{(i)} \in C_j}x^{(i)}
+\]&lt;/span&gt; Initially, however, &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is not known. K-means solves this by randomly pick up initial cluster centers and enter the assign data points - update cluster centers loop, until the cluster centers converge or become satisfactory.&lt;/p&gt;
+&lt;p&gt;Rewrite the objective of K-means: &lt;span class=&#34;math display&#34;&gt;\[
+\min_{z,c}(l(z,c) = \sum_{i=1}^M||x^{(i)}- c_{z^{(i)}}||^2_2)
+\]&lt;/span&gt; K-means is in essence a coordinate descent of the objective &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. The main loop of K-means is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assign data points to its nearest cluster center, i.e. minimizing over &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Update cluster centers according to the points assigned to, i.e. minimizing over &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is monotonically decreasing after each step in above loop. &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is also bounded by &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and thus K-means will converge finally.&lt;/p&gt;
+&lt;p&gt;One problem with K-means is that it assumes that each cluster has a circular shape because of the Euclidean distance it uses.&lt;/p&gt;
+&lt;h3 id=&#34;gaussian-mixture-model&#34;&gt;Gaussian Mixture Model&lt;/h3&gt;
+&lt;p&gt;A cluster can be modelled by a multi-variate Gaussian with elliptical shape. The elliptical shape controlled by the covariance matrix. The location is controlled by the mean. Gaussian Mixture Model a weighted sum of Gaussians: &lt;span class=&#34;math display&#34;&gt;\[
+p(x) = \sum_{j=1}^K\pi_j\mathcal N(x;\mu_j, \Sigma_j)
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\pi_j\)&lt;/span&gt; is the prior that a sample is generated from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(x;\mu_j, \Sigma_j)\)&lt;/span&gt; is the probability to generate the sample &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. Put it together, &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; is the total probability of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; over its latent &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, with &lt;span class=&#34;math inline&#34;&gt;\(z = j\)&lt;/span&gt; representing the prior condition that &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is sampled from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math display&#34;&gt;\[
+p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^Kp(x|z = j)p(z = j)
+\]&lt;/span&gt; GMM is learned by &lt;span class=&#34;math display&#34;&gt;\[
+\max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)})\Big) \\
+s.t.\quad \sum_{j=1}^K\pi_j = 1
+\]&lt;/span&gt; The log-likelihood function form will be &lt;span class=&#34;math display&#34;&gt;\[
+\max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) = \log L(\pi,\mu,\Sigma)\Big) \\
+s.t.\quad \sum_{j=1}^K\pi_j = 1
 \]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Eckart-Young-Mirsky Theorem</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</link>
-      <pubDate>Fri, 07 Jan 2022 12:40:50 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</guid>
-      <description>
-
-&lt;h2 id=&#34;eckart-young-mirsky-theorem&#34;&gt;Eckart-Young-Mirsky Theorem&lt;/h2&gt;
-&lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as [[Frobenius Normalization|Frobenius norm]]: &lt;span class=&#34;math display&#34;&gt;\[
-||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
-\]&lt;/span&gt; Firstly we prove that, if &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is orthogonal, then &lt;span class=&#34;math inline&#34;&gt;\(||UA||_F = ||AU||_F = ||A||_F\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h4 id=&#34;attempt-with-lagrange-multiplier&#34;&gt;Attempt with [[Lagrange Multiplier]]&lt;/h4&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)}) = \prod_{i=1}^M\sum_{j=1}^Kp(z_j)p(x|z = z_j) = \prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) \\
+l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j)\big)
+= \sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j)
+\end{gather}
+\]&lt;/span&gt; The Lagrangian function will be &lt;span class=&#34;math display&#34;&gt;\[
+J(\pi,\mu,\Sigma,\lambda) = -\sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) + \lambda(\sum_{j=1}^K\pi_j - 1)
+\]&lt;/span&gt; This expression is just too hard to zero the derivatives. For example, writing &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(x^{(i)};\mu_j, \Sigma_j)\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)}_j\)&lt;/span&gt;, then take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\frac{\partial J}{\partial \pi_j} = -\sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_j, \Sigma_j)} + \lambda \\
+\lambda = \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_1, \Sigma_1)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_1, \Sigma_1)} 
+= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_2, \Sigma_2)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_2, \Sigma_2} 
+= \dots 
+= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K, \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K}
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;attempt-with-expectation-maximization&#34;&gt;Attempt with [[Expectation Maximization]]&lt;/h4&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+L(\pi,\mu,\Sigma) = \prod_{i=1}^M p(x^{(i)}) = \prod_{i=1}^M \sum_{j=1}^K p(x^{(i)}, z^{(i)} = j) \\
+l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)\big)
+= \sum_{i=1}^M\log\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)
+\end{gather}
+\]&lt;/span&gt; By Jensen’s Inequality, if &lt;span class=&#34;math inline&#34;&gt;\(\forall j \in \{1,\dots,K\}, \alpha_j \ge 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^K\alpha_j = 1\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-||UA||_F^2 &amp;amp;= tr((UA)^TUA) \\
-&amp;amp;= tr(A^TUUA) \\
-&amp;amp;= tr(A^TA) \\
-&amp;amp;= ||A||_F^2
+l(\pi,\mu,\Sigma) &amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) \\
+&amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
+&amp;amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneqq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
 \end{aligned}
-\]&lt;/span&gt; The same can be derived for &lt;span class=&#34;math inline&#34;&gt;\(||AU||_F\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;For any &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;,&lt;/p&gt;
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. If we can enlarge &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;, we can guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is increasing in this process. If we fix &lt;span class=&#34;math inline&#34;&gt;\(\pi,\mu,\Sigma\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; can be easily optimized by the equality condition of Jensen’s Inequality. The equality holds if and only if &lt;span class=&#34;math display&#34;&gt;\[
+\frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} = c^{(i)}, i=1,\dots M, j=1,\dots,K
+\]&lt;/span&gt; In this case, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\frac{\mathcal N(x^{(i)};\mu_1, \Sigma_1) \pi_j + \dots + \mathcal N(x^{(i)};\mu_K, \Sigma_j) \pi_K}{\alpha^{(i)}_1 + \dots + \alpha^{(i)}_K} = c^{(i)} \\
+c^{(i)} = \sum_{j=1}^K \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j \\
+\begin{aligned}
+\alpha^{(i)}_j &amp;amp;= \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\sum_{j=1}^K \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j} \\
+&amp;amp;= \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} \\
+&amp;amp;= \frac{p(x^{(i)}, z^{(i)} = j)}{p(x^{(i)})} \\
+&amp;amp;= p(z^{(i)} = j|x^{(i)})
+\end{aligned}
+\end{gather}
+\]&lt;/span&gt; If we fix &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+B(\alpha,\pi,\mu,\Sigma) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j - \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \alpha^{(i)}_j \\
+\end{aligned}
+\]&lt;/span&gt; Grouping terms in &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; that are relevant to &lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;, we are to &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\max_\pi \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j \\
+s.t.\quad \sum_{i=1}^K \pi_j = 1
+\end{gather}
+\]&lt;/span&gt; We do this by Lagrangian Multipliers: &lt;span class=&#34;math display&#34;&gt;\[
+J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(1 - \sum_{i=1}^K\pi_i )
+\]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\pi_k\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial J}{\partial \pi_k} =\sum_{i=1}^M \frac{\alpha^{(i)}_k}{\pi_k} - \lambda \\
+\pi_k = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{\lambda}
+\]&lt;/span&gt; With the knowledge that &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^K \pi_j = 1, \sum_{i=1}^M\alpha^{(i)}_j = 1\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\pi_k = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{M}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\mu_k\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{\partial B}{\partial \mu_k} &amp;amp;= \frac{\partial \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\partial \mu_k} \\
+&amp;amp;= \frac{-\frac{1}{2} \partial \sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k)^T \Sigma_k^{-1} (x^{(i)} - \mu_k)}{\partial \mu_k} \\
+&amp;amp;= \sum_{i=1}^M \alpha^{(i)}_k \Sigma_k^{-1} (x^{(i)} - \mu_k) \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-||X - Y||_F^2 &amp;amp;= ||U\Sigma V^T - Y||_F^2 \\
-&amp;amp;= ||U^TU\Sigma V^TV - U^TYV||_F^2 \\
-&amp;amp;= ||\Sigma - U^TYV||_F^2 \\
+\sum_{i=1}^M \alpha^{(i)}_k \Sigma_k^{-1} (x^{(i)} - \mu_k) &amp;amp;= 0 \\
+\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) &amp;amp;= 0, \text{ by the invertibility of $\Sigma_j^{-1}$} \\
+\mu_k &amp;amp;= \frac{\sum_{i=1}^M \alpha^{(i)}_k x^{(i)}}{M}
 \end{aligned}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(Z = U^TYV\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is also of rank &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_k\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-||X - Y||_F^2 &amp;amp;= ||\Sigma - Z||_F^2 \\
-&amp;amp;= \sum_{ij}(\Sigma_{ij} - Z_{ij})^2 \\
-&amp;amp;= \sum_{i=1}^R(\sigma_{i} - Z_{ii})^2 + \sum_{i&amp;gt;R}^{\min\{M,N\}}Z_{ii}^2 + \sum_{i \ne j}Z_{ij}^2 \\
+\frac{\partial B}{\partial \Sigma_k} &amp;amp;= \frac{\partial \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\partial \Sigma_k} \\
+&amp;amp;= \frac{-\frac{1}{2} \partial \sum_{i=1}^M \alpha^{(i)}_k ((x^{(i)} - \mu_k)^T \Sigma_k^{-1} (x^{(i)} - \mu_k) + \log|\Sigma_k|)}{\partial \Sigma_k} \\
+&amp;amp;= -\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) \\
 \end{aligned}
-\]&lt;/span&gt; The minimum is achieved if &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+-\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) &amp;amp;= 0 \\
+\sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T + I) &amp;amp;= 0 \\
+\Sigma_k &amp;amp;= \frac{\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T}{\sum_{i=1}^M \alpha^{(i)}_k} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;soft-k-means&#34;&gt;Soft K-means&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\alpha^{(i)}_j\)&lt;/span&gt; in GMM, which measures how likely the sample &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is generated from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian, can be viewed as a contribution of sample &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; to the Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;. That is, a sample can contribute different portions to different clusters and these portions add up to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In cases where &lt;span class=&#34;math inline&#34;&gt;\(\pi_j = \frac{1}{K}, \Sigma_k = I\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-Z_{ii} = \sigma_{i}, i = 1, 2, \dots, K \\
-Z_{ii} = \sigma_{i}, i = K, K + 1, \dots, R - 1 \\
-Z_{ii} = 0, i = R, R + 1, \dots, \min\{M,N\} \\
-Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
+p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}}\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2) \\
+\alpha^{(i)}_j = p(z^{(i)} = j | x^{(i)}) = \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I) \frac{1}{K}}{\frac{1}{K} \sum_{k=1}^K \mathcal N(x;\mu_k, I)} = \frac{\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2)}{\sum_{k=1}^K \exp(-\frac{1}{2}||x^{(k)}-\mu_j||^2_2)}
 \end{gather}
-\]&lt;/span&gt; Such &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; exists when &lt;span class=&#34;math inline&#34;&gt;\(Y = U\Sigma_KV^T\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for [[Spectral Normalization|Spectral norm]] .&lt;/p&gt;
+\]&lt;/span&gt; The “Soft K-means” comes from the softmax of the Euclidean distance.&lt;/p&gt;
 
 
 </description>
@@ -1124,38 +813,172 @@ K \ge \frac{8\log M}{\epsilon^2}
     </item>
     
     <item>
-      <title>Machine Learning Bullet Points</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</link>
-      <pubDate>Sun, 19 Dec 2021 13:59:49 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</guid>
+      <title>Principal Component Analysis</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</link>
+      <pubDate>Tue, 11 Jan 2022 16:10:51 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</guid>
       <description>
 
-&lt;h2 id=&#34;machine-learning-bullet-points&#34;&gt;Machine Learning Bullet Points&lt;/h2&gt;
-&lt;p&gt;This document lists out miscellaneous points besides the machine learning algorithms that are worth noting.&lt;/p&gt;
-&lt;h3 id=&#34;data-and-feature&#34;&gt;Data and Feature&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Data splitting method&lt;/li&gt;
-&lt;li&gt;Feature extraction&lt;/li&gt;
-&lt;li&gt;Feature normalization&lt;/li&gt;
-&lt;li&gt;Imbalanced data&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;model&#34;&gt;Model&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Discriminative and generative model&lt;/li&gt;
-&lt;li&gt;Regularization and overfitting&lt;/li&gt;
-&lt;li&gt;Multi-class classification with binary classifier&lt;/li&gt;
-&lt;li&gt;Unsupervised learning
-&lt;ul&gt;
-&lt;li&gt;Discover inherent properties (latent variables) in the data&lt;/li&gt;
-&lt;li&gt;Including:
-&lt;ul&gt;
-&lt;li&gt;[[Clustering]]&lt;/li&gt;
-&lt;li&gt;[[Dimension Reduction|Dimension reduction]]&lt;/li&gt;
-&lt;li&gt;Manifold embedding&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h3&gt;
+&lt;h2 id=&#34;principal-component-analysis&#34;&gt;Principal Component Analysis&lt;/h2&gt;
+&lt;p&gt;Given a data matrix &lt;span class=&#34;math inline&#34;&gt;\(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)&lt;/span&gt;, the goal of PCA is to identify the directions of maximum variance contained in the data (compared with directional derivative, this is directional variance).&lt;/p&gt;
+&lt;h3 id=&#34;linear-principal-component-analysis&#34;&gt;Linear Principal Component Analysis&lt;/h3&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(v \in \mathbb R^{N \times 1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt;, the variance in the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is given by &lt;span class=&#34;math display&#34;&gt;\[
+\frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^Tx^{(i)} = v^T\bar x
+\]&lt;/span&gt; Under the assumption that data is pre-centered so that &lt;span class=&#34;math inline&#34;&gt;\(\bar x = \frac{1}{M}\sum_{i=1}^Mx^{(i)} = 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2 &amp;amp;= \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - v^T\bar x)^2 \\
+&amp;amp;= \frac{1}{M}\sum_{i=1}^Mv^T(x^{(i)} - \bar x)(x^{(i)} - \bar x)^Tv \\
+&amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M(x^{(i)} - \bar x)(x^{(i)} - \bar x)^T)v \\
+&amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^Mx^{(i)}(x^{(i)})^T)v \\
+&amp;amp;= \frac{1}{M}v^TXX^Tv \text{ (by column-row expansion)} \\
+\end{aligned}
+\]&lt;/span&gt; Suppose we want to identify the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; of the maximum variance, we can formulate the problem as &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\max_v \quad \frac{1}{M}v^TXX^Tv \\
+s.t.\quad v^Tv = 1
+\end{gather}
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = \frac{1}{M}XX^T\)&lt;/span&gt;, which is real symmetric, we can form the Lagrangian function: &lt;span class=&#34;math display&#34;&gt;\[
+L(v, \lambda) = v^T\Sigma v + \lambda (1 - v^Tv)
+\]&lt;/span&gt; We represent the constraint as &lt;span class=&#34;math inline&#34;&gt;\(1 - v^Tv = 0\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(v^Tv - 1 = 0\)&lt;/span&gt;. The reason is if we take derivative w.r.t &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial L}{\partial v} = 2\Sigma v - 2\lambda v
+\]&lt;/span&gt; which is more intuitive than &lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial L}{\partial v} = 2\Sigma v + 2\lambda v\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Let the derivative be &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to have &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(v^tv = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v \ne 0\)&lt;/span&gt;, which means the optimal solution &lt;span class=&#34;math inline&#34;&gt;\((\lambda^*, v^*)\)&lt;/span&gt; must be a pair of nontrivial eigen of &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+v^* = v_i, \lambda^* = \lambda_i
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(v_i\)&lt;/span&gt; is rescaled to &lt;span class=&#34;math inline&#34;&gt;\(v_i^Tv_i = 1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Substituting the result back to the objective to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{1}{M}v^TXX^Tv &amp;amp;= (v_i)^T\Sigma v_i \\
+&amp;amp;= (v_i)^T\lambda_iv_i \\
+&amp;amp;= \lambda_i(v_i)^Tv_i \\
+&amp;amp;= \lambda_i
+\end{aligned}
+\]&lt;/span&gt; So the &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; largest directions of variance will be the &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_N\)&lt;/span&gt;, corresponding to the eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 &amp;gt; \lambda_2 &amp;gt; ... &amp;gt; \lambda_N\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;another-view-on-pca&#34;&gt;Another view on PCA&lt;/h4&gt;
+&lt;p&gt;Finding &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; different &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; to &lt;span class=&#34;math display&#34;&gt;\[
+\max_{v} \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)})^2 \\
+\]&lt;/span&gt; is equivalent to finding &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; different &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; to &lt;span class=&#34;math display&#34;&gt;\[
+\min_{v} \frac{1}{M}\sum_{i=1}^M||x^{(i)} - v^Tx^{(i)}v||^2
+\]&lt;/span&gt; both subject to &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt; and inter-orthogonality. This second notation is essentially the projection of &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; because &lt;span class=&#34;math inline&#34;&gt;\(||v|| = 1\)&lt;/span&gt; and thus the objective indicates minimizing the overall approximation error.&lt;/p&gt;
+&lt;h3 id=&#34;kernel-pca&#34;&gt;Kernel PCA&lt;/h3&gt;
+&lt;p&gt;We can map the data to a higher-dimension space: &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \to \phi(x^{(i)})\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{X} = [\phi(x^{(1)}), \phi(x^{(2)}), ..., \phi(x^{(M)})]\)&lt;/span&gt;. Kernel tricks allow us not to explicitly define &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;, but to only focus on the inner product of mapped data: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal K(x^{(i)}, x^{(j)}) = \phi(x^{i})^T\phi(x^{j})\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Similarly, the variance along direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(v^Tv=1\)&lt;/span&gt;, is given by &lt;span class=&#34;math display&#34;&gt;\[
+\frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^T\phi (x^{(i)}) = v^T\bar\phi(x)
+\]&lt;/span&gt; Under the assumption that data is pre-centered so that &lt;span class=&#34;math inline&#34;&gt;\(\bar\phi(x) = \frac{1}{M}\sum_{i=1}^M\phi(x^{(i)}) = 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2 &amp;amp;= \frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - v^T\bar\phi(x))^2 \\
+&amp;amp;= \frac{1}{M}\sum_{i=1}^Mv^T(\phi(x^{(i)}) - \bar{\phi(x)})(\phi (x^{(i)}) - \bar\phi(x))^Tv \\
+&amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M(\phi(x^{(i)}) - \bar\phi(x))(\phi (x^{(i)}) - \bar\phi(x))^T)v \\
+&amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M\phi(x^{(i)})(\phi(x^{(i)})^T)v \\
+&amp;amp;= \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \text{ (by column-row expansion)} \\
+\end{aligned}
+\]&lt;/span&gt; Then comes the standard form of linear PCA. Let &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = \frac{1}{M}\mathcal{X}\mathcal{X}^T\)&lt;/span&gt;, we would like to solve &lt;span class=&#34;math display&#34;&gt;\[
+\max_v\quad \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \\
+s.t.\quad v^Tv=1
+\]&lt;/span&gt; This is equivalent to solving &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvectors. Unfortunately, this cannot be directly solved like linear PCA since we don’t have &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;. However note that&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Sigma v &amp;amp;= \lambda v \\
+v &amp;amp;= \frac{1}{\lambda}\Sigma v \\
+&amp;amp;= \frac{1}{M\lambda}\sum_{i=1}^M\phi(x^{(i)})[(\phi(x^{(i)})^Tv] \\
+&amp;amp;= \frac{1}{M\lambda}\sum_{i=1}^M[(\phi(x^{(i)})^Tv]\phi(x^{(i)})
+\end{aligned}
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is some linear combination of &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt; and can be written as &lt;span class=&#34;math display&#34;&gt;\[
+v = \mathcal{X}\alpha, \text{ where $\alpha$ is $N \times 1$}
+\]&lt;/span&gt; Substitute back to &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{1}{M}\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= \lambda\mathcal{X}\alpha \\
+\frac{1}{M}\mathcal{X}^T\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= \lambda\mathcal{X}^T\mathcal{X}\alpha \\
+\mathcal{X}^T\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= M\lambda\mathcal{X}^T\mathcal{X}\alpha \\
+\end{aligned}
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(K = \mathcal{X}^T\mathcal{X}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; is invertible, therefore, &lt;span class=&#34;math display&#34;&gt;\[
+KK\alpha = M\lambda K\alpha \\
+K\alpha = M\lambda\alpha
+\]&lt;/span&gt; We can solve &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s eigenvector. Kernel trick can be applied since that &lt;span class=&#34;math inline&#34;&gt;\(K_{ij} = (\mathcal{X}^T\mathcal{X})_{ij} = \phi(x^{(i)})^T\phi(x^{(j)})\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(M\lambda\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s eigenvalue, which is proportional to &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvalue and thus the objective. So &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s largest &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; eigenvalues correspond to &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; largest objective respectively. &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(\alpha_1, \alpha_2, ..., \alpha_L\)&lt;/span&gt; has to be solved with constraint that &lt;span class=&#34;math inline&#34;&gt;\(\alpha_i^T\alpha_i = \frac{1}{M\lambda}\)&lt;/span&gt; because &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
+&amp;amp;= \alpha^T(\mathcal{X}^T\mathcal{X})\alpha \\
+&amp;amp;= \alpha^TK\alpha \\
+&amp;amp;= M\lambda\alpha^T\alpha \\
+&amp;amp;= 1
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Given a sample &lt;span class=&#34;math inline&#34;&gt;\(x^*\)&lt;/span&gt;, we first transform it with &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; and dot-product with &lt;span class=&#34;math inline&#34;&gt;\(v_1,\dots,v_L\)&lt;/span&gt; to get the new coordinates. To get its &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th coordinate, &lt;span class=&#34;math display&#34;&gt;\[
+\phi(x^*)^Tv_j = \phi(x^*)^T\mathcal X\alpha_j = [\mathcal K(x^*, x^{(1)}), \mathcal K(x^*, x^{(2)}), \dots, \mathcal K(x^*, x^{(M)})]\alpha_j
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;centralizing-in-kernel-trick&#34;&gt;Centralizing in Kernel Trick&lt;/h4&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\tilde\phi(x^{(i)}) = \phi(x^{(i)}) - \bar\phi(x), \tilde{\mathcal{X}} = [\tilde\phi(x^{(1)}), \tilde\phi(x^{(2)}), ..., \tilde\phi(x^{(M)})]\)&lt;/span&gt;. We have assumed that &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt; is pre-centered by subtracting &lt;span class=&#34;math inline&#34;&gt;\(\bar\phi(x)\)&lt;/span&gt;. However, as said, we didn’t explicitly define &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;, so there is no way to calculate &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt;, let alone &lt;span class=&#34;math inline&#34;&gt;\(\bar\phi(x)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;From another perspective, the objective of pre-centering is to get &lt;span class=&#34;math inline&#34;&gt;\(\tilde K = \tilde{\mathcal{X}}\tilde{\mathcal{X}}^T = \sum_{i=1}^M\tilde\phi(x^{(i)})\tilde\phi(x^{(i)})^T\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{1}_{M \times 1}\)&lt;/span&gt; represent a &lt;span class=&#34;math inline&#34;&gt;\(M \times 1\)&lt;/span&gt; column vector with all elements being &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\bar\phi(x) = \frac{1}{M}(\phi(x^{(1)}) + \phi(x^{(2)}) + ... + \phi(x^{(M)})) = \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{1}_M\)&lt;/span&gt; represents a &lt;span class=&#34;math inline&#34;&gt;\(M \times M\)&lt;/span&gt; matrix with all elements being &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{M}\)&lt;/span&gt;. Pre-center all data to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\tilde{\mathcal{X}} &amp;amp;= [\tilde\phi(x^{(1)}), \tilde\phi(x^{(2)}), ..., \tilde\phi(x^{(M)})]\\
+&amp;amp;= [\phi(x_1) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}, \phi(x^{(2)}) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}, ..., \phi(x^{(M)}) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}] \\
+&amp;amp;= [\phi(x^{(1)}), \phi(x^{(2)}), ..., \phi(x^{(M)})] - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}\mathbb{1}_{M \times 1}^T \\
+&amp;amp;= \mathcal{X} - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}\mathbb{1}_{M \times 1}^T \\
+&amp;amp;= \mathcal{X} - \mathcal{X}\mathbb{1}_M \\
+\tilde K &amp;amp;= \tilde{\mathcal{X}}^T\tilde{\mathcal{X}} \\
+&amp;amp;= (\mathcal{X} - \mathcal{X}\mathbb{1}_M)^T(\mathcal{X} - \mathcal{X}\mathbb{1}_M) \\
+&amp;amp;= (\mathcal{X}(I - \mathbb{1}_M))^T\mathcal{X}(I - \mathbb{1}_M) \\
+&amp;amp;= (I - \mathbb{1}_M)^T\mathcal{X}^T\mathcal{X}(I - \mathbb{1}_M) \\
+&amp;amp;= (I - \mathbb{1}_M)K(I - \mathbb{1}_M) \\
+\tilde K_{ij} &amp;amp;= (\tilde{\mathcal{X}}^T\tilde{\mathcal{X}})_{ij} \\
+&amp;amp;= \tilde\phi(x^{(i)})^T\tilde\phi(x^{(j)})\\
+&amp;amp;= (\phi(x^{(i)}) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1})^T(\phi(x^{(j)}) - \frac{1}{M}\mathcal{X}\mathbb{1}_{M \times 1}) \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;explained-variance&#34;&gt;Explained Variance&lt;/h3&gt;
+&lt;p&gt;It is a question in real application that how many principal components to choose to represent the original data. Explained variance can be a good index on this. We can choose a number of principal components such that they “explains” a certain percentage &lt;span class=&#34;math inline&#34;&gt;\(\tau\)&lt;/span&gt; of the original data.&lt;/p&gt;
+&lt;p&gt;Specifically, &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{M}v_i^TXX^Tv_i\)&lt;/span&gt; is the directional variance explained along &lt;span class=&#34;math inline&#34;&gt;\(v_i\)&lt;/span&gt;, or the variance of the first dimension of transformed data samples. We may choose the first &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; principal components such that &lt;span class=&#34;math display&#34;&gt;\[
+\frac{1}{M}\sum_{i=1}^k v_i^TXX^Tv_i \ge \tau \sum_{i=1}^N \sigma_i^2
+\]&lt;/span&gt; &lt;a href=&#34;%5B数据降维:%20核主成分分析(Kernel%20PCA)原理解析%20-%20知乎%20(zhihu.com)%5D(https://zhuanlan.zhihu.com/p/59775730)&#34;&gt;Kernel PCA&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/22569/pca-and-proportion-of-variance-explained&#34;&gt;Explained variance&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Eckart-Young-Mirsky Theorem</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</link>
+      <pubDate>Fri, 07 Jan 2022 12:40:50 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</guid>
+      <description>
+
+&lt;h2 id=&#34;eckart-young-mirsky-theorem&#34;&gt;Eckart-Young-Mirsky Theorem&lt;/h2&gt;
+&lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as [[Frobenius Normalization|Frobenius norm]]: &lt;span class=&#34;math display&#34;&gt;\[
+||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
+\]&lt;/span&gt; Firstly we prove that, if &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is orthogonal, then &lt;span class=&#34;math inline&#34;&gt;\(||UA||_F = ||AU||_F = ||A||_F\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+||UA||_F^2 &amp;amp;= tr((UA)^TUA) \\
+&amp;amp;= tr(A^TUUA) \\
+&amp;amp;= tr(A^TA) \\
+&amp;amp;= ||A||_F^2
+\end{aligned}
+\]&lt;/span&gt; The same can be derived for &lt;span class=&#34;math inline&#34;&gt;\(||AU||_F\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;For any &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+||X - Y||_F^2 &amp;amp;= ||U\Sigma V^T - Y||_F^2 \\
+&amp;amp;= ||U^TU\Sigma V^TV - U^TYV||_F^2 \\
+&amp;amp;= ||\Sigma - U^TYV||_F^2 \\
+\end{aligned}
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(Z = U^TYV\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is also of rank &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+||X - Y||_F^2 &amp;amp;= ||\Sigma - Z||_F^2 \\
+&amp;amp;= \sum_{ij}(\Sigma_{ij} - Z_{ij})^2 \\
+&amp;amp;= \sum_{i=1}^R(\sigma_{i} - Z_{ii})^2 + \sum_{i&amp;gt;R}^{\min\{M,N\}}Z_{ii}^2 + \sum_{i \ne j}Z_{ij}^2 \\
+\end{aligned}
+\]&lt;/span&gt; The minimum is achieved if &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+Z_{ii} = \sigma_{i}, i = 1, 2, \dots, K \\
+Z_{ii} = \sigma_{i}, i = K, K + 1, \dots, R - 1 \\
+Z_{ii} = 0, i = R, R + 1, \dots, \min\{M,N\} \\
+Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
+\end{gather}
+\]&lt;/span&gt; Such &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; exists when &lt;span class=&#34;math inline&#34;&gt;\(Y = U\Sigma_KV^T\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for [[Spectral Normalization|Spectral norm]] .&lt;/p&gt;
 
 
 </description>
@@ -1224,6 +1047,183 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 &lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its isodensity maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the stacked eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
 &lt;p&gt;The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html&#34;&gt;ICA&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>RANSAC</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/ransac/</link>
+      <pubDate>Wed, 20 Apr 2022 16:38:31 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/ransac/</guid>
+      <description>
+
+&lt;h2 id=&#34;ransac&#34;&gt;RANSAC&lt;/h2&gt;
+&lt;p&gt;Outliers (noises) in the data can diverge the regression model to reduce prediction errors for them, instead of the majority real data points. &lt;strong&gt;RAN&lt;/strong&gt;dom &lt;strong&gt;SA&lt;/strong&gt;mple &lt;strong&gt;C&lt;/strong&gt;onsensus is a methodology to robustly fit the model in the presence of outliers.&lt;/p&gt;
+&lt;p&gt;RANSAC does the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Randomly sample a subset of data of an fairly enough amount for training.&lt;/li&gt;
+&lt;li&gt;Fit a model to the this subset.&lt;/li&gt;
+&lt;li&gt;Determine data points in the whole data set as inliers or outliers by comparing the residuals (prediction errors) to a threshold. The set of inliers is called a consensus set.&lt;/li&gt;
+&lt;li&gt;Repeat above for some iterations and retrain the final model with the largest consensus set (since inliers should be the majority).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Parameters of RANSAC include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; - number of points to fit the model&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; - threshold of the residual&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt; - proportion the outliers&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt; - probability of success (at least one iteration is finished with no outlier)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt; - number of iterations to be determined&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(p\text{(training subset has no outliers)} = (1 - e)^s\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(p\text{(training subset has at least one outlier)} = 1 - (1 - e)^s\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(p\text{(all T subsets have outliers)} = (1 - (1 - e)^s)^T\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We want &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+p\text{(all T subsets have outliers)} = (1 - (1 - e)^s)^T &amp;lt; 1 - \delta \\
+T &amp;gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
+\end{gather}
+\]&lt;/span&gt; The threshold &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is usually set as the median absolute deviation of &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xingshansi/p/6763668.html&#34;&gt;随机抽样一致算法（Random sample consensus，RANSAC） - 桂。 - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Fisher&#39;s Linear Discriminant</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/</link>
+      <pubDate>Fri, 07 Jan 2022 13:50:38 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/</guid>
+      <description>
+
+&lt;h2 id=&#34;fishers-linear-discriminant&#34;&gt;Fisher’s Linear Discriminant&lt;/h2&gt;
+&lt;h3 id=&#34;two-class&#34;&gt;Two-class&lt;/h3&gt;
+&lt;p&gt;Assume we have a set of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;-dimensional samples &lt;span class=&#34;math inline&#34;&gt;\(D = \{x^{(i)}\}^M_{i=1}\)&lt;/span&gt; , &lt;span class=&#34;math inline&#34;&gt;\(M_1\)&lt;/span&gt; of which belong to Class &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(M_2\)&lt;/span&gt; to Class &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(M_1 + M_2 = M\)&lt;/span&gt;). We seek to obtain a scalar &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; by projecting &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; onto a unit vector &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)} = v^Tx^{(i)}\)&lt;/span&gt;. Of all the possibilities we would like to select the one that maximizes the separability of the scalars between classes.&lt;/p&gt;
+&lt;p&gt;The mean of each class in the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-space and the &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space is &lt;span class=&#34;math display&#34;&gt;\[
+\mu_c = \frac{\sum_{i=1}^M\mathbb I[y^{(i)} = c]x^{(i)}}{\sum_{i=1}^M\mathbb I[y^{(i)} = c]} \\
+\tilde \mu_c = \frac{\sum_{i=1}^M\mathbb I[y^{(i)} = c]v^T x^{(i)}}{\sum_{i=1}^M\mathbb I[y^{(i)} = c]} = v^T\mu_c\\
+\]&lt;/span&gt; The scatter of each class in the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-space and the &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space is defined as &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+S_c &amp;amp;= \sum_{i=1}^M \mathbb I[y^{(i)} = c](x^{(i)} - \mu_c)(x^{(i)} - \mu_c)^T \\
+\tilde s^2_c &amp;amp;= \sum_{i=1}^M\ \mathbb I[y^{(i)} = c](z^{(i)} - \tilde u_c)^2 \\
+&amp;amp;= \sum_{i=1}^M\ \mathbb I[y^{(i)} = c](v^Tx^{(i)} - v^Tu_c)^2 \\
+&amp;amp;= \sum_{i=1}^M\ \mathbb I[y^{(i)} = c]v^T(x^{(i)} - u_c)v^T(x^{(i)} - u_c) \\
+&amp;amp;= \sum_{i=1}^M\ \mathbb I[y^{(i)} = c]v^T(x^{(i)} - u_c)(x^{(i)} - u_c)^Tv \\
+&amp;amp;= v^TS_cv
+\end{aligned}
+\]&lt;/span&gt; FLD suggests in &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space maximizing the distance among the means of classes (inter-class scatter) and minimizing the variance over each class (within-class scatter), i.e. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\max_v J(v) &amp;amp;\coloneqq \frac{(\tilde \mu_1 - \tilde \mu_2)^2}{\tilde s^2_1 + \tilde s^2_2} \\
+&amp;amp;= \frac{(v^T\mu_1 - v^T\mu_2)^2}{v^TS_1v + v^TS_2v} \\
+&amp;amp;= \frac{v^T(\mu_1 - \mu_2)(\mu_1 - \mu_2)^Tv}{v^T(S_1 + S_2)v} \\
+\end{aligned}
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(S_W = S_1 + S_2\)&lt;/span&gt; is called within-class scatter, &lt;span class=&#34;math inline&#34;&gt;\(S_B = (\mu_1 - \mu_2)(\mu_1 - \mu_2)^T\)&lt;/span&gt; is called inter-class scatter. Then, &lt;span class=&#34;math display&#34;&gt;\[
+J(v) = \frac{v^TS_Bv}{v^TS_Wv} \\
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\frac{\partial J}{\partial v} &amp;amp;= v^TS_Wv \frac{\partial v^TS_Bv}{\partial v} - v^TS_Bv \frac{\partial v^TS_Wv}{\partial v}&amp;amp; \\
+&amp;amp;= (v^TS_Wv) 2S_Bv- (v^TS_Bv) 2S_Wv  \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+(v^TS_Wv) 2S_Bv- (v^TS_Bv) 2S_Wv &amp;amp;= 0 \\
+S_Bv - \frac{(v^TS_Bv)}{(v^TS_Wv)} S_Wv &amp;amp;= 0 \\
+S_Bv &amp;amp;= J(v) S_Wv
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(S_W\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is some eigenvector of &lt;span class=&#34;math inline&#34;&gt;\(S^{-1}_WS_B\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+S^{-1}_WS_Bv = J(v) v
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(S_Bv = (\mu_1 - \mu_2)(\mu_1 - \mu_2)^Tv = \alpha(\mu_1 - \mu_2)\)&lt;/span&gt; always points to the same direction as &lt;span class=&#34;math inline&#34;&gt;\((\mu_1 - \mu_2)\)&lt;/span&gt;. Thus we can immediately give a &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; and verify: &lt;span class=&#34;math display&#34;&gt;\[
+v = S^{-1}_W(\mu_1 - \mu_2)
+\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+S^{-1}_WS_B\underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v = S^{-1}_W\alpha(\mu_1 - \mu_2) = \underbrace{\alpha}_{J(v)} \underbrace{S^{-1}_W(\mu_1 - \mu_2)}_v \\
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;multi-class&#34;&gt;Multi-class&lt;/h3&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Bias-variance Decomposition</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/</guid>
+      <description>
+
+&lt;h2 id=&#34;bias-variance-decomposition&#34;&gt;Bias-variance Decomposition&lt;/h2&gt;
+&lt;p&gt;The notation used is as follows:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th style=&#34;text-align: center;&#34;&gt;Symbol&lt;/th&gt;
+&lt;th style=&#34;text-align: left;&#34;&gt;Notation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the dataset&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the sample&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(y_\mathcal D\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the observation of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt;, affected by noise&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the real value of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\bar y\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the mean of the real values&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the model learned with &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the prediction of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\bar f(x)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the expectation of prediction of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(l(f(x), y_\mathcal D)\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: left;&#34;&gt;the loss function, chosen to be squared error&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;By assuming that the observation errors averages to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, the expectation of the error will be &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
+&amp;amp;= E[(f(x) - y_\mathcal D)^2] = E\{[(f(x) - \bar f(x) + (\bar f(x) - y_\mathcal D)]^2\} \\
+&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(\bar f(x) - y_\mathcal D)^2] + 2E[(f(x) - \bar f(x))(\bar f(x) - y_\mathcal D)] \\
+&amp;amp;= E[(f(x) - \bar f(x))^2] + E\{[(\bar f(x) - y) + (y - y_\mathcal D)]^2\} \\
+&amp;amp;\quad + 2\underbrace{E[f(x) - \bar f(x)]}_0 E[\bar f(x) - y_\mathcal D] \\
+&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(\bar f(x) - y)^2] + E[(y - y_\mathcal D)^2] + 2E[(\bar f(x) - y)(y - y_\mathcal D)] \\
+&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E\{[(\bar f(x) - \bar y) + (\bar y - y)]^2\} \\
+&amp;amp;\quad + 2E[\bar f(x) - y] \underbrace{E[y - y_\mathcal D]}_0 \\
+&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E\{[(\bar f(x) - \bar y) + (\bar y - y)]^2\} \\
+&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E[(\bar f(x) - \bar y)^2] + E[(\bar y - y)^2] + 2E[(\bar f(x) - \bar y)(\bar y - y)] \\
+&amp;amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E[(\bar f(x) - \bar y)^2] + E[(\bar y - y)^2] \\
+&amp;amp;\quad + 2E[\bar f(x) - \bar y]\underbrace{E[\bar y - y]}_0 \\
+&amp;amp;= \underbrace{E[(f(x) - \bar f(x))^2]}_{variance} + \underbrace{E[(\bar f(x) - \bar y)^2]}_{bias^2} + \underbrace{E[(y - y_\mathcal D)^2]}_{noise} + \underbrace{E[(\bar y - y)^2]}_{scatter} \\
+\end{aligned}
+\]&lt;/span&gt; &lt;a href=&#34;https://medium.com/analytics-vidhya/5-ways-to-achieve-right-balance-of-bias-and-variance-in-ml-model-f734fea6116&#34;&gt;5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
