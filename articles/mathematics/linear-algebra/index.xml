@@ -61,14 +61,16 @@ c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots +
 &lt;/ul&gt;
 &lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has n independent eigenvectors.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Necessity&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(AP = PD\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(P = [\rm p_1, \rm p_2, ..., \rm p_N]\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; is a diagonal matrix, &lt;span class=&#34;math display&#34;&gt;\[
 AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22}\mathrm p_2, ..., D_{NN}\mathrm p_N]
 \]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent eigenvectors&lt;/p&gt;
-&lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the corresponding eigen diagonal matrix.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the diagonal matrix filled with corresponding eigenvalues.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Sufficiency&lt;/p&gt;
 &lt;p&gt;Easy to show.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;linear-transformation&#34;&gt;Linear Transformation&lt;/h4&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then the transformation &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x \mapsto A\mathrm x\)&lt;/span&gt; in coordinate system formed by &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s columns can be viewed as &lt;span class=&#34;math inline&#34;&gt;\([\mathrm x]_{\cal B} \mapsto D[\mathrm x]_\cal B\)&lt;/span&gt; in coordinate system &lt;span class=&#34;math inline&#34;&gt;\(\cal B\)&lt;/span&gt;, which is formed by &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;’s columns.&lt;/p&gt;
@@ -295,23 +297,23 @@ AA^TU_2 = 0 = 0U_2
 (P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
 \]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} &amp;amp;= PB^T(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (P^{-1}+B^TR^{-1}B)PB^T(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (P^{-1}PB^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (B^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (B^TR^{-1}R+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= B^TR^{-1}(R+BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= B^TR^{-1} \\
+(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} &amp;amp;= PB^T(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= (P^{-1}+B^TR^{-1}B)PB^T(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= (P^{-1}PB^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= (B^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= (B^TR^{-1}R+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= B^TR^{-1}(R+BPB^T)(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= B^TR^{-1} \\
 \end{aligned}
 \]&lt;/span&gt; Its reduced form &lt;span class=&#34;math display&#34;&gt;\[
 (I_N+AB)^{-1}A = A(I_M+BA)^{-1}
 \]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-(I_N+AB)^{-1}A &amp;amp;= A(I_M+BA)^{-1} \iff\\
-A &amp;amp;= (I_N + AB)A(I_M + BA)^{-1} \iff\\
-A &amp;amp;= (A + ABA)(I_M + BA)^{-1} \iff\\
-A &amp;amp;= A(I_M + BA)(I_M + BA)^{-1} \iff\\
-A &amp;amp;= A
+(I_N+AB)^{-1}A &amp;amp;= A(I_M+BA)^{-1} \\
+\iff A &amp;amp;= (I_N + AB)A(I_M + BA)^{-1} \\
+\iff A &amp;amp;= (A + ABA)(I_M + BA)^{-1} \\
+\iff A &amp;amp;= A(I_M + BA)(I_M + BA)^{-1} \\
+\iff A &amp;amp;= A
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 

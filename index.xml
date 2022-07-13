@@ -43,8 +43,6 @@ B(1,p) = p, B(0,p) = 1 - p \\
 \Var[X] = p(1 - p)
 \end{gather*}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
-&lt;p&gt;Refer to [&lt;a href=&#34;#gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/a&gt;].&lt;/p&gt;
 
 
 </description>
@@ -210,14 +208,16 @@ c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots +
 &lt;/ul&gt;
 &lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has n independent eigenvectors.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Necessity&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(AP = PD\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(P = [\rm p_1, \rm p_2, ..., \rm p_N]\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; is a diagonal matrix, &lt;span class=&#34;math display&#34;&gt;\[
 AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22}\mathrm p_2, ..., D_{NN}\mathrm p_N]
 \]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent eigenvectors&lt;/p&gt;
-&lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the corresponding eigen diagonal matrix.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the diagonal matrix filled with corresponding eigenvalues.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Sufficiency&lt;/p&gt;
 &lt;p&gt;Easy to show.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;linear-transformation&#34;&gt;Linear Transformation&lt;/h4&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then the transformation &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x \mapsto A\mathrm x\)&lt;/span&gt; in coordinate system formed by &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s columns can be viewed as &lt;span class=&#34;math inline&#34;&gt;\([\mathrm x]_{\cal B} \mapsto D[\mathrm x]_\cal B\)&lt;/span&gt; in coordinate system &lt;span class=&#34;math inline&#34;&gt;\(\cal B\)&lt;/span&gt;, which is formed by &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;’s columns.&lt;/p&gt;
@@ -289,7 +289,8 @@ H_0(X) = \log |\mathcal A_X|
 P(X \in S_\delta) \ge 1 - \delta
 \]&lt;/span&gt; &lt;strong&gt;The essential bit content&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
 H_\delta(X) = \log |S_\delta|
-\]&lt;/span&gt; ## Shannon’s source coding theorem&lt;/p&gt;
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;shannons-source-coding-theorem&#34;&gt;Shannon’s source coding theorem&lt;/h2&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; be and ensemble with entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; bits. Given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \delta &amp;lt; 1\)&lt;/span&gt;, there exists a positive integer &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; such that for &lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 |\frac{1}{N} H_\delta (X^N) - H| &amp;lt; \epsilon
 \]&lt;/span&gt;&lt;/p&gt;
@@ -510,9 +511,9 @@ y^{p-1} (1-y)^{q-1} = y^{p-1} \sum_{i=0}^{q-1} {q-1 \choose i} 1 ^{i} (-y)^{q-1-
 f = 
 \begin{cases}
 y_1 = f_1(x_1, x_2, ..., x_n) \\
-y_2 = f_1(x_1, x_2, ..., x_n) \\
+y_2 = f_2(x_1, x_2, ..., x_n) \\
 ... \\
-y_m = f_1(x_1, x_2, ..., x_n) \\
+y_m = f_m(x_1, x_2, ..., x_n) \\
 \end{cases}
 \]&lt;/span&gt; Then Jacobian matrix is &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -1433,23 +1434,23 @@ J(\varphi, \lambda) = \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varph
 (P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
 \]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} &amp;amp;= PB^T(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (P^{-1}+B^TR^{-1}B)PB^T(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (P^{-1}PB^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (B^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= (B^TR^{-1}R+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= B^TR^{-1}(R+BPB^T)(BPB^T+R)^{-1} \iff\\
-B^TR^{-1} &amp;amp;= B^TR^{-1} \\
+(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} &amp;amp;= PB^T(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= (P^{-1}+B^TR^{-1}B)PB^T(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= (P^{-1}PB^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= (B^T+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= (B^TR^{-1}R+B^TR^{-1}BPB^T)(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= B^TR^{-1}(R+BPB^T)(BPB^T+R)^{-1} \\
+\iff B^TR^{-1} &amp;amp;= B^TR^{-1} \\
 \end{aligned}
 \]&lt;/span&gt; Its reduced form &lt;span class=&#34;math display&#34;&gt;\[
 (I_N+AB)^{-1}A = A(I_M+BA)^{-1}
 \]&lt;/span&gt; can be proved with &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-(I_N+AB)^{-1}A &amp;amp;= A(I_M+BA)^{-1} \iff\\
-A &amp;amp;= (I_N + AB)A(I_M + BA)^{-1} \iff\\
-A &amp;amp;= (A + ABA)(I_M + BA)^{-1} \iff\\
-A &amp;amp;= A(I_M + BA)(I_M + BA)^{-1} \iff\\
-A &amp;amp;= A
+(I_N+AB)^{-1}A &amp;amp;= A(I_M+BA)^{-1} \\
+\iff A &amp;amp;= (I_N + AB)A(I_M + BA)^{-1} \\
+\iff A &amp;amp;= (A + ABA)(I_M + BA)^{-1} \\
+\iff A &amp;amp;= A(I_M + BA)(I_M + BA)^{-1} \\
+\iff A &amp;amp;= A
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 
@@ -2284,12 +2285,12 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 0 &amp;lt; \lambda_i &amp;lt; C, i=1,\dots,M \\
 \end{gather}
 \]&lt;/span&gt; We attack it by Sequential Minimal Optimization.&lt;/p&gt;
-&lt;h3 id=&#34;multiclass-svm&#34;&gt;Multiclass SVM&lt;/h3&gt;
+&lt;h3 id=&#34;multi-class-svm&#34;&gt;Multi-class SVM&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1-vs-1&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;1 v.s. 1&lt;/p&gt;
 &lt;p&gt;Train 1-vs-1 SVM for all pairs of classes. Then decide by majority voting.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;1-vs-rest&lt;/p&gt;
-&lt;p&gt;Train 1-vs-rest SVM for all classes. Choose the class with the largest geometric margin (&lt;span class=&#34;math inline&#34;&gt;\(y = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; belongs to the “1”).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 v.s. rest&lt;/p&gt;
+&lt;p&gt;Train 1-vs-rest SVM for all classes (&lt;span class=&#34;math inline&#34;&gt;\(y = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; belongs to the “1”). Choose the class with the largest geometric margin.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -2509,7 +2510,7 @@ p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
 
 &lt;h2 id=&#34;f-divergence&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence can be treated as the generalization of the KL-divergence. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
-D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x
+D_f (p||q) = \int f(\frac{p(x)}{q(x)}) p(x)\ \d x
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; has to satisfy that &lt;span class=&#34;math inline&#34;&gt;\(f(1) = 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is a convex function. The reason for these two constraints is that we hope &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 D_f (p||q) = 0 \text{ when $p=q$} \\
@@ -3504,14 +3505,14 @@ P(|X-\E(X)| \ge \epsilon) &amp;amp;= \mathop \sum_{|x - \E(x)| \ge \epsilon} P(x
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是证明其它大数定理的基础工具。&lt;/p&gt;
-&lt;h3 id=&#34;依概率收敛&#34;&gt;依概率收敛&lt;/h3&gt;
+&lt;p&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD ### 依概率收敛&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成。对于一个普通数列&lt;span class=&#34;math inline&#34;&gt;\(\{x_n\}\)&lt;/span&gt;来说，若其收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，则当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;充分大时，&lt;span class=&#34;math inline&#34;&gt;\(x_n\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离可以达到任意小。而随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;的极限却不能按照这样定义，因为&lt;span class=&#34;math inline&#34;&gt;\(X_n\)&lt;/span&gt;取值不确定，不可能和某个数字&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离任意小。&lt;/p&gt;
 &lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会&lt;strong&gt;依概率收敛&lt;/strong&gt;到该事件的概率。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots,\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1\)&lt;/span&gt;，则称该随机变量序列依概率收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{P}{\to} c\)&lt;/span&gt;。或者，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;弱大数定律weak-law-of-large-numbers&#34;&gt;弱大数定律（Weak Law of large numbers）&lt;/h2&gt;
+&lt;p&gt;======= &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; raw ## 弱大数定律（Weak Law of large numbers）&lt;/p&gt;
 &lt;h3 id=&#34;chebyshev大数定律&#34;&gt;Chebyshev大数定律&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定理&lt;/p&gt;
@@ -4084,6 +4085,64 @@ E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
 \]&lt;/span&gt; &lt;a href=&#34;https://medium.com/analytics-vidhya/5-ways-to-achieve-right-balance-of-bias-and-variance-in-ml-model-f734fea6116&#34;&gt;5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium&lt;/a&gt;&lt;/p&gt;
 
 
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/</guid>
+      <description>&lt;h2 id=&#34;依概率收敛convergence-in-probability&#34;&gt;依概率收敛（convergence in probability）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成。对于一个普通数列${x_n}$来说，若其收敛于$c$，则当$n$充分大时，$x_n$和$c$的距离可以达到任意小。而随机变量序列$X_1, X_2, \dots$的极限却不能按照这样定义，因为$X_n$取值不确定，不可能总和某个数字$c$的距离任意小。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设$X_1, X_2, \dots,$是一个随机变量序列，如果存在一个常数$c$，使得对于任意$\epsilon &amp;gt; 0$，都有$\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1$，抑或是，对于任意$\epsilon &amp;gt; 0$，都有$\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0$），则称该随机变量序列&lt;strong&gt;依概率收敛&lt;/strong&gt;于$c$，记作$X_n \stackrel{P}{\to} c$。&lt;/p&gt;
+&lt;p&gt;换言之，对于任意$\epsilon, \delta &amp;gt; 0$，都存在$N &amp;gt; 0$，使得$n &amp;gt; N$时，始终有：
+$$
+0 &amp;lt; P(|X_n - c| \ge \epsilon) &amp;lt; \delta
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。&lt;/p&gt;
+&lt;h2 id=&#34;几乎必然收敛almost-sure-convergence&#34;&gt;几乎必然收敛（almost-sure convergence）&lt;/h2&gt;
+&lt;p&gt;在某些情况下，若随机变量序列能够和某个数字$c$几乎接近，我们说他几乎必然收敛。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设$X_1, X_2, \dots,$是一个随机变量序列，如果存在一个常数$c$，使得$P(\lim_{n \to \infty} X_n = c) = 1$，则称该随机变量序列&lt;strong&gt;几乎必然收敛&lt;/strong&gt;于$c$，记作$X_n \stackrel{a.s.}{\to} c$。&lt;/p&gt;
+&lt;p&gt;换言之，对于任意$\epsilon &amp;gt; 0$，都存在$N &amp;gt; 0$，使得$n &amp;gt; N$时，始终有：
+$$
+P(|X_n - c| &amp;lt; \epsilon) = 1
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;显然，几乎必然收敛是强于依概率收敛的。&lt;/p&gt;
+&lt;h2 id=&#34;l_p收敛convergence-in-l_p&#34;&gt;$L_p$收敛（convergence in $L_p$）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设$X_1, X_2, \dots,$是一个随机变量序列，对于某个$p \ge 1$，如果存在一个常数$c$，使得$\E[(\lim_{n \to \infty} X_n - c)^p] \to 0$，则称该随机变量序列**$L_p$收敛**于$c$，记作$X_n \stackrel{L_p}{\to} c$。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相比较而言，$L_P$收敛的表达式中多了一层偏差的$p$次方的测度。&lt;/p&gt;
+&lt;h3 id=&#34;均方收敛&#34;&gt;均方收敛&lt;/h3&gt;
+&lt;p&gt;当$p=2$时，$L_P$收敛又称作均方收敛。根据[[大数定律和中心极限定理#Chebyshev不等式|Chebyshev不等式]]：
+$$
+P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
+$$
+依概率收敛成立时，均方收敛也成立，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。&lt;/p&gt;
+&lt;h2 id=&#34;依分布收敛convergence-in-distribution&#34;&gt;依分布收敛（convergence in distribution）&lt;/h2&gt;
+&lt;p&gt;前面三者描述的是随机变量序列取值的某种特性，而依分布收敛则不同，它描述的是随机变量序列分布函数的特性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设$X_1, X_2, \dots,$是一个随机变量序列，让$F_n$表示$X_n$的分布函数，如果存在一个分布函数$F$，使得$\lim_{n \to \infty} F_n(x) = F(x)$，则称该随机变量序列&lt;strong&gt;依分布收敛&lt;/strong&gt;于$F$，记作$X_n \stackrel{d}{\to} F$。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.m.wikipedia.org/zh/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;随机变量的收敛&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

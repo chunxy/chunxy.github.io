@@ -24,9 +24,9 @@
 f = 
 \begin{cases}
 y_1 = f_1(x_1, x_2, ..., x_n) \\
-y_2 = f_1(x_1, x_2, ..., x_n) \\
+y_2 = f_2(x_1, x_2, ..., x_n) \\
 ... \\
-y_m = f_1(x_1, x_2, ..., x_n) \\
+y_m = f_m(x_1, x_2, ..., x_n) \\
 \end{cases}
 \]&lt;/span&gt; Then Jacobian matrix is &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}

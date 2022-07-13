@@ -340,12 +340,12 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 0 &amp;lt; \lambda_i &amp;lt; C, i=1,\dots,M \\
 \end{gather}
 \]&lt;/span&gt; We attack it by Sequential Minimal Optimization.&lt;/p&gt;
-&lt;h3 id=&#34;multiclass-svm&#34;&gt;Multiclass SVM&lt;/h3&gt;
+&lt;h3 id=&#34;multi-class-svm&#34;&gt;Multi-class SVM&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1-vs-1&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;1 v.s. 1&lt;/p&gt;
 &lt;p&gt;Train 1-vs-1 SVM for all pairs of classes. Then decide by majority voting.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;1-vs-rest&lt;/p&gt;
-&lt;p&gt;Train 1-vs-rest SVM for all classes. Choose the class with the largest geometric margin (&lt;span class=&#34;math inline&#34;&gt;\(y = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; belongs to the “1”).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1 v.s. rest&lt;/p&gt;
+&lt;p&gt;Train 1-vs-rest SVM for all classes (&lt;span class=&#34;math inline&#34;&gt;\(y = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; belongs to the “1”). Choose the class with the largest geometric margin.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 

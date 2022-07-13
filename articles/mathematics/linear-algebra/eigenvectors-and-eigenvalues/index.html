@@ -755,6 +755,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/"></a></li>
+
       
         </ul>
       
@@ -1215,14 +1219,16 @@ c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots +
 </ul>
 <p>An <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is diagonalizable if and only if <span class="math inline">\(A\)</span> has n independent eigenvectors.</p>
 <ul>
-<li><p>Proof</p></li>
+<li><p>Proof</p>
+<ul>
 <li><p>Necessity</p>
 <p>Suppose <span class="math inline">\(A = PDP^{-1}\)</span>, then <span class="math inline">\(AP = PD\)</span>. Let <span class="math inline">\(P = [\rm p_1, \rm p_2, ..., \rm p_N]\)</span>. Since <span class="math inline">\(D\)</span> is a diagonal matrix, <span class="math display">\[
 AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22}\mathrm p_2, ..., D_{NN}\mathrm p_N]
 \]</span> Because <span class="math inline">\(P\)</span> is invertible, <span class="math inline">\(\mathrm p_i\)</span>s are independent, which indicates that <span class="math inline">\(\mathrm p_i\)</span>s are <span class="math inline">\(A\)</span>’s <span class="math inline">\(N\)</span> independent eigenvectors</p>
-<p>From this, we could also see that if <span class="math inline">\(A\)</span> is diagonalizable, then <span class="math inline">\(P\)</span> must be the matrix stacked with <span class="math inline">\(A\)</span>’s eigenvectors and <span class="math inline">\(D\)</span> must be the corresponding eigen diagonal matrix.</p></li>
+<p>From this, we could also see that if <span class="math inline">\(A\)</span> is diagonalizable, then <span class="math inline">\(P\)</span> must be the matrix stacked with <span class="math inline">\(A\)</span>’s eigenvectors and <span class="math inline">\(D\)</span> must be the diagonal matrix filled with corresponding eigenvalues.</p></li>
 <li><p>Sufficiency</p>
 <p>Easy to show.</p></li>
+</ul></li>
 </ul>
 <h4 id="linear-transformation">Linear Transformation</h4>
 <p>If <span class="math inline">\(A = PDP^{-1}\)</span>, then the transformation <span class="math inline">\(\mathrm x \mapsto A\mathrm x\)</span> in coordinate system formed by <span class="math inline">\(A\)</span>’s columns can be viewed as <span class="math inline">\([\mathrm x]_{\cal B} \mapsto D[\mathrm x]_\cal B\)</span> in coordinate system <span class="math inline">\(\cal B\)</span>, which is formed by <span class="math inline">\(D\)</span>’s columns.</p>

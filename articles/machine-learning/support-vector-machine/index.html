@@ -755,6 +755,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/"></a></li>
+
       
         </ul>
       
@@ -1086,7 +1090,7 @@
         <li><a href="#soft-margin-svm">Soft Margin SVM</a></li>
         <li><a href="#kernel-svm">Kernel SVM</a></li>
         <li><a href="#solving-svm">Solving SVM</a></li>
-        <li><a href="#multiclass-svm">Multiclass SVM</a></li>
+        <li><a href="#multi-class-svm">Multi-class SVM</a></li>
       </ul>
     </li>
   </ul>
@@ -1306,12 +1310,12 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 0 &lt; \lambda_i &lt; C, i=1,\dots,M \\
 \end{gather}
 \]</span> We attack it by Sequential Minimal Optimization.</p>
-<h3 id="multiclass-svm">Multiclass SVM</h3>
+<h3 id="multi-class-svm">Multi-class SVM</h3>
 <ul>
-<li><p>1-vs-1</p>
+<li><p>1 v.s. 1</p>
 <p>Train 1-vs-1 SVM for all pairs of classes. Then decide by majority voting.</p></li>
-<li><p>1-vs-rest</p>
-<p>Train 1-vs-rest SVM for all classes. Choose the class with the largest geometric margin (<span class="math inline">\(y = 1\)</span> when <span class="math inline">\(x\)</span> belongs to the “1”).</p></li>
+<li><p>1 v.s. rest</p>
+<p>Train 1-vs-rest SVM for all classes (<span class="math inline">\(y = 1\)</span> when <span class="math inline">\(x\)</span> belongs to the “1”). Choose the class with the largest geometric margin.</p></li>
 </ul>
 
 

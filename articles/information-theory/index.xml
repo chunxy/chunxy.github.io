@@ -116,7 +116,7 @@ D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_
 
 &lt;h2 id=&#34;f-divergence&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence can be treated as the generalization of the KL-divergence. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
-D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x
+D_f (p||q) = \int f(\frac{p(x)}{q(x)}) p(x)\ \d x
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; has to satisfy that &lt;span class=&#34;math inline&#34;&gt;\(f(1) = 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is a convex function. The reason for these two constraints is that we hope &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 D_f (p||q) = 0 \text{ when $p=q$} \\

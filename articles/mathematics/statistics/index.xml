@@ -31,5 +31,63 @@
 </description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/</guid>
+      <description>&lt;h2 id=&#34;依概率收敛convergence-in-probability&#34;&gt;依概率收敛（convergence in probability）&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成。对于一个普通数列${x_n}$来说，若其收敛于$c$，则当$n$充分大时，$x_n$和$c$的距离可以达到任意小。而随机变量序列$X_1, X_2, \dots$的极限却不能按照这样定义，因为$X_n$取值不确定，不可能总和某个数字$c$的距离任意小。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设$X_1, X_2, \dots,$是一个随机变量序列，如果存在一个常数$c$，使得对于任意$\epsilon &amp;gt; 0$，都有$\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1$，抑或是，对于任意$\epsilon &amp;gt; 0$，都有$\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0$），则称该随机变量序列&lt;strong&gt;依概率收敛&lt;/strong&gt;于$c$，记作$X_n \stackrel{P}{\to} c$。&lt;/p&gt;
+&lt;p&gt;换言之，对于任意$\epsilon, \delta &amp;gt; 0$，都存在$N &amp;gt; 0$，使得$n &amp;gt; N$时，始终有：
+$$
+0 &amp;lt; P(|X_n - c| \ge \epsilon) &amp;lt; \delta
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。&lt;/p&gt;
+&lt;h2 id=&#34;几乎必然收敛almost-sure-convergence&#34;&gt;几乎必然收敛（almost-sure convergence）&lt;/h2&gt;
+&lt;p&gt;在某些情况下，若随机变量序列能够和某个数字$c$几乎接近，我们说他几乎必然收敛。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设$X_1, X_2, \dots,$是一个随机变量序列，如果存在一个常数$c$，使得$P(\lim_{n \to \infty} X_n = c) = 1$，则称该随机变量序列&lt;strong&gt;几乎必然收敛&lt;/strong&gt;于$c$，记作$X_n \stackrel{a.s.}{\to} c$。&lt;/p&gt;
+&lt;p&gt;换言之，对于任意$\epsilon &amp;gt; 0$，都存在$N &amp;gt; 0$，使得$n &amp;gt; N$时，始终有：
+$$
+P(|X_n - c| &amp;lt; \epsilon) = 1
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;显然，几乎必然收敛是强于依概率收敛的。&lt;/p&gt;
+&lt;h2 id=&#34;l_p收敛convergence-in-l_p&#34;&gt;$L_p$收敛（convergence in $L_p$）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设$X_1, X_2, \dots,$是一个随机变量序列，对于某个$p \ge 1$，如果存在一个常数$c$，使得$\E[(\lim_{n \to \infty} X_n - c)^p] \to 0$，则称该随机变量序列**$L_p$收敛**于$c$，记作$X_n \stackrel{L_p}{\to} c$。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相比较而言，$L_P$收敛的表达式中多了一层偏差的$p$次方的测度。&lt;/p&gt;
+&lt;h3 id=&#34;均方收敛&#34;&gt;均方收敛&lt;/h3&gt;
+&lt;p&gt;当$p=2$时，$L_P$收敛又称作均方收敛。根据[[大数定律和中心极限定理#Chebyshev不等式|Chebyshev不等式]]：
+$$
+P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
+$$
+依概率收敛成立时，均方收敛也成立，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。&lt;/p&gt;
+&lt;h2 id=&#34;依分布收敛convergence-in-distribution&#34;&gt;依分布收敛（convergence in distribution）&lt;/h2&gt;
+&lt;p&gt;前面三者描述的是随机变量序列取值的某种特性，而依分布收敛则不同，它描述的是随机变量序列分布函数的特性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设$X_1, X_2, \dots,$是一个随机变量序列，让$F_n$表示$X_n$的分布函数，如果存在一个分布函数$F$，使得$\lim_{n \to \infty} F_n(x) = F(x)$，则称该随机变量序列&lt;strong&gt;依分布收敛&lt;/strong&gt;于$F$，记作$X_n \stackrel{d}{\to} F$。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://zh.m.wikipedia.org/zh/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;随机变量的收敛&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

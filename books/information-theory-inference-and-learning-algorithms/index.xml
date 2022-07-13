@@ -27,7 +27,8 @@ H_0(X) = \log |\mathcal A_X|
 P(X \in S_\delta) \ge 1 - \delta
 \]&lt;/span&gt; &lt;strong&gt;The essential bit content&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
 H_\delta(X) = \log |S_\delta|
-\]&lt;/span&gt; ## Shannon’s source coding theorem&lt;/p&gt;
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;shannons-source-coding-theorem&#34;&gt;Shannon’s source coding theorem&lt;/h2&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; be and ensemble with entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; bits. Given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \delta &amp;lt; 1\)&lt;/span&gt;, there exists a positive integer &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; such that for &lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 |\frac{1}{N} H_\delta (X^N) - H| &amp;lt; \epsilon
 \]&lt;/span&gt;&lt;/p&gt;

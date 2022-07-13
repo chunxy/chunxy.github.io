@@ -755,6 +755,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/"></a></li>
+
       
         </ul>
       
@@ -1083,11 +1087,6 @@
     <li><a href="#前置知识">前置知识</a>
       <ul>
         <li><a href="#chebyshev不等式">Chebyshev不等式</a></li>
-        <li><a href="#依概率收敛">依概率收敛</a></li>
-      </ul>
-    </li>
-    <li><a href="#弱大数定律weak-law-of-large-numbers">弱大数定律（Weak Law of large numbers）</a>
-      <ul>
         <li><a href="#chebyshev大数定律">Chebyshev大数定律</a></li>
         <li><a href="#辛钦大数定律">辛钦大数定律</a></li>
         <li><a href="#bernoulli大数定律">Bernoulli大数定律</a></li>
@@ -1202,14 +1201,14 @@ P(|X-\E(X)| \ge \epsilon) &amp;= \mathop \sum_{|x - \E(x)| \ge \epsilon} P(x) \\
 </ol></li>
 </ul>
 <p>Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是证明其它大数定理的基础工具。</p>
-<h3 id="依概率收敛">依概率收敛</h3>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ### 依概率收敛</p>
 <p><strong>随机变量序列</strong>即是由随机变量构成。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
 <p>随机变量是事件的映射，当试验次数足够多时，事件的频率会<strong>依概率收敛</strong>到该事件的概率。</p>
 <ul>
 <li><p>定义</p>
 <p>设<span class="math inline">\(X_1, X_2, \dots,\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) = 1\)</span>，则称该随机变量序列依概率收敛于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{P}{\to} c\)</span>。或者，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)</span>。</p></li>
 </ul>
-<h2 id="弱大数定律weak-law-of-large-numbers">弱大数定律（Weak Law of large numbers）</h2>
+<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; raw ## 弱大数定律（Weak Law of large numbers）</p>
 <h3 id="chebyshev大数定律">Chebyshev大数定律</h3>
 <ul>
 <li><p>定理</p>
