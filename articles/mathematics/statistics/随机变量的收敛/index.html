@@ -285,12 +285,14 @@
   
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/" />
-  <meta property="og:title" content="My Notes" />
+  <meta property="og:title" content="随机变量的收敛 | My Notes" />
   <meta property="og:description" content="依概率收敛（convergence in probability）" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
+      <meta property="article:published_time" content="2022-07-13T14:41:05&#43;00:00" />
     
+    <meta property="article:modified_time" content="2022-07-13T14:41:05&#43;00:00">
   
 
   
@@ -303,7 +305,7 @@
 
   
 
-  <title>My Notes</title>
+  <title>随机变量的收敛 | My Notes</title>
 </head>
 
 
@@ -372,10 +374,739 @@
     
     
     
-      
-      
-      <div class="article-container py-1" style="background: initial">
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
+        
+          Statistics
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+    <ul class="nav docs-sidenav">
+      <li class=""><a href="/notes/">content</a></li>
+    </ul>
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/"><i class="far fa-file-lines pr-1"></i>Articles</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/information-theory/"><img src="/notes/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Information Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/machine-learning/"><img src="/notes/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/ransac/">RANSAC</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/"><img src="/notes/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Mathematics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/calculus/"><img src="/notes/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Calculus</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/spherical-coordinates/">Spherical Coordinates</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/"><img src="/notes/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Linear Algebra</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/">Laplace Expansion</a></li>
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/"><img src="/notes/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measures</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/numerical-analysis/"><img src="/notes/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Numerical Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/"><img src="/notes/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Statistics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class="active"><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/optimization/"><img src="/notes/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/coordinate-descent/">Coordinate Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/"><i class="fas fa-book pr-1"></i>Books</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/information-theory-inference-and-learning-algorithms/"><img src="/notes/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Information Theory, Inference and Learning Algorithms</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/linear-algebra-and-its-applications/"><img src="/notes/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Linear Algebra and Its Applications</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/">Orthogonality and Projection</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/">Schmit-Gram Orthogonalization</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"><img src="/notes/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">概率论与数理统计</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/">Unconscious Statistics</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"><img src="/notes/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">高等数学</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/papers/"><i class="fas fa-paperclip pr-1"></i>Papers</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/papers/noise-contrastive-estimation/">Noise Contrastive Estimation</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#依概率收敛convergence-in-probability">依概率收敛（convergence in probability）</a></li>
+    <li><a href="#几乎必然收敛almost-sure-convergence">几乎必然收敛（almost-sure convergence）</a></li>
+    <li><a href="#l_p收敛convergence-in-l_p"><span class="math inline">\(L_p\)</span>收敛（convergence in <span class="math inline">\(L_p\)</span>）</a>
+      <ul>
+        <li><a href="#均方收敛">均方收敛</a></li>
+      </ul>
+    </li>
+    <li><a href="#依分布收敛convergence-in-distribution">依分布收敛（convergence in distribution）</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
   <nav class="d-none d-md-flex" aria-label="breadcrumb">
     <ol class="breadcrumb">
       
@@ -426,7 +1157,7 @@
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        
+        随机变量的收敛
       </li>
     </ol>
   </nav>
@@ -434,135 +1165,88 @@
 
 
 
-      </div>
-    
+          
+        </div>
 
-    <article class="article">
+        
+        
 
-  
+        <div class="docs-article-container">
+          <h1>随机变量的收敛</h1>
 
+          <div class="article-style">
+            
 
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-  
-  
-<div class="article-container pt-3">
-  <h1></h1>
-
-  
-
-  
-    
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Jan 1, 0001
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-    
-
-
-
-
-
-  
-</div>
-
-
-
-  <div class="article-container">
-
-    <div class="article-style">
-      <h2 id="依概率收敛convergence-in-probability">依概率收敛（convergence in probability）</h2>
-<p><strong>随机变量序列</strong>即是由随机变量构成。对于一个普通数列${x_n}$来说，若其收敛于$c$，则当$n$充分大时，$x_n$和$c$的距离可以达到任意小。而随机变量序列$X_1, X_2, \dots$的极限却不能按照这样定义，因为$X_n$取值不确定，不可能总和某个数字$c$的距离任意小。</p>
+<h2 id="依概率收敛convergence-in-probability">依概率收敛（convergence in probability）</h2>
+<p><strong>随机变量序列</strong>即是由随机变量构成。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能总和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
 <ul>
-<li>
-<p>定义</p>
-<p>设$X_1, X_2, \dots,$是一个随机变量序列，如果存在一个常数$c$，使得对于任意$\epsilon &gt; 0$，都有$\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) = 1$，抑或是，对于任意$\epsilon &gt; 0$，都有$\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0$），则称该随机变量序列<strong>依概率收敛</strong>于$c$，记作$X_n \stackrel{P}{\to} c$。</p>
-<p>换言之，对于任意$\epsilon, \delta &gt; 0$，都存在$N &gt; 0$，使得$n &gt; N$时，始终有：
-$$
+<li><p>定义</p>
+<p>设<span class="math inline">\(X_1, X_2, \dots,\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) = 1\)</span>，抑或是，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)</span>），则称该随机变量序列<strong>依概率收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{P}{\to} c\)</span>。</p>
+<p>换言之，对于任意<span class="math inline">\(\epsilon, \delta &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有： <span class="math display">\[
 0 &lt; P(|X_n - c| \ge \epsilon) &lt; \delta
-$$</p>
-</li>
+\]</span></p></li>
 </ul>
 <p>随机变量是事件的映射，当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。</p>
 <h2 id="几乎必然收敛almost-sure-convergence">几乎必然收敛（almost-sure convergence）</h2>
-<p>在某些情况下，若随机变量序列能够和某个数字$c$几乎接近，我们说他几乎必然收敛。</p>
+<p>在某些情况下，若随机变量序列能够和某个数字<span class="math inline">\(c\)</span>几乎接近，我们说他几乎必然收敛。</p>
 <ul>
-<li>
-<p>定义</p>
-<p>设$X_1, X_2, \dots,$是一个随机变量序列，如果存在一个常数$c$，使得$P(\lim_{n \to \infty} X_n = c) = 1$，则称该随机变量序列<strong>几乎必然收敛</strong>于$c$，记作$X_n \stackrel{a.s.}{\to} c$。</p>
-<p>换言之，对于任意$\epsilon &gt; 0$，都存在$N &gt; 0$，使得$n &gt; N$时，始终有：
-$$
+<li><p>定义</p>
+<p>设<span class="math inline">\(X_1, X_2, \dots,\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(P(\lim_{n \to \infty} X_n = c) = 1\)</span>，则称该随机变量序列<strong>几乎必然收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{a.s.}{\to} c\)</span>。</p>
+<p>换言之，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有： <span class="math display">\[
 P(|X_n - c| &lt; \epsilon) = 1
-$$</p>
-</li>
+\]</span></p></li>
 </ul>
 <p>显然，几乎必然收敛是强于依概率收敛的。</p>
-<h2 id="l_p收敛convergence-in-l_p">$L_p$收敛（convergence in $L_p$）</h2>
+<h2 id="l_p收敛convergence-in-l_p"><span class="math inline">\(L_p\)</span>收敛（convergence in <span class="math inline">\(L_p\)</span>）</h2>
 <ul>
-<li>
-<p>定义</p>
-<p>设$X_1, X_2, \dots,$是一个随机变量序列，对于某个$p \ge 1$，如果存在一个常数$c$，使得$\E[(\lim_{n \to \infty} X_n - c)^p] \to 0$，则称该随机变量序列**$L_p$收敛**于$c$，记作$X_n \stackrel{L_p}{\to} c$。</p>
-</li>
+<li><p>定义</p>
+<p>设<span class="math inline">\(X_1, X_2, \dots,\)</span>是一个随机变量序列，对于某个<span class="math inline">\(p \ge 1\)</span>，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(\E[(\lim_{n \to \infty} X_n - c)^p] \to 0\)</span>，则称该随机变量序列<strong><span class="math inline">\(L_p\)</span>收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{L_p}{\to} c\)</span>。</p></li>
 </ul>
-<p>相比较而言，$L_P$收敛的表达式中多了一层偏差的$p$次方的测度。</p>
+<p>相比较而言，<span class="math inline">\(L_P\)</span>收敛的表达式中多了一层偏差的<span class="math inline">\(p\)</span>次方的测度。</p>
 <h3 id="均方收敛">均方收敛</h3>
-<p>当$p=2$时，$L_P$收敛又称作均方收敛。根据[[大数定律和中心极限定理#Chebyshev不等式|Chebyshev不等式]]：
-$$
+<p>当<span class="math inline">\(p=2\)</span>时，<span class="math inline">\(L_P\)</span>收敛又称作均方收敛。根据[[大数定律和中心极限定理#Chebyshev不等式|Chebyshev不等式]]： <span class="math display">\[
 P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
-$$
-依概率收敛成立时，均方收敛也成立，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。</p>
+\]</span> 依概率收敛成立时，均方收敛也成立，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。</p>
 <h2 id="依分布收敛convergence-in-distribution">依分布收敛（convergence in distribution）</h2>
 <p>前面三者描述的是随机变量序列取值的某种特性，而依分布收敛则不同，它描述的是随机变量序列分布函数的特性。</p>
 <ul>
-<li>
-<p>定义</p>
-<p>设$X_1, X_2, \dots,$是一个随机变量序列，让$F_n$表示$X_n$的分布函数，如果存在一个分布函数$F$，使得$\lim_{n \to \infty} F_n(x) = F(x)$，则称该随机变量序列<strong>依分布收敛</strong>于$F$，记作$X_n \stackrel{d}{\to} F$。</p>
-</li>
+<li><p>定义</p>
+<p>设<span class="math inline">\(X_1, X_2, \dots,\)</span>是一个随机变量序列，让<span class="math inline">\(F_n\)</span>表示<span class="math inline">\(X_n\)</span>的分布函数，如果存在一个分布函数<span class="math inline">\(F\)</span>，使得<span class="math inline">\(\lim_{n \to \infty} F_n(x) = F(x)\)</span>，则称该随机变量序列<strong>依分布收敛</strong>于<span class="math inline">\(F\)</span>，记作<span class="math inline">\(X_n \stackrel{d}{\to} F\)</span>。</p></li>
 </ul>
 <h2 id="参考资料">参考资料</h2>
-<p><a href="https://zh.m.wikipedia.org/zh/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B" target="_blank" rel="noopener">随机变量的收敛</a></p>
+<p><a href="https://zh.m.wikipedia.org/zh/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B">随机变量的收敛</a></p>
 
-    </div>
 
-    
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/notes/articles/mathematics/statistics/probability-estimation/" rel="prev">Probability Estimation</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jul 13, 2022</p>
+
+          
 
 
 
@@ -578,126 +1262,18 @@ $$
 
 
 
-
-
-
-<div class="share-box">
-  <ul class="share">
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="whatsapp://send?text=%20https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
-          <i class="fab fa-weibo"></i>
-        </a>
-      </li>
-    
-  </ul>
-</div>
+          
 
 
 
 
+          
 
 
+        </div>
 
+      </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-</article>
-  </div>
-
-  <div class="page-footer">
-    
-    
-    <div class="container">
       <footer class="site-footer">
 
   
@@ -769,7 +1345,15 @@ $$
   </p>
 </footer>
 
-    </div>
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
     
   </div>
 
@@ -795,6 +1379,11 @@ $$
     
 
     
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
     
 
     
@@ -842,11 +1431,10 @@ $$
     
     
     
-    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
 
     
     
-      <script src="/notes/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
     
     
     
