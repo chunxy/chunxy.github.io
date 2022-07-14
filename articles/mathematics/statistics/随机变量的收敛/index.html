@@ -228,7 +228,7 @@
   
   
   
-  <link rel="stylesheet" href="/notes/css/wowchemy.73506c70df349d33925a9fb5c7dc99ba.css" />
+  <link rel="stylesheet" href="/notes/css/wowchemy.1c7b42a432b4b7b8b2204450dacc9748.css" />
 
   
 
@@ -759,6 +759,14 @@
 
   <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/"></a></li>
+
       
         </ul>
       
@@ -975,14 +983,6 @@
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
 
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/unconscious-statistics/">Unconscious Statistics</a></li>
-
       
         </ul>
       
@@ -1188,7 +1188,7 @@
 </ul>
 <p>随机变量是事件的映射，当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。</p>
 <h2 id="几乎必然收敛almost-sure-convergence">几乎必然收敛（almost-sure convergence）</h2>
-<p>在某些情况下，若随机变量序列能够和某个数字<span class="math inline">\(c\)</span>几乎接近，我们说他几乎必然收敛。</p>
+<p>在某些情况下，若随机变量序列能够和某个数字<span class="math inline">\(c\)</span>几乎接近，我们说它几乎必然收敛。</p>
 <ul>
 <li><p>定义</p>
 <p>设<span class="math inline">\(X_1, X_2, \dots,\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(P(\lim_{n \to \infty} X_n = c) = 1\)</span>，则称该随机变量序列<strong>几乎必然收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{a.s.}{\to} c\)</span>。</p>
@@ -1206,7 +1206,7 @@ P(|X_n - c| &lt; \epsilon) = 1
 <h3 id="均方收敛">均方收敛</h3>
 <p>当<span class="math inline">\(p=2\)</span>时，<span class="math inline">\(L_P\)</span>收敛又称作均方收敛。根据[[大数定律和中心极限定理#Chebyshev不等式|Chebyshev不等式]]： <span class="math display">\[
 P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
-\]</span> 依概率收敛成立时，均方收敛也成立，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。</p>
+\]</span> 均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。</p>
 <h2 id="依分布收敛convergence-in-distribution">依分布收敛（convergence in distribution）</h2>
 <p>前面三者描述的是随机变量序列取值的某种特性，而依分布收敛则不同，它描述的是随机变量序列分布函数的特性。</p>
 <ul>
