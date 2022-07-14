@@ -13,6 +13,65 @@
     </image>
     
     <item>
+      <title>Unconscious Statistics</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/statistics/unconscious-statistics/</link>
+      <pubDate>Tue, 03 May 2022 10:50:54 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/unconscious-statistics/</guid>
+      <description>
+
+&lt;h2 id=&#34;law-of-the-unconscious-statistician&#34;&gt;Law of the Unconscious Statistician&lt;/h2&gt;
+&lt;p&gt;In probability theory and statistics, the &lt;strong&gt;law of the unconscious statistician&lt;/strong&gt; (LOTUS), is a theorem used to calculate the expected value of a function &lt;span class=&#34;math inline&#34;&gt;\(g(X)\)&lt;/span&gt; of a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; when one knows the probability distribution of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; but one does not know the distribution of &lt;span class=&#34;math inline&#34;&gt;\(g(X)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If the probability mass function is known, it is &lt;span class=&#34;math display&#34;&gt;\[
+\E[g(X)] = \sum_x g(x) p(x)
+\]&lt;/span&gt; If the probability density function is known, it is &lt;span class=&#34;math display&#34;&gt;\[
+\E[g(X)] = \int_{-\infty}^{+\infty} g(x)p(x)\ \d x
+\]&lt;/span&gt; If the cumulative distribution function is known, it is &lt;span class=&#34;math display&#34;&gt;\[
+\E[g(X)] = \int_{-\infty}^{+\infty} g(x)\ \d F(x)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician&#34;&gt;Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;marginal-expectation&#34;&gt;Marginal Expectation&lt;/h2&gt;
+&lt;p&gt;If the joint distribution of two random variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is known, then the expectation of one component can be calculated as &lt;span class=&#34;math display&#34;&gt;\[
+\E[X] = \int_{-\infty}^{+\infty} x p_X(x)\; \d x = \int_{-\infty}^{+\infty} x \int_{-\infty}^{+\infty} p(x,y)\; \d y\; \d x = = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} xp(x,y)\ \d y\ \d x
+\]&lt;/span&gt; On the other hand, &lt;span class=&#34;math display&#34;&gt;\[
+\E [X] = \E{y \sim p_Y} [\E_{x \sim p(X|Y=y)}]  = \int_{-\infty}^{+\infty} p(y) \bigg( \int_{-\infty}^{+\infty} x p(x|y)\ \d x \bigg) \d y
+\]&lt;/span&gt; &lt;a href=&#34;https://stats.stackexchange.com/questions/185729/expected-value-of-a-marginal-distribution-when-the-joint-distribution-is-given&#34;&gt;StackExchange Discussion&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;expectation-of-non-negative-random-variables&#34;&gt;Expectation of Non-negative Random Variables&lt;/h2&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is a random variable whose value is non-negative, and &lt;strong&gt;its expectation exists&lt;/strong&gt;, and&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;when &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is continuous, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}[b]
+\E (X) &amp;amp;= \int_{0}^{+\infty} x p(x)\ \d x = \int_{0}^{+\infty} x\ \d \big( P(x) - 1 \big) \\
+&amp;amp;= [x \big( P(x) - 1 \big)]\bigg|_{x=0}^{+\infty} - \int_0^{+\infty} \big( P(x) - 1 \big)\ \d x
+\end{aligned}
+\]&lt;/span&gt; because the expectation exists, the above expression and especially the &lt;span class=&#34;math inline&#34;&gt;\([x \big( P(x) - 1 \big)]\bigg|_{x=0}^{+\infty}\)&lt;/span&gt; term must converge: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+[x \big( P(x) - 1 \big)]\bigg|_{x=0} = 0 \\
+[P(x) - 1]\bigg|_{x \to +\infty} = 0 \Rightarrow [x \big( P(x) - 1 \big)]\bigg|_{x \to +\infty} = 0
+\end{gather}
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+\E(X) = \int_{0}^{+\infty} \big (1 - P(x) \big)\ \d x
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;when &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is discrete and &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; only takes on integer values, supposing the max value of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\E(X) &amp;amp;= \sum_{k=0}^{N} [k P(X = k)] \\
+&amp;amp;= \sum_{k=0}^{N} [(\sum_{j=0}^{k-1} 1) P(X = k)] \\
+&amp;amp;= \sum_{k=0}^{N} [\sum_{j=0}^{k-1} P(X = k)] \\
+&amp;amp;= \sum_{j=0}^{N-1} [\sum_{k=j+1}^{N} P(X = k)] \\
+&amp;amp;= \sum_{j=0}^{N-1} P(X &amp;gt; j)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/305031/expectation-when-cumulative-distribution-function-is-given&#34;&gt;StackExchange Discussion&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Summation_by_parts&#34;&gt;Summation by Parts&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;expectation-and-quantile-function&#34;&gt;Expectation and Quantile Function&lt;/h2&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; be the PDF and &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; be the CDF of a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(Q = F^{-1}\)&lt;/span&gt; be the inverse of &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt; is also called the &lt;strong&gt;quantile function&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\int_0^1 Q(p)\ \d p \stackrel{p=F(x)}{\Longrightarrow} = \int_{-\infty}^{+\infty} x f(x)\ \d x = \E(X) 
+\]&lt;/span&gt; &lt;a href=&#34;https://stats.stackexchange.com/a/18439&#34;&gt;StackExchange Answer&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>随机变量的收敛</title>
       <link>https://chunxy.github.io/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/</link>
       <pubDate>Wed, 13 Jul 2022 14:41:05 +0000</pubDate>
@@ -63,6 +122,51 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{
     </item>
     
     <item>
+      <title>特征函数</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Mon, 09 May 2022 11:51:08 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</guid>
+      <description>
+
+&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
+&lt;h3 id=&#34;感性认知&#34;&gt;感性认知&lt;/h3&gt;
+&lt;p&gt;根据泰勒级数我们可以得知，两个函数&lt;span class=&#34;math inline&#34;&gt;\(f(x),g(x)\)&lt;/span&gt;，如果它们各阶导数相等的越多，它们就越相似，换言之 &lt;span class=&#34;math display&#34;&gt;\[
+\text{各阶导数都相同} \Rightarrow f(x) = g(x)
+\]&lt;/span&gt; 可以说，函数的各阶导数即是它们的特征。&lt;/p&gt;
+&lt;p&gt;对于随机变量来说，这样的“特征”也存在。随机变量的特征即是它的各阶矩，即 &lt;span class=&#34;math display&#34;&gt;\[
+\text{各阶矩都相同} \Rightarrow \text{随机变量对应的分布相同}
+\]&lt;/span&gt; 对于随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;，其特征函数定义为 &lt;span class=&#34;math display&#34;&gt;\[
+\varphi(t) = \E[e^{itX}]
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(e^{itX}\)&lt;/span&gt;的泰勒级数为 &lt;span class=&#34;math display&#34;&gt;\[
+e^{itX} = 1 + \frac{itX}{1!} - \frac{t^2X^2}{2!} + \dots + \frac{(itX)^n}{n!}
+\]&lt;/span&gt; 代入特征函数可得 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\varphi(t) &amp;amp;= \E[1 + \frac{itX}{1!} - \frac{t^2X^2}{2!} + \dots + \frac{(itX)^n}{n!}] \\
+&amp;amp;= \E[1] + \E[\frac{itX}{1!}] - \E[\frac{t^2X^2}{2!}] + \dots + \E[\frac{(itX)^n}{n!}] \\
+&amp;amp;= 1 + \frac{it \overbrace{\E[X]}^\text{一阶矩} }{1!} - \frac{t^2 \overbrace{\E[X^2]}^\text{二阶矩} }{2!} + \dots + \frac{(it)^n \overbrace{\E[X^n]}^\text{n阶矩} }{n!} \\
+\end{aligned}
+\]&lt;/span&gt; 可见特征函数包含了随机变量的所有矩，亦即随机变量的所有“特征”，所以可以说特征函数是随机变量的另一种描述方式。&lt;/p&gt;
+&lt;h3 id=&#34;理性认知&#34;&gt;理性认知&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\varphi(t) = \E[e^{itX}] = \int_{-\infty}^{+\infty} e^{itx} p(x)\; dx
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;而对&lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;进行逆傅里叶变换可得 &lt;span class=&#34;math display&#34;&gt;\[
+F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
+\]&lt;/span&gt; 可见二者互为共轭关系： &lt;span class=&#34;math display&#34;&gt;\[
+\varphi(t) = \overline{F(t)}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;应用&#34;&gt;应用&lt;/h2&gt;
+&lt;p&gt;通过求&lt;span class=&#34;math inline&#34;&gt;\(t = 0\)&lt;/span&gt;时的各阶导数，可以快速求得各阶矩： &lt;span class=&#34;math display&#34;&gt;\[
+\varphi^{(k)}(0) = i^k \E[X^k]
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/23686709&#34;&gt;特征函数的理解&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Probability Estimation</title>
       <link>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</link>
       <pubDate>Sat, 22 Jan 2022 21:36:30 +0000</pubDate>
@@ -78,137 +182,6 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/aminor/p/13851150.html&#34;&gt;作图直观理解Parzen窗估计（附Python代码） - aminor - 博客园 (cnblogs.com)&lt;/a&gt; &lt;a href=&#34;https://stats.stackexchange.com/questions/244012/can-you-explain-parzen-window-kernel-density-estimation-in-laymans-terms/244023&#34;&gt;Can you explain Parzen window (kernel) density estimation in layman’s terms? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 
 
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/statistics/unconscious-statistics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/unconscious-statistics/</guid>
-      <description>&lt;h2 id=&#34;law-of-the-unconscious-statistician&#34;&gt;Law of the Unconscious Statistician&lt;/h2&gt;
-&lt;p&gt;In probability theory and statistics, the &lt;strong&gt;law of the unconscious statistician&lt;/strong&gt; (LOTUS), is a theorem used to calculate the expected value of a function $g(X)$ of a random variable $X$ when one knows the probability distribution of $X$ but one does not know the distribution of $g(X)$.&lt;/p&gt;
-&lt;p&gt;If the probability mass function is known, it is
-$$
-\E[g(X)] = \sum_x g(x) p(x)
-$$
-If the probability density function is known, it is
-$$
-\E[g(X)] = \int_{-\infty}^{+\infty} g(x)p(x)\ \d x
-$$
-If the cumulative distribution function is known, it is
-$$
-\E[g(X)] = \int_{-\infty}^{+\infty} g(x)\ \d F(x)
-$$&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wiki&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;marginal-expectation&#34;&gt;Marginal Expectation&lt;/h2&gt;
-&lt;p&gt;If the joint distribution of two random variables $X$ and $Y$ is known, then the expectation of one component can be calculated as
-$$
-\E[X] = \int_{-\infty}^{+\infty} x p_X(x); \d x = \int_{-\infty}^{+\infty} x \int_{-\infty}^{+\infty} p(x,y); \d y; \d x = = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} xp(x,y)\ \d y\ \d x
-$$
-On the other hand,
-$$
-\E [X] = \E{y \sim p_Y} [\E_{x \sim p(X|Y=y)}]  = \int_{-\infty}^{+\infty} p(y) \bigg( \int_{-\infty}^{+\infty} x p(x|y)\ \d x \bigg) \d y
-$$
-&lt;a href=&#34;https://stats.stackexchange.com/questions/185729/expected-value-of-a-marginal-distribution-when-the-joint-distribution-is-given&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;StackExchange Discussion&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;expectation-of-non-negative-random-variables&#34;&gt;Expectation of Non-negative Random Variables&lt;/h2&gt;
-&lt;p&gt;If $X$ is a random variable whose value is non-negative, and &lt;strong&gt;its expectation exists&lt;/strong&gt;, and&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;when $X$ is continuous,
-$$
-\begin{aligned}[b]
-\E (X) &amp;amp;= \int_{0}^{+\infty} x p(x)\ \d x = \int_{0}^{+\infty} x\ \d \big( P(x) - 1 \big) \
-&amp;amp;= [x \big( P(x) - 1 \big)]\bigg|&lt;em&gt;{x=0}^{+\infty} - \int_0^{+\infty} \big( P(x) - 1 \big)\ \d x
-\end{aligned}
-$$
-because the expectation exists, the above expression and especially the $[x \big( P(x) - 1 \big)]\bigg|&lt;/em&gt;{x=0}^{+\infty}$  term must converge:
-$$
-\begin{gather}
-[x \big( P(x) - 1 \big)]\bigg|&lt;em&gt;{x=0} = 0 \
-[P(x) - 1]\bigg|&lt;/em&gt;{x \to +\infty} = 0 \Rightarrow [x \big( P(x) - 1 \big)]\bigg|&lt;em&gt;{x \to +\infty} = 0
-\end{gather}
-$$
-Therefore,
-$$
-\E(X) = \int&lt;/em&gt;{0}^{+\infty} \big (1 - P(x) \big)\ \d x
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;when $X$ is discrete and $X$ only takes on integer values, supposing the max value of $X$ is $N$,
-$$
-\begin{aligned}
-\E(X) &amp;amp;= \sum_{k=0}^{N} [k P(X = k)] \
-&amp;amp;= \sum_{k=0}^{N} [(\sum_{j=0}^{k-1} 1) P(X = k)] \
-&amp;amp;= \sum_{k=0}^{N} [\sum_{j=0}^{k-1} P(X = k)] \
-&amp;amp;= \sum_{j=0}^{N-1} [\sum_{k=j+1}^{N} P(X = k)] \
-&amp;amp;= \sum_{j=0}^{N-1} P(X &amp;gt; j)
-\end{aligned}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/305031/expectation-when-cumulative-distribution-function-is-given&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;StackExchange Discussion&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Summation_by_parts&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Summation by Parts&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;expectation-and-quantile-function&#34;&gt;Expectation and Quantile Function&lt;/h2&gt;
-&lt;p&gt;Let $f$ be the PDF and $F$ be the CDF of a random variable $X$. Let $Q = F^{-1}$ be the inverse of $F$. $Q$ is also called the &lt;strong&gt;quantile function&lt;/strong&gt; of $X$.
-$$
-\int_0^1 Q(p)\ \d p \stackrel{p=F(x)}{\Longrightarrow} = \int_{-\infty}^{+\infty} x f(x)\ \d x = \E(X)
-$$
-&lt;a href=&#34;https://stats.stackexchange.com/a/18439&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;StackExchange Answer&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</guid>
-      <description>&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
-&lt;h3 id=&#34;感性认知&#34;&gt;感性认知&lt;/h3&gt;
-&lt;p&gt;根据泰勒级数我们可以得知，两个函数$f(x),g(x)$，如果它们各阶导数相等的越多，它们就越相似，换言之
-$$
-\text{各阶导数都相同} \Rightarrow f(x) = g(x)
-$$
-可以说，函数的各阶导数即是它们的特征。&lt;/p&gt;
-&lt;p&gt;对于随机变量来说，这样的“特征”也存在。随机变量的特征即是它的各阶矩，即
-$$
-\text{各阶矩都相同} \Rightarrow \text{随机变量对应的分布相同}
-$$
-对于随机变量$X$，其特征函数定义为
-$$
-\varphi(t) = \E[e^{itX}]
-$$
-$e^{itX}$的泰勒级数为
-$$
-e^{itX} = 1 + \frac{itX}{1!} - \frac{t^2X^2}{2!} + \dots + \frac{(itX)^n}{n!}
-$$
-代入特征函数可得
-$$
-\begin{aligned}
-\varphi(t) &amp;amp;= \E[1 + \frac{itX}{1!} - \frac{t^2X^2}{2!} + \dots + \frac{(itX)^n}{n!}] \
-&amp;amp;= \E[1] + \E[\frac{itX}{1!}] - \E[\frac{t^2X^2}{2!}] + \dots + \E[\frac{(itX)^n}{n!}] \
-&amp;amp;= 1 + \frac{it \overbrace{\E[X]}^\text{一阶矩} }{1!} - \frac{t^2 \overbrace{\E[X^2]}^\text{二阶矩} }{2!} + \dots + \frac{(it)^n \overbrace{\E[X^n]}^\text{n阶矩} }{n!} \
-\end{aligned}
-$$
-可见特征函数包含了随机变量的所有矩，亦即随机变量的所有“特征”，所以可以说特征函数是随机变量的另一种描述方式。&lt;/p&gt;
-&lt;h3 id=&#34;理性认知&#34;&gt;理性认知&lt;/h3&gt;
-&lt;p&gt;$$
-\varphi(t) = \E[e^{itX}] = \int_{-\infty}^{+\infty} e^{itx} p(x); dx
-$$&lt;/p&gt;
-&lt;p&gt;而对$p(x)$进行逆傅里叶变换可得
-$$
-F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
-$$
-可见二者互为共轭关系：
-$$
-\varphi(t) = \overline{F(t)}
-$$&lt;/p&gt;
-&lt;h2 id=&#34;应用&#34;&gt;应用&lt;/h2&gt;
-&lt;p&gt;通过求$t = 0$时的各阶导数，可以快速求得各阶矩：
-$$
-\varphi^{(k)}(0) = i^k \E[X^k]
-$$&lt;/p&gt;
-&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/23686709&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;特征函数的理解&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
