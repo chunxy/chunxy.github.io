@@ -1146,76 +1146,75 @@
     
       <li>
         <h5><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></h5>
-        <p> Machine Learning Bullet Points This document lists out miscellaneous points besides the machine learning algorithms that are worth noting.
+        <p> This article lists out miscellaneous points besides the machine learning algorithms that are worth noting.
 Data and Feature  Data splitting method Feature extraction Feature normalization Imbalanced data  Model  Discriminative and generative model Regularization and overfitting Multi-class classification with binary classifier Unsupervised learning  Discover inherent properties (latent variables) in the data Including:  [[Clustering]] [[Dimension Reduction|Dimension reduction]] Manifold embedding    Evaluation </p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></h5>
-        <p>Linear Discriminant Analysis Linear Discriminant Analysis is another approximation to the Bayes optimal classifier. Instead of assuming independence between each pair of input dimensions given certain label, LDA assumes a single common shared covariance matrix among the input dimensions, no matter the label is.</p>
+        <p>Linear Discriminant Analysis is another approximation to the Bayes optimal classifier. Instead of assuming independence between each pair of input dimensions given certain label, LDA assumes a single common shared covariance matrix among the input dimensions, no matter the label is.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></h5>
-        <p>Logistic Regression A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is \(\R^N\), then we will process the feature vector \(x\) with a feature extractor function \(f(x) = w^Tx + b\), where \(w \in \R^N\) and \(b \in \R\), and then operate on \(f(x)\), without directly depending on \(x\) anymore.</p>
+        <p>Two-class Logistic Regression A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is \(\R^N\), then we will process the feature vector \(x\) with a feature extractor function \(f(x) = w^Tx + b\), where \(w \in \R^N\) and \(b \in \R\), and then operate on \(f(x)\), without directly depending on \(x\) anymore.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></h5>
-        <p>Support Vector Machine Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin.</p>
+        <p>Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></h5>
-        <p>Linear Regression Given a dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\) where \(x^{(i)} \in \R^N\) is the feature vector and \(y^{(i)} \in R\) is the output, learn a linear function \(f</p>
+        <p>Given a dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\) where \(x^{(i)} \in \R^N\) is the feature vector and \(y^{(i)} \in R\) is the output, learn a linear function \(f = w^Tx</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></h5>
-        <p>Non-linear Regression The basic idea about non-linear regression is to perform the feature mapping \(\phi(x)\), followed by linear regression in the new feature space.
+        <p>The basic idea about non-linear regression is to perform the feature mapping \(\phi(x)\), followed by linear regression in the new feature space.
 Polynomial Regression When \(x\) is a scalar, the feature mapping in \(p\)-th order Polynomial Regression is \[ \phi(x) = \begin{bmatrix} 1 \\ x \\ x^2 \\ \vdots \\ x^p \end{bmatrix} \] The regression function and the parameters are then like those in linear regression: \[ f(x) = [w_0,w_1,w_2,\dots,w^p]\begin{bmatrix} 1 \\ x \\ x^2 \\ \vdots \\ x^p \end{bmatrix} = w^T\phi(x) \] \(\phi(x)\) captures all features in each degree from \(1\) up to \(p\).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/clustering/">Clustering</a></h5>
-        <p>Clustering Given dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\), a clustering \(\mathcal C\) of the \(M\) points into \(K (K \le M)\) clusters is a partitioning of \(\mathcal D\) into \(K\) disjoint groups \(\{C_1,\dots,C_K\}\).</p>
+        <p>Given dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\), a clustering \(\mathcal C\) of the \(M\) points into \(K (K \le M)\) clusters is a partitioning of \(\mathcal D\) into \(K\) disjoint groups \(\{C_1,\dots,C_K\}\).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></h5>
-        <p>Dimension Reduction Dimension Reduction
- reduces computational cost de-noise by projecting onto lower-dimensional space and back to original space make results easier to understand  vs. Feature selection
- The goal of feature selection is to remove features that are not informative with respect to the class label.</p>
+        <p>Unsupervised Dimension Reduction Dimension Reduction
+ reduces computational cost de-noise by projecting onto lower-dimensional space and back to original space make results easier to understand  vs. Feature selection</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></h5>
-        <p>Principal Component Analysis Given a data matrix \(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance</p>
+        <p>Given a data matrix \(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance contained in the</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></h5>
-        <p>Eckart-Young-Mirsky Theorem Given an \(M \times N\) matrix \(X\) of rank \(R \le \min\{M,N\}\) and its SVD \(X = U\Sigma V^T\), where \(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\), among all the \(M \times N\) matrices of rank \(K \le R\), the best approximation to \(X\) is \(Y^\star = U\Sigma_K V^T\), where \(\Sigma_K = diag(\sigma_1, \sigma_2, .</p>
+        <p>Given an \(M \times N\) matrix \(X\) of rank \(R \le \min\{M,N\}\) and its SVD \(X = U\Sigma V^T\), where \(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\), among all the \(M \times N\) matrices of rank \(K \le R\), the best approximation to \(X\) is \(Y^\star = U\Sigma_K V^T\), where \(\Sigma_K = diag(\sigma_1, \sigma_2, .</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></h5>
-        <p>Independent Component Analysis Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\).</p>
+        <p>Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/ransac/">RANSAC</a></h5>
-        <p>RANSAC Outliers (noises) in the data can diverge the regression model to reduce prediction errors for them, instead of the majority real data points. RANdom SAmple Consensus is a methodology</p>
+        <p>Outliers (noises) in the data can diverge the regression model to reduce prediction errors for them, instead of the majority real data points. RANdom SAmple Consensus is a methodology to</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></h5>
-        <p>Fisher’s Linear Discriminant Two-class Assume we have a set of \(N\)-dimensional samples \(D = \{x^{(i)}\}^M_{i=1}\) , \(M_1\) of which belong to Class \(1\), and \(M_2\) to Class \(2\) (\(M_1 + M_2 = M\)).</p>
+        <p>Two-class Assume we have a set of \(N\)-dimensional samples \(D = \{x^{(i)}\}^M_{i=1}\) , \(M_1\) of which belong to Class \(1\), and \(M_2\) to Class \(2\) (\(M_1 + M_2 = M\)).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></h5>
-        <p>Bias-variance Decomposition The notation used is as follows:
+        <p>The notation used is as follows:
   Symbol Notation    \(\mathcal D\) the dataset  \(x\) the sample  \(y_\mathcal D\) the observation of \(x\) in \(\mathcal D\), affected by noise  \(y\) the real value of \(x\)  \(\bar y\) the mean of the real values  \(f\) the model learned with \(\mathcal D\)  \(f(x)\) the prediction of \(f\) with \(x\)  \(\bar f(x)\) the expectation of prediction of \(f\) with \(x\)  \(l(f(x), y_\mathcal D)\) the loss function, chosen to be squared error    By assuming that the observation errors averages to \(0\), the expectation of the error will be \[ \begin{aligned} E_{x \sim \mathcal D}&amp;[l(f(x), y_\mathcal D)] \\ &amp;= E[(f(x) - y_\mathcal D)^2] = E\{[(f(x) - \bar f(x) + (\bar f(x) - y_\mathcal D)]^2\} \\ &amp;= E[(f(x) - \bar f(x))^2] + E[(\bar f(x) - y_\mathcal D)^2] + 2E[(f(x) - \bar f(x))(\bar f(x) - y_\mathcal D)] \\ &amp;= E[(f(x) - \bar f(x))^2] + E\{[(\bar f(x) - y) + (y - y_\mathcal D)]^2\} \\ &amp;\quad + 2\underbrace{E[f(x) - \bar f(x)]}_0 E[\bar f(x) - y_\mathcal D] \\ &amp;= E[(f(x) - \bar f(x))^2] + E[(\bar f(x) - y)^2] + E[(y - y_\mathcal D)^2] + 2E[(\bar f(x) - y)(y - y_\mathcal D)] \\ &amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E\{[(\bar f(x) - \bar y) + (\bar y - y)]^2\} \\ &amp;\quad + 2E[\bar f(x) - y] \underbrace{E[y - y_\mathcal D]}_0 \\ &amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E\{[(\bar f(x) - \bar y) + (\bar y - y)]^2\} \\ &amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E[(\bar f(x) - \bar y)^2] + E[(\bar y - y)^2] + 2E[(\bar f(x) - \bar y)(\bar y - y)] \\ &amp;= E[(f(x) - \bar f(x))^2] + E[(y - y_\mathcal D)^2] + E[(\bar f(x) - \bar y)^2] + E[(\bar y - y)^2] \\ &amp;\quad + 2E[\bar f(x) - \bar y]\underbrace{E[\bar y - y]}_0 \\ &amp;= \underbrace{E[(f(x) - \bar f(x))^2]}_{variance} + \underbrace{E[(\bar f(x) - \bar y)^2]}_{bias^2} + \underbrace{E[(y - y_\mathcal D)^2]}_{noise} + \underbrace{E[(\bar y - y)^2]}_{scatter} \\ \end{aligned} \] 5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium</p>
       </li>
     

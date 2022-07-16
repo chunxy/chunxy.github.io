@@ -1168,17 +1168,17 @@
     
       <li>
         <h5><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></h5>
-        <p>Spectral Normalization Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value.</p>
+        <p>Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></h5>
-        <p>Frobenius Normalization Frobenius Normalization of an \(m \times n\) matrix \(A\) is defined as \[ ||A||_F = \sqrt{\sum_{ij}A_{ij}^2} \] It can be found that \[ \begin{aligned} ||A||_F^2 &amp;= \sum_{ij}A_{ij}^2 \\ &amp;= \sum_{i=1}^m\sum_{j=1}^nA_{ij}A_{ij} = \sum_{i=1}^n\sum_{j=1}^mA_{ji}A_{ji} \\ &amp;= \sum_{i=1}^m(\sum_{j=1}^nA_{ij}A_{ji}^T) = \sum_{i=1}^n(\sum_{j=1}^mA_{ij}^TA_{ji}) \\ &amp;= \sum_{i=1}^m(A_{i:}A_{:i}^T) = \sum_{i=1}^n(A_{i:}^TA_{:i})\\ &amp;= \sum_{i=1}^m(AA^T)_{ii} = \sum_{i=1}^n(A^TA)_{ii}\\ &amp;= tr(AA^T) = tr(A^TA) \end{aligned} \]</p>
+        <p>Frobenius Normalization of an \(m \times n\) matrix \(A\) is defined as \[ ||A||_F = \sqrt{\sum_{ij}A_{ij}^2} \] It can be found that \[ \begin{aligned} ||A||_F^2 &amp;= \sum_{ij}A_{ij}^2 \\ &amp;= \sum_{i=1}^m\sum_{j=1}^nA_{ij}A_{ij} = \sum_{i=1}^n\sum_{j=1}^mA_{ji}A_{ji} \\ &amp;= \sum_{i=1}^m(\sum_{j=1}^nA_{ij}A_{ji}^T) = \sum_{i=1}^n(\sum_{j=1}^mA_{ij}^TA_{ji}) \\ &amp;= \sum_{i=1}^m(A_{i:}A_{:i}^T) = \sum_{i=1}^n(A_{i:}^TA_{:i})\\ &amp;= \sum_{i=1}^m(AA^T)_{ii} = \sum_{i=1}^n(A^TA)_{ii}\\ &amp;= tr(AA^T) = tr(A^TA) \end{aligned} \]</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></h5>
-        <p>Chebyshev Distance Discrete form Chebyshev distance is a specific form of Minkowski norm (\(l_p\) norm): \[ \begin{aligned} d_p(x, x^\prime) &amp;= ||x - x^\prime||_p \\ &amp;= (\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \text{, where</p>
+        <p>Discrete form Chebyshev distance is a specific form of Minkowski norm (\(l_p\) norm): \[ \begin{aligned} d_p(x, x^\prime) &amp;= ||x - x^\prime||_p \\ &amp;= (\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \text{, where $p \to</p>
       </li>
     
   </ul>

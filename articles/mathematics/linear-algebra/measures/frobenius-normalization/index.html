@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Frobenius Normalization Frobenius Normalization of an \(m \times n\) matrix \(A\) is defined as \[ ||A||_F = \sqrt{\sum_{ij}A_{ij}^2} \] It can be found that \[ \begin{aligned} ||A||_F^2 &amp;= \sum_{ij}A_{ij}^2 \\ &amp;= \sum_{i=1}^m\sum_{j=1}^nA_{ij}A_{ij} = \sum_{i=1}^n\sum_{j=1}^mA_{ji}A_{ji} \\ &amp;= \sum_{i=1}^m(\sum_{j=1}^nA_{ij}A_{ji}^T) = \sum_{i=1}^n(\sum_{j=1}^mA_{ij}^TA_{ji}) \\ &amp;= \sum_{i=1}^m(A_{i:}A_{:i}^T) = \sum_{i=1}^n(A_{i:}^TA_{:i})\\ &amp;= \sum_{i=1}^m(AA^T)_{ii} = \sum_{i=1}^n(A^TA)_{ii}\\ &amp;= tr(AA^T) = tr(A^TA) \end{aligned} \]" />
+  <meta name="description" content="Frobenius Normalization of an \(m \times n\) matrix \(A\) is defined as \[ ||A||_F = \sqrt{\sum_{ij}A_{ij}^2} \] It can be found that \[ \begin{aligned} ||A||_F^2 &amp;= \sum_{ij}A_{ij}^2 \\ &amp;= \sum_{i=1}^m\sum_{j=1}^nA_{ij}A_{ij} = \sum_{i=1}^n\sum_{j=1}^mA_{ji}A_{ji} \\ &amp;= \sum_{i=1}^m(\sum_{j=1}^nA_{ij}A_{ji}^T) = \sum_{i=1}^n(\sum_{j=1}^mA_{ij}^TA_{ji}) \\ &amp;= \sum_{i=1}^m(A_{i:}A_{:i}^T) = \sum_{i=1}^n(A_{i:}^TA_{:i})\\ &amp;= \sum_{i=1}^m(AA^T)_{ii} = \sum_{i=1}^n(A^TA)_{ii}\\ &amp;= tr(AA^T) = tr(A^TA) \end{aligned} \]" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/" />
   <meta property="og:title" content="Frobenius Normalization | My Notes" />
-  <meta property="og:description" content="Frobenius Normalization Frobenius Normalization of an \(m \times n\) matrix \(A\) is defined as \[ ||A||_F = \sqrt{\sum_{ij}A_{ij}^2} \] It can be found that \[ \begin{aligned} ||A||_F^2 &amp;= \sum_{ij}A_{ij}^2 \\ &amp;= \sum_{i=1}^m\sum_{j=1}^nA_{ij}A_{ij} = \sum_{i=1}^n\sum_{j=1}^mA_{ji}A_{ji} \\ &amp;= \sum_{i=1}^m(\sum_{j=1}^nA_{ij}A_{ji}^T) = \sum_{i=1}^n(\sum_{j=1}^mA_{ij}^TA_{ji}) \\ &amp;= \sum_{i=1}^m(A_{i:}A_{:i}^T) = \sum_{i=1}^n(A_{i:}^TA_{:i})\\ &amp;= \sum_{i=1}^m(AA^T)_{ii} = \sum_{i=1}^n(A^TA)_{ii}\\ &amp;= tr(AA^T) = tr(A^TA) \end{aligned} \]" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Frobenius Normalization of an \(m \times n\) matrix \(A\) is defined as \[ ||A||_F = \sqrt{\sum_{ij}A_{ij}^2} \] It can be found that \[ \begin{aligned} ||A||_F^2 &amp;= \sum_{ij}A_{ij}^2 \\ &amp;= \sum_{i=1}^m\sum_{j=1}^nA_{ij}A_{ij} = \sum_{i=1}^n\sum_{j=1}^mA_{ji}A_{ji} \\ &amp;= \sum_{i=1}^m(\sum_{j=1}^nA_{ij}A_{ji}^T) = \sum_{i=1}^n(\sum_{j=1}^mA_{ij}^TA_{ji}) \\ &amp;= \sum_{i=1}^m(A_{i:}A_{:i}^T) = \sum_{i=1}^n(A_{i:}^TA_{:i})\\ &amp;= \sum_{i=1}^m(AA^T)_{ii} = \sum_{i=1}^n(A^TA)_{ii}\\ &amp;= tr(AA^T) = tr(A^TA) \end{aligned} \]" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1082,11 +1082,7 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#frobenius-normalization">Frobenius Normalization</a></li>
-  </ul>
-</nav>
+      <nav id="TableOfContents"></nav>
 
       
     </div>
@@ -1179,8 +1175,6 @@
 
           <div class="article-style">
             
-
-<h2 id="frobenius-normalization">Frobenius Normalization</h2>
 <p>Frobenius Normalization of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is defined as <span class="math display">\[
 ||A||_F = \sqrt{\sum_{ij}A_{ij}^2}
 \]</span> It can be found that <span class="math display">\[

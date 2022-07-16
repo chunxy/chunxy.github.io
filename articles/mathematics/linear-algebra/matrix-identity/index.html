@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Matrix Identity A useful matrix identity \[ (P^{-1}&#43;B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T&#43;R)^{-1} \] can be proved with \[ \begin{aligned} (P^{-1}&#43;B^TR^{-1}B)^{-1}B^TR^{-1} &amp;= PB^T(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (P^{-1}&#43;B^TR^{-1}B)PB^T(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (P^{-1}PB^T&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (B^T&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (B^TR^{-1}R&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= B^TR^{-1}(R&#43;BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= B^TR^{-1} \\ \end{aligned} \] Its reduced form \[ (I_N&#43;AB)^{-1}A = A(I_M&#43;BA)^{-1} \] can be proved with \[ \begin{aligned} (I_N&#43;AB)^{-1}A &amp;= A(I_M&#43;BA)^{-1} \\ \iff A &amp;= (I_N &#43; AB)A(I_M &#43; BA)^{-1} \\ \iff A &amp;= (A &#43; ABA)(I_M &#43; BA)^{-1} \\ \iff A &amp;= A(I_M &#43; BA)(I_M &#43; BA)^{-1} \\ \iff A &amp;= A \end{aligned} \]" />
+  <meta name="description" content="A useful matrix identity \[ (P^{-1}&#43;B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T&#43;R)^{-1} \] can be proved with \[ \begin{aligned} (P^{-1}&#43;B^TR^{-1}B)^{-1}B^TR^{-1} &amp;= PB^T(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (P^{-1}&#43;B^TR^{-1}B)PB^T(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (P^{-1}PB^T&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (B^T&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (B^TR^{-1}R&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= B^TR^{-1}(R&#43;BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= B^TR^{-1} \\ \end{aligned} \] Its reduced form \[ (I_N&#43;AB)^{-1}A = A(I_M&#43;BA)^{-1} \] can be proved with \[ \begin{aligned} (I_N&#43;AB)^{-1}A &amp;= A(I_M&#43;BA)^{-1} \\ \iff A &amp;= (I_N &#43; AB)A(I_M &#43; BA)^{-1} \\ \iff A &amp;= (A &#43; ABA)(I_M &#43; BA)^{-1} \\ \iff A &amp;= A(I_M &#43; BA)(I_M &#43; BA)^{-1} \\ \iff A &amp;= A \end{aligned} \]" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/" />
   <meta property="og:title" content="Matrix Identity | My Notes" />
-  <meta property="og:description" content="Matrix Identity A useful matrix identity \[ (P^{-1}&#43;B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T&#43;R)^{-1} \] can be proved with \[ \begin{aligned} (P^{-1}&#43;B^TR^{-1}B)^{-1}B^TR^{-1} &amp;= PB^T(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (P^{-1}&#43;B^TR^{-1}B)PB^T(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (P^{-1}PB^T&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (B^T&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (B^TR^{-1}R&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= B^TR^{-1}(R&#43;BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= B^TR^{-1} \\ \end{aligned} \] Its reduced form \[ (I_N&#43;AB)^{-1}A = A(I_M&#43;BA)^{-1} \] can be proved with \[ \begin{aligned} (I_N&#43;AB)^{-1}A &amp;= A(I_M&#43;BA)^{-1} \\ \iff A &amp;= (I_N &#43; AB)A(I_M &#43; BA)^{-1} \\ \iff A &amp;= (A &#43; ABA)(I_M &#43; BA)^{-1} \\ \iff A &amp;= A(I_M &#43; BA)(I_M &#43; BA)^{-1} \\ \iff A &amp;= A \end{aligned} \]" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="A useful matrix identity \[ (P^{-1}&#43;B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T&#43;R)^{-1} \] can be proved with \[ \begin{aligned} (P^{-1}&#43;B^TR^{-1}B)^{-1}B^TR^{-1} &amp;= PB^T(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (P^{-1}&#43;B^TR^{-1}B)PB^T(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (P^{-1}PB^T&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (B^T&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= (B^TR^{-1}R&#43;B^TR^{-1}BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= B^TR^{-1}(R&#43;BPB^T)(BPB^T&#43;R)^{-1} \\ \iff B^TR^{-1} &amp;= B^TR^{-1} \\ \end{aligned} \] Its reduced form \[ (I_N&#43;AB)^{-1}A = A(I_M&#43;BA)^{-1} \] can be proved with \[ \begin{aligned} (I_N&#43;AB)^{-1}A &amp;= A(I_M&#43;BA)^{-1} \\ \iff A &amp;= (I_N &#43; AB)A(I_M &#43; BA)^{-1} \\ \iff A &amp;= (A &#43; ABA)(I_M &#43; BA)^{-1} \\ \iff A &amp;= A(I_M &#43; BA)(I_M &#43; BA)^{-1} \\ \iff A &amp;= A \end{aligned} \]" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1082,11 +1082,7 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#matrix-identity">Matrix Identity</a></li>
-  </ul>
-</nav>
+      <nav id="TableOfContents"></nav>
 
       
     </div>
@@ -1168,8 +1164,6 @@
 
           <div class="article-style">
             
-
-<h2 id="matrix-identity">Matrix Identity</h2>
 <p>A useful matrix identity <span class="math display">\[
 (P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
 \]</span> can be proved with <span class="math display">\[

@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Spectral Normalization Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value." />
+  <meta name="description" content="Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/" />
   <meta property="og:title" content="Spectral Normalization | My Notes" />
-  <meta property="og:description" content="Spectral Normalization Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,11 +1084,7 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#spectral-normalization">Spectral Normalization</a>
-      <ul>
-        <li><a href="#power-iteration">Power Iteration</a></li>
-      </ul>
-    </li>
+    <li><a href="#power-iteration">Power Iteration</a></li>
   </ul>
 </nav>
 
@@ -1184,7 +1180,6 @@
           <div class="article-style">
             
 
-<h2 id="spectral-normalization">Spectral Normalization</h2>
 <p>Spectral Normalization of an <span class="math inline">\(M \times N\)</span> matrix <span class="math inline">\(A\)</span> is defined as <span class="math display">\[
 ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A)
 \]</span> where <span class="math inline">\(\rm z \in \R^N\)</span>, <span class="math inline">\(\lambda_{\max}(A^TA)\)</span> is the maximum eigenvalue of matrix <span class="math inline">\(A^TA\)</span>, <span class="math inline">\(\sigma_{\max}(A)\)</span> is <span class="math inline">\(A\)</span>’s largest singular value.</p>

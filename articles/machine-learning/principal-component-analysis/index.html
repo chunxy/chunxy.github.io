@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Principal Component Analysis Given a data matrix \(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance" />
+  <meta name="description" content="Given a data matrix \(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance contained in the" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/" />
   <meta property="og:title" content="Principal Component Analysis | My Notes" />
-  <meta property="og:description" content="Principal Component Analysis Given a data matrix \(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Given a data matrix \(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance contained in the" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,13 +1084,9 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#principal-component-analysis">Principal Component Analysis</a>
-      <ul>
-        <li><a href="#linear-principal-component-analysis">Linear Principal Component Analysis</a></li>
-        <li><a href="#kernel-pca">Kernel PCA</a></li>
-        <li><a href="#explained-variance">Explained Variance</a></li>
-      </ul>
-    </li>
+    <li><a href="#linear-principal-component-analysis">Linear Principal Component Analysis</a></li>
+    <li><a href="#kernel-pca">Kernel PCA</a></li>
+    <li><a href="#explained-variance">Explained Variance</a></li>
   </ul>
 </nav>
 
@@ -1164,7 +1160,6 @@
           <div class="article-style">
             
 
-<h2 id="principal-component-analysis">Principal Component Analysis</h2>
 <p>Given a data matrix <span class="math inline">\(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)</span>, the goal of PCA is to identify the directions of maximum variance contained in the data (compared with directional derivative, this is directional variance).</p>
 <h3 id="linear-principal-component-analysis">Linear Principal Component Analysis</h3>
 <p>Let <span class="math inline">\(v \in \mathbb R^{N \times 1}\)</span> and <span class="math inline">\(||v||^2 = 1\)</span>, the variance in the direction <span class="math inline">\(v\)</span> is given by <span class="math display">\[

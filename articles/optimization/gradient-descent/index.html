@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Gradient Descent If a convex function \(f\) is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that \(f\) will converge by gradient descent.
+  <meta name="description" content="If a convex function \(f\) is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that \(f\) will converge by gradient descent.
 \(L\)-smoothness Qualitatively, smoothness means that the gradient of \(f\) changes in a controlled, bounded manner." />
 
   
@@ -287,7 +287,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/optimization/gradient-descent/" />
   <meta property="og:title" content="Gradient Descent | My Notes" />
-  <meta property="og:description" content="Gradient Descent If a convex function \(f\) is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that \(f\) will converge by gradient descent.
+  <meta property="og:description" content="If a convex function \(f\) is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that \(f\) will converge by gradient descent.
 \(L\)-smoothness Qualitatively, smoothness means that the gradient of \(f\) changes in a controlled, bounded manner." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -1086,14 +1086,10 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#gradient-descent">Gradient Descent</a>
-      <ul>
-        <li><a href="#l-smoothness"><span class="math inline">\(L\)</span>-smoothness</a></li>
-        <li><a href="#convergence-with-convexity">Convergence with Convexity</a></li>
-        <li><a href="#convergence-with-strong-convexity">Convergence with Strong Convexity</a></li>
-        <li><a href="#non-convex-case">Non-convex Case</a></li>
-      </ul>
-    </li>
+    <li><a href="#l-smoothness"><span class="math inline">\(L\)</span>-smoothness</a></li>
+    <li><a href="#convergence-with-convexity">Convergence with Convexity</a></li>
+    <li><a href="#convergence-with-strong-convexity">Convergence with Strong Convexity</a></li>
+    <li><a href="#non-convex-case">Non-convex Case</a></li>
   </ul>
 </nav>
 
@@ -1167,7 +1163,6 @@
           <div class="article-style">
             
 
-<h2 id="gradient-descent">Gradient Descent</h2>
 <p>If a convex function <span class="math inline">\(f\)</span> is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that <span class="math inline">\(f\)</span> will converge by gradient descent.</p>
 <h3 id="l-smoothness"><span class="math inline">\(L\)</span>-smoothness</h3>
 <p>Qualitatively, smoothness means that the gradient of <span class="math inline">\(f\)</span> changes in a controlled, bounded manner. Quantitatively, smoothness assumes that <span class="math inline">\(f\)</span> has a Lipschitz gradient. That means there exists an <span class="math inline">\(L &gt; 0\)</span> such that <span class="math display">\[

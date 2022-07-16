@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Bias-variance Decomposition The notation used is as follows:
+  <meta name="description" content="The notation used is as follows:
   Symbol Notation    \(\mathcal D\) the dataset  \(x\) the sample  \(y_\mathcal D\) the observation of \(x\) in \(\mathcal D\), affected by noise  \(y\) the real value of \(x\)  \(\bar y\) the mean of the real values  \(f\) the model learned with \(\mathcal D\)  \(f(x)\) the prediction of \(f\) with \(x\)  \(\bar f(x)\) the expectation of prediction of \(f\) with \(x\)  \(l(f(x), y_\mathcal D)\) the loss function, chosen to be squared error    By assuming that the observation errors averages to \(0\), the expectation of the error will be \[ \begin{aligned} E_{x \sim \mathcal D}&amp;[l(f(x), y_\mathcal D)] \\ &amp;= E[(f(x) - y_\mathcal D)^2] = E\{[(f(x) - \bar f(x) &#43; (\bar f(x) - y_\mathcal D)]^2\} \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(\bar f(x) - y_\mathcal D)^2] &#43; 2E[(f(x) - \bar f(x))(\bar f(x) - y_\mathcal D)] \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E\{[(\bar f(x) - y) &#43; (y - y_\mathcal D)]^2\} \\ &amp;\quad &#43; 2\underbrace{E[f(x) - \bar f(x)]}_0 E[\bar f(x) - y_\mathcal D] \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(\bar f(x) - y)^2] &#43; E[(y - y_\mathcal D)^2] &#43; 2E[(\bar f(x) - y)(y - y_\mathcal D)] \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(y - y_\mathcal D)^2] &#43; E\{[(\bar f(x) - \bar y) &#43; (\bar y - y)]^2\} \\ &amp;\quad &#43; 2E[\bar f(x) - y] \underbrace{E[y - y_\mathcal D]}_0 \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(y - y_\mathcal D)^2] &#43; E\{[(\bar f(x) - \bar y) &#43; (\bar y - y)]^2\} \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(y - y_\mathcal D)^2] &#43; E[(\bar f(x) - \bar y)^2] &#43; E[(\bar y - y)^2] &#43; 2E[(\bar f(x) - \bar y)(\bar y - y)] \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(y - y_\mathcal D)^2] &#43; E[(\bar f(x) - \bar y)^2] &#43; E[(\bar y - y)^2] \\ &amp;\quad &#43; 2E[\bar f(x) - \bar y]\underbrace{E[\bar y - y]}_0 \\ &amp;= \underbrace{E[(f(x) - \bar f(x))^2]}_{variance} &#43; \underbrace{E[(\bar f(x) - \bar y)^2]}_{bias^2} &#43; \underbrace{E[(y - y_\mathcal D)^2]}_{noise} &#43; \underbrace{E[(\bar y - y)^2]}_{scatter} \\ \end{aligned} \] 5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium" />
 
   
@@ -287,7 +287,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/bias-variance-decomposition/" />
   <meta property="og:title" content="Bias-variance Decomposition | My Notes" />
-  <meta property="og:description" content="Bias-variance Decomposition The notation used is as follows:
+  <meta property="og:description" content="The notation used is as follows:
   Symbol Notation    \(\mathcal D\) the dataset  \(x\) the sample  \(y_\mathcal D\) the observation of \(x\) in \(\mathcal D\), affected by noise  \(y\) the real value of \(x\)  \(\bar y\) the mean of the real values  \(f\) the model learned with \(\mathcal D\)  \(f(x)\) the prediction of \(f\) with \(x\)  \(\bar f(x)\) the expectation of prediction of \(f\) with \(x\)  \(l(f(x), y_\mathcal D)\) the loss function, chosen to be squared error    By assuming that the observation errors averages to \(0\), the expectation of the error will be \[ \begin{aligned} E_{x \sim \mathcal D}&amp;[l(f(x), y_\mathcal D)] \\ &amp;= E[(f(x) - y_\mathcal D)^2] = E\{[(f(x) - \bar f(x) &#43; (\bar f(x) - y_\mathcal D)]^2\} \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(\bar f(x) - y_\mathcal D)^2] &#43; 2E[(f(x) - \bar f(x))(\bar f(x) - y_\mathcal D)] \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E\{[(\bar f(x) - y) &#43; (y - y_\mathcal D)]^2\} \\ &amp;\quad &#43; 2\underbrace{E[f(x) - \bar f(x)]}_0 E[\bar f(x) - y_\mathcal D] \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(\bar f(x) - y)^2] &#43; E[(y - y_\mathcal D)^2] &#43; 2E[(\bar f(x) - y)(y - y_\mathcal D)] \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(y - y_\mathcal D)^2] &#43; E\{[(\bar f(x) - \bar y) &#43; (\bar y - y)]^2\} \\ &amp;\quad &#43; 2E[\bar f(x) - y] \underbrace{E[y - y_\mathcal D]}_0 \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(y - y_\mathcal D)^2] &#43; E\{[(\bar f(x) - \bar y) &#43; (\bar y - y)]^2\} \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(y - y_\mathcal D)^2] &#43; E[(\bar f(x) - \bar y)^2] &#43; E[(\bar y - y)^2] &#43; 2E[(\bar f(x) - \bar y)(\bar y - y)] \\ &amp;= E[(f(x) - \bar f(x))^2] &#43; E[(y - y_\mathcal D)^2] &#43; E[(\bar f(x) - \bar y)^2] &#43; E[(\bar y - y)^2] \\ &amp;\quad &#43; 2E[\bar f(x) - \bar y]\underbrace{E[\bar y - y]}_0 \\ &amp;= \underbrace{E[(f(x) - \bar f(x))^2]}_{variance} &#43; \underbrace{E[(\bar f(x) - \bar y)^2]}_{bias^2} &#43; \underbrace{E[(y - y_\mathcal D)^2]}_{noise} &#43; \underbrace{E[(\bar y - y)^2]}_{scatter} \\ \end{aligned} \] 5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -1084,11 +1084,7 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#bias-variance-decomposition">Bias-variance Decomposition</a></li>
-  </ul>
-</nav>
+      <nav id="TableOfContents"></nav>
 
       
     </div>
@@ -1159,8 +1155,6 @@
 
           <div class="article-style">
             
-
-<h2 id="bias-variance-decomposition">Bias-variance Decomposition</h2>
 <p>The notation used is as follows:</p>
 <table>
 <thead>

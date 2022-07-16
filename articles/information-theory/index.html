@@ -1146,37 +1146,38 @@
     
       <li>
         <h5><a href="/notes/articles/information-theory/entropy/">Entropy</a></h5>
-        <p>Entropy The Entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The Entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx \] This is actually the Differential Entropy introduced by Shannon.</p>
+        <p>The Entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The Entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx \] This is actually the Differential Entropy introduced by Shannon.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></h5>
-        <p>Conditional Entropy The Conditional Entropy measures the the amount of information needed to describe the outcome of a random variable \(Y\) given that the value of another random variable \(X\) is known.</p>
+        <p>The Conditional Entropy measures the the amount of information needed to describe the outcome of a random variable \(Y\) given that the value of another random variable \(X\) is known.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></h5>
-        <p>Cross Entropy The Cross Entropy between two distributions over the same underlying set of events measures the average number of bits to identify the event drawn from the set if a coding scheme is used for the set is optimized for probability distribution \(q\), instead of the true distribution \(p\).</p>
+        <p>The Cross Entropy between two distributions over the same underlying set of events measures the average number of bits to identify the event drawn from the set if a coding scheme is used for the set is optimized for probability distribution \(q\), instead of the true distribution \(p\).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></h5>
-        <p>Mutual Information Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable.</p>
+        <p>Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></h5>
-        <p>KL-divergence KL-divergence, \(D_{KL}(p\|q)\) is statistical distance, measuring how the probability distribution \(q\) is different from the reference probability distribution \(p\), both defined on the probability space \(X \in \mathcal{X}\).</p>
+        <p>KL-divergence, \(D_{KL}(p\|q)\) is statistical distance, measuring how the probability distribution \(q\) is different from the reference probability distribution \(p\), both defined on the probability space \(X \in \mathcal{X}\).
+In information theory, it measures the relative entropy from \(q\) to \(p\), which is the average number of extra bits required to represent a message with \(q\) instead of \(p\).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></h5>
-        <p>\(f\)-divergence \(f\)-divergence can be treated as the generalization of the KL-divergence. It is defined as \[ D_f (p||q) = \int f(\frac{p(x)}{q(x)}) p(x)\ \d x \] where \(f\) has to satisfy that \(f(1) = 0\) and \(f\) is a convex function.</p>
+        <p>\(f\)-divergence can be treated as the generalization of the KL-divergence. It is defined as \[ D_f (p||q) = \int f(\frac{p(x)}{q(x)}) p(x)\ \d x \] where \(f\) has to satisfy that \(f(1) = 0\) and \(f\) is a convex function.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></h5>
-        <p>Both [[Cross Entropy]] and [[KL-divergence]] describe the relationship between two distributions.
+        <p>Distribution or Random Variable? Both [[Cross Entropy]] and [[KL-divergence]] describe the relationship between two distributions.
 Both [[Conditional Entropy]] and [[Mutual Information]] describe the relationship between two random variables.
 Both [[Conditional Entropy]] and [[Cross Entropy]] would better be applied on discrete random variables.</p>
       </li>

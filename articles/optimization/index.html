@@ -1146,38 +1146,38 @@
     
       <li>
         <h5><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></h5>
-        <p>Lagrange Multiplier Standard form of the optimization problem is \[ \begin{aligned} &amp;\min f_0(x) \\ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\ &amp;h_i(x) = 0, i = 1,\dots,s \\ \end{aligned} \] Denote the feasible set of \(x\) that satisfies all the requirements in original problem as \(\mathcal X\).</p>
+        <p>Standard Form Standard form of the optimization problem is \[ \begin{aligned} &amp;\min f_0(x) \\ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\ &amp;h_i(x) = 0, i = 1,\dots,s \\ \end{aligned} \] Denote the feasible set of \(x\) that satisfies all the requirements in original problem as \(\mathcal X\).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></h5>
-        <p>Convex Optimization  Convex Set  A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X\), then \(\forall \alpha \in [0,1], \alpha x^{(1)} + (1 - \alpha)x^{(2)} \in \mathcal X\).</p>
+        <p>Definitions  Convex Set  A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X\), then \(\forall \alpha \in [0,1], \alpha x^{(1)} + (1 - \alpha)x^{(2)} \in \mathcal X\).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></h5>
-        <p>Gradient Descent If a convex function \(f\) is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that \(f\) will converge by gradient descent.
+        <p>If a convex function \(f\) is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that \(f\) will converge by gradient descent.
 \(L\)-smoothness Qualitatively, smoothness means that the gradient of \(f\) changes in a controlled, bounded manner.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/optimization/coordinate-descent/">Coordinate Descent</a></h5>
-        <p>Coordinate Descent Convex and Differentiable Function Given a convex, differentiable \(f: \R^n \mapsto \R\), if we are at a point \(x\) such that \(f(x)\) is minimized along each coordinate axis, have we found a global minima?</p>
+        <p>Convex and Differentiable Function Given a convex, differentiable \(f: \R^n \mapsto \R\), if we are at a point \(x\) such that \(f(x)\) is minimized along each coordinate axis, have we found a global minima?</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></h5>
-        <p>Expectation Maximization If a probabilistic model contains only observable variables, Maximum likelihood estimation or Bayesian methods can be adopted to derive the model parameters. However it is also possible that a probabilistic model contains unobservable variables, or called latent variables.</p>
+        <p>If a probabilistic model contains only observable variables, Maximum likelihood estimation or Bayesian methods can be adopted to derive the model parameters. However it is also possible that a probabilistic model contains unobservable variables, or called latent variables.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/optimization/subgradient/">Subgradient</a></h5>
-        <p>Subgradient Definition Subgradient of a function \(f: \R^n \mapsto \R\) at \(x\) is defined as \[ \partial f(x) = \{g|f(y) \ge f(x) + g^T(y - x), \forall y \in dom(f)</p>
+        <p>Definition Subgradient of a function \(f: \R^n \mapsto \R\) at \(x\) is defined as \[ \partial f(x) = \{g|f(y) \ge f(x) + g^T(y - x), \forall y \in dom(f) \}</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></h5>
-        <p>Least Angle Regression Forward Selection In cases where we are to solve \(W\) so that \(Y = XW\), where \(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\), we can do it in an iterative and greedy way.</p>
+        <p>Forward Selection In cases where we are to solve \(W\) so that \(Y = XW\), where \(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\), we can do it in an iterative and greedy way.</p>
       </li>
     
   </ul>

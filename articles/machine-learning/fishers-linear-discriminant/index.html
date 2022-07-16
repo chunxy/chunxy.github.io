@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Fisher’s Linear Discriminant Two-class Assume we have a set of \(N\)-dimensional samples \(D = \{x^{(i)}\}^M_{i=1}\) , \(M_1\) of which belong to Class \(1\), and \(M_2\) to Class \(2\) (\(M_1 &#43; M_2 = M\))." />
+  <meta name="description" content="Two-class Assume we have a set of \(N\)-dimensional samples \(D = \{x^{(i)}\}^M_{i=1}\) , \(M_1\) of which belong to Class \(1\), and \(M_2\) to Class \(2\) (\(M_1 &#43; M_2 = M\))." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/" />
   <meta property="og:title" content="Fisher&#39;s Linear Discriminant | My Notes" />
-  <meta property="og:description" content="Fisher’s Linear Discriminant Two-class Assume we have a set of \(N\)-dimensional samples \(D = \{x^{(i)}\}^M_{i=1}\) , \(M_1\) of which belong to Class \(1\), and \(M_2\) to Class \(2\) (\(M_1 &#43; M_2 = M\))." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Two-class Assume we have a set of \(N\)-dimensional samples \(D = \{x^{(i)}\}^M_{i=1}\) , \(M_1\) of which belong to Class \(1\), and \(M_2\) to Class \(2\) (\(M_1 &#43; M_2 = M\))." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,12 +1084,8 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#fishers-linear-discriminant">Fisher’s Linear Discriminant</a>
-      <ul>
-        <li><a href="#two-class">Two-class</a></li>
-        <li><a href="#multi-class">Multi-class</a></li>
-      </ul>
-    </li>
+    <li><a href="#two-class">Two-class</a></li>
+    <li><a href="#multi-class">Multi-class</a></li>
   </ul>
 </nav>
 
@@ -1163,7 +1159,6 @@
           <div class="article-style">
             
 
-<h2 id="fishers-linear-discriminant">Fisher’s Linear Discriminant</h2>
 <h3 id="two-class">Two-class</h3>
 <p>Assume we have a set of <span class="math inline">\(N\)</span>-dimensional samples <span class="math inline">\(D = \{x^{(i)}\}^M_{i=1}\)</span> , <span class="math inline">\(M_1\)</span> of which belong to Class <span class="math inline">\(1\)</span>, and <span class="math inline">\(M_2\)</span> to Class <span class="math inline">\(2\)</span> (<span class="math inline">\(M_1 + M_2 = M\)</span>). We seek to obtain a scalar <span class="math inline">\(z\)</span> by projecting <span class="math inline">\(x\)</span> onto a unit vector <span class="math inline">\(v\)</span>: <span class="math inline">\(z^{(i)} = v^Tx^{(i)}\)</span>. Of all the possibilities we would like to select the one that maximizes the separability of the scalars between classes.</p>
 <p>The mean of each class in the <span class="math inline">\(x\)</span>-space and the <span class="math inline">\(z\)</span>-space is <span class="math display">\[

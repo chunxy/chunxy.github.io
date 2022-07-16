@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Support Vector Machine Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin." />
+  <meta name="description" content="Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/" />
   <meta property="og:title" content="Support Vector Machine | My Notes" />
-  <meta property="og:description" content="Support Vector Machine Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,15 +1084,11 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#support-vector-machine">Support Vector Machine</a>
-      <ul>
-        <li><a href="#hard-margin-svm">Hard Margin SVM</a></li>
-        <li><a href="#soft-margin-svm">Soft Margin SVM</a></li>
-        <li><a href="#kernel-svm">Kernel SVM</a></li>
-        <li><a href="#solving-svm">Solving SVM</a></li>
-        <li><a href="#multi-class-svm">Multi-class SVM</a></li>
-      </ul>
-    </li>
+    <li><a href="#hard-margin-svm">Hard Margin SVM</a></li>
+    <li><a href="#soft-margin-svm">Soft Margin SVM</a></li>
+    <li><a href="#kernel-svm">Kernel SVM</a></li>
+    <li><a href="#solving-svm">Solving SVM</a></li>
+    <li><a href="#multi-class-svm">Multi-class SVM</a></li>
   </ul>
 </nav>
 
@@ -1166,7 +1162,6 @@
           <div class="article-style">
             
 
-<h2 id="support-vector-machine">Support Vector Machine</h2>
 <p>Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary. These points are called <strong>support vectors</strong>.</p>
 <h3 id="hard-margin-svm">Hard Margin SVM</h3>
 <p>Suppose the data <span class="math inline">\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1, \dots, M\}\)</span>, and is linearly separable. The separation hyperplane will be in the form of <span class="math inline">\(w^Tx + b = 0\)</span>. Let <span class="math inline">\(y^{(i)} = 1\)</span> when <span class="math inline">\(x^{(i)}\)</span> is above the hyperplane (<span class="math inline">\(w^Tx^{(i)} + b &gt; 0\)</span>), <span class="math inline">\(y^{(i)} = -1\)</span> when <span class="math inline">\(x^{(i)}\)</span> is below the hyperplane (<span class="math inline">\(w^Tx^{(i)} + b &lt; 0\)</span>).</p>

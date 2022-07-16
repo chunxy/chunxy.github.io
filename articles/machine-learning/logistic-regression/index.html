@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Logistic Regression A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is \(\R^N\), then we will process the feature vector \(x\) with a feature extractor function \(f(x) = w^Tx &#43; b\), where \(w \in \R^N\) and \(b \in \R\), and then operate on \(f(x)\), without directly depending on \(x\) anymore." />
+  <meta name="description" content="Two-class Logistic Regression A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is \(\R^N\), then we will process the feature vector \(x\) with a feature extractor function \(f(x) = w^Tx &#43; b\), where \(w \in \R^N\) and \(b \in \R\), and then operate on \(f(x)\), without directly depending on \(x\) anymore." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/" />
   <meta property="og:title" content="Logistic Regression | My Notes" />
-  <meta property="og:description" content="Logistic Regression A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is \(\R^N\), then we will process the feature vector \(x\) with a feature extractor function \(f(x) = w^Tx &#43; b\), where \(w \in \R^N\) and \(b \in \R\), and then operate on \(f(x)\), without directly depending on \(x\) anymore." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Two-class Logistic Regression A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is \(\R^N\), then we will process the feature vector \(x\) with a feature extractor function \(f(x) = w^Tx &#43; b\), where \(w \in \R^N\) and \(b \in \R\), and then operate on \(f(x)\), without directly depending on \(x\) anymore." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,11 +1084,8 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#logistic-regression">Logistic Regression</a>
-      <ul>
-        <li><a href="#multi-class-logistic-regression">Multi-class Logistic Regression</a></li>
-      </ul>
-    </li>
+    <li><a href="#two-class-logistic-regression">Two-class Logistic Regression</a></li>
+    <li><a href="#multi-class-logistic-regression">Multi-class Logistic Regression</a></li>
   </ul>
 </nav>
 
@@ -1162,7 +1159,7 @@
           <div class="article-style">
             
 
-<h2 id="logistic-regression">Logistic Regression</h2>
+<h2 id="two-class-logistic-regression">Two-class Logistic Regression</h2>
 <p>A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is <span class="math inline">\(\R^N\)</span>, then we will process the feature vector <span class="math inline">\(x\)</span> with a feature extractor function <span class="math inline">\(f(x) = w^Tx + b\)</span>, where <span class="math inline">\(w \in \R^N\)</span> and <span class="math inline">\(b \in \R\)</span>, and then operate on <span class="math inline">\(f(x)\)</span>, without directly depending on <span class="math inline">\(x\)</span> anymore.</p>
 <p>Logistic Regression is a binary linear classifier, which takes a probabilistic approach. It maps the <span class="math inline">\(f(x)\)</span> to a probability value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> by applying a sigmoid function <span class="math inline">\(\sigma(z) = \frac{1}{1 + e^{-z}}\)</span>. That is <span class="math display">\[
 \begin{aligned}
@@ -1206,7 +1203,7 @@ b \leftarrow b - \eta\frac{\partial J}{\partial b}
 <p>The posterior obtained by binary [[Linear Discriminant Analysis]] has the form of <span class="math display">\[
 p(y|x) = \frac{1}{1 + e^{-(wx + b)}}
 \]</span> This is not to say LDA and LR are the same in binary case. Note that LDA is a generative model which learns <span class="math inline">\(p(x|y)\)</span> and <span class="math inline">\(p(y)\)</span>, LR is a discriminative model which only learns <span class="math inline">\(p(y|x)\)</span>. One can discriminate with a generative model, but not reversely.</p>
-<h3 id="multi-class-logistic-regression">Multi-class Logistic Regression</h3>
+<h2 id="multi-class-logistic-regression">Multi-class Logistic Regression</h2>
 <p>One way to train use Logistic Regression in multi-class classification in to for each class <span class="math inline">\(i = {1, \dots, C}\)</span>, assign a weight vector <span class="math inline">\(w^{(i)}\)</span>, the probability is define by the softmax function: <span class="math display">\[
 p(y = c|x) =\frac{exp(w^{(c)}\cdot x + b^{(c)})}{\sum_{i=1}^Cexp(w^{(i)} \cdot x + b^{(i)})}
 \]</span> Then <span class="math inline">\(f_{LR_{multi-class}}(x) = \arg \max\limits_{y \in \{1,\dots,C\}}p(y|x)\)</span></p>

@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Least Angle Regression Forward Selection In cases where we are to solve \(W\) so that \(Y = XW\), where \(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\), we can do it in an iterative and greedy way." />
+  <meta name="description" content="Forward Selection In cases where we are to solve \(W\) so that \(Y = XW\), where \(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\), we can do it in an iterative and greedy way." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/optimization/least-angle-regression/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/optimization/least-angle-regression/" />
   <meta property="og:title" content="Least Angle Regression | My Notes" />
-  <meta property="og:description" content="Least Angle Regression Forward Selection In cases where we are to solve \(W\) so that \(Y = XW\), where \(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\), we can do it in an iterative and greedy way." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Forward Selection In cases where we are to solve \(W\) so that \(Y = XW\), where \(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\), we can do it in an iterative and greedy way." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,13 +1084,9 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#least-angle-regression">Least Angle Regression</a>
-      <ul>
-        <li><a href="#forward-selection">Forward Selection</a></li>
-        <li><a href="#forward-stagewise">Forward Stagewise</a></li>
-        <li><a href="#least-angle-regression-1">Least Angle Regression</a></li>
-      </ul>
-    </li>
+    <li><a href="#forward-selection">Forward Selection</a></li>
+    <li><a href="#forward-stagewise">Forward Stagewise</a></li>
+    <li><a href="#least-angle-regression">Least Angle Regression</a></li>
   </ul>
 </nav>
 
@@ -1164,7 +1160,6 @@
           <div class="article-style">
             
 
-<h2 id="least-angle-regression">Least Angle Regression</h2>
 <h3 id="forward-selection">Forward Selection</h3>
 <p>In cases where we are to solve <span class="math inline">\(W\)</span> so that <span class="math inline">\(Y = XW\)</span>, where <span class="math inline">\(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\)</span>, we can do it in an iterative and greedy way.</p>
 <ol type="1">
@@ -1193,7 +1188,7 @@ Y_{res} = Y_{res} - \hat Y
 <li><del>Remove <span class="math inline">\(\mathrm x^{(k)}\)</span> from <span class="math inline">\(C\)</span>.</del> Go to step 2 until <span class="math inline">\(Y_{res}\)</span> is sufficiently small.</li>
 </ol>
 <p>Apparently Forward Stagewise gives an exact solution when <span class="math inline">\(\eta\)</span> is small enough. But it is more time-consuming.</p>
-<h3 id="least-angle-regression-1">Least Angle Regression</h3>
+<h3 id="least-angle-regression">Least Angle Regression</h3>
 <p>LARS a is compromise of Forward Selection and Forward Stagewise. Likewise, LARS selects a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. LARS proceeds stagewise like Forward Stagewise, however with its own methodology to determine the step size.</p>
 <ol type="1">
 <li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}, \mathrm d = \arg\max_{\mathrm x \in C}\frac{Y \cdot \mathrm x }{||\mathrm x||_2}\)</span> initially.</p></li>

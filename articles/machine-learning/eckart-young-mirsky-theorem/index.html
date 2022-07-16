@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Eckart-Young-Mirsky Theorem Given an \(M \times N\) matrix \(X\) of rank \(R \le \min\{M,N\}\) and its SVD \(X = U\Sigma V^T\), where \(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\), among all the \(M \times N\) matrices of rank \(K \le R\), the best approximation to \(X\) is \(Y^\star = U\Sigma_K V^T\), where \(\Sigma_K = diag(\sigma_1, \sigma_2, ." />
+  <meta name="description" content="Given an \(M \times N\) matrix \(X\) of rank \(R \le \min\{M,N\}\) and its SVD \(X = U\Sigma V^T\), where \(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\), among all the \(M \times N\) matrices of rank \(K \le R\), the best approximation to \(X\) is \(Y^\star = U\Sigma_K V^T\), where \(\Sigma_K = diag(\sigma_1, \sigma_2, ." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/" />
   <meta property="og:title" content="Eckart-Young-Mirsky Theorem | My Notes" />
-  <meta property="og:description" content="Eckart-Young-Mirsky Theorem Given an \(M \times N\) matrix \(X\) of rank \(R \le \min\{M,N\}\) and its SVD \(X = U\Sigma V^T\), where \(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\), among all the \(M \times N\) matrices of rank \(K \le R\), the best approximation to \(X\) is \(Y^\star = U\Sigma_K V^T\), where \(\Sigma_K = diag(\sigma_1, \sigma_2, ." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Given an \(M \times N\) matrix \(X\) of rank \(R \le \min\{M,N\}\) and its SVD \(X = U\Sigma V^T\), where \(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\), among all the \(M \times N\) matrices of rank \(K \le R\), the best approximation to \(X\) is \(Y^\star = U\Sigma_K V^T\), where \(\Sigma_K = diag(\sigma_1, \sigma_2, ." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1082,11 +1082,7 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#eckart-young-mirsky-theorem">Eckart-Young-Mirsky Theorem</a></li>
-  </ul>
-</nav>
+      <nav id="TableOfContents"></nav>
 
       
     </div>
@@ -1157,8 +1153,6 @@
 
           <div class="article-style">
             
-
-<h2 id="eckart-young-mirsky-theorem">Eckart-Young-Mirsky Theorem</h2>
 <p>Given an <span class="math inline">\(M \times N\)</span> matrix <span class="math inline">\(X\)</span> of rank <span class="math inline">\(R \le \min\{M,N\}\)</span> and its SVD <span class="math inline">\(X = U\Sigma V^T\)</span>, where <span class="math inline">\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)</span>, among all the <span class="math inline">\(M \times N\)</span> matrices of rank <span class="math inline">\(K \le R\)</span>, the best approximation to <span class="math inline">\(X\)</span> is <span class="math inline">\(Y^\star = U\Sigma_K V^T\)</span>, where <span class="math inline">\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)</span>, when distance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as [[Frobenius Normalization|Frobenius norm]]: <span class="math display">\[
 ||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
 \]</span> Firstly we prove that, if <span class="math inline">\(U\)</span> is orthogonal, then <span class="math inline">\(||UA||_F = ||AU||_F = ||A||_F\)</span>: <span class="math display">\[

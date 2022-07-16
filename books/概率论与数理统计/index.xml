@@ -55,7 +55,6 @@ B(1,p) = p, B(0,p) = 1 - p \\
       <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</guid>
       <description>
 
-&lt;h2 id=&#34;gaussian-distribution&#34;&gt;Gaussian Distribution&lt;/h2&gt;
 &lt;h3 id=&#34;one-dimensional&#34;&gt;One-dimensional&lt;/h3&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;-d random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim \mathcal{N}(\mu, \sigma^2)\)&lt;/span&gt;, then its density function is &lt;span class=&#34;math display&#34;&gt;\[
 p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}
@@ -156,7 +155,6 @@ p(z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}}e^{-\frac{1}{2}(z-\mu)^T\Sigma_Z^{-1}(
       <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</guid>
       <description>
 
-&lt;h2 id=&#34;function-of-random-variable&#34;&gt;Function of Random Variable&lt;/h2&gt;
 &lt;p&gt;Suppose we have a 1-D random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim p_X\)&lt;/span&gt; and a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, what will &lt;span class=&#34;math inline&#34;&gt;\(f(X)\)&lt;/span&gt;’s distribution and expectation be like?&lt;/p&gt;
 &lt;h3 id=&#34;distribution&#34;&gt;Distribution&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(Y = f(X)\)&lt;/span&gt; and suppose &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonic, then &lt;span class=&#34;math display&#34;&gt;\[

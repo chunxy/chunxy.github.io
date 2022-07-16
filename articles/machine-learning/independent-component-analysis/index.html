@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Independent Component Analysis Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." />
+  <meta name="description" content="Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/" />
   <meta property="og:title" content="Independent Component Analysis | My Notes" />
-  <meta property="og:description" content="Independent Component Analysis Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,7 +1084,7 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#independent-component-analysis">Independent Component Analysis</a>
+    <li><a href="#assumption-and-derivation">Assumption and Derivation</a>
       <ul>
         <li><a href="#non-gaussian-and-principal-component-analysispca">Non-Gaussian and [[Principal Component Analysis|PCA]]</a></li>
       </ul>
@@ -1162,7 +1162,7 @@
           <div class="article-style">
             
 
-<h2 id="independent-component-analysis">Independent Component Analysis</h2>
+<h2 id="assumption-and-derivation">Assumption and Derivation</h2>
 <p>Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis <span class="math inline">\(i\)</span>) <span class="math inline">\(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\)</span>, find the <span class="math inline">\(N \times N\)</span> mixing matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(X = AS\)</span>. Columns of <span class="math inline">\(A\)</span> are the propagation weights from a signal source to observers. Therefore they are considered independent (and are thus called independent components).</p>
 <p><span class="math inline">\(A\)</span> is called mixing matrix and <span class="math inline">\(W = A^{-1}\)</span> is called unmixing matrix because <span class="math inline">\(S = WX\)</span>.</p>
 <p>Suppose <span class="math inline">\(A = U\Sigma V^T\)</span> by [[Singular Value Decomposition|SVD]]. Assume observations are pre-centered:</p>

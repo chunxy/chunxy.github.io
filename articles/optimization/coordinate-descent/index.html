@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Coordinate Descent Convex and Differentiable Function Given a convex, differentiable \(f: \R^n \mapsto \R\), if we are at a point \(x\) such that \(f(x)\) is minimized along each coordinate axis, have we found a global minima?" />
+  <meta name="description" content="Convex and Differentiable Function Given a convex, differentiable \(f: \R^n \mapsto \R\), if we are at a point \(x\) such that \(f(x)\) is minimized along each coordinate axis, have we found a global minima?" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/optimization/coordinate-descent/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/optimization/coordinate-descent/" />
   <meta property="og:title" content="Coordinate Descent | My Notes" />
-  <meta property="og:description" content="Coordinate Descent Convex and Differentiable Function Given a convex, differentiable \(f: \R^n \mapsto \R\), if we are at a point \(x\) such that \(f(x)\) is minimized along each coordinate axis, have we found a global minima?" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Convex and Differentiable Function Given a convex, differentiable \(f: \R^n \mapsto \R\), if we are at a point \(x\) such that \(f(x)\) is minimized along each coordinate axis, have we found a global minima?" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,11 +1084,8 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#coordinate-descent">Coordinate Descent</a>
-      <ul>
-        <li><a href="#convex-and-differentiable-function">Convex and Differentiable Function</a></li>
-      </ul>
-    </li>
+    <li><a href="#convex-and-differentiable-function">Convex and Differentiable Function</a></li>
+    <li><a href="#convex-and-non-differentiable-function-but-non-smooth-separable">Convex and Non-differentiable Function, but Non-smooth Separable</a></li>
   </ul>
 </nav>
 
@@ -1162,7 +1159,6 @@
           <div class="article-style">
             
 
-<h2 id="coordinate-descent">Coordinate Descent</h2>
 <h3 id="convex-and-differentiable-function">Convex and Differentiable Function</h3>
 <p>Given a convex, differentiable <span class="math inline">\(f: \R^n \mapsto \R\)</span>, if we are at a point <span class="math inline">\(x\)</span> such that <span class="math inline">\(f(x)\)</span> is minimized along each coordinate axis, have we found a global minima? That is, does <span class="math display">\[
 \forall d, i,f(x + d \cdot e_i) \ge f(x) \Rightarrow f(x) = \min_zf(z), \text{ where $e_i$ is the $i$-th standard basis ?}
@@ -1175,7 +1171,8 @@
 \end{array}
 \right]
 = 0
-\]</span> ### Convex and Non-differentiable Function, but Non-smooth Separable</p>
+\]</span></p>
+<h3 id="convex-and-non-differentiable-function-but-non-smooth-separable">Convex and Non-differentiable Function, but Non-smooth Separable</h3>
 <p>If <span class="math inline">\(f\)</span> is only convex but not differentiable, the above will not necessarily hold. However, if <span class="math display">\[
 f(x) = g(x) + \sum_{i=1}^nh_i(x_i)
 \]</span> where <span class="math inline">\(g(x)\)</span> is convex and differentiable, and each <span class="math inline">\(h_i(x_i)\)</span> is convex, the global minima still holds. For any <span class="math inline">\(y\)</span>, <span class="math display">\[

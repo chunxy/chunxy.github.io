@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Least Squares Suppose we are solving the \(Ax = b\) problem. \(b\) does not always lie in the column space of \(A\). However, we can try to find within \(A\)’s column space a vector \(\hat x\) such that \(A\hat x\) best approximates \(b\)." />
+  <meta name="description" content="Suppose we are solving the \(Ax = b\) problem. \(b\) does not always lie in the column space of \(A\). However, we can try to find within \(A\)’s column space a vector \(\hat x\) such that \(A\hat x\) best approximates \(b\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/least-squares/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/least-squares/" />
   <meta property="og:title" content="Least Squares | My Notes" />
-  <meta property="og:description" content="Least Squares Suppose we are solving the \(Ax = b\) problem. \(b\) does not always lie in the column space of \(A\). However, we can try to find within \(A\)’s column space a vector \(\hat x\) such that \(A\hat x\) best approximates \(b\)." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Suppose we are solving the \(Ax = b\) problem. \(b\) does not always lie in the column space of \(A\). However, we can try to find within \(A\)’s column space a vector \(\hat x\) such that \(A\hat x\) best approximates \(b\)." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1082,11 +1082,7 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#least-squares">Least Squares</a></li>
-  </ul>
-</nav>
+      <nav id="TableOfContents"></nav>
 
       
     </div>
@@ -1157,8 +1153,6 @@
 
           <div class="article-style">
             
-
-<h2 id="least-squares">Least Squares</h2>
 <p>Suppose we are solving the <span class="math inline">\(Ax = b\)</span> problem. <span class="math inline">\(b\)</span> does not always lie in the column space of <span class="math inline">\(A\)</span>. However, we can try to find within <span class="math inline">\(A\)</span>’s column space a vector <span class="math inline">\(\hat x\)</span> such that <span class="math inline">\(A\hat x\)</span> best approximates <span class="math inline">\(b\)</span>. By best approximation we mean to minimize the <span class="math inline">\(||Ax - b||\)</span> over all <span class="math inline">\(x \in \R^n\)</span>.</p>
 <p>The best approximation can be achieved when <span class="math inline">\(Ax = \hat b = \mathop{proj}_{Col(A)}b\)</span>.</p>
 <p>Instead of finding a orthogonal basis for <span class="math inline">\(A\)</span>, computing <span class="math inline">\(\hat b\)</span> and then solving <span class="math inline">\(Ax = \hat b\)</span>, we can derive <span class="math inline">\(x\)</span> in this way: <span class="math display">\[

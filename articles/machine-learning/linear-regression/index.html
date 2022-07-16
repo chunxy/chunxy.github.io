@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Linear Regression Given a dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\) where \(x^{(i)} \in \R^N\) is the feature vector and \(y^{(i)} \in R\) is the output, learn a linear function \(f" />
+  <meta name="description" content="Given a dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\) where \(x^{(i)} \in \R^N\) is the feature vector and \(y^{(i)} \in R\) is the output, learn a linear function \(f = w^Tx" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/linear-regression/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/linear-regression/" />
   <meta property="og:title" content="Linear Regression | My Notes" />
-  <meta property="og:description" content="Linear Regression Given a dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\) where \(x^{(i)} \in \R^N\) is the feature vector and \(y^{(i)} \in R\) is the output, learn a linear function \(f" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Given a dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\) where \(x^{(i)} \in \R^N\) is the feature vector and \(y^{(i)} \in R\) is the output, learn a linear function \(f = w^Tx" /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,13 +1084,9 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#linear-regression">Linear Regression</a>
-      <ul>
-        <li><a href="#ordinary-least-squares">Ordinary Least Squares</a></li>
-        <li><a href="#ridge-regression">Ridge Regression</a></li>
-        <li><a href="#lasso-regression">Lasso Regression</a></li>
-      </ul>
-    </li>
+    <li><a href="#ordinary-least-squares">Ordinary Least Squares</a></li>
+    <li><a href="#ridge-regression">Ridge Regression</a></li>
+    <li><a href="#lasso-regression">Lasso Regression</a></li>
   </ul>
 </nav>
 
@@ -1164,7 +1160,6 @@
           <div class="article-style">
             
 
-<h2 id="linear-regression">Linear Regression</h2>
 <p>Given a dataset <span class="math inline">\(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\)</span> where <span class="math inline">\(x^{(i)} \in \R^N\)</span> is the feature vector and <span class="math inline">\(y^{(i)} \in R\)</span> is the output, learn a linear function <span class="math inline">\(f = w^Tx + b: \R^N \mapsto \R\)</span>, where <span class="math inline">\(w \in \R^N, b \in \R\)</span>, that best predicts the <span class="math inline">\(y\)</span> for any feature vector <span class="math inline">\(x\)</span>. The “best” is usually measured by the Mean Square Error: <span class="math display">\[
 MSE(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} - f(x^{(i)}))^2
 \]</span></p>

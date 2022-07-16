@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Clustering Given dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\), a clustering \(\mathcal C\) of the \(M\) points into \(K (K \le M)\) clusters is a partitioning of \(\mathcal D\) into \(K\) disjoint groups \(\{C_1,\dots,C_K\}\)." />
+  <meta name="description" content="Given dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\), a clustering \(\mathcal C\) of the \(M\) points into \(K (K \le M)\) clusters is a partitioning of \(\mathcal D\) into \(K\) disjoint groups \(\{C_1,\dots,C_K\}\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/clustering/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/clustering/" />
   <meta property="og:title" content="Clustering | My Notes" />
-  <meta property="og:description" content="Clustering Given dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\), a clustering \(\mathcal C\) of the \(M\) points into \(K (K \le M)\) clusters is a partitioning of \(\mathcal D\) into \(K\) disjoint groups \(\{C_1,\dots,C_K\}\)." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Given dataset \(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\), a clustering \(\mathcal C\) of the \(M\) points into \(K (K \le M)\) clusters is a partitioning of \(\mathcal D\) into \(K\) disjoint groups \(\{C_1,\dots,C_K\}\)." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1084,13 +1084,9 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#clustering">Clustering</a>
-      <ul>
-        <li><a href="#k-means">K-means</a></li>
-        <li><a href="#gaussian-mixture-model">Gaussian Mixture Model</a></li>
-        <li><a href="#soft-k-means">Soft K-means</a></li>
-      </ul>
-    </li>
+    <li><a href="#k-means">K-means</a></li>
+    <li><a href="#gaussian-mixture-model">Gaussian Mixture Model</a></li>
+    <li><a href="#soft-k-means">Soft K-means</a></li>
   </ul>
 </nav>
 
@@ -1164,7 +1160,6 @@
           <div class="article-style">
             
 
-<h2 id="clustering">Clustering</h2>
 <p>Given dataset <span class="math inline">\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\)</span>, a clustering <span class="math inline">\(\mathcal C\)</span> of the <span class="math inline">\(M\)</span> points into <span class="math inline">\(K (K \le M)\)</span> clusters is a partitioning of <span class="math inline">\(\mathcal D\)</span> into <span class="math inline">\(K\)</span> disjoint groups <span class="math inline">\(\{C_1,\dots,C_K\}\)</span>. Suppose we have a function <span class="math inline">\(f\)</span> that evaluates the clustering <span class="math inline">\(\mathcal C\)</span> and returns lower score with better clustering. The best clustering will be <span class="math display">\[
 \arg \min_{\mathcal C} f(\mathcal C)
 \]</span> The number of all possibilities of clustering with <span class="math inline">\(M\)</span> elements is called the Bell number, denoted as <span class="math inline">\(B_M\)</span>. The calculation of the Bell number is based on dynamic programming. The number of ways to cluster <span class="math inline">\(M+1\)</span> elements is the sum of number of ways to:</p>
