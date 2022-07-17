@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="The Entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The Entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx \] This is actually the Differential Entropy introduced by Shannon." />
+  <meta name="description" content="The Entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The Entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x \] This is actually the Differential Entropy introduced by Shannon." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/entropy/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/entropy/" />
   <meta property="og:title" content="Entropy | My Notes" />
-  <meta property="og:description" content="The Entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The Entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx \] This is actually the Differential Entropy introduced by Shannon." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="The Entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The Entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x \] This is actually the Differential Entropy introduced by Shannon." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1082,7 +1082,11 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gaussian-case">Gaussian Case</a></li>
+  </ul>
+</nav>
 
       
     </div>
@@ -1153,11 +1157,29 @@
 
           <div class="article-style">
             
+
 <p>The Entropy of discrete distribution <span class="math inline">\(p\)</span> (probability mass function) is defined as <span class="math display">\[
 H(p) = -\mathrm{E}_{x \sim p}\log p(x)
 \]</span> The Entropy of continuous distribution <span class="math inline">\(q\)</span> (probability density function) is usually similarly defined as <span class="math display">\[
-H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx
+H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x
 \]</span> This is actually the <strong>Differential Entropy</strong> introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.</p>
+<h3 id="gaussian-case">Gaussian Case</h3>
+The entropy of a <span class="math inline">\(n\)</span>-dimensional Gaussian distribution $p(x) =  $ can be derived as follows: $$
+<span class="math display">\[\begin{aligned}
+H(p) &amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
+&amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2 \log |2\pi\Sigma| \\
+
+&amp;= \frac 1 2 \int p(x) x^T \Sigma^{-1} x \d x + \frac 1 2 \int p(x) \mu^T \Sigma^{-1} \mu \d x \\
+&amp;\quad - \frac 1 2 \int p(x) \mu^T \Sigma^{-1} x \d x - \frac 1 2 \int p(x) x^T \Sigma^{-1} \mu \d x \\
+&amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
+
+&amp;= [\frac 1 2 \tr(\Sigma^{-1} \Sigma) + \frac 1 2 \mu^T \Sigma^{-1} \mu] + \frac 1 2 \mu^T \Sigma^{-1} \mu \\
+&amp;\quad - \frac 1 2 \mu^T \Sigma^{-1} \mu - \frac 1 2 \mu^T \Sigma^{-1} \mu \\
+&amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
+
+&amp;= \frac 1 2 n + \frac 1 2 \log |2\pi\Sigma|
+\end{aligned}\]</span>
+<p>$$</p>
 
 
 

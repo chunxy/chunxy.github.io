@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="KL-divergence, \(D_{KL}(p\|q)\) is statistical distance, measuring how the probability distribution \(q\) is different from the reference probability distribution \(p\), both defined on the probability space \(X \in \mathcal{X}\).
+  <meta name="description" content="KL-divergence, \(D_{KL}(p\|q)\) is statistical distance, measuring how the probability distribution \(q\) is different from the reference probability distribution \(p\), both defined on \(X \in \mathcal{X}\).
 In information theory, it measures the relative entropy from \(q\) to \(p\), which is the average number of extra bits required to represent a message with \(q\) instead of \(p\)." />
 
   
@@ -287,7 +287,7 @@ In information theory, it measures the relative entropy from \(q\) to \(p\), whi
   <meta property="og:site_name" content="My Notes" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/kl-divergence/" />
   <meta property="og:title" content="KL-divergence | My Notes" />
-  <meta property="og:description" content="KL-divergence, \(D_{KL}(p\|q)\) is statistical distance, measuring how the probability distribution \(q\) is different from the reference probability distribution \(p\), both defined on the probability space \(X \in \mathcal{X}\).
+  <meta property="og:description" content="KL-divergence, \(D_{KL}(p\|q)\) is statistical distance, measuring how the probability distribution \(q\) is different from the reference probability distribution \(p\), both defined on \(X \in \mathcal{X}\).
 In information theory, it measures the relative entropy from \(q\) to \(p\), which is the average number of extra bits required to represent a message with \(q\) instead of \(p\)." /><meta property="og:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -1084,7 +1084,11 @@ In information theory, it measures the relative entropy from \(q\) to \(p\), whi
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gaussian-case">Gaussian Case</a></li>
+  </ul>
+</nav>
 
       
     </div>
@@ -1155,13 +1159,53 @@ In information theory, it measures the relative entropy from \(q\) to \(p\), whi
 
           <div class="article-style">
             
-<p>KL-divergence, <span class="math inline">\(D_{KL}(p\|q)\)</span> is statistical distance, measuring how the probability distribution <span class="math inline">\(q\)</span> is different from the reference probability distribution <span class="math inline">\(p\)</span>, both defined on the probability space <span class="math inline">\(X \in \mathcal{X}\)</span>.</p>
+
+<p>KL-divergence, <span class="math inline">\(D_{KL}(p\|q)\)</span> is statistical distance, measuring how the probability distribution <span class="math inline">\(q\)</span> is different from the reference probability distribution <span class="math inline">\(p\)</span>, both defined on <span class="math inline">\(X \in \mathcal{X}\)</span>.</p>
 <p>In information theory, it measures the <strong>relative entropy</strong> from <span class="math inline">\(q\)</span> to <span class="math inline">\(p\)</span>, which is the average number of extra bits required to represent a message with <span class="math inline">\(q\)</span> instead of <span class="math inline">\(p\)</span>.</p>
 <p>In discrete form, <span class="math display">\[
 D_{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x \in \mathcal{X}} p(x)\log \frac{p(x)}{q(x)}
 \]</span> In continuous form, <span class="math display">\[
 D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
 \]</span></p>
+<h3 id="gaussian-case">Gaussian Case</h3>
+Suppose <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are random variables, both of some <span class="math inline">\(n\)</span>-dimensional Gaussian distribution. Then the KL-divergence between them can be formulated as: $$
+<span class="math display">\[\begin{aligned}
+D_{KL}(p_X || p_Y) &amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_X(x) \log [
+    \sqrt \frac{|\Sigma_X|}{|\Sigma_Y|} 
+    \frac {
+        e^{-\frac 1 2 (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X)}
+    } {
+        e^{-\frac 1 2 (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y)}
+    }
+] 
+\d x \\
+
+&amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
+\frac 1 2 \int p_X(x) [
+    (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) + 
+    (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y)
+]
+\d x \\
+
+&amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
+\frac 1 2 \int p_X(x) (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) \d x \\
+&amp;\quad -\frac 1 2 \int p_X(x) (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y) \d x \\
+
+&amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \int p_X(x) x^T \Sigma_X^{-1} x \d x + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
+&amp;\quad - \frac 1 2 \int p_X(x) x^T \Sigma_Y^{-1} x \d x + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y \d x \\
+
+&amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \tr(\Sigma_X^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_X^{-1} \mu_X + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
+&amp;\quad - \frac 1 2 \tr(\Sigma_Y^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_Y^{-1} \mu_X + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y     \\
+
+&amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + \mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu_X \Sigma_Y^{-1} \mu_X] \\
+
+&amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y)] \\
+&amp;\quad + \frac 1 2 [\mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu^T_X \Sigma_Y^{-1} \mu_X + \mu_X^T \Sigma_Y^{-1} \mu_Y - \mu_Y^T \Sigma_Y^{-1} \mu_X] \\
+
+&amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + (\mu_Y^T - \mu_X^T) \Sigma_Y^{-1} (\mu_Y - \mu_X)] \\
+
+\end{aligned}\]</span>
+<p>$$</p>
 
 
 

@@ -113,11 +113,29 @@ B(1,p) = p, B(0,p) = 1 - p \\
       <pubDate>Thu, 28 Apr 2022 22:47:16 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/entropy/</guid>
       <description>
+
 &lt;p&gt;The Entropy of discrete distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (probability mass function) is defined as &lt;span class=&#34;math display&#34;&gt;\[
 H(p) = -\mathrm{E}_{x \sim p}\log p(x)
 \]&lt;/span&gt; The Entropy of continuous distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; (probability density function) is usually similarly defined as &lt;span class=&#34;math display&#34;&gt;\[
-H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)dx
+H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x
 \]&lt;/span&gt; This is actually the &lt;strong&gt;Differential Entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.&lt;/p&gt;
+&lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
+The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional Gaussian distribution $p(x) =  $ can be derived as follows: $$
+&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
+&amp;amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2 \log |2\pi\Sigma| \\
+
+&amp;amp;= \frac 1 2 \int p(x) x^T \Sigma^{-1} x \d x + \frac 1 2 \int p(x) \mu^T \Sigma^{-1} \mu \d x \\
+&amp;amp;\quad - \frac 1 2 \int p(x) \mu^T \Sigma^{-1} x \d x - \frac 1 2 \int p(x) x^T \Sigma^{-1} \mu \d x \\
+&amp;amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
+
+&amp;amp;= [\frac 1 2 \tr(\Sigma^{-1} \Sigma) + \frac 1 2 \mu^T \Sigma^{-1} \mu] + \frac 1 2 \mu^T \Sigma^{-1} \mu \\
+&amp;amp;\quad - \frac 1 2 \mu^T \Sigma^{-1} \mu - \frac 1 2 \mu^T \Sigma^{-1} \mu \\
+&amp;amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
+
+&amp;amp;= \frac 1 2 n + \frac 1 2 \log |2\pi\Sigma|
+\end{aligned}\]&lt;/span&gt;
+&lt;p&gt;$$&lt;/p&gt;
 
 
 </description>
@@ -2226,6 +2244,7 @@ k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
       <pubDate>Thu, 19 May 2022 12:20:04 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/mutual-information/</guid>
       <description>
+
 &lt;p&gt;Mutual Information of &lt;strong&gt;two random variables&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
 \]&lt;/span&gt; By its definition, &lt;span class=&#34;math display&#34;&gt;\[
@@ -2237,6 +2256,51 @@ I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \times p_Y)
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
+&lt;p&gt;To better illustrate the formula of mutual information between two Gaussian-distributed random variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. We can concatenate them to form, say an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, which is also Gaussian-distributed. Then the mutual information between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; can be computed as: &lt;span class=&#34;math display&#34;&gt;\[
+I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
+\]&lt;/span&gt; The key to the derivation is that mutual information is the KL-divergence between the joint distribution and the product of the marginal distributions.&lt;/p&gt;
+&lt;p&gt;The joint can be described as &lt;span class=&#34;math display&#34;&gt;\[
+p_{X:Y} = N(\underbrace{\mu_X:\mu_Y}_\mu,
+\underbrace{
+\begin{bmatrix} \
+\Sigma_{X} &amp;amp; \Cov_{XY} \\
+\Cov_{YX} &amp;amp; \Sigma_{Y} \\
+\end{bmatrix}
+}_\Sigma
+)
+\]&lt;/span&gt;&lt;/p&gt;
+The product of marginals can be described as &lt;span class=&#34;math display&#34;&gt;\[
+p_{X} \times p_{Y} = N(\mu_x:\mu_y,
+\begin{bmatrix} \
+\Sigma_{xx} &amp;amp; 0 \\
+0 &amp;amp; \Sigma_{yy} \\
+\end{bmatrix}
+)
+\]&lt;/span&gt; The probability density function of an &lt;span class=&#34;math inline&#34;&gt;\(n&amp;#39;\)&lt;/span&gt;-dimensional Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(p(x&amp;#39;) = \frac{1}{\sqrt{|2\pi \Sigma&amp;#39;|}}e^{-\frac{1}{2}(x&amp;#39;-\mu&amp;#39;)^T\Sigma&amp;#39;^{-1}(x&amp;#39;-\mu&amp;#39;)}\)&lt;/span&gt;. The entropy of this Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 2 n&amp;#39; + \frac 1 2 \log |2\pi\Sigma&amp;#39;|\)&lt;/span&gt;. In view of above, $$
+&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+I&amp;amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
+= \int p_{X:Y}(\underbrace{x:y}_z) \log \frac{p_{X:Y}(x:y)} {p_X(x) p_{Y}(y)} \d z \\
+
+&amp;amp;= \int p_{X:Y}(\underbrace{x:y}_z) \log p_{X:Y}(x:y) \d z -
+    \int p_{X:Y}(\underbrace{x:y}_z) \log p_X(x) \d z \\
+&amp;amp;\quad\quad\quad -\int p_{X:Y}(\underbrace{x:y}_z) \log p_Y(y) \d z \\
+    
+&amp;amp;= \int p_{Z}(z) \log p_{Z}(z) \d z -
+    \int p_{X}(x) \log p_X(x) \d x - 
+    \int p_{Y}(y) \log p_Y(y) \d y \\
+    
+&amp;amp;= -(\log \sqrt{\det(2\pi \Sigma)} + \frac n 2) +
+    (\log \sqrt{\det(2\pi \Sigma_{X}}) + \frac {n_X} 2) \\
+&amp;amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y} 2) \\
+    
+&amp;amp;= \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
+
+\end{aligned}\]&lt;/span&gt;
+&lt;p&gt;$$&lt;/p&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr&#34;&gt;Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.math.nyu.edu/~kleeman/infolect7.pdf&#34;&gt;Information Theory and Predictability Lecture 7: Gaussian Case&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -2499,13 +2563,53 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
       <pubDate>Mon, 25 Apr 2022 16:39:15 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/kl-divergence/</guid>
       <description>
-&lt;p&gt;KL-divergence, &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p\|q)\)&lt;/span&gt; is statistical distance, measuring how the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is different from the reference probability distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, both defined on the probability space &lt;span class=&#34;math inline&#34;&gt;\(X \in \mathcal{X}\)&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;KL-divergence, &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p\|q)\)&lt;/span&gt; is statistical distance, measuring how the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is different from the reference probability distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, both defined on &lt;span class=&#34;math inline&#34;&gt;\(X \in \mathcal{X}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In information theory, it measures the &lt;strong&gt;relative entropy&lt;/strong&gt; from &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, which is the average number of extra bits required to represent a message with &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In discrete form, &lt;span class=&#34;math display&#34;&gt;\[
 D_{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x \in \mathcal{X}} p(x)\log \frac{p(x)}{q(x)}
 \]&lt;/span&gt; In continuous form, &lt;span class=&#34;math display&#34;&gt;\[
 D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
+Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional Gaussian distribution. Then the KL-divergence between them can be formulated as: $$
+&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+D_{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_X(x) \log [
+    \sqrt \frac{|\Sigma_X|}{|\Sigma_Y|} 
+    \frac {
+        e^{-\frac 1 2 (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X)}
+    } {
+        e^{-\frac 1 2 (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y)}
+    }
+] 
+\d x \\
+
+&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
+\frac 1 2 \int p_X(x) [
+    (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) + 
+    (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y)
+]
+\d x \\
+
+&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
+\frac 1 2 \int p_X(x) (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) \d x \\
+&amp;amp;\quad -\frac 1 2 \int p_X(x) (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y) \d x \\
+
+&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \int p_X(x) x^T \Sigma_X^{-1} x \d x + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
+&amp;amp;\quad - \frac 1 2 \int p_X(x) x^T \Sigma_Y^{-1} x \d x + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y \d x \\
+
+&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \tr(\Sigma_X^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_X^{-1} \mu_X + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
+&amp;amp;\quad - \frac 1 2 \tr(\Sigma_Y^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_Y^{-1} \mu_X + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y     \\
+
+&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + \mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu_X \Sigma_Y^{-1} \mu_X] \\
+
+&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y)] \\
+&amp;amp;\quad + \frac 1 2 [\mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu^T_X \Sigma_Y^{-1} \mu_X + \mu_X^T \Sigma_Y^{-1} \mu_Y - \mu_Y^T \Sigma_Y^{-1} \mu_X] \\
+
+&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + (\mu_Y^T - \mu_X^T) \Sigma_Y^{-1} (\mu_Y - \mu_X)] \\
+
+\end{aligned}\]&lt;/span&gt;
+&lt;p&gt;$$&lt;/p&gt;
 
 
 </description>
