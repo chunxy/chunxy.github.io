@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Notes | My Notes</title>
+    <title>Chunxy&#39; Notes | My Notes</title>
     <link>https://chunxy.github.io/notes/</link>
       <atom:link href="https://chunxy.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
-    <description>Notes</description>
+    <description>Chunxy&#39; Notes</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
     <image>
       <url>https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
-      <title>Notes</title>
+      <title>Chunxy&#39; Notes</title>
       <link>https://chunxy.github.io/notes/</link>
     </image>
     
