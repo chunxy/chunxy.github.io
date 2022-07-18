@@ -1186,13 +1186,13 @@
 <ul>
 <li><p><span class="math inline">\(\Gamma(1) = \int_0^{+\infty} e^{-t} dt = 1\)</span>，故<span class="math inline">\(x\)</span>为正整数时，<span class="math inline">\(\Gamma(x) = x!\)</span>；</p></li>
 <li><p><span class="math inline">\(\Gamma(1/2) = \sqrt \pi\)</span>，故<span class="math inline">\(x = 2k + 1\)</span>为正奇数时，<span class="math inline">\(\Gamma(\frac{x}{2}) = \sqrt \pi \prod_{i=0}^{k-1} \frac{2 * i + 1}{2}\)</span>：</p>
-<p>$$ <span class="math display">\[\begin{gather}
+<p><span class="math display">\[
+\begin{gather}
 \Gamma (\frac{1}{2}) = \int_0^{+\infty} e^{-t} t^{-\frac{1}{2}} dt 
 \stackrel{u = t^\frac{1}{2}}{\Longrightarrow} \int_0^{+\infty} e^{-u^2} u^{-1} \;2u du 
 = 2 \int_0^{+\infty} e^{-u^2} du 
 = \int_{-\infty}^{+\infty} e^{-u^2} du  \\
 \notag \\
-
 \begin{aligned}
 \Gamma^2(\frac{1}{2}) &amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
 &amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)(\int_{-\infty}^{+\infty} e^{-v^2} dv) \\
@@ -1204,7 +1204,8 @@
 &amp;= \pi \\
 \Gamma (\frac{1}{2}) &amp;= \sqrt \pi
 \end{aligned}
-\end{gather}\]</span> $$</p></li>
+\end{gather}
+\]</span></p></li>
 </ul>
 <h3 id="参考">参考</h3>
 <p><a href="https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php">The Gamma Function</a>|<a href="https://www.youtube.com/watch?v=XAoe4th0F1k">The derivation of <span class="math inline">\(\Gamma(1/2)\)</span></a></p>

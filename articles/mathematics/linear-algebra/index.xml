@@ -121,16 +121,15 @@ A\bar x &amp;amp;= Ax_{real} - Ax_{img} \\
 \bar x^TAx = \bar x^T \lambda x = \lambda\bar x^Tx\\
 \]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(\bar x^Tx\)&lt;/span&gt; is real-value, &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda = \lambda\)&lt;/span&gt;. In other words, &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is real-valued&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;its eigenvectors corresponding to different eigenvalues are orthogonal&lt;/p&gt;
-&lt;p&gt;Arbitrarily take &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’ s two eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2\)&lt;/span&gt; and their eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2， \lambda_1 \ne \lambda_2\)&lt;/span&gt; $$&lt;/p&gt;
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+&lt;p&gt;Arbitrarily take &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’ s two eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2\)&lt;/span&gt; and their eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2， \lambda_1 \ne \lambda_2\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
 (Av_1)^Tv_2 &amp;amp;= v_1^TA^Tv_2 \\
 &amp;amp;= v_1^TAv_2 \\
 &amp;amp;= v_1^T \lambda_2v_2 \\
 &amp;amp;= \lambda_2v_1^Tv_2 \\
-
 (Av_1)^Tv_2 &amp;amp;= \lambda_1v_1^Tv_2
-\end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \lambda_1v_1^Tv_2 &amp;amp;= \lambda_2v_1^Tv_2 \\

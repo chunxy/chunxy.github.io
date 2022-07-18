@@ -638,7 +638,7 @@ l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)\bi
 \begin{aligned}
 l(\pi,\mu,\Sigma) &amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) \\
 &amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
-&amp;amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneqq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
+&amp;amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
 \end{aligned}
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. If we can enlarge &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;, we can guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is increasing in this process. If we fix &lt;span class=&#34;math inline&#34;&gt;\(\pi,\mu,\Sigma\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; can be easily optimized by the equality condition of Jensen’s Inequality. The equality holds if and only if &lt;span class=&#34;math display&#34;&gt;\[
 \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} = c^{(i)}, i=1,\dots M, j=1,\dots,K
@@ -1105,7 +1105,7 @@ S_c &amp;amp;= \sum_{i=1}^M \mathbb I[y^{(i)} = c](x^{(i)} - \mu_c)(x^{(i)} - \m
 \end{aligned}
 \]&lt;/span&gt; FLD suggests in &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space maximizing the distance among the means of classes (inter-class scatter) and minimizing the variance over each class (within-class scatter), i.e. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\max_v J(v) &amp;amp;\coloneqq \frac{(\tilde \mu_1 - \tilde \mu_2)^2}{\tilde s^2_1 + \tilde s^2_2} \\
+\max_v J(v) &amp;amp;\coloneq \frac{(\tilde \mu_1 - \tilde \mu_2)^2}{\tilde s^2_1 + \tilde s^2_2} \\
 &amp;amp;= \frac{(v^T\mu_1 - v^T\mu_2)^2}{v^TS_1v + v^TS_2v} \\
 &amp;amp;= \frac{v^T(\mu_1 - \mu_2)(\mu_1 - \mu_2)^Tv}{v^T(S_1 + S_2)v} \\
 \end{aligned}

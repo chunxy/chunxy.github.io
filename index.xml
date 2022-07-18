@@ -120,22 +120,19 @@ H(p) = -\mathrm{E}_{x \sim p}\log p(x)
 H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x
 \]&lt;/span&gt; This is actually the &lt;strong&gt;Differential Entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional Gaussian distribution $p(x) =  $ can be derived as follows: $$
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+&lt;p&gt;The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional Gaussian distribution $p(x) =  $ can be derived as follows: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
 H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
 &amp;amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2 \log |2\pi\Sigma| \\
-
 &amp;amp;= \frac 1 2 \int p(x) x^T \Sigma^{-1} x \d x + \frac 1 2 \int p(x) \mu^T \Sigma^{-1} \mu \d x \\
 &amp;amp;\quad - \frac 1 2 \int p(x) \mu^T \Sigma^{-1} x \d x - \frac 1 2 \int p(x) x^T \Sigma^{-1} \mu \d x \\
 &amp;amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
-
 &amp;amp;= [\frac 1 2 \tr(\Sigma^{-1} \Sigma) + \frac 1 2 \mu^T \Sigma^{-1} \mu] + \frac 1 2 \mu^T \Sigma^{-1} \mu \\
 &amp;amp;\quad - \frac 1 2 \mu^T \Sigma^{-1} \mu - \frac 1 2 \mu^T \Sigma^{-1} \mu \\
 &amp;amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
-
 &amp;amp;= \frac 1 2 n + \frac 1 2 \log |2\pi\Sigma|
-\end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 
 
 </description>
@@ -1219,16 +1216,15 @@ A\bar x &amp;amp;= Ax_{real} - Ax_{img} \\
 \bar x^TAx = \bar x^T \lambda x = \lambda\bar x^Tx\\
 \]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(\bar x^Tx\)&lt;/span&gt; is real-value, &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda = \lambda\)&lt;/span&gt;. In other words, &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is real-valued&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;its eigenvectors corresponding to different eigenvalues are orthogonal&lt;/p&gt;
-&lt;p&gt;Arbitrarily take &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’ s two eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2\)&lt;/span&gt; and their eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2， \lambda_1 \ne \lambda_2\)&lt;/span&gt; $$&lt;/p&gt;
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+&lt;p&gt;Arbitrarily take &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’ s two eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2\)&lt;/span&gt; and their eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2， \lambda_1 \ne \lambda_2\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
 (Av_1)^Tv_2 &amp;amp;= v_1^TA^Tv_2 \\
 &amp;amp;= v_1^TAv_2 \\
 &amp;amp;= v_1^T \lambda_2v_2 \\
 &amp;amp;= \lambda_2v_1^Tv_2 \\
-
 (Av_1)^Tv_2 &amp;amp;= \lambda_1v_1^Tv_2
-\end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \lambda_1v_1^Tv_2 &amp;amp;= \lambda_2v_1^Tv_2 \\
@@ -2270,34 +2266,29 @@ p_{X:Y} = N(\underbrace{\mu_X:\mu_Y}_\mu,
 }_\Sigma
 )
 \]&lt;/span&gt;&lt;/p&gt;
-The product of marginals can be described as &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The product of marginals can be described as &lt;span class=&#34;math display&#34;&gt;\[
 p_{X} \times p_{Y} = N(\mu_x:\mu_y,
 \begin{bmatrix} \
 \Sigma_{xx} &amp;amp; 0 \\
 0 &amp;amp; \Sigma_{yy} \\
 \end{bmatrix}
 )
-\]&lt;/span&gt; The probability density function of an &lt;span class=&#34;math inline&#34;&gt;\(n&amp;#39;\)&lt;/span&gt;-dimensional Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(p(x&amp;#39;) = \frac{1}{\sqrt{|2\pi \Sigma&amp;#39;|}}e^{-\frac{1}{2}(x&amp;#39;-\mu&amp;#39;)^T\Sigma&amp;#39;^{-1}(x&amp;#39;-\mu&amp;#39;)}\)&lt;/span&gt;. The entropy of this Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 2 n&amp;#39; + \frac 1 2 \log |2\pi\Sigma&amp;#39;|\)&lt;/span&gt;. In view of above, $$
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+\]&lt;/span&gt; The probability density function of an &lt;span class=&#34;math inline&#34;&gt;\(n&amp;#39;\)&lt;/span&gt;-dimensional Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(p(x&amp;#39;) = \frac{1}{\sqrt{|2\pi \Sigma&amp;#39;|}}e^{-\frac{1}{2}(x&amp;#39;-\mu&amp;#39;)^T\Sigma&amp;#39;^{-1}(x&amp;#39;-\mu&amp;#39;)}\)&lt;/span&gt;. The entropy of this Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 2 n&amp;#39; + \frac 1 2 \log |2\pi\Sigma&amp;#39;|\)&lt;/span&gt;. In view of above, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
 I&amp;amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
 = \int p_{X:Y}(\underbrace{x:y}_z) \log \frac{p_{X:Y}(x:y)} {p_X(x) p_{Y}(y)} \d z \\
-
 &amp;amp;= \int p_{X:Y}(\underbrace{x:y}_z) \log p_{X:Y}(x:y) \d z -
     \int p_{X:Y}(\underbrace{x:y}_z) \log p_X(x) \d z \\
 &amp;amp;\quad\quad\quad -\int p_{X:Y}(\underbrace{x:y}_z) \log p_Y(y) \d z \\
-    
 &amp;amp;= \int p_{Z}(z) \log p_{Z}(z) \d z -
     \int p_{X}(x) \log p_X(x) \d x - 
     \int p_{Y}(y) \log p_Y(y) \d y \\
-    
 &amp;amp;= -(\log \sqrt{\det(2\pi \Sigma)} + \frac n 2) +
     (\log \sqrt{\det(2\pi \Sigma_{X}}) + \frac {n_X} 2) \\
-&amp;amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y} 2) \\
-    
+&amp;amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y} 2) \\    
 &amp;amp;= \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
-
-\end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr&#34;&gt;Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.math.nyu.edu/~kleeman/infolect7.pdf&#34;&gt;Information Theory and Predictability Lecture 7: Gaussian Case&lt;/a&gt;&lt;/p&gt;
@@ -2572,8 +2563,8 @@ D_{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x 
 D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional Gaussian distribution. Then the KL-divergence between them can be formulated as: $$
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional Gaussian distribution. Then the KL-divergence between them can be formulated as: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
 D_{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_X(x) \log [
     \sqrt \frac{|\Sigma_X|}{|\Sigma_Y|} 
     \frac {
@@ -2583,33 +2574,25 @@ D_{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \in
     }
 ] 
 \d x \\
-
 &amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
 \frac 1 2 \int p_X(x) [
     (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) + 
     (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y)
 ]
 \d x \\
-
 &amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
 \frac 1 2 \int p_X(x) (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) \d x \\
 &amp;amp;\quad -\frac 1 2 \int p_X(x) (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y) \d x \\
-
 &amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \int p_X(x) x^T \Sigma_X^{-1} x \d x + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
 &amp;amp;\quad - \frac 1 2 \int p_X(x) x^T \Sigma_Y^{-1} x \d x + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y \d x \\
-
 &amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \tr(\Sigma_X^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_X^{-1} \mu_X + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
 &amp;amp;\quad - \frac 1 2 \tr(\Sigma_Y^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_Y^{-1} \mu_X + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y     \\
-
 &amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + \mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu_X \Sigma_Y^{-1} \mu_X] \\
-
 &amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y)] \\
 &amp;amp;\quad + \frac 1 2 [\mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu^T_X \Sigma_Y^{-1} \mu_X + \mu_X^T \Sigma_Y^{-1} \mu_Y - \mu_Y^T \Sigma_Y^{-1} \mu_X] \\
-
 &amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + (\mu_Y^T - \mu_X^T) \Sigma_Y^{-1} (\mu_Y - \mu_X)] \\
-
-\end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 
 
 </description>
@@ -2685,7 +2668,8 @@ p(Z|X;\theta) = \frac{p(X, Z;\theta)}{p(X;\theta)} = \frac{\prod_{i=1}^m \sum_{z
 \Var(\bar X) = \Var(\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n^2} \sum_{i=1}^n D(X_i) = \frac{\sigma^2}{n}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;$$ &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \begin{aligned}[t]
 \E(S^2) &amp;amp;= \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
 &amp;amp;= \frac{1}{n-1} \big( \sum_{i=1}^n \E (X_i^2 ) - n \E(\bar X^2) \big) \\
@@ -2693,13 +2677,13 @@ p(Z|X;\theta) = \frac{p(X, Z;\theta)}{p(X;\theta)} = \frac{\prod_{i=1}^m \sum_{z
 &amp;amp;= \frac{1}{n-1} \big( \sum_{i=1}^n (\sigma^2 + \mu^2) - n (\frac{\sigma^2}{n} + \mu^2) \big) \\
 &amp;amp;= \sigma^2
 \end{aligned}
-
 \begin{aligned}[t]
 \E(S_n^2) &amp;amp;= \E [\frac{n-1}{n} \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
 &amp;amp;= \frac{n-1}{n} \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
 &amp;amp;= \frac{n-1}{n} \sigma^2
 \end{aligned}
-\end{gather}\]&lt;/span&gt; $$&lt;/p&gt;
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。&lt;/p&gt;
 &lt;p&gt;根据[[大数定律和中心极限定理#相互独立同分布大数定律|相互独立同分布大数定律]]， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -3003,13 +2987,12 @@ f(x + r(p - \nabla f(x))) - f(x) &amp;amp;\ge rp^T(p - \nabla f(x)) \\
 \frac{f(x + r(p - \nabla f(x))) - f(x)}{r} &amp;amp;\ge p^T(p - \nabla f(x)) \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
-
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
 (p - \nabla f(x))^T(p - \nabla f(x)) &amp;amp;\le \frac{f(x + r(p - \nabla f(x))) - f(x)}{r} - \nabla f(x)^T(p - \nabla f(x)) \\
 ||p - \nabla f(x)||^2_2 &amp;amp;\le \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \\
-\end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Take limit on &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; on both sides to give &lt;span class=&#34;math display&#34;&gt;\[
 \lim_{r \to 0}||p - \nabla f(x)||^2_2 \le \lim_{r \to 0}\Big( \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \Big) \\
 \]&lt;/span&gt; By the definition of gradient, &lt;span class=&#34;math display&#34;&gt;\[
@@ -3327,7 +3310,7 @@ l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)\bi
 \begin{aligned}
 l(\pi,\mu,\Sigma) &amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) \\
 &amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
-&amp;amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneqq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
+&amp;amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
 \end{aligned}
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. If we can enlarge &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;, we can guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is increasing in this process. If we fix &lt;span class=&#34;math inline&#34;&gt;\(\pi,\mu,\Sigma\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; can be easily optimized by the equality condition of Jensen’s Inequality. The equality holds if and only if &lt;span class=&#34;math display&#34;&gt;\[
 \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} = c^{(i)}, i=1,\dots M, j=1,\dots,K
@@ -3472,13 +3455,13 @@ Y_{res} = Y_{res} - \hat Y
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1) = \int_0^{+\infty} e^{-t} dt = 1\)&lt;/span&gt;，故&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;为正整数时，&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(x) = x!\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2) = \sqrt \pi\)&lt;/span&gt;，故&lt;span class=&#34;math inline&#34;&gt;\(x = 2k + 1\)&lt;/span&gt;为正奇数时，&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(\frac{x}{2}) = \sqrt \pi \prod_{i=0}^{k-1} \frac{2 * i + 1}{2}\)&lt;/span&gt;：&lt;/p&gt;
-&lt;p&gt;$$ &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \Gamma (\frac{1}{2}) = \int_0^{+\infty} e^{-t} t^{-\frac{1}{2}} dt 
 \stackrel{u = t^\frac{1}{2}}{\Longrightarrow} \int_0^{+\infty} e^{-u^2} u^{-1} \;2u du 
 = 2 \int_0^{+\infty} e^{-u^2} du 
 = \int_{-\infty}^{+\infty} e^{-u^2} du  \\
 \notag \\
-
 \begin{aligned}
 \Gamma^2(\frac{1}{2}) &amp;amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
 &amp;amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)(\int_{-\infty}^{+\infty} e^{-v^2} dv) \\
@@ -3490,7 +3473,8 @@ Y_{res} = Y_{res} - \hat Y
 &amp;amp;= \pi \\
 \Gamma (\frac{1}{2}) &amp;amp;= \sqrt \pi
 \end{aligned}
-\end{gather}\]&lt;/span&gt; $$&lt;/p&gt;&lt;/li&gt;
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php&#34;&gt;The Gamma Function&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=XAoe4th0F1k&#34;&gt;The derivation of &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2)\)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
@@ -4081,7 +4065,7 @@ S_c &amp;amp;= \sum_{i=1}^M \mathbb I[y^{(i)} = c](x^{(i)} - \mu_c)(x^{(i)} - \m
 \end{aligned}
 \]&lt;/span&gt; FLD suggests in &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;-space maximizing the distance among the means of classes (inter-class scatter) and minimizing the variance over each class (within-class scatter), i.e. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\max_v J(v) &amp;amp;\coloneqq \frac{(\tilde \mu_1 - \tilde \mu_2)^2}{\tilde s^2_1 + \tilde s^2_2} \\
+\max_v J(v) &amp;amp;\coloneq \frac{(\tilde \mu_1 - \tilde \mu_2)^2}{\tilde s^2_1 + \tilde s^2_2} \\
 &amp;amp;= \frac{(v^T\mu_1 - v^T\mu_2)^2}{v^TS_1v + v^TS_2v} \\
 &amp;amp;= \frac{v^T(\mu_1 - \mu_2)(\mu_1 - \mu_2)^Tv}{v^T(S_1 + S_2)v} \\
 \end{aligned}

@@ -1184,34 +1184,29 @@ p_{X:Y} = N(\underbrace{\mu_X:\mu_Y}_\mu,
 }_\Sigma
 )
 \]</span></p>
-The product of marginals can be described as <span class="math display">\[
+<p>The product of marginals can be described as <span class="math display">\[
 p_{X} \times p_{Y} = N(\mu_x:\mu_y,
 \begin{bmatrix} \
 \Sigma_{xx} &amp; 0 \\
 0 &amp; \Sigma_{yy} \\
 \end{bmatrix}
 )
-\]</span> The probability density function of an <span class="math inline">\(n&#39;\)</span>-dimensional Gaussian distribution is <span class="math inline">\(p(x&#39;) = \frac{1}{\sqrt{|2\pi \Sigma&#39;|}}e^{-\frac{1}{2}(x&#39;-\mu&#39;)^T\Sigma&#39;^{-1}(x&#39;-\mu&#39;)}\)</span>. The entropy of this Gaussian distribution is <span class="math inline">\(\frac 1 2 n&#39; + \frac 1 2 \log |2\pi\Sigma&#39;|\)</span>. In view of above, $$
-<span class="math display">\[\begin{aligned}
+\]</span> The probability density function of an <span class="math inline">\(n&#39;\)</span>-dimensional Gaussian distribution is <span class="math inline">\(p(x&#39;) = \frac{1}{\sqrt{|2\pi \Sigma&#39;|}}e^{-\frac{1}{2}(x&#39;-\mu&#39;)^T\Sigma&#39;^{-1}(x&#39;-\mu&#39;)}\)</span>. The entropy of this Gaussian distribution is <span class="math inline">\(\frac 1 2 n&#39; + \frac 1 2 \log |2\pi\Sigma&#39;|\)</span>. In view of above, <span class="math display">\[
+\begin{aligned}
 I&amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
 = \int p_{X:Y}(\underbrace{x:y}_z) \log \frac{p_{X:Y}(x:y)} {p_X(x) p_{Y}(y)} \d z \\
-
 &amp;= \int p_{X:Y}(\underbrace{x:y}_z) \log p_{X:Y}(x:y) \d z -
     \int p_{X:Y}(\underbrace{x:y}_z) \log p_X(x) \d z \\
 &amp;\quad\quad\quad -\int p_{X:Y}(\underbrace{x:y}_z) \log p_Y(y) \d z \\
-    
 &amp;= \int p_{Z}(z) \log p_{Z}(z) \d z -
     \int p_{X}(x) \log p_X(x) \d x - 
     \int p_{Y}(y) \log p_Y(y) \d y \\
-    
 &amp;= -(\log \sqrt{\det(2\pi \Sigma)} + \frac n 2) +
     (\log \sqrt{\det(2\pi \Sigma_{X}}) + \frac {n_X} 2) \\
-&amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y} 2) \\
-    
+&amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y} 2) \\    
 &amp;= \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
-
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 <h3 id="reference">Reference</h3>
 <p><a href="https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr">Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)</a></p>
 <p><a href="https://www.math.nyu.edu/~kleeman/infolect7.pdf">Information Theory and Predictability Lecture 7: Gaussian Case</a></p>

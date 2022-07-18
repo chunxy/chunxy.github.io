@@ -255,7 +255,8 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
 \Var(\bar X) = \Var(\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n^2} \sum_{i=1}^n D(X_i) = \frac{\sigma^2}{n}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;$$ &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \begin{aligned}[t]
 \E(S^2) &amp;amp;= \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
 &amp;amp;= \frac{1}{n-1} \big( \sum_{i=1}^n \E (X_i^2 ) - n \E(\bar X^2) \big) \\
@@ -263,13 +264,13 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
 &amp;amp;= \frac{1}{n-1} \big( \sum_{i=1}^n (\sigma^2 + \mu^2) - n (\frac{\sigma^2}{n} + \mu^2) \big) \\
 &amp;amp;= \sigma^2
 \end{aligned}
-
 \begin{aligned}[t]
 \E(S_n^2) &amp;amp;= \E [\frac{n-1}{n} \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
 &amp;amp;= \frac{n-1}{n} \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
 &amp;amp;= \frac{n-1}{n} \sigma^2
 \end{aligned}
-\end{gather}\]&lt;/span&gt; $$&lt;/p&gt;
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。&lt;/p&gt;
 &lt;p&gt;根据[[大数定律和中心极限定理#相互独立同分布大数定律|相互独立同分布大数定律]]， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -401,13 +402,13 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1) = \int_0^{+\infty} e^{-t} dt = 1\)&lt;/span&gt;，故&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;为正整数时，&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(x) = x!\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2) = \sqrt \pi\)&lt;/span&gt;，故&lt;span class=&#34;math inline&#34;&gt;\(x = 2k + 1\)&lt;/span&gt;为正奇数时，&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(\frac{x}{2}) = \sqrt \pi \prod_{i=0}^{k-1} \frac{2 * i + 1}{2}\)&lt;/span&gt;：&lt;/p&gt;
-&lt;p&gt;$$ &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \Gamma (\frac{1}{2}) = \int_0^{+\infty} e^{-t} t^{-\frac{1}{2}} dt 
 \stackrel{u = t^\frac{1}{2}}{\Longrightarrow} \int_0^{+\infty} e^{-u^2} u^{-1} \;2u du 
 = 2 \int_0^{+\infty} e^{-u^2} du 
 = \int_{-\infty}^{+\infty} e^{-u^2} du  \\
 \notag \\
-
 \begin{aligned}
 \Gamma^2(\frac{1}{2}) &amp;amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
 &amp;amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)(\int_{-\infty}^{+\infty} e^{-v^2} dv) \\
@@ -419,7 +420,8 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 &amp;amp;= \pi \\
 \Gamma (\frac{1}{2}) &amp;amp;= \sqrt \pi
 \end{aligned}
-\end{gather}\]&lt;/span&gt; $$&lt;/p&gt;&lt;/li&gt;
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php&#34;&gt;The Gamma Function&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=XAoe4th0F1k&#34;&gt;The derivation of &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2)\)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;

@@ -516,13 +516,12 @@ f(x + r(p - \nabla f(x))) - f(x) &amp;amp;\ge rp^T(p - \nabla f(x)) \\
 \frac{f(x + r(p - \nabla f(x))) - f(x)}{r} &amp;amp;\ge p^T(p - \nabla f(x)) \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
-
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
 (p - \nabla f(x))^T(p - \nabla f(x)) &amp;amp;\le \frac{f(x + r(p - \nabla f(x))) - f(x)}{r} - \nabla f(x)^T(p - \nabla f(x)) \\
 ||p - \nabla f(x)||^2_2 &amp;amp;\le \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \\
-\end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Take limit on &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; on both sides to give &lt;span class=&#34;math display&#34;&gt;\[
 \lim_{r \to 0}||p - \nabla f(x)||^2_2 \le \lim_{r \to 0}\Big( \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \Big) \\
 \]&lt;/span&gt; By the definition of gradient, &lt;span class=&#34;math display&#34;&gt;\[

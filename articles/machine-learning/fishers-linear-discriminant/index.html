@@ -1175,7 +1175,7 @@ S_c &amp;= \sum_{i=1}^M \mathbb I[y^{(i)} = c](x^{(i)} - \mu_c)(x^{(i)} - \mu_c)
 \end{aligned}
 \]</span> FLD suggests in <span class="math inline">\(z\)</span>-space maximizing the distance among the means of classes (inter-class scatter) and minimizing the variance over each class (within-class scatter), i.e. <span class="math display">\[
 \begin{aligned}
-\max_v J(v) &amp;\coloneqq \frac{(\tilde \mu_1 - \tilde \mu_2)^2}{\tilde s^2_1 + \tilde s^2_2} \\
+\max_v J(v) &amp;\coloneq \frac{(\tilde \mu_1 - \tilde \mu_2)^2}{\tilde s^2_1 + \tilde s^2_2} \\
 &amp;= \frac{(v^T\mu_1 - v^T\mu_2)^2}{v^TS_1v + v^TS_2v} \\
 &amp;= \frac{v^T(\mu_1 - \mu_2)(\mu_1 - \mu_2)^Tv}{v^T(S_1 + S_2)v} \\
 \end{aligned}

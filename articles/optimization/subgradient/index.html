@@ -1267,13 +1267,12 @@ f(x + r(p - \nabla f(x))) - f(x) &amp;\ge rp^T(p - \nabla f(x)) \\
 \frac{f(x + r(p - \nabla f(x))) - f(x)}{r} &amp;\ge p^T(p - \nabla f(x)) \\
 \end{aligned}
 \]</span></p>
-<p>$$</p>
-<span class="math display">\[\begin{aligned}
-
+<p><span class="math display">\[
+\begin{aligned}
 (p - \nabla f(x))^T(p - \nabla f(x)) &amp;\le \frac{f(x + r(p - \nabla f(x))) - f(x)}{r} - \nabla f(x)^T(p - \nabla f(x)) \\
 ||p - \nabla f(x)||^2_2 &amp;\le \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \\
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 <p>Take limit on <span class="math inline">\(r\)</span> on both sides to give <span class="math display">\[
 \lim_{r \to 0}||p - \nabla f(x)||^2_2 \le \lim_{r \to 0}\Big( \frac{f(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x))}{r} \Big) \\
 \]</span> By the definition of gradient, <span class="math display">\[

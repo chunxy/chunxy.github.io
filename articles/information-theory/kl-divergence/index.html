@@ -1168,8 +1168,8 @@ D_{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x 
 D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
 \]</span></p>
 <h3 id="gaussian-case">Gaussian Case</h3>
-Suppose <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are random variables, both of some <span class="math inline">\(n\)</span>-dimensional Gaussian distribution. Then the KL-divergence between them can be formulated as: $$
-<span class="math display">\[\begin{aligned}
+<p>Suppose <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are random variables, both of some <span class="math inline">\(n\)</span>-dimensional Gaussian distribution. Then the KL-divergence between them can be formulated as: <span class="math display">\[
+\begin{aligned}
 D_{KL}(p_X || p_Y) &amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_X(x) \log [
     \sqrt \frac{|\Sigma_X|}{|\Sigma_Y|} 
     \frac {
@@ -1179,33 +1179,25 @@ D_{KL}(p_X || p_Y) &amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_
     }
 ] 
 \d x \\
-
 &amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
 \frac 1 2 \int p_X(x) [
     (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) + 
     (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y)
 ]
 \d x \\
-
 &amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
 \frac 1 2 \int p_X(x) (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) \d x \\
 &amp;\quad -\frac 1 2 \int p_X(x) (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y) \d x \\
-
 &amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \int p_X(x) x^T \Sigma_X^{-1} x \d x + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
 &amp;\quad - \frac 1 2 \int p_X(x) x^T \Sigma_Y^{-1} x \d x + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y \d x \\
-
 &amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \tr(\Sigma_X^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_X^{-1} \mu_X + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
 &amp;\quad - \frac 1 2 \tr(\Sigma_Y^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_Y^{-1} \mu_X + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y     \\
-
 &amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + \mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu_X \Sigma_Y^{-1} \mu_X] \\
-
 &amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y)] \\
 &amp;\quad + \frac 1 2 [\mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu^T_X \Sigma_Y^{-1} \mu_X + \mu_X^T \Sigma_Y^{-1} \mu_Y - \mu_Y^T \Sigma_Y^{-1} \mu_X] \\
-
 &amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + (\mu_Y^T - \mu_X^T) \Sigma_Y^{-1} (\mu_Y - \mu_X)] \\
-
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 
 
 

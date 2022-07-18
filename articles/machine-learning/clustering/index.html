@@ -1231,7 +1231,7 @@ l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)\bi
 \begin{aligned}
 l(\pi,\mu,\Sigma) &amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) \\
 &amp;= \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
-&amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneqq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
+&amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
 \end{aligned}
 \]</span> <span class="math inline">\(B\)</span> is the lower bound of <span class="math inline">\(l\)</span>. If we can enlarge <span class="math inline">\(B\)</span>, we can guarantee that <span class="math inline">\(l\)</span> is increasing in this process. If we fix <span class="math inline">\(\pi,\mu,\Sigma\)</span>, <span class="math inline">\(\alpha\)</span> can be easily optimized by the equality condition of Jensen’s Inequality. The equality holds if and only if <span class="math display">\[
 \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} = c^{(i)}, i=1,\dots M, j=1,\dots,K
