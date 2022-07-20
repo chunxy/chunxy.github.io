@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors | My Notes</title>
-    <link>https://chunxy.github.io/notes/authors/</link>
-      <atom:link href="https://chunxy.github.io/notes/authors/index.xml" rel="self" type="application/rss+xml" />
+    <title>Authors | Chunxy&#39; website</title>
+    <link>https://chunxy.github.io/authors/</link>
+      <atom:link href="https://chunxy.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
     <image>
-      <url>https://chunxy.github.io/notes/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
+      <url>https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
       <title>Authors</title>
-      <link>https://chunxy.github.io/notes/authors/</link>
+      <link>https://chunxy.github.io/authors/</link>
     </image>
     
   </channel>

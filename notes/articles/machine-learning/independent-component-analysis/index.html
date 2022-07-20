@@ -1,0 +1,1662 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.629cfe5dd4ecaeea7496d6f5e4147674.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; website" />
+  <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/" />
+  <meta property="og:title" content="Independent Component Analysis | Chunxy&#39; website" />
+  <meta property="og:description" content="Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." /><meta property="og:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="article:published_time" content="2021-12-19T10:16:43&#43;00:00" />
+    
+    <meta property="article:modified_time" content="2021-12-19T10:16:43&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>Independent Component Analysis | Chunxy&#39; website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="1afb1b9362a37f571fdcad44487772cb" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Machine Learning
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/notes/">Notes</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/"><i class="far fa-file-lines pr-1"></i>Articles</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/information-theory/">Information Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/machine-learning/">Machine Learning</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
+
+
+
+  <li class="active"><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/ransac/">RANSAC</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/">Mathematics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/calculus/">Calculus</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/spherical-coordinates/">Spherical Coordinates</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/">Linear Algebra</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/">Laplace Expansion</a></li>
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/">Measures</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/numerical-analysis/">Numerical Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/">Statistics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/optimization/">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/coordinate-descent/">Coordinate Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/"><i class="fas fa-book pr-1"></i>Books</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/information-theory-inference-and-learning-algorithms/">Information Theory, Inference and Learning Algorithms</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/linear-algebra-and-its-applications/">Linear Algebra and Its Applications</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/">Orthogonality and Projection</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/">Schmit-Gram Orthogonalization</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">概率论与数理统计</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/papers/"><i class="fas fa-paperclip pr-1"></i>Papers</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/papers/noise-contrastive-estimation/">Noise Contrastive Estimation</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#assumption-and-derivation">Assumption and Derivation</a>
+      <ul>
+        <li><a href="#non-gaussian-and-principal-component-analysispca">Non-Gaussian and [[Principal Component Analysis|PCA]]</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/">
+        
+          Notes
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/articles/">
+        
+          Articles
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/articles/machine-learning/">
+        
+          Machine Learning
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        Independent Component Analysis
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>Independent Component Analysis</h1>
+
+          <div class="article-style">
+            
+
+<h2 id="assumption-and-derivation">Assumption and Derivation</h2>
+<p>Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis <span class="math inline">\(i\)</span>) <span class="math inline">\(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\)</span>, find the <span class="math inline">\(N \times N\)</span> mixing matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(X = AS\)</span>. Columns of <span class="math inline">\(A\)</span> are the propagation weights from a signal source to observers. Therefore they are considered independent (and are thus called independent components).</p>
+<p><span class="math inline">\(A\)</span> is called mixing matrix and <span class="math inline">\(W = A^{-1}\)</span> is called unmixing matrix because <span class="math inline">\(S = WX\)</span>.</p>
+<p>Suppose <span class="math inline">\(A = U\Sigma V^T\)</span> by [[Singular Value Decomposition|SVD]]. Assume observations are pre-centered:</p>
+<p><span class="math display">\[
+\sum_{i=1}^Mx^{(i)} = 0
+\]</span> Assume that signals are independent and the variance of each signal is <span class="math inline">\(1\)</span> (taking the advantage of scale/sign ambiguity): <span class="math display">\[
+\frac{1}{M}\sum_{i=1}^Ms^{(i)}(s^{(i)})^T = I
+\]</span> Then the covariance of <span class="math inline">\(X\)</span> can be calculated as <span class="math display">\[
+\begin{aligned}
+C &amp;= \frac{1}{M}x^{(i)}(x^{(i)})^T \\
+&amp;= \frac{1}{M}As^{(i)}(As^{(i)})^T \\
+&amp;= \frac{1}{M}U\Sigma V^Ts^{(i)}(U\Sigma V^Ts^{(i)})^T \\
+&amp;= \frac{1}{M}U\Sigma V^Ts^{(i)}(s^{(i)})^TV\Sigma^T U^T \\
+&amp;= U\Sigma V^TIV\Sigma^T U^T \\
+&amp;= U\Sigma^2U^T \text{ (by property of SVD, note that $\Sigma$ is $n \times n$ diagonal)} \\
+\end{aligned}
+\]</span></p>
+<p>If our assumptions are correct, then the <span class="math inline">\(U\)</span> is the stacked eigenvectors of the matrix <span class="math inline">\(CC^T\)</span>. <span class="math inline">\(\Sigma^2\)</span> is the diagonal matrix consisting of corresponding eigenvalues of the matrix <span class="math inline">\(C^TC\)</span>. Since <span class="math inline">\(C\)</span> is symmetric, <span class="math inline">\(CC^T = C^TC = C^2\)</span>.</p>
+<p>In other words, <span class="math inline">\(U\)</span> and <span class="math inline">\(\Sigma\)</span> can be solved by eigen decomposition. Define <span class="math inline">\(\hat x^{(i)} = \Sigma^{-1}U^Tx^{(i)}\)</span>: <span class="math display">\[
+\begin{aligned}
+\hat C &amp;= \frac{1}{M}\hat x^{(i)}(\hat x^{(i)})^T \\
+&amp;= \frac{1}{M}\Sigma^{-1}U^Tx^{(i)}(\Sigma^{-1}U^Tx^{(i)})^T \\
+&amp;= \frac{1}{M}\Sigma^{-1}U^Tx^{(i)}(x^{(i)})^TU\Sigma^{-1} \\
+&amp;= \Sigma^{-1}U^T(\frac{1}{M}x^{(i)}(x^{(i)})^T)U\Sigma^{-1} \\
+&amp;= \Sigma^{-1}U^TU\Sigma^2U^TU\Sigma^{-1} \\
+&amp;= I \\
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+S = WX = A^{-1}X = V\Sigma^{-1}U^TX = V\hat X
+\]</span></p>
+<p>The remaining job is to find the <span class="math inline">\(V\)</span>. We resort to multi-information, a generalization of mutual-information from Information Theory to judge how close a distribution is to statistical independence for multiple variables. <span class="math display">\[
+I(s) = \sum_{s \in \mathcal{S}}p(s)log\frac{p(s)}{\prod_jp(s_j)}
+\]</span> It is a non-negative quantity that reaches the minimum if and only if all variables are statistically independent.</p>
+<p>The multi-information can be written as a function of entropy, which is defined as <span class="math display">\[
+H(s) = -\sum_{s \in \mathcal{S}}p(s)logp(s)
+\]</span> The multi-information can be written as the difference between the sum of entropies of marginal distribution and the entropy of joint distribution <span class="math display">\[
+\begin{aligned}
+I(s) &amp;= \sum_jH(s_j) - H(s) \\
+&amp;= \sum_jH((V\hat x)_j) - H(V\hat x) \\
+&amp;= \sum_jH((V\hat x)_j) - (H(\hat x) + log|V|) \\
+&amp;= \sum_jH((V\hat x)_j) - (H(\hat x) + log1) \\
+&amp;= \sum_jH((V\hat x)_j) - H(\hat x) \\
+\end{aligned}
+\]</span> Because we are assuming signal are independent from each other, <span class="math display">\[
+\begin{aligned}
+V^\star &amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
+&amp;= \arg \min_V\sum_jH((V\hat x)_j)
+\end{aligned}
+\]</span> Calculating entropy and then taking derivative is no easy task and therefore ICA algorithms focus on approximations or equivalences to the above equation. For example, it can be approximated by finding the rotation that maximizes the expected log-likelihood of the observed data by assuming that the source distributions are known.</p>
+<h3 id="non-gaussian-and-principal-component-analysispca">Non-Gaussian and [[Principal Component Analysis|PCA]]</h3>
+<p>The key assumption of ICA is that signals are non-Gaussian. We are trying to recover the <span class="math inline">\(S\)</span> (by finding <span class="math inline">\(W\)</span>) to be as non-Gaussian as possible. <span class="math inline">\(\hat X\)</span> consists of independent components because its covariance matrix <span class="math inline">\(\hat C\)</span> is shown to be an identity matrix (and thus diagonal). <span class="math inline">\(S\)</span> is reconstructed by the linear combination of independent components. Thus it will be the most non-Gaussian when each variable is formed by exactly one component of <span class="math inline">\(\hat X\)</span> by Central Limit Theorem, i.e. <span class="math inline">\(S\)</span>’s components are independent.</p>
+<p>Consider the case when <span class="math inline">\(S\)</span> consists of <span class="math inline">\(N\)</span> independent Gaussian, which invalidate the above analysis. If we forcibly calculate <span class="math inline">\(V^\star\)</span>, due to the property of multi-variate Gaussian that its isodensity maps are spherical, then any <span class="math inline">\(N \times N\)</span> rotation matrix will be a solution to Equation (9), including the left singular matrix of <span class="math inline">\(X\)</span>, i.e. the stacked eigenvectors of <span class="math inline">\(XX^T\)</span>, which is exactly the projection basis obtained in PCA. If any <span class="math inline">\(N \times N\)</span> rotation matrix can be a solution, there are infinite many solutions to <span class="math inline">\(A\)</span>, and thus ICA will just fail.</p>
+<p>The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to <span class="math inline">\(V^\star\)</span>.</p>
+<p><a href="http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html">ICA</a></p>
+
+
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/" rel="next">Eckart-Young-Mirsky Theorem</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/notes/articles/machine-learning/ransac/" rel="prev">RANSAC</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Dec 19, 2021</p>
+
+          
+
+
+
+
+
+  
+
+<p class="edit-page">
+  <a href="https://github.com/wowchemy/hugo-notes-theme/edit/main/content/notes/Articles/Machine%20Learning/Independent%20Component%20Analysis.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

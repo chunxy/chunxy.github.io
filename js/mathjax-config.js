@@ -9,7 +9,8 @@ window.MathJax = {
       R: "\\mathbb{R}", E: "\\mathrm{E}", x: "\\mathrm{x}", y: "\\mathrm{y}",
       d: "\\mathrm{d}", Var: "\\mathrm{Var}", Cov: "\\mathrm{Cov}",
       rank: "\\mathrm{rank}", tr: "\\mathrm{tr}", and: "\\mathrm{and}",
-      arccot: "\\mathrm{arccot}", coloneq: "\\mathop{:=}"
+      arccot: "\\mathrm{arccot}", coloneq: "\\mathop{:=}", Omicron: "\\mathcal{O}",
+      Z: "\\mathrm{Z}"
     },
     displayMath: [['$$', '$$'], ['\\[', '\\]']],
     inlineMath: [['$', '$'], ['\\(', '\\)']],

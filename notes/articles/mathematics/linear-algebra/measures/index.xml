@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Measures | Chunxy&#39; website</title>
+    <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/</link>
+      <atom:link href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/index.xml" rel="self" type="application/rss+xml" />
+    <description>Measures</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
+    <image>
+      <url>https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
+      <title>Measures</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/</link>
+    </image>
+    
+    <item>
+      <title>Spectral Normalization</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/</link>
+      <pubDate>Sat, 29 Jan 2022 21:23:58 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/</guid>
+      <description>
+
+&lt;p&gt;Spectral Normalization of an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
+||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A)
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\rm z \in \R^N\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\lambda_{\max}(A^TA)\)&lt;/span&gt; is the maximum eigenvalue of matrix &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{\max}(A)\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s largest singular value.&lt;/p&gt;
+&lt;p&gt;The equation on the right can be proved in this way: &lt;span class=&#34;math display&#34;&gt;\[
+\max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} \iff \max_{\mathrm z} \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2}
+\]&lt;/span&gt; We may force a constraint on &lt;span class=&#34;math inline&#34;&gt;\(\mathrm z\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(||\mathrm z||^2_2 = 1\)&lt;/span&gt;. This is because &lt;span class=&#34;math display&#34;&gt;\[
+\frac{||Ac\mathrm z||^2_2}{||c\mathrm z||^2_2} = \frac{c^2||A\mathrm z||^2_2}{c^2||\mathrm z||^2_2} = \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2}
+\]&lt;/span&gt; The problem becomes &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\max_{\mathrm z} \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2} = ||A\mathrm z||^2_2 = \mathrm z^TA^TA\mathrm z \\
+s.t. ||\mathrm z||^2_2 = 1
+\end{gather}
+\]&lt;/span&gt; This can be solved by Lagrange Multiplier, where the Lagrangian function will be &lt;span class=&#34;math display&#34;&gt;\[
+L(\mathrm z, \lambda) = \mathrm z^TA^TA\mathrm z + \lambda(||\mathrm z||^2_2 - 1)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The extrapolation of the Spectral Normalization will be related to Rayleigh Quotient.&lt;/p&gt;
+&lt;h3 id=&#34;power-iteration&#34;&gt;Power Iteration&lt;/h3&gt;
+&lt;p&gt;We can apply a SVD to obtain a matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s Spectral Norm, i.e. the square root of &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s largest eigenvalue. There is also an iterative method to do so.&lt;/p&gt;
+&lt;p&gt;Begin with an arbitrary vector &lt;span class=&#34;math inline&#34;&gt;\(v_0 = v \in \R^N\)&lt;/span&gt;, the iteration rule will be &lt;span class=&#34;math display&#34;&gt;\[
+v_{t+1} = A^TAv_t
+\]&lt;/span&gt; Unroll &lt;span class=&#34;math inline&#34;&gt;\(v_{t}\)&lt;/span&gt; to get &lt;span class=&#34;math inline&#34;&gt;\(v_t = (A^TA)^tv\)&lt;/span&gt;. Because &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is real symmetric, &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; can be written as a linear combination of &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s orthonormal eigenvectors: &lt;span class=&#34;math display&#34;&gt;\[
+v = \sum_{i=1}^N \alpha_i u_i
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(u_i\)&lt;/span&gt; be arranged by corresponding eigenvector from large to small, then &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+v_t &amp;amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
+&amp;amp;= \sum_{i=1}^N \alpha_i \lambda_i^t u_i \\
+&amp;amp;= \alpha_1 \lambda_1^t \sum_{i=1}^N \frac{\alpha_i}{\alpha_1} (\frac{\lambda_i}{\lambda_1})^t u_i \\
+&amp;amp;\to \alpha_1 \lambda_1^t u_1
+\end{aligned}
+\]&lt;/span&gt; Thus &lt;span class=&#34;math display&#34;&gt;\[
+||A^TA \frac{v_t}{||v_t||}|| = ||A^TAu_1|| = ||\lambda_1 u_1|| = \lambda_1
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://math.stackexchange.com/questions/2723629/why-is-the-maximum-rayleigh-quotient-equal-to-the-maximum-eigenvalue&#34;&gt;matrices - Why is the maximum Rayleigh quotient equal to the maximum eigenvalue? - Mathematics Stack Exchange&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Frobenius Normalization</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/</link>
+      <pubDate>Mon, 20 Dec 2021 15:43:54 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/</guid>
+      <description>
+&lt;p&gt;Frobenius Normalization of an &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
+||A||_F = \sqrt{\sum_{ij}A_{ij}^2}
+\]&lt;/span&gt; It can be found that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+||A||_F^2 &amp;amp;= \sum_{ij}A_{ij}^2 \\
+&amp;amp;= \sum_{i=1}^m\sum_{j=1}^nA_{ij}A_{ij} = \sum_{i=1}^n\sum_{j=1}^mA_{ji}A_{ji} \\
+&amp;amp;= \sum_{i=1}^m(\sum_{j=1}^nA_{ij}A_{ji}^T) = \sum_{i=1}^n(\sum_{j=1}^mA_{ij}^TA_{ji}) \\
+&amp;amp;= \sum_{i=1}^m(A_{i:}A_{:i}^T) = \sum_{i=1}^n(A_{i:}^TA_{:i})\\
+&amp;amp;= \sum_{i=1}^m(AA^T)_{ii} = \sum_{i=1}^n(A^TA)_{ii}\\
+&amp;amp;= tr(AA^T) = tr(A^TA)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Chebyshev Distance</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/</link>
+      <pubDate>Sat, 18 Dec 2021 20:28:24 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/</guid>
+      <description>
+
+&lt;h3 id=&#34;discrete-form&#34;&gt;Discrete form&lt;/h3&gt;
+&lt;p&gt;Chebyshev distance is a specific form of Minkowski norm (&lt;span class=&#34;math inline&#34;&gt;\(l_p\)&lt;/span&gt; norm): &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+d_p(x, x^\prime) &amp;amp;= ||x - x^\prime||_p \\
+&amp;amp;= (\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \text{, where $p \to \infty$ }
+\end{aligned}
+\]&lt;/span&gt; Chebyshev distance is in fact &lt;span class=&#34;math inline&#34;&gt;\(\mathop{max}\limits_i (|x_i - x^\prime_i|)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;proof&#34;&gt;Proof&lt;/h4&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(a_i = |x_i - x^\prime_i|\)&lt;/span&gt; and without loss of generality let &lt;span class=&#34;math inline&#34;&gt;\(a_1 = \max\limits_ia_i = \max\limits_i|x_i - x^\prime_i|\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+d_p(x, x^\prime) &amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \\
+&amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^na_i^p)^{1/p} \\
+&amp;amp;= \lim_{p \to \infty}(a_1^p\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \\ 
+&amp;amp;= \lim_{p \to \infty}(a_1^p)^{1/p} \cdot \lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \\ 
+&amp;amp;= a_1 \cdot \lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \\ 
+\end{aligned}
+\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(\forall i, a_1 &amp;gt; a_i\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\frac{a_i}{a_1} \le 1\)&lt;/span&gt;, and &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+1 \le &amp;amp;\sum_{i=1}^n(\frac{a_i}{a_1})^p \le n \\
+1^{1/p} \le &amp;amp;(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \le n^{1/p} \text{, where $p &amp;gt; 1$} \\
+\lim_{p \to \infty}1^{1/p} \le &amp;amp;\lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \le \lim_{p \to \infty}n^{1/p} \\
+1 \le &amp;amp;\lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \le 1 \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Therefore, &lt;span class=&#34;math inline&#34;&gt;\(d_p(x, x^\prime) = a_1 \cdot 1 = a_1 = \max\limits_i|x_i - x^\prime_i|\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;continuous-form&#34;&gt;Continuous form&lt;/h3&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; be continuous and bounded on interval &lt;span class=&#34;math inline&#34;&gt;\((a, b)\)&lt;/span&gt;, then, &lt;span class=&#34;math display&#34;&gt;\[
+\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = \sup\limits_{x \in (a,b)}|f(x)|
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;proof-1&#34;&gt;Proof&lt;/h4&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(S = \sup\limits_{x \in (a,b)}|f(x)|\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\forall\varepsilon &amp;gt; 0, \exists x_0 \in (a,b), |f(x_0)| &amp;gt; S - \varepsilon\)&lt;/span&gt;. By “continuous”, &lt;span class=&#34;math inline&#34;&gt;\(\lim\limits_{x \to x_0}|f(x)| &amp;gt; S - \varepsilon\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\exists\delta &amp;gt; 0, \forall x \in U(x_0, \delta), ||f(x)| - \lim\limits_{x \to x_0}|f(x)|| &amp;lt; \varepsilon \rightarrow |f(x)| &amp;gt; S - 2\varepsilon\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+(\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} &amp;amp;\ge (\int_{x_0 - \delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
+\lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} &amp;amp;\ge \lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
+&amp;amp;= \lim\limits_{p \to +\infty}(2\delta(S - 2\varepsilon)^p)^{1/p} \\
+&amp;amp;= S - 2\varepsilon
+\end{aligned}
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(U(x_0, \delta)\)&lt;/span&gt; in within the interval &lt;span class=&#34;math inline&#34;&gt;\((a,b)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(|f(x)|^p \ge 0\)&lt;/span&gt;, then, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+(\int_a^b |f(x)|^pdx)^{1/p} &amp;amp;\ge (\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} \\
+\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} &amp;amp;\ge \lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} \\
+&amp;amp;\ge S - 2\varepsilon
+\end{aligned}
+\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(\varepsilon\)&lt;/span&gt; is arbitrarily and positively valued, &lt;span class=&#34;math inline&#34;&gt;\(\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} \ge S\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;On the other hand, &lt;span class=&#34;math display&#34;&gt;\[
+\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} \le \lim\limits_{p \to +\infty}(\int_a^b S^pdx)^{1/p} = \lim\limits_{p \to +\infty}((b - a)S^p)^{1/p} = S
+\]&lt;/span&gt; then, &lt;span class=&#34;math display&#34;&gt;\[
+\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = S = \sup\limits_{x \in (a,b)}|f(x)|
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/267575473&#34;&gt;p范数的极限（无穷范数）为什么是极大值范数？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1671 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Three Perspectives on NCE Non-parametric estimation The traditional log-likelihood function will be \(\ell = \sum_x \ln p_\theta(x)\). In NCE, we learn \[ p_\theta(1|x) = \sigma(G(x;\theta) - \gamma) = \frac{1}{1 &#43;" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/papers/noise-contrastive-estimation/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.629cfe5dd4ecaeea7496d6f5e4147674.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/notes/papers/noise-contrastive-estimation/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; website" />
+  <meta property="og:url" content="https://chunxy.github.io/notes/papers/noise-contrastive-estimation/" />
+  <meta property="og:title" content="Noise Contrastive Estimation | Chunxy&#39; website" />
+  <meta property="og:description" content="Three Perspectives on NCE Non-parametric estimation The traditional log-likelihood function will be \(\ell = \sum_x \ln p_\theta(x)\). In NCE, we learn \[ p_\theta(1|x) = \sigma(G(x;\theta) - \gamma) = \frac{1}{1 &#43;" /><meta property="og:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="article:published_time" content="2022-05-12T11:26:01&#43;00:00" />
+    
+    <meta property="article:modified_time" content="2022-05-12T11:26:01&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>Noise Contrastive Estimation | Chunxy&#39; website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c29c64575064d59ab58ff2d26987147a" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Papers
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/notes/">Notes</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/"><i class="far fa-file-lines pr-1"></i>Articles</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/information-theory/">Information Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/machine-learning/">Machine Learning</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/ransac/">RANSAC</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/">Mathematics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/calculus/">Calculus</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/spherical-coordinates/">Spherical Coordinates</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/">Linear Algebra</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/">Laplace Expansion</a></li>
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/">Measures</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/numerical-analysis/">Numerical Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/">Statistics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/optimization/">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/coordinate-descent/">Coordinate Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/"><i class="fas fa-book pr-1"></i>Books</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/information-theory-inference-and-learning-algorithms/">Information Theory, Inference and Learning Algorithms</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/linear-algebra-and-its-applications/">Linear Algebra and Its Applications</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/">Orthogonality and Projection</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/">Schmit-Gram Orthogonalization</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">概率论与数理统计</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/papers/"><i class="fas fa-paperclip pr-1"></i>Papers</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class="active"><a href="/notes/papers/noise-contrastive-estimation/">Noise Contrastive Estimation</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#three-perspectives-on-nce">Three Perspectives on NCE</a>
+      <ul>
+        <li><a href="#non-parametric-estimation">Non-parametric estimation</a></li>
+        <li><a href="#maximum-likelihood-estimation-the-original-papers-view">Maximum likelihood estimation (the original paper’s view)</a></li>
+        <li><a href="#gradient-descent">Gradient descent</a></li>
+      </ul>
+    </li>
+    <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#other-reference">Other Reference</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/">
+        
+          Notes
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/papers/">
+        
+          Papers
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        Noise Contrastive Estimation
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>Noise Contrastive Estimation</h1>
+
+          <div class="article-style">
+            
+
+<h2 id="three-perspectives-on-nce">Three Perspectives on NCE</h2>
+<h3 id="non-parametric-estimation">Non-parametric estimation</h3>
+<p>The traditional log-likelihood function will be <span class="math inline">\(\ell = \sum_x \ln p_\theta(x)\)</span>. In NCE, we learn <span class="math display">\[
+p_\theta(1|x) = \sigma(G(x;\theta) - \gamma) = \frac{1}{1 + e^{-G(x;\theta) + \gamma}}
+\]</span> And corresponding loss function becomes <span class="math display">\[
+\begin{aligned}
+\mathcal {L} &amp;= -\E_{x \sim \tilde p(x)} \ln p_\theta(1|x) - \E_{x \sim q(x)} \ln p_\theta(0|x) \\
+&amp;= -\int \tilde p(x) \ln p_\theta(1|x) dx - \int q(x) \ln p_\theta(0|x) dx \\
+&amp;= - \int [\tilde p(x) + q(x)] [\frac{\tilde p(x)}{\tilde p(x) + q(x)} \ln p_\theta(1|x) + \frac{q(x)}{\tilde p(x) + q(x)} \ln p_\theta(0|x)]dx
+\end{aligned}
+\]</span></p>
+<p>Let <span class="math inline">\(P(y|x) = \begin{cases}\frac{\tilde p(x)}{\tilde p(x) + q(x)}, y=1 \\\frac{q(x)}{\tilde p(x) + q(x)},y=0\end{cases}\)</span>, <span class="math display">\[
+\label{loss} \begin{aligned} 
+\arg \min_{\theta, \gamma} \mathcal{L} &amp;= \arg \min_{\theta, \gamma} -\int [\tilde p(x) + q(x)][\frac{\tilde p(x)}{\tilde p(x) + q(x)} \ln p_\theta(1|x) + \int \frac{q(x)}{\tilde p(x) + q(x)} \ln p_\theta(0|x)]dx \\
+&amp;= \arg \min_{\theta, \gamma} -\int [\tilde p(x) + q(x)][P(1|x) \ln p_\theta(1|x) + P(0|x)\ln p_\theta(0|x)]dx \\
+&amp;= \arg \min_{\theta, \gamma} \int [\tilde p(x) + q(x)][P(1|x) \ln \frac{1}{p_\theta(1|x)} + P(0|x)\ln \frac{1}{p_\theta(0|x)}]dx \\
+&amp;= \arg \min_{\theta, \gamma} \int [\tilde p(x) + q(x)] H[P(y|x)||p_\theta(y|x)]dx
+\end{aligned}
+\]</span></p>
+<p>Since cross entropy <span class="math inline">\(H(p||q) \ge H(p)\)</span> and the minimum is reached only when <span class="math inline">\(p = q\)</span>, the global minimum for equation <span class="math inline">\(\eqref{loss}\)</span> is reached when <span class="math inline">\(p_\theta(y|x) = P(y|x)\)</span>. Therefore, <span class="math display">\[
+\begin{aligned}
+p_\theta(1|x) = \frac{1}{1 + e^{-G(x;\theta) + \gamma}} &amp;= \frac{\tilde p(x)}{\tilde p(x) + q(x)} = P(1|x) \\
+\frac{q(x)}{\tilde p(x)} &amp;= e^{-G(x;\theta) + \gamma} \\
+\tilde p(x) &amp;= \frac{q(x) e^{G(x;\theta)}}{e^\gamma}
+\end{aligned}
+\]</span> <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\gamma\)</span> are learnt so that <span class="math inline">\(q(x) e^{G(x;\theta) - \gamma}\)</span> fit the real distribution. It becomes more intuitive when <span class="math inline">\(q\)</span> is a uniform distribution and <span class="math inline">\(q(x)\)</span> is a constant <span class="math inline">\(U\)</span>, where <span class="math inline">\(e^\gamma\)</span> will be the learnt normalizing factor.</p>
+<p>https://kexue.fm/archives/5617/comment-page-1</p>
+<h3 id="maximum-likelihood-estimation-the-original-papers-view">Maximum likelihood estimation (the original paper’s view)</h3>
+<p>The model is defined as <span class="math inline">\(\ln p_\theta(x) = \ln p^0_\alpha(x) + c\)</span>. The MLE will maximize the objective function <span class="math display">\[
+\begin{aligned}
+J_T(\theta) &amp;= \frac{1}{T_d} [\sum_{i=1}^{T_d \\} \ln h(x_i;\theta) + \sum_{i=1}^{T_n} \ln (1 - h(y_i;\theta)) \text{, ($x_i$&#39;s are samples, $y_i$&#39;s are noises, $T_n = \nu T_d$)} \\
+&amp;\stackrel{P}\to J(\theta) \triangleq \E_{x \sim \tilde p} \ln h(x;\theta) + \nu \E_{x \sim q} \ln (1 - h(x;\theta)) \\
+\end{aligned}
+\]</span> where <span class="math display">\[
+\begin{gather}
+r_\nu(u) = \frac{1}{1 + \nu e^{-u}} \\
+G(x; \theta) = \ln p_\theta(x) - \ln q(x) \\
+h(x;\theta) = r_\nu(G(x;\theta)) = \frac{1}{1 + \nu e^{-G(x;\theta)}} \\
+\end{gather}
+\]</span> Denote by <span class="math inline">\(\tilde J\)</span> the objective function <span class="math inline">\(J\)</span> seen as a function of <span class="math inline">\(f(.) = \ln p_\theta(.)\)</span>, <span class="math display">\[
+\tilde J(f) = \E_{x \sim \tilde p} \ln r_\nu(f(x) - \ln q(x)) + \nu \E_{x \sim q} \ln (1 - r_\nu[f(x) - q(x)])
+\]</span> For <span class="math inline">\(\epsilon &gt; 0\)</span> and <span class="math inline">\(\phi(x)\)</span> a perturbation of <span class="math inline">\(f\)</span>, <span class="math display">\[
+\tilde J(f + \epsilon \phi) = \E_{x \sim \tilde p} \ln r_\nu(f(x) + \epsilon \phi(x) - \ln q(x)) + \nu \E_{x \sim q} \ln (1 - r_\nu[f(x) + \epsilon \phi - q(x)])
+\]</span></p>
+<p>By Taylor’s expansion,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\ln r_\nu(u + \epsilon u_1 + \epsilon^2 u_2) &amp;\approx \ln r_\nu (u) + r_{\frac{1}{\nu}}(-u)(\epsilon u_1 + \epsilon^2 u_2) - \frac{r_\nu (u)r_\frac{1}{\nu}(-u)}{2}(\epsilon u_1 + \epsilon^2 u_2)^2 + \Omicron \big((\epsilon u_1 + \epsilon^2 u_2)^3 \big) \\
+&amp;= \ln r_\nu (u) + \epsilon u_1r_{\frac{1}{\nu}}(-u) + \epsilon^2(u_2r_{\frac{1}{\nu}}(-u) - \frac{1}{2}u_1^2 r_{\frac{1}{\nu}}(-u)r_\nu (u)) + \Omicron \big(\epsilon^3 \big) \\
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\ln \big(1 - r_v(u + \epsilon u_1 + \epsilon^2 u_2) \big) &amp;\approx \ln \big(1 - r_v(u) \big) - r_v(u)(\epsilon u_1 + \epsilon^2 u_2) - \frac{r_{\frac{1}{\nu}}(-u) r_\nu(u)}{2} (\epsilon u_1 + \epsilon^2 u_2)^2 + \Omicron \big((\epsilon u_1 + \epsilon^2 u_2)^3 \big) \\
+&amp;= \ln(1 - r_v(u)) - \epsilon u_1 r_v(u) - \epsilon^2 \big( u_2 r_v(u) + \frac{1}{2} u_1^2 r_{\frac{1}{\nu}}(-u) r_\nu(u) \big) + \Omicron(\epsilon^3)
+\end{aligned}
+\]</span></p>
+<p>Substitute <span class="math inline">\(u\)</span> with <span class="math inline">\(f(x)\)</span>, <span class="math inline">\(u_1\)</span> with <span class="math inline">\(\phi(x)\)</span>, <span class="math inline">\(u_2\)</span> with <span class="math inline">\(0\)</span> to give <span class="math display">\[
+\begin{aligned}
+\tilde J(f + \epsilon \phi) \approx &amp;\E_{x \sim \tilde p} \ln r_\nu \big(f(x) + \epsilon \phi(x) - \ln q(x) \big) + \nu \E_{x \sim q} \ln (1 - r_\nu[f(x) + \epsilon \phi - q(x)]) \\
+= &amp;\E_{x \sim \tilde p} \{\ln r_\nu \big(f(x) - \ln q(x) \big) + \epsilon \phi(x) r_{\frac{1}{\nu}} \big(\ln q(x) - f(x) \big) \} \\ 
+&amp;+\nu \E_{x \sim q} \{ \ln \big(1 - r_\nu[f(x) -\ln q(x)] \big) - \epsilon \phi(x) r_\nu \big( f(x) - \ln q(x) \big) \} + \Omicron(\epsilon^2) \\
+= &amp;\tilde J(f) + \epsilon \int \phi(x) \big(r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) - \nu r_\nu[f(x) - \ln q(x)] q(x) \big) + \Omicron(\epsilon^2)
+\end{aligned}
+\]</span> The above equation attains the local maximum at <span class="math inline">\(f\)</span> only if the term of order <span class="math inline">\(\epsilon\)</span> is <span class="math inline">\(0\)</span>. In this case, <span class="math display">\[
+\begin{aligned}
+r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;= \nu r_\nu[f(x) - \ln q(x)] q(x) \\
+\frac{\nu \tilde p(x)}{\nu + e^{f(x) - \ln q(x)}} &amp;= \frac{\nu q(x)}{1 + \nu e^{\ln q(x) - f(x)}} \\
+\frac{\tilde p(x)q(x)}{\nu q(x) + p_\theta(x)} &amp;= \frac{q(x) p_\theta(x)}{p_\theta(x) + \nu q(x)} \\
+\end{aligned}
+\]</span> If <span class="math inline">\(q(x)\)</span> is nonzero, <span class="math display">\[
+\frac{\tilde p(x)}{\nu q(x) + p_\theta(x)} = \frac{p_\theta(x)}{p_\theta(x) + \nu q(x)} \iff p_\theta(x) = \tilde p(x)\\
+\]</span></p>
+<h3 id="gradient-descent">Gradient descent</h3>
+<p>https://leimao.github.io/article/Noise-Contrastive-Estimation/</p>
+<h2 id="implementation">Implementation</h2>
+<p><a href="https://github.com/Stonesjtu/Pytorch-NCE">PyTorch-NCE</a></p>
+<h2 id="other-reference">Other Reference</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/334772391">NCE与语言模型</a></p>
+
+
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/notes/papers/contrastive-predictive-coding/" rel="prev">Contrastive Predictive Coding</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 12, 2022</p>
+
+          
+
+
+
+
+
+  
+
+<p class="edit-page">
+  <a href="https://github.com/wowchemy/hugo-notes-theme/edit/main/content/notes/Papers/Noise%20Contrastive%20Estimation.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1214 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="本文为Elliptic Curve Cryptography系列文章的翻译，原文深入浅出，非常值得一读。这篇译文刨去了背景知识，相当于是一篇纯纯的学习笔记了。不过由于我本人完全是一个密码学门外汉，专业水平有限，不足之处多多包涵。" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.629cfe5dd4ecaeea7496d6f5e4147674.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+    <meta property="twitter:site" content="@wowchemy" />
+    <meta property="twitter:creator" content="@wowchemy" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; website" />
+  <meta property="og:url" content="https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" />
+  <meta property="og:title" content="椭圆曲线加密算法 | Chunxy&#39; website" />
+  <meta property="og:description" content="本文为Elliptic Curve Cryptography系列文章的翻译，原文深入浅出，非常值得一读。这篇译文刨去了背景知识，相当于是一篇纯纯的学习笔记了。不过由于我本人完全是一个密码学门外汉，专业水平有限，不足之处多多包涵。" /><meta property="og:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="article:published_time" content="2022-06-23T15:03:21&#43;00:00" />
+    
+    <meta property="article:modified_time" content="2022-06-23T15:03:21&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>椭圆曲线加密算法 | Chunxy&#39; website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="921d4559d7269b7450dea97b0144cd64" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+      
+      
+      <div class="article-container py-1" style="background: initial">
+        
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/blogs/">
+        
+          Blogs
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        椭圆曲线加密算法
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+      </div>
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>椭圆曲线加密算法</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 23, 2022
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>本文为<a href="https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/">Elliptic Curve Cryptography</a>系列文章的翻译，原文深入浅出，非常值得一读。这篇译文刨去了背景知识，相当于是一篇纯纯的学习笔记了。不过由于我本人完全是一个密码学门外汉，专业水平有限，不足之处多多包涵。</p>
+<details class="toc-inpage d-print-none  " open>
+  <summary class="font-weight-bold">Table of Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#加密算法分支">加密算法分支</a></li>
+    <li><a href="#椭圆曲线与群">椭圆曲线与群</a>
+      <ul>
+        <li><a href="#椭圆曲线">椭圆曲线</a></li>
+        <li><a href="#群group">群（Group）</a></li>
+        <li><a href="#椭圆曲线上的群">椭圆曲线上的群</a></li>
+        <li><a href="#标量积scalar-multiplication">标量积（Scalar Multiplication）</a></li>
+        <li><a href="#对数运算logarithm">对数运算（Logarithm）</a></li>
+      </ul>
+    </li>
+    <li><a href="#椭圆曲线与有限域">椭圆曲线与有限域</a>
+      <ul>
+        <li><a href="#有限域finite-field">有限域（Finite Field）</a></li>
+        <li><a href="#有限域上的椭圆曲线">有限域上的椭圆曲线</a></li>
+        <li><a href="#再看群">再看群</a></li>
+        <li><a href="#标量积与子群">标量积与子群</a></li>
+        <li><a href="#离散对数运算discrete-logarithm">离散对数运算（Discrete Logarithm）</a></li>
+      </ul>
+    </li>
+    <li><a href="#椭圆曲线加密算法">椭圆曲线加密算法</a>
+      <ul>
+        <li><a href="#elliptic-curve-diffie-hellman">Elliptic Curve Diffie-Hellman</a></li>
+        <li><a href="#elliptic-curve-digital-signature-algorithm">Elliptic Curve Digital Signature Algorithm</a></li>
+        <li><a href="#再看离散对数运算">再看离散对数运算</a></li>
+        <li><a href="#ecc与rsa">ECC与RSA</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+<h2 id="加密算法分支">加密算法分支</h2>
+<ul>
+<li><p>基于椭圆曲线</p>
+<p>基于椭圆曲线的加密算法包括ECC（Elliptic Curve Cryptography）、ECDH和ECDSA。ECDH与ECDSA是基于ECC发展而来。</p></li>
+<li><p>基于模余运算</p>
+<p>基于模余运算的加密算法包括RSA、DSA、DH以及其他衍生算法。</p></li>
+</ul>
+<h2 id="椭圆曲线与群">椭圆曲线与群</h2>
+<h3 id="椭圆曲线">椭圆曲线</h3>
+<p>一条椭圆曲线就是一组满足<span class="math inline">\(y^2 = x^3 + ax + b\)</span>且<span class="math inline">\(4a^3 + 27b^2 \ne 0\)</span>的二维平面点集。<span class="math inline">\(4a^3 + 27b^2 \ne 0\)</span>的条件是为了保证曲线不存在<strong>奇点（singularity）</strong>；<span class="math inline">\(y^2 = x^3 + ax + b\)</span>又被称作椭圆曲线的<strong>Weierstrass normal form</strong>。</p>
+<p>除了这条曲线上的点，我们还需要一个无穷远处的点，我们用<span class="math inline">\(0\)</span>这个特殊的符号来表示这个点，所以椭圆曲线更准确的表达式为 <span class="math display">\[
+\{(x,y) \in \R^2 | y^2 = x^3 + ax + b, 4a^3 + 27b^2 \ne 0\} \cup \{0\}
+\]</span> 椭圆曲线的一条显而易见的性质是，它是关于<span class="math inline">\(x\)</span>轴对称的。</p>
+<h3 id="群group">群（Group）</h3>
+<p>一个集合<span class="math inline">\(G\)</span>加上一个二元运算<span class="math inline">\(\oplus\)</span>，若满足以下条件，就构成了数学上的一个<strong>群</strong>：</p>
+<ul>
+<li>封闭性（closure）：<span class="math inline">\(a \in G, b \in G \to a \oplus b \in G\)</span>；</li>
+<li>结合律（associativity）：<span class="math inline">\((a + b) + c = a + (b + c)\)</span>；</li>
+<li>存在一个单位元（identity element）<span class="math inline">\(0\)</span>，使得<span class="math inline">\(a + 0 = 0 + a = a\)</span>，即单位元与任何元素进行运算，不改变该元素的值；</li>
+<li>每个数都存在一个逆元（inverse）。</li>
+</ul>
+<p>若该群进一步满足</p>
+<ul>
+<li>交换律（commutativity）：<span class="math inline">\(a + b = b + a\)</span>。</li>
+</ul>
+<p>则称该群为<strong>阿贝尔群（Abelian group）</strong>。</p>
+<h3 id="椭圆曲线上的群">椭圆曲线上的群</h3>
+<p>对于我们定义的椭圆曲线集合，我们</p>
+<ul>
+<li><p>定义无穷远处的<span class="math inline">\(0\)</span>为单位元；</p></li>
+<li><p>定义逆元为该点关于<span class="math inline">\(x\)</span>轴另一侧的对称点；</p></li>
+<li><p>定义二元运算<span class="math inline">\(\oplus\)</span>如下：</p>
+<p>若一条直线与椭圆曲线的三个交点分别为<span class="math inline">\(P,Q,R\)</span>，则<span class="math inline">\(P \oplus Q \oplus R = 0\)</span>，我们称这三个点是<strong>对齐的（aligned）</strong>。在此处我们没有规定三个点之间的顺序，即三个点之间可以任意交换位置，也就是说我们的定义的二元运算是满足交换律的，我们定义的群是一个阿贝尔群。</p>
+<p>给定两个非零、非对称的点<span class="math inline">\(P = (x_P, y_p), Q = (x_q, y_Q)\)</span>，我们可以很轻松地找到<span class="math inline">\(R = P \oplus Q\)</span>: <span class="math display">\[
+\begin{align}
+x_R &amp;= m^2 - x_P - x_Q \\
+y_R &amp;= y_P + m(x_R - x_P) \\
+&amp;= y_Q + m(x_R - x_Q)
+\end{align}
+\]</span> 其中： <span class="math display">\[
+m = \begin{cases}
+\frac{y_P - y_Q}{x_P - xQ}, &amp; P \ne Q \\
+\frac{3x_P^2 + a}{2y_P}, &amp; P = Q
+\end{cases}
+\]</span></p></li>
+</ul>
+<h3 id="标量积scalar-multiplication">标量积（Scalar Multiplication）</h3>
+<p>给定之前的二元加法运算，我们可以定义出相应的群中元素与标量之间的乘法运算： <span class="math display">\[
+n P  = \underbrace{P + \dots + P}_{n \text{ times}}
+\]</span> 这样的乘法运算可以在<span class="math inline">\(\Omicron(\log n)\)</span>时间内完成。</p>
+<h3 id="对数运算logarithm">对数运算（Logarithm）</h3>
+<p>给定<span class="math inline">\(n\)</span>和<span class="math inline">\(P\)</span>，我们可以很高效地完成标量积运算<span class="math inline">\(Q = nP\)</span>；但如果给定<span class="math inline">\(Q\)</span>和<span class="math inline">\(P\)</span>，我们如何计算出对数运算（虽然这里是除法，但是为了和密码学中的标记保持一致，这里使用了对数）<span class="math inline">\(n = Q \div P\)</span>呢？</p>
+<h2 id="椭圆曲线与有限域">椭圆曲线与有限域</h2>
+<h3 id="有限域finite-field">有限域（Finite Field）</h3>
+<p>有限域首先是一系列元素的集合，比如说由整数模余某个质数<span class="math inline">\(p\)</span>得到的集合（通常表示为<span class="math inline">\(\Z/p\)</span>或<span class="math inline">\(\newcommand{F}{\mathbb F} \F_p\)</span>）；有限域还定义了两种二元运算：加法和乘法，且这两种运算应该满足如下条件：</p>
+<ul>
+<li>在有限域上都是封闭的、满足结合律以及交换律的；</li>
+<li>存在单位元；</li>
+<li>每个元素都存在相应的逆元。</li>
+</ul>
+<p>除此之外，乘法运算还应该满足分配律（distributive）：<span class="math inline">\(x \cdot (y + z) = x \cdot y + x \cdot z\)</span>。</p>
+<p><span class="math inline">\(\F_p\)</span>包含了从<span class="math inline">\(0\)</span>到<span class="math inline">\(p-1\)</span>的所有整数，而加法、乘法操作之后要追加模余（除数为<span class="math inline">\(p\)</span>）操作。</p>
+<ul>
+<li>若<span class="math inline">\(a + b = 0 \pmod p\)</span>，则<span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>互为<strong>加法逆元（additive inverse）</strong>，<span class="math inline">\(a=-b, b=-a\)</span>；</li>
+<li>若<span class="math inline">\(ab = 1 \pmod o\)</span>，则<span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>互为<strong>乘法逆元（multiplicative inverse）</strong>，<span class="math inline">\(a=b^{-1},b=a^{-1}\)</span>；<span class="math inline">\(xy^{-1}\)</span>有时也表示为<span class="math inline">\(x/y\)</span>；<span class="math inline">\(n\)</span>的乘法逆元可以通过Extended Euclidean Algorithm，其时间复杂度为<span class="math inline">\(\Omicron(\log n)\)</span>。</li>
+</ul>
+<p>可以证明，<span class="math inline">\(\F_p\)</span>也是一个阿贝尔群。</p>
+<h3 id="有限域上的椭圆曲线">有限域上的椭圆曲线</h3>
+<p>椭圆曲线本身的定义为： <span class="math display">\[
+\{(x,y) \in \R^2 | y^2 = x^3 + ax + b, 4a^3 + 27b^2 \ne 0\} \cup \{0\}
+\]</span> 加上有限域的限制之后，变为 <span class="math display">\[
+\{(x,y) \in \F^2 | y^2 = x^3 + ax + b \pmod p, 4a^3 + 27b^2 \ne 0 \pmod p, a, b \in \F_p \} \cup \{0\}
+\]</span> 由于有限域的限制，此时所有的点全部出现第一象限。该图像关于<span class="math inline">\(y = p / 2\)</span>对称，因为若<span class="math inline">\(y_1 + y_2 = p\)</span>， <span class="math display">\[
+\begin{aligned}
+y_1^2 &amp;= (p - y_2)^2 \\
+&amp;= p^2 - 2py_2 + y_2^2 \\
+&amp;= y_2^2 \pmod p
+\end{aligned}
+\]</span></p>
+<h3 id="再看群">再看群</h3>
+<ul>
+<li><p>对于一个点<span class="math inline">\(Q = (x_Q, y_Q)\)</span>，其逆元<span class="math inline">\(-Q\)</span>定义为<span class="math inline">\(-Q = (x_Q, -y_Q \mod p)\)</span>；</p></li>
+<li><p>我们这样定义有限域上椭圆曲线上的点之间的二元运算<span class="math inline">\(\oplus\)</span>，同之前一样，三个对齐的点（aligned points）<span class="math inline">\(P,Q,R\)</span>满足 <span class="math display">\[
+P \oplus Q \oplus R = 0
+\]</span> 只不过这里“对齐”的含义与之前有所不同，之前的对齐指的是几何上的共线，即三个点满足<span class="math inline">\(ax + by + c = 0\)</span>；而这里的对齐指的是： <span class="math display">\[
+ax + by + c = 0 \pmod p
+\]</span> 有趣的是，计算加法的公式和之前没有发生太大变化（<a href="https://arxiv.org/pdf/1710.00214">证明</a>）。给定两个非零、非对称的点<span class="math inline">\(P = (x_P, y_p), Q = (x_q, y_Q)\)</span>，我们可以很轻松地找到<span class="math inline">\(R = P \oplus Q\)</span>： <span class="math display">\[
+\begin{align}
+x_R &amp;= (m^2 - x_P - x_Q) \mod p \\
+y_R &amp;= (y_P + m(x_R - x_P)) \mod p \\
+&amp;= (y_Q + m(x_R - x_Q)) \mod p
+\end{align}
+\]</span></p>
+<p>其中： <span class="math display">\[
+m =
+\begin{cases}
+(y_P - y_R)(x_P - x_R)^{-1} \mod p, &amp; P \ne Q \\
+(3x_P^2 + a)(2y_P)^{-1} \mod p, &amp; P = Q
+\end{cases}
+\]</span></p></li>
+</ul>
+<p>群中元素的个数叫做群的<strong>秩（order）</strong>，可以通过<a href="https://en.wikipedia.org/wiki/Schoof%27s_algorithm">Schoof’s algorithm</a>计算求得。</p>
+<h3 id="标量积与子群">标量积与子群</h3>
+<p>标量积依旧遵循之前的定义，给定正整数<span class="math inline">\(n\)</span>和群中的点<span class="math inline">\(P\)</span>， <span class="math display">\[
+nP = \underbrace{P + \dots + P}_{n \text{ times}}
+\]</span> 标量积其实就是对某个点<span class="math inline">\(P\)</span>不断做加法，其中一个有趣的性质是，<span class="math inline">\(0P, 1P, 2P, \dots\)</span>的结果会以某个最小正周期周期<span class="math inline">\(k\)</span>循环（<a href="https://en.wikipedia.org/wiki/Subgroup#Basic_properties_of_subgroups">证明</a>）。这也就意味着，群中对加法<span class="math inline">\(P\)</span>的倍数是关于加法封闭的（closed under addition），它们又构成了一个循环子群（cyclic subgroup），<span class="math inline">\(P\)</span>又称作这个循环子群的<strong>基点（base point/generator）</strong>，<span class="math inline">\(k\)</span>是这个<strong>循环子群的秩（subgroup order）</strong>。</p>
+<p>根据<a href="https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)">Lagrange’s theorem</a>，子群的秩是其父群的秩的约数。</p>
+<h4 id="寻找基点">寻找基点</h4>
+<p>在ECC算法中，我们一般会先计算父群的秩<span class="math inline">\(N\)</span>，找出它一个比较大的约数<span class="math inline">\(n\)</span>，让<span class="math inline">\(n\)</span>作为子群的秩，<span class="math inline">\(h = N / n\)</span>称作这个子群的余因子（cofactor），再根据这个子群的秩去找这个子群的基点。一般来说，<span class="math inline">\(n\)</span>会从<span class="math inline">\(N\)</span>的质因子中选取，基本算法如下：</p>
+<ul>
+<li><p>计算父群的秩<span class="math inline">\(N\)</span>；</p></li>
+<li><p>计算<span class="math inline">\(N\)</span>的质因子<span class="math inline">\(n\)</span>，从大到小排列进行试验</p>
+<ol type="1">
+<li><p>计算余因子<span class="math inline">\(h = N / n\)</span>；</p></li>
+<li><p>随机选择椭圆曲线上的一点<span class="math inline">\(P\)</span>；</p></li>
+<li><p>计算<span class="math inline">\(G = hP\)</span>；</p></li>
+<li><p>如果<span class="math inline">\(G\)</span>为<span class="math inline">\(0\)</span>，则重新选择<span class="math inline">\(P\)</span>进行试验；否则这意味着<span class="math inline">\(G\)</span>就是秩为<span class="math inline">\(n\)</span>的子群的基点。</p></li>
+</ol></li>
+</ul>
+<p>需要注意的是，ECC算法能够运行的前提是，<span class="math inline">\(n\)</span>必须是<span class="math inline">\(N\)</span>的质因子。</p>
+<h3 id="离散对数运算discrete-logarithm">离散对数运算（Discrete Logarithm）</h3>
+<p>现在我们解答之前提出的对数运算问题，给定<span class="math inline">\(Q\)</span>和<span class="math inline">\(P\)</span>，目前没有算法能够在多项式时间之内求解满足<span class="math inline">\(Q = kP\)</span>的<span class="math inline">\(k\)</span>。这个问题有点类似于给定整数<span class="math inline">\(a\)</span>和<span class="math inline">\(b\)</span>，如何求解满足<span class="math inline">\(b = a^k \pmod p\)</span>的<span class="math inline">\(k\)</span>？这两个问题目前都没有算法能在多项式时间之内求解，这也是ECC算法安全的根本。</p>
+<h2 id="椭圆曲线加密算法">椭圆曲线加密算法</h2>
+<p>寻找到之前秩为<span class="math inline">\(n\)</span>、基点为<span class="math inline">\(G\)</span>的子群后，我们就可以生成私钥和公钥了：</p>
+<ul>
+<li>私钥是从<span class="math inline">\(\{1,\dots,n-1\}\)</span>中随机抽取的数字<span class="math inline">\(d\)</span>；</li>
+<li>公钥是点<span class="math inline">\(H = dG\)</span>。</li>
+</ul>
+<p>下面介绍两个基于ECC的公钥加密算法。</p>
+<h3 id="elliptic-curve-diffie-hellman">Elliptic Curve Diffie-Hellman</h3>
+<p>ECDH是DH算法在椭圆曲线中的变体，它实际上是一种密钥交换算法，而不是加密算法。它的大致流程如下：</p>
+<ul>
+<li>Alice和Bob各自随机生成私钥和公钥：<span class="math inline">\(H_A = d_A G, H_B = d_B G\)</span>，注意，Alice和Bob使用了相同的基点；</li>
+<li>Alice和Bob在非安全信道上交换各自的公钥，即使中间人拦截到了<span class="math inline">\(H_A\)</span>和<span class="math inline">\(H_B\)</span>，如果他不能求解出对数运算问题，他也不会知道Alice和Bob的私钥；</li>
+<li>Alice计算<span class="math inline">\(S = d_A H_B\)</span>，Bob计算<span class="math inline">\(S = d_B H_A\)</span>，根据子群对加法的封闭性，二者应该得到相同的结果；</li>
+<li>中间人即使知道<span class="math inline">\(H_A\)</span>、<span class="math inline">\(H_B\)</span>，也无法得到密钥<span class="math inline">\(S\)</span>，Alice和Bob便可以通过密钥<span class="math inline">\(S\)</span>加密内容。</li>
+</ul>
+<h3 id="elliptic-curve-digital-signature-algorithm">Elliptic Curve Digital Signature Algorithm</h3>
+<p>ECDSA是一种公钥加密算法，可以用于数字签名。ECDSA的作用对象是消息的哈希值，而不是消息本身，所以在使用ECDSA时，也要选取一个安全的哈希函数。消息的哈希值在签名过程中会被截断，使得该剩余哈希值的比特位数等于<span class="math inline">\(n\)</span>的比特位数，我们用<span class="math inline">\(z\)</span>来表示剩余哈希值所代表的整数。ECDSA的大致流程如下：</p>
+<ul>
+<li>Alice从<span class="math inline">\(\{1, \dots, n\}\)</span>中随机抽取数字<span class="math inline">\(k\)</span>；</li>
+<li>Alice计算<span class="math inline">\(P = kG\)</span>；</li>
+<li>Alice计算<span class="math inline">\(r = x_P \mod n\)</span>，如果<span class="math inline">\(r=0\)</span>，则重新选取<span class="math inline">\(k\)</span>；</li>
+<li>Alice计算<span class="math inline">\(s = k^{-1} (z + rd_A) \mod n\)</span>，其中<span class="math inline">\(d_A\)</span>是Alice的私钥，<span class="math inline">\(k^{-1}\)</span>是<span class="math inline">\(k\)</span>关于<span class="math inline">\(n\)</span>的乘法逆元（我们前面选取<span class="math inline">\(n\)</span>为质因子的目的就在于，保证这里的<span class="math inline">\(k^{-1}\)</span>一定存在），如果<span class="math inline">\(s=0\)</span>，则重新选取<span class="math inline">\(k\)</span>。</li>
+</ul>
+<p>元组<span class="math inline">\((r,s)\)</span>就是Alice对应的签名。Bob拿到这样的签名之后，作以下验证：</p>
+<ul>
+<li>计算<span class="math inline">\(u_1 = s^{-1}z \mod n\)</span>；</li>
+<li>计算<span class="math inline">\(u_2 = s^{-1}r \mod n\)</span>；</li>
+<li>计算点<span class="math inline">\(P = u_1G + u_2H_A\)</span>；</li>
+<li>仅当<span class="math inline">\(r = x_P \mod n\)</span>时，Bob可以验证这确实是Alice的签名。</li>
+</ul>
+<p>验证过程的正确性证明如下， <span class="math display">\[
+\label{P} \begin{aligned}
+P &amp;= u_1 G + u_2 H_A \\
+&amp;= u_1 G + u_2 d_A G \\
+&amp;= (s^{-1} z + s^{-1} r d_A) G \\
+&amp;= s^{-1}(z + r d_A) G
+\end{aligned}
+\]</span> 之前我们定义<span class="math inline">\(s = k^{-1} (z + r d_A) \mod n\)</span>，将两边同乘<span class="math inline">\(ks^{-1}\)</span>，我们可以得到<span class="math inline">\(k = s^{-1}(z + r d_A) \mod n\)</span>，将此式代入<span class="math inline">\(\eqref{P}\)</span>可以得到 <span class="math display">\[
+P = kG
+\]</span> 这也就是Alice签名过程中得到的<span class="math inline">\(P\)</span>，证毕。</p>
+<h4 id="k的选取"><span class="math inline">\(k\)</span>的选取</h4>
+<p>在使用ECDSA时，我们必须注意不能使用相同的<span class="math inline">\(k\)</span>加密多份消息，也不能暴露我们选取<span class="math inline">\(k\)</span>的方式（比如说随机数生成方式），否则就会有很大的私钥泄露风险。比如说我们用同一个<span class="math inline">\(k\)</span>加密两份消息，Bob就可以通过这两次签名过程得到<span class="math inline">\((r, s_1), (r, s_2)\)</span>，如果Bob还有额外途径获取两次消息的哈希<span class="math inline">\(z_1, z_2\)</span>，那么： <span class="math display">\[
+\begin{gather}
+s_1 = k^{-1}(z_1 + r d_A), s_2 = k^{-1}(z_2 + r d_A) \to \\
+(s_1 - s_2) = k^{-1}(z_1 - z_2) \mod n \to \\
+k = (z_1 - z_2)(s_1 - s_2)^{-1}
+\end{gather}
+\]</span> 再根据<span class="math inline">\(s_1 = k^{-1}(z_1 + r d_A) \mod n\)</span>， <span class="math display">\[
+\begin{aligned}
+d_A &amp;= r^{-1}(s_1k - z_1) \mod n \\
+&amp;= r^{-1}(s_1(z_1 - z_2)(s_1 - s_2)^{-1} - z_1) \mod n
+\end{aligned}
+\]</span></p>
+<h3 id="再看离散对数运算">再看离散对数运算</h3>
+<p>给定秩为<span class="math inline">\(n\)</span>、基点为<span class="math inline">\(G\)</span>的椭圆曲线子群，以及该子群上的两点<span class="math inline">\(P,Q\)</span>，离散对数运算求解的是满足<span class="math inline">\(Q = xP\)</span>的整数<span class="math inline">\(x\)</span>。我们接下来了解两个求解离散对数运算的算法。</p>
+<h4 id="baby-step-giant-step">Baby-step-giant-step</h4>
+<p>首先任意一个整数<span class="math inline">\(x\)</span>，都可以写成<span class="math inline">\(x = am + b\)</span>，由<span class="math inline">\(a,m,b\)</span>这三个满足关系的任意整数表示，那么，我们就可以考虑这样解决离散对数运算问题： <span class="math display">\[
+\begin{aligned}
+Q &amp;= xP \\
+Q &amp;= (am + b)P \\
+Q - amP &amp;= bP
+\end{aligned}
+\]</span> Baby-step-giant-step算法采取了从两边夹逼的方式解决问题，过程如下：</p>
+<ul>
+<li>计算<span class="math inline">\(m = \lceil \sqrt n \rceil\)</span>；</li>
+<li>对所有<span class="math inline">\(\{0, \dots, m\}\)</span>中的数字<span class="math inline">\(b\)</span>，计算<span class="math inline">\(bP\)</span>，并将<span class="math inline">\(bP\)</span>存储到哈希表中；</li>
+<li>对所有<span class="math inline">\(\{0, \dots, m\}\)</span>中的数字<span class="math inline">\(a\)</span>，
+<ol type="1">
+<li>计算<span class="math inline">\(amP\)</span>；</li>
+<li>计算<span class="math inline">\(Q - amP\)</span>；</li>
+<li>检查哈希表中是否存在某个<span class="math inline">\(bP\)</span>，使得<span class="math inline">\(Q - amP = bP\)</span>，如果存在，就意味着我们找到了一个解。</li>
+</ol></li>
+</ul>
+<p><span class="math inline">\(bP\)</span>的计算对应着baby-step，<span class="math inline">\(amP\)</span>的计算对应着giant-step，该算法的合理性在于：</p>
+<ul>
+<li><span class="math inline">\(a=0\)</span>时，我们检查<span class="math inline">\(Q\)</span>是否和<span class="math inline">\(0, P, \dots, mP\)</span>相等；</li>
+<li><span class="math inline">\(a=1\)</span>时，我们检查<span class="math inline">\(Q\)</span>是否和<span class="math inline">\(mP, P + mp, \dots, mP + mP\)</span>相等；</li>
+<li><span class="math inline">\(a=2\)</span>时，我们检查<span class="math inline">\(Q\)</span>是否和<span class="math inline">\(2mP, P + 2mp, \dots, mP + 2mP\)</span>相等；</li>
+<li><span class="math inline">\(\dots\)</span></li>
+<li><span class="math inline">\(a=m-1\)</span>时，我们检查<span class="math inline">\(Q\)</span>是否和<span class="math inline">\((m-1)mP, P + (m-1)mp, \dots, mP + (m-1)mP\)</span>相等；</li>
+</ul>
+<p>总之，我们检查了<span class="math inline">\(0\)</span>到<span class="math inline">\(m^2P=nP\)</span>之间的所有点，也就是所有可能的点。而检查的过程我们并不需要做实际的加法运算，只需要检查哈希表中有没有对应的差值。在baby-step中，我们需要做<span class="math inline">\(m\)</span>次加法，在giant-step中，由于哈希表查询速度为<span class="math inline">\(\Omicron(1)\)</span>，并且至多需要做<span class="math inline">\(m\)</span>次加减法，所以整体上该算法的时间复杂度为<span class="math inline">\(\Omicron(\sqrt n)\)</span>，而哈希表带来的空间复杂度也是<span class="math inline">\(\Omicron(\sqrt n)\)</span>。尽管看上去这个多项式时间的算法还不错，但是由于一般<span class="math inline">\(n\)</span>非常大，这个算法实际需要的时间成本以及存储成本远远超出当前计算机的水平。</p>
+<h4 id="pollards-rho">Pollard’s <span class="math inline">\(\rho\)</span></h4>
+<p>Pollard’s <span class="math inline">\(\rho\)</span>算法的时间复杂度也是<span class="math inline">\(\Omicron(\sqrt n)\)</span>，但是它的空间复杂度为<span class="math inline">\(\Omicron(1)\)</span>。和Baby-step-giant-step算法一样，我们实际解决的问题与原问题稍微有所不同，在Pollard’s <span class="math inline">\(\rho\)</span>算法中，给定<span class="math inline">\(P,Q\)</span>，我们想要找到整数<span class="math inline">\(a,b,A,B\)</span>，使得 <span class="math display">\[
+aP + bQ = AP + BQ
+\]</span> 找到这四个整数之后，我们代入<span class="math inline">\(Q = xP\)</span>来求解<span class="math inline">\(x\)</span>： <span class="math display">\[
+\begin{aligned}
+aP + bxP &amp;= AP + BxP \\
+(a-A)P &amp;= (b-B)xP \\
+&amp;\Downarrow \\
+(a-A) &amp;= (b-B)x \pmod n \\
+x &amp;= (a-A)(b-B)^{-1} \mod n
+\end{aligned}
+\]</span> Pollard’s <span class="math inline">\(\rho\)</span>算法思路是这样的：我们生成一系列伪随机点<span class="math inline">\(X_1, X_2, \dots\)</span>，其中<span class="math inline">\(X_i = a_iP + b_iQ\)</span>。这样的序列可以由一个伪随机函数<span class="math inline">\(f(X_i) = (a_{i+1}, b_{i+1})\)</span>生成，也就是说下一点是由当前点决定的，而<span class="math inline">\(f\)</span>内部如何工作并不重要。通过这样的<span class="math inline">\(f\)</span>产生序列，我们的序列迟早会出现一个回环，也就是说<span class="math inline">\(X_j = X_i\)</span>，而这时我们也就能够找到相应的<span class="math inline">\(x\)</span>。出现回环的原因也很好理解：我们点的个数是有限的，问题其实在于如何找到回环入口。</p>
+<h5 id="龟兔赛跑">龟兔赛跑</h5>
+<p>Pollard’s <span class="math inline">\(\rho\)</span>算法中的回环入口查找，其实类似单向链表中的回环入口查找：在链表开头设置一快一慢两个指针，我们让快指针每次前进两步，慢指针每次前进一步；二者相遇时，从相遇点和起点再设置两个新的慢指针，这两个新的慢指针相遇之处即为环的入口。</p>
+<h4 id="量子计算shors-algorithm">量子计算：Shor’s Algorithm</h4>
+<p>理论上，Shor’s Algorithm的时间复杂度为<span class="math inline">\(\Omicron((\log n)^3)\)</span>，空间复杂度为<span class="math inline">\(\Omicron(\log n)\)</span>，但是目前的量子计算机还不能进行像Shor’s Algorithm这样复杂的运算。</p>
+<h3 id="ecc与rsa">ECC与RSA</h3>
+<p>RSA的密钥长度在数量级上大于ECC的密钥长度，这不仅意味着更多的内存占用，还意味着更慢的计算速度。这其中的原因在于，RSA算法的离散对数运算是快于ECC算法的离散对数运算（参考<a href="https://en.wikipedia.org/wiki/General_number_field_sieve">General number field sieve</a>），这也就意味着RSA算法不得不采用更长的密钥来加大破解难度。更少的内存占用，更快的计算速度，这就是在已经有了成熟的RSA算法的情况下，ECC仍被提出的原因。</p>
+    </div>
+
+    
+
+
+
+
+
+  
+
+<p class="edit-page">
+  <a href="https://github.com/wowchemy/hugo-notes-theme/edit/main/content/blogs/%e6%a4%ad%e5%9c%86%e6%9b%b2%e7%ba%bf%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95.md">
+    <i class="fas fa-pen pr-2"></i>Edit this page
+  </a>
+</p>
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/&amp;text=%e6%a4%ad%e5%9c%86%e6%9b%b2%e7%ba%bf%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/&amp;t=%e6%a4%ad%e5%9c%86%e6%9b%b2%e7%ba%bf%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e6%a4%ad%e5%9c%86%e6%9b%b2%e7%ba%bf%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95&amp;body=https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/&amp;title=%e6%a4%ad%e5%9c%86%e6%9b%b2%e7%ba%bf%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e6%a4%ad%e5%9c%86%e6%9b%b2%e7%ba%bf%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95%20https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/&amp;title=%e6%a4%ad%e5%9c%86%e6%9b%b2%e7%ba%bf%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>
