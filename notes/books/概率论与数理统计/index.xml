@@ -95,7 +95,7 @@ p(z) &amp;amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}}e^{-\
 &lt;h3 id=&#34;n-dimensional&#34;&gt;N-dimensional&lt;/h3&gt;
 &lt;p&gt;We have given the joint distribution function of independent &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional standard Gaussian distribution. What about these &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; dimensions are not independent with each other, but are only correlated in first order?&lt;/p&gt;
 &lt;p&gt;Formally, &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;. Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are not independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{N}(\mu_i, \sigma_i^2)\)&lt;/span&gt;. We would like to linearly transform &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X_i, X_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(X_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution.&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix is &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is [[Real Symmetric Matrix|real-symmetric]] and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix is &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/&#34;&gt;real-symmetric&lt;/a&gt; and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
 X = B^{-1}(Z - \mu) \\
 Z = BX + \mu \\
 X \sim \mathcal{N}(0, I)
@@ -106,7 +106,7 @@ p_X(x) &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}x^Tx}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is to take on values in &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;, which is a subset of &lt;span class=&#34;math inline&#34;&gt;\(\R^{n}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 P_Z(Z \in S) = \int_Sp_Z(z)dz
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate [[Jacobian Matrix|Jacobian transformation]]: &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/&#34;&gt;Jacobian transformation&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 J(X \to Z) = B^{-1} \\
 \]&lt;/span&gt; with its determinant &lt;span class=&#34;math inline&#34;&gt;\(J = |J(X \to Z)| = |B^{-1}| = |B|^{-1}\)&lt;/span&gt;. Note that &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -214,8 +214,8 @@ p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
 &lt;h3 id=&#34;相关系数&#34;&gt;相关系数&lt;/h3&gt;
 &lt;p&gt;协方差考察了随机变量之间协同变化的关系，但如果采取不同的量纲，同样的数据产生的协方差相差非常大。为避免这种情况发生，我们首先将随机变量标准化： &lt;span class=&#34;math display&#34;&gt;\[
 X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\Var(Y)}}
-\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{cov}(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数 &lt;span class=&#34;math display&#34;&gt;\[
-\rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\mathrm{cov}(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
+\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\Cov(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数 &lt;span class=&#34;math display&#34;&gt;\[
+\rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\Cov(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -272,7 +272,7 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。&lt;/p&gt;
-&lt;p&gt;根据[[大数定律和中心极限定理#相互独立同分布大数定律|相互独立同分布大数定律]]， &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;相互独立同分布大数定律&lt;/a&gt;， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 \bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \mu \\
 \frac{1}{n} \sum_{i=1}^n X_i^2 \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E (X_i^2) = \sigma^2 + \mu^2
@@ -327,7 +327,7 @@ L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n 
 \]&lt;/span&gt; 其中，&lt;span class=&#34;math inline&#34;&gt;\(I(\theta) = \int [(\frac{\partial p(x;\theta)}{\partial \theta})^2 / p(x;\theta)] \d x\)&lt;/span&gt;为Fisher Information。当&lt;span class=&#34;math inline&#34;&gt;\(g(\theta) = \theta\)&lt;/span&gt;，即只估计未知参数本身时，有&lt;span class=&#34;math inline&#34;&gt;\(\Var(\hat g) \ge 1 / (nI(\theta))\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cr}\)&lt;/span&gt;成立有一定的条件，其本身就暗含了&lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial p(x;\theta)}{\partial \theta}\)&lt;/span&gt;存在及&lt;span class=&#34;math inline&#34;&gt;\(g&amp;#39;(\theta)\)&lt;/span&gt;存在的&lt;strong&gt;条件&lt;/strong&gt;。记 &lt;span class=&#34;math display&#34;&gt;\[
 S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln p(X_i;\theta)} {\partial \theta} = \sum_{i=1}^n [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)]
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\int p(x;\theta)\ \d x = 1\)&lt;/span&gt;，此式两边同时对&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;求导，并&lt;strong&gt;假定&lt;/strong&gt;此处求导可以移至积分号内部，可得到&lt;span class=&#34;math inline&#34;&gt;\(\int \frac{\partial p(x;\theta)}{\partial \theta} \d x = 0\)&lt;/span&gt;。根据[[Unconscious Statistics#Law of the Unconscious Statistician|LOTUS]]， &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\int p(x;\theta)\ \d x = 1\)&lt;/span&gt;，此式两边同时对&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;求导，并&lt;strong&gt;假定&lt;/strong&gt;此处求导可以移至积分号内部，可得到&lt;span class=&#34;math inline&#34;&gt;\(\int \frac{\partial p(x;\theta)}{\partial \theta} \d x = 0\)&lt;/span&gt;。根据&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/statistics/unconscious-statistics/#Law of the Unconscious Statistician&#34;&gt;LOTUS&lt;/a&gt;， &lt;span class=&#34;math display&#34;&gt;\[
 \E [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] 
 = \int [\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta)] p(x;\theta)\ \d x
 = \int \frac{\partial p(x;\theta)} {\partial \theta}\d x = 0
@@ -450,7 +450,7 @@ p_Y(y) =
 p_Y(y) = P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k \\
 &amp;amp;= \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
 \end{aligned}
-\]&lt;/span&gt; 其中&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k x_i^2 \le y\)&lt;/span&gt;的积分区域。可以看出，&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;对应一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维球体，且其半径&lt;span class=&#34;math inline&#34;&gt;\(R = \sqrt y\)&lt;/span&gt;。对此，作[[Spherical Coordinates|高维球坐标变换]]： &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; 其中&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k x_i^2 \le y\)&lt;/span&gt;的积分区域。可以看出，&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;对应一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维球体，且其半径&lt;span class=&#34;math inline&#34;&gt;\(R = \sqrt y\)&lt;/span&gt;。对此，作&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/&#34;&gt;高维球坐标变换&lt;/a&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k = \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
 &amp;amp;= \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \int_0^\sqrt{y} \\

@@ -37,8 +37,8 @@
 &lt;li&gt;Discover inherent properties (latent variables) in the data&lt;/li&gt;
 &lt;li&gt;Including:
 &lt;ul&gt;
-&lt;li&gt;[[Clustering]]&lt;/li&gt;
-&lt;li&gt;[[Dimension Reduction|Dimension reduction]]&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/&#34;&gt;Dimension reduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Manifold embedding&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -171,7 +171,7 @@ b \leftarrow b - \eta\frac{\partial J}{\partial b}
 &amp;amp;= -\sum_{i=1}^M (1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The posterior obtained by binary [[Linear Discriminant Analysis]] has the form of &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The posterior obtained by binary &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/&#34;&gt;Linear Discriminant Analysis&lt;/a&gt; has the form of &lt;span class=&#34;math display&#34;&gt;\[
 p(y|x) = \frac{1}{1 + e^{-(wx + b)}}
 \]&lt;/span&gt; This is not to say LDA and LR are the same in binary case. Note that LDA is a generative model which learns &lt;span class=&#34;math inline&#34;&gt;\(p(x|y)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;, LR is a discriminative model which only learns &lt;span class=&#34;math inline&#34;&gt;\(p(y|x)\)&lt;/span&gt;. One can discriminate with a generative model, but not reversely.&lt;/p&gt;
 &lt;h2 id=&#34;multi-class-logistic-regression&#34;&gt;Multi-class Logistic Regression&lt;/h2&gt;
@@ -474,7 +474,7 @@ W^\star = \arg \max_W p(W|X,Y)
 &lt;p&gt;In Ridge Regression, there is still chance that some weights are small but not zero, because the regularization term is small so far as the weights are fairly small. Think in this way: &lt;span class=&#34;math inline&#34;&gt;\(0.01^2 = 0.0001 \ll 0.01\)&lt;/span&gt;, though it is not rigid.&lt;/p&gt;
 &lt;p&gt;To get better regularization, we can change the regularization term to &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm: &lt;span class=&#34;math display&#34;&gt;\[
 \min_{W} \frac{1}{2}||Y - XW||^2_2 + \alpha||W||_1
-\]&lt;/span&gt; The above problem can be efficiently solved using Coordinate Descent or [[Least Angle Regression]].&lt;/p&gt;
+\]&lt;/span&gt; The above problem can be efficiently solved using Coordinate Descent or &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/least-angle-regression/&#34;&gt;Least Angle Regression&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6018889.html&#34;&gt;Lasso回归算法： 坐标轴下降法与最小角回归法小结 - 刘建平Pinard - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/76055830&#34;&gt;LASSO回归求解 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 
@@ -524,7 +524,7 @@ x^p
 &lt;h4 id=&#34;kernel-ridge-regression&#34;&gt;Kernel Ridge Regression&lt;/h4&gt;
 &lt;p&gt;Recall Ridge Regression: &lt;span class=&#34;math display&#34;&gt;\[
 W^\star = \min_{W}\frac{1}{2}||Y - X^TW||^2_2 + \frac{\alpha}{2}||W||^2_2 \iff (XX^T + \alpha I_{N+1})W^\star = XY
-\]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\((XX^T + \alpha I_{N+1})\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(W^\star = (XX^T + \alpha I_{N+1})^{-1}XY\)&lt;/span&gt;. By [[Matrix Identity|matrix identity]] &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\((XX^T + \alpha I_{N+1})\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(W^\star = (XX^T + \alpha I_{N+1})^{-1}XY\)&lt;/span&gt;. By &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/&#34;&gt;matrix identity&lt;/a&gt; &lt;span class=&#34;math display&#34;&gt;\[
 (P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
 \]&lt;/span&gt; we can obtain that &lt;span class=&#34;math inline&#34;&gt;\(W^\star = X(X^TX + \alpha I_M)^{-1}Y\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(X \in \R^{(N+1)\times M}, (X^TX + \alpha I_M)^{-1}Y \in \R^{M}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(W^\star\)&lt;/span&gt; can be rewritten as a linear combination of columns of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(W^\star\)&lt;/span&gt; lies in the span of input vectors: &lt;span class=&#34;math display&#34;&gt;\[
 W^\star = \sum_{i=1}^M\lambda_ix^{(i)}
@@ -532,7 +532,7 @@ W^\star = \sum_{i=1}^M\lambda_ix^{(i)}
 y^* = (x^*)^TW = (x^*)^TX(X^TX + \alpha I_M)^{-1}Y
 \]&lt;/span&gt; which totally depends on the inner products.&lt;/p&gt;
 &lt;h4 id=&#34;support-vector-regression&#34;&gt;Support Vector Regression&lt;/h4&gt;
-&lt;p&gt;Support Vector Regression learns a hyper-plane that incorporates within its margin as many points as possible. As a comparison, [[Support Vector Machine]] learns a hyper-plane that excludes outside its margin as many points as possible. Its objective is &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Support Vector Regression learns a hyper-plane that incorporates within its margin as many points as possible. As a comparison, &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/&#34;&gt;Support Vector Machine&lt;/a&gt; learns a hyper-plane that excludes outside its margin as many points as possible. Its objective is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \min_{w,\xi,\xi^*} \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M(\xi_i + \xi^*_i) \\
 s.t.\quad y^{(i)} - w^Tx^{(i)} - b \le \epsilon + \xi_i, i=1,\dots,M \\
@@ -554,7 +554,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 &amp;amp;- \sum_{i=1}^M\nu_i\xi_i -\sum_{i=1}^M\nu^*_i\xi^*_i
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[Support Vector Regression.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Support%20Vector%20Regression.pdf&#34;&gt;Support Vector Regression.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -609,7 +609,7 @@ s.t.\quad \sum_{j=1}^K\pi_j = 1
 \max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) = \log L(\pi,\mu,\Sigma)\Big) \\
 s.t.\quad \sum_{j=1}^K\pi_j = 1
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;attempt-with-lagrange-multiplier&#34;&gt;Attempt with [[Lagrange Multiplier]]&lt;/h4&gt;
+&lt;h4 id=&#34;attempt-with-lagrange-multiplier&#34;&gt;Attempt with &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/&#34;&gt;Lagrange Multiplier&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)}) = \prod_{i=1}^M\sum_{j=1}^Kp(z_j)p(x|z = z_j) = \prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) \\
@@ -627,7 +627,7 @@ J(\pi,\mu,\Sigma,\lambda) = -\sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)}
 = \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K, \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;attempt-with-expectation-maximization&#34;&gt;Attempt with [[Expectation Maximization]]&lt;/h4&gt;
+&lt;h4 id=&#34;attempt-with-expectation-maximization&#34;&gt;Attempt with &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/expectation-maximization/&#34;&gt;Expectation Maximization&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 L(\pi,\mu,\Sigma) = \prod_{i=1}^M p(x^{(i)}) = \prod_{i=1}^M \sum_{j=1}^K p(x^{(i)}, z^{(i)} = j) \\
@@ -765,7 +765,7 @@ B^\star, Z^\star = \arg \min_{B,Z} = ||X - BZ||^2_F = \sum_{ij}(X - BZ)^2_{ij}
 \]&lt;/span&gt; Let any invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(R \in \R^{K \times K}\)&lt;/span&gt;. We can construct a pair of &lt;span class=&#34;math inline&#34;&gt;\(\tilde B, \tilde Z\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\tilde B = B^\star R, \tilde Z = R^{-1}Z^\star\)&lt;/span&gt;. Then, &lt;span class=&#34;math display&#34;&gt;\[
 ||X - \tilde B \tilde Z||^2_F = ||X - B^\star RR^{-1} Z^\star||^2_F = ||X - B^\star Z^\star||^2_F
 \]&lt;/span&gt; Thus the global optima is not unique. We may force regularization on &lt;span class=&#34;math inline&#34;&gt;\(B, Z\)&lt;/span&gt; and obtain the unique optima.&lt;/p&gt;
-&lt;h4 id=&#34;singular-value-decomposition&#34;&gt;[[Singular Value Decomposition]]&lt;/h4&gt;
+&lt;h4 id=&#34;singular-value-decomposition&#34;&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/&#34;&gt;Singular Value Decomposition&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Suppose the Singular Value Decomposition for &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 \text{$U$ is $N \times N$, $\Sigma$ is diagonal, $V$ is $M \times M$} \\
@@ -781,14 +781,14 @@ p = \min\{N,M\}
 \text{$V_K \in \R^{M \times K}$ is first $K$ columns of $V$} \\
 \Sigma_K \in \R^{K \times K} = diag(\sigma_1, \sigma_2, ..., \sigma_K) \\
 \end{gather}
-\]&lt;/span&gt; [[Eckart-Young-Mirsky Theorem]] will tell that &lt;span class=&#34;math inline&#34;&gt;\(U_K\Sigma_KV^T_K\)&lt;/span&gt; is the best approximation of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; among &lt;span class=&#34;math inline&#34;&gt;\(N \times M\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; in terms of Frobenius norm.&lt;/p&gt;
+\]&lt;/span&gt; &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/&#34;&gt;Eckart-Young-Mirsky Theorem&lt;/a&gt; will tell that &lt;span class=&#34;math inline&#34;&gt;\(U_K\Sigma_KV^T_K\)&lt;/span&gt; is the best approximation of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; among &lt;span class=&#34;math inline&#34;&gt;\(N \times M\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; in terms of Frobenius norm.&lt;/p&gt;
 &lt;p&gt;We can form the &lt;span class=&#34;math inline&#34;&gt;\(B^\star, Z^\star\)&lt;/span&gt; by &lt;span class=&#34;math display&#34;&gt;\[
 B^\star = U_K \Sigma_K^{\frac{1}{2}}, Z^\star = \Sigma_K^{\frac{1}{2}} V^T_K
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;principal-component-analysislinear-principal-component-analysisprincipal-component-analysis&#34;&gt;[[Principal Component Analysis#Linear Principal Component Analysis|Principal Component Analysis]]&lt;/h4&gt;
+&lt;h4 id=&#34;principal-component-analysis&#34;&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/#Linear Principal Component Analysis&#34;&gt;Principal Component Analysis&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;As shown in ALS, the optimal solution of &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is not unique. ALS and SVD give their solutions, however without much interpretability. The solution given by Principal Component Analysis explicitly chooses the directions of the basis it uses.&lt;/p&gt;
 &lt;p&gt;The goal of PCA is to identify the directions along which the data exhibits the maximum variance. And then PCA projects the data onto the space formed by these directions.&lt;/p&gt;
-&lt;p&gt;The solution of PCA is &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; eigenvectors permuted according to their corresponding to eigenvalues, which is exactly the &lt;span class=&#34;math inline&#34;&gt;\(U_K\)&lt;/span&gt; in [[Singular Value Decomposition|SVD]]. Thus, the solution of PCA can be constructed from SVD. Let &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;. If we choose &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; directions with largest directional variance as basis. Then &lt;span class=&#34;math inline&#34;&gt;\(B^\star = U_K\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The solution of PCA is &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; eigenvectors permuted according to their corresponding to eigenvalues, which is exactly the &lt;span class=&#34;math inline&#34;&gt;\(U_K\)&lt;/span&gt; in &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/&#34;&gt;SVD&lt;/a&gt;. Thus, the solution of PCA can be constructed from SVD. Let &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;. If we choose &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; directions with largest directional variance as basis. Then &lt;span class=&#34;math inline&#34;&gt;\(B^\star = U_K\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;random-projection&#34;&gt;Random Projection&lt;/h4&gt;
 &lt;p&gt;The above methods all minimize the Frobenius norm during reconstruction. This objective may become time-consuming when input dimension becomes large. We may use some randomly-generated vectors as basis to do the projection. This greatly saves time, at the expense of losing accuracy. We can measure such projection by checking whether the structure of the data can be preserved, e.g. the distance between points.&lt;/p&gt;
 &lt;p&gt;Johnson-Lindenstrauss Lemma tells that a random function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = \frac{1}{\sqrt{K}}Ax\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(K \times N\)&lt;/span&gt; matrix with i.i.d. entries sampled from a standard Gaussian, can preserve the distance between any two points within error &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
@@ -797,9 +797,9 @@ B^\star = U_K \Sigma_K^{\frac{1}{2}}, Z^\star = \Sigma_K^{\frac{1}{2}} V^T_K
 K \ge \frac{8\log M}{\epsilon^2}
 \]&lt;/span&gt; And usually this requirement is quite conservative.&lt;/p&gt;
 &lt;h3 id=&#34;non-linear-dimension-reduction&#34;&gt;Non-linear Dimension Reduction&lt;/h3&gt;
-&lt;p&gt;We can introduce the feature mapping to handle the non-linearity problem in Dimension Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case. [[Principal Component Analysis#Kernel PCA]] is just such an example.&lt;/p&gt;
+&lt;p&gt;We can introduce the feature mapping to handle the non-linearity problem in Dimension Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case. &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/#Kernel PCA&#34;&gt;Principal Component Analysis &amp;gt; Kernel PCA&lt;/a&gt; is just such an example.&lt;/p&gt;
 &lt;h2 id=&#34;supervised-dimension-reduction&#34;&gt;Supervised Dimension Reduction&lt;/h2&gt;
-&lt;p&gt;There is no guarantee that the unsupervised Dimension Reduction can throw insight into the classification problem. It may or may not help. Otherwise supervised Dimension Reduction such as [[Fisher’s Linear Discriminant]] finds a lower-dimensional space so as to minimize the class overlap.&lt;/p&gt;
+&lt;p&gt;There is no guarantee that the unsupervised Dimension Reduction can throw insight into the classification problem. It may or may not help. Otherwise supervised Dimension Reduction such as &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/&#34;&gt;Fisher’s Linear Discriminant&lt;/a&gt; finds a lower-dimensional space so as to minimize the class overlap.&lt;/p&gt;
 
 
 </description>
@@ -937,7 +937,7 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
       <pubDate>Fri, 07 Jan 2022 12:40:50 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</guid>
       <description>
-&lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as [[Frobenius Normalization|Frobenius norm]]: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/&#34;&gt;Frobenius norm&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 ||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
 \]&lt;/span&gt; Firstly we prove that, if &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is orthogonal, then &lt;span class=&#34;math inline&#34;&gt;\(||UA||_F = ||AU||_F = ||A||_F\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -968,7 +968,7 @@ Z_{ii} = 0, i = R, R + 1, \dots, \min\{M,N\} \\
 Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 \end{gather}
 \]&lt;/span&gt; Such &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; exists when &lt;span class=&#34;math inline&#34;&gt;\(Y = U\Sigma_KV^T\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for [[Spectral Normalization|Spectral norm]] .&lt;/p&gt;
+&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/&#34;&gt;Spectral norm&lt;/a&gt; .&lt;/p&gt;
 
 
 </description>
@@ -984,7 +984,7 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 &lt;h2 id=&#34;assumption-and-derivation&#34;&gt;Assumption and Derivation&lt;/h2&gt;
 &lt;p&gt;Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;) &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\)&lt;/span&gt;, find the &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; mixing matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X = AS\)&lt;/span&gt;. Columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are the propagation weights from a signal source to observers. Therefore they are considered independent (and are thus called independent components).&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is called mixing matrix and &lt;span class=&#34;math inline&#34;&gt;\(W = A^{-1}\)&lt;/span&gt; is called unmixing matrix because &lt;span class=&#34;math inline&#34;&gt;\(S = WX\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = U\Sigma V^T\)&lt;/span&gt; by [[Singular Value Decomposition|SVD]]. Assume observations are pre-centered:&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = U\Sigma V^T\)&lt;/span&gt; by &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/&#34;&gt;SVD&lt;/a&gt;. Assume observations are pre-centered:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \sum_{i=1}^Mx^{(i)} = 0
 \]&lt;/span&gt; Assume that signals are independent and the variance of each signal is &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; (taking the advantage of scale/sign ambiguity): &lt;span class=&#34;math display&#34;&gt;\[
@@ -1032,7 +1032,7 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j)
 \end{aligned}
 \]&lt;/span&gt; Calculating entropy and then taking derivative is no easy task and therefore ICA algorithms focus on approximations or equivalences to the above equation. For example, it can be approximated by finding the rotation that maximizes the expected log-likelihood of the observed data by assuming that the source distributions are known.&lt;/p&gt;
-&lt;h3 id=&#34;non-gaussian-and-principal-component-analysispca&#34;&gt;Non-Gaussian and [[Principal Component Analysis|PCA]]&lt;/h3&gt;
+&lt;h3 id=&#34;non-gaussian-and-pca&#34;&gt;Non-Gaussian and &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/&#34;&gt;PCA&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The key assumption of ICA is that signals are non-Gaussian. We are trying to recover the &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; (by finding &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;) to be as non-Gaussian as possible. &lt;span class=&#34;math inline&#34;&gt;\(\hat X\)&lt;/span&gt; consists of independent components because its covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\hat C\)&lt;/span&gt; is shown to be an identity matrix (and thus diagonal). &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; is reconstructed by the linear combination of independent components. Thus it will be the most non-Gaussian when each variable is formed by exactly one component of &lt;span class=&#34;math inline&#34;&gt;\(\hat X\)&lt;/span&gt; by Central Limit Theorem, i.e. &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;’s components are independent.&lt;/p&gt;
 &lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its isodensity maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the stacked eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
 &lt;p&gt;The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;.&lt;/p&gt;

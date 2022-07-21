@@ -162,7 +162,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
       <description>
 
 &lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;The very basic bound on the Mutual Information is based on the non-negativity of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The very basic bound on the Mutual Information is based on the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/differentiation/#KL-divergence Entropy and Conditional Entropy&#34;&gt;non-negativity&lt;/a&gt; of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) = &amp;amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
 = &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)p(x|y)}{p(x)q(x|y)} \\
@@ -182,7 +182,7 @@ I(X;Y) &amp;amp;\ge \E_{p(x,y)} \log \frac{p(x) e^{f(x,y)}}{p(x) Z(y)} \\
 &amp;amp;= \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \triangleq I_\text{UBA}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Note that by scaling &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;, the &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; term is cancelled.&lt;/p&gt;
+&lt;p&gt;Note that by scaling &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;, the &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; term is canceled.&lt;/p&gt;
 &lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)} = p(x|y)\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 e^{f(x,y)} &amp;amp;= \frac{p(x, y)}{p(x)p(y)} Z(y) \\
@@ -195,6 +195,14 @@ f(x,y) &amp;amp;= \ln p(y|x) + \underbrace{\ln \frac{Z(y)}{p(y)}}_{c(y)}
 \begin{aligned}
 I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
 &amp;amp;\ge \E_{p(x,y)} f(x,y) - \log\E_{p(y)} [Z(y)] \triangleq I_\text{DV}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The original &lt;span class=&#34;math inline&#34;&gt;\(I_\text{DV}\)&lt;/span&gt; bound is in effect derived from &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/#Variational Lower-bound&#34;&gt;the variational lower bound of KL-divergence&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I&amp;amp;(X;Y) = D_\text{KL}(p_{(x,y)} || p(x) \otimes p(y)) \\
+&amp;amp;\ge \E_{p(x,y)} f(x,y) - \log [\E_{p(x) \otimes p(y)} f(x,y)] \\
+&amp;amp;= \E_{p(x,y)} f(x,y) - \log [\E_{p(y)} \E_{p(x)} e^{f(x,y)}] \\
+&amp;amp;= \E_{p(x,y)} f(x,y) - \log \E_{p(y)} Z(y) \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;i_texttuba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;&lt;/h2&gt;

@@ -105,7 +105,7 @@ P(|X_n - c| &amp;lt; \epsilon) = 1
 &lt;/ul&gt;
 &lt;p&gt;相比较而言，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛的表达式中多了一层偏差的&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;次方的测度。&lt;/p&gt;
 &lt;h3 id=&#34;均方收敛&#34;&gt;均方收敛&lt;/h3&gt;
-&lt;p&gt;当&lt;span class=&#34;math inline&#34;&gt;\(p=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛又称作均方收敛。根据[[大数定律和中心极限定理#Chebyshev不等式|Chebyshev不等式]]： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;当&lt;span class=&#34;math inline&#34;&gt;\(p=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛又称作均方收敛。根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/a&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
 \]&lt;/span&gt; 均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。&lt;/p&gt;
 &lt;h2 id=&#34;依分布收敛convergence-in-distribution&#34;&gt;依分布收敛（convergence in distribution）&lt;/h2&gt;

@@ -22,7 +22,7 @@
 &lt;h2 id=&#34;standard-form&#34;&gt;Standard Form&lt;/h2&gt;
 &lt;p&gt;Standard form of the optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-&amp;amp;\min f_0(x) \\
+&amp;amp;\inf f_0(x) \\
 s.t.\quad &amp;amp;f_i(x) \le 0, i = 1,\dots,r \\
 &amp;amp;h_i(x) = 0, i = 1,\dots,s \\
 \end{aligned}
@@ -32,12 +32,12 @@ L(x, \lambda, \mu) = f_0(x) + \sum_{i=1}^r\lambda_if_i(x) + \sum_{i=1}^s\mu_ih_i
 \]&lt;/span&gt; Define the function &lt;span class=&#34;math inline&#34;&gt;\(P: \mathcal X \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
 \]&lt;/span&gt; The primal problem is &lt;span class=&#34;math display&#34;&gt;\[
-\min_{x \in \mathcal X} P(x)
+\inf_{x \in \mathcal X} P(x)
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(P(x) =f_0(x)\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Thus the primal problem is equivalent to the original problem. Denote its optimal value as &lt;span class=&#34;math inline&#34;&gt;\(p^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Define the Lagrangian dual function &lt;span class=&#34;math inline&#34;&gt;\(D: \R^r \times \R^s \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
 D(\lambda, \mu) = \inf_{x \in \mathcal X}L(x, \lambda, \mu)
 \]&lt;/span&gt; The Lagrangian dual problem is &lt;span class=&#34;math display&#34;&gt;\[
-\max_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \\
+\sup_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \\
 \]&lt;/span&gt; Denote its optimal value as &lt;span class=&#34;math inline&#34;&gt;\(d^\star\)&lt;/span&gt;. We always have &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
@@ -45,7 +45,7 @@ D(\lambda, \mu) = \inf_{x \in \mathcal X}L(x, \lambda, \mu)
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu) \ge L(x,\lambda,\mu) \ge \inf_{x \in \mathcal X}L(x, \lambda, \mu) =D (\lambda, \mu)
 \]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt; is condition called weak duality because it always holds. &lt;span class=&#34;math inline&#34;&gt;\(p^\star = d^\star\)&lt;/span&gt; is called a strong duality because it does not hold in general. But it does hold in general in [[Convex Optimization|convex optimization]] where &lt;span class=&#34;math inline&#34;&gt;\(f_1,\dots,f_r\)&lt;/span&gt; are convex and &lt;span class=&#34;math inline&#34;&gt;\(h_1,\dots,h_s\)&lt;/span&gt; are affine transformations of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, i.e. in the form of &lt;span class=&#34;math inline&#34;&gt;\(Ax + b\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt; is condition called weak duality because it always holds. &lt;span class=&#34;math inline&#34;&gt;\(p^\star = d^\star\)&lt;/span&gt; is called a strong duality because it does not hold in general. But it does hold in general in &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/convex-optimization/&#34;&gt;convex optimization&lt;/a&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f_1,\dots,f_r\)&lt;/span&gt; are convex and &lt;span class=&#34;math inline&#34;&gt;\(h_1,\dots,h_s\)&lt;/span&gt; are affine transformations of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, i.e. in the form of &lt;span class=&#34;math inline&#34;&gt;\(Ax + b\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;strong-duality&#34;&gt;Strong Duality&lt;/h3&gt;
 &lt;p&gt;Assume a strong duality holds, &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; is the primal optima, &lt;span class=&#34;math inline&#34;&gt;\((\lambda^\star, \mu^\star)\)&lt;/span&gt; is the dual optima, then &lt;span class=&#34;math display&#34;&gt;\[
 f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) \\
@@ -309,7 +309,7 @@ k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
 ||\nabla f(\tilde x)||^2_2 &amp;amp;\le \frac{2L(f(x_0) - f(x^\star))}{k} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[Convergence of Gradient Descent.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Convergence%20of%20Gradient%20Descent.pdf&#34;&gt;Convergence of Gradient Descent.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://rkganti.wordpress.com/2015/08/21/convergence-rate-of-gradient-descent-algorithm/&#34;&gt;Convergence rate of gradient descent algorithm | bps/Hz (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://xingyuzhou.org/blog/notes/strong-convexity&#34;&gt;Strong convexity · Xingyu Zhou’s blog&lt;/a&gt;&lt;/p&gt;
 
@@ -352,12 +352,12 @@ f(x + d \cdot e_k) &amp;amp;\ge f(x) \\
 g(x + d \cdot e_k) + \sum_{i=1,i\ne k}^nh_i(x_i) + h_k(x_k + d) &amp;amp;\ge g(x) + \sum_{i=1}^nh_i(x_i) \\
 g_k(x_k + d) - g_k(x_k) + h_k(x_k + d) - h_k(x_k) &amp;amp;\ge 0 \\
 \end{aligned}
-\]&lt;/span&gt; By [[Subgradient#Properties|the linearity of subgradient]], &lt;span class=&#34;math inline&#34;&gt;\(0 \in \partial(g_k + h_k) = \nabla_k g + \partial h_k \Rightarrow -\nabla_k g \in \partial h_k\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; By &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/subgradient/#Properties&#34;&gt;the linearity of subgradient&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(0 \in \partial(g_k + h_k) = \nabla_k g + \partial h_k \Rightarrow -\nabla_k g \in \partial h_k\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
 h_k(y_k) - h_k(x_k) \ge -\nabla_k g(x)(y_k - x_k)
 \]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
 f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[Coordinate Descent.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Coordinate%20Descent.pdf&#34;&gt;Coordinate Descent.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/&#34;&gt;Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 
 

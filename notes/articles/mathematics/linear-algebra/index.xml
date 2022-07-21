@@ -82,7 +82,7 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
 \det = \text{product of the eigenvalues}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[The Eigen Decomposition.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;The%20Eigen%20Decomposition.pdf&#34;&gt;The Eigen Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -137,8 +137,8 @@ A\bar x &amp;amp;= Ax_{real} - Ax_{img} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Since &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have &lt;span class=&#34;math inline&#34;&gt;\(v_1^Tv_2 = 0\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(v_2\)&lt;/span&gt; are orthogonal&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;it has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors and thus [[Eigenvectors and Eigenvalues#Diagonalization|diagonalizable]]&lt;/p&gt;
-&lt;p&gt;In this case, suppose &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^{-1}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is not invertible, by [[Eigenvectors and Eigenvalues#Eigenvalues|the relation between the matrix rank and the eigenvalues]], some of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;’s entries on the diagonal are zero. By adding &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+&lt;li&gt;&lt;p&gt;it has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors and thus &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization&#34;&gt;diagonalizable&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this case, suppose &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^{-1}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is not invertible, by &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Eigenvalues&#34;&gt;the relation between the matrix rank and the eigenvalues&lt;/a&gt;, some of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;’s entries on the diagonal are zero. By adding &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 &amp;amp;= P(\Lambda + \lambda I)P^{-1}
@@ -274,7 +274,7 @@ AA^TU_2 = 0 = 0U_2
 &lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the stacked orthonormal eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;. It doesn’t matter how &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is permuted.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;[[Singular Value Decomposition.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Singular%20Value%20Decomposition.pdf&#34;&gt;Singular Value Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -315,14 +315,12 @@ AA^TU_2 = 0 = 0U_2
     </item>
     
     <item>
-      <title>Laplace Expansion</title>
+      <title></title>
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</link>
-      <pubDate>Fri, 17 Jun 2022 11:45:52 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</guid>
-      <description>
-&lt;p&gt;Also known as Cofactor Expansion, Laplace Expansion is an expression of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix as the weighted sum of determinants of some &lt;span class=&#34;math inline&#34;&gt;\((n-1) \times (n-1)\)&lt;/span&gt; sub-matrices.&lt;/p&gt;
-
-
+      <description>&lt;h2 id=&#34;laplace-expansion&#34;&gt;Laplace Expansion&lt;/h2&gt;
+&lt;p&gt;Also known as Cofactor Expansion, Laplace Expansion is an expression of an $n \times n$ matrix as the weighted sum of determinants of some $(n-1) \times (n-1)$ sub-matrices.&lt;/p&gt;
 </description>
     </item>
     

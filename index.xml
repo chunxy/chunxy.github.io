@@ -120,7 +120,7 @@ H(p) = -\mathrm{E}_{x \sim p}\log p(x)
 H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x
 \]&lt;/span&gt; This is actually the &lt;strong&gt;Differential Entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional Gaussian distribution $p(x) =  $ can be derived as follows: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt; $p(x) =  $ can be derived as follows: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
 &amp;amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2 \log |2\pi\Sigma| \\
@@ -148,7 +148,7 @@ H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\
 &lt;h2 id=&#34;standard-form&#34;&gt;Standard Form&lt;/h2&gt;
 &lt;p&gt;Standard form of the optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-&amp;amp;\min f_0(x) \\
+&amp;amp;\inf f_0(x) \\
 s.t.\quad &amp;amp;f_i(x) \le 0, i = 1,\dots,r \\
 &amp;amp;h_i(x) = 0, i = 1,\dots,s \\
 \end{aligned}
@@ -158,12 +158,12 @@ L(x, \lambda, \mu) = f_0(x) + \sum_{i=1}^r\lambda_if_i(x) + \sum_{i=1}^s\mu_ih_i
 \]&lt;/span&gt; Define the function &lt;span class=&#34;math inline&#34;&gt;\(P: \mathcal X \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
 \]&lt;/span&gt; The primal problem is &lt;span class=&#34;math display&#34;&gt;\[
-\min_{x \in \mathcal X} P(x)
+\inf_{x \in \mathcal X} P(x)
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(P(x) =f_0(x)\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Thus the primal problem is equivalent to the original problem. Denote its optimal value as &lt;span class=&#34;math inline&#34;&gt;\(p^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Define the Lagrangian dual function &lt;span class=&#34;math inline&#34;&gt;\(D: \R^r \times \R^s \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
 D(\lambda, \mu) = \inf_{x \in \mathcal X}L(x, \lambda, \mu)
 \]&lt;/span&gt; The Lagrangian dual problem is &lt;span class=&#34;math display&#34;&gt;\[
-\max_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \\
+\sup_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \\
 \]&lt;/span&gt; Denote its optimal value as &lt;span class=&#34;math inline&#34;&gt;\(d^\star\)&lt;/span&gt;. We always have &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
@@ -171,7 +171,7 @@ D(\lambda, \mu) = \inf_{x \in \mathcal X}L(x, \lambda, \mu)
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu) \ge L(x,\lambda,\mu) \ge \inf_{x \in \mathcal X}L(x, \lambda, \mu) =D (\lambda, \mu)
 \]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt; is condition called weak duality because it always holds. &lt;span class=&#34;math inline&#34;&gt;\(p^\star = d^\star\)&lt;/span&gt; is called a strong duality because it does not hold in general. But it does hold in general in [[Convex Optimization|convex optimization]] where &lt;span class=&#34;math inline&#34;&gt;\(f_1,\dots,f_r\)&lt;/span&gt; are convex and &lt;span class=&#34;math inline&#34;&gt;\(h_1,\dots,h_s\)&lt;/span&gt; are affine transformations of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, i.e. in the form of &lt;span class=&#34;math inline&#34;&gt;\(Ax + b\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt; is condition called weak duality because it always holds. &lt;span class=&#34;math inline&#34;&gt;\(p^\star = d^\star\)&lt;/span&gt; is called a strong duality because it does not hold in general. But it does hold in general in &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/convex-optimization/&#34;&gt;convex optimization&lt;/a&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f_1,\dots,f_r\)&lt;/span&gt; are convex and &lt;span class=&#34;math inline&#34;&gt;\(h_1,\dots,h_s\)&lt;/span&gt; are affine transformations of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, i.e. in the form of &lt;span class=&#34;math inline&#34;&gt;\(Ax + b\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;strong-duality&#34;&gt;Strong Duality&lt;/h3&gt;
 &lt;p&gt;Assume a strong duality holds, &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; is the primal optima, &lt;span class=&#34;math inline&#34;&gt;\((\lambda^\star, \mu^\star)\)&lt;/span&gt; is the dual optima, then &lt;span class=&#34;math display&#34;&gt;\[
 f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) \\
@@ -299,7 +299,7 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
 \det = \text{product of the eigenvalues}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[The Eigen Decomposition.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;The%20Eigen%20Decomposition.pdf&#34;&gt;The Eigen Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -330,8 +330,8 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
 &lt;li&gt;Discover inherent properties (latent variables) in the data&lt;/li&gt;
 &lt;li&gt;Including:
 &lt;ul&gt;
-&lt;li&gt;[[Clustering]]&lt;/li&gt;
-&lt;li&gt;[[Dimension Reduction|Dimension reduction]]&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/&#34;&gt;Dimension reduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Manifold embedding&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -410,7 +410,7 @@ P(|X_n - c| &amp;lt; \epsilon) = 1
 &lt;/ul&gt;
 &lt;p&gt;相比较而言，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛的表达式中多了一层偏差的&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;次方的测度。&lt;/p&gt;
 &lt;h3 id=&#34;均方收敛&#34;&gt;均方收敛&lt;/h3&gt;
-&lt;p&gt;当&lt;span class=&#34;math inline&#34;&gt;\(p=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛又称作均方收敛。根据[[大数定律和中心极限定理#Chebyshev不等式|Chebyshev不等式]]： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;当&lt;span class=&#34;math inline&#34;&gt;\(p=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛又称作均方收敛。根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/a&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
 \]&lt;/span&gt; 均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。&lt;/p&gt;
 &lt;h2 id=&#34;依分布收敛convergence-in-distribution&#34;&gt;依分布收敛（convergence in distribution）&lt;/h2&gt;
@@ -453,7 +453,7 @@ H_\delta(X) = \log |S_\delta|
 \frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log X_1 + \dots + \log X_N)
 \]&lt;/span&gt; Each of these information contents is in turn a random variable with mean &lt;span class=&#34;math inline&#34;&gt;\(\bar h_i = H(X) = H\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{h_i}^2 = \sigma^2\)&lt;/span&gt;. The &lt;strong&gt;typical set&lt;/strong&gt; with parameters &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac 1 {P(y)} - H]^2 &amp;lt; \beta^2 \}
-\]&lt;/span&gt; By the [[大数定律和中心极限定理#弱大数定律（Weak Law of large numbers）|Weak Law of Large Numbers]], &lt;span class=&#34;math inline&#34;&gt;\(P((y - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#弱大数定律（Weak Law of large numbers）&#34;&gt;Weak Law of Large Numbers&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P((y - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
 P(y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
 \]&lt;/span&gt; As &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; increases, the probability that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; falls in &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; draws near &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. We need to relate this to the theorem that for any given &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;, there is a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \simeq NH\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
@@ -523,7 +523,7 @@ L(C,X) = -\sum_i [p_i \log (q_iz)] &amp;amp;= -\sum_i [p_i \log (q_i)] \\
 &amp;amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i \log (q_i)] \\
 &amp;amp;= H(X) + D_{KL}(p || q)
 \end{aligned}
-\]&lt;/span&gt; where the cost is the extra &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p || q)\)&lt;/span&gt; bits, which is brought by instead treating &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; as the real distribution. &lt;span class=&#34;math inline&#34;&gt;\(D_{KL(p||q)}\)&lt;/span&gt; is termed as relative entropy or the [[KL-divergence]].&lt;/p&gt;&lt;/li&gt;
+\]&lt;/span&gt; where the cost is the extra &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p || q)\)&lt;/span&gt; bits, which is brought by instead treating &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; as the real distribution. &lt;span class=&#34;math inline&#34;&gt;\(D_{KL(p||q)}\)&lt;/span&gt; is termed as relative entropy or the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -1011,7 +1011,7 @@ x_2 &amp;amp;= r \sin(\varphi_1) \cos(\varphi_2) \\
 x_{k-1} &amp;amp;= r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) \\
 x_k &amp;amp;= r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \\
 \end{align}
-\]&lt;/span&gt; The corresponding [[Jacobian Matrix]] is &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The corresponding &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/&#34;&gt;Jacobian Matrix&lt;/a&gt; is &lt;span class=&#34;math display&#34;&gt;\[
 J^{(k)} = \left[ \begin{array}{ccccc|c}
 \cos (\varphi_1) &amp;amp; -r \sin(\varphi_1) &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
 \sin(\varphi_1) \cos(\varphi_2) &amp;amp; r \cos(\varphi_1) \cos(\varphi_2) &amp;amp; -r \sin(\varphi_1) \sin(\varphi_2) &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
@@ -1027,7 +1027,7 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 &lt;li&gt;On row &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;, before column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(J^{(k)}\)&lt;/span&gt; has an extra &lt;span class=&#34;math inline&#34;&gt;\(\sin(\varphi_{k-1})\)&lt;/span&gt; term in each element than the elements of &lt;span class=&#34;math inline&#34;&gt;\(J^{(k-1)}\)&lt;/span&gt; on row &lt;span class=&#34;math inline&#34;&gt;\(k-1\)&lt;/span&gt;,&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(J^{(k)}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(J^{(k-1)}\)&lt;/span&gt; are totally the same on the region delimited by row &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, row &lt;span class=&#34;math inline&#34;&gt;\(k-2\)&lt;/span&gt;, column &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, column &lt;span class=&#34;math inline&#34;&gt;\(k-1\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Apply the [[Laplace Expansion]] along column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and combine the property of determinant to give &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Apply the &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/&#34;&gt;Laplace Expansion&lt;/a&gt; along column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and combine the property of determinant to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 |J^{(k)}| =\ &amp;amp; \underbrace{0 + \dots + 0}_{n-2} + (-1)^{(n-1)+n} [-r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \sin(\varphi_{k-1}) \big( \sin(\varphi_{k-1}) |J^{(k-1)}| \big)] + \\
 &amp;amp; (-1)^{n+n} [r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) \big( \cos(\varphi_{k-1}) |J^{(k-1)}| \big)] \\
@@ -1293,7 +1293,7 @@ p(z) &amp;amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}}e^{-\
 &lt;h3 id=&#34;n-dimensional&#34;&gt;N-dimensional&lt;/h3&gt;
 &lt;p&gt;We have given the joint distribution function of independent &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional standard Gaussian distribution. What about these &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; dimensions are not independent with each other, but are only correlated in first order?&lt;/p&gt;
 &lt;p&gt;Formally, &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;. Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are not independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{N}(\mu_i, \sigma_i^2)\)&lt;/span&gt;. We would like to linearly transform &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X_i, X_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(X_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution.&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix is &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is [[Real Symmetric Matrix|real-symmetric]] and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix is &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/&#34;&gt;real-symmetric&lt;/a&gt; and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
 X = B^{-1}(Z - \mu) \\
 Z = BX + \mu \\
 X \sim \mathcal{N}(0, I)
@@ -1304,7 +1304,7 @@ p_X(x) &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}x^Tx}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is to take on values in &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;, which is a subset of &lt;span class=&#34;math inline&#34;&gt;\(\R^{n}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 P_Z(Z \in S) = \int_Sp_Z(z)dz
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate [[Jacobian Matrix|Jacobian transformation]]: &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/&#34;&gt;Jacobian transformation&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 J(X \to Z) = B^{-1} \\
 \]&lt;/span&gt; with its determinant &lt;span class=&#34;math inline&#34;&gt;\(J = |J(X \to Z)| = |B^{-1}| = |B|^{-1}\)&lt;/span&gt;. Note that &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -1427,8 +1427,8 @@ H(Y|X) = -\sum_{(x,y) \in X \times Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{
 ||f||_{Lip} = \sup_x \sigma[\nabla f(x)] = \sup_x \sup_{||v||=1} \nabla f(x) \cdot v
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\sigma[\nabla f(x)]\)&lt;/span&gt; denotes the spectral norm of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;’s gradient at &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;The Lipschitz constant for a matrix transformation will be the matrix’s [[Spectral Normalization|spectral norm]].&lt;/li&gt;
-&lt;li&gt;The Lipschitz constant for a &lt;span class=&#34;math inline&#34;&gt;\(\R \mapsto \R\)&lt;/span&gt; function will be its largest [[Subgradient#Properties|subgradient]] over its domain&lt;/li&gt;
+&lt;li&gt;The Lipschitz constant for a matrix transformation will be the matrix’s &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/&#34;&gt;spectral norm&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The Lipschitz constant for a &lt;span class=&#34;math inline&#34;&gt;\(\R \mapsto \R\)&lt;/span&gt; function will be its largest &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/subgradient/#Properties&#34;&gt;subgradient&lt;/a&gt; over its domain&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;composition-of-functions&#34;&gt;Composition of Functions&lt;/h3&gt;
 &lt;p&gt;Suppose two functions &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; are Lipschitz continuous respectively. Then, &lt;span class=&#34;math display&#34;&gt;\[
@@ -1497,8 +1497,8 @@ A\bar x &amp;amp;= Ax_{real} - Ax_{img} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Since &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have &lt;span class=&#34;math inline&#34;&gt;\(v_1^Tv_2 = 0\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(v_2\)&lt;/span&gt; are orthogonal&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;it has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors and thus [[Eigenvectors and Eigenvalues#Diagonalization|diagonalizable]]&lt;/p&gt;
-&lt;p&gt;In this case, suppose &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^{-1}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is not invertible, by [[Eigenvectors and Eigenvalues#Eigenvalues|the relation between the matrix rank and the eigenvalues]], some of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;’s entries on the diagonal are zero. By adding &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+&lt;li&gt;&lt;p&gt;it has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors and thus &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization&#34;&gt;diagonalizable&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In this case, suppose &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^{-1}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is not invertible, by &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Eigenvalues&#34;&gt;the relation between the matrix rank and the eigenvalues&lt;/a&gt;, some of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;’s entries on the diagonal are zero. By adding &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 &amp;amp;= P(\Lambda + \lambda I)P^{-1}
@@ -1759,7 +1759,7 @@ AA^TU_2 = 0 = 0U_2
 &lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the stacked orthonormal eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;. It doesn’t matter how &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is permuted.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;[[Singular Value Decomposition.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Singular%20Value%20Decomposition.pdf&#34;&gt;Singular Value Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -2109,7 +2109,7 @@ b \leftarrow b - \eta\frac{\partial J}{\partial b}
 &amp;amp;= -\sum_{i=1}^M (1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The posterior obtained by binary [[Linear Discriminant Analysis]] has the form of &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The posterior obtained by binary &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/&#34;&gt;Linear Discriminant Analysis&lt;/a&gt; has the form of &lt;span class=&#34;math display&#34;&gt;\[
 p(y|x) = \frac{1}{1 + e^{-(wx + b)}}
 \]&lt;/span&gt; This is not to say LDA and LR are the same in binary case. Note that LDA is a generative model which learns &lt;span class=&#34;math inline&#34;&gt;\(p(x|y)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;, LR is a discriminative model which only learns &lt;span class=&#34;math inline&#34;&gt;\(p(y|x)\)&lt;/span&gt;. One can discriminate with a generative model, but not reversely.&lt;/p&gt;
 &lt;h2 id=&#34;multi-class-logistic-regression&#34;&gt;Multi-class Logistic Regression&lt;/h2&gt;
@@ -2125,18 +2125,6 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
     </item>
     
     <item>
-      <title>Laplace Expansion</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</link>
-      <pubDate>Fri, 17 Jun 2022 11:45:52 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</guid>
-      <description>
-&lt;p&gt;Also known as Cofactor Expansion, Laplace Expansion is an expression of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix as the weighted sum of determinants of some &lt;span class=&#34;math inline&#34;&gt;\((n-1) \times (n-1)\)&lt;/span&gt; sub-matrices.&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Bounding Mutual Information</title>
       <link>https://chunxy.github.io/notes/papers/bounding-mutual-information/</link>
       <pubDate>Thu, 02 Jun 2022 14:01:20 +0000</pubDate>
@@ -2144,7 +2132,7 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
       <description>
 
 &lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;The very basic bound on the Mutual Information is based on the non-negativity of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The very basic bound on the Mutual Information is based on the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/differentiation/#KL-divergence Entropy and Conditional Entropy&#34;&gt;non-negativity&lt;/a&gt; of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) = &amp;amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
 = &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)p(x|y)}{p(x)q(x|y)} \\
@@ -2164,7 +2152,7 @@ I(X;Y) &amp;amp;\ge \E_{p(x,y)} \log \frac{p(x) e^{f(x,y)}}{p(x) Z(y)} \\
 &amp;amp;= \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \triangleq I_\text{UBA}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Note that by scaling &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;, the &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; term is cancelled.&lt;/p&gt;
+&lt;p&gt;Note that by scaling &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;, the &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; term is canceled.&lt;/p&gt;
 &lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)} = p(x|y)\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 e^{f(x,y)} &amp;amp;= \frac{p(x, y)}{p(x)p(y)} Z(y) \\
@@ -2177,6 +2165,14 @@ f(x,y) &amp;amp;= \ln p(y|x) + \underbrace{\ln \frac{Z(y)}{p(y)}}_{c(y)}
 \begin{aligned}
 I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
 &amp;amp;\ge \E_{p(x,y)} f(x,y) - \log\E_{p(y)} [Z(y)] \triangleq I_\text{DV}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The original &lt;span class=&#34;math inline&#34;&gt;\(I_\text{DV}\)&lt;/span&gt; bound is in effect derived from &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/#Variational Lower-bound&#34;&gt;the variational lower bound of KL-divergence&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+I&amp;amp;(X;Y) = D_\text{KL}(p_{(x,y)} || p(x) \otimes p(y)) \\
+&amp;amp;\ge \E_{p(x,y)} f(x,y) - \log [\E_{p(x) \otimes p(y)} f(x,y)] \\
+&amp;amp;= \E_{p(x,y)} f(x,y) - \log [\E_{p(y)} \E_{p(x)} e^{f(x,y)}] \\
+&amp;amp;= \E_{p(x,y)} f(x,y) - \log \E_{p(y)} Z(y) \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;i_texttuba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;&lt;/h2&gt;
@@ -2491,7 +2487,7 @@ k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
 ||\nabla f(\tilde x)||^2_2 &amp;amp;\le \frac{2L(f(x_0) - f(x^\star))}{k} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[Convergence of Gradient Descent.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Convergence%20of%20Gradient%20Descent.pdf&#34;&gt;Convergence of Gradient Descent.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://rkganti.wordpress.com/2015/08/21/convergence-rate-of-gradient-descent-algorithm/&#34;&gt;Convergence rate of gradient descent algorithm | bps/Hz (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://xingyuzhou.org/blog/notes/strong-convexity&#34;&gt;Strong convexity · Xingyu Zhou’s blog&lt;/a&gt;&lt;/p&gt;
 
@@ -2512,13 +2508,13 @@ I(X;Y) = \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
 I(X;Y) = I(Y;X)
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \times p_Y)
+I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \otimes p_Y)
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;To better illustrate the formula of mutual information between two Gaussian-distributed random variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. We can concatenate them to form, say an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, which is also Gaussian-distributed. Then the mutual information between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; can be computed as: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;To better illustrate the formula of mutual information between two &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/&#34;&gt;Gaussian&lt;/a&gt;-distributed random variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. We can concatenate them to form, say an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, which is also Gaussian-distributed. Then the mutual information between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; can be computed as: &lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
 \]&lt;/span&gt; The key to the derivation is that mutual information is the KL-divergence between the joint distribution and the product of the marginal distributions.&lt;/p&gt;
 &lt;p&gt;The joint can be described as &lt;span class=&#34;math display&#34;&gt;\[
@@ -2557,18 +2553,6 @@ I&amp;amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
 &lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr&#34;&gt;Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.math.nyu.edu/~kleeman/infolect7.pdf&#34;&gt;Information Theory and Predictability Lecture 7: Gaussian Case&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Schmit-Gram Orthogonalization</title>
-      <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</link>
-      <pubDate>Fri, 01 Apr 2022 17:08:51 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/schmit-gram-orthogonalization/</guid>
-      <description>
-
 
 
 </description>
@@ -2771,12 +2755,12 @@ f(x + d \cdot e_k) &amp;amp;\ge f(x) \\
 g(x + d \cdot e_k) + \sum_{i=1,i\ne k}^nh_i(x_i) + h_k(x_k + d) &amp;amp;\ge g(x) + \sum_{i=1}^nh_i(x_i) \\
 g_k(x_k + d) - g_k(x_k) + h_k(x_k + d) - h_k(x_k) &amp;amp;\ge 0 \\
 \end{aligned}
-\]&lt;/span&gt; By [[Subgradient#Properties|the linearity of subgradient]], &lt;span class=&#34;math inline&#34;&gt;\(0 \in \partial(g_k + h_k) = \nabla_k g + \partial h_k \Rightarrow -\nabla_k g \in \partial h_k\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; By &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/subgradient/#Properties&#34;&gt;the linearity of subgradient&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(0 \in \partial(g_k + h_k) = \nabla_k g + \partial h_k \Rightarrow -\nabla_k g \in \partial h_k\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
 h_k(y_k) - h_k(x_k) \ge -\nabla_k g(x)(y_k - x_k)
 \]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
 f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[Coordinate Descent.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Coordinate%20Descent.pdf&#34;&gt;Coordinate Descent.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/&#34;&gt;Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 
 
@@ -2805,8 +2789,8 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 &lt;h3 id=&#34;相关系数&#34;&gt;相关系数&lt;/h3&gt;
 &lt;p&gt;协方差考察了随机变量之间协同变化的关系，但如果采取不同的量纲，同样的数据产生的协方差相差非常大。为避免这种情况发生，我们首先将随机变量标准化： &lt;span class=&#34;math display&#34;&gt;\[
 X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\Var(Y)}}
-\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{cov}(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数 &lt;span class=&#34;math display&#34;&gt;\[
-\rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\mathrm{cov}(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
+\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\Cov(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数 &lt;span class=&#34;math display&#34;&gt;\[
+\rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\Cov(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -2823,14 +2807,33 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
 &lt;p&gt;KL-divergence, &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p\|q)\)&lt;/span&gt; is statistical distance, measuring how the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is different from the reference probability distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, both defined on &lt;span class=&#34;math inline&#34;&gt;\(X \in \mathcal{X}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In information theory, it measures the &lt;strong&gt;relative entropy&lt;/strong&gt; from &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, which is the average number of extra bits required to represent a message with &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In discrete form, &lt;span class=&#34;math display&#34;&gt;\[
-D_{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x \in \mathcal{X}} p(x)\log \frac{p(x)}{q(x)}
+D_\text{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x \in \mathcal{X}} p(x)\log \frac{p(x)}{q(x)}
 \]&lt;/span&gt; In continuous form, &lt;span class=&#34;math display&#34;&gt;\[
-D_{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
+D_\text{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;variational-lower-bound&#34;&gt;Variational Lower-bound&lt;/h3&gt;
+&lt;p&gt;One property of KL-divergence is &lt;span class=&#34;math display&#34;&gt;\[
+D_\text{KL}(p || q) = \sup_{T: \Omega \to \R} \E_{p} [T] - \log (\E_q[e^T])
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The proof is as follows. Given a function &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;, construct the Gibbs distribution &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(g(x) = \frac{q(x)e^{T(x)}}{Z}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(Z = \E_{q(x)} e^{T(x)}\)&lt;/span&gt;. Then &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\E&amp;amp;_{p(x)} T(x) - \log Z = \E_{p(x)} [T(x) - \log Z] \\
+&amp;amp;= \E_{p(x)} [\log e^{T(x)} - \log \E_{q(x)} e^{T(x)}] \\
+&amp;amp;= \E_{p(x)} \log \frac{e^{T(x)}} {\E_{q(x)} e^{T(x)}} \\
+&amp;amp;= \E_{p(x)} \log \frac{q(x) e^{T(x)}} {q(x) \E_{q(x)} e^{T(x)}} \\
+&amp;amp;= \E_{p(x)} \log \frac{g(x)} {q(x)} \\
+\end{aligned}
+\]&lt;/span&gt; Finally KL-divergence minus above gives &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;D_\text{KL}(p || q) - (\E_{p(x)} T(x) - \log Z) \\
+&amp;amp;= \E_{p(x)} \log \frac{p(x)} {q(x)} - \E_{p(x)} \log \frac{g(x)} {q(x)} \\
+&amp;amp;= \E_{p(x)} \log \frac{p(x)} {g(x)} \triangleq D_\text{KL}(p || g) \ge 0
+\end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional Gaussian distribution. Then the KL-divergence between them can be formulated as: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt;. Then the KL-divergence between them can be formulated as: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-D_{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_X(x) \log [
+D_\text{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_X(x) \log [
     \sqrt \frac{|\Sigma_X|}{|\Sigma_Y|} 
     \frac {
         e^{-\frac 1 2 (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X)}
@@ -2950,7 +2953,7 @@ p(Z|X;\theta) = \frac{p(X, Z;\theta)}{p(X;\theta)} = \frac{\prod_{i=1}^m \sum_{z
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。&lt;/p&gt;
-&lt;p&gt;根据[[大数定律和中心极限定理#相互独立同分布大数定律|相互独立同分布大数定律]]， &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;相互独立同分布大数定律&lt;/a&gt;， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 \bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \mu \\
 \frac{1}{n} \sum_{i=1}^n X_i^2 \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E (X_i^2) = \sigma^2 + \mu^2
@@ -3129,7 +3132,7 @@ W^\star = \arg \max_W p(W|X,Y)
 &lt;p&gt;In Ridge Regression, there is still chance that some weights are small but not zero, because the regularization term is small so far as the weights are fairly small. Think in this way: &lt;span class=&#34;math inline&#34;&gt;\(0.01^2 = 0.0001 \ll 0.01\)&lt;/span&gt;, though it is not rigid.&lt;/p&gt;
 &lt;p&gt;To get better regularization, we can change the regularization term to &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm: &lt;span class=&#34;math display&#34;&gt;\[
 \min_{W} \frac{1}{2}||Y - XW||^2_2 + \alpha||W||_1
-\]&lt;/span&gt; The above problem can be efficiently solved using Coordinate Descent or [[Least Angle Regression]].&lt;/p&gt;
+\]&lt;/span&gt; The above problem can be efficiently solved using Coordinate Descent or &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/least-angle-regression/&#34;&gt;Least Angle Regression&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6018889.html&#34;&gt;Lasso回归算法： 坐标轴下降法与最小角回归法小结 - 刘建平Pinard - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/76055830&#34;&gt;LASSO回归求解 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 
@@ -3328,7 +3331,7 @@ x^p
 &lt;h4 id=&#34;kernel-ridge-regression&#34;&gt;Kernel Ridge Regression&lt;/h4&gt;
 &lt;p&gt;Recall Ridge Regression: &lt;span class=&#34;math display&#34;&gt;\[
 W^\star = \min_{W}\frac{1}{2}||Y - X^TW||^2_2 + \frac{\alpha}{2}||W||^2_2 \iff (XX^T + \alpha I_{N+1})W^\star = XY
-\]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\((XX^T + \alpha I_{N+1})\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(W^\star = (XX^T + \alpha I_{N+1})^{-1}XY\)&lt;/span&gt;. By [[Matrix Identity|matrix identity]] &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\((XX^T + \alpha I_{N+1})\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(W^\star = (XX^T + \alpha I_{N+1})^{-1}XY\)&lt;/span&gt;. By &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/matrix-identity/&#34;&gt;matrix identity&lt;/a&gt; &lt;span class=&#34;math display&#34;&gt;\[
 (P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
 \]&lt;/span&gt; we can obtain that &lt;span class=&#34;math inline&#34;&gt;\(W^\star = X(X^TX + \alpha I_M)^{-1}Y\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(X \in \R^{(N+1)\times M}, (X^TX + \alpha I_M)^{-1}Y \in \R^{M}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(W^\star\)&lt;/span&gt; can be rewritten as a linear combination of columns of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(W^\star\)&lt;/span&gt; lies in the span of input vectors: &lt;span class=&#34;math display&#34;&gt;\[
 W^\star = \sum_{i=1}^M\lambda_ix^{(i)}
@@ -3336,7 +3339,7 @@ W^\star = \sum_{i=1}^M\lambda_ix^{(i)}
 y^* = (x^*)^TW = (x^*)^TX(X^TX + \alpha I_M)^{-1}Y
 \]&lt;/span&gt; which totally depends on the inner products.&lt;/p&gt;
 &lt;h4 id=&#34;support-vector-regression&#34;&gt;Support Vector Regression&lt;/h4&gt;
-&lt;p&gt;Support Vector Regression learns a hyper-plane that incorporates within its margin as many points as possible. As a comparison, [[Support Vector Machine]] learns a hyper-plane that excludes outside its margin as many points as possible. Its objective is &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Support Vector Regression learns a hyper-plane that incorporates within its margin as many points as possible. As a comparison, &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/&#34;&gt;Support Vector Machine&lt;/a&gt; learns a hyper-plane that excludes outside its margin as many points as possible. Its objective is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \min_{w,\xi,\xi^*} \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M(\xi_i + \xi^*_i) \\
 s.t.\quad y^{(i)} - w^Tx^{(i)} - b \le \epsilon + \xi_i, i=1,\dots,M \\
@@ -3358,7 +3361,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 &amp;amp;- \sum_{i=1}^M\nu_i\xi_i -\sum_{i=1}^M\nu^*_i\xi^*_i
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;[[Support Vector Regression.pdf]]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Support%20Vector%20Regression.pdf&#34;&gt;Support Vector Regression.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -3400,7 +3403,7 @@ L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n 
 \]&lt;/span&gt; 其中，&lt;span class=&#34;math inline&#34;&gt;\(I(\theta) = \int [(\frac{\partial p(x;\theta)}{\partial \theta})^2 / p(x;\theta)] \d x\)&lt;/span&gt;为Fisher Information。当&lt;span class=&#34;math inline&#34;&gt;\(g(\theta) = \theta\)&lt;/span&gt;，即只估计未知参数本身时，有&lt;span class=&#34;math inline&#34;&gt;\(\Var(\hat g) \ge 1 / (nI(\theta))\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cr}\)&lt;/span&gt;成立有一定的条件，其本身就暗含了&lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial p(x;\theta)}{\partial \theta}\)&lt;/span&gt;存在及&lt;span class=&#34;math inline&#34;&gt;\(g&amp;#39;(\theta)\)&lt;/span&gt;存在的&lt;strong&gt;条件&lt;/strong&gt;。记 &lt;span class=&#34;math display&#34;&gt;\[
 S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln p(X_i;\theta)} {\partial \theta} = \sum_{i=1}^n [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)]
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\int p(x;\theta)\ \d x = 1\)&lt;/span&gt;，此式两边同时对&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;求导，并&lt;strong&gt;假定&lt;/strong&gt;此处求导可以移至积分号内部，可得到&lt;span class=&#34;math inline&#34;&gt;\(\int \frac{\partial p(x;\theta)}{\partial \theta} \d x = 0\)&lt;/span&gt;。根据[[Unconscious Statistics#Law of the Unconscious Statistician|LOTUS]]， &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\int p(x;\theta)\ \d x = 1\)&lt;/span&gt;，此式两边同时对&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;求导，并&lt;strong&gt;假定&lt;/strong&gt;此处求导可以移至积分号内部，可得到&lt;span class=&#34;math inline&#34;&gt;\(\int \frac{\partial p(x;\theta)}{\partial \theta} \d x = 0\)&lt;/span&gt;。根据&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/statistics/unconscious-statistics/#Law of the Unconscious Statistician&#34;&gt;LOTUS&lt;/a&gt;， &lt;span class=&#34;math display&#34;&gt;\[
 \E [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] 
 = \int [\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta)] p(x;\theta)\ \d x
 = \int \frac{\partial p(x;\theta)} {\partial \theta}\d x = 0
@@ -3461,11 +3464,11 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
       <description>
 
 &lt;h2 id=&#34;distribution-or-random-variable&#34;&gt;Distribution or Random Variable?&lt;/h2&gt;
-&lt;p&gt;Both [[Cross Entropy]] and [[KL-divergence]] describe the relationship between &lt;strong&gt;two distributions&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Both [[Conditional Entropy]] and [[Mutual Information]] describe the relationship between &lt;strong&gt;two random variables&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Both [[Conditional Entropy]] and [[Cross Entropy]] would better be applied on discrete random variables.&lt;/p&gt;
-&lt;p&gt;Both [[Mutual Information]] and [[KL-divergence]] can be applied on either discrete or continuous random variables&lt;/p&gt;
-&lt;h2 id=&#34;kl-divergence-and-entropy&#34;&gt;KL-divergence and Entropy&lt;/h2&gt;
+&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;Cross Entropy&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt; describe the relationship between &lt;strong&gt;two distributions&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/&#34;&gt;Conditional Entropy&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/mutual-information/&#34;&gt;Mutual Information&lt;/a&gt; describe the relationship between &lt;strong&gt;two random variables&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/&#34;&gt;Conditional Entropy&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;Cross Entropy&lt;/a&gt; would better be applied on discrete random variables.&lt;/p&gt;
+&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/mutual-information/&#34;&gt;Mutual Information&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt; can be applied on either discrete or continuous random variables&lt;/p&gt;
+&lt;h2 id=&#34;kl-divergence-entropy-and-conditional-entropy&#34;&gt;KL-divergence, Entropy and Conditional Entropy&lt;/h2&gt;
 &lt;p&gt;By definition, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
 D_{KL}(p||q) &amp;amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)} \\
@@ -3546,7 +3549,7 @@ s.t.\quad \sum_{j=1}^K\pi_j = 1
 \max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) = \log L(\pi,\mu,\Sigma)\Big) \\
 s.t.\quad \sum_{j=1}^K\pi_j = 1
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;attempt-with-lagrange-multiplier&#34;&gt;Attempt with [[Lagrange Multiplier]]&lt;/h4&gt;
+&lt;h4 id=&#34;attempt-with-lagrange-multiplier&#34;&gt;Attempt with &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/&#34;&gt;Lagrange Multiplier&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)}) = \prod_{i=1}^M\sum_{j=1}^Kp(z_j)p(x|z = z_j) = \prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) \\
@@ -3564,7 +3567,7 @@ J(\pi,\mu,\Sigma,\lambda) = -\sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)}
 = \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K, \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;attempt-with-expectation-maximization&#34;&gt;Attempt with [[Expectation Maximization]]&lt;/h4&gt;
+&lt;h4 id=&#34;attempt-with-expectation-maximization&#34;&gt;Attempt with &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/expectation-maximization/&#34;&gt;Expectation Maximization&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 L(\pi,\mu,\Sigma) = \prod_{i=1}^M p(x^{(i)}) = \prod_{i=1}^M \sum_{j=1}^K p(x^{(i)}, z^{(i)} = j) \\
@@ -3768,7 +3771,7 @@ p_Y(y) =
 p_Y(y) = P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k \\
 &amp;amp;= \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
 \end{aligned}
-\]&lt;/span&gt; 其中&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k x_i^2 \le y\)&lt;/span&gt;的积分区域。可以看出，&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;对应一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维球体，且其半径&lt;span class=&#34;math inline&#34;&gt;\(R = \sqrt y\)&lt;/span&gt;。对此，作[[Spherical Coordinates|高维球坐标变换]]： &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; 其中&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k x_i^2 \le y\)&lt;/span&gt;的积分区域。可以看出，&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;对应一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维球体，且其半径&lt;span class=&#34;math inline&#34;&gt;\(R = \sqrt y\)&lt;/span&gt;。对此，作&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/&#34;&gt;高维球坐标变换&lt;/a&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k = \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
 &amp;amp;= \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \int_0^\sqrt{y} \\
@@ -3891,7 +3894,7 @@ B^\star, Z^\star = \arg \min_{B,Z} = ||X - BZ||^2_F = \sum_{ij}(X - BZ)^2_{ij}
 \]&lt;/span&gt; Let any invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(R \in \R^{K \times K}\)&lt;/span&gt;. We can construct a pair of &lt;span class=&#34;math inline&#34;&gt;\(\tilde B, \tilde Z\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\tilde B = B^\star R, \tilde Z = R^{-1}Z^\star\)&lt;/span&gt;. Then, &lt;span class=&#34;math display&#34;&gt;\[
 ||X - \tilde B \tilde Z||^2_F = ||X - B^\star RR^{-1} Z^\star||^2_F = ||X - B^\star Z^\star||^2_F
 \]&lt;/span&gt; Thus the global optima is not unique. We may force regularization on &lt;span class=&#34;math inline&#34;&gt;\(B, Z\)&lt;/span&gt; and obtain the unique optima.&lt;/p&gt;
-&lt;h4 id=&#34;singular-value-decomposition&#34;&gt;[[Singular Value Decomposition]]&lt;/h4&gt;
+&lt;h4 id=&#34;singular-value-decomposition&#34;&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/&#34;&gt;Singular Value Decomposition&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;Suppose the Singular Value Decomposition for &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 \text{$U$ is $N \times N$, $\Sigma$ is diagonal, $V$ is $M \times M$} \\
@@ -3907,14 +3910,14 @@ p = \min\{N,M\}
 \text{$V_K \in \R^{M \times K}$ is first $K$ columns of $V$} \\
 \Sigma_K \in \R^{K \times K} = diag(\sigma_1, \sigma_2, ..., \sigma_K) \\
 \end{gather}
-\]&lt;/span&gt; [[Eckart-Young-Mirsky Theorem]] will tell that &lt;span class=&#34;math inline&#34;&gt;\(U_K\Sigma_KV^T_K\)&lt;/span&gt; is the best approximation of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; among &lt;span class=&#34;math inline&#34;&gt;\(N \times M\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; in terms of Frobenius norm.&lt;/p&gt;
+\]&lt;/span&gt; &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/&#34;&gt;Eckart-Young-Mirsky Theorem&lt;/a&gt; will tell that &lt;span class=&#34;math inline&#34;&gt;\(U_K\Sigma_KV^T_K\)&lt;/span&gt; is the best approximation of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; among &lt;span class=&#34;math inline&#34;&gt;\(N \times M\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; in terms of Frobenius norm.&lt;/p&gt;
 &lt;p&gt;We can form the &lt;span class=&#34;math inline&#34;&gt;\(B^\star, Z^\star\)&lt;/span&gt; by &lt;span class=&#34;math display&#34;&gt;\[
 B^\star = U_K \Sigma_K^{\frac{1}{2}}, Z^\star = \Sigma_K^{\frac{1}{2}} V^T_K
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;principal-component-analysislinear-principal-component-analysisprincipal-component-analysis&#34;&gt;[[Principal Component Analysis#Linear Principal Component Analysis|Principal Component Analysis]]&lt;/h4&gt;
+&lt;h4 id=&#34;principal-component-analysis&#34;&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/#Linear Principal Component Analysis&#34;&gt;Principal Component Analysis&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;As shown in ALS, the optimal solution of &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is not unique. ALS and SVD give their solutions, however without much interpretability. The solution given by Principal Component Analysis explicitly chooses the directions of the basis it uses.&lt;/p&gt;
 &lt;p&gt;The goal of PCA is to identify the directions along which the data exhibits the maximum variance. And then PCA projects the data onto the space formed by these directions.&lt;/p&gt;
-&lt;p&gt;The solution of PCA is &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; eigenvectors permuted according to their corresponding to eigenvalues, which is exactly the &lt;span class=&#34;math inline&#34;&gt;\(U_K\)&lt;/span&gt; in [[Singular Value Decomposition|SVD]]. Thus, the solution of PCA can be constructed from SVD. Let &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;. If we choose &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; directions with largest directional variance as basis. Then &lt;span class=&#34;math inline&#34;&gt;\(B^\star = U_K\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The solution of PCA is &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; eigenvectors permuted according to their corresponding to eigenvalues, which is exactly the &lt;span class=&#34;math inline&#34;&gt;\(U_K\)&lt;/span&gt; in &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/&#34;&gt;SVD&lt;/a&gt;. Thus, the solution of PCA can be constructed from SVD. Let &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;. If we choose &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; directions with largest directional variance as basis. Then &lt;span class=&#34;math inline&#34;&gt;\(B^\star = U_K\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;random-projection&#34;&gt;Random Projection&lt;/h4&gt;
 &lt;p&gt;The above methods all minimize the Frobenius norm during reconstruction. This objective may become time-consuming when input dimension becomes large. We may use some randomly-generated vectors as basis to do the projection. This greatly saves time, at the expense of losing accuracy. We can measure such projection by checking whether the structure of the data can be preserved, e.g. the distance between points.&lt;/p&gt;
 &lt;p&gt;Johnson-Lindenstrauss Lemma tells that a random function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = \frac{1}{\sqrt{K}}Ax\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(K \times N\)&lt;/span&gt; matrix with i.i.d. entries sampled from a standard Gaussian, can preserve the distance between any two points within error &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
@@ -3923,9 +3926,9 @@ B^\star = U_K \Sigma_K^{\frac{1}{2}}, Z^\star = \Sigma_K^{\frac{1}{2}} V^T_K
 K \ge \frac{8\log M}{\epsilon^2}
 \]&lt;/span&gt; And usually this requirement is quite conservative.&lt;/p&gt;
 &lt;h3 id=&#34;non-linear-dimension-reduction&#34;&gt;Non-linear Dimension Reduction&lt;/h3&gt;
-&lt;p&gt;We can introduce the feature mapping to handle the non-linearity problem in Dimension Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case. [[Principal Component Analysis#Kernel PCA]] is just such an example.&lt;/p&gt;
+&lt;p&gt;We can introduce the feature mapping to handle the non-linearity problem in Dimension Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case. &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/#Kernel PCA&#34;&gt;Principal Component Analysis &amp;gt; Kernel PCA&lt;/a&gt; is just such an example.&lt;/p&gt;
 &lt;h2 id=&#34;supervised-dimension-reduction&#34;&gt;Supervised Dimension Reduction&lt;/h2&gt;
-&lt;p&gt;There is no guarantee that the unsupervised Dimension Reduction can throw insight into the classification problem. It may or may not help. Otherwise supervised Dimension Reduction such as [[Fisher’s Linear Discriminant]] finds a lower-dimensional space so as to minimize the class overlap.&lt;/p&gt;
+&lt;p&gt;There is no guarantee that the unsupervised Dimension Reduction can throw insight into the classification problem. It may or may not help. Otherwise supervised Dimension Reduction such as &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/&#34;&gt;Fisher’s Linear Discriminant&lt;/a&gt; finds a lower-dimensional space so as to minimize the class overlap.&lt;/p&gt;
 
 
 </description>
@@ -4162,7 +4165,7 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
       <pubDate>Fri, 07 Jan 2022 12:40:50 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</guid>
       <description>
-&lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as [[Frobenius Normalization|Frobenius norm]]: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/&#34;&gt;Frobenius norm&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 ||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
 \]&lt;/span&gt; Firstly we prove that, if &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is orthogonal, then &lt;span class=&#34;math inline&#34;&gt;\(||UA||_F = ||AU||_F = ||A||_F\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -4193,7 +4196,7 @@ Z_{ii} = 0, i = R, R + 1, \dots, \min\{M,N\} \\
 Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 \end{gather}
 \]&lt;/span&gt; Such &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; exists when &lt;span class=&#34;math inline&#34;&gt;\(Y = U\Sigma_KV^T\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for [[Spectral Normalization|Spectral norm]] .&lt;/p&gt;
+&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/&#34;&gt;Spectral norm&lt;/a&gt; .&lt;/p&gt;
 
 
 </description>
@@ -4209,7 +4212,7 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 &lt;h2 id=&#34;assumption-and-derivation&#34;&gt;Assumption and Derivation&lt;/h2&gt;
 &lt;p&gt;Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;) &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\)&lt;/span&gt;, find the &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; mixing matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X = AS\)&lt;/span&gt;. Columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are the propagation weights from a signal source to observers. Therefore they are considered independent (and are thus called independent components).&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is called mixing matrix and &lt;span class=&#34;math inline&#34;&gt;\(W = A^{-1}\)&lt;/span&gt; is called unmixing matrix because &lt;span class=&#34;math inline&#34;&gt;\(S = WX\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = U\Sigma V^T\)&lt;/span&gt; by [[Singular Value Decomposition|SVD]]. Assume observations are pre-centered:&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = U\Sigma V^T\)&lt;/span&gt; by &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/&#34;&gt;SVD&lt;/a&gt;. Assume observations are pre-centered:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \sum_{i=1}^Mx^{(i)} = 0
 \]&lt;/span&gt; Assume that signals are independent and the variance of each signal is &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; (taking the advantage of scale/sign ambiguity): &lt;span class=&#34;math display&#34;&gt;\[
@@ -4257,7 +4260,7 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j)
 \end{aligned}
 \]&lt;/span&gt; Calculating entropy and then taking derivative is no easy task and therefore ICA algorithms focus on approximations or equivalences to the above equation. For example, it can be approximated by finding the rotation that maximizes the expected log-likelihood of the observed data by assuming that the source distributions are known.&lt;/p&gt;
-&lt;h3 id=&#34;non-gaussian-and-principal-component-analysispca&#34;&gt;Non-Gaussian and [[Principal Component Analysis|PCA]]&lt;/h3&gt;
+&lt;h3 id=&#34;non-gaussian-and-pca&#34;&gt;Non-Gaussian and &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/&#34;&gt;PCA&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The key assumption of ICA is that signals are non-Gaussian. We are trying to recover the &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; (by finding &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;) to be as non-Gaussian as possible. &lt;span class=&#34;math inline&#34;&gt;\(\hat X\)&lt;/span&gt; consists of independent components because its covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\hat C\)&lt;/span&gt; is shown to be an identity matrix (and thus diagonal). &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; is reconstructed by the linear combination of independent components. Thus it will be the most non-Gaussian when each variable is formed by exactly one component of &lt;span class=&#34;math inline&#34;&gt;\(\hat X\)&lt;/span&gt; by Central Limit Theorem, i.e. &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;’s components are independent.&lt;/p&gt;
 &lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its isodensity maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the stacked eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
 &lt;p&gt;The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;.&lt;/p&gt;
@@ -4436,6 +4439,16 @@ E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
 \]&lt;/span&gt; &lt;a href=&#34;https://medium.com/analytics-vidhya/5-ways-to-achieve-right-balance-of-bias-and-variance-in-ml-model-f734fea6116&#34;&gt;5 ways to achieve right balance of Bias and Variance in ML model | by Niwratti Kasture | Analytics Vidhya | Medium&lt;/a&gt;&lt;/p&gt;
 
 
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</guid>
+      <description>&lt;h2 id=&#34;laplace-expansion&#34;&gt;Laplace Expansion&lt;/h2&gt;
+&lt;p&gt;Also known as Cofactor Expansion, Laplace Expansion is an expression of an $n \times n$ matrix as the weighted sum of determinants of some $(n-1) \times (n-1)$ sub-matrices.&lt;/p&gt;
 </description>
     </item>
     

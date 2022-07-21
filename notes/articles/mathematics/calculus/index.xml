@@ -137,7 +137,7 @@ x_2 &amp;amp;= r \sin(\varphi_1) \cos(\varphi_2) \\
 x_{k-1} &amp;amp;= r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) \\
 x_k &amp;amp;= r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \\
 \end{align}
-\]&lt;/span&gt; The corresponding [[Jacobian Matrix]] is &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The corresponding &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/&#34;&gt;Jacobian Matrix&lt;/a&gt; is &lt;span class=&#34;math display&#34;&gt;\[
 J^{(k)} = \left[ \begin{array}{ccccc|c}
 \cos (\varphi_1) &amp;amp; -r \sin(\varphi_1) &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
 \sin(\varphi_1) \cos(\varphi_2) &amp;amp; r \cos(\varphi_1) \cos(\varphi_2) &amp;amp; -r \sin(\varphi_1) \sin(\varphi_2) &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
@@ -153,7 +153,7 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 &lt;li&gt;On row &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;, before column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(J^{(k)}\)&lt;/span&gt; has an extra &lt;span class=&#34;math inline&#34;&gt;\(\sin(\varphi_{k-1})\)&lt;/span&gt; term in each element than the elements of &lt;span class=&#34;math inline&#34;&gt;\(J^{(k-1)}\)&lt;/span&gt; on row &lt;span class=&#34;math inline&#34;&gt;\(k-1\)&lt;/span&gt;,&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(J^{(k)}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(J^{(k-1)}\)&lt;/span&gt; are totally the same on the region delimited by row &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, row &lt;span class=&#34;math inline&#34;&gt;\(k-2\)&lt;/span&gt;, column &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, column &lt;span class=&#34;math inline&#34;&gt;\(k-1\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Apply the [[Laplace Expansion]] along column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and combine the property of determinant to give &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Apply the &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/&#34;&gt;Laplace Expansion&lt;/a&gt; along column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and combine the property of determinant to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 |J^{(k)}| =\ &amp;amp; \underbrace{0 + \dots + 0}_{n-2} + (-1)^{(n-1)+n} [-r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \sin(\varphi_{k-1}) \big( \sin(\varphi_{k-1}) |J^{(k-1)}| \big)] + \\
 &amp;amp; (-1)^{n+n} [r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) \big( \cos(\varphi_{k-1}) |J^{(k-1)}| \big)] \\
@@ -188,8 +188,8 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 ||f||_{Lip} = \sup_x \sigma[\nabla f(x)] = \sup_x \sup_{||v||=1} \nabla f(x) \cdot v
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\sigma[\nabla f(x)]\)&lt;/span&gt; denotes the spectral norm of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;’s gradient at &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;The Lipschitz constant for a matrix transformation will be the matrix’s [[Spectral Normalization|spectral norm]].&lt;/li&gt;
-&lt;li&gt;The Lipschitz constant for a &lt;span class=&#34;math inline&#34;&gt;\(\R \mapsto \R\)&lt;/span&gt; function will be its largest [[Subgradient#Properties|subgradient]] over its domain&lt;/li&gt;
+&lt;li&gt;The Lipschitz constant for a matrix transformation will be the matrix’s &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/&#34;&gt;spectral norm&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The Lipschitz constant for a &lt;span class=&#34;math inline&#34;&gt;\(\R \mapsto \R\)&lt;/span&gt; function will be its largest &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/subgradient/#Properties&#34;&gt;subgradient&lt;/a&gt; over its domain&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;composition-of-functions&#34;&gt;Composition of Functions&lt;/h3&gt;
 &lt;p&gt;Suppose two functions &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; are Lipschitz continuous respectively. Then, &lt;span class=&#34;math display&#34;&gt;\[

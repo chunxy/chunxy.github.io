@@ -39,7 +39,7 @@ H_\delta(X) = \log |S_\delta|
 \frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log X_1 + \dots + \log X_N)
 \]&lt;/span&gt; Each of these information contents is in turn a random variable with mean &lt;span class=&#34;math inline&#34;&gt;\(\bar h_i = H(X) = H\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{h_i}^2 = \sigma^2\)&lt;/span&gt;. The &lt;strong&gt;typical set&lt;/strong&gt; with parameters &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac 1 {P(y)} - H]^2 &amp;lt; \beta^2 \}
-\]&lt;/span&gt; By the [[大数定律和中心极限定理#弱大数定律（Weak Law of large numbers）|Weak Law of Large Numbers]], &lt;span class=&#34;math inline&#34;&gt;\(P((y - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#弱大数定律（Weak Law of large numbers）&#34;&gt;Weak Law of Large Numbers&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P((y - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
 P(y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
 \]&lt;/span&gt; As &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; increases, the probability that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; falls in &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; draws near &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. We need to relate this to the theorem that for any given &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;, there is a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \simeq NH\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
@@ -109,7 +109,7 @@ L(C,X) = -\sum_i [p_i \log (q_iz)] &amp;amp;= -\sum_i [p_i \log (q_i)] \\
 &amp;amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i \log (q_i)] \\
 &amp;amp;= H(X) + D_{KL}(p || q)
 \end{aligned}
-\]&lt;/span&gt; where the cost is the extra &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p || q)\)&lt;/span&gt; bits, which is brought by instead treating &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; as the real distribution. &lt;span class=&#34;math inline&#34;&gt;\(D_{KL(p||q)}\)&lt;/span&gt; is termed as relative entropy or the [[KL-divergence]].&lt;/p&gt;&lt;/li&gt;
+\]&lt;/span&gt; where the cost is the extra &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p || q)\)&lt;/span&gt; bits, which is brought by instead treating &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; as the real distribution. &lt;span class=&#34;math inline&#34;&gt;\(D_{KL(p||q)}\)&lt;/span&gt; is termed as relative entropy or the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
