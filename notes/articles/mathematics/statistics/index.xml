@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Statistics | Chunxy&#39; website</title>
+    <title>Statistics | Chunxy&#39; Website</title>
     <link>https://chunxy.github.io/notes/articles/mathematics/statistics/</link>
       <atom:link href="https://chunxy.github.io/notes/articles/mathematics/statistics/index.xml" rel="self" type="application/rss+xml" />
     <description>Statistics</description>
@@ -161,25 +161,6 @@ F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/23686709&#34;&gt;特征函数的理解&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Probability Estimation</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</link>
-      <pubDate>Sat, 22 Jan 2022 21:36:30 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</guid>
-      <description>
-
-&lt;h2 id=&#34;probability-estimation&#34;&gt;Probability Estimation&lt;/h2&gt;
-&lt;h3 id=&#34;probability-function-estimation&#34;&gt;Probability Function Estimation&lt;/h3&gt;
-&lt;h4 id=&#34;monte-carlo-method&#34;&gt;Monte Carlo Method&lt;/h4&gt;
-&lt;h3 id=&#34;probability-density-function-estimation&#34;&gt;Probability Density Function Estimation&lt;/h3&gt;
-&lt;h4 id=&#34;histogram&#34;&gt;Histogram&lt;/h4&gt;
-&lt;h4 id=&#34;parzen-window&#34;&gt;Parzen Window&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/aminor/p/13851150.html&#34;&gt;作图直观理解Parzen窗估计（附Python代码） - aminor - 博客园 (cnblogs.com)&lt;/a&gt; &lt;a href=&#34;https://stats.stackexchange.com/questions/244012/can-you-explain-parzen-window-kernel-density-estimation-in-laymans-terms/244023&#34;&gt;Can you explain Parzen window (kernel) density estimation in layman’s terms? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

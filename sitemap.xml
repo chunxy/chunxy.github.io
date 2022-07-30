@@ -80,8 +80,6 @@
   <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/</loc><lastmod>2022-01-29T21:23:58+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</loc><lastmod>2022-01-22T21:36:30+00:00</lastmod><changefreq>weekly</changefreq></url>
-  <url>
     <loc>https://chunxy.github.io/notes/articles/optimization/convex-optimization/</loc><lastmod>2022-01-07T12:56:57+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/</loc><lastmod>2022-01-07T12:55:32+00:00</lastmod><changefreq>weekly</changefreq></url>
@@ -104,7 +102,7 @@
   <url>
     <loc>https://chunxy.github.io/notes/articles/information-theory/cross-entropy/</loc><lastmod>2022-04-25T16:39:46+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</loc><lastmod>2022-03-31T10:08:24+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0/</loc><lastmod>2022-03-31T10:08:24+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/optimization/gradient-descent/</loc><lastmod>2022-01-11T20:26:40+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
@@ -163,6 +161,10 @@
     <loc>https://chunxy.github.io/blogs/</loc><lastmod>2022-06-23T15:03:21+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/articles/optimization/convex-conjugate/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</loc><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/authors/</loc><changefreq>weekly</changefreq></url>
   <url>

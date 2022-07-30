@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Machine Learning | Chunxy&#39; website</title>
+    <title>Machine Learning | Chunxy&#39; Website</title>
     <link>https://chunxy.github.io/notes/articles/machine-learning/</link>
       <atom:link href="https://chunxy.github.io/notes/articles/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <description>Machine Learning</description>
@@ -554,7 +554,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 &amp;amp;- \sum_{i=1}^M\nu_i\xi_i -\sum_{i=1}^M\nu^*_i\xi^*_i
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;Support%20Vector%20Regression.pdf&#34;&gt;Support Vector Regression.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Support%20Vector%20Regression.pdf&#34; target=&#34;_blank&#34;&gt;Support Vector Regression.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -813,7 +813,7 @@ K \ge \frac{8\log M}{\epsilon^2}
       <description>
 
 &lt;p&gt;Given a data matrix &lt;span class=&#34;math inline&#34;&gt;\(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)&lt;/span&gt;, the goal of PCA is to identify the directions of maximum variance contained in the data (compared with directional derivative, this is directional variance).&lt;/p&gt;
-&lt;h3 id=&#34;linear-principal-component-analysis&#34;&gt;Linear Principal Component Analysis&lt;/h3&gt;
+&lt;h3 id=&#34;linear-pca&#34;&gt;Linear PCA&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(v \in \mathbb R^{N \times 1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt;, the variance in the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is given by &lt;span class=&#34;math display&#34;&gt;\[
 \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^Tx^{(i)} = v^T\bar x
 \]&lt;/span&gt; Under the assumption that data is pre-centered so that &lt;span class=&#34;math inline&#34;&gt;\(\bar x = \frac{1}{M}\sum_{i=1}^Mx^{(i)} = 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[

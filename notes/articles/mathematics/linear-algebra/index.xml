@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linear Algebra | Chunxy&#39; website</title>
+    <title>Linear Algebra | Chunxy&#39; Website</title>
     <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/</link>
       <atom:link href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
     <description>Linear Algebra</description>
@@ -82,7 +82,7 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
 \det = \text{product of the eigenvalues}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;The%20Eigen%20Decomposition.pdf&#34;&gt;The Eigen Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Eigen%20Decomposition.pdf&#34; target=&#34;_blank&#34;&gt;Eigen Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -274,7 +274,7 @@ AA^TU_2 = 0 = 0U_2
 &lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the stacked orthonormal eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;. It doesn’t matter how &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is permuted.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;Singular%20Value%20Decomposition.pdf&#34;&gt;Singular Value Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Singular%20Value%20Decomposition.pdf&#34; target=&#34;_blank&#34;&gt;Singular Value Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Optimization | Chunxy&#39; website</title>
+    <title>Optimization | Chunxy&#39; Website</title>
     <link>https://chunxy.github.io/notes/articles/optimization/</link>
       <atom:link href="https://chunxy.github.io/notes/articles/optimization/index.xml" rel="self" type="application/rss+xml" />
     <description>Optimization</description>
@@ -309,7 +309,7 @@ k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
 ||\nabla f(\tilde x)||^2_2 &amp;amp;\le \frac{2L(f(x_0) - f(x^\star))}{k} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;Convergence%20of%20Gradient%20Descent.pdf&#34;&gt;Convergence of Gradient Descent.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Convergence%20of%20Gradient%20Descent.pdf&#34; target=&#34;_blank&#34;&gt;Convergence of Gradient Descent.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://rkganti.wordpress.com/2015/08/21/convergence-rate-of-gradient-descent-algorithm/&#34;&gt;Convergence rate of gradient descent algorithm | bps/Hz (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://xingyuzhou.org/blog/notes/strong-convexity&#34;&gt;Strong convexity · Xingyu Zhou’s blog&lt;/a&gt;&lt;/p&gt;
 
@@ -357,7 +357,7 @@ h_k(y_k) - h_k(x_k) \ge -\nabla_k g(x)(y_k - x_k)
 \]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
 f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;Coordinate%20Descent.pdf&#34;&gt;Coordinate Descent.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Coordinate%20Descent.pdf&#34; target=&#34;_blank&#34;&gt;Coordinate Descent.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/&#34;&gt;Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 
 
@@ -597,6 +597,39 @@ Y_{res} = Y_{res} - \hat Y
 &lt;/ol&gt;
 
 
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://chunxy.github.io/notes/articles/optimization/convex-conjugate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/convex-conjugate/</guid>
+      <description>&lt;h2 id=&#34;convex-conjugate&#34;&gt;Convex Conjugate&lt;/h2&gt;
+&lt;p&gt;For a convex function $f$, its &lt;strong&gt;convex conjugate&lt;/strong&gt; $f^&lt;em&gt;$ is defined as
+$$
+f^&lt;/em&gt;(t) = \sup_x [x^T \cdot t - f(x)]
+$$
+By definition, a Convex Conjugate pair $(f,f^&lt;em&gt;)$ has the following property:
+$$
+f(x) + f^&lt;/em&gt;(t) \ge x^T \cdot t
+$$
+As a conjugate, $f^{&lt;strong&gt;} = f$:
+$$
+\begin{aligned}
+f^{&lt;/strong&gt;}(t) &amp;amp;= \sup_x [x^T \cdot t - f^*(x)] \
+&amp;amp;= \sup_x [x^T \cdot t - \sup_y [y^T \cdot x - f(y)]] \
+&amp;amp;= \sup_x [x^T \cdot t + \inf_y [f(y) - y^T \cdot x]] \
+&amp;amp;= \sup_x \inf_y [x^T (t-y) + f(y)]	\
+&amp;amp;\Downarrow_\text{Mini-max Theorem} \
+&amp;amp;= \inf_y \sup_x [x^T (t-y) + f(y)]
+\end{aligned}
+$$
+The above reaches the infimum only if $y=t$. Otherwise, $\sup_x [x^T (t-y) + f(y)]$ can make it to infinity. Therefore,
+$$
+f^{**}(t) = \inf_y \sup_x [f(t)] = f(t)
+$$
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Convex_conjugate&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wiki&lt;/a&gt; || &lt;a href=&#34;https://zhuanlan.zhihu.com/p/188702379&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;凸优化-凸共轭&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

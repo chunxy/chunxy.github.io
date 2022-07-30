@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Measures | Chunxy&#39; website</title>
+    <title>Measures | Chunxy&#39; Website</title>
     <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/</link>
       <atom:link href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/index.xml" rel="self" type="application/rss+xml" />
     <description>Measures</description>
@@ -93,7 +93,7 @@ v_t &amp;amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
 d_p(x, x^\prime) &amp;amp;= ||x - x^\prime||_p \\
 &amp;amp;= (\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \text{, where $p \to \infty$ }
 \end{aligned}
-\]&lt;/span&gt; Chebyshev distance is in fact &lt;span class=&#34;math inline&#34;&gt;\(\mathop{max}\limits_i (|x_i - x^\prime_i|)\)&lt;/span&gt;.&lt;/p&gt;
+\]&lt;/span&gt; Chebyshev distance is in effect &lt;span class=&#34;math inline&#34;&gt;\(\max\limits_i (|x_i - x^\prime_i|)\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;proof&#34;&gt;Proof&lt;/h4&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(a_i = |x_i - x^\prime_i|\)&lt;/span&gt; and without loss of generality let &lt;span class=&#34;math inline&#34;&gt;\(a_1 = \max\limits_ia_i = \max\limits_i|x_i - x^\prime_i|\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}

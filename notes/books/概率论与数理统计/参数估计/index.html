@@ -283,9 +283,9 @@
     <meta property="twitter:site" content="@wowchemy" />
     <meta property="twitter:creator" content="@wowchemy" />
   
-  <meta property="og:site_name" content="Chunxy&#39; website" />
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/" />
-  <meta property="og:title" content="参数估计 | Chunxy&#39; website" />
+  <meta property="og:title" content="参数估计 | Chunxy&#39; Website" />
   <meta property="og:description" content="点估计 设总体\(X \sim p(x;\theta)\)的分布形式已知" /><meta property="og:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -305,7 +305,7 @@
 
   
 
-  <title>参数估计 | Chunxy&#39; website</title>
+  <title>参数估计 | Chunxy&#39; Website</title>
 </head>
 
 
@@ -384,7 +384,7 @@
 
       
       <div class="d-none d-lg-inline-flex">
-        <a class="navbar-brand" href="/">Chunxy&#39; website</a>
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
       </div>
       
 
@@ -397,7 +397,7 @@
 
       
       <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
-        <a class="navbar-brand" href="/">Chunxy&#39; website</a>
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
       </div>
       
 
@@ -931,10 +931,6 @@
 
   <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
 
-
-
-  <li class=""><a href="/notes/articles/mathematics/statistics/probability-estimation/">Probability Estimation</a></li>
-
       
         </ul>
       
@@ -996,6 +992,10 @@
 
 
   <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-conjugate/"></a></li>
 
       
         </ul>
@@ -1125,7 +1125,7 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/">Function of Random Variable</a></li>
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0/">随机变量的函数</a></li>
 
 
 
@@ -1146,6 +1146,10 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/"></a></li>
 
       
         </ul>
@@ -1264,7 +1268,11 @@
         <li><a href="#cramer-rao不等式">Cramer-Rao不等式</a></li>
       </ul>
     </li>
-    <li><a href="#区间估计">区间估计</a></li>
+    <li><a href="#区间估计">区间估计</a>
+      <ul>
+        <li><a href="#枢轴变量法">枢轴变量法</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1408,16 +1416,17 @@ S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln p(X_i;\theta)} 
 \end{aligned}
 \]</span> 将上式重新带入<span class="math inline">\(\eqref{cov_prop}\)</span>，从而得到<span class="math inline">\(\eqref{cr}\)</span>。</p>
 <h4 id="参考">参考</h4>
-<p><a href="https://www.zhihu.com/question/56411276/answer/204992057">对Cramer-Rao不等式的理解</a>|<a href="https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound">Wiki (see the multi-variate case)</a></p>
+<p><a href="https://www.zhihu.com/question/56411276/answer/204992057">对Cramer-Rao不等式的理解</a> || <a href="https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound">Wiki (see the multi-variate case)</a></p>
 <h2 id="区间估计">区间估计</h2>
 <p>点估计得到是未知参数的某个特定值，然而实际上由于点估计的方差因素，我们不可能得到完全准确的估计值。如果我们能够给出一个区间，使得我们有较大把握参数的真实值落在这个区间范围内，则显得我们的估计更加有效、可信，这个区间也叫作<strong>置信区间</strong>（confidence interval）。</p>
 <p>设总体<span class="math inline">\(X \sim f(x;\theta)\)</span>的分布形式已知，但其参数<span class="math inline">\(\theta\)</span>未知。设<span class="math inline">\(X_1, \dots, X_n\)</span>为总体的一个样本，给定一个很小的数<span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>，若有统计量<span class="math inline">\(\theta_l = \theta_l (X_1, \dots, X_n) \le \theta_r(X_1, \dots, X_n) = \theta_r\)</span>，使得 <span class="math display">\[
 P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
 \]</span> 我们称<span class="math inline">\(1 - \alpha\)</span>为<span class="math inline">\([\theta_;, \theta_r]\)</span>的<strong>置信水平</strong>（confidence level），<span class="math inline">\(\theta_l\)</span>为<strong>置信下限</strong>，<span class="math inline">\(\theta_r\)</span>为<strong>置信上限</strong>。一般来说置信水平不唯一，因为若<span class="math inline">\(1 - \alpha\)</span>是某个区间的置信水平，则对于任意<span class="math inline">\(\alpha &lt; \tilde \alpha &lt; 1\)</span>，<span class="math inline">\(1 - \tilde \alpha\)</span>亦是该区间的置信水平。故一般的“置信水平”是这一系列置信水平中的最大者。</p>
-<p>区间估计的一般步骤为：</p>
+<h3 id="枢轴变量法">枢轴变量法</h3>
+<p>区间估计一般采用枢轴变量法，枢轴变量法的一般步骤为：</p>
 <ol type="1">
 <li><p>构造<span class="math inline">\(\theta\)</span>的一个点估计<span class="math inline">\(\hat \theta\)</span>（如<span class="math inline">\(\bar X\)</span>）</p></li>
-<li><p>构造<span class="math inline">\(\theta\)</span>和<span class="math inline">\(\hat \theta\)</span>的一个函数<span class="math inline">\(G = G(\theta, \hat \theta)\)</span>（称作主元（pivot）函数），且</p>
+<li><p>构造<span class="math inline">\(\theta\)</span>和<span class="math inline">\(\hat \theta\)</span>的一个函数<span class="math inline">\(G = G(\theta, \hat \theta)\)</span>（称作枢轴（pivot）函数），且</p>
 <ul>
 <li><span class="math inline">\(G\)</span>的分布函数<span class="math inline">\(F\)</span>完全已知，且其分布与<span class="math inline">\(\theta\)</span>无关，</li>
 <li>对任何常数<span class="math inline">\(a &lt; b\)</span>，不等式<span class="math inline">\(a \le G(\theta, \hat \theta) \le b\)</span>能够改写成等价的<span class="math inline">\(A \le \theta \le B\)</span>，且<span class="math inline">\(A,B\)</span>仅与<span class="math inline">\(\hat \theta,a,b\)</span>有关，与<span class="math inline">\(\theta\)</span>无关。</li>
@@ -1426,6 +1435,7 @@ P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
 P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 \]</span> <span class="math inline">\(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}\)</span>可改写为对应的<span class="math inline">\(A \le \theta \le B\)</span>的形式，且<span class="math inline">\(A, B\)</span>仅与估计量和两个分位点有关，<span class="math inline">\(A,B\)</span>就构成了<span class="math inline">\(\theta\)</span>的一个置信水平为<span class="math inline">\(1-\alpha\)</span>的置信区间。</p></li>
 </ol>
+<p>在构造枢轴函数时，一般会使用一些现有结论，比如<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#中心极限定理">中心极限定理</a>的近似、<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a>等等。</p>
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Information Theory | Chunxy&#39; website</title>
+    <title>Information Theory | Chunxy&#39; Website</title>
     <link>https://chunxy.github.io/notes/articles/information-theory/</link>
       <atom:link href="https://chunxy.github.io/notes/articles/information-theory/index.xml" rel="self" type="application/rss+xml" />
     <description>Information Theory</description>
@@ -50,7 +50,7 @@ H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\
       <guid>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</guid>
       <description>
 &lt;p&gt;The Conditional Entropy measures the the amount of information needed to describe the outcome of a random variable &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; given that the value of another random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is known. The entropy of &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; conditioned on &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
-H(Y|X) = -\sum_{(x,y) \in X \times Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
+H(Y|X) = -\sum_{(x,y) \in X:Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
 \]&lt;/span&gt;&lt;/p&gt;
 
 

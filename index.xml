@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chunxy&#39; website</title>
+    <title>Chunxy&#39; Website</title>
     <link>https://chunxy.github.io/</link>
       <atom:link href="https://chunxy.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <description>Chunxy&#39; website</description>
+    <description>Chunxy&#39; Website</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 14 Jul 2022 13:42:02 +0000</lastBuildDate>
     <image>
       <url>https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
-      <title>Chunxy&#39; website</title>
+      <title>Chunxy&#39; Website</title>
       <link>https://chunxy.github.io/</link>
     </image>
     
@@ -299,7 +299,7 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
 \det = \text{product of the eigenvalues}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;The%20Eigen%20Decomposition.pdf&#34;&gt;The Eigen Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Eigen%20Decomposition.pdf&#34; target=&#34;_blank&#34;&gt;Eigen Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -1290,10 +1290,10 @@ p(z) &amp;amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}}e^{-\
 &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}z^Tz} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;n-dimensional&#34;&gt;N-dimensional&lt;/h3&gt;
+&lt;h3 id=&#34;n-dimensional&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional&lt;/h3&gt;
 &lt;p&gt;We have given the joint distribution function of independent &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional standard Gaussian distribution. What about these &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; dimensions are not independent with each other, but are only correlated in first order?&lt;/p&gt;
 &lt;p&gt;Formally, &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;. Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are not independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{N}(\mu_i, \sigma_i^2)\)&lt;/span&gt;. We would like to linearly transform &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X_i, X_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(X_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution.&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix is &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/&#34;&gt;real-symmetric&lt;/a&gt; and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Denote &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix as &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/&#34;&gt;real-symmetric&lt;/a&gt; and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
 X = B^{-1}(Z - \mu) \\
 Z = BX + \mu \\
 X \sim \mathcal{N}(0, I)
@@ -1404,7 +1404,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
       <guid>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</guid>
       <description>
 &lt;p&gt;The Conditional Entropy measures the the amount of information needed to describe the outcome of a random variable &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; given that the value of another random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is known. The entropy of &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; conditioned on &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
-H(Y|X) = -\sum_{(x,y) \in X \times Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
+H(Y|X) = -\sum_{(x,y) \in X:Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -1553,25 +1553,6 @@ v_t &amp;amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
 ||A^TA \frac{v_t}{||v_t||}|| = ||A^TAu_1|| = ||\lambda_1 u_1|| = \lambda_1
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://math.stackexchange.com/questions/2723629/why-is-the-maximum-rayleigh-quotient-equal-to-the-maximum-eigenvalue&#34;&gt;matrices - Why is the maximum Rayleigh quotient equal to the maximum eigenvalue? - Mathematics Stack Exchange&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Probability Estimation</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</link>
-      <pubDate>Sat, 22 Jan 2022 21:36:30 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/statistics/probability-estimation/</guid>
-      <description>
-
-&lt;h2 id=&#34;probability-estimation&#34;&gt;Probability Estimation&lt;/h2&gt;
-&lt;h3 id=&#34;probability-function-estimation&#34;&gt;Probability Function Estimation&lt;/h3&gt;
-&lt;h4 id=&#34;monte-carlo-method&#34;&gt;Monte Carlo Method&lt;/h4&gt;
-&lt;h3 id=&#34;probability-density-function-estimation&#34;&gt;Probability Density Function Estimation&lt;/h3&gt;
-&lt;h4 id=&#34;histogram&#34;&gt;Histogram&lt;/h4&gt;
-&lt;h4 id=&#34;parzen-window&#34;&gt;Parzen Window&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/aminor/p/13851150.html&#34;&gt;作图直观理解Parzen窗估计（附Python代码） - aminor - 博客园 (cnblogs.com)&lt;/a&gt; &lt;a href=&#34;https://stats.stackexchange.com/questions/244012/can-you-explain-parzen-window-kernel-density-estimation-in-laymans-terms/244023&#34;&gt;Can you explain Parzen window (kernel) density estimation in layman’s terms? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -1759,7 +1740,7 @@ AA^TU_2 = 0 = 0U_2
 &lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the stacked orthonormal eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;. It doesn’t matter how &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is permuted.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;Singular%20Value%20Decomposition.pdf&#34;&gt;Singular Value Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Singular%20Value%20Decomposition.pdf&#34; target=&#34;_blank&#34;&gt;Singular Value Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -2012,7 +1993,7 @@ P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow I} &amp;amp;= P_\mathcal{C}
 d_p(x, x^\prime) &amp;amp;= ||x - x^\prime||_p \\
 &amp;amp;= (\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \text{, where $p \to \infty$ }
 \end{aligned}
-\]&lt;/span&gt; Chebyshev distance is in fact &lt;span class=&#34;math inline&#34;&gt;\(\mathop{max}\limits_i (|x_i - x^\prime_i|)\)&lt;/span&gt;.&lt;/p&gt;
+\]&lt;/span&gt; Chebyshev distance is in effect &lt;span class=&#34;math inline&#34;&gt;\(\max\limits_i (|x_i - x^\prime_i|)\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;proof&#34;&gt;Proof&lt;/h4&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(a_i = |x_i - x^\prime_i|\)&lt;/span&gt; and without loss of generality let &lt;span class=&#34;math inline&#34;&gt;\(a_1 = \max\limits_ia_i = \max\limits_i|x_i - x^\prime_i|\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -2272,33 +2253,31 @@ H(p||q) = -\mathrm{E}_{x \sim p} \log q(x)
     </item>
     
     <item>
-      <title>Function of Random Variable</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</link>
+      <title>随机变量的函数</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0/</link>
       <pubDate>Thu, 31 Mar 2022 10:08:24 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/function-of-random-variable/</guid>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0/</guid>
       <description>
-
-&lt;p&gt;Suppose we have a 1-D random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim p_X\)&lt;/span&gt; and a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, what will &lt;span class=&#34;math inline&#34;&gt;\(f(X)\)&lt;/span&gt;’s distribution and expectation be like?&lt;/p&gt;
-&lt;h3 id=&#34;distribution&#34;&gt;Distribution&lt;/h3&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(Y = f(X)\)&lt;/span&gt; and suppose &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonic, then &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;为一一维随机变量，&lt;span class=&#34;math inline&#34;&gt;\(f: \R \to \R\)&lt;/span&gt;为一函数，那么&lt;span class=&#34;math inline&#34;&gt;\(f(X)\)&lt;/span&gt;的期望以及分布情况会是什么样的呢？&lt;/p&gt;
+&lt;p&gt;我们这里只讨论&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;是单调函数的情况，令&lt;span class=&#34;math inline&#34;&gt;\(Y = f(X)\)&lt;/span&gt;，那么 &lt;span class=&#34;math display&#34;&gt;\[
 P_Y(y) = P_Y(Y \le y) = P_X(f(X) \le y)
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;if &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonically increasing: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;li&gt;&lt;p&gt;若&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;单调递增， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-P_X(f(X) \le y) = P_X(X \le f^{-1}(y)) = P_X(f^{-1}(y)) \\ 
+P_Y(f(X) \le y) = P_X(X \le f^{-1}(y)) = P_X(f^{-1}(y)) \\ 
 \nonumber \\
 \begin{split}
 p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
 &amp;amp;= \frac{\partial P_X(f^{-1}(y))}{\partial y} \\
-&amp;amp;= P_X(f^{-1}(y)) \cdot (f^{-1})^\prime (y) \\
-&amp;amp;= P_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)| \\
+&amp;amp;= p_X(f^{-1}(y)) \cdot (f^{-1})^\prime (y) \\
+&amp;amp;= p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)| \\
 \end{split}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;if &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is monotonically decreasing: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;li&gt;&lt;p&gt;若&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;单调递减， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-P_X(f(X) \le y) = P_X(X \ge f^{-1}(y)) = 1 - P_X(X \le f^{-1}(y)) = 1 - P_X(f^{-1}(y)) \\ 
+P_Y(f(X) \le y) = P_X(X \ge f^{-1}(y)) = 1 - P_X(X \le f^{-1}(y)) = 1 - P_X(f^{-1}(y)) \\ 
 \nonumber \\
 \begin{split}
 p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
@@ -2309,7 +2288,7 @@ p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(p_Y(y) = p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)|\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;总而言之，&lt;span class=&#34;math inline&#34;&gt;\(p_Y(y) = p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)|\)&lt;/span&gt;。&lt;/p&gt;
 
 
 </description>
@@ -2487,7 +2466,7 @@ k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
 ||\nabla f(\tilde x)||^2_2 &amp;amp;\le \frac{2L(f(x_0) - f(x^\star))}{k} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;Convergence%20of%20Gradient%20Descent.pdf&#34;&gt;Convergence of Gradient Descent.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Convergence%20of%20Gradient%20Descent.pdf&#34; target=&#34;_blank&#34;&gt;Convergence of Gradient Descent.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://rkganti.wordpress.com/2015/08/21/convergence-rate-of-gradient-descent-algorithm/&#34;&gt;Convergence rate of gradient descent algorithm | bps/Hz (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://xingyuzhou.org/blog/notes/strong-convexity&#34;&gt;Strong convexity · Xingyu Zhou’s blog&lt;/a&gt;&lt;/p&gt;
 
@@ -2760,7 +2739,7 @@ h_k(y_k) - h_k(x_k) \ge -\nabla_k g(x)(y_k - x_k)
 \]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
 f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;Coordinate%20Descent.pdf&#34;&gt;Coordinate Descent.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Coordinate%20Descent.pdf&#34; target=&#34;_blank&#34;&gt;Coordinate Descent.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/&#34;&gt;Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 
 
@@ -3361,7 +3340,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 &amp;amp;- \sum_{i=1}^M\nu_i\xi_i -\sum_{i=1}^M\nu^*_i\xi^*_i
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;Support%20Vector%20Regression.pdf&#34;&gt;Support Vector Regression.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Support%20Vector%20Regression.pdf&#34; target=&#34;_blank&#34;&gt;Support Vector Regression.pdf&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -3433,16 +3412,17 @@ S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln p(X_i;\theta)} 
 \end{aligned}
 \]&lt;/span&gt; 将上式重新带入&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cov_prop}\)&lt;/span&gt;，从而得到&lt;span class=&#34;math inline&#34;&gt;\(\eqref{cr}\)&lt;/span&gt;。&lt;/p&gt;
 &lt;h4 id=&#34;参考&#34;&gt;参考&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/56411276/answer/204992057&#34;&gt;对Cramer-Rao不等式的理解&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound&#34;&gt;Wiki (see the multi-variate case)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/56411276/answer/204992057&#34;&gt;对Cramer-Rao不等式的理解&lt;/a&gt; || &lt;a href=&#34;https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound&#34;&gt;Wiki (see the multi-variate case)&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;区间估计&#34;&gt;区间估计&lt;/h2&gt;
 &lt;p&gt;点估计得到是未知参数的某个特定值，然而实际上由于点估计的方差因素，我们不可能得到完全准确的估计值。如果我们能够给出一个区间，使得我们有较大把握参数的真实值落在这个区间范围内，则显得我们的估计更加有效、可信，这个区间也叫作&lt;strong&gt;置信区间&lt;/strong&gt;（confidence interval）。&lt;/p&gt;
 &lt;p&gt;设总体&lt;span class=&#34;math inline&#34;&gt;\(X \sim f(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;未知。设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;为总体的一个样本，给定一个很小的数&lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \alpha &amp;lt; 1\)&lt;/span&gt;，若有统计量&lt;span class=&#34;math inline&#34;&gt;\(\theta_l = \theta_l (X_1, \dots, X_n) \le \theta_r(X_1, \dots, X_n) = \theta_r\)&lt;/span&gt;，使得 &lt;span class=&#34;math display&#34;&gt;\[
 P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
 \]&lt;/span&gt; 我们称&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\([\theta_;, \theta_r]\)&lt;/span&gt;的&lt;strong&gt;置信水平&lt;/strong&gt;（confidence level），&lt;span class=&#34;math inline&#34;&gt;\(\theta_l\)&lt;/span&gt;为&lt;strong&gt;置信下限&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\theta_r\)&lt;/span&gt;为&lt;strong&gt;置信上限&lt;/strong&gt;。一般来说置信水平不唯一，因为若&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;是某个区间的置信水平，则对于任意&lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;lt; \tilde \alpha &amp;lt; 1\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(1 - \tilde \alpha\)&lt;/span&gt;亦是该区间的置信水平。故一般的“置信水平”是这一系列置信水平中的最大者。&lt;/p&gt;
-&lt;p&gt;区间估计的一般步骤为：&lt;/p&gt;
+&lt;h3 id=&#34;枢轴变量法&#34;&gt;枢轴变量法&lt;/h3&gt;
+&lt;p&gt;区间估计一般采用枢轴变量法，枢轴变量法的一般步骤为：&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;p&gt;构造&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个点估计&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;（如&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;）&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;构造&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;的一个函数&lt;span class=&#34;math inline&#34;&gt;\(G = G(\theta, \hat \theta)\)&lt;/span&gt;（称作主元（pivot）函数），且&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;构造&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;的一个函数&lt;span class=&#34;math inline&#34;&gt;\(G = G(\theta, \hat \theta)\)&lt;/span&gt;（称作枢轴（pivot）函数），且&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;的分布函数&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;完全已知，且其分布与&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;无关，&lt;/li&gt;
 &lt;li&gt;对任何常数&lt;span class=&#34;math inline&#34;&gt;\(a &amp;lt; b\)&lt;/span&gt;，不等式&lt;span class=&#34;math inline&#34;&gt;\(a \le G(\theta, \hat \theta) \le b\)&lt;/span&gt;能够改写成等价的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;，且&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;仅与&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta,a,b\)&lt;/span&gt;有关，与&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;无关。&lt;/li&gt;
@@ -3451,6 +3431,7 @@ P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
 P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}\)&lt;/span&gt;可改写为对应的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;的形式，且&lt;span class=&#34;math inline&#34;&gt;\(A, B\)&lt;/span&gt;仅与估计量和两个分位点有关，&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;就构成了&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个置信水平为&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha\)&lt;/span&gt;的置信区间。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;在构造枢轴函数时，一般会使用一些现有结论，比如&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#中心极限定理&#34;&gt;中心极限定理&lt;/a&gt;的近似、&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/&#34;&gt;三大分布与正态总体的抽样分布&lt;/a&gt;等等。&lt;/p&gt;
 
 
 </description>
@@ -4041,7 +4022,7 @@ P(|\frac{1}{n}\sum_{i=1}^n X_i - p| &amp;lt; \epsilon) = P(|\frac{\sum_{i=1}^n X
       <description>
 
 &lt;p&gt;Given a data matrix &lt;span class=&#34;math inline&#34;&gt;\(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)&lt;/span&gt;, the goal of PCA is to identify the directions of maximum variance contained in the data (compared with directional derivative, this is directional variance).&lt;/p&gt;
-&lt;h3 id=&#34;linear-principal-component-analysis&#34;&gt;Linear Principal Component Analysis&lt;/h3&gt;
+&lt;h3 id=&#34;linear-pca&#34;&gt;Linear PCA&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(v \in \mathbb R^{N \times 1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt;, the variance in the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is given by &lt;span class=&#34;math display&#34;&gt;\[
 \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^Tx^{(i)} = v^T\bar x
 \]&lt;/span&gt; Under the assumption that data is pre-centered so that &lt;span class=&#34;math inline&#34;&gt;\(\bar x = \frac{1}{M}\sum_{i=1}^Mx^{(i)} = 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
@@ -4449,6 +4430,50 @@ E_{x \sim \mathcal D}&amp;amp;[l(f(x), y_\mathcal D)] \\
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/</guid>
       <description>&lt;h2 id=&#34;laplace-expansion&#34;&gt;Laplace Expansion&lt;/h2&gt;
 &lt;p&gt;Also known as Cofactor Expansion, Laplace Expansion is an expression of an $n \times n$ matrix as the weighted sum of determinants of some $(n-1) \times (n-1)$ sub-matrices.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://chunxy.github.io/notes/articles/optimization/convex-conjugate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/optimization/convex-conjugate/</guid>
+      <description>&lt;h2 id=&#34;convex-conjugate&#34;&gt;Convex Conjugate&lt;/h2&gt;
+&lt;p&gt;For a convex function $f$, its &lt;strong&gt;convex conjugate&lt;/strong&gt; $f^&lt;em&gt;$ is defined as
+$$
+f^&lt;/em&gt;(t) = \sup_x [x^T \cdot t - f(x)]
+$$
+By definition, a Convex Conjugate pair $(f,f^&lt;em&gt;)$ has the following property:
+$$
+f(x) + f^&lt;/em&gt;(t) \ge x^T \cdot t
+$$
+As a conjugate, $f^{&lt;strong&gt;} = f$:
+$$
+\begin{aligned}
+f^{&lt;/strong&gt;}(t) &amp;amp;= \sup_x [x^T \cdot t - f^*(x)] \
+&amp;amp;= \sup_x [x^T \cdot t - \sup_y [y^T \cdot x - f(y)]] \
+&amp;amp;= \sup_x [x^T \cdot t + \inf_y [f(y) - y^T \cdot x]] \
+&amp;amp;= \sup_x \inf_y [x^T (t-y) + f(y)]	\
+&amp;amp;\Downarrow_\text{Mini-max Theorem} \
+&amp;amp;= \inf_y \sup_x [x^T (t-y) + f(y)]
+\end{aligned}
+$$
+The above reaches the infimum only if $y=t$. Otherwise, $\sup_x [x^T (t-y) + f(y)]$ can make it to infinity. Therefore,
+$$
+f^{**}(t) = \inf_y \sup_x [f(t)] = f(t)
+$$
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Convex_conjugate&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wiki&lt;/a&gt; || &lt;a href=&#34;https://zhuanlan.zhihu.com/p/188702379&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;凸优化-凸共轭&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</guid>
+      <description>&lt;h2 id=&#34;假设检验&#34;&gt;假设检验&lt;/h2&gt;
+&lt;p&gt;样本中包含了总体分布的信息，而**假设检验（hypothesis test）**的含义就是指能否通过样本去判断某个命题（比如关于总体分布的命题）是否成立。在统计上，如果判断其成立，一般称作“接受（accept）该假设”；如果判断其不成立，一般称作“否定（reject）该假设”。这里的“假设”要避免和平常常用的带有“假定”含义的“假设”混淆。&lt;/p&gt;
+&lt;p&gt;在假设检验中，有时会将需要判断的命题称作&lt;strong&gt;原假设&lt;/strong&gt;或者&lt;strong&gt;零假设&lt;/strong&gt;，原假设的对立面就称作&lt;strong&gt;对立假设&lt;/strong&gt;。在假设检验中使用的统计量称作&lt;strong&gt;检验统计量&lt;/strong&gt;，使原假设得到接收的那些样本所在的区域称为该检验的&lt;strong&gt;接受域&lt;/strong&gt;，使原假设被否定的那些样本所在的区域称为该检验的&lt;strong&gt;否定域&lt;/strong&gt;。&lt;/p&gt;
 </description>
     </item>
     
