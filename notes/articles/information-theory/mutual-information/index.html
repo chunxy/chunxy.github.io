@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by" />
+  <meta name="description" content="Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/mutual-information/" />
@@ -286,7 +286,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/mutual-information/" />
   <meta property="og:title" content="Mutual Information | Chunxy&#39; Website" />
-  <meta property="og:description" content="Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by" /><meta property="og:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable." /><meta property="og:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -921,6 +921,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
 
 
@@ -930,6 +934,10 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1117,11 +1125,7 @@
       
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian Distribution</a></li>
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
 
 
 
@@ -1349,16 +1353,14 @@
 <p>Mutual Information of <strong>two random variables</strong> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable. It is defined as <span class="math display">\[
 I(X;Y) = \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
 \]</span> By its definition, <span class="math display">\[
-I(X;Y) = I(Y;X)
-\]</span></p>
-<p><span class="math display">\[
-I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \otimes p_Y)
-\]</span></p>
-<p><span class="math display">\[
+\begin{gather}
+I(X;Y) = I(Y;X) \\
+I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \otimes p_Y) \\
 I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
+\end{gather}
 \]</span></p>
 <h3 id="gaussian-case">Gaussian Case</h3>
-<p>To better illustrate the formula of mutual information between two <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian</a>-distributed random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. We can concatenate them to form, say an <span class="math inline">\(n\)</span>-dimensional random variable <span class="math inline">\(Z\)</span>, which is also Gaussian-distributed. Then the mutual information between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be computed as: <span class="math display">\[
+<p>To better illustrate the formula of mutual information between two <a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian</a>-distributed random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. We can concatenate them to form, say an <span class="math inline">\(n\)</span>-dimensional random variable <span class="math inline">\(Z\)</span>, which is also Gaussian-distributed. Then the mutual information between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be computed as: <span class="math display">\[
 I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
 \]</span> The key to the derivation is that mutual information is the KL-divergence between the joint distribution and the product of the marginal distributions.</p>
 <p>The joint can be described as <span class="math display">\[
@@ -1394,6 +1396,70 @@ I&amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
 &amp;= \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
 \end{aligned}
 \]</span></p>
+<h4 id="kronecker-gaussian">Kronecker Gaussian</h4>
+<p>Consider the multivariate Gaussian distribution random vector <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> of the same length <span class="math inline">\(k\)</span>. Suppose they are both independent internally and they have the component-wise correlation <span class="math inline">\(corr(X_i, Y_j) = \delta_{ij} \rho\)</span>, where <span class="math inline">\(\rho \in (-1, 1)\)</span> (open to ensure the covariance matrix is invertible), <span class="math inline">\(1 \le i, j \le k\)</span>, <span class="math inline">\(\delta_{ij}\)</span> is the Kronecker’s delta: <span class="math display">\[
+\delta_{ij} = 
+\begin{cases}
+0, &amp; i \ne j \\
+1, &amp; i = j
+\end{cases}
+\]</span> Let <span class="math inline">\(Z_k\)</span> be the vector concatenated by <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span>. It is easy to draw its covariance matrix <span class="math inline">\(\Sigma_{Z_k}\)</span> like <span class="math display">\[
+\begin{pmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+\end{pmatrix}
+\]</span> The mutual information between the <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> can be calculated as <span class="math display">\[
+I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det \Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
+\]</span> The problem remains as how to compute <span class="math inline">\(\det \Sigma_{Z_{k}}\)</span>. Applying the Laplacian expansion along the first column, we find we have to deal with the determinants of following two matrices (dashed lines indicate the row/column to be deleted): $$ <span class="math display">\[\begin{gather}
+A_k = \underbrace{
+\left( \begin{array}{c:ccccccc}
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
+\hdashline
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+\end{array} \right)
+}_\text{$2k$ columns},
+
+B_k = \underbrace{
+\left( \begin{array}{c:ccccccc}
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
+\hdashline
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+\hdashline
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+\end{array} \right)
+}_\text{$2k$ columns}, \\
+
+\det Z_k =
+\begin{cases}
+\det A_k - \rho \det B_k, &amp; \text{$k$ is odd} \\
+\det A_k + \rho \det B_k, &amp; \text{$k$ is even} \\
+\end{cases} \Rightarrow \det Z_k = \det A_k + (-1)^k \rho \det B_k
+\end{gather}\]</span> <span class="math display">\[
+Applying the Laplacian expansion along the $k$-th row of $A_k$, we find
+\]</span> A_k = <em> = Z</em>{k-1} <span class="math display">\[
+Applying the Laplacian expansion along the first row of $B_k$, we find
+\]</span> B_k = (-1)^k  <em> = (-1)^k Z</em>{k-1} <span class="math display">\[
+In all, $\det Z_k = \det Z_k - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}$. Because $\det Z_1 = 1 - \rho^2$, we finally have
+\]</span> Z_k = (1 - <sup>2)</sup>k <span class="math display">\[
+Therefore,
+\]</span> I(X;Y) = - 2 _{Z_k} = -k 2 (1 - ^2) $$</p>
 <h3 id="reference">Reference</h3>
 <p><a href="https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr">Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)</a></p>
 <p><a href="https://www.math.nyu.edu/~kleeman/infolect7.pdf">Information Theory and Predictability Lecture 7: Gaussian Case</a></p>

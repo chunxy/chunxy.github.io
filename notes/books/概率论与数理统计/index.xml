@@ -13,13 +13,13 @@
     </image>
     
     <item>
-      <title>Common Distributions</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</link>
-      <pubDate>Fri, 20 May 2022 09:58:37 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/</guid>
+      <title>常见分布</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/</link>
+      <pubDate>Thu, 11 Aug 2022 17:12:01 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/</guid>
       <description>
 
-&lt;h2 id=&#34;poisson-distribution&#34;&gt;Poisson Distribution&lt;/h2&gt;
+&lt;h2 id=&#34;泊松分布poisson-distribution&#34;&gt;泊松分布（Poisson distribution）&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather*}
 P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!} \\
@@ -27,7 +27,7 @@ P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!} \\
 \Var[X] = \lambda
 \end{gather*}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;binomial-distribution&#34;&gt;Binomial Distribution&lt;/h2&gt;
+&lt;h2 id=&#34;二项分布binomial-distribution&#34;&gt;二项分布（binomial distribution）&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather*}
 P(x;p,N) = {N \choose x} p^x (1-p)^{N-x} \\
@@ -35,114 +35,14 @@ P(x;p,N) = {N \choose x} p^x (1-p)^{N-x} \\
 \Var[X] = Np(1-p)
 \end{gather*}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;bernoulli-distribution&#34;&gt;Bernoulli Distribution&lt;/h2&gt;
-&lt;p&gt;Bernoulli Distribution &lt;span class=&#34;math inline&#34;&gt;\(B(\{0,1\};p)\)&lt;/span&gt; is a special case of Binomial Distribution when &lt;span class=&#34;math inline&#34;&gt;\(N=1\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h2 id=&#34;伯努利分布bernoulli-distribution&#34;&gt;伯努利分布（Bernoulli distribution）&lt;/h2&gt;
+&lt;p&gt;伯努利分布&lt;span class=&#34;math inline&#34;&gt;\(B(\{0,1\};p)\)&lt;/span&gt;实际上是二项分布中&lt;span class=&#34;math inline&#34;&gt;\(N = 1\)&lt;/span&gt;的一个特例： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather*}
 B(1,p) = p, B(0,p) = 1 - p \\
 \E[X] = p \\
 \Var[X] = p(1 - p)
 \end{gather*}
 \]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Gaussian Distribution</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</link>
-      <pubDate>Sun, 08 May 2022 19:09:42 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/</guid>
-      <description>
-
-&lt;h3 id=&#34;one-dimensional&#34;&gt;One-dimensional&lt;/h3&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;-d random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim \mathcal{N}(\mu, \sigma^2)\)&lt;/span&gt;, then its density function is &lt;span class=&#34;math display&#34;&gt;\[
-p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\int_{-\infty}^{+\infty}p(x)dx &amp;amp;= \sqrt{(\int_{-\infty}^{+\infty}p(x)dx) \cdot (\int_{-\infty}^{+\infty}p(y)dy)} \\
-&amp;amp;= \sqrt{\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}p(x)p(y)dxdy} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(I^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}p(x)p(y)dxdy\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\int_{-\infty}^{+\infty}p(x)dx = \sqrt{I^2} \\
-I^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{y - \mu}{\sigma})^2}dxdy
-\end{gather}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(u = \frac{x-\mu}{\sigma}, v = \frac{y-\mu}{\sigma}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-I^2 &amp;amp;= \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}u^2}\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}v^2}\sigma^2dudv \\
-&amp;amp;= \frac{1}{2\pi}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}e^{-\frac{1}{2}(u^2+v^2)}dudv
-\end{aligned}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(u = r\sin\theta, v = r\cos\theta\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}e^{-\frac{1}{2}(u^2+v^2)}dudv &amp;amp;= 
-\int_{0}^{2\pi}\int_{0}^{+\infty}e^{-\frac{1}{2}(r^2\sin^2\theta+r^2\cos^2\theta)}rdrd\theta \\
-&amp;amp;= \int_{0}^{2\pi}\int_{0}^{+\infty}-e^{-\frac{1}{2}r^2}d(-\frac{1}{2}r^2)d\theta \\
-&amp;amp;= \int_{0}^{2\pi}-e^{t}\Big|_{t=0}^{t=-\infty}d\theta \\
-&amp;amp;= \int_{0}^{2\pi}d\theta \\
-&amp;amp;= 2\pi
-\end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I^2 = \frac{1}{2\pi}2\pi = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\int_{-\infty}^{+\infty}p(x)dx = \sqrt{I^2} = 1\)&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;independent-standard-n-dimensional&#34;&gt;Independent standard &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional&lt;/h3&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;, suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution, we can derive the joint distribution density function for random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; to be &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p(z) &amp;amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z_i^2} \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}z^Tz} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;n-dimensional&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional&lt;/h3&gt;
-&lt;p&gt;We have given the joint distribution function of independent &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional standard Gaussian distribution. What about these &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; dimensions are not independent with each other, but are only correlated in first order?&lt;/p&gt;
-&lt;p&gt;Formally, &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;. Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are not independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{N}(\mu_i, \sigma_i^2)\)&lt;/span&gt;. We would like to linearly transform &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X_i, X_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(X_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution.&lt;/p&gt;
-&lt;p&gt;Denote &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix as &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/&#34;&gt;real-symmetric&lt;/a&gt; and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
-X = B^{-1}(Z - \mu) \\
-Z = BX + \mu \\
-X \sim \mathcal{N}(0, I)
-\]&lt;/span&gt; then, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p_X(x) &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}x^Tx} 
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is to take on values in &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;, which is a subset of &lt;span class=&#34;math inline&#34;&gt;\(\R^{n}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-P_Z(Z \in S) = \int_Sp_Z(z)dz
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/&#34;&gt;Jacobian transformation&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-J(X \to Z) = B^{-1} \\
-\]&lt;/span&gt; with its determinant &lt;span class=&#34;math inline&#34;&gt;\(J = |J(X \to Z)| = |B^{-1}| = |B|^{-1}\)&lt;/span&gt;. Note that &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-|J| &amp;amp;= \sqrt{|B|^{-1}|B|^{-1}} \\
-&amp;amp;= \sqrt{|B|^{-1}|B^T|^{-1}} \\
-&amp;amp;= \sqrt{|BB^T|^{-1}} \\
-&amp;amp;= |BB^T|^{-\frac{1}{2}}
-\end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-P_Z(Z \in S) &amp;amp;= P_X(X \in f^{-1}(S)) \\
-&amp;amp;= \int_{f^{-1}(S)}p_X(x)dx \\
-&amp;amp;= [\int_Sp_X(f^{-1}(z))|J|dz]_{x=f^{-1}(z)} \\
-&amp;amp;= \int_Sp_X(f^{-1}(z))|J|dz \\
-\int_Sp_Z(z)dz &amp;amp;= \int_Sp_X(f^{-1}(z))|J|dz \\
-p_Z(z) &amp;amp;= p_X(f^{-1}(z))|J| \\
-&amp;amp;= p_X(B^{-1}(z-\mu)|J| \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(B^{-1})^TB^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(B^T)^{-1}B^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}}e^{-\frac{1}{2}(z-\mu)^T(BB^T)^{-1}(z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}|BB^T|^\frac{1}{2}}e^{-\frac{1}{2}(z-\mu)^T(BB^T)^{-1}(z-\mu)} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Also note that &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\Sigma_Z &amp;amp;= E[(z-\mu)(z-\mu)^T] \\
-&amp;amp;= E[BXX^TB^T] \\
-&amp;amp;= BE[XX^T]B^T \\
-&amp;amp;= BIB^T \\
-&amp;amp;= BB^T
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Then, &lt;span class=&#34;math display&#34;&gt;\[
-p(z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}}e^{-\frac{1}{2}(z-\mu)^T\Sigma_Z^{-1}(z-\mu)}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/40225646&#34;&gt;Integration&lt;/a&gt;|&lt;a href=&#34;https://zhuanlan.zhihu.com/p/58987388&#34;&gt;Multi-variate&lt;/a&gt;|&lt;a href=&#34;https://en.wikipedia.org/wiki/Integration_by_substitution&#34;&gt;Change of variable&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -424,7 +324,7 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php&#34;&gt;The Gamma Function&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=XAoe4th0F1k&#34;&gt;The derivation of &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2)\)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php&#34;&gt;The Gamma Function&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=XAoe4th0F1k&#34;&gt;The derivation of &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2)\)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;chi2分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布&lt;/h2&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1,\dots,X_n\)&lt;/span&gt;为相互独立的标准正态分布随机变量，即&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim N(0,1)\)&lt;/span&gt;则称&lt;span class=&#34;math inline&#34;&gt;\(Y = X_1^2 + \dots + X_n^2\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布，记作&lt;span class=&#34;math inline&#34;&gt;\(Y \sim \chi^2(n)\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -494,7 +394,7 @@ p_Y(y) =
 \]&lt;/span&gt; 另外，该密度函数也可以通过数学归纳法验证。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;参考-1&#34;&gt;参考&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.statlect.com/probability-distributions/chi-square-distribution&#34;&gt;Chi Squared Distribution&lt;/a&gt;|&lt;a href=&#34;https://vtechworks.lib.vt.edu/bitstream/handle/10919/34329/10Apxb.pdf?sequence=12&#34;&gt;Generating Function of Chi Squared Distribution&lt;/a&gt;|&lt;a href=&#34;https://www.zhihu.com/question/30020592&#34;&gt;正向推导&lt;/a&gt;|&lt;a href=&#34;https://www.bilibili.com/video/BV1e54y1v7e5&#34;&gt;数学归纳法&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.statlect.com/probability-distributions/chi-square-distribution&#34;&gt;Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://vtechworks.lib.vt.edu/bitstream/handle/10919/34329/10Apxb.pdf?sequence=12&#34;&gt;Generating Function of Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/30020592&#34;&gt;正向推导&lt;/a&gt; || &lt;a href=&#34;https://www.bilibili.com/video/BV1e54y1v7e5&#34;&gt;数学归纳法&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;t分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布&lt;/h2&gt;
 &lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim N(0,1), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(T = \frac{X}{Y/n}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(T \sim t(n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
 p_T(t) = \frac{\Gamma((n+1)/2)} {\sqrt{n\pi} \Gamma(n/2)} \big( 1 + \frac{t^2} n \big)^{-(n+1)/2}

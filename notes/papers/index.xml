@@ -148,7 +148,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \end{aligned}
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt;|&lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt;|&lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt;|&lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt; || &lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt; || &lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

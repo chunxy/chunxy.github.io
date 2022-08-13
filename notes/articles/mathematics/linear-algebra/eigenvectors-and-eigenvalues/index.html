@@ -921,6 +921,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
 
 
@@ -930,6 +934,10 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1117,11 +1125,7 @@
       
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/common-distributions/">Common Distributions</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/">Gaussian Distribution</a></li>
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
 
 
 
@@ -1361,7 +1365,7 @@
             
 
 <h3 id="definition">Definition</h3>
-<p>An eigenvector of a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is a nonzero vector <span class="math inline">\(\rm x\)</span> such that <span class="math inline">\(A\rm x = \lambda \rm x\)</span> for some scalar <span class="math inline">\(\lambda\)</span>. This scalar <span class="math inline">\(\lambda\)</span> is the corresponding eigenvalue.</p>
+<p>An eigenvector of a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is a nonzero vector <span class="math inline">\(\rm x\)</span> such that <span class="math inline">\(A\rm x = \lambda \rm x\)</span> for some scalar <span class="math inline">\(\lambda\)</span>. This scalar <span class="math inline">\(\lambda\)</span> is the corresponding eigenvalue. Note that by definition, <span class="math inline">\(0\)</span> is an eigenvalue of any square matrix. However, <span class="math inline">\(0\)</span> is just too trivial that people exclude it from the eigen discussion.</p>
 <h3 id="similarity">Similarity</h3>
 <p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(n \times n\)</span> matrices, then <span class="math inline">\(A\)</span> is similar to <span class="math inline">\(B\)</span> if there is an invertible matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(PAP^{-1} = B\)</span>, or equivalently <span class="math inline">\(P^{-1}BP = A\)</span>.</p>
 <p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then they have the same characteristic polynomial and hence then the same eigenvalues: <span class="math display">\[
@@ -1376,37 +1380,31 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 \]</span></p>
 <h3 id="independence-between-eigenvectors">Independence between Eigenvectors</h3>
 <ul>
-<li>Theorem</li>
+<li><p>Theorem</p>
+<p>Suppose <span class="math inline">\(v_1, v_2, ... , v_r\)</span> are the eigenvectors corresponding to the distinct eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, ..., \lambda_r\)</span> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>, then <span class="math inline">\(\{v_1, v_2, ..., v_r\}\)</span> is linearly independent.</p></li>
+<li><p>Proof</p>
+<p>Suppose instead these vectors are dependent. Let <span class="math inline">\(p\)</span> be the least index such that <span class="math inline">\(v_{p+1}\)</span> is a linear combination of previous vectors. Then there exists scalars <span class="math inline">\(c_1, c_2, ..., c_p\)</span> such that <span class="math display">\[
+  \label{lincom} c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1}
+  \]</span> Multiply both sides with <span class="math inline">\(A\)</span> to obtain <span class="math display">\[
+  c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1}
+  \]</span> Multiply both sides of <span class="math inline">\(\eqref{lincom}\)</span> with <span class="math inline">\(\lambda_{p+1}\)</span> to give <span class="math display">\[
+  c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1}
+  \]</span> Subtract <span class="math inline">\((3)\)</span> from <span class="math inline">\((2)\)</span> to give <span class="math display">\[
+  \label{diff} c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0
+  \]</span> Since <span class="math inline">\(\{v_1, v_2, ..., v_p\}\)</span> is independent, the weights in <span class="math inline">\(\eqref{diff}\)</span> are all zeros. None of <span class="math inline">\((\lambda_i - \lambda_{p+1})\)</span> is zero, so <span class="math inline">\(c_i = 0\)</span> for all <span class="math inline">\(i = 1,...p\)</span>. Then <span class="math inline">\(\eqref{lincom}\)</span> says <span class="math inline">\(v_{p+1}\)</span> is <span class="math inline">\(0\)</span>, which is impossible. Q.E.D.</p></li>
+<li><p>Note</p>
+<p><span class="math inline">\(v_1\)</span>, as the eigenvector, should be nonzero so that <span class="math inline">\(\eqref{lincom}\)</span> can hold even for <span class="math inline">\(p=1\)</span>.</p></li>
 </ul>
-<p>Suppose <span class="math inline">\(v_1, v_2, ... , v_r\)</span> are the eigenvectors corresponding to the distinct eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, ..., \lambda_r\)</span> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>, then <span class="math inline">\(\{v_1, v_2, ..., v_r\}\)</span> is linearly independent.</p>
-<ul>
-<li>Proof</li>
-</ul>
-<p>Suppose instead these vectors are dependent. Let <span class="math inline">\(p\)</span> be the least index such that <span class="math inline">\(v_{p+1}\)</span> is a linear combination of previous vectors. Then there exists scalars <span class="math inline">\(c_1, c_2, ..., c_r\)</span> such that <span class="math display">\[
-c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1}
-\]</span> Multiply both sides with <span class="math inline">\(A\)</span> to obtain <span class="math display">\[
-c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1}
-\]</span> Multiply both sides of <span class="math inline">\((1)\)</span> with <span class="math inline">\(\lambda_{p+1}\)</span> to give <span class="math display">\[
-c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1}
-\]</span> Subtract <span class="math inline">\((3)\)</span> from <span class="math inline">\((2)\)</span> to give <span class="math display">\[
-c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0
-\]</span> Since <span class="math inline">\(\{v_1, v_2, ..., v_p\}\)</span> is independent, the weights in <span class="math inline">\((4)\)</span> are all zero. None of <span class="math inline">\((\lambda_i - \lambda_{p+1})\)</span> is zero, so <span class="math inline">\(c_i = 0\)</span> for all <span class="math inline">\(i = 1,...p\)</span>. Then <span class="math inline">\((1)\)</span> says <span class="math inline">\(v_{p+1}\)</span> is <span class="math inline">\(0\)</span>, which is impossible.</p>
-<ul>
-<li>Note</li>
-</ul>
-<p><span class="math inline">\(v_1\)</span> is nonzero so that equation (1) can hold</p>
 <h3 id="diagonalization">Diagonalization</h3>
 <ul>
-<li>Theorem</li>
-</ul>
-<p>An <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is diagonalizable if and only if <span class="math inline">\(A\)</span> has n independent eigenvectors.</p>
-<ul>
+<li><p>Theorem</p>
+<p>An <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is diagonalizable if and only if <span class="math inline">\(A\)</span> has n independent eigenvectors.</p></li>
 <li><p>Proof</p>
 <ul>
 <li><p>Necessity</p>
 <p>Suppose <span class="math inline">\(A = PDP^{-1}\)</span>, then <span class="math inline">\(AP = PD\)</span>. Let <span class="math inline">\(P = [\rm p_1, \rm p_2, ..., \rm p_N]\)</span>. Since <span class="math inline">\(D\)</span> is a diagonal matrix, <span class="math display">\[
 AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22}\mathrm p_2, ..., D_{NN}\mathrm p_N]
-\]</span> Because <span class="math inline">\(P\)</span> is invertible, <span class="math inline">\(\mathrm p_i\)</span>s are independent, which indicates that <span class="math inline">\(\mathrm p_i\)</span>s are <span class="math inline">\(A\)</span>’s <span class="math inline">\(N\)</span> independent eigenvectors</p>
+\]</span> Because <span class="math inline">\(P\)</span> is invertible, <span class="math inline">\(\mathrm p_i\)</span>s are independent, which indicates that <span class="math inline">\(\mathrm p_i\)</span>’s are <span class="math inline">\(A\)</span>’s <span class="math inline">\(N\)</span> independent eigenvectors</p>
 <p>From this, we could also see that if <span class="math inline">\(A\)</span> is diagonalizable, then <span class="math inline">\(P\)</span> must be the matrix stacked with <span class="math inline">\(A\)</span>’s eigenvectors and <span class="math inline">\(D\)</span> must be the diagonal matrix filled with corresponding eigenvalues.</p></li>
 <li><p>Sufficiency</p>
 <p>Easy to show.</p></li>

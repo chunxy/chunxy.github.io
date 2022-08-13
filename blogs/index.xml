@@ -5,7 +5,7 @@
     <link>https://chunxy.github.io/blogs/</link>
       <atom:link href="https://chunxy.github.io/blogs/index.xml" rel="self" type="application/rss+xml" />
     <description>Blogs</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 23 Jun 2022 15:03:21 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 13 Aug 2022 10:44:21 +0000</lastBuildDate>
     <image>
       <url>https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
       <title>Blogs</title>
@@ -164,7 +164,7 @@ nP = \underbrace{P + \dots + P}_{n \text{ times}}
 &lt;p&gt;在ECC算法中，我们一般会先计算父群的秩&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;，找出它一个比较大的约数&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;，让&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;作为子群的秩，&lt;span class=&#34;math inline&#34;&gt;\(h = N / n\)&lt;/span&gt;称作这个子群的余因子（cofactor），再根据这个子群的秩去找这个子群的基点。一般来说，&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;会从&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;的质因子中选取，基本算法如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;计算父群的秩&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;的质因子&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;，从大到小排列进行试验&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;的质因子&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;，从大到小排列进行试验：&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;p&gt;计算余因子&lt;span class=&#34;math inline&#34;&gt;\(h = N / n\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;随机选择椭圆曲线上的一点&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
@@ -275,6 +275,137 @@ x &amp;amp;= (a-A)(b-B)^{-1} \mod n
 &lt;p&gt;理论上，Shor’s Algorithm的时间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron((\log n)^3)\)&lt;/span&gt;，空间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\log n)\)&lt;/span&gt;，但是目前的量子计算机还不能进行像Shor’s Algorithm这样复杂的运算。&lt;/p&gt;
 &lt;h3 id=&#34;ecc与rsa&#34;&gt;ECC与RSA&lt;/h3&gt;
 &lt;p&gt;RSA的密钥长度在数量级上大于ECC的密钥长度，这不仅意味着更多的内存占用，还意味着更慢的计算速度。这其中的原因在于，RSA算法的离散对数运算是快于ECC算法的离散对数运算（参考&lt;a href=&#34;https://en.wikipedia.org/wiki/General_number_field_sieve&#34;&gt;General number field sieve&lt;/a&gt;），这也就意味着RSA算法不得不采用更长的密钥来加大破解难度。更少的内存占用，更快的计算速度，这就是在已经有了成熟的RSA算法的情况下，ECC仍被提出的原因。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>单源最短路径问题</title>
+      <link>https://chunxy.github.io/blogs/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sat, 13 Aug 2022 10:44:21 +0000</pubDate>
+      <guid>https://chunxy.github.io/blogs/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;p&gt;其实各种算法问题，在《算法导论》中已经有了很精确的定义以及严谨的论证了。但是我个人认为，真正理解一个算法，除了严谨的符号运算之外，还要有一些粗颗粒的认知作为引子，从而能够在必要的时间串起整个论证过程。所以我写下这篇博客，也是对自己认知的检验，如果有幸能被更多人看到，那自然再好不过。&lt;/p&gt;
+&lt;p&gt;当然，减少严谨的符号运算，并不意味着完全不出现符号，因为算法本身就是对问题的抽象，剥掉这层抽象，就没办法进行架构在抽象之上的信息传递了。&lt;/p&gt;
+&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#问题描述及定义&#34;&gt;问题描述及定义&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#解决思路&#34;&gt;解决思路&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#正文之前&#34;&gt;正文之前&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#负权边&#34;&gt;负权边&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#负权环路&#34;&gt;负权环路&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#非负权环路&#34;&gt;非负权环路&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#放缩操作&#34;&gt;放缩操作&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#解决方法&#34;&gt;解决方法&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#bellman-ford算法&#34;&gt;Bellman-Ford算法&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#dijkstra算法&#34;&gt;Dijkstra算法&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#有向无环图中的最短路径&#34;&gt;有向无环图中的最短路径&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+
+&lt;p&gt;&lt;img src=&#34;sssp.png&#34;/&gt;&lt;/p&gt;
+&lt;h2 id=&#34;问题描述及定义&#34;&gt;问题描述及定义&lt;/h2&gt;
+&lt;p&gt;单源最短路径问题，旨在求解&lt;strong&gt;带权有向图&lt;/strong&gt;（weighted directed graph）中无向图可以很便捷的转换为带权有向图，从某个&lt;strong&gt;点&lt;/strong&gt;（vertex）出发，到图中任意一&lt;strong&gt;点&lt;/strong&gt;的最短距离，某些情况下，还需要找出这一条最短距离的&lt;strong&gt;路径&lt;/strong&gt;，称之为&lt;strong&gt;最短路径&lt;/strong&gt;，若无特殊指明且不致歧义，以下最短路径问题均指代单源最短路径问题。&lt;/p&gt;
+&lt;p&gt;更严格一些，设&lt;span class=&#34;math inline&#34;&gt;\(G(V, E)\)&lt;/span&gt;表示带权有向图，&lt;span class=&#34;math inline&#34;&gt;\(w : E \to \mathbb{R}\)&lt;/span&gt;表示&lt;strong&gt;权重&lt;/strong&gt;，&lt;strong&gt;路径&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(p = \left &amp;lt;v_0, v_1, ... v_k\right &amp;gt;\)&lt;/span&gt;的&lt;strong&gt;距离&lt;/strong&gt;定义为： &lt;span class=&#34;math display&#34;&gt;\[
+W(p) = \sum\limits_{i = 1}^k w(v_{k-1}, v_k)
+\]&lt;/span&gt; 其中， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather*}
+\forall i \in [0, k], v_i \in V \\
+\forall i \in [1, k], (v_{i-1}, v_i) \in E
+\end{gather*}
+\]&lt;/span&gt; 我们从某一点&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;（叫作&lt;strong&gt;起点&lt;/strong&gt;，或者源点）出发，设其到图中任意一&lt;strong&gt;点&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的最短路径距离为&lt;span class=&#34;math inline&#34;&gt;\(\delta(v)\)&lt;/span&gt;，&lt;strong&gt;单源最短路径&lt;/strong&gt;求解的就是任意一条从&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;到&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的路径&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(W(p) = \delta(v)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;为了方便，我们为每一个点&lt;span class=&#34;math inline&#34;&gt;\(v \in V\)&lt;/span&gt;设立一个中间变量&lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;，用&lt;span class=&#34;math inline&#34;&gt;\(v.d\)&lt;/span&gt;来表示求解过程中的最短距离的&lt;strong&gt;上界&lt;/strong&gt;，也就是说始终有&lt;span class=&#34;math inline&#34;&gt;\(\delta(v) \leq v.d\)&lt;/span&gt;，算法初始化时，&lt;span class=&#34;math inline&#34;&gt;\(v.d = +\infty\)&lt;/span&gt;，算法运行过程中，我们使&lt;span class=&#34;math inline&#34;&gt;\(v.d\)&lt;/span&gt;这个上界不断减小，直到&lt;span class=&#34;math inline&#34;&gt;\(v.d = \delta(v)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;解决思路&#34;&gt;解决思路&lt;/h2&gt;
+&lt;p&gt;最短路径问题（包括多源最短路径问题）都隐含着一个最优子结构（optimal substructure），即：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果是一条连接两个点的最短路径，那么的任意一条&lt;strong&gt;子路径&lt;/strong&gt;，一定也是连接其两个端点的最短路径。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这条性质可由反证法轻松得到，也将是后续寻找最短路径所需要理解的一个重要概念。&lt;/p&gt;
+&lt;h2 id=&#34;正文之前&#34;&gt;正文之前&lt;/h2&gt;
+&lt;h3 id=&#34;负权边&#34;&gt;负权边&lt;/h3&gt;
+&lt;p&gt;负权边指的是图中某些边的权重为负。虽然负权边不会对最短路径的最优子结构性质产生任何影响，但是后面我们会看到，负权边会导致Dijkstra算法失效。&lt;/p&gt;
+&lt;h3 id=&#34;负权环路&#34;&gt;负权环路&lt;/h3&gt;
+&lt;p&gt;负权环路指的是图中某些边构成一条&lt;strong&gt;环路&lt;/strong&gt;（loop），并且这条环路上的所有边的权重相加结果为负。&lt;/p&gt;
+&lt;p&gt;一旦从起点可以到达这个环路上的点，那么最短路径问题就变得没有意义了：我们可以不断重复地走这条环路，然后 “拐出” 环路，到达目标点，使得到达目标点的路径的权重变得任意小（arbitrarily short），所以也就不存在什么 “最短路径” 了。&lt;/p&gt;
+&lt;p&gt;一个成熟的算法应当能够检测出图中是否有可以由&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;到达的负权环路，如果没有，则算法照常进行；如果有，应予以通报。&lt;/p&gt;
+&lt;h3 id=&#34;非负权环路&#34;&gt;非负权环路&lt;/h3&gt;
+&lt;p&gt;负权环路指的是图中某些边构成一条&lt;strong&gt;环路&lt;/strong&gt;，并且这条环路上的所有边的权重相加的结果大于等于0。&lt;/p&gt;
+&lt;p&gt;负权环路会使最短路径问题没有意义，那么非负权环路呢？或者说，最短路径可不可以不包含非负权环路呢？&lt;/p&gt;
+&lt;p&gt;答案是可以，如果一条最短路径包含了非负权环路，我们大可将这段环路从路径中 “拿掉”，得到的路径和原路径可以达到同样的终点，并且新路径的权重不大于原路径的权重。&lt;/p&gt;
+&lt;h3 id=&#34;放缩操作&#34;&gt;放缩操作&lt;/h3&gt;
+&lt;p&gt;放缩操作的对象是边，对于边&lt;span class=&#34;math inline&#34;&gt;\((u,v)\)&lt;/span&gt;，放缩操作将检测能否优化点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的上界：&lt;/p&gt;
+&lt;pre class=&#34;pseudocode&#34;&gt;&lt;code&gt;RELAX(u, v, w):
+if v.d &amp;gt; u.d + w(u, v):
+    v.d = u.d + w(u, v)
+    v.predecessor = u&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;即如果路径&lt;span class=&#34;math inline&#34;&gt;\(s \sim u \to v\)&lt;/span&gt;的长度小于当前&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的上界，我们便可以借此优化&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的上界，并同时通过将的&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;前继设为&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;来记录这一次优化。&lt;/p&gt;
+&lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
+&lt;h3 id=&#34;bellman-ford算法&#34;&gt;Bellman-Ford算法&lt;/h3&gt;
+&lt;p&gt;Bellman-Ford算法是最短路径问题中最为 robust 的一种了，能处理负权边，能检测负权环路，不要求当前图为有向无环图。Bellman-Ford算法基本框架如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;原图中存在负权环路，返回 false，用以告知存在负权环路，最短路径问题无意义&lt;/li&gt;
+&lt;li&gt;原图中不存在负权环路，返回 true，用以告知最短路径问题已解决，并将结果蕴含在相应的数据结构中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&#34;pseudocode&#34;&gt;&lt;code&gt;// 算法主体
+for i = 1 to |V| - 1
+    for each edge (u, v) in E
+        RELAX(u, v, w)
+
+// 检测是否存在负权回路
+for each edge (u, v) in E
+    if v.d &amp;gt; u.d + w(u, v)
+        return false
+
+return true&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;算法主体&lt;/p&gt;
+&lt;p&gt;我们不妨先假设原图中不存在负权环路，先思考Bellman-Ford在解决最短路径问题时的正确性。&lt;/p&gt;
+&lt;p&gt;根据以上的讨论，任意一点的最短路径中不存在环，故任意一点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径最多由&lt;span class=&#34;math inline&#34;&gt;\(|V|-1\)&lt;/span&gt;条边，&lt;span class=&#34;math inline&#34;&gt;\(|V|\)&lt;/span&gt;个点构成。设： &lt;span class=&#34;math display&#34;&gt;\[
+p=\left &amp;lt;v_0,v_1, ... v_k\right &amp;gt;，其中v_0 = s，v_k = t
+\]&lt;/span&gt; 在寻找&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径时，任一&lt;span class=&#34;math inline&#34;&gt;\(v \in \{u | (u,t) \in E, u.d = \delta(s, u)\}\)&lt;/span&gt;（即此时&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的最短路径已找到，且点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;有一条连向点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的边） ，都是&lt;span class=&#34;math inline&#34;&gt;\(v_{k-1}\)&lt;/span&gt;（也就是&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;在其最短路径中的前继）的一个候选，我们需要证明的是，&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的实际前继能够在Bellman-Ford算法运行之下被发现，从而被真正地选为&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的前继。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;bellman.png&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;根据前面的讨论，路径&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;的前缀&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1\right &amp;gt;, \left &amp;lt; v_0, v_1, v_2\right &amp;gt;...\)&lt;/span&gt;分别是&lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ...\)&lt;/span&gt;的最短路径，在外侧第一轮for-loop后，边&lt;span class=&#34;math inline&#34;&gt;\((v_0, v_1)\)&lt;/span&gt;一定会被放缩，而由于&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1\right&amp;gt;\)&lt;/span&gt;实际是最短路径，故放缩之后，&lt;span class=&#34;math inline&#34;&gt;\(v_1.d = \delta(v_1)\)&lt;/span&gt;且将不再变化（因为这已经是最小）；在外侧第二轮for-loop后，边&lt;span class=&#34;math inline&#34;&gt;\((v_1, v_2)\)&lt;/span&gt;一定会被放缩，而由于&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1, v_2\right&amp;gt;\)&lt;/span&gt;实际是最短路径，故放缩之后，且将不再变化（因为这已经是最小）……如此放缩&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;轮后，我们便寻找到了&lt;span class=&#34;math inline&#34;&gt;\(v_1, ... v_k\)&lt;/span&gt;一众节点的最短路径以及其最短路径的前继。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;负权回路检测&lt;/p&gt;
+&lt;p&gt;至于负权回路检测部分的正确性，则不得不引入一些公式，但其实并不复杂。&lt;/p&gt;
+&lt;p&gt;假设原图存在可由到达的负权回路&lt;span class=&#34;math inline&#34;&gt;\(c = \left &amp;lt;v_0, v_1, ... v_k\right &amp;gt;, v_0 = v_k\)&lt;/span&gt;，其中，&lt;span class=&#34;math inline&#34;&gt;\(W(c) = \sum_{i=0}^{k-1}w(v_i, v_{i+1}) &amp;lt; 0\)&lt;/span&gt;。应用反证法，即假设最终不存在点&lt;span class=&#34;math inline&#34;&gt;\(u,v\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(v.d &amp;gt; u.d + w(u, v)\)&lt;/span&gt;，则有： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\forall i \in [1, k], v_i.d &amp;amp;\leq v_{i-1}.d + w(v_{i-1}, v_i) \\
+\sum_{i=1}^k v_i.d &amp;amp;\leq \sum_{i=1}^k (v_{i-1}.d + w(v_{i-1},v_i)) \\
+v_k.d + \sum_{i=1}^{k-1} v_i.d &amp;amp;\leq v_0.d + \sum_{i=1}^{k-1} v_{i}.d + \sum_{i=1}^k w(v_{i-1},v_i) \\
+0 &amp;amp;\leq \sum_{i=1}^k w(v_{i-1},v_i) = W(c)，与W(c) &amp;lt; 0矛盾
+\end{aligned}
+\]&lt;/span&gt; 故得证。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dijkstra算法&#34;&gt;Dijkstra算法&lt;/h3&gt;
+&lt;p&gt;Dijkstra算法相对于Bellman-Ford算法来说，可以在时间复杂度上有所优化，但是能够处理的情形也就少了一些：Dijkstra算法不能处理负权边（所以更不用提负权环路了）。Dijkstra算法基本框架如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;维持一个点集&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;，点集&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;由最短路径已确定的点构成；&lt;/li&gt;
+&lt;li&gt;不断向中加入能够确定最短路径的点，直到所有中的点都被加入。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当然，难点在于如何根据&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;找出能够确定最短路径的点。寻找到一个点的最短路径的必要条件是：在对到达这个点的最短路径中的前继节点进行放缩操作时，该前继节点的最短路径已经确定，而点集&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;，正是一个最短路径已经确定的点的集合。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;dijkstra.png&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\forall u \in S\)&lt;/span&gt;且&lt;span class=&#34;math inline&#34;&gt;\((u, t) \in E\)&lt;/span&gt;，对&lt;span class=&#34;math inline&#34;&gt;\((u, t)\)&lt;/span&gt;进行放缩后得到的值&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;，都是&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;的一个备选，&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中每加入一个点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;（非&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的点），若边&lt;span class=&#34;math inline&#34;&gt;\((v,t)\)&lt;/span&gt;存在，对该边进行放缩后，&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;的备选（也就是当前的&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;）就会多一个，而&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;自然是这些备选中最小的那个。而当&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径确定后，便可以将&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;加入到点集&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中，&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;不断扩展，直至最终包含整个点集&lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;，也就是所有点的最短路径都被找到。&lt;/p&gt;
+&lt;p&gt;之前提到过，Dijkstra算法不能处理负权边的情况，但上述 Dijkstra算法的讨论中似乎也没有涉及到负权边，为什么它就不能处理了呢？并且，我们只知道放缩后&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;的是&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;的备选，那么对&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;的放缩要进行到什么时候，才能确认&lt;span class=&#34;math inline&#34;&gt;\(t.d=\delta(t)\)&lt;/span&gt;呢？Dijkstra算法告诉我们，&lt;span class=&#34;math inline&#34;&gt;\(\forall w \in V - S\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(t.d \leq u.d\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(\delta(t) = t.d\)&lt;/span&gt;，也就是当&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的上界小于所有待确认点&lt;span class=&#34;math inline&#34;&gt;\((V-S)\)&lt;/span&gt;的上界时，我们就能确定&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径，也就能够将点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;加入到&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中。&lt;/p&gt;
+&lt;p&gt;为什么？如果没有负权边，我们可以会发现，&lt;span class=&#34;math inline&#34;&gt;\(\forall w \in V - S\)&lt;/span&gt;，其上界&lt;span class=&#34;math inline&#34;&gt;\(w.d\)&lt;/span&gt;总是由放缩操作得到的，所以它必然是单调递减的，而且它代表了一条具体的到达&lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;的路径。但为什么&lt;span class=&#34;math inline&#34;&gt;\(V - S\)&lt;/span&gt;中的所有点的上界的最小值，却能够成为某个特定点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径呢？&lt;/p&gt;
+&lt;p&gt;我们来看看&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的上界成为最小上界的之前之后都发生了什么，换言之，在此之前，或者在此之后，&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;有没有可能更小？之前是不会更小了，因为我们说过，&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;是单调递减的；那么之后呢？如果在的上界成为最小上界时，我们选取另外一个点&lt;span class=&#34;math inline&#34;&gt;\(v \in V - S\)&lt;/span&gt;，作为此轮加入&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;的点，在随后的操作中&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;会不会因为某个放缩操作继续减小呢？不会的。对于某个新加入的点&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\delta(u)\)&lt;/span&gt;必然不小于任何一个&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中的点的最短距离。此时，&lt;span class=&#34;math inline&#34;&gt;\(t.d &amp;lt; v.d = \delta(v)\)&lt;/span&gt;，而&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;如果在&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;之后加入&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;，必有&lt;span class=&#34;math inline&#34;&gt;\(\delta(t) &amp;gt;= \delta(v) &amp;gt; t.d\)&lt;/span&gt;，最短路径竟然比一条 “普通” 路径还要长！&lt;/p&gt;
+&lt;p&gt;而如果有负权边，则不能保证在后续的放缩操作中能够保持单调递减，故不能用以上论证来证明Dijkstra算法的正确性了，何况，这种情况下，强行使用Dijkstra算法，很轻易地就能举出反例来证明结果的错误，比如对下图以&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;为起点应用Dijkstra算法，就会得到错误结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;counterexample.png&#34;/&gt;&lt;/p&gt;
+&lt;h3 id=&#34;有向无环图中的最短路径&#34;&gt;有向无环图中的最短路径&lt;/h3&gt;
+&lt;p&gt;有向无环图，从定义上就排除了负权环路存在的可能，故所有点的最短路径必然存在，问题就在于如何寻找到这些最短路径。&lt;/p&gt;
+&lt;p&gt;我们当不能对其直接应用Dijkstra算法，因为有向无环图并不排除负权边存在的可能——那就直接用Bellman-Ford算法咯？&lt;/p&gt;
+&lt;p&gt;也不尽然。有向无环图显然只是Bellman-Ford算法能够处理的情况中的一小部分，并且这一小部分具有一些特殊的性质：无环。设任意一点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径为&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1, ... v_k\right &amp;gt;\)&lt;/span&gt;，其中&lt;span class=&#34;math inline&#34;&gt;\(v_0 = s，v_k = t\)&lt;/span&gt;，既然不存在环路，从起点&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;出发，只要沿着边走，一步一步放缩，必然是先放缩边&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1\right &amp;gt;\)&lt;/span&gt;并由此得到&lt;span class=&#34;math inline&#34;&gt;\(v_1.d = \delta(v_1)\)&lt;/span&gt;；然后放缩边&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_1, v_2\right &amp;gt;\)&lt;/span&gt;并由此得到&lt;span class=&#34;math inline&#34;&gt;\(v_2.d = \delta(v_2)\)&lt;/span&gt;……如此放缩&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;轮后，我们便按顺序寻找到了&lt;span class=&#34;math inline&#34;&gt;\(v_1, ... v_k\)&lt;/span&gt;一众节点的最短路径以及其最短路径的前继。&lt;/p&gt;
+&lt;p&gt;“沿着边走” 有一个专业名词，叫做按&lt;strong&gt;拓扑顺序&lt;/strong&gt;遍历。事实上，我们放缩过边&lt;span class=&#34;math inline&#34;&gt;\((v_{i-1}, v_i)\)&lt;/span&gt;之后，并不一定要马上放缩边&lt;span class=&#34;math inline&#34;&gt;\((v_i, v_{i+1})\)&lt;/span&gt;，只要我们能够保证&lt;span class=&#34;math inline&#34;&gt;\((v_k, v_{k+1})\)&lt;/span&gt;一定在&lt;span class=&#34;math inline&#34;&gt;\((v_{i-1}, v_i)\)&lt;/span&gt;之后放缩即可，至于中间是否穿插其他边的放缩操作，都无所谓。而拓扑顺序正是满足上述性质的一组顺序，为了得到一组拓扑顺序，我们需要对原图进行&lt;strong&gt;拓扑排序&lt;/strong&gt;，然后按照得到的拓扑顺序进行放缩。&lt;/p&gt;
+&lt;p&gt;如何进行拓扑排序呢？实际很简单，首先对原图进行&lt;strong&gt;深度优先遍历&lt;/strong&gt;（还有一种基于&lt;strong&gt;入度&lt;/strong&gt;的拓扑排序，此处不表），将完成遍历的点依次插入队列的首部，便可得到按照拓扑顺序排列的一个队列，拓扑顺序的实际意义是，如果边&lt;span class=&#34;math inline&#34;&gt;\((u,v)\)&lt;/span&gt;存在，那么对点&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;的访问必须先于对点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的访问。我们每次从队列中取出一个点，并对从其出发的所有边进行放缩操作即可。虽说拓扑顺序是对点的一个排序，但从该点出发的边和这个点是关联的，所以，先访问点，也就相当于先访问从这个点出发的边了，我们先&lt;span class=&#34;math inline&#34;&gt;\(v_{i}\)&lt;/span&gt;访问，也就必然先于&lt;span class=&#34;math inline&#34;&gt;\((v_i,v_{i+1})\)&lt;/span&gt;放缩&lt;span class=&#34;math inline&#34;&gt;\((v_{i-1},v_i)\)&lt;/span&gt;。&lt;/p&gt;</description>
     </item>
     
   </channel>

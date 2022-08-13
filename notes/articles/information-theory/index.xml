@@ -25,7 +25,7 @@ H(p) = -\mathrm{E}_{x \sim p}\log p(x)
 H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x
 \]&lt;/span&gt; This is actually the &lt;strong&gt;Differential Entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt; $p(x) =  $ can be derived as follows: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/statistics/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt; &lt;span class=&#34;math inline&#34;&gt;\(p(x) = \frac{e^{-\frac 1 2 (x-\mu)^T \Sigma^{-1}(x-\mu)}}{\sqrt{|2\pi\Sigma|}}\)&lt;/span&gt; can be derived as follows: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
 &amp;amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2 \log |2\pi\Sigma| \\
@@ -82,16 +82,14 @@ H(p||q) = -\mathrm{E}_{x \sim p} \log q(x)
 &lt;p&gt;Mutual Information of &lt;strong&gt;two random variables&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
 \]&lt;/span&gt; By its definition, &lt;span class=&#34;math display&#34;&gt;\[
-I(X;Y) = I(Y;X)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \otimes p_Y)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+I(X;Y) = I(Y;X) \\
+I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \otimes p_Y) \\
 I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
+\end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;To better illustrate the formula of mutual information between two &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/&#34;&gt;Gaussian&lt;/a&gt;-distributed random variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. We can concatenate them to form, say an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, which is also Gaussian-distributed. Then the mutual information between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; can be computed as: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;To better illustrate the formula of mutual information between two &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/statistics/gaussian-distribution/&#34;&gt;Gaussian&lt;/a&gt;-distributed random variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. We can concatenate them to form, say an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, which is also Gaussian-distributed. Then the mutual information between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; can be computed as: &lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
 \]&lt;/span&gt; The key to the derivation is that mutual information is the KL-divergence between the joint distribution and the product of the marginal distributions.&lt;/p&gt;
 &lt;p&gt;The joint can be described as &lt;span class=&#34;math display&#34;&gt;\[
@@ -127,6 +125,70 @@ I&amp;amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
 &amp;amp;= \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;kronecker-gaussian&#34;&gt;Kronecker Gaussian&lt;/h4&gt;
+&lt;p&gt;Consider the multivariate Gaussian distribution random vector &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt; of the same length &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;. Suppose they are both independent internally and they have the component-wise correlation &lt;span class=&#34;math inline&#34;&gt;\(corr(X_i, Y_j) = \delta_{ij} \rho\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\rho \in (-1, 1)\)&lt;/span&gt; (open to ensure the covariance matrix is invertible), &lt;span class=&#34;math inline&#34;&gt;\(1 \le i, j \le k\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\delta_{ij}\)&lt;/span&gt; is the Kronecker’s delta: &lt;span class=&#34;math display&#34;&gt;\[
+\delta_{ij} = 
+\begin{cases}
+0, &amp;amp; i \ne j \\
+1, &amp;amp; i = j
+\end{cases}
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(Z_k\)&lt;/span&gt; be the vector concatenated by &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt;. It is easy to draw its covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_{Z_k}\)&lt;/span&gt; like &lt;span class=&#34;math display&#34;&gt;\[
+\begin{pmatrix}
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+\end{pmatrix}
+\]&lt;/span&gt; The mutual information between the &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt; can be calculated as &lt;span class=&#34;math display&#34;&gt;\[
+I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det \Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
+\]&lt;/span&gt; The problem remains as how to compute &lt;span class=&#34;math inline&#34;&gt;\(\det \Sigma_{Z_{k}}\)&lt;/span&gt;. Applying the Laplacian expansion along the first column, we find we have to deal with the determinants of following two matrices (dashed lines indicate the row/column to be deleted): $$ &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
+A_k = \underbrace{
+\left( \begin{array}{c:ccccccc}
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\hdashline
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+\end{array} \right)
+}_\text{$2k$ columns},
+
+B_k = \underbrace{
+\left( \begin{array}{c:ccccccc}
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
+\hdashline
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\hdashline
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+\end{array} \right)
+}_\text{$2k$ columns}, \\
+
+\det Z_k =
+\begin{cases}
+\det A_k - \rho \det B_k, &amp;amp; \text{$k$ is odd} \\
+\det A_k + \rho \det B_k, &amp;amp; \text{$k$ is even} \\
+\end{cases} \Rightarrow \det Z_k = \det A_k + (-1)^k \rho \det B_k
+\end{gather}\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+Applying the Laplacian expansion along the $k$-th row of $A_k$, we find
+\]&lt;/span&gt; A_k = &lt;em&gt; = Z&lt;/em&gt;{k-1} &lt;span class=&#34;math display&#34;&gt;\[
+Applying the Laplacian expansion along the first row of $B_k$, we find
+\]&lt;/span&gt; B_k = (-1)^k  &lt;em&gt; = (-1)^k Z&lt;/em&gt;{k-1} &lt;span class=&#34;math display&#34;&gt;\[
+In all, $\det Z_k = \det Z_k - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}$. Because $\det Z_1 = 1 - \rho^2$, we finally have
+\]&lt;/span&gt; Z_k = (1 - &lt;sup&gt;2)&lt;/sup&gt;k &lt;span class=&#34;math display&#34;&gt;\[
+Therefore,
+\]&lt;/span&gt; I(X;Y) = - 2 _{Z_k} = -k 2 (1 - ^2) $$&lt;/p&gt;
 &lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr&#34;&gt;Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.math.nyu.edu/~kleeman/infolect7.pdf&#34;&gt;Information Theory and Predictability Lecture 7: Gaussian Case&lt;/a&gt;&lt;/p&gt;
@@ -153,7 +215,7 @@ D_\text{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = 
 &lt;p&gt;One property of KL-divergence is &lt;span class=&#34;math display&#34;&gt;\[
 D_\text{KL}(p || q) = \sup_{T: \Omega \to \R} \E_{p} [T] - \log (\E_q[e^T])
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The proof is as follows. Given a function &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;, construct the Gibbs distribution &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(g(x) = \frac{q(x)e^{T(x)}}{Z}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(Z = \E_{q(x)} e^{T(x)}\)&lt;/span&gt;. Then &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The proof is as follows. Given a distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; and a function &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;, construct the Gibbs distribution &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(g(x) = \frac{q(x)e^{T(x)}}{Z}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(Z = \E_{q(x)} e^{T(x)}\)&lt;/span&gt;. Then &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \E&amp;amp;_{p(x)} T(x) - \log Z = \E_{p(x)} [T(x) - \log Z] \\
 &amp;amp;= \E_{p(x)} [\log e^{T(x)} - \log \E_{q(x)} e^{T(x)}] \\
@@ -169,7 +231,7 @@ D_\text{KL}(p || q) = \sup_{T: \Omega \to \R} \E_{p} [T] - \log (\E_q[e^T])
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt;. Then the KL-divergence between them can be formulated as: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/statistics/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt;. Then the KL-divergence between them can be formulated as: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 D_\text{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_X(x) \log [
     \sqrt \frac{|\Sigma_X|}{|\Sigma_Y|} 

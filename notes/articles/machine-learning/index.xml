@@ -19,31 +19,108 @@
       <guid>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</guid>
       <description>
 
-&lt;p&gt;This article lists out miscellaneous points besides the machine learning algorithms that are worth noting.&lt;/p&gt;
-&lt;h3 id=&#34;data-and-feature&#34;&gt;Data and Feature&lt;/h3&gt;
+&lt;p&gt;This post lists out various topics under the machine learning subject.&lt;/p&gt;
+&lt;h3 id=&#34;datafeature&#34;&gt;Data/Feature&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Data splitting method&lt;/li&gt;
-&lt;li&gt;Feature extraction&lt;/li&gt;
-&lt;li&gt;Feature normalization&lt;/li&gt;
-&lt;li&gt;Imbalanced data&lt;/li&gt;
+&lt;li&gt;data speciation
+&lt;ul&gt;
+&lt;li&gt;numbers&lt;/li&gt;
+&lt;li&gt;texts&lt;/li&gt;
+&lt;li&gt;images&lt;/li&gt;
+&lt;li&gt;videos&lt;/li&gt;
+&lt;li&gt;audios&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;data sampling
+&lt;ul&gt;
+&lt;li&gt;bootstrap aggregation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;data cleaning&lt;/li&gt;
+&lt;li&gt;imbalanced data&lt;/li&gt;
+&lt;li&gt;data augmentation&lt;/li&gt;
+&lt;li&gt;data splitting&lt;/li&gt;
+&lt;li&gt;feature extraction/engineering
+&lt;ul&gt;
+&lt;li&gt;domain expertise&lt;/li&gt;
+&lt;li&gt;statistics&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;feature normalization&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;model&#34;&gt;Model&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Discriminative and generative model&lt;/li&gt;
-&lt;li&gt;Regularization and overfitting&lt;/li&gt;
-&lt;li&gt;Multi-class classification with binary classifier&lt;/li&gt;
-&lt;li&gt;Unsupervised learning
+&lt;li&gt;supervised vs. unsupervised
 &lt;ul&gt;
-&lt;li&gt;Discover inherent properties (latent variables) in the data&lt;/li&gt;
-&lt;li&gt;Including:
+&lt;li&gt;unsupervised learning
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/clustering/&#34;&gt;Clustering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/&#34;&gt;Dimension reduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Manifold embedding&lt;/li&gt;
+&lt;li&gt;discovers inherent properties (latent variables) in the data&lt;/li&gt;
+&lt;li&gt;includes:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/clustering/&#34;&gt;clustering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/&#34;&gt;dimension reduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;manifold embedding&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;discriminative vs. generative&lt;/li&gt;
+&lt;li&gt;classification vs. regression
+&lt;ul&gt;
+&lt;li&gt;from classification model to regression model&lt;/li&gt;
+&lt;li&gt;from binary classification to multi-class classification&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;linear vs. non-linear&lt;/li&gt;
+&lt;li&gt;boosting method
+&lt;ul&gt;
+&lt;li&gt;ensemble method&lt;/li&gt;
+&lt;li&gt;Adaboost&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;regularization and overfitting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;training criterion&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cost function
+&lt;ul&gt;
+&lt;li&gt;mean squared error&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;cross entropy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;impurity
+&lt;ul&gt;
+&lt;li&gt;Gini index&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/entropy/&#34;&gt;entropy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;testing criterion&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;confusion matrix&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;positive_pred&lt;/th&gt;
+&lt;th&gt;negative_pred&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;positive_real&lt;/td&gt;
+&lt;td&gt;TP&lt;/td&gt;
+&lt;td&gt;FN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;negative_real&lt;/td&gt;
+&lt;td&gt;FP&lt;/td&gt;
+&lt;td&gt;TN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;accuracy&lt;/li&gt;
+&lt;li&gt;precision&lt;/li&gt;
+&lt;li&gt;recall&lt;/li&gt;
+&lt;li&gt;F-score&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h3&gt;
 
 
 </description>

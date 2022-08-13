@@ -20,7 +20,7 @@
       <description>
 
 &lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
-&lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue.&lt;/p&gt;
+&lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue. Note that by definition, &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; is an eigenvalue of any square matrix. However, &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; is just too trivial that people exclude it from the eigen discussion.&lt;/p&gt;
 &lt;h3 id=&#34;similarity&#34;&gt;Similarity&lt;/h3&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrices, then &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is similar to &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; if there is an invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(PAP^{-1} = B\)&lt;/span&gt;, or equivalently &lt;span class=&#34;math inline&#34;&gt;\(P^{-1}BP = A\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are similar, then they have the same characteristic polynomial and hence then the same eigenvalues: &lt;span class=&#34;math display&#34;&gt;\[
@@ -35,37 +35,31 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;independence-between-eigenvectors&#34;&gt;Independence between Eigenvectors&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Theorem&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Theorem&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are the eigenvectors corresponding to the distinct eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, ..., \lambda_r\)&lt;/span&gt; of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_r\}\)&lt;/span&gt; is linearly independent.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
+&lt;p&gt;Suppose instead these vectors are dependent. Let &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; be the least index such that &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is a linear combination of previous vectors. Then there exists scalars &lt;span class=&#34;math inline&#34;&gt;\(c_1, c_2, ..., c_p\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+  \label{lincom} c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1}
+  \]&lt;/span&gt; Multiply both sides with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; to obtain &lt;span class=&#34;math display&#34;&gt;\[
+  c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1}
+  \]&lt;/span&gt; Multiply both sides of &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda_{p+1}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+  c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1}
+  \]&lt;/span&gt; Subtract &lt;span class=&#34;math inline&#34;&gt;\((3)\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\((2)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+  \label{diff} c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0
+  \]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_p\}\)&lt;/span&gt; is independent, the weights in &lt;span class=&#34;math inline&#34;&gt;\(\eqref{diff}\)&lt;/span&gt; are all zeros. None of &lt;span class=&#34;math inline&#34;&gt;\((\lambda_i - \lambda_{p+1})\)&lt;/span&gt; is zero, so &lt;span class=&#34;math inline&#34;&gt;\(c_i = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(i = 1,...p\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; says &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which is impossible. Q.E.D.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Note&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt;, as the eigenvector, should be nonzero so that &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; can hold even for &lt;span class=&#34;math inline&#34;&gt;\(p=1\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are the eigenvectors corresponding to the distinct eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, ..., \lambda_r\)&lt;/span&gt; of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_r\}\)&lt;/span&gt; is linearly independent.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Proof&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Suppose instead these vectors are dependent. Let &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; be the least index such that &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is a linear combination of previous vectors. Then there exists scalars &lt;span class=&#34;math inline&#34;&gt;\(c_1, c_2, ..., c_r\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
-c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1}
-\]&lt;/span&gt; Multiply both sides with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; to obtain &lt;span class=&#34;math display&#34;&gt;\[
-c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1}
-\]&lt;/span&gt; Multiply both sides of &lt;span class=&#34;math inline&#34;&gt;\((1)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda_{p+1}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1}
-\]&lt;/span&gt; Subtract &lt;span class=&#34;math inline&#34;&gt;\((3)\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\((2)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0
-\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_p\}\)&lt;/span&gt; is independent, the weights in &lt;span class=&#34;math inline&#34;&gt;\((4)\)&lt;/span&gt; are all zero. None of &lt;span class=&#34;math inline&#34;&gt;\((\lambda_i - \lambda_{p+1})\)&lt;/span&gt; is zero, so &lt;span class=&#34;math inline&#34;&gt;\(c_i = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(i = 1,...p\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\((1)\)&lt;/span&gt; says &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which is impossible.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Note&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; is nonzero so that equation (1) can hold&lt;/p&gt;
 &lt;h3 id=&#34;diagonalization&#34;&gt;Diagonalization&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Theorem&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has n independent eigenvectors.&lt;/p&gt;
-&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Theorem&lt;/p&gt;
+&lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has n independent eigenvectors.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Necessity&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(AP = PD\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(P = [\rm p_1, \rm p_2, ..., \rm p_N]\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; is a diagonal matrix, &lt;span class=&#34;math display&#34;&gt;\[
 AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22}\mathrm p_2, ..., D_{NN}\mathrm p_N]
-\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent eigenvectors&lt;/p&gt;
+\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;’s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent eigenvectors&lt;/p&gt;
 &lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the diagonal matrix filled with corresponding eigenvalues.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Sufficiency&lt;/p&gt;
 &lt;p&gt;Easy to show.&lt;/p&gt;&lt;/li&gt;

@@ -786,7 +786,7 @@ nP = \underbrace{P + \dots + P}_{n \text{ times}}
 <p>在ECC算法中，我们一般会先计算父群的秩<span class="math inline">\(N\)</span>，找出它一个比较大的约数<span class="math inline">\(n\)</span>，让<span class="math inline">\(n\)</span>作为子群的秩，<span class="math inline">\(h = N / n\)</span>称作这个子群的余因子（cofactor），再根据这个子群的秩去找这个子群的基点。一般来说，<span class="math inline">\(n\)</span>会从<span class="math inline">\(N\)</span>的质因子中选取，基本算法如下：</p>
 <ul>
 <li><p>计算父群的秩<span class="math inline">\(N\)</span>；</p></li>
-<li><p>计算<span class="math inline">\(N\)</span>的质因子<span class="math inline">\(n\)</span>，从大到小排列进行试验</p>
+<li><p>计算<span class="math inline">\(N\)</span>的质因子<span class="math inline">\(n\)</span>，从大到小排列进行试验：</p>
 <ol type="1">
 <li><p>计算余因子<span class="math inline">\(h = N / n\)</span>；</p></li>
 <li><p>随机选择椭圆曲线上的一点<span class="math inline">\(P\)</span>；</p></li>
