@@ -7,7 +7,7 @@
     <description>概率论与数理统计</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
     <image>
-      <url>https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png</url>
+      <url>https://chunxy.github.io/media/sharing.png</url>
       <title>概率论与数理统计</title>
       <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</link>
     </image>
@@ -456,14 +456,14 @@ P(|X-\E(X)| \ge \epsilon) &amp;amp;= \mathop \sum_{|x - \E(x)| \ge \epsilon} P(x
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是证明其它大数定理的基础工具。&lt;/p&gt;
-&lt;p&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD ### 依概率收敛&lt;/p&gt;
+&lt;h3 id=&#34;依概率收敛&#34;&gt;依概率收敛&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成。对于一个普通数列&lt;span class=&#34;math inline&#34;&gt;\(\{x_n\}\)&lt;/span&gt;来说，若其收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，则当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;充分大时，&lt;span class=&#34;math inline&#34;&gt;\(x_n\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离可以达到任意小。而随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;的极限却不能按照这样定义，因为&lt;span class=&#34;math inline&#34;&gt;\(X_n\)&lt;/span&gt;取值不确定，不可能和某个数字&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离任意小。&lt;/p&gt;
 &lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会&lt;strong&gt;依概率收敛&lt;/strong&gt;到该事件的概率。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots,\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1\)&lt;/span&gt;，则称该随机变量序列依概率收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{P}{\to} c\)&lt;/span&gt;。或者，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;======= &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; raw ======= &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; notes ## 弱大数定律（Weak Law of large numbers）&lt;/p&gt;
+&lt;h2 id=&#34;弱大数定律weak-law-of-large-numbers&#34;&gt;弱大数定律（Weak Law of large numbers）&lt;/h2&gt;
 &lt;h3 id=&#34;chebyshev大数定律&#34;&gt;Chebyshev大数定律&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定理&lt;/p&gt;

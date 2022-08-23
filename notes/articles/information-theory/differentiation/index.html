@@ -236,6 +236,45 @@ Both Conditional Entropy and Cross Entropy would better be applied on discrete r
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
   
 
 
@@ -271,7 +310,6 @@ Both Conditional Entropy and Cross Entropy would better be applied on discrete r
   
   
     
-    
   
   
 
@@ -280,18 +318,15 @@ Both Conditional Entropy and Cross Entropy would better be applied on discrete r
     
     
   
-  <meta property="twitter:card" content="summary" />
-  
-    <meta property="twitter:site" content="@wowchemy" />
-    <meta property="twitter:creator" content="@wowchemy" />
+  <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/differentiation/" />
   <meta property="og:title" content="Differentiation | Chunxy&#39; Website" />
   <meta property="og:description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
 Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Both Conditional Entropy and Cross Entropy would better be applied on discrete random variables." /><meta property="og:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" />
-    <meta property="twitter:image" content="https://chunxy.github.io/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+Both Conditional Entropy and Cross Entropy would better be applied on discrete random variables." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta property="article:published_time" content="2022-04-22T21:13:30&#43;00:00" />
