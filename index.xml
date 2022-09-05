@@ -5,7 +5,7 @@
     <link>https://chunxy.github.io/</link>
       <atom:link href="https://chunxy.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Chunxy&#39; Website</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 13 Aug 2022 10:44:21 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 11 Aug 2022 17:52:02 +0000</lastBuildDate>
     <image>
       <url>https://chunxy.github.io/media/sharing.png</url>
       <title>Chunxy&#39; Website</title>
@@ -722,7 +722,7 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
     <item>
       <title>单源最短路径问题</title>
       <link>https://chunxy.github.io/blogs/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Sat, 13 Aug 2022 10:44:21 +0000</pubDate>
+      <pubDate>Mon, 21 Jun 2021 09:33:12 +0000</pubDate>
       <guid>https://chunxy.github.io/blogs/%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;p&gt;其实各种算法问题，在《算法导论》中已经有了很精确的定义以及严谨的论证了。但是我个人认为，真正理解一个算法，除了严谨的符号运算之外，还要有一些粗颗粒的认知作为引子，从而能够在必要的时间串起整个论证过程。所以我写下这篇博客，也是对自己认知的检验，如果有幸能被更多人看到，那自然再好不过。&lt;/p&gt;
 &lt;p&gt;当然，减少严谨的符号运算，并不意味着完全不出现符号，因为算法本身就是对问题的抽象，剥掉这层抽象，就没办法进行架构在抽象之上的信息传递了。&lt;/p&gt;
