@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Standard Form Standard form of the optimization problem is \[ \begin{aligned} &amp;\inf f_0(x) \\ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\ &amp;h_i(x) = 0, i = 1,\dots,s \\ \end{aligned} \] Denote the feasible set of \(x\) that satisfies all the requirements in original problem as \(\mathcal X\)." />
+  <meta name="description" content="Standard Form The standard form of the Lagrange Multiplier optimization problem is \[ \begin{aligned} &amp;\inf f_0(x) \\ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\ &amp;h_i(x) = 0, i = 1,\dots,s \\ \end{aligned} \] Denote the feasible set of \(x\) that satisfies all the requirements in original problem as \(\mathcal X\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/" />
   <meta property="og:title" content="Lagrange Multiplier | Chunxy&#39; Website" />
-  <meta property="og:description" content="Standard Form Standard form of the optimization problem is \[ \begin{aligned} &amp;\inf f_0(x) \\ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\ &amp;h_i(x) = 0, i = 1,\dots,s \\ \end{aligned} \] Denote the feasible set of \(x\) that satisfies all the requirements in original problem as \(\mathcal X\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Standard Form The standard form of the Lagrange Multiplier optimization problem is \[ \begin{aligned} &amp;\inf f_0(x) \\ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\ &amp;h_i(x) = 0, i = 1,\dots,s \\ \end{aligned} \] Denote the feasible set of \(x\) that satisfies all the requirements in original problem as \(\mathcal X\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1267,6 +1267,10 @@
 
   <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1389,20 +1393,20 @@
             
 
 <h2 id="standard-form">Standard Form</h2>
-<p>Standard form of the optimization problem is <span class="math display">\[
+<p>The standard form of the Lagrange Multiplier optimization problem is <span class="math display">\[
 \begin{aligned}
 &amp;\inf f_0(x) \\
 s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\
 &amp;h_i(x) = 0, i = 1,\dots,s \\
 \end{aligned}
-\]</span> Denote the feasible set of <span class="math inline">\(x\)</span> that satisfies all the requirements in original problem as <span class="math inline">\(\mathcal X\)</span>.</p>
-<p>The Lagrangian function is <span class="math inline">\(L:\R^N \times \R^r \times \R^s \mapsto \R\)</span> with <span class="math inline">\(dom(L) = \mathcal X \times \R^r \times \R^s\)</span>: <span class="math display">\[
+\]</span> Denote the feasible set of <span class="math inline">\(x\)</span> that satisfies all the requirements in original problem as <span class="math inline">\(\mathcal X\)</span>. Then the Lagrangian function is <span class="math inline">\(L:\R^n \times \R^r \times \R^s \mapsto \R\)</span> with <span class="math inline">\(dom(L) = \mathcal X \times \R^r \times \R^s\)</span>:</p>
+<p><span class="math display">\[
 L(x, \lambda, \mu) = f_0(x) + \sum_{i=1}^r\lambda_if_i(x) + \sum_{i=1}^s\mu_ih_i(x)
 \]</span> Define the function <span class="math inline">\(P: \mathcal X \mapsto \R\)</span> as <span class="math display">\[
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
 \]</span> The primal problem is <span class="math display">\[
 \inf_{x \in \mathcal X} P(x)
-\]</span> <span class="math inline">\(P(x) =f_0(x)\)</span> on <span class="math inline">\(\mathcal X\)</span>. Thus the primal problem is equivalent to the original problem. Denote its optimal value as <span class="math inline">\(p^\star\)</span>.</p>
+\]</span> It is easy to derive <span class="math inline">\(P(x) =f_0(x)\)</span> on <span class="math inline">\(\mathcal X\)</span>. Thus the primal problem is equivalent to the original problem. Denote its optimal value as <span class="math inline">\(p^\star\)</span>.</p>
 <p>Define the Lagrangian dual function <span class="math inline">\(D: \R^r \times \R^s \mapsto \R\)</span> as <span class="math display">\[
 D(\lambda, \mu) = \inf_{x \in \mathcal X}L(x, \lambda, \mu)
 \]</span> The Lagrangian dual problem is <span class="math display">\[
@@ -1414,32 +1418,34 @@ D(\lambda, \mu) = \inf_{x \in \mathcal X}L(x, \lambda, \mu)
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu) \ge L(x,\lambda,\mu) \ge \inf_{x \in \mathcal X}L(x, \lambda, \mu) =D (\lambda, \mu)
 \]</span> Therefore <span class="math inline">\(p^\star \ge d^\star\)</span>.</p></li>
 </ul>
-<p><span class="math inline">\(p^\star \ge d^\star\)</span> is condition called weak duality because it always holds. <span class="math inline">\(p^\star = d^\star\)</span> is called a strong duality because it does not hold in general. But it does hold in general in <a href="/notes/articles/optimization/convex-optimization/">convex optimization</a> where <span class="math inline">\(f_1,\dots,f_r\)</span> are convex and <span class="math inline">\(h_1,\dots,h_s\)</span> are affine transformations of <span class="math inline">\(x\)</span>, i.e. in the form of <span class="math inline">\(Ax + b\)</span>.</p>
 <h3 id="strong-duality">Strong Duality</h3>
+<p><span class="math inline">\(p^\star \ge d^\star\)</span> is called weak duality because it always holds. <span class="math inline">\(p^\star = d^\star\)</span> is called a strong duality because it does not hold in general. But it does hold in general in <a href="/notes/articles/optimization/convex-optimization/">convex optimization</a> where <span class="math inline">\(f_1,\dots,f_r\)</span> are convex and <span class="math inline">\(h_1,\dots,h_s\)</span> are affine transformations of <span class="math inline">\(x\)</span>, i.e. in the form of <span class="math inline">\(Ax + b\)</span>.</p>
 <p>Assume a strong duality holds, <span class="math inline">\(x^\star\)</span> is the primal optima, <span class="math inline">\((\lambda^\star, \mu^\star)\)</span> is the dual optima, then <span class="math display">\[
 f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) \\
-\]</span> <span class="math display">\[
-\begin{gather}
+\]</span></p>
+<ul>
+<li><p>Proof <span class="math display">\[
+\begin{gathered}
 f_0(x^\star) = D(\lambda^\star, \mu^\star) = \inf_{x \in \mathcal X}L(x,\lambda^\star,\mu^\star) \le L(x^\star,\lambda^\star,\mu^\star) \\
 f_0(x^\star) = P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x^\star,\lambda,\mu) \ge L(x^\star,\lambda^\star,\mu^\star) \\
 L(x^\star,\lambda^\star,\mu^\star) \le f_0(x^\star) \le L(x^\star,\lambda^\star,\mu^\star)
-\end{gather}
+\end{gathered}
 \]</span></p>
 <p>Therefore, <span class="math display">\[
 f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\star,\mu^\star)
-\]</span></p>
+\]</span></p></li>
+</ul>
 <h4 id="karush-kuhn-tucker-conditions">Karush-Kuhn-Tucker Conditions</h4>
 <p>In standard optimization problem, KKT conditions refer to the below four:</p>
 <ul>
 <li><p>Primal Constraints: <span class="math inline">\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)</span></p></li>
 <li><p>Dual Constraints: <span class="math inline">\(\lambda_1,\dots,\lambda_r \ge 0\)</span></p></li>
 <li><p>Complementary Constraints: <span class="math inline">\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)</span></p></li>
-<li><p>Gradient of Lagrangian w.r.t <span class="math inline">\(x\)</span> vanishes: <span class="math display">\[
+<li><p>Gradient of Lagrangian w.r.t. <span class="math inline">\(x\)</span> vanishes: <span class="math display">\[
 \nabla f_0(x) + \sum_{i=1}^r\lambda_i\nabla f_i(x) + \sum_{i=1}^s\mu_i\nabla h_i(x) = 0
 \]</span></p></li>
 </ul>
-<p>If the strong duality holds and <span class="math inline">\((x,\lambda,\mu)\)</span> is the optima, they must satisfy the KKT conditions.</p>
-<p>Note that KKT conditions do not imply the existence of a strong duality or optima point.</p>
+<p>If the strong duality holds and <span class="math inline">\((x,\lambda,\mu)\)</span> is the optima, they must satisfy the KKT conditions. Note that KKT conditions do not imply the existence of a strong duality or optima point.</p>
 
 
 

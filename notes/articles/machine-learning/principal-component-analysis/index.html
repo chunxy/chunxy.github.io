@@ -1267,6 +1267,10 @@
 
   <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1392,11 +1396,12 @@
 \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^Tx^{(i)} = v^T\bar x
 \]</span> Under the assumption that data is pre-centered so that <span class="math inline">\(\bar x = \frac{1}{M}\sum_{i=1}^Mx^{(i)} = 0\)</span>: <span class="math display">\[
 \begin{aligned}
-\frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2 &amp;= \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - v^T\bar x)^2 \\
+&amp;\frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2 = \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - v^T\bar x)^2 \\
 &amp;= \frac{1}{M}\sum_{i=1}^Mv^T(x^{(i)} - \bar x)(x^{(i)} - \bar x)^Tv \\
 &amp;= \frac{1}{M}v^T(\sum_{i=1}^M(x^{(i)} - \bar x)(x^{(i)} - \bar x)^T)v \\
 &amp;= \frac{1}{M}v^T(\sum_{i=1}^Mx^{(i)}(x^{(i)})^T)v \\
-&amp;= \frac{1}{M}v^TXX^Tv \text{ (by column-row expansion)} \\
+&amp;\Downarrow_{\text{by column-row expansion}} \\
+&amp;= \frac{1}{M}v^TXX^Tv \\
 \end{aligned}
 \]</span> Suppose we want to identify the direction <span class="math inline">\(v\)</span> of the maximum variance, we can formulate the problem as <span class="math display">\[
 \begin{gather}
@@ -1407,11 +1412,11 @@ s.t.\quad v^Tv = 1
 L(v, \lambda) = v^T\Sigma v + \lambda (1 - v^Tv)
 \]</span> We represent the constraint as <span class="math inline">\(1 - v^Tv = 0\)</span> instead of <span class="math inline">\(v^Tv - 1 = 0\)</span>. The reason is if we take derivative w.r.t <span class="math inline">\(v\)</span>, we have <span class="math display">\[
 \frac{\partial L}{\partial v} = 2\Sigma v - 2\lambda v
-\]</span> which is more intuitive than <span class="math inline">\(\frac{\partial L}{\partial v} = 2\Sigma v + 2\lambda v\)</span>.</p>
-<p>Let the derivative be <span class="math inline">\(0\)</span> to have <span class="math inline">\(\Sigma v = \lambda v\)</span>. Since <span class="math inline">\(v^tv = 1\)</span>, <span class="math inline">\(v \ne 0\)</span>, which means the optimal solution <span class="math inline">\((\lambda^*, v^*)\)</span> must be a pair of nontrivial eigen of <span class="math inline">\(\Sigma\)</span>: <span class="math display">\[
-v^* = v_i, \lambda^* = \lambda_i
-\]</span> where <span class="math inline">\(v_i\)</span> is rescaled to <span class="math inline">\(v_i^Tv_i = 1\)</span>.</p>
-<p>Substituting the result back to the objective to give <span class="math display">\[
+\]</span> which is more intuitive than <span class="math inline">\(\frac{\partial L}{\partial v} = 2\Sigma v + 2\lambda v\)</span>. Let the derivative be <span class="math inline">\(0\)</span> to have <span class="math inline">\(\Sigma v = \lambda v\)</span>. Since <span class="math inline">\(v^tv = 1\)</span>, <span class="math inline">\(v \ne 0\)</span>, this means the optimal solution <span class="math inline">\((\lambda^\star, v^\star)\)</span> must be a pair of eigenvalue of eigenvector of <span class="math inline">\(\Sigma\)</span>:</p>
+<p><span class="math display">\[
+v^\star = v_i, \lambda^\star = \lambda_i
+\]</span> where <span class="math inline">\(v_i\)</span> is rescaled such that <span class="math inline">\(v_i^Tv_i = 1\)</span>. Substitute the result back to the objective to give</p>
+<p><span class="math display">\[
 \begin{aligned}
 \frac{1}{M}v^TXX^Tv &amp;= (v_i)^T\Sigma v_i \\
 &amp;= (v_i)^T\lambda_iv_i \\
@@ -1431,32 +1436,37 @@ v^* = v_i, \lambda^* = \lambda_i
 \frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^T\phi (x^{(i)}) = v^T\bar\phi(x)
 \]</span> Under the assumption that data is pre-centered so that <span class="math inline">\(\bar\phi(x) = \frac{1}{M}\sum_{i=1}^M\phi(x^{(i)}) = 0\)</span>: <span class="math display">\[
 \begin{aligned}
-\frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2 &amp;= \frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - v^T\bar\phi(x))^2 \\
+&amp;\frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2 = \frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - v^T\bar\phi(x))^2 \\
 &amp;= \frac{1}{M}\sum_{i=1}^Mv^T(\phi(x^{(i)}) - \bar{\phi(x)})(\phi (x^{(i)}) - \bar\phi(x))^Tv \\
 &amp;= \frac{1}{M}v^T(\sum_{i=1}^M(\phi(x^{(i)}) - \bar\phi(x))(\phi (x^{(i)}) - \bar\phi(x))^T)v \\
 &amp;= \frac{1}{M}v^T(\sum_{i=1}^M\phi(x^{(i)})(\phi(x^{(i)})^T)v \\
-&amp;= \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \text{ (by column-row expansion)} \\
+&amp;\Downarrow_{\text{by column-row expansion}} \\
+&amp;= \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \\
 \end{aligned}
 \]</span> Then comes the standard form of linear PCA. Let <span class="math inline">\(\Sigma = \frac{1}{M}\mathcal{X}\mathcal{X}^T\)</span>, we would like to solve <span class="math display">\[
 \max_v\quad \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \\
 s.t.\quad v^Tv=1
-\]</span> This is equivalent to solving <span class="math inline">\(\Sigma\)</span>’s eigenvectors. Unfortunately, this cannot be directly solved like linear PCA since we don’t have <span class="math inline">\(\phi\)</span>. However note that</p>
+\]</span> This is equivalent to solving <span class="math inline">\(\Sigma\)</span>’s eigenvectors. Unfortunately, this cannot be directly solved like in linear PCA since we don’t know <span class="math inline">\(\phi\)</span>. However note that</p>
 <p><span class="math display">\[
+\begin{gather}
 \begin{aligned}
 \Sigma v &amp;= \lambda v \\
-v &amp;= \frac{1}{\lambda}\Sigma v \\
-&amp;= \frac{1}{M\lambda}\sum_{i=1}^M\phi(x^{(i)})[(\phi(x^{(i)})^Tv] \\
+v &amp;= \frac{1}{\lambda}\Sigma v
+\end{aligned} \\
+\begin{aligned}
+v &amp;= \frac{1}{M\lambda}\sum_{i=1}^M\phi(x^{(i)})[(\phi(x^{(i)})^Tv] \\
 &amp;= \frac{1}{M\lambda}\sum_{i=1}^M[(\phi(x^{(i)})^Tv]\phi(x^{(i)})
 \end{aligned}
+\end{gather}
 \]</span> <span class="math inline">\(v\)</span> is some linear combination of <span class="math inline">\(\phi(x^{(i)})\)</span> and can be written as <span class="math display">\[
-v = \mathcal{X}\alpha, \text{ where $\alpha$ is $N \times 1$}
-\]</span> Substitute back to <span class="math inline">\(\Sigma v = \lambda v\)</span> to give <span class="math display">\[
+v = \mathcal{X}\alpha, \alpha \in \R^N
+\]</span> Substitute this back to <span class="math inline">\(\Sigma v = \lambda v\)</span> to give <span class="math display">\[
 \begin{aligned}
 \frac{1}{M}\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;= \lambda\mathcal{X}\alpha \\
 \frac{1}{M}\mathcal{X}^T\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;= \lambda\mathcal{X}^T\mathcal{X}\alpha \\
 \mathcal{X}^T\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;= M\lambda\mathcal{X}^T\mathcal{X}\alpha \\
 \end{aligned}
-\]</span> Let <span class="math inline">\(K = \mathcal{X}^T\mathcal{X}\)</span>. <span class="math inline">\(K\)</span> is invertible, therefore, <span class="math display">\[
+\]</span> Let <span class="math inline">\(K = \mathcal{X}^T\mathcal{X}\)</span> which is invertible. Then, <span class="math display">\[
 KK\alpha = M\lambda K\alpha \\
 K\alpha = M\lambda\alpha
 \]</span> We can solve <span class="math inline">\(\alpha\)</span> as <span class="math inline">\(K\)</span>’s eigenvector. Kernel trick can be applied since that <span class="math inline">\(K_{ij} = (\mathcal{X}^T\mathcal{X})_{ij} = \phi(x^{(i)})^T\phi(x^{(j)})\)</span>.</p>
@@ -1495,11 +1505,11 @@ v^Tv &amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
 \end{aligned}
 \]</span></p>
 <h3 id="explained-variance">Explained Variance</h3>
-<p>It is a question in real application that how many principal components to choose to represent the original data. Explained variance can be a good index on this. We can choose a number of principal components such that they “explains” a certain percentage <span class="math inline">\(\tau\)</span> of the original data.</p>
+<p>It is a question in real application that how many principal components to choose to represent the original data. Explained variance can be a good measure on this. We can choose a number of principal components such that they “explains” a certain percentage <span class="math inline">\(\tau\)</span> of the original data.</p>
 <p>Specifically, <span class="math inline">\(\frac{1}{M}v_i^TXX^Tv_i\)</span> is the directional variance explained along <span class="math inline">\(v_i\)</span>, or the variance of the first dimension of transformed data samples. We may choose the first <span class="math inline">\(k\)</span> principal components such that <span class="math display">\[
 \frac{1}{M}\sum_{i=1}^k v_i^TXX^Tv_i \ge \tau \sum_{i=1}^N \sigma_i^2
-\]</span> <a href="%5B数据降维:%20核主成分分析(Kernel%20PCA)原理解析%20-%20知乎%20(zhihu.com)%5D(https://zhuanlan.zhihu.com/p/59775730)">Kernel PCA</a></p>
-<p><a href="https://stats.stackexchange.com/questions/22569/pca-and-proportion-of-variance-explained">Explained variance</a></p>
+\]</span> ## External Materials</p>
+<p><a href="https://zhuanlan.zhihu.com/p/59775730">数据降维: 核主成分分析(Kernel PCA)原理解析</a> || <a href="https://stats.stackexchange.com/questions/22569/pca-and-proportion-of-variance-explained">Explained variance</a></p>
 
 
 

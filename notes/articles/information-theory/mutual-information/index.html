@@ -1267,6 +1267,10 @@
 
   <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1300,7 +1304,7 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#gaussian-case">Gaussian Case</a></li>
-    <li><a href="#reference">Reference</a></li>
+    <li><a href="#external-materials">External Materials</a></li>
   </ul>
 </nav>
 
@@ -1451,7 +1455,8 @@ I&amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
 \end{pmatrix}
 \]</span> The mutual information between the <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> can be calculated as <span class="math display">\[
 I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det \Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
-\]</span> The problem remains as how to compute <span class="math inline">\(\det \Sigma_{Z_{k}}\)</span>. Applying the Laplacian expansion along the first column, we find we have to deal with the determinants of following two matrices (dashed lines indicate the row/column to be deleted): $$ <span class="math display">\[\begin{gather}
+\]</span> The problem remains as how to compute <span class="math inline">\(\det \Sigma_{Z_{k}}\)</span>. Applying the Laplacian expansion along the first column, we find we have to deal with the determinants of following two matrices (dashed lines rule out the row/column to be deleted): <span class="math display">\[
+\begin{gather}
 A_k = \underbrace{
 \left( \begin{array}{c:ccccccc}
 1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
@@ -1465,7 +1470,6 @@ A_k = \underbrace{
 0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
 \end{array} \right)
 }_\text{$2k$ columns},
-
 B_k = \underbrace{
 \left( \begin{array}{c:ccccccc}
 1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
@@ -1480,22 +1484,57 @@ B_k = \underbrace{
 0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
 \end{array} \right)
 }_\text{$2k$ columns}, \\
-
 \det Z_k =
+\left.
 \begin{cases}
 \det A_k - \rho \det B_k, &amp; \text{$k$ is odd} \\
 \det A_k + \rho \det B_k, &amp; \text{$k$ is even} \\
-\end{cases} \Rightarrow \det Z_k = \det A_k + (-1)^k \rho \det B_k
-\end{gather}\]</span> <span class="math display">\[
-Applying the Laplacian expansion along the $k$-th row of $A_k$, we find
-\]</span> A_k = <em> = Z</em>{k-1} <span class="math display">\[
-Applying the Laplacian expansion along the first row of $B_k$, we find
-\]</span> B_k = (-1)^k  <em> = (-1)^k Z</em>{k-1} <span class="math display">\[
-In all, $\det Z_k = \det Z_k - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}$. Because $\det Z_1 = 1 - \rho^2$, we finally have
-\]</span> Z_k = (1 - <sup>2)</sup>k <span class="math display">\[
-Therefore,
-\]</span> I(X;Y) = - 2 _{Z_k} = -k 2 (1 - ^2) $$</p>
-<h3 id="reference">Reference</h3>
+\end{cases}
+\right\}
+\Rightarrow \det Z_k = \det A_k + (-1)^k \rho \det B_k
+\end{gather}
+\]</span> Applying the Laplacian expansion along the <span class="math inline">\(k\)</span>-th row of <span class="math inline">\(A_k\)</span>, we find <span class="math display">\[
+\det A_k =
+\underbrace{
+\left| \begin{array}{c:ccc:c:ccc}
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
+\hdashline
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
+\hdashline
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+\hdashline
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+\end{array} \right|
+}_\text{$2k$ columns}
+= \det Z_{k-1}
+\]</span> Applying the Laplacian expansion along the first row of <span class="math inline">\(B_k\)</span>, we find <span class="math display">\[
+\det B_k = (-1)^k \rho
+\underbrace{
+\left| \begin{array}{c:ccc:c:ccc}
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
+\hdashline
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
+\hdashline
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+\hdashline
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+\end{array} \right|
+}_\text{$2k$ columns} 
+= (-1)^k \rho \det Z_{k-1}
+\]</span> In all, <span class="math inline">\(\det Z_k = \det Z_{k-1} - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}\)</span>. Because <span class="math inline">\(\det Z_1 = 1 - \rho^2\)</span>, we finally have <span class="math display">\[
+\det Z_k = (1 - \rho^2)^k
+\]</span> Therefore, <span class="math display">\[
+I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
+\]</span></p>
+<h2 id="external-materials">External Materials</h2>
 <p><a href="https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr">Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)</a></p>
 <p><a href="https://www.math.nyu.edu/~kleeman/infolect7.pdf">Information Theory and Predictability Lecture 7: Gaussian Case</a></p>
 

@@ -1267,6 +1267,10 @@
 
   <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1388,61 +1392,15 @@
 <h3 id="definition">Definition</h3>
 <p>Subgradient of a function <span class="math inline">\(f: \R^n \mapsto \R\)</span> at <span class="math inline">\(x\)</span> is defined as <span class="math display">\[
 \partial f(x) = \{g|f(y) \ge f(x) + g^T(y - x), \forall y \in dom(f) \}
-\]</span> Or put it another way, the subgradient defines a hyper-plane <span class="math display">\[
-\left[
-\begin{array} \\
-g \\
--1 \\
-\end{array}
-\right]^T
-\Big(
-\left[
-\begin{array} \\
-y \\
-t \\
-\end{array}
-\right] -
-\left[
-\begin{array} \\
-x \\
-f(x) \\
-\end{array}
-\right]
-\Big)
-= 0,
-\left[
-\begin{array} \\
-y \in \R^n \\
-t \in \R \\
-\end{array}
-\right]
-\]</span> of which <span class="math display">\[
-\left[
-\begin{array} \\
-g \\
--1 \\
-\end{array}
-\right]^T
-\Big(
-\left[
-\begin{array} \\
-y \\
-t \\
-\end{array}
-\right] -
-\left[
-\begin{array} \\
-x \\
-f(x) \\
-\end{array}
-\right]
-\Big)
-\le 0, \forall (y, t) \in epi(f)
-\]</span> by definition: <span class="math display">\[
-\begin{aligned}
-g^T(y - x) - (f(y) - f(x)) &amp;\le 0 &amp;\Rightarrow \\
-g^T(y - x) - (t - f(x)) &amp;\le 0, t \ge f(y) &amp;\Rightarrow \\
-g^T(y - x) - (t - f(x)) &amp;\le 0, t \ge f(y) &amp;\Rightarrow \\
+\]</span> Or put it another way, the subgradient defines a hyper-plane passing through <span class="math inline">\((x,f(x))\)</span>: $$ ^T ( - ) = 0,</p>
+y ^n, t \ <span class="math display">\[
+And
+\]</span> ^T ( - ) , (y, t) epi(f) <span class="math display">\[
+This is because by definition,
+\]</span>
+<span class="math display">\[\begin{aligned}
+g^T(y - x) - (f(y) - f(x)) &amp;\le 0, \forall y &amp;\Rightarrow \\
+g^T(y - x) - (t - f(x)) &amp;\le 0, \forall y,\forall t \ge f(y) &amp;\Rightarrow \\
 \left[
 \begin{array} \\
 g \\
@@ -1464,8 +1422,9 @@ f(x) \\
 \right]
 \Big)
 &amp;\le 0, \forall (y, t) \in epi(f)
-\end{aligned}
-\]</span></p>
+\end{aligned}\]</span>
+<p>$$</p>
+<p>where <span class="math inline">\(\left[\begin{array}\\ g \\ -1 \\\end{array}\right]\)</span> is the normal of the tangent plane of <span class="math inline">\(f\)</span> at <span class="math inline">\(x\)</span>.</p>
 <h3 id="properties">Properties</h3>
 <p>The subgradient <span class="math inline">\(\partial f(x)\)</span> is a set, instead of a single number like the gradient.</p>
 <ul>
@@ -1518,7 +1477,7 @@ f&amp;(x + r(p - \nabla f(x))) - f(x)- \nabla f(x)^Tr(p - \nabla f(x)) \\
 0 \le ||p - \nabla f(x)||^2_2 \le 0 \\
 ||p - \nabla f(x)||^2_2 = 0
 \end{gather} 
-\]</span> , contradicting the assumption that <span class="math inline">\(p \ne \nabla f(x)\)</span>. Thus, <span class="math inline">\(p = \nabla f(x)\)</span>.</p></li>
+\]</span> contradicting the assumption that <span class="math inline">\(p \ne \nabla f(x)\)</span>. Thus, <span class="math inline">\(p = \nabla f(x)\)</span>.</p></li>
 <li><p>If <span class="math inline">\(f(x) = \alpha_1 f_1(x) + \alpha_2 f_2(x)\)</span>, then <span class="math inline">\(\partial f(x) = \alpha_1 \partial f_1(x) + \alpha_2 f_2(x)\)</span>.</p></li>
 </ul>
 <p><a href="https://zhuanlan.zhihu.com/p/139083837">凸优化笔记16：次梯度 - 知乎 (zhihu.com)</a></p>

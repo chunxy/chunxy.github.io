@@ -23,7 +23,7 @@
 H(p) = -\mathrm{E}_{x \sim p}\log p(x)
 \]&lt;/span&gt; The Entropy of continuous distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; (probability density function) is usually similarly defined as &lt;span class=&#34;math display&#34;&gt;\[
 H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x
-\]&lt;/span&gt; This is actually the &lt;strong&gt;Differential Entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of Entropy, the random variable had better be discrete, although the differential entropy is widely used.&lt;/p&gt;
+\]&lt;/span&gt; This is actually the &lt;strong&gt;differential entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of entropy, the random variable had better be discrete, despite the wide usage of differential entropy.&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
 &lt;p&gt;The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/statistics/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt; &lt;span class=&#34;math inline&#34;&gt;\(p(x) = \frac{e^{-\frac 1 2 (x-\mu)^T \Sigma^{-1}(x-\mu)}}{\sqrt{|2\pi\Sigma|}}\)&lt;/span&gt; can be derived as follows: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -145,7 +145,8 @@ I&amp;amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
 \end{pmatrix}
 \]&lt;/span&gt; The mutual information between the &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt; can be calculated as &lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det \Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
-\]&lt;/span&gt; The problem remains as how to compute &lt;span class=&#34;math inline&#34;&gt;\(\det \Sigma_{Z_{k}}\)&lt;/span&gt;. Applying the Laplacian expansion along the first column, we find we have to deal with the determinants of following two matrices (dashed lines indicate the row/column to be deleted): $$ &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
+\]&lt;/span&gt; The problem remains as how to compute &lt;span class=&#34;math inline&#34;&gt;\(\det \Sigma_{Z_{k}}\)&lt;/span&gt;. Applying the Laplacian expansion along the first column, we find we have to deal with the determinants of following two matrices (dashed lines rule out the row/column to be deleted): &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 A_k = \underbrace{
 \left( \begin{array}{c:ccccccc}
 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
@@ -159,7 +160,6 @@ A_k = \underbrace{
 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
 \end{array} \right)
 }_\text{$2k$ columns},
-
 B_k = \underbrace{
 \left( \begin{array}{c:ccccccc}
 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
@@ -174,22 +174,57 @@ B_k = \underbrace{
 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
 \end{array} \right)
 }_\text{$2k$ columns}, \\
-
 \det Z_k =
+\left.
 \begin{cases}
 \det A_k - \rho \det B_k, &amp;amp; \text{$k$ is odd} \\
 \det A_k + \rho \det B_k, &amp;amp; \text{$k$ is even} \\
-\end{cases} \Rightarrow \det Z_k = \det A_k + (-1)^k \rho \det B_k
-\end{gather}\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
-Applying the Laplacian expansion along the $k$-th row of $A_k$, we find
-\]&lt;/span&gt; A_k = &lt;em&gt; = Z&lt;/em&gt;{k-1} &lt;span class=&#34;math display&#34;&gt;\[
-Applying the Laplacian expansion along the first row of $B_k$, we find
-\]&lt;/span&gt; B_k = (-1)^k  &lt;em&gt; = (-1)^k Z&lt;/em&gt;{k-1} &lt;span class=&#34;math display&#34;&gt;\[
-In all, $\det Z_k = \det Z_k - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}$. Because $\det Z_1 = 1 - \rho^2$, we finally have
-\]&lt;/span&gt; Z_k = (1 - &lt;sup&gt;2)&lt;/sup&gt;k &lt;span class=&#34;math display&#34;&gt;\[
-Therefore,
-\]&lt;/span&gt; I(X;Y) = - 2 _{Z_k} = -k 2 (1 - ^2) $$&lt;/p&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+\end{cases}
+\right\}
+\Rightarrow \det Z_k = \det A_k + (-1)^k \rho \det B_k
+\end{gather}
+\]&lt;/span&gt; Applying the Laplacian expansion along the &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;-th row of &lt;span class=&#34;math inline&#34;&gt;\(A_k\)&lt;/span&gt;, we find &lt;span class=&#34;math display&#34;&gt;\[
+\det A_k =
+\underbrace{
+\left| \begin{array}{c:ccc:c:ccc}
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\hdashline
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
+\hdashline
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\hdashline
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+\end{array} \right|
+}_\text{$2k$ columns}
+= \det Z_{k-1}
+\]&lt;/span&gt; Applying the Laplacian expansion along the first row of &lt;span class=&#34;math inline&#34;&gt;\(B_k\)&lt;/span&gt;, we find &lt;span class=&#34;math display&#34;&gt;\[
+\det B_k = (-1)^k \rho
+\underbrace{
+\left| \begin{array}{c:ccc:c:ccc}
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\hdashline
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
+\hdashline
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\hdashline
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+\end{array} \right|
+}_\text{$2k$ columns} 
+= (-1)^k \rho \det Z_{k-1}
+\]&lt;/span&gt; In all, &lt;span class=&#34;math inline&#34;&gt;\(\det Z_k = \det Z_{k-1} - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}\)&lt;/span&gt;. Because &lt;span class=&#34;math inline&#34;&gt;\(\det Z_1 = 1 - \rho^2\)&lt;/span&gt;, we finally have &lt;span class=&#34;math display&#34;&gt;\[
+\det Z_k = (1 - \rho^2)^k
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr&#34;&gt;Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.math.nyu.edu/~kleeman/infolect7.pdf&#34;&gt;Information Theory and Predictability Lecture 7: Gaussian Case&lt;/a&gt;&lt;/p&gt;
 

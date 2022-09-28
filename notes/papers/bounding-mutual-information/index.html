@@ -1267,6 +1267,10 @@
 
   <li class="active"><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1482,14 +1486,14 @@ I(X_{1:K};Y) &amp;\ge \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}} {\frac
 \]</span></p>
 <p>On the other hand, <span class="math inline">\(I_\text{NCE}\)</span> is tightly bounded by <span class="math inline">\(\log K\)</span>: <span class="math display">\[
 \begin{aligned}
-I_{NCE} &amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
+I_\text{NCE} &amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
 &amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K (\log \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} )] + \log K \\
 &amp;\le \E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} ]} + \log K \\
 &amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\sum_{i=1}^K e^{g(x_i, y_j)}} {e^{g(x_j,y_j)}} ]} + \log K
 \end{aligned}
 \]</span> The equality is reached when <span class="math inline">\(f(x_{1:K},y) = 1 + {h(x_{1:K},y)} = 1 + \log \frac{p(x|y)}{p(x)}\)</span> as in <span class="math inline">\(I_\text{NWJ}\)</span>. In this case, it can be derived that <span class="math inline">\(g(x,y) = g^\star(x,y) = \frac{p(y|x)}{p(y)}\)</span>. And then, <span class="math display">\[
 \begin{aligned}
-I_{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
+I_\text{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
 &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K (1 + \frac{p(y_j)}{p(y_j|x_j)} \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}) ]} + \log K \\
 &amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(1 + \frac{p(y_j)}{p(y_j|x_j)} (K-1) \E_{p(y)} \frac{p(y|x_i)}{p(y)} \big) ]} + \log K \\
 &amp;= -\E_{p(x_{1:K})} \log {[1 + \frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
@@ -1520,6 +1524,12 @@ I_{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(
     <a href="/notes/papers/contrastive-predictive-coding/" rel="next">Contrastive Predictive Coding</a>
   </div>
   
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/notes/papers/flatnce/" rel="prev">FlatNCE</a>
+  </div>
   
 </div>
 

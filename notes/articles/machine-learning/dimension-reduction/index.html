@@ -60,8 +60,8 @@
   
     
   
-  <meta name="description" content="Unsupervised Dimension Reduction Dimension Reduction
- reduces computational cost de-noise by projecting onto lower-dimensional space and back to original space make results easier to understand  vs. Feature selection" />
+  <meta name="description" content="Unsupervised Dimension Reduction Dimension reduction
+ reduces computational cost, de-noises by projecting onto lower-dimensional space and back to original space, makes results easier to understand.  vs. feature selection" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/" />
@@ -322,8 +322,8 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/" />
   <meta property="og:title" content="Dimension Reduction | Chunxy&#39; Website" />
-  <meta property="og:description" content="Unsupervised Dimension Reduction Dimension Reduction
- reduces computational cost de-noise by projecting onto lower-dimensional space and back to original space make results easier to understand  vs. Feature selection" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Unsupervised Dimension Reduction Dimension reduction
+ reduces computational cost, de-noises by projecting onto lower-dimensional space and back to original space, makes results easier to understand.  vs. feature selection" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1269,6 +1269,10 @@
 
   <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1393,21 +1397,21 @@
             
 
 <h2 id="unsupervised-dimension-reduction">Unsupervised Dimension Reduction</h2>
-<p>Dimension Reduction</p>
+<p>Dimension reduction</p>
 <ul>
-<li>reduces computational cost</li>
-<li>de-noise by projecting onto lower-dimensional space and back to original space</li>
-<li>make results easier to understand</li>
+<li>reduces computational cost,</li>
+<li>de-noises by projecting onto lower-dimensional space and back to original space,</li>
+<li>makes results easier to understand.</li>
 </ul>
-<p>vs. Feature selection</p>
+<p>vs. feature selection</p>
 <ul>
 <li>The goal of feature selection is to remove features that are not informative with respect to the class label. This obviously reduces the dimensionality of the feature space.</li>
-<li>Dimensionality reduction can be used to find a meaningful lower-dim feature space even when there is information in each feature dimension so that none can be discarded</li>
-<li>Dimension Reduction is unsupervised while Feature Selection is supervised</li>
+<li>Dimension reduction can be used to find a meaningful lower-dim feature space even when there is information in each feature dimension so that none can be discarded.</li>
+<li>Dimension reduction is unsupervised while feature selection is supervised.</li>
 </ul>
-<p>vs. Data Compression</p>
+<p>vs. data compression</p>
 <ul>
-<li>Dimensionality reduction can be seen as a simplistic form of data compression, it is not equivalent to it, as the goal of data compression is to reduce the entropy of the representation not only the dimensionality</li>
+<li>Dimension reduction can be seen as a simplistic form of data compression. But they are not equivalent, as the goal of data compression is to reduce the entropy of the representation, which is not limited to the dimension reduction.</li>
 </ul>
 <h3 id="linear-dimension-reduction">Linear Dimension Reduction</h3>
 <p>Linear Dimension Reduction projects data onto lower-dimensional space by representing the data with a new basis consisting of some major components. Mathematically, <span class="math display">\[

@@ -1267,6 +1267,10 @@
 
   <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1304,6 +1308,7 @@
         <li><a href="#non-gaussian-and-pca">Non-Gaussian and <span>PCA</span></a></li>
       </ul>
     </li>
+    <li><a href="#external-materials">External Materials</a></li>
   </ul>
 </nav>
 
@@ -1441,8 +1446,9 @@ V^\star &amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 \]</span> Calculating entropy and then taking derivative is no easy task and therefore ICA algorithms focus on approximations or equivalences to the above equation. For example, it can be approximated by finding the rotation that maximizes the expected log-likelihood of the observed data by assuming that the source distributions are known.</p>
 <h3 id="non-gaussian-and-pca">Non-Gaussian and <a href="/notes/articles/machine-learning/principal-component-analysis/">PCA</a></h3>
 <p>The key assumption of ICA is that signals are non-Gaussian. We are trying to recover the <span class="math inline">\(S\)</span> (by finding <span class="math inline">\(W\)</span>) to be as non-Gaussian as possible. <span class="math inline">\(\hat X\)</span> consists of independent components because its covariance matrix <span class="math inline">\(\hat C\)</span> is shown to be an identity matrix (and thus diagonal). <span class="math inline">\(S\)</span> is reconstructed by the linear combination of independent components. Thus it will be the most non-Gaussian when each variable is formed by exactly one component of <span class="math inline">\(\hat X\)</span> by Central Limit Theorem, i.e. <span class="math inline">\(S\)</span>’s components are independent.</p>
-<p>Consider the case when <span class="math inline">\(S\)</span> consists of <span class="math inline">\(N\)</span> independent Gaussian, which invalidate the above analysis. If we forcibly calculate <span class="math inline">\(V^\star\)</span>, due to the property of multi-variate Gaussian that its isodensity maps are spherical, then any <span class="math inline">\(N \times N\)</span> rotation matrix will be a solution to Equation (9), including the left singular matrix of <span class="math inline">\(X\)</span>, i.e. the stacked eigenvectors of <span class="math inline">\(XX^T\)</span>, which is exactly the projection basis obtained in PCA. If any <span class="math inline">\(N \times N\)</span> rotation matrix can be a solution, there are infinite many solutions to <span class="math inline">\(A\)</span>, and thus ICA will just fail.</p>
+<p>Consider the case when <span class="math inline">\(S\)</span> consists of <span class="math inline">\(N\)</span> independent Gaussian, which invalidate the above analysis. If we forcibly calculate <span class="math inline">\(V^\star\)</span>, due to the property of multi-variate Gaussian that its iso-density maps are spherical, then any <span class="math inline">\(N \times N\)</span> rotation matrix will be a solution to Equation (9), including the left singular matrix of <span class="math inline">\(X\)</span>, i.e. the stacked eigenvectors of <span class="math inline">\(XX^T\)</span>, which is exactly the projection basis obtained in PCA. If any <span class="math inline">\(N \times N\)</span> rotation matrix can be a solution, there are infinite many solutions to <span class="math inline">\(A\)</span>, and thus ICA will just fail.</p>
 <p>The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to <span class="math inline">\(V^\star\)</span>.</p>
+<h2 id="external-materials">External Materials</h2>
 <p><a href="http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html">ICA</a></p>
 
 

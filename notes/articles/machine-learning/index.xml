@@ -631,6 +631,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 &amp;amp;- \sum_{i=1}^M\nu_i\xi_i -\sum_{i=1}^M\nu^*_i\xi^*_i
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Support%20Vector%20Regression.pdf&#34; target=&#34;_blank&#34;&gt;Support Vector Regression.pdf&lt;/a&gt;&lt;/p&gt;
 
 
@@ -796,21 +797,21 @@ p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}
       <description>
 
 &lt;h2 id=&#34;unsupervised-dimension-reduction&#34;&gt;Unsupervised Dimension Reduction&lt;/h2&gt;
-&lt;p&gt;Dimension Reduction&lt;/p&gt;
+&lt;p&gt;Dimension reduction&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;reduces computational cost&lt;/li&gt;
-&lt;li&gt;de-noise by projecting onto lower-dimensional space and back to original space&lt;/li&gt;
-&lt;li&gt;make results easier to understand&lt;/li&gt;
+&lt;li&gt;reduces computational cost,&lt;/li&gt;
+&lt;li&gt;de-noises by projecting onto lower-dimensional space and back to original space,&lt;/li&gt;
+&lt;li&gt;makes results easier to understand.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;vs. Feature selection&lt;/p&gt;
+&lt;p&gt;vs. feature selection&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The goal of feature selection is to remove features that are not informative with respect to the class label. This obviously reduces the dimensionality of the feature space.&lt;/li&gt;
-&lt;li&gt;Dimensionality reduction can be used to find a meaningful lower-dim feature space even when there is information in each feature dimension so that none can be discarded&lt;/li&gt;
-&lt;li&gt;Dimension Reduction is unsupervised while Feature Selection is supervised&lt;/li&gt;
+&lt;li&gt;Dimension reduction can be used to find a meaningful lower-dim feature space even when there is information in each feature dimension so that none can be discarded.&lt;/li&gt;
+&lt;li&gt;Dimension reduction is unsupervised while feature selection is supervised.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;vs. Data Compression&lt;/p&gt;
+&lt;p&gt;vs. data compression&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Dimensionality reduction can be seen as a simplistic form of data compression, it is not equivalent to it, as the goal of data compression is to reduce the entropy of the representation not only the dimensionality&lt;/li&gt;
+&lt;li&gt;Dimension reduction can be seen as a simplistic form of data compression. But they are not equivalent, as the goal of data compression is to reduce the entropy of the representation, which is not limited to the dimension reduction.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;linear-dimension-reduction&#34;&gt;Linear Dimension Reduction&lt;/h3&gt;
 &lt;p&gt;Linear Dimension Reduction projects data onto lower-dimensional space by representing the data with a new basis consisting of some major components. Mathematically, &lt;span class=&#34;math display&#34;&gt;\[
@@ -895,11 +896,12 @@ K \ge \frac{8\log M}{\epsilon^2}
 \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^Tx^{(i)} = v^T\bar x
 \]&lt;/span&gt; Under the assumption that data is pre-centered so that &lt;span class=&#34;math inline&#34;&gt;\(\bar x = \frac{1}{M}\sum_{i=1}^Mx^{(i)} = 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2 &amp;amp;= \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - v^T\bar x)^2 \\
+&amp;amp;\frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - \mu)^2 = \frac{1}{M}\sum_{i=1}^M(v^Tx^{(i)} - v^T\bar x)^2 \\
 &amp;amp;= \frac{1}{M}\sum_{i=1}^Mv^T(x^{(i)} - \bar x)(x^{(i)} - \bar x)^Tv \\
 &amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M(x^{(i)} - \bar x)(x^{(i)} - \bar x)^T)v \\
 &amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^Mx^{(i)}(x^{(i)})^T)v \\
-&amp;amp;= \frac{1}{M}v^TXX^Tv \text{ (by column-row expansion)} \\
+&amp;amp;\Downarrow_{\text{by column-row expansion}} \\
+&amp;amp;= \frac{1}{M}v^TXX^Tv \\
 \end{aligned}
 \]&lt;/span&gt; Suppose we want to identify the direction &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; of the maximum variance, we can formulate the problem as &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -910,11 +912,11 @@ s.t.\quad v^Tv = 1
 L(v, \lambda) = v^T\Sigma v + \lambda (1 - v^Tv)
 \]&lt;/span&gt; We represent the constraint as &lt;span class=&#34;math inline&#34;&gt;\(1 - v^Tv = 0\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(v^Tv - 1 = 0\)&lt;/span&gt;. The reason is if we take derivative w.r.t &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
 \frac{\partial L}{\partial v} = 2\Sigma v - 2\lambda v
-\]&lt;/span&gt; which is more intuitive than &lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial L}{\partial v} = 2\Sigma v + 2\lambda v\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Let the derivative be &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to have &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(v^tv = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v \ne 0\)&lt;/span&gt;, which means the optimal solution &lt;span class=&#34;math inline&#34;&gt;\((\lambda^*, v^*)\)&lt;/span&gt; must be a pair of nontrivial eigen of &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-v^* = v_i, \lambda^* = \lambda_i
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(v_i\)&lt;/span&gt; is rescaled to &lt;span class=&#34;math inline&#34;&gt;\(v_i^Tv_i = 1\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Substituting the result back to the objective to give &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; which is more intuitive than &lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial L}{\partial v} = 2\Sigma v + 2\lambda v\)&lt;/span&gt;. Let the derivative be &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to have &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(v^tv = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v \ne 0\)&lt;/span&gt;, this means the optimal solution &lt;span class=&#34;math inline&#34;&gt;\((\lambda^\star, v^\star)\)&lt;/span&gt; must be a pair of eigenvalue of eigenvector of &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+v^\star = v_i, \lambda^\star = \lambda_i
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(v_i\)&lt;/span&gt; is rescaled such that &lt;span class=&#34;math inline&#34;&gt;\(v_i^Tv_i = 1\)&lt;/span&gt;. Substitute the result back to the objective to give&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \frac{1}{M}v^TXX^Tv &amp;amp;= (v_i)^T\Sigma v_i \\
 &amp;amp;= (v_i)^T\lambda_iv_i \\
@@ -934,32 +936,37 @@ v^* = v_i, \lambda^* = \lambda_i
 \frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2, \text{where }\mu = \frac{1}{M}\sum_{i=1}^Mv^T\phi (x^{(i)}) = v^T\bar\phi(x)
 \]&lt;/span&gt; Under the assumption that data is pre-centered so that &lt;span class=&#34;math inline&#34;&gt;\(\bar\phi(x) = \frac{1}{M}\sum_{i=1}^M\phi(x^{(i)}) = 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2 &amp;amp;= \frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - v^T\bar\phi(x))^2 \\
+&amp;amp;\frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - \mu)^2 = \frac{1}{M}\sum_{i=1}^M(v^T\phi (x^{(i)}) - v^T\bar\phi(x))^2 \\
 &amp;amp;= \frac{1}{M}\sum_{i=1}^Mv^T(\phi(x^{(i)}) - \bar{\phi(x)})(\phi (x^{(i)}) - \bar\phi(x))^Tv \\
 &amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M(\phi(x^{(i)}) - \bar\phi(x))(\phi (x^{(i)}) - \bar\phi(x))^T)v \\
 &amp;amp;= \frac{1}{M}v^T(\sum_{i=1}^M\phi(x^{(i)})(\phi(x^{(i)})^T)v \\
-&amp;amp;= \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \text{ (by column-row expansion)} \\
+&amp;amp;\Downarrow_{\text{by column-row expansion}} \\
+&amp;amp;= \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \\
 \end{aligned}
 \]&lt;/span&gt; Then comes the standard form of linear PCA. Let &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = \frac{1}{M}\mathcal{X}\mathcal{X}^T\)&lt;/span&gt;, we would like to solve &lt;span class=&#34;math display&#34;&gt;\[
 \max_v\quad \frac{1}{M}v^T\mathcal{X}\mathcal{X}^Tv \\
 s.t.\quad v^Tv=1
-\]&lt;/span&gt; This is equivalent to solving &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvectors. Unfortunately, this cannot be directly solved like linear PCA since we don’t have &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;. However note that&lt;/p&gt;
+\]&lt;/span&gt; This is equivalent to solving &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvectors. Unfortunately, this cannot be directly solved like in linear PCA since we don’t know &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;. However note that&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \begin{aligned}
 \Sigma v &amp;amp;= \lambda v \\
-v &amp;amp;= \frac{1}{\lambda}\Sigma v \\
-&amp;amp;= \frac{1}{M\lambda}\sum_{i=1}^M\phi(x^{(i)})[(\phi(x^{(i)})^Tv] \\
+v &amp;amp;= \frac{1}{\lambda}\Sigma v
+\end{aligned} \\
+\begin{aligned}
+v &amp;amp;= \frac{1}{M\lambda}\sum_{i=1}^M\phi(x^{(i)})[(\phi(x^{(i)})^Tv] \\
 &amp;amp;= \frac{1}{M\lambda}\sum_{i=1}^M[(\phi(x^{(i)})^Tv]\phi(x^{(i)})
 \end{aligned}
+\end{gather}
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is some linear combination of &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt; and can be written as &lt;span class=&#34;math display&#34;&gt;\[
-v = \mathcal{X}\alpha, \text{ where $\alpha$ is $N \times 1$}
-\]&lt;/span&gt; Substitute back to &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+v = \mathcal{X}\alpha, \alpha \in \R^N
+\]&lt;/span&gt; Substitute this back to &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \frac{1}{M}\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= \lambda\mathcal{X}\alpha \\
 \frac{1}{M}\mathcal{X}^T\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= \lambda\mathcal{X}^T\mathcal{X}\alpha \\
 \mathcal{X}^T\mathcal{X}\mathcal{X}^T\mathcal{X}\alpha &amp;amp;= M\lambda\mathcal{X}^T\mathcal{X}\alpha \\
 \end{aligned}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(K = \mathcal{X}^T\mathcal{X}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; is invertible, therefore, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(K = \mathcal{X}^T\mathcal{X}\)&lt;/span&gt; which is invertible. Then, &lt;span class=&#34;math display&#34;&gt;\[
 KK\alpha = M\lambda K\alpha \\
 K\alpha = M\lambda\alpha
 \]&lt;/span&gt; We can solve &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s eigenvector. Kernel trick can be applied since that &lt;span class=&#34;math inline&#34;&gt;\(K_{ij} = (\mathcal{X}^T\mathcal{X})_{ij} = \phi(x^{(i)})^T\phi(x^{(j)})\)&lt;/span&gt;.&lt;/p&gt;
@@ -998,11 +1005,11 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;explained-variance&#34;&gt;Explained Variance&lt;/h3&gt;
-&lt;p&gt;It is a question in real application that how many principal components to choose to represent the original data. Explained variance can be a good index on this. We can choose a number of principal components such that they “explains” a certain percentage &lt;span class=&#34;math inline&#34;&gt;\(\tau\)&lt;/span&gt; of the original data.&lt;/p&gt;
+&lt;p&gt;It is a question in real application that how many principal components to choose to represent the original data. Explained variance can be a good measure on this. We can choose a number of principal components such that they “explains” a certain percentage &lt;span class=&#34;math inline&#34;&gt;\(\tau\)&lt;/span&gt; of the original data.&lt;/p&gt;
 &lt;p&gt;Specifically, &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{M}v_i^TXX^Tv_i\)&lt;/span&gt; is the directional variance explained along &lt;span class=&#34;math inline&#34;&gt;\(v_i\)&lt;/span&gt;, or the variance of the first dimension of transformed data samples. We may choose the first &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; principal components such that &lt;span class=&#34;math display&#34;&gt;\[
 \frac{1}{M}\sum_{i=1}^k v_i^TXX^Tv_i \ge \tau \sum_{i=1}^N \sigma_i^2
-\]&lt;/span&gt; &lt;a href=&#34;%5B数据降维:%20核主成分分析(Kernel%20PCA)原理解析%20-%20知乎%20(zhihu.com)%5D(https://zhuanlan.zhihu.com/p/59775730)&#34;&gt;Kernel PCA&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/22569/pca-and-proportion-of-variance-explained&#34;&gt;Explained variance&lt;/a&gt;&lt;/p&gt;
+\]&lt;/span&gt; ## External Materials&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/59775730&#34;&gt;数据降维: 核主成分分析(Kernel PCA)原理解析&lt;/a&gt; || &lt;a href=&#34;https://stats.stackexchange.com/questions/22569/pca-and-proportion-of-variance-explained&#34;&gt;Explained variance&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -1045,7 +1052,7 @@ Z_{ii} = 0, i = R, R + 1, \dots, \min\{M,N\} \\
 Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 \end{gather}
 \]&lt;/span&gt; Such &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; exists when &lt;span class=&#34;math inline&#34;&gt;\(Y = U\Sigma_KV^T\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/&#34;&gt;Spectral norm&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/&#34;&gt;spectral norm&lt;/a&gt; .&lt;/p&gt;
 
 
 </description>
@@ -1111,8 +1118,9 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 \]&lt;/span&gt; Calculating entropy and then taking derivative is no easy task and therefore ICA algorithms focus on approximations or equivalences to the above equation. For example, it can be approximated by finding the rotation that maximizes the expected log-likelihood of the observed data by assuming that the source distributions are known.&lt;/p&gt;
 &lt;h3 id=&#34;non-gaussian-and-pca&#34;&gt;Non-Gaussian and &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/&#34;&gt;PCA&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The key assumption of ICA is that signals are non-Gaussian. We are trying to recover the &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; (by finding &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;) to be as non-Gaussian as possible. &lt;span class=&#34;math inline&#34;&gt;\(\hat X\)&lt;/span&gt; consists of independent components because its covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\hat C\)&lt;/span&gt; is shown to be an identity matrix (and thus diagonal). &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; is reconstructed by the linear combination of independent components. Thus it will be the most non-Gaussian when each variable is formed by exactly one component of &lt;span class=&#34;math inline&#34;&gt;\(\hat X\)&lt;/span&gt; by Central Limit Theorem, i.e. &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;’s components are independent.&lt;/p&gt;
-&lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its isodensity maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the stacked eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
+&lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its iso-density maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the stacked eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
 &lt;p&gt;The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html&#34;&gt;ICA&lt;/a&gt;&lt;/p&gt;
 
 

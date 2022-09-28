@@ -1269,6 +1269,10 @@ To verify that it integrates to \(1\), \[ \begin{aligned} \int_{-\infty}^{&#43;\
 
   <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1452,7 +1456,7 @@ X = B^{-1}(Z - \mu) \sim \mathcal{N}(0, I)
 p_X(\x) &amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} \x^T\x} 
 \end{aligned}
 \]</span></p>
-Suppose <span class="math inline">\(Z\)</span> is to take on values in <span class="math inline">\(\mathcal{Z}\)</span>, which is a subset of <span class="math inline">\(\R^{n}\)</span>, <span class="math display">\[
+<p>Suppose <span class="math inline">\(Z\)</span> is to take on values in <span class="math inline">\(\mathcal{Z}\)</span>, which is a subset of <span class="math inline">\(\R^{n}\)</span>, <span class="math display">\[
 \newcommand{z}{\mathrm{z}} P_Z(Z \in \mathcal{Z}) = \int_\mathcal{Z} p_Z(\z) \d \z
 \]</span> <span class="math inline">\(Z = f(X) = BX + \mu\)</span>. Since <span class="math inline">\(B\)</span> is invertible, the mapping <span class="math inline">\(X \to Z\)</span> is one-to-one, therefore the multivariate <a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian transformation</a>: <span class="math display">\[
 J(X \to Z) = B^{-1} \\
@@ -1463,21 +1467,20 @@ J(X \to Z) = B^{-1} \\
 &amp;= \sqrt{|BB^T|^{-1}} \\
 &amp;= |BB^T|^{-\frac{1}{2}}
 \end{aligned}
-\]</span> Therefore, $$
-<span class="math display">\[\begin{aligned}
+\]</span> Therefore, <span class="math display">\[
+\begin{aligned}
 P_Z (Z \in \mathcal{Z}) &amp;= P_X (X \in f^{-1}(\mathcal{Z})) \\
 &amp;= \int_{f^{-1}(S)} p_X(\x) \d \x \\
 &amp;= [\int_\mathcal{Z} p_X (f^{-1}(\z)) |J| \d \z]_{\x = f^{-1}(\z)} \\
 &amp;= \int_\mathcal{Z} p_X (f^{-1}(\z)) |J| \d \z \\
-
 \int_\mathcal{Z} p_Z (\z) \d \z &amp;= \int_\mathcal{Z} p_X (f^{-1}(\z)) |J| \d \z \\
 p_Z (\z) &amp;= p_X (f^{-1}(\z))|J| = p_X (B^{-1} (\z - \mu) |J| \\
 &amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T(B^{-1})^T B^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
 &amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T (B^T)^{-1} B^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
 &amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T (BB^T)^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
 &amp;= \frac{1}{(2\pi)^{\frac{n}{2}}|BB^T|^\frac{1}{2}} e^{-\frac{1}{2} (\z-\mu)^T (BB^T)^{-1} (\z-\mu)} \\
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 <p>Also note that <span class="math display">\[
 \begin{aligned}
 \Sigma_Z &amp;= E[(\z-\mu) (\z-\mu)^T] \\

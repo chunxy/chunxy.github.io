@@ -111,26 +111,26 @@ r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) - \ln q(
       <description>
 
 &lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
-&lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the data. The original data can either be the original data before the encoding, or the future data with different steps.&lt;/p&gt;
+&lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the original data. The original data can either be the data before the encoding, or the future data after various steps.&lt;/p&gt;
 &lt;p&gt;CPC learns the representation by minimizing the following loss function: &lt;span class=&#34;math display&#34;&gt;\[
 \newcommand{\c}{\mathrm{c}}
 \mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(t = (\ell, \x_1, \dots, \x_{N+1}, \c^*)\)&lt;/span&gt; is a tuple of random variables and &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; is the distribution from which &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is drawn. &lt;span class=&#34;math inline&#34;&gt;\((\x:\c)_{1:N+1}\)&lt;/span&gt; are drawn from the joint distribution &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(\x,\c)\)&lt;/span&gt;. All &lt;span class=&#34;math inline&#34;&gt;\(\c_i\)&lt;/span&gt;’s but one randomly-chosen &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; are trimmed from the original samples. &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; is known but it is unknown which sample it is associated with. Denote by &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; the index of this unique sample we are trying to predict.&lt;/p&gt;
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)&lt;/span&gt; is a tuple of random variables and &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; is the distribution from which &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is drawn. &lt;span class=&#34;math inline&#34;&gt;\((\x:\c)_{1:N+1}\)&lt;/span&gt; are drawn from the joint distribution &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(\x,\c)\)&lt;/span&gt;. All &lt;span class=&#34;math inline&#34;&gt;\(\c_i\)&lt;/span&gt;’s but one randomly-chosen &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; are trimmed from the original samples. &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; is known but it is unknown which sample it is associated with. Denote by &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; the index of this unique sample we are trying to predict.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\x_{1:N+1}\)&lt;/span&gt; consists of one positive sample &lt;span class=&#34;math inline&#34;&gt;\(\x^*\)&lt;/span&gt; that is matched with &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; and more other independent negative (noise) samples &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt;’s that are not matched with &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the fixed ratio of the number of negative samples to the number of positive samples. Let &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*)\)&lt;/span&gt; represent the probability that &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt; is the positive sample given &lt;span class=&#34;math inline&#34;&gt;\(\x_1, \dots x_{N+1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Substitute &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*) = P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Substitute &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i,\x_{1:N+1},\c^*) = P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)}{\sum_{j=1}^{N+1} [P(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} P(\x_k)]} \\
 &amp;amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
 &amp;amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
 \end{aligned}
-\]&lt;/span&gt; The loss function is in fact the expectation of Categorical Cross Entropy of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The loss function is in fact the expectation of categorical cross entropy of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
-f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{p_d(\x^\prime|\c)}{p_n(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
+f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
 f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
@@ -147,7 +147,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 &amp;amp;= -I(\x;\c^*) + \log (N - 1)
 \end{aligned}
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt; || &lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt; || &lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
 
 
@@ -265,14 +265,14 @@ I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}} {\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;On the other hand, &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt; is tightly bounded by &lt;span class=&#34;math inline&#34;&gt;\(\log K\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-I_{NCE} &amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
+I_\text{NCE} &amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
 &amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K (\log \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} )] + \log K \\
 &amp;amp;\le \E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} ]} + \log K \\
 &amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\sum_{i=1}^K e^{g(x_i, y_j)}} {e^{g(x_j,y_j)}} ]} + \log K
 \end{aligned}
 \]&lt;/span&gt; The equality is reached when &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 + {h(x_{1:K},y)} = 1 + \log \frac{p(x|y)}{p(x)}\)&lt;/span&gt; as in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;. In this case, it can be derived that &lt;span class=&#34;math inline&#34;&gt;\(g(x,y) = g^\star(x,y) = \frac{p(y|x)}{p(y)}\)&lt;/span&gt;. And then, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
+I_\text{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
 &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K (1 + \frac{p(y_j)}{p(y_j|x_j)} \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}) ]} + \log K \\
 &amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(1 + \frac{p(y_j)}{p(y_j|x_j)} (K-1) \E_{p(y)} \frac{p(y|x_i)}{p(y)} \big) ]} + \log K \\
 &amp;amp;= -\E_{p(x_{1:K})} \log {[1 + \frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
@@ -281,6 +281,79 @@ I_{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fra
 &amp;amp;= I(X_1;Y) - \log(K-1) + \log K
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>FlatNCE</title>
+      <link>https://chunxy.github.io/notes/papers/flatnce/</link>
+      <pubDate>Sat, 27 Aug 2022 21:42:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/papers/flatnce/</guid>
+      <description>
+
+&lt;p&gt;FlatNCE provides a way to compute the gradient of InfoNCE without introducing the rounding error when subtracting between two similar numbers.&lt;/p&gt;
+&lt;p&gt;Specifically, let &lt;span class=&#34;math inline&#34;&gt;\(g^\ominus_{ij}\)&lt;/span&gt; is the affinity score between reference sample &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt; and negative (noise) sample &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;_j\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(g^\oplus_{ii}\)&lt;/span&gt; is the affinity score between positive sample and itself/its transformation &lt;span class=&#34;math inline&#34;&gt;\(y_j\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is the batch index. Denote by &lt;span class=&#34;math inline&#34;&gt;\(\hat l_\text{InfoNCE}\)&lt;/span&gt; the batch estimate of the loss from InfoNCE: &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{detach}{\mathop{\text{detach}}}
+\newcommand{logsumexp}{\mathop{\text{logsumexp}}}
+\begin{gather}
+\hat l_\text{InfoNCE} = \logsumexp_j g^\ominus_{ij} - g^\oplus_{ii} = \log (\sum_{j \ne i} \exp g^\ominus_{ij} ) -g^\oplus_{ii} \\
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Usually, the above is calculated as &lt;span class=&#34;math display&#34;&gt;\[
+\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} } \exp(g^\ominus_{ij} - \max_k g^\ominus_{ik}) ] + \max_k g^\ominus_{ik} - g^\oplus_{ii}
+\]&lt;/span&gt; When the learning saturates, &lt;span class=&#34;math inline&#34;&gt;\(\hat l_\text{InfoNCE}\)&lt;/span&gt; goes to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which means &lt;span class=&#34;math inline&#34;&gt;\(\max_k g^\ominus_{ik}\)&lt;/span&gt; becomes &lt;span class=&#34;math inline&#34;&gt;\(g^\oplus_{ii}\)&lt;/span&gt; and thus &lt;span class=&#34;math display&#34;&gt;\[
+\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} } \exp(g^\ominus_{ij} - g^\oplus_{ii}) ] + \underbrace{g^\oplus_{ii} - g^\oplus_{ii} }_{\text{error-prone}}
+\]&lt;/span&gt; A rounding error will very likely happen when &lt;a href=&#34;https://en.wikipedia.org/wiki/Loss_of_significance&#34;&gt;subtracting two near numbers&lt;/a&gt;. Such error will accumulate and fail the InfoNCE. As said, FlatNCE provides a way to circumvent this rounding error.&lt;/p&gt;
+&lt;h2 id=&#34;gradient-perspective&#34;&gt;Gradient Perspective&lt;/h2&gt;
+&lt;p&gt;Denote by &lt;span class=&#34;math inline&#34;&gt;\(\hat l_\text{FlatNCE}\)&lt;/span&gt; the batch estimate of the negative loss from FlatNCE: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\hat l_\text{FlatNCE} &amp;amp;= \exp [ \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) - \detach \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) ] \\
+&amp;amp;= \frac{\exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) } {\detach [ \exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) ] } \\
+&amp;amp;= \frac{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ]} {\detach \{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] \} } \\
+&amp;amp;= \frac{\sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ]} {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] \} }
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;By putting the positive sample into the contrasting samples, &lt;span class=&#34;math display&#34;&gt;\[
+\hat l_\text{FlatNCE}^\oplus =  \frac{1 + \sum_j \exp \big( g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) \big)} {1 + \text{detach}[\sum_j \exp \big( g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) \big)]}
+\]&lt;/span&gt; where the &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; comes from adding the positive sample &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; to the set of negative samples (let’s denote this “negative” sample by &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;_0\)&lt;/span&gt;). It can be easily found that&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\nabla_\theta \hat l_\text{FlatNCE}^\oplus (g_\theta) = \nabla_\theta \hat l_\text{InfoNCE} (g_\theta)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We may further find that the gradient of FlatNCE is an importance-weighted estimator of the form &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\nabla_\theta \hat l^\oplus_\text{FlatNCE} &amp;amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] [\nabla_\theta g_\theta(x_i, y&amp;#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} } {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] \} } \\
+&amp;amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&amp;#39;_j) ] [\nabla_\theta g_\theta(x_i, y&amp;#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) ] } \\
+&amp;amp;= \sum_{k \ne i} \left\{ \underbrace {\frac{ \exp [ g_\theta(x_i, y&amp;#39;_k) ] } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) ] } }_{w_k} \nabla_\theta g_\theta(x_i, y&amp;#39;_k) \right\} - \nabla_\theta g_\theta(x_i, y_i) \\
+\end{aligned}
+\]&lt;/span&gt; As the learning progresses, &lt;span class=&#34;math inline&#34;&gt;\(w_k\)&lt;/span&gt;’s other than &lt;span class=&#34;math inline&#34;&gt;\(w_0\)&lt;/span&gt; will go to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(w_0\)&lt;/span&gt; will go to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, which will cause the gradient to vanish.&lt;/p&gt;
+&lt;h2 id=&#34;lower-bound-perspective&#34;&gt;Lower-bound Perspective&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(-\hat l_\text{InfoNCE}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(-\hat l_\text{FlatNCE}\)&lt;/span&gt; are part of the lower bounds to the mutual information in two methods. Given &lt;span class=&#34;math inline&#34;&gt;\(y_0\)&lt;/span&gt; the positive sample and &lt;span class=&#34;math inline&#34;&gt;\(y_{j&amp;gt;0}\)&lt;/span&gt; are the negative samples,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\label{lemma3.3} \begin{aligned} 
+-\hat l^{K, \theta}_\text{InfoNCE} &amp;amp;= -\log \{ \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] \} \\
+&amp;amp;= \sup_v (v \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] - (-1 - \log (-v)) \\
+&amp;amp;\Downarrow_{v = -e^{-u}} \\
+&amp;amp;\ge  -e^{-u} \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] - (-1 - \log (e^{-u}) \\
+&amp;amp;= 1 - u - \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0) - u]
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Consider &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; as the primal critic and &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; as the dual critic. Since arbitrary choice of &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; lower-bounds the mutual information, we can either jointly optimize &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; or more preferably, train in an iterative fashion. Given &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, set &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; to&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\hat u(g_\theta) = \log ({\frac 1 K \sum_j \exp[g_\theta(x,y_j) - g_\theta(x, y)]})
+\]&lt;/span&gt; Then we fix &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and only update &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;. Because &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; is fixed, the only gradient comes from &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt;. Plugin &lt;span class=&#34;math inline&#34;&gt;\(\hat u\)&lt;/span&gt; to the right-hand side of &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lemma3.3}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+&amp;amp;1 - u - \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0) - u] \\
+&amp;amp;= 1 - \log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}) \notag \\
+&amp;amp;\quad - \frac 1 K \frac{\sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)}{{\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}} \\
+&amp;amp;= -\log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}) \label{obj} \\
+&amp;amp;= -\hat l^K_\text{InfoNCE}
+\end{align}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;which tightly lower-bounds the &lt;span class=&#34;math inline&#34;&gt;\(-\hat l^K_\text{InfoNCE}\)&lt;/span&gt;. However we update &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(\theta&amp;#39;\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lemma3.3}\)&lt;/span&gt; will always hold. The objective of the whole FlatNCE is to enlarge &lt;span class=&#34;math inline&#34;&gt;\(\eqref{obj}\)&lt;/span&gt; after substituting &lt;span class=&#34;math inline&#34;&gt;\(u = \hat u(g_\theta&amp;#39;)\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(-\hat l^{K, \theta&amp;#39;}_\text{InfoNCE}\)&lt;/span&gt; can float up.&lt;/p&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://kexue.fm/archives/8586&#34;&gt;FlatNCE：小批次对比学习效果差的原因竟是浮点误差？ - 科学空间|Scientific Spaces (kexue.fm)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

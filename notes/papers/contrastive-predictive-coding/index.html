@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Rationale CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the data. The original data can either be the original data before the encoding, or the future data with different steps." />
+  <meta name="description" content="Rationale CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the original data. The original data can either be the data before the encoding, or the future data after various steps." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/papers/contrastive-predictive-coding/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/papers/contrastive-predictive-coding/" />
   <meta property="og:title" content="Contrastive Predictive Coding | Chunxy&#39; Website" />
-  <meta property="og:description" content="Rationale CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the data. The original data can either be the original data before the encoding, or the future data with different steps." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Rationale CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the original data. The original data can either be the data before the encoding, or the future data after various steps." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1267,6 +1267,10 @@
 
   <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
 
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
       
         </ul>
       
@@ -1301,7 +1305,7 @@
   <ul>
     <li><a href="#rationale">Rationale</a></li>
     <li><a href="#bounding-the-mutual-information">Bounding the Mutual Information</a></li>
-    <li><a href="#references">References</a></li>
+    <li><a href="#external-materials">External Materials</a></li>
   </ul>
 </nav>
 
@@ -1376,26 +1380,26 @@
             
 
 <h2 id="rationale">Rationale</h2>
-<p>CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the data. The original data can either be the original data before the encoding, or the future data with different steps.</p>
+<p>CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the original data. The original data can either be the data before the encoding, or the future data after various steps.</p>
 <p>CPC learns the representation by minimizing the following loss function: <span class="math display">\[
 \newcommand{\c}{\mathrm{c}}
 \mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
-\]</span> <span class="math inline">\(t = (\ell, \x_1, \dots, \x_{N+1}, \c^*)\)</span> is a tuple of random variables and <span class="math inline">\(\Phi\)</span> is the distribution from which <span class="math inline">\(t\)</span> is drawn. <span class="math inline">\((\x:\c)_{1:N+1}\)</span> are drawn from the joint distribution <span class="math inline">\(\tilde p(\x,\c)\)</span>. All <span class="math inline">\(\c_i\)</span>’s but one randomly-chosen <span class="math inline">\(\c^*\)</span> are trimmed from the original samples. <span class="math inline">\(\c^*\)</span> is known but it is unknown which sample it is associated with. Denote by <span class="math inline">\(\ell\)</span> the index of this unique sample we are trying to predict.</p>
+\]</span> <span class="math inline">\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)</span> is a tuple of random variables and <span class="math inline">\(\Phi\)</span> is the distribution from which <span class="math inline">\(t\)</span> is drawn. <span class="math inline">\((\x:\c)_{1:N+1}\)</span> are drawn from the joint distribution <span class="math inline">\(\tilde p(\x,\c)\)</span>. All <span class="math inline">\(\c_i\)</span>’s but one randomly-chosen <span class="math inline">\(\c^*\)</span> are trimmed from the original samples. <span class="math inline">\(\c^*\)</span> is known but it is unknown which sample it is associated with. Denote by <span class="math inline">\(\ell\)</span> the index of this unique sample we are trying to predict.</p>
 <p><span class="math inline">\(\x_{1:N+1}\)</span> consists of one positive sample <span class="math inline">\(\x^*\)</span> that is matched with <span class="math inline">\(\c^*\)</span> and more other independent negative (noise) samples <span class="math inline">\(\x_i\)</span>’s that are not matched with <span class="math inline">\(\c\)</span>. <span class="math inline">\(N\)</span> is the fixed ratio of the number of negative samples to the number of positive samples. Let <span class="math inline">\(P(\ell=i|\x_{1:N+1},\c^*)\)</span> represent the probability that <span class="math inline">\(\x_i\)</span> is the positive sample given <span class="math inline">\(\x_1, \dots x_{N+1}\)</span> and <span class="math inline">\(\c^*\)</span>. <span class="math display">\[
 \begin{aligned}
 P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
 \end{aligned}
 \]</span></p>
-<p>Substitute <span class="math inline">\(P(\ell=i|\x_{1:N+1},\c^*) = P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)</span> to give <span class="math display">\[
+<p>Substitute <span class="math inline">\(P(\ell=i,\x_{1:N+1},\c^*) = P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)</span> to give <span class="math display">\[
 \begin{aligned}
 P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)}{\sum_{j=1}^{N+1} [P(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} P(\x_k)]} \\
 &amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
 &amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
 \end{aligned}
-\]</span> The loss function is in fact the expectation of Categorical Cross Entropy of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, <span class="math display">\[
+\]</span> The loss function is in fact the expectation of categorical cross entropy of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, <span class="math display">\[
 \begin{gather}
 P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
-f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{p_d(\x^\prime|\c)}{p_n(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
+f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
 f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \end{gather}
 \]</span></p>
@@ -1412,7 +1416,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 &amp;= -I(\x;\c^*) + \log (N - 1)
 \end{aligned}
 \]</span> Therefore, <span class="math inline">\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)</span>.</p>
-<h2 id="references">References</h2>
+<h2 id="external-materials">External Materials</h2>
 <p><a href="https://anilkeshwani.github.io/CPC/">Paper Review</a> || <a href="https://www.youtube.com/watch?v=zNKMHj1eLa0">CPC Formulation</a> || <a href="https://jxmo.io/posts/nce">NCE and InfoNCE</a> || <a href="https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k">Demo of Bounding Mutual Information</a></p>
 
 

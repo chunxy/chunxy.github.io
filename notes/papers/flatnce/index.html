@@ -60,10 +60,10 @@
   
     
   
-  <meta name="description" content="Continuous-time Fourier Transform Fourier Series In Euclidean space, we usually represent a vector by a set of independent and orthogonal base vectors (basis). Orthogonality means the inner product between two" />
+  <meta name="description" content="FlatNCE provides a way to compute the gradient of InfoNCE without introducing the rounding error when subtracting between two similar numbers. Specifically, let \(g^\ominus_{ij}\) is the affinity score between reference" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/fourier-transform/" />
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/papers/flatnce/" />
 
   
   
@@ -297,7 +297,7 @@
   <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/fourier-transform/" />
+  <link rel="canonical" href="https://chunxy.github.io/notes/papers/flatnce/" />
 
   
   
@@ -319,15 +319,15 @@
   <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
-  <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/fourier-transform/" />
-  <meta property="og:title" content="Fourier Transform | Chunxy&#39; Website" />
-  <meta property="og:description" content="Continuous-time Fourier Transform Fourier Series In Euclidean space, we usually represent a vector by a set of independent and orthogonal base vectors (basis). Orthogonality means the inner product between two" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:url" content="https://chunxy.github.io/notes/papers/flatnce/" />
+  <meta property="og:title" content="FlatNCE | Chunxy&#39; Website" />
+  <meta property="og:description" content="FlatNCE provides a way to compute the gradient of InfoNCE without introducing the rounding error when subtracting between two similar numbers. Specifically, let \(g^\ominus_{ij}\) is the affinity score between reference" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="article:published_time" content="2022-05-09T19:39:49&#43;00:00" />
+      <meta property="article:published_time" content="2022-08-27T21:42:13&#43;00:00" />
     
-    <meta property="article:modified_time" content="2022-05-09T19:39:49&#43;00:00">
+    <meta property="article:modified_time" content="2022-08-27T21:42:13&#43;00:00">
   
 
   
@@ -340,11 +340,11 @@
 
   
 
-  <title>Fourier Transform | Chunxy&#39; Website</title>
+  <title>FlatNCE | Chunxy&#39; Website</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="4b793860ef0dddc5cda7df9cda2ef02b" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="9eb397cbcf75e4bf725926644c9ccca3" >
 
   
   
@@ -574,7 +574,7 @@
       <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
         
-          Numerical Analysis
+          Papers
         
       </span>
       <span><i class="fas fa-chevron-down"></i></span>
@@ -927,7 +927,7 @@
       
 
 
-  <li class="active"><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
 
       
         </ul>
@@ -1269,7 +1269,7 @@
 
 
 
-  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+  <li class="active"><a href="/notes/papers/flatnce/">FlatNCE</a></li>
 
       
         </ul>
@@ -1303,14 +1303,9 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#continuous-time-fourier-transform">Continuous-time Fourier Transform</a>
-      <ul>
-        <li><a href="#fourier-series">Fourier Series</a></li>
-        <li><a href="#fourier-transform">Fourier Transform</a></li>
-      </ul>
-    </li>
-    <li><a href="#discrete-time-fourier-transform">Discrete-time Fourier Transform</a></li>
-    <li><a href="#todo">TODO</a></li>
+    <li><a href="#gradient-perspective">Gradient Perspective</a></li>
+    <li><a href="#lower-bound-perspective">Lower-bound Perspective</a></li>
+    <li><a href="#external-materials">External Materials</a></li>
   </ul>
 </nav>
 
@@ -1328,10 +1323,6 @@
   <nav class="d-none d-md-flex" aria-label="breadcrumb">
     <ol class="breadcrumb">
       
-  
-    
-  
-    
   
     
   
@@ -1359,34 +1350,16 @@
   
 
     <li class="breadcrumb-item">
-      <a href="/notes/articles/">
+      <a href="/notes/papers/">
         
-          Articles
-        
-      </a>
-    </li>
-  
-
-    <li class="breadcrumb-item">
-      <a href="/notes/articles/mathematics/">
-        
-          Mathematics
-        
-      </a>
-    </li>
-  
-
-    <li class="breadcrumb-item">
-      <a href="/notes/articles/mathematics/numerical-analysis/">
-        
-          Numerical Analysis
+          Papers
         
       </a>
     </li>
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        Fourier Transform
+        FlatNCE
       </li>
     </ol>
   </nav>
@@ -1401,154 +1374,72 @@
         
 
         <div class="docs-article-container">
-          <h1>Fourier Transform</h1>
+          <h1>FlatNCE</h1>
 
           <div class="article-style">
             
 
-<h2 id="continuous-time-fourier-transform">Continuous-time Fourier Transform</h2>
-<h3 id="fourier-series">Fourier Series</h3>
-<p>In Euclidean space, we usually represent a vector by a set of independent and orthogonal base vectors (basis). Orthogonality means the inner product between two basis is zero. Inner product can also be defined on some common interval between two functions, and thus the orthogonality.</p>
-<h4 id="frequency-domain">Frequency Domain</h4>
-<p>It is intuitive to model after the inner product between vectors. Function (signal) on its domain can be viewed as an “infinite-dimension” vector. We represent this infinity in the definition of function inner product by integration. In particular, given two functions <span class="math inline">\(s\)</span> and <span class="math inline">\(g\)</span>, an interval <span class="math inline">\(I\)</span>, the inner product is <span class="math display">\[
-\int\limits_{x \in I}s(x)g(x)dx
-\]</span> <span class="math inline">\(s\)</span> and <span class="math inline">\(g\)</span> are orthogonal on interval <span class="math inline">\(I\)</span> if their inner product <span class="math inline">\(\int_{x \in I}s(x)g(x)dx = 0\)</span>.</p>
-<p>A set of basis of <span class="math inline">\(\R^N\)</span> Euclidean space contains <span class="math inline">\(N\)</span> independent orthogonal basis. For an “infinite-dimension” function space, there are an infinite number of basis, among which a group of sine and cosine functions satisfy. For integer <span class="math inline">\(k\)</span> and positive integers <span class="math inline">\(m, n\)</span>, <span class="math display">\[
-\begin{aligned}
-\left\{
-\begin{array} \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx = \pi, m = n, m, n \ge 1 \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx = 0, m \ne n, m, n \ge 1 \\
-\end{array}
-\right. \\
-\left\{
-\begin{array} \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx = \pi, m = n, m, n \ge 1 \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx = 0, m \ne n, m, n \ge 1 \\
-\end{array}
-\right. \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx = 0, m, n \ge 1
-\end{aligned}
-\]</span></p>
-<ul>
-<li><p>Proof</p>
-<ol type="1">
-<li><p><span class="math inline">\(m = n\)</span> <span class="math display">\[
-\begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos^2(nx)dx \\
-&amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{1 - \cos(2nx)}{2}dx \\
-&amp;= \pi
-\end{aligned}
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin^2(nx)dx \\
-&amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{1 + \cos(2nx)}{2}dx \\
-&amp;= \pi
-\end{aligned}
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(nx) \cos(nx)dx \\
-&amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\sin(2nx)}{2}dx \\
-&amp;= 0
-\end{aligned}
-\]</span></p></li>
-<li><p><span class="math inline">\(m \ne n\)</span> <span class="math display">\[
-\begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\cos((m+n)x) + \cos((m-n)x)}{2}dx \\
-&amp;= \frac{\frac{\sin((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi} + \frac{\sin((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi}}{2} \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\cos((m+n)x) - \cos((m-n)x)}{2}dx \\
-&amp;= \frac{\frac{\sin((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi} - \frac{\sin((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi}}{2} \\
-&amp;= 0
-\end{aligned}
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\sin((n+m)x) + \sin((n-m)x)}{2}dx \\
-&amp;= -\frac{\frac{\cos((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi} + \frac{\cos((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi}}{2} \\
-&amp;= 0
-\end{aligned}
-\]</span></p></li>
-</ol></li>
-</ul>
-<p>In other words, we can use the linear combination of <span class="math inline">\(1, \cos(x), \sin(x), \cos(2x), \sin(2x), \dots\)</span> to fit any <strong>continuous function</strong> on interval <span class="math inline">\([-\pi, \pi]\)</span>. Or use <span class="math inline">\(1, \cos(2\pi fx), \sin(2\pi fx), \cos(2\pi f2x), \sin(2\pi f2x), \dots\)</span> to fit any function on interval <span class="math inline">\([\frac{-1}{2f} + \frac{k}{f}, \frac{1}{2f} + \frac{k}{f}]\)</span>, which can be any interval depending on the value of <span class="math inline">\(f\)</span> (frequency) and the integer <span class="math inline">\(k\)</span>.</p>
-<p>A continuous function <span class="math inline">\(s\)</span> approximated with such series up to level <span class="math inline">\(N\)</span> can be written as: <span class="math display">\[
-\begin{align}
-&amp;\begin{split}
-s_N(x) &amp;= a_0 + \sum_{i=1}^N \big( \underbrace{a_n}_{A_n\sin(\varphi_n)} \cos(2\pi fnx) + \underbrace{b_n}_{A_n\cos(\varphi_n)} \sin(2\pi fnx) \big) \\
-&amp;= a_0 + \sum_{n=1}^N \bigg( A_n\sin(2\pi fnx + \varphi_n) \bigg) \text{, where} \\
-\end{split} \\
-\notag &amp;A_n = \sqrt{a_n^2 + b_n^2}, \sin(\varphi_n) = \frac{a_n}{\sqrt{a_n^2 + b_n^2}}, \cos(\varphi_n) = \frac{b_n}{\sqrt{a_n^2 + b_n^2}}
-\end{align}
-\]</span> <span class="math inline">\(A_n\)</span> can be interpreted as the amplitude, <span class="math inline">\(\varphi_n\)</span> as the phase, <span class="math inline">\(nf\)</span> as the frequency.</p>
-<h4 id="complex-frequency-domain">Complex Frequency Domain</h4>
-<p>By Euler’s Formula we have <span class="math display">\[
-e^{ix} = \cos x + i\sin x
-\]</span> Thus <span class="math inline">\(s_N(x)\)</span> can be re-written as <span class="math display">\[
-\begin{alignat}{2}
-s_N(x) &amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \bigg( \underbrace{a_n}_{A_n\cos \phi_n} \cos(2\pi fnx) + \underbrace{b_n}_{A_n\sin \phi_n} \sin(2\pi fnx) \bigg) \\
-&amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \bigg( A_n\cos(2\pi fnx - \phi_n) \bigg) \\
-&amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \frac{A_n}{2} \bigg( \cos(2\pi fnx - \phi_n) + i\sin(2\pi fnx - \phi_n) \bigg) \\
-&amp; &amp;&amp;+ \sum_{n=1}^N \frac{A_n}{2} \bigg( \cos(2\pi fnx - \phi_n) - i\sin(2\pi fnx - \phi_n) \bigg) \\
-&amp; &amp;&amp;\Downarrow_\text{by multiplication rule between complex numbers in polar form}  \\
-&amp;= &amp;&amp; \sum_{n=-N}^N c_ne^{i 2\pi fnx} \\
-\end{alignat}
-\]</span> where <span class="math display">\[
-\begin{eqnarray}
-c_n &amp;= 
-\begin{cases}
-\frac{A_n}{2}(\cos \phi_n - i\sin \phi_n) = \frac{1}{2}(a_n - ib_n), &amp;n &gt; 0 \\
-\overline{c_{|n|}} =\frac{A_n}{2}(\cos \phi_n + i\sin \phi_n), &amp;n &lt; 0 \\
-a_0, &amp;n = 0
-\end{cases}
-\end{eqnarray}
-\]</span></p>
-<p>When <span class="math inline">\(N \to +\infty\)</span>, <span class="math inline">\(s\)</span> can be reconstructed as the Fourier Series: <span class="math display">\[
-s(x) = \lim_{N \to +\infty} s_N(x) = a_0 + \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg) \\
-\]</span> The problem comes how <span class="math inline">\(a_i\)</span> can be computed. By the orthogonality mentioned before, we have <span class="math display">\[
+<p>FlatNCE provides a way to compute the gradient of InfoNCE without introducing the rounding error when subtracting between two similar numbers.</p>
+<p>Specifically, let <span class="math inline">\(g^\ominus_{ij}\)</span> is the affinity score between reference sample <span class="math inline">\(x_i\)</span> and negative (noise) sample <span class="math inline">\(y&#39;_j\)</span>; <span class="math inline">\(g^\oplus_{ii}\)</span> is the affinity score between positive sample and itself/its transformation <span class="math inline">\(y_j\)</span>; <span class="math inline">\(i\)</span> is the batch index. Denote by <span class="math inline">\(\hat l_\text{InfoNCE}\)</span> the batch estimate of the loss from InfoNCE: <span class="math display">\[
+\newcommand{detach}{\mathop{\text{detach}}}
+\newcommand{logsumexp}{\mathop{\text{logsumexp}}}
 \begin{gather}
-\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \d x = \int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \d x = \frac{1}{f} a_0 \\
-\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \cos(2\pi fkx) \d x = \int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \cos (2\pi fkx) \d x = \frac{1}{2f} a_k \\
-\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \sin(2\pi fkx) \d x =\int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \sin (2\pi fkx) \d x = \frac{1}{2f} b_k \\
+\hat l_\text{InfoNCE} = \logsumexp_j g^\ominus_{ij} - g^\oplus_{ii} = \log (\sum_{j \ne i} \exp g^\ominus_{ij} ) -g^\oplus_{ii} \\
 \end{gather}
-\]</span> The computation of <span class="math inline">\(a_k\)</span> and <span class="math inline">\(b_k\)</span> can be combined together by the Euler’s Formula: <span class="math display">\[
+\]</span></p>
+<p>Usually, the above is calculated as <span class="math display">\[
+\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} } \exp(g^\ominus_{ij} - \max_k g^\ominus_{ik}) ] + \max_k g^\ominus_{ik} - g^\oplus_{ii}
+\]</span> When the learning saturates, <span class="math inline">\(\hat l_\text{InfoNCE}\)</span> goes to <span class="math inline">\(0\)</span>, which means <span class="math inline">\(\max_k g^\ominus_{ik}\)</span> becomes <span class="math inline">\(g^\oplus_{ii}\)</span> and thus <span class="math display">\[
+\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} } \exp(g^\ominus_{ij} - g^\oplus_{ii}) ] + \underbrace{g^\oplus_{ii} - g^\oplus_{ii} }_{\text{error-prone}}
+\]</span> A rounding error will very likely happen when <a href="https://en.wikipedia.org/wiki/Loss_of_significance">subtracting two near numbers</a>. Such error will accumulate and fail the InfoNCE. As said, FlatNCE provides a way to circumvent this rounding error.</p>
+<h2 id="gradient-perspective">Gradient Perspective</h2>
+<p>Denote by <span class="math inline">\(\hat l_\text{FlatNCE}\)</span> the batch estimate of the negative loss from FlatNCE: <span class="math display">\[
 \begin{aligned}
-\int_{-1/2f+f/k}^{1/2f+f/k} s(x) e^{-i 2\pi fkx} \d x &amp; = \int_{-1/2f+f/k}^{1/2f+f/k} (a_k \cos(2\pi fkx) + b_k \sin(2\pi fkx)) (\cos(2\pi fkx) - i \sin(2\pi fkx)) \d x \\
-&amp;= \frac{1}{2f} (a_k - i b_k) = \frac{1}{f} c_k
+\hat l_\text{FlatNCE} &amp;= \exp [ \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) - \detach \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) ] \\
+&amp;= \frac{\exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) } {\detach [ \exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) ] } \\
+&amp;= \frac{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ]} {\detach \{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] \} } \\
+&amp;= \frac{\sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ]} {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] \} }
 \end{aligned}
 \]</span></p>
-<h3 id="fourier-transform">Fourier Transform</h3>
-<p>We have been through representing a continuous function on a certain interval using the Fourier Series. This can be quite useful for periodic functions. As long as we figure out the representation on its repeating interval, we obtain the representation on its whole domain. The problem is more of computing the factor for each sine and cosine function.</p>
-<p>The process of finding out factors for an arbitrary continuous function <span class="math inline">\(s\)</span> is called Fourier Transform. It transforms the function <span class="math inline">\(s\)</span> from the time domain to the frequency domain. When <span class="math inline">\(s\)</span> is periodic, it can be easily represented by the Fourier Series as discussed in previous section. When <span class="math inline">\(s\)</span> is not periodic, we can treat the periodic interval as <span class="math inline">\([-\infty, +\infty]\)</span>. Its Fourier Transform and the inverse will be <span class="math display">\[
-\begin{gather*}
-\hat s \stackrel{\mathcal F}\Longleftrightarrow s \\
-\hat s(f) = \int_{-\infty}^{+\infty} s(t) e^{-i 2\pi f x} \d t \\
-s(x) = \int_{-\infty}^{+\infty} \hat s(f) e^{i 2\pi f x} \d f
-\end{gather*}
+<p>By putting the positive sample into the contrasting samples, <span class="math display">\[
+\hat l_\text{FlatNCE}^\oplus =  \frac{1 + \sum_j \exp \big( g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) \big)} {1 + \text{detach}[\sum_j \exp \big( g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) \big)]}
+\]</span> where the <span class="math inline">\(1\)</span> comes from adding the positive sample <span class="math inline">\(y_i\)</span> to the set of negative samples (let’s denote this “negative” sample by <span class="math inline">\(y&#39;_0\)</span>). It can be easily found that</p>
+<p><span class="math display">\[
+\nabla_\theta \hat l_\text{FlatNCE}^\oplus (g_\theta) = \nabla_\theta \hat l_\text{InfoNCE} (g_\theta)
 \]</span></p>
-<h2 id="discrete-time-fourier-transform">Discrete-time Fourier Transform</h2>
-<p>The domain (time axis) of the function (signal) is continuous in our discussion by now. When the time axis is discrete (and usually takes on a series of integers), we are facing the Discrete-time Fourier Transform. We will be using the term <strong>signal</strong> instead of the function from now on.</p>
-<p>For a discrete signal <span class="math inline">\(s\)</span>, its Fourier Transform is <span class="math display">\[
-\hat s(\omega) = \sum_{k=-\infty}^{+\infty} s[k] e^{-i\omega k}
-\]</span> where <span class="math inline">\(\omega\)</span> is the angular speed. <span class="math inline">\(\omega\)</span> is in the unit of radian/sample. <span class="math inline">\(\hat s(\omega)\)</span> is the weight of the component which walks <span class="math inline">\(\omega\)</span> between two signal samples. <span class="math display">\[
-\hat s(f) = \sum_{k=-\infty}^{+\infty} s[k] e^{-i 2\pi f k}
-\]</span> where <span class="math inline">\(f\)</span> is the “frequency”. <span class="math inline">\(f\)</span> is in the unit of cycles/sample. <span class="math inline">\(\hat s(f)\)</span> is the weight of the component which walks <span class="math inline">\(f\)</span> cycles between two signal samples.</p>
-<h2 id="todo">TODO</h2>
-<ul class="task-list">
-<li><input type="checkbox" disabled=""/>
-Laplace Transform</li>
-<li><input type="checkbox" disabled=""/>
-<span class="math inline">\(Z\)</span>-transform</li>
-<li><input type="checkbox" disabled=""/>
-Fast Fourier Transform</li>
-</ul>
-<p><a href="https://charlesliuyx.github.io/2018/02/18/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E8%AE%A9%E4%BD%A0%E6%B0%B8%E8%BF%9C%E5%BF%98%E4%B8%8D%E4%BA%86%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E8%A7%A3%E6%9E%90/">傅立叶变换与群</a> || <a href="https://www.zhihu.com/question/19714540/answer/1119070975">如何理解傅里叶变换公式？ - 苗华栋的回答 - 知乎</a> || <a href="https://www.zhihu.com/question/19714540/answer/334686351">如何理解傅里叶变换公式？ - 马同学的回答 - 知乎</a> || <a href="https://en.wikipedia.org/wiki/Fourier_transform">Wiki</a></p>
+<p>We may further find that the gradient of FlatNCE is an importance-weighted estimator of the form <span class="math display">\[
+\begin{aligned}
+\nabla_\theta \hat l^\oplus_\text{FlatNCE} &amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] [\nabla_\theta g_\theta(x_i, y&#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} } {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] \} } \\
+&amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&#39;_j) ] [\nabla_\theta g_\theta(x_i, y&#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) ] } \\
+&amp;= \sum_{k \ne i} \left\{ \underbrace {\frac{ \exp [ g_\theta(x_i, y&#39;_k) ] } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) ] } }_{w_k} \nabla_\theta g_\theta(x_i, y&#39;_k) \right\} - \nabla_\theta g_\theta(x_i, y_i) \\
+\end{aligned}
+\]</span> As the learning progresses, <span class="math inline">\(w_k\)</span>’s other than <span class="math inline">\(w_0\)</span> will go to <span class="math inline">\(0\)</span>; <span class="math inline">\(w_0\)</span> will go to <span class="math inline">\(1\)</span>, which will cause the gradient to vanish.</p>
+<h2 id="lower-bound-perspective">Lower-bound Perspective</h2>
+<p><span class="math inline">\(-\hat l_\text{InfoNCE}\)</span> and <span class="math inline">\(-\hat l_\text{FlatNCE}\)</span> are part of the lower bounds to the mutual information in two methods. Given <span class="math inline">\(y_0\)</span> the positive sample and <span class="math inline">\(y_{j&gt;0}\)</span> are the negative samples,</p>
+<p><span class="math display">\[
+\label{lemma3.3} \begin{aligned} 
+-\hat l^{K, \theta}_\text{InfoNCE} &amp;= -\log \{ \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] \} \\
+&amp;= \sup_v (v \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] - (-1 - \log (-v)) \\
+&amp;\Downarrow_{v = -e^{-u}} \\
+&amp;\ge  -e^{-u} \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] - (-1 - \log (e^{-u}) \\
+&amp;= 1 - u - \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0) - u]
+\end{aligned}
+\]</span></p>
+<p>Consider <span class="math inline">\(g_\theta\)</span> as the primal critic and <span class="math inline">\(u\)</span> as the dual critic. Since arbitrary choice of <span class="math inline">\(u\)</span> and <span class="math inline">\(g_\theta\)</span> lower-bounds the mutual information, we can either jointly optimize <span class="math inline">\(u\)</span> and <span class="math inline">\(g_\theta\)</span> or more preferably, train in an iterative fashion. Given <span class="math inline">\(\theta\)</span>, set <span class="math inline">\(u\)</span> to</p>
+<p><span class="math display">\[
+\hat u(g_\theta) = \log ({\frac 1 K \sum_j \exp[g_\theta(x,y_j) - g_\theta(x, y)]})
+\]</span> Then we fix <span class="math inline">\(u\)</span> and only update <span class="math inline">\(\theta\)</span>. Because <span class="math inline">\(u\)</span> is fixed, the only gradient comes from <span class="math inline">\(g_\theta\)</span>. Plugin <span class="math inline">\(\hat u\)</span> to the right-hand side of <span class="math inline">\(\eqref{lemma3.3}\)</span> to give <span class="math display">\[
+\begin{align}
+&amp;1 - u - \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0) - u] \\
+&amp;= 1 - \log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}) \notag \\
+&amp;\quad - \frac 1 K \frac{\sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)}{{\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}} \\
+&amp;= -\log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}) \label{obj} \\
+&amp;= -\hat l^K_\text{InfoNCE}
+\end{align}
+\]</span></p>
+<p>which tightly lower-bounds the <span class="math inline">\(-\hat l^K_\text{InfoNCE}\)</span>. However we update <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\theta&#39;\)</span>, <span class="math inline">\(\eqref{lemma3.3}\)</span> will always hold. The objective of the whole FlatNCE is to enlarge <span class="math inline">\(\eqref{obj}\)</span> after substituting <span class="math inline">\(u = \hat u(g_\theta&#39;)\)</span> so that <span class="math inline">\(-\hat l^{K, \theta&#39;}_\text{InfoNCE}\)</span> can float up.</p>
+<h2 id="external-materials">External Materials</h2>
+<p><a href="https://kexue.fm/archives/8586">FlatNCE：小批次对比学习效果差的原因竟是浮点误差？ - 科学空间|Scientific Spaces (kexue.fm)</a></p>
 
 
 
@@ -1565,6 +1456,13 @@ Fast Fourier Transform</li>
 <div class="post-nav">
   
   
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/notes/papers/bounding-mutual-information/" rel="next">Bounding Mutual Information</a>
+  </div>
+  
+  
 </div>
 
           </div>
@@ -1572,7 +1470,7 @@ Fast Fourier Transform</li>
         </div>
 
         <div class="body-footer">
-          <p>Last updated on May 9, 2022</p>
+          <p>Last updated on Aug 27, 2022</p>
 
           
 
