@@ -41,8 +41,8 @@
   
     
       
-      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
     
   
 
@@ -228,7 +228,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/wowchemy.87d2164ee6d398f9a18f6cb64f0cb415.css" />
+  <link rel="stylesheet" href="/css/wowchemy.89e8bf556e2f90312d663a81bff7701d.css" />
 
   
 
@@ -1445,7 +1445,7 @@ d_p(x, x^\prime) &amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1
 \lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = \sup\limits_{x \in (a,b)}|f(x)|
 \]</span></p>
 <h4 id="proof-1">Proof</h4>
-<p>Let <span class="math inline">\(S = \sup\limits_{x \in (a,b)}|f(x)|\)</span>, then <span class="math inline">\(\forall\varepsilon &gt; 0, \exists x_0 \in (a,b), |f(x_0)| &gt; S - \varepsilon\)</span>. By “continuous”, <span class="math inline">\(\lim\limits_{x \to x_0}|f(x)| &gt; S - \varepsilon\)</span>, then <span class="math inline">\(\exists\delta &gt; 0, \forall x \in U(x_0, \delta), ||f(x)| - \lim\limits_{x \to x_0}|f(x)|| &lt; \varepsilon \rightarrow |f(x)| &gt; S - 2\varepsilon\)</span>. <span class="math display">\[
+<p>Let <span class="math inline">\(S = \sup\limits_{x \in (a,b)}|f(x)|\)</span>, then <span class="math inline">\(\forall\varepsilon &gt; 0, \exists x_0 \in (a,b), |f(x_0)| &gt; S - \varepsilon\)</span>. By continuity, <span class="math inline">\(\lim\limits_{x \to x_0}|f(x)| &gt; S - \varepsilon\)</span>, then <span class="math inline">\(\exists\delta &gt; 0, \forall x \in U(x_0, \delta), ||f(x)| - \lim\limits_{x \to x_0}|f(x)|| &lt; \varepsilon \rightarrow |f(x)| &gt; S - 2\varepsilon\)</span>. <span class="math display">\[
 \begin{aligned}
 (\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} &amp;\ge (\int_{x_0 - \delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
 \lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} &amp;\ge \lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
