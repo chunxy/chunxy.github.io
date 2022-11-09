@@ -870,22 +870,22 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measures</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measurements/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measurements</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/">Spectral Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/">Frobenius Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/chebyshev-distance/">Chebyshev Distance</a></li>
 
       
         </ul>
@@ -1160,6 +1160,10 @@
       
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/">总览</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
 
 
@@ -1172,6 +1176,10 @@
 
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
 
 
@@ -1181,10 +1189,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
 
 
 
@@ -1408,11 +1412,11 @@
             
 
 <h2 id="依概率收敛convergence-in-probability">依概率收敛（convergence in probability）</h2>
-<p><strong>随机变量序列</strong>即是由随机变量构成。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能总和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
+<p><strong>随机变量序列</strong>即是由随机变量构成的序列。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能总和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
 <ul>
 <li><p>定义</p>
 <p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) = 1\)</span>，抑或是，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)</span>），则称该随机变量序列<strong>依概率收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{P}{\to} c\)</span>。</p>
-<p>换言之，对于任意<span class="math inline">\(\epsilon, \delta &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有： <span class="math display">\[
+<p>换言之，对于任意<span class="math inline">\(\epsilon, \delta &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有 <span class="math display">\[
 0 &lt; P(|X_n - c| \ge \epsilon) &lt; \delta
 \]</span></p></li>
 </ul>
@@ -1422,7 +1426,7 @@
 <ul>
 <li><p>定义</p>
 <p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(P(\lim_{n \to \infty} X_n = c) = 1\)</span>，则称该随机变量序列<strong>几乎必然收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{a.s.}{\to} c\)</span>。</p>
-<p>换言之，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有： <span class="math display">\[
+<p>换言之，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有 <span class="math display">\[
 P(|X_n - c| &lt; \epsilon) = 1
 \]</span></p></li>
 </ul>
@@ -1434,7 +1438,7 @@ P(|X_n - c| &lt; \epsilon) = 1
 </ul>
 <p>相比较而言，<span class="math inline">\(L_P\)</span>收敛的表达式中多了一层偏差的<span class="math inline">\(p\)</span>次方的测度。</p>
 <h3 id="均方收敛">均方收敛</h3>
-<p>当<span class="math inline">\(p=2\)</span>时，<span class="math inline">\(L_P\)</span>收敛又称作均方收敛。根据<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式">Chebyshev不等式</a>： <span class="math display">\[
+<p>当<span class="math inline">\(p=2\)</span>时，<span class="math inline">\(L_P\)</span>收敛又称作均方收敛。根据<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式">Chebyshev不等式</a>， <span class="math display">\[
 P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
 \]</span> 均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。</p>
 <h2 id="依分布收敛convergence-in-distribution">依分布收敛（convergence in distribution）</h2>

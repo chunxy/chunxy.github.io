@@ -872,22 +872,22 @@ Data/Feature  data speciation  numbers texts images videos audios  data sampling
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measures</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measurements/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measurements</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/">Spectral Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/">Frobenius Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/chebyshev-distance/">Chebyshev Distance</a></li>
 
       
         </ul>
@@ -1162,6 +1162,10 @@ Data/Feature  data speciation  numbers texts images videos audios  data sampling
       
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/">总览</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
 
 
@@ -1174,6 +1178,10 @@ Data/Feature  data speciation  numbers texts images videos audios  data sampling
 
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
 
 
@@ -1183,10 +1191,6 @@ Data/Feature  data speciation  numbers texts images videos audios  data sampling
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
 
 
 
@@ -1440,6 +1444,7 @@ Data/Feature  data speciation  numbers texts images videos audios  data sampling
 <li>from binary classification to multi-class classification</li>
 </ul></li>
 <li>linear vs. non-linear</li>
+<li>parametric vs. non-parametric</li>
 <li>boosting method
 <ul>
 <li>ensemble method</li>
@@ -1451,11 +1456,8 @@ Data/Feature  data speciation  numbers texts images videos audios  data sampling
 <ul>
 <li><p>training criterion</p>
 <ul>
-<li>cost function
-<ul>
 <li>mean squared error</li>
 <li><a href="/notes/articles/information-theory/cross-entropy/">cross entropy</a></li>
-</ul></li>
 <li>impurity
 <ul>
 <li>Gini index</li>
@@ -1468,19 +1470,19 @@ Data/Feature  data speciation  numbers texts images videos audios  data sampling
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th>positive_pred</th>
-<th>negative_pred</th>
+<th>Real/Pred</th>
+<th>Positive</th>
+<th>Negative</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>positive_real</td>
+<td>Positive</td>
 <td>TP</td>
 <td>FN</td>
 </tr>
 <tr class="even">
-<td>negative_real</td>
+<td>Negative</td>
 <td>FP</td>
 <td>TN</td>
 </tr>

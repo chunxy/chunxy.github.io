@@ -60,10 +60,10 @@
   
     
   
-  <meta name="description" content="Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable." />
+  <meta name="description" content="Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/mutual-information/" />
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/" />
 
   
   
@@ -297,7 +297,7 @@
   <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://chunxy.github.io/notes/articles/information-theory/mutual-information/" />
+  <link rel="canonical" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/" />
 
   
   
@@ -319,15 +319,15 @@
   <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
-  <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/mutual-information/" />
-  <meta property="og:title" content="Mutual Information | Chunxy&#39; Website" />
-  <meta property="og:description" content="Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/" />
+  <meta property="og:title" content="Spectral Normalization | Chunxy&#39; Website" />
+  <meta property="og:description" content="Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="article:published_time" content="2022-05-19T12:20:04&#43;00:00" />
+      <meta property="article:published_time" content="2022-01-29T21:23:58&#43;00:00" />
     
-    <meta property="article:modified_time" content="2022-05-19T12:20:04&#43;00:00">
+    <meta property="article:modified_time" content="2022-01-29T21:23:58&#43;00:00">
   
 
   
@@ -340,11 +340,11 @@
 
   
 
-  <title>Mutual Information | Chunxy&#39; Website</title>
+  <title>Spectral Normalization | Chunxy&#39; Website</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="fa797733f5af1922ab9b2c6011dfcf35" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="a9f7b281ee2075195496291ca7f51165" >
 
   
   
@@ -574,7 +574,7 @@
       <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
         
-          Information Theory
+          Measurements
         
       </span>
       <span><i class="fas fa-chevron-down"></i></span>
@@ -670,7 +670,7 @@
 
 
 
-  <li class="active"><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
 
 
 
@@ -877,7 +877,7 @@
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/">Spectral Normalization</a></li>
+  <li class="active"><a href="/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/">Spectral Normalization</a></li>
 
 
 
@@ -1307,8 +1307,7 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#gaussian-case">Gaussian Case</a></li>
-    <li><a href="#external-materials">External Materials</a></li>
+    <li><a href="#power-iteration">Power Iteration</a></li>
   </ul>
 </nav>
 
@@ -1326,6 +1325,10 @@
   <nav class="d-none d-md-flex" aria-label="breadcrumb">
     <ol class="breadcrumb">
       
+  
+    
+  
+    
   
     
   
@@ -1364,16 +1367,34 @@
   
 
     <li class="breadcrumb-item">
-      <a href="/notes/articles/information-theory/">
+      <a href="/notes/articles/mathematics/">
         
-          Information Theory
+          Mathematics
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/articles/mathematics/linear-algebra/">
+        
+          Linear Algebra
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/articles/mathematics/linear-algebra/measurements/">
+        
+          Measurements
         
       </a>
     </li>
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        Mutual Information
+        Spectral Normalization
       </li>
     </ol>
   </nav>
@@ -1388,159 +1409,44 @@
         
 
         <div class="docs-article-container">
-          <h1>Mutual Information</h1>
+          <h1>Spectral Normalization</h1>
 
           <div class="article-style">
             
 
-<p>Mutual Information of <strong>two random variables</strong> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable. It is defined as <span class="math display">\[
-I(X;Y) = \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
-\]</span> By its definition, <span class="math display">\[
+<p>Spectral Normalization of an <span class="math inline">\(M \times N\)</span> matrix <span class="math inline">\(A\)</span> is defined as <span class="math display">\[
+||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A)
+\]</span> where <span class="math inline">\(\rm z \in \R^N\)</span>, <span class="math inline">\(\lambda_{\max}(A^TA)\)</span> is the maximum eigenvalue of matrix <span class="math inline">\(A^TA\)</span>, <span class="math inline">\(\sigma_{\max}(A)\)</span> is <span class="math inline">\(A\)</span>’s largest singular value.</p>
+<p>The equation on the right can be proved in this way: <span class="math display">\[
+\max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} \iff \max_{\mathrm z} \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2}
+\]</span> We may force a constraint on <span class="math inline">\(\mathrm z\)</span> such that <span class="math inline">\(||\mathrm z||^2_2 = 1\)</span>. This is because <span class="math display">\[
+\frac{||Ac\mathrm z||^2_2}{||c\mathrm z||^2_2} = \frac{c^2||A\mathrm z||^2_2}{c^2||\mathrm z||^2_2} = \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2}
+\]</span> The problem becomes <span class="math display">\[
 \begin{gather}
-I(X;Y) = I(Y;X) \\
-I(X;Y) = D_{KL}(p_{(X, Y)}|| p_X \otimes p_Y) \\
-I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
+\max_{\mathrm z} \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2} = ||A\mathrm z||^2_2 = \mathrm z^TA^TA\mathrm z \\
+s.t. ||\mathrm z||^2_2 = 1
 \end{gather}
+\]</span> This can be solved by Lagrange Multiplier, where the Lagrangian function will be <span class="math display">\[
+L(\mathrm z, \lambda) = \mathrm z^TA^TA\mathrm z + \lambda(||\mathrm z||^2_2 - 1)
 \]</span></p>
-<h3 id="gaussian-case">Gaussian Case</h3>
-<p>To better illustrate the formula of mutual information between two <a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian</a>-distributed random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. We can concatenate them to form, say an <span class="math inline">\(n\)</span>-dimensional random variable <span class="math inline">\(Z\)</span>, which is also Gaussian-distributed. Then the mutual information between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be computed as: <span class="math display">\[
-I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
-\]</span> The key to the derivation is that mutual information is the KL-divergence between the joint distribution and the product of the marginal distributions.</p>
-<p>The joint can be described as <span class="math display">\[
-p_{X:Y} = N(\underbrace{\mu_X:\mu_Y}_\mu,
-\underbrace{
-\begin{bmatrix} \
-\Sigma_{X} &amp; \Cov_{XY} \\
-\Cov_{YX} &amp; \Sigma_{Y} \\
-\end{bmatrix}
-}_\Sigma
-)
-\]</span></p>
-<p>The product of marginals can be described as <span class="math display">\[
-p_{X} \times p_{Y} = N(\mu_x:\mu_y,
-\begin{bmatrix} \
-\Sigma_{xx} &amp; 0 \\
-0 &amp; \Sigma_{yy} \\
-\end{bmatrix}
-)
-\]</span> The probability density function of an <span class="math inline">\(n&#39;\)</span>-dimensional Gaussian distribution is <span class="math inline">\(p(x&#39;) = \frac{1}{\sqrt{|2\pi \Sigma&#39;|}}e^{-\frac{1}{2}(x&#39;-\mu&#39;)^T\Sigma&#39;^{-1}(x&#39;-\mu&#39;)}\)</span>. The entropy of this Gaussian distribution is <span class="math inline">\(\frac 1 2 n&#39; + \frac 1 2 \log |2\pi\Sigma&#39;|\)</span>. In view of above, <span class="math display">\[
+<p>The extrapolation of the Spectral Normalization will be related to Rayleigh Quotient.</p>
+<h3 id="power-iteration">Power Iteration</h3>
+<p>We can apply a SVD to obtain a matrix <span class="math inline">\(A\)</span>’s Spectral Norm, i.e. the square root of <span class="math inline">\(A^TA\)</span>’s largest eigenvalue. There is also an iterative method to do so.</p>
+<p>Begin with an arbitrary vector <span class="math inline">\(v_0 = v \in \R^N\)</span>, the iteration rule will be <span class="math display">\[
+v_{t+1} = A^TAv_t
+\]</span> Unroll <span class="math inline">\(v_{t}\)</span> to get <span class="math inline">\(v_t = (A^TA)^tv\)</span>. Because <span class="math inline">\(A^TA\)</span> is real symmetric, <span class="math inline">\(v\)</span> can be written as a linear combination of <span class="math inline">\(A^TA\)</span>’s orthonormal eigenvectors: <span class="math display">\[
+v = \sum_{i=1}^N \alpha_i u_i
+\]</span> Let <span class="math inline">\(u_i\)</span> be arranged by corresponding eigenvector from large to small, then <span class="math display">\[
 \begin{aligned}
-I&amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
-= \int p_{X:Y}(\underbrace{x:y}_z) \log \frac{p_{X:Y}(x:y)} {p_X(x) p_{Y}(y)} \d z \\
-&amp;= \int p_{X:Y}(\underbrace{x:y}_z) \log p_{X:Y}(x:y) \d z -
-    \int p_{X:Y}(\underbrace{x:y}_z) \log p_X(x) \d z \\
-&amp;\quad\quad\quad -\int p_{X:Y}(\underbrace{x:y}_z) \log p_Y(y) \d z \\
-&amp;= \int p_{Z}(z) \log p_{Z}(z) \d z -
-    \int p_{X}(x) \log p_X(x) \d x - 
-    \int p_{Y}(y) \log p_Y(y) \d y \\
-&amp;= -(\log \sqrt{\det(2\pi \Sigma)} + \frac n 2) +
-    (\log \sqrt{\det(2\pi \Sigma_{X}}) + \frac {n_X} 2) \\
-&amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y} 2) \\    
-&amp;= \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
+v_t &amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
+&amp;= \sum_{i=1}^N \alpha_i \lambda_i^t u_i \\
+&amp;= \alpha_1 \lambda_1^t \sum_{i=1}^N \frac{\alpha_i}{\alpha_1} (\frac{\lambda_i}{\lambda_1})^t u_i \\
+&amp;\to \alpha_1 \lambda_1^t u_1
 \end{aligned}
+\]</span> Thus <span class="math display">\[
+||A^TA \frac{v_t}{||v_t||}|| = ||A^TAu_1|| = ||\lambda_1 u_1|| = \lambda_1
 \]</span></p>
-<h4 id="kronecker-gaussian">Kronecker Gaussian</h4>
-<p>Consider the multivariate Gaussian distribution random vector <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> of the same length <span class="math inline">\(k\)</span>. Suppose they are both independent internally and they have the component-wise correlation <span class="math inline">\(corr(X_i, Y_j) = \delta_{ij} \rho\)</span>, where <span class="math inline">\(\rho \in (-1, 1)\)</span> (open to ensure the covariance matrix is invertible), <span class="math inline">\(1 \le i, j \le k\)</span>, <span class="math inline">\(\delta_{ij}\)</span> is the Kronecker’s delta: <span class="math display">\[
-\delta_{ij} = 
-\begin{cases}
-0, &amp; i \ne j \\
-1, &amp; i = j
-\end{cases}
-\]</span> Let <span class="math inline">\(Z_k\)</span> be the vector concatenated by <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span>. It is easy to draw its covariance matrix <span class="math inline">\(\Sigma_{Z_k}\)</span> like <span class="math display">\[
-\begin{pmatrix}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
-\end{pmatrix}
-\]</span> The mutual information between the <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> can be calculated as <span class="math display">\[
-I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det \Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
-\]</span> The problem remains as how to compute <span class="math inline">\(\det \Sigma_{Z_{k}}\)</span>. Applying the Laplacian expansion along the first column, we find we have to deal with the determinants of following two matrices (dashed lines rule out the row/column to be deleted): <span class="math display">\[
-\begin{gather}
-A_k = \underbrace{
-\left( \begin{array}{c:ccccccc}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
-\hdashline
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
-\end{array} \right)
-}_\text{$2k$ columns},
-B_k = \underbrace{
-\left( \begin{array}{c:ccccccc}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
-\hdashline
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-\hdashline
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
-\end{array} \right)
-}_\text{$2k$ columns}, \\
-\det Z_k =
-\left.
-\begin{cases}
-\det A_k - \rho \det B_k, &amp; \text{$k$ is odd} \\
-\det A_k + \rho \det B_k, &amp; \text{$k$ is even} \\
-\end{cases}
-\right\}
-\Rightarrow \det Z_k = \det A_k + (-1)^k \rho \det B_k
-\end{gather}
-\]</span> Applying the Laplacian expansion along the <span class="math inline">\(k\)</span>-th row of <span class="math inline">\(A_k\)</span>, we find <span class="math display">\[
-\det A_k =
-\underbrace{
-\left| \begin{array}{c:ccc:c:ccc}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
-\hdashline
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
-\hdashline
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-\hdashline
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
-\end{array} \right|
-}_\text{$2k$ columns}
-= \det Z_{k-1}
-\]</span> Applying the Laplacian expansion along the first row of <span class="math inline">\(B_k\)</span>, we find <span class="math display">\[
-\det B_k = (-1)^k \rho
-\underbrace{
-\left| \begin{array}{c:ccc:c:ccc}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
-\hdashline
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
-\hdashline
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-\hdashline
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
-\end{array} \right|
-}_\text{$2k$ columns} 
-= (-1)^k \rho \det Z_{k-1}
-\]</span> In all, <span class="math inline">\(\det Z_k = \det Z_{k-1} - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}\)</span>. Because <span class="math inline">\(\det Z_1 = 1 - \rho^2\)</span>, we finally have <span class="math display">\[
-\det Z_k = (1 - \rho^2)^k
-\]</span> Therefore, <span class="math display">\[
-I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
-\]</span></p>
-<h2 id="external-materials">External Materials</h2>
-<p><a href="https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr">Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)</a></p>
-<p><a href="https://www.math.nyu.edu/~kleeman/infolect7.pdf">Information Theory and Predictability Lecture 7: Gaussian Case</a></p>
+<p><a href="https://math.stackexchange.com/questions/2723629/why-is-the-maximum-rayleigh-quotient-equal-to-the-maximum-eigenvalue">matrices - Why is the maximum Rayleigh quotient equal to the maximum eigenvalue? - Mathematics Stack Exchange</a></p>
 
 
 
@@ -1559,15 +1465,8 @@ I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
   
   
   <div class="post-nav-item">
-    <div class="meta-nav">Previous</div>
-    <a href="/notes/articles/information-theory/cross-entropy/" rel="next">Cross Entropy</a>
-  </div>
-  
-  
-  
-  <div class="post-nav-item">
     <div class="meta-nav">Next</div>
-    <a href="/notes/articles/information-theory/kl-divergence/" rel="prev">KL-divergence</a>
+    <a href="/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/" rel="prev">Frobenius Normalization</a>
   </div>
   
 </div>
@@ -1577,7 +1476,7 @@ I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
         </div>
 
         <div class="body-footer">
-          <p>Last updated on May 19, 2022</p>
+          <p>Last updated on Jan 29, 2022</p>
 
           
 

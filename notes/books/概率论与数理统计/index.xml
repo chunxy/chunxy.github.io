@@ -13,6 +13,49 @@
     </image>
     
     <item>
+      <title>总览</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/</link>
+      <pubDate>Tue, 08 Nov 2022 17:12:01 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/</guid>
+      <description>
+
+&lt;h2 id=&#34;概率论与统计总览&#34;&gt;概率论与统计：总览&lt;/h2&gt;
+&lt;p&gt;随机变量其实是一个从事件（概率空间的子集）到数字的映射，是一个抽象事件数字化的过程。概率论和统计的一个共同的主要话题就是随机变量，可以说它们像是随机变量的一体两面。&lt;/p&gt;
+&lt;p&gt;概率论更加注重随机变量取值集合相对应事件的概率。为此，概率论需要讨论事件所有可能的试验结果、事件的运算、事件的独立性、随机变量的取值范围、随机变量的概率分布等话题。&lt;/p&gt;
+&lt;p&gt;统计中的随机变量来自于对总体的随机抽样，这个过程中，我们会得到一组样本，每个样本在被观测之前，都是服从总体分布的随机变量；观测之后，它们便有了一个具体的观测值。我们可以将观测行为类比概率论中的试验，而这种观测行为将会导致一个随机变量坍缩成为一个具体的观测值。&lt;/p&gt;
+&lt;p&gt;可以这样理解概率论与统计：概率论是根据事件总体的自身属性，正向推导所有事件对应概率分布的分布函数；统计是根据某个概率分布（即总体分布）采样得到的结果，反向推导该分布的分布函数。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;概率论&lt;/th&gt;
+&lt;th&gt;统计&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;概率空间（事件总体）&lt;/td&gt;
+&lt;td&gt;样本空间（总体）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;试验&lt;/td&gt;
+&lt;td&gt;样本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;随机变量的数字特征&lt;/td&gt;
+&lt;td&gt;样本的数字特征（统计量）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;渐进理论&lt;/td&gt;
+&lt;td&gt;统计推段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>常见分布</title>
       <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/</link>
       <pubDate>Thu, 11 Aug 2022 17:12:01 +0000</pubDate>
@@ -42,6 +85,10 @@ B(1,p) = p, B(0,p) = 1 - p \\
 \E[X] = p \\
 \Var[X] = p(1 - p)
 \end{gather*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;多项分布multinomial-distribution&#34;&gt;多项分布（multinomial distribution）&lt;/h2&gt;
+&lt;p&gt;多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值是多值的而不是二值的（binary）。假设有&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果，且这&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果互相对立、完备穷举（mutually exclusive and collectively exhaustive），此时它们的概率之和为&lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，即&lt;span class=&#34;math inline&#34;&gt;\(p_1 + \dots + p_k = 1\)&lt;/span&gt;，多项分布计算的则是这&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果分别发生&lt;span class=&#34;math inline&#34;&gt;\(n_1, \dots, n_k\)&lt;/span&gt;次时的概率。令&lt;span class=&#34;math inline&#34;&gt;\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k], \vec n = [n_1, \dots, n_k]\)&lt;/span&gt;，则： &lt;span class=&#34;math display&#34;&gt;\[
+P(\vec n; \vec p, N) = \frac{N!}{n_1! \dots n_k!} p_1^{n_1} \dots p_k^{n_k}
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -97,23 +144,127 @@ p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
       <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
       <description>
 
-&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
-&lt;h3 id=&#34;协方差以二维随机变量为例&#34;&gt;协方差（以二维随机变量为例）&lt;/h3&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X, Y)\)&lt;/span&gt;为二维随机变量，如果&lt;span class=&#34;math inline&#34;&gt;\(\mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}\)&lt;/span&gt;存在，则称 &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;以下以二维随机变量为例，展示协方差以及相关系数的概念。&lt;/p&gt;
+&lt;h2 id=&#34;协方差&#34;&gt;协方差&lt;/h2&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\([X, Y]\)&lt;/span&gt;为一组二维随机变量，如果&lt;span class=&#34;math inline&#34;&gt;\(\mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}\)&lt;/span&gt;存在，则称 &lt;span class=&#34;math display&#34;&gt;\[
 \notag \mathrm {Cov}(X, Y) \triangleq \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}
-\]&lt;/span&gt; 为随机变量X和Y的协方差。 在实际中计算协方差时，更多的是使用以下公式： &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; 为随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的协方差。在实际中计算协方差时，更多的是使用以下公式：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\mathrm {Cov}(X, Y) &amp;amp;= \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\} \\
+&amp;amp;\mathrm {Cov}(X, Y) = \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\} \\
 &amp;amp;= \mathrm E[XY - X\mathrm E(Y) - \mathrm E(X)Y + \mathrm E(X) \mathrm E(Y)] \\
 &amp;amp;= \mathrm E(XY) - \mathrm E(X)\mathrm E(Y) - \mathrm E(X)\mathrm E(Y) + \mathrm E(X) \mathrm E(Y) \\
 &amp;amp;= \mathrm E(XY) - \mathrm E(X) \mathrm E(Y)
 \end{aligned}
+\]&lt;/span&gt; 而二维随机变量[X, Y]对应的协方差矩阵即为&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\Sigma = \begin{bmatrix} \Cov(X,X) &amp;amp; \Cov(X,Y) \\ \Cov(Y,X) &amp;amp; \Cov(Y,Y) \\ \end{bmatrix}  
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;相关系数&#34;&gt;相关系数&lt;/h3&gt;
-&lt;p&gt;协方差考察了随机变量之间协同变化的关系，但如果采取不同的量纲，同样的数据产生的协方差相差非常大。为避免这种情况发生，我们首先将随机变量标准化： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h2 id=&#34;相关系数&#34;&gt;相关系数&lt;/h2&gt;
+&lt;p&gt;协方差考察了随机变量之间协同变化的关系，但如果采取不同的量纲，同样的数据产生的协方差相差非常大。为避免这种情况发生，我们可以首先将随机变量标准化： &lt;span class=&#34;math display&#34;&gt;\[
 X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\Var(Y)}}
-\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\Cov(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数 &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\Cov(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数： &lt;span class=&#34;math display&#34;&gt;\[
 \rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\Cov(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>大数定律和中心极限定理</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</link>
+      <pubDate>Fri, 20 May 2022 09:27:33 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</guid>
+      <description>
+
+&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
+&lt;h3 id=&#34;chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;定理&lt;/p&gt;
+&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的期望&lt;span class=&#34;math inline&#34;&gt;\(\E(X)\)&lt;/span&gt;及方差&lt;span class=&#34;math inline&#34;&gt;\(\Var(X)\)&lt;/span&gt;存在，则对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;证明&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;为连续型随机变量 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;P(|X-\E(X)| \ge \epsilon) = \mathop \int_{|x - \E(x)| \ge \epsilon} p(x)dx \\
+&amp;amp;\le \mathop \int_{|x - \E(x)| \ge \epsilon} \bigg( \frac{X - \E(x)}{\epsilon} \bigg)^2 p(x)dx \\
+&amp;amp;= \frac{1}{\epsilon^2} \mathop \int_{|x - \E(x)| \ge \epsilon} \big( X - \E(x) \big)^2 p(x)dx \\
+&amp;amp;\le \frac{1}{\epsilon^2} \mathop \int_{x \in X} \big( X - \E(x) \big)^2 p(x)dx \\
+&amp;amp;= \frac{\Var(X)}{\epsilon^2} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;为离散型随机变量 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;P(|X-\E(X)| \ge \epsilon) = \mathop \sum_{|x - \E(x)| \ge \epsilon} P(x) \\
+&amp;amp;\le \mathop \sum_{|x - \E()| \ge \epsilon} \bigg( \frac{x - \E(x)}{\epsilon} \bigg)^2 P(x) \\
+&amp;amp;= \frac{1}{\epsilon^2} \mathop \sum_{|x - \E(x)| \ge \epsilon} \big( x - \E(x) \big)^2 P(x) \\
+&amp;amp;\le \frac{1}{\epsilon^2} \mathop \sum_{x \in X} \big( x - \E(x) \big)^2 P(x) \\
+&amp;amp;= \frac{\Var(X)}{\epsilon^2} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是证明其它大数定理的基础工具。&lt;/p&gt;
+&lt;h3 id=&#34;依概率收敛&#34;&gt;依概率收敛&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成。对于一个普通数列&lt;span class=&#34;math inline&#34;&gt;\(\{x_n\}\)&lt;/span&gt;来说，若其收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，则当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;充分大时，&lt;span class=&#34;math inline&#34;&gt;\(x_n\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离可以达到任意小。而随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;的极限却不能按照这样定义，因为&lt;span class=&#34;math inline&#34;&gt;\(X_n\)&lt;/span&gt;取值不确定，不可能和某个数字&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离任意小。&lt;/p&gt;
+&lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会&lt;strong&gt;依概率收敛&lt;/strong&gt;到该事件的概率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots,\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1\)&lt;/span&gt;，则称该随机变量序列依概率收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{P}{\to} c\)&lt;/span&gt;。或者，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;弱大数定律weak-law-of-large-numbers&#34;&gt;弱大数定律（Weak Law of large numbers）&lt;/h2&gt;
+&lt;h3 id=&#34;chebyshev大数定律&#34;&gt;Chebyshev大数定律&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;定理&lt;/p&gt;
+&lt;p&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1,X_2,\dots\)&lt;/span&gt;两两不相关，若存在常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(\Var(X_i) \le c \ne +\infty, i=1,2,\dots\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} P(|\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| &amp;lt; \epsilon) = 1
+\]&lt;/span&gt; 亦即&lt;span class=&#34;math inline&#34;&gt;\(\bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E(X_i)\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;证明&lt;/p&gt;
+&lt;p&gt;由于该随机序列两两不相关，故根据期望及方差的性质， &lt;span class=&#34;math display&#34;&gt;\[
+\E(\frac{1}{n} \sum_{i=1}^n X_i) =  \frac{1}{n} \sum_{i=1}^n \E(X_i),\quad \Var(\frac{1}{n} \sum_{i=1}^N X_i) = \frac{1}{n^2} \sum_{i=1}^n \Var(X_i) \le \frac{c}{n}
+\]&lt;/span&gt; 根据切比雪夫不等式， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+0 \le P(|\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) &amp;lt; \frac{\Var(\frac{1}{n} \sum_{i=1}^N X_i)}{\epsilon^2} \le \frac{c}{n \epsilon} \\
+\underbrace{\lim_{n \to \infty} 0}_0 \le \lim_{n \to \infty} P(\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) \le \underbrace{\lim_{n \to \infty} \frac{c}{n \epsilon}}_0 \Rightarrow\\
+\lim_{n \to \infty} P(\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) = 0
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;辛钦大数定律&#34;&gt;辛钦大数定律&lt;/h3&gt;
+&lt;h4 id=&#34;相互独立同分布大数定律&#34;&gt;相互独立同分布大数定律&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(\E(X_i) = \mu, \Var(X_i) = \sigma^2 \ne \infty, i=1,2,\dots\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} P (|\frac{1}{n} \sum_{i=1}^n X_i - \mu| &amp;lt; \epsilon) = 1
+\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相互独立同分布大数定律是Chebyshev大数定律的一个特例，然而在方差不存在的情况下，数学家辛钦证明该定律依然成立，即：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(\E_{X_i} = \mu\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} P (|\frac{1}{n} \sum_{i=1}^n X_i - \mu| &amp;lt; \epsilon) = 1
+\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bernoulli大数定律&#34;&gt;Bernoulli大数定律&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim B(1,p), i=1,2,\dots\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} P(|\frac{1}{n} \sum_{i=1}^n X_i - p| &amp;lt; \epsilon) = 1
+\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;显然Bernoulli大数定律也是Chebyshev大数定律的一个特例。&lt;/p&gt;
+&lt;h2 id=&#34;中心极限定理&#34;&gt;中心极限定理&lt;/h2&gt;
+&lt;p&gt;注意，在本节中，我们用&lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt;表示标准正态分布的分布函数。&lt;/p&gt;
+&lt;h3 id=&#34;lindburg-levy中心极限定理&#34;&gt;Lindburg-Levy中心极限定理&lt;/h3&gt;
+&lt;p&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(\E(X_i) = \mu, \Var(X_i) = \sigma^2 \ne \infty, i=1,2,\dots\)&lt;/span&gt;，则对任意实数&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - n \mu}{\sqrt n \sigma} \le x) = \Phi(x)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;de-moivre-laplace中心极限定理&#34;&gt;de Moivre-Laplace中心极限定理&lt;/h3&gt;
+&lt;p&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，且&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim B(1,p), i=1,2,\dots\)&lt;/span&gt;，则对任意实数&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}} \le x) = \Phi(x)
+\]&lt;/span&gt; 显然de Moivre-Laplace中心极限定理是Lindburg-Levy中心极限定理的特例。&lt;/p&gt;
+&lt;p&gt;前面的Bernoulli大数定律告诉我们可以用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n} \sum_{i=1}^n X_i\)&lt;/span&gt;（频率）近似&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;（概率），而至于近似程度如何，却不得而知。de Moivre-Laplace中心极限定理则告诉我们近似程度如何： &lt;span class=&#34;math display&#34;&gt;\[
+P(|\frac{1}{n}\sum_{i=1}^n X_i - p| &amp;lt; \epsilon) = P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| &amp;lt; \frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) = 2N(0,1,\frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) - 1
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -129,7 +280,7 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X_1,\dots,X_n)\)&lt;/span&gt;为取自总体的一个样本，若函数&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;不直接包含总体分布中的任何参数，则称&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;为&lt;strong&gt;统计量&lt;/strong&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\((X_1,\dots,X_n)\)&lt;/span&gt;为取自总体的一组样本，若函数&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;不直接包含总体分布中的任何参数，则称&lt;span class=&#34;math inline&#34;&gt;\(g(X_1,\dots,X_n)\)&lt;/span&gt;为&lt;strong&gt;统计量&lt;/strong&gt;。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;样本均值和样本方差&#34;&gt;样本均值和样本方差&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -138,8 +289,8 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
 \mathbb{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac{1}{n} \sum_{i=1}^n X_i^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(M_k = \frac{1}{n} \sum_{i=1}^n (X_i - \bar X)^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶中心矩&lt;/strong&gt;，当&lt;span class=&#34;math inline&#34;&gt;\(k=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(S_n^2 \triangleq M_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;由于统计量是随机变量的函数，故统计量也是随机变量。设总体&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的均值&lt;span class=&#34;math inline&#34;&gt;\(\E(X) = \mu, \Var(X) = \sigma^2\)&lt;/span&gt;，关于统计量有如下定理： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;令&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac{1}{n} \sum_{i=1}^n X_i^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(M_k = \frac{1}{n} \sum_{i=1}^n (X_i - \bar X)^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶中心矩&lt;/strong&gt;，当&lt;span class=&#34;math inline&#34;&gt;\(k=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(S_n^2 \triangleq M_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;由于统计量是随机变量的函数，故统计量也是随机变量。设总体&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的期望&lt;span class=&#34;math inline&#34;&gt;\(\E(X) = \mu\)&lt;/span&gt;，方差&lt;span class=&#34;math inline&#34;&gt;\(\Var(X) = \sigma^2\)&lt;/span&gt;，关于统计量有如下定理： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 &amp;amp; \E(\bar X) = \mu, \Var(\bar X) = \frac{\sigma^2}{n} \\
 \notag \\
@@ -169,13 +320,33 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\V
 \end{aligned}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。&lt;/p&gt;
-&lt;p&gt;根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;相互独立同分布大数定律&lt;/a&gt;， &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。而假设&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;已知，我们定义一个新的统计量&lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \mu)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \mu^2)\)&lt;/span&gt;，我们会发现&lt;span class=&#34;math inline&#34;&gt;\(\E(S&amp;#39;^2) = \sigma^2\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\E(S&amp;#39;^2) = \frac{1}{n} \E[(\sum_{i=1}^n (X_i^2) - n \mu^2)] \\
+&amp;amp;= \frac{1}{n} (\sum_{i=1}^n \E (X_i^2) - n \mu^2) \\
+&amp;amp;= \frac{1}{n} (\sum_{i=1}^n (\sigma^2 + \mu^2) - n \mu^2) \\
+&amp;amp;= \sigma^2
+\end{aligned}
+\]&lt;/span&gt; 至于三个统计量的依概率收敛证明，根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;相互独立同分布大数定律&lt;/a&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 \bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \mu \\
 \frac{1}{n} \sum_{i=1}^n X_i^2 \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E (X_i^2) = \sigma^2 + \mu^2
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta &amp;gt; 0\)&lt;/span&gt;，存在&lt;span class=&#34;math inline&#34;&gt;\(N_1, N_2 &amp;gt; 0\)&lt;/span&gt;，使得当&lt;span class=&#34;math inline&#34;&gt;\(n &amp;gt; \max(N_1, N_2)\)&lt;/span&gt;时，始终有 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+0 &amp;lt; P(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 + \mu^2)| \ge \epsilon / 2) &amp;lt; \delta / 2 \\
+0 &amp;lt; P(|\mu^2 - \bar X^2| \ge \epsilon / 2) &amp;lt; \delta / 2 \\
+\end{gather}
+\]&lt;/span&gt; 记事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 + \mu^2)| \ge \epsilon / 2\)&lt;/span&gt;、事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(|\bar X^2 - \mu^2| \ge \epsilon / 2\)&lt;/span&gt;、事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2 - \sigma^2| \ge \epsilon / 2\)&lt;/span&gt;。由于&lt;span class=&#34;math inline&#34;&gt;\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 + \mu^2)| + |\mu^2 - \bar X^2| \ge |\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2 - \sigma^2|\)&lt;/span&gt;，则事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;发生时，事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;至少发生其中之一，即事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;是事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;与事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;并集的子集。故&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+0 &amp;lt; P(\text{事件$C$}) \le P(\text{事件$A$\ 或\ 事件$B$}) \le P(\text{事件$A$}) + P(\text{事件$B$}) &amp;lt; \delta
+\]&lt;/span&gt; 即&lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; P(|\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2 \ - \sigma^2| \ge \epsilon) &amp;lt; \delta\)&lt;/span&gt;。又由于对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta &amp;gt; 0\)&lt;/span&gt;该结论都成立，故 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\lim_{n \to \infty} P(|\underbrace{\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2}_{S_n^2} - \sigma^2| \ge \epsilon) = 0 \Rightarrow \\
+S_n^2 \stackrel{P}{\to} \sigma^2
+\end{gathered}
+\]&lt;/span&gt; 运用类似的&lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta\)&lt;/span&gt;语言，我们可以证明&lt;span class=&#34;math inline&#34;&gt;\(S^2 = \frac{n}{n-1} S_n^2 \stackrel{P}{\to} \sigma^2\)&lt;/span&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;次序统计量&#34;&gt;次序统计量&lt;/h2&gt;
 &lt;p&gt;令&lt;span class=&#34;math inline&#34;&gt;\((X_{(1)}, \dots, X_{(n)})\)&lt;/span&gt;为样本&lt;span class=&#34;math inline&#34;&gt;\((X_1, \dots, X_n)\)&lt;/span&gt;排序后的结果，则&lt;span class=&#34;math inline&#34;&gt;\(X_{(1)} = \min (X_1, \dots, X_n), X_{(n)} = \max (X_1, \dots, X_n)\)&lt;/span&gt;亦是统计量。&lt;/p&gt;
 &lt;p&gt;记&lt;span class=&#34;math inline&#34;&gt;\(X_{(1)}, X_{(n)}\)&lt;/span&gt;的概率密度函数分别为&lt;span class=&#34;math inline&#34;&gt;\(p_{X_{(1)}}, p_{X_{(n)}}\)&lt;/span&gt;，则 &lt;span class=&#34;math display&#34;&gt;\[
@@ -200,11 +371,11 @@ p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
 &lt;p&gt;设总体&lt;span class=&#34;math inline&#34;&gt;\(X \sim p(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;未知。设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;为总体的一个样本，若用一个统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;来估计&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。&lt;/p&gt;
 &lt;h3 id=&#34;矩估计&#34;&gt;矩估计&lt;/h3&gt;
 &lt;p&gt;矩估计的思想就是就是替换思想，即用样本原点矩替换总体原点矩，设总体的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;span class=&#34;math inline&#34;&gt;\(\mu_k = \E(X^k)\)&lt;/span&gt;，样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩为&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac 1 n \sum_{i=1}^n X_i^k\)&lt;/span&gt;，如果未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta = \varphi(\mu_1, \dots, \mu_m)\)&lt;/span&gt;，则其估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \varphi(A_1, \dots, A_m)\)&lt;/span&gt;，这种估计总体未知参数的方法叫作矩估计法。&lt;/p&gt;
-&lt;p&gt;矩估计法往往不唯一，如设&lt;span class=&#34;math inline&#34;&gt;\(X \sim P(\lambda)\)&lt;/span&gt;，则由于&lt;span class=&#34;math inline&#34;&gt;\(\E(X) = \lambda\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\hat \lambda\)&lt;/span&gt;可写作&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;；又&lt;span class=&#34;math inline&#34;&gt;\(\Var(X) = \lambda\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\hat \lambda\)&lt;/span&gt;可写作&lt;span class=&#34;math inline&#34;&gt;\(\frac 1 n \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。此时往往采用较低阶的矩来估计未知参数。&lt;/p&gt;
+&lt;p&gt;矩估计往往不唯一，如设&lt;span class=&#34;math inline&#34;&gt;\(X \sim P(\lambda)\)&lt;/span&gt;，则由于&lt;span class=&#34;math inline&#34;&gt;\(\E(X) = \lambda\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\hat \lambda\)&lt;/span&gt;可写作&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;；又&lt;span class=&#34;math inline&#34;&gt;\(\Var(X) = \lambda\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\hat \lambda\)&lt;/span&gt;可写作&lt;span class=&#34;math inline&#34;&gt;\(\frac 1 n \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。此时往往采用较低阶的矩来估计未知参数。&lt;/p&gt;
 &lt;h3 id=&#34;最大似然估计&#34;&gt;最大似然估计&lt;/h3&gt;
-&lt;p&gt;设总体有分布律&lt;span class=&#34;math inline&#34;&gt;\(X \sim P(X=x;\theta)\)&lt;/span&gt;或密度函数&lt;span class=&#34;math inline&#34;&gt;\(X \sim p(x;\theta)\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_n\)&lt;/span&gt;为取自总体的一个样本的观测值，将样本的联合分布律或联合密度函数看作&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的函数： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;设总体有分布律&lt;span class=&#34;math inline&#34;&gt;\(X \sim P(X=x;\theta)\)&lt;/span&gt;或密度函数&lt;span class=&#34;math inline&#34;&gt;\(X \sim p(x;\theta)\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_n\)&lt;/span&gt;为取自总体的一组样本观测值，将样本的联合分布律或联合密度函数看作&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的函数： &lt;span class=&#34;math display&#34;&gt;\[
 L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n p(x_i;\theta)
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(L(\theta)\)&lt;/span&gt;又称作&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的似然函数，似然函数满足关系式&lt;span class=&#34;math inline&#34;&gt;\(L(\hat \theta) = \max_{\theta} L(\theta)\)&lt;/span&gt;的解&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的最大似然估计量&lt;/p&gt;
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(L(\theta)\)&lt;/span&gt;又称作&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的似然函数，似然函数满足关系式&lt;span class=&#34;math inline&#34;&gt;\(L(\hat \theta) = \max_{\theta} L(\theta)\)&lt;/span&gt;的解&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的最大似然估计量。&lt;/p&gt;
 &lt;h3 id=&#34;优良性评判&#34;&gt;优良性评判&lt;/h3&gt;
 &lt;h4 id=&#34;无偏性unbiased&#34;&gt;无偏性（Unbiased）&lt;/h4&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个估计量，&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的取值空间为&lt;span class=&#34;math inline&#34;&gt;\(\Theta\)&lt;/span&gt;，若对任意的&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
@@ -396,10 +567,10 @@ p_Y(y) =
 &lt;h3 id=&#34;参考-1&#34;&gt;参考&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.statlect.com/probability-distributions/chi-square-distribution&#34;&gt;Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://vtechworks.lib.vt.edu/bitstream/handle/10919/34329/10Apxb.pdf?sequence=12&#34;&gt;Generating Function of Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/30020592&#34;&gt;正向推导&lt;/a&gt; || &lt;a href=&#34;https://www.bilibili.com/video/BV1e54y1v7e5&#34;&gt;数学归纳法&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;t分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布&lt;/h2&gt;
-&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim N(0,1), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(T = \frac{X}{Y/n}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(T \sim t(n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim N(0,1), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(T = \frac{X}{\sqrt{Y/n}}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(T \sim t(n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
 p_T(t) = \frac{\Gamma((n+1)/2)} {\sqrt{n\pi} \Gamma(n/2)} \big( 1 + \frac{t^2} n \big)^{-(n+1)/2}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;f分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布&lt;/h2&gt;
+&lt;p&gt;## &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布&lt;/p&gt;
 &lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim \chi^2(m), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(Z = \frac{X/m}{Y/n}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\((m,n)\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(Z \sim F(m,n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
 p_Z(z) = \begin{cases}
 \frac{\Gamma((m+n)/2} {\Gamma(m/2) \Gamma(n/2)} {m \choose n}^{\frac m 2} y^{\frac m 2 - 1} (1 + \frac m n y)^{-\frac{m+n}{2}}, &amp;amp;y &amp;gt; 0 \\
@@ -413,105 +584,6 @@ p_Z(z) = \begin{cases}
 \frac{\sum_{i=1}^n (X_i - \bar X)^2}{\sigma^2} \sim \chi^2(n - 1),\text 即 \frac{(n-1) S^2}{\sigma^2} = \frac{n S_n^2}{\sigma^2} \sim \chi^2(n-1) \\
 \text{$\bar X$与$S^2$相互独立，$\bar X$与$S_n^2$相互独立}
 \end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>大数定律和中心极限定理</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</link>
-      <pubDate>Fri, 20 May 2022 09:27:33 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/</guid>
-      <description>
-
-&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
-&lt;h3 id=&#34;chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;定理&lt;/p&gt;
-&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的期望&lt;span class=&#34;math inline&#34;&gt;\(\E(X)\)&lt;/span&gt;及方差&lt;span class=&#34;math inline&#34;&gt;\(\Var(X)\)&lt;/span&gt;存在，则对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
-\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;证明&lt;/p&gt;
-&lt;ol type=&#34;1&#34;&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;为连续型随机变量 &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-P(|X-\E(X)| \ge \epsilon) &amp;amp;= \mathop \int_{|x - \E(x)| \ge \epsilon} p(x)dx \\
-&amp;amp;\le \mathop \int_{|x - \E(x)| \ge \epsilon} \bigg( \frac{X - \E(x)}{\epsilon} \bigg)^2 p(x)dx \\
-&amp;amp;= \frac{1}{\epsilon^2} \mathop \int_{|x - \E(x)| \ge \epsilon} \big( X - \E(x) \big)^2 p(x)dx \\
-&amp;amp;\le \frac{1}{\epsilon^2} \mathop \int_{x \in X} \big( X - \E(x) \big)^2 p(x)dx \\
-&amp;amp;= \frac{\Var(X)}{\epsilon^2} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;为离散型随机变量 &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-P(|X-\E(X)| \ge \epsilon) &amp;amp;= \mathop \sum_{|x - \E(x)| \ge \epsilon} P(x) \\
-&amp;amp;\le \mathop \sum_{|x - \E(x)| \ge \epsilon} \bigg( \frac{x - \E(x)}{\epsilon} \bigg)^2 P(x) \\
-&amp;amp;= \frac{1}{\epsilon^2} \mathop \sum_{|x - \E(x)| \ge \epsilon} \big( x - \E(x) \big)^2 P(x) \\
-&amp;amp;\le \frac{1}{\epsilon^2} \mathop \sum_{x \in X} \big( x - \E(x) \big)^2 P(x) \\
-&amp;amp;= \frac{\Var(X)}{\epsilon^2} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是证明其它大数定理的基础工具。&lt;/p&gt;
-&lt;h3 id=&#34;依概率收敛&#34;&gt;依概率收敛&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成。对于一个普通数列&lt;span class=&#34;math inline&#34;&gt;\(\{x_n\}\)&lt;/span&gt;来说，若其收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，则当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;充分大时，&lt;span class=&#34;math inline&#34;&gt;\(x_n\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离可以达到任意小。而随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;的极限却不能按照这样定义，因为&lt;span class=&#34;math inline&#34;&gt;\(X_n\)&lt;/span&gt;取值不确定，不可能和某个数字&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离任意小。&lt;/p&gt;
-&lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会&lt;strong&gt;依概率收敛&lt;/strong&gt;到该事件的概率。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots,\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1\)&lt;/span&gt;，则称该随机变量序列依概率收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{P}{\to} c\)&lt;/span&gt;。或者，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;弱大数定律weak-law-of-large-numbers&#34;&gt;弱大数定律（Weak Law of large numbers）&lt;/h2&gt;
-&lt;h3 id=&#34;chebyshev大数定律&#34;&gt;Chebyshev大数定律&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;定理&lt;/p&gt;
-&lt;p&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1,X_2,\dots\)&lt;/span&gt;两两不相关，若存在常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(\Var(X_i) \le c \ne +\infty, i=1,2,\dots\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} P(|\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| &amp;lt; \epsilon) = 1
-\]&lt;/span&gt; 亦即&lt;span class=&#34;math inline&#34;&gt;\(\bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E(X_i)\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;证明&lt;/p&gt;
-&lt;p&gt;由于该随机序列两两不相关，故根据期望及方差的性质， &lt;span class=&#34;math display&#34;&gt;\[
-\E(\frac{1}{n} \sum_{i=1}^n X_i) =  \frac{1}{n} \sum_{i=1}^n \E(X_i),\quad \Var(\frac{1}{n} \sum_{i=1}^N X_i) = \frac{1}{n^2} \sum_{i=1}^n \Var(X_i) \le \frac{c}{n}
-\]&lt;/span&gt; 根据切比雪夫不等式， &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-0 \le P(|\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) &amp;lt; \frac{\Var(\frac{1}{n} \sum_{i=1}^N X_i)}{\epsilon^2} \le \frac{c}{n \epsilon} \\
-\underbrace{\lim_{n \to \infty} 0}_0 \le \lim_{n \to \infty} P(\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) \le \underbrace{\lim_{n \to \infty} \frac{c}{n \epsilon}}_0 \Rightarrow\\
-\lim_{n \to \infty} P(\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) = 0
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;辛钦大数定律&#34;&gt;辛钦大数定律&lt;/h3&gt;
-&lt;h4 id=&#34;相互独立同分布大数定律&#34;&gt;相互独立同分布大数定律&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(\E(X_i) = \mu, \Var(X_i) = \sigma^2 \ne \infty, i=1,2,\dots\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} P (|\frac{1}{n} \sum_{i=1}^n X_i - \mu| &amp;lt; \epsilon) = 1
-\]&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;相互独立同分布大数定律是Chebyshev大数定律的一个特例，然而在方差不存在的情况下，数学家辛钦证明该定律依然成立，即：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(\E_{X_i} = \mu\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} P (|\frac{1}{n} \sum_{i=1}^n X_i - \mu| &amp;lt; \epsilon) = 1
-\]&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;bernoulli大数定律&#34;&gt;Bernoulli大数定律&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim B(1,p), i=1,2,\dots\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} P(|\frac{1}{n} \sum_{i=1}^n X_i - p| &amp;lt; \epsilon) = 1
-\]&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;显然Bernoulli大数定律也是Chebyshev大数定律的一个特例。&lt;/p&gt;
-&lt;h2 id=&#34;中心极限定理&#34;&gt;中心极限定理&lt;/h2&gt;
-&lt;h3 id=&#34;lindburg-levy中心极限定理&#34;&gt;Lindburg-Levy中心极限定理&lt;/h3&gt;
-&lt;p&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(\E(X_i) = \mu, \Var(X_i) = \sigma^2 \ne \infty, i=1,2,\dots\)&lt;/span&gt;，则对任意实数&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - n \mu}{\sqrt n \sigma} \le x) = N(0,1,x)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;de-moivre-laplace中心极限定理&#34;&gt;de Moivre-Laplace中心极限定理&lt;/h3&gt;
-&lt;p&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，且&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim B(1,p), i=1,2,\dots\)&lt;/span&gt;，则对任意实数&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}} \le x) = N(0,1,x)
-\]&lt;/span&gt; 显然de Moivre-Laplace中心极限定理是Lindburg-Levy中心极限定理的特例。&lt;/p&gt;
-&lt;p&gt;前面的Bernoulli大数定律告诉我们可以用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n} \sum_{i=1}^n X_i\)&lt;/span&gt;近似&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;，而至于近似程度如何，却不得而知。de Moivre-Laplace中心极限定理则告诉我们近似程度如何： &lt;span class=&#34;math display&#34;&gt;\[
-P(|\frac{1}{n}\sum_{i=1}^n X_i - p| &amp;lt; \epsilon) = P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| &amp;lt; \frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) = 2N(0,1,\frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) - 1
 \]&lt;/span&gt;&lt;/p&gt;
 
 

@@ -870,22 +870,22 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measures</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measurements/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measurements</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/">Spectral Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/">Frobenius Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/chebyshev-distance/">Chebyshev Distance</a></li>
 
       
         </ul>
@@ -1160,6 +1160,10 @@
       
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/">总览</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
 
 
@@ -1172,6 +1176,10 @@
 
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
 
 
@@ -1181,10 +1189,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
 
 
 
@@ -1404,11 +1408,11 @@
 <p>设总体<span class="math inline">\(X \sim p(x;\theta)\)</span>的分布形式已知，但其参数<span class="math inline">\(\theta\)</span>未知。设<span class="math inline">\(X_1, \dots, X_n\)</span>为总体的一个样本，若用一个统计量<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)</span>来估计<span class="math inline">\(\theta\)</span>，则称<span class="math inline">\(\hat \theta\)</span>为参数<span class="math inline">\(\theta\)</span>的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。</p>
 <h3 id="矩估计">矩估计</h3>
 <p>矩估计的思想就是就是替换思想，即用样本原点矩替换总体原点矩，设总体的<span class="math inline">\(k\)</span>阶原点矩<span class="math inline">\(\mu_k = \E(X^k)\)</span>，样本的<span class="math inline">\(k\)</span>阶原点矩为<span class="math inline">\(A_k = \frac 1 n \sum_{i=1}^n X_i^k\)</span>，如果未知参数<span class="math inline">\(\theta = \varphi(\mu_1, \dots, \mu_m)\)</span>，则其估计量<span class="math inline">\(\hat \theta = \varphi(A_1, \dots, A_m)\)</span>，这种估计总体未知参数的方法叫作矩估计法。</p>
-<p>矩估计法往往不唯一，如设<span class="math inline">\(X \sim P(\lambda)\)</span>，则由于<span class="math inline">\(\E(X) = \lambda\)</span>，<span class="math inline">\(\hat \lambda\)</span>可写作<span class="math inline">\(\bar X\)</span>；又<span class="math inline">\(\Var(X) = \lambda\)</span>，<span class="math inline">\(\hat \lambda\)</span>可写作<span class="math inline">\(\frac 1 n \sum_{i=1}^n X_i^2 - \bar X^2\)</span>。此时往往采用较低阶的矩来估计未知参数。</p>
+<p>矩估计往往不唯一，如设<span class="math inline">\(X \sim P(\lambda)\)</span>，则由于<span class="math inline">\(\E(X) = \lambda\)</span>，<span class="math inline">\(\hat \lambda\)</span>可写作<span class="math inline">\(\bar X\)</span>；又<span class="math inline">\(\Var(X) = \lambda\)</span>，<span class="math inline">\(\hat \lambda\)</span>可写作<span class="math inline">\(\frac 1 n \sum_{i=1}^n X_i^2 - \bar X^2\)</span>。此时往往采用较低阶的矩来估计未知参数。</p>
 <h3 id="最大似然估计">最大似然估计</h3>
-<p>设总体有分布律<span class="math inline">\(X \sim P(X=x;\theta)\)</span>或密度函数<span class="math inline">\(X \sim p(x;\theta)\)</span>，<span class="math inline">\(x_1, \dots, x_n\)</span>为取自总体的一个样本的观测值，将样本的联合分布律或联合密度函数看作<span class="math inline">\(\theta\)</span>的函数： <span class="math display">\[
+<p>设总体有分布律<span class="math inline">\(X \sim P(X=x;\theta)\)</span>或密度函数<span class="math inline">\(X \sim p(x;\theta)\)</span>，<span class="math inline">\(x_1, \dots, x_n\)</span>为取自总体的一组样本观测值，将样本的联合分布律或联合密度函数看作<span class="math inline">\(\theta\)</span>的函数： <span class="math display">\[
 L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n p(x_i;\theta)
-\]</span> <span class="math inline">\(L(\theta)\)</span>又称作<span class="math inline">\(\theta\)</span>的似然函数，似然函数满足关系式<span class="math inline">\(L(\hat \theta) = \max_{\theta} L(\theta)\)</span>的解<span class="math inline">\(\hat \theta\)</span>为<span class="math inline">\(\theta\)</span>的最大似然估计量</p>
+\]</span> <span class="math inline">\(L(\theta)\)</span>又称作<span class="math inline">\(\theta\)</span>的似然函数，似然函数满足关系式<span class="math inline">\(L(\hat \theta) = \max_{\theta} L(\theta)\)</span>的解<span class="math inline">\(\hat \theta\)</span>为<span class="math inline">\(\theta\)</span>的最大似然估计量。</p>
 <h3 id="优良性评判">优良性评判</h3>
 <h4 id="无偏性unbiased">无偏性（Unbiased）</h4>
 <p>设<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)</span>是<span class="math inline">\(\theta\)</span>的一个估计量，<span class="math inline">\(\theta\)</span>的取值空间为<span class="math inline">\(\Theta\)</span>，若对任意的<span class="math inline">\(\theta \in \Theta\)</span>，有 <span class="math display">\[

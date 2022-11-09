@@ -178,11 +178,11 @@ p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T \Sigma_
       <description>
 
 &lt;h2 id=&#34;依概率收敛convergence-in-probability&#34;&gt;依概率收敛（convergence in probability）&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成。对于一个普通数列&lt;span class=&#34;math inline&#34;&gt;\(\{x_n\}\)&lt;/span&gt;来说，若其收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，则当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;充分大时，&lt;span class=&#34;math inline&#34;&gt;\(x_n\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离可以达到任意小。而随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;的极限却不能按照这样定义，因为&lt;span class=&#34;math inline&#34;&gt;\(X_n\)&lt;/span&gt;取值不确定，不可能总和某个数字&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离任意小。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成的序列。对于一个普通数列&lt;span class=&#34;math inline&#34;&gt;\(\{x_n\}\)&lt;/span&gt;来说，若其收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，则当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;充分大时，&lt;span class=&#34;math inline&#34;&gt;\(x_n\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离可以达到任意小。而随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;的极限却不能按照这样定义，因为&lt;span class=&#34;math inline&#34;&gt;\(X_n\)&lt;/span&gt;取值不确定，不可能总和某个数字&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离任意小。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1\)&lt;/span&gt;，抑或是，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)&lt;/span&gt;），则称该随机变量序列&lt;strong&gt;依概率收敛&lt;/strong&gt;于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{P}{\to} c\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;换言之，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta &amp;gt; 0\)&lt;/span&gt;，都存在&lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; 0\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(n &amp;gt; N\)&lt;/span&gt;时，始终有： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;换言之，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta &amp;gt; 0\)&lt;/span&gt;，都存在&lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; 0\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(n &amp;gt; N\)&lt;/span&gt;时，始终有 &lt;span class=&#34;math display&#34;&gt;\[
 0 &amp;lt; P(|X_n - c| \ge \epsilon) &amp;lt; \delta
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -192,7 +192,7 @@ p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T \Sigma_
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(P(\lim_{n \to \infty} X_n = c) = 1\)&lt;/span&gt;，则称该随机变量序列&lt;strong&gt;几乎必然收敛&lt;/strong&gt;于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{a.s.}{\to} c\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;换言之，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都存在&lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; 0\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(n &amp;gt; N\)&lt;/span&gt;时，始终有： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;换言之，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都存在&lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; 0\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(n &amp;gt; N\)&lt;/span&gt;时，始终有 &lt;span class=&#34;math display&#34;&gt;\[
 P(|X_n - c| &amp;lt; \epsilon) = 1
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -204,7 +204,7 @@ P(|X_n - c| &amp;lt; \epsilon) = 1
 &lt;/ul&gt;
 &lt;p&gt;相比较而言，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛的表达式中多了一层偏差的&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;次方的测度。&lt;/p&gt;
 &lt;h3 id=&#34;均方收敛&#34;&gt;均方收敛&lt;/h3&gt;
-&lt;p&gt;当&lt;span class=&#34;math inline&#34;&gt;\(p=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛又称作均方收敛。根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/a&gt;： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;当&lt;span class=&#34;math inline&#34;&gt;\(p=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛又称作均方收敛。根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/a&gt;， &lt;span class=&#34;math display&#34;&gt;\[
 P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
 \]&lt;/span&gt; 均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。&lt;/p&gt;
 &lt;h2 id=&#34;依分布收敛convergence-in-distribution&#34;&gt;依分布收敛（convergence in distribution）&lt;/h2&gt;
@@ -273,7 +273,7 @@ F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
       <description>
 
 &lt;h2 id=&#34;whitening&#34;&gt;Whitening&lt;/h2&gt;
-&lt;p&gt;Data whitening is the process of converting a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; with only first-order correlation into a new random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; such that the covariance matrix of &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is an identity.&lt;/p&gt;
+&lt;p&gt;Data whitening is the process of converting a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; with only first-order correlation into a new random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; such that the covariance matrix of &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is an identity matrix.&lt;/p&gt;
 &lt;p&gt;To do so, we shall first apply the &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization&#34;&gt;diagonalization&lt;/a&gt; to &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_X\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \Sigma_X \Phi = \Phi \Lambda
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; contains the eigenvectors, &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt; is diagonal and contains the eigenvalues. Now let &lt;span class=&#34;math inline&#34;&gt;\(Y = \Phi^T X\)&lt;/span&gt;, we can verify that &lt;span class=&#34;math display&#34;&gt;\[

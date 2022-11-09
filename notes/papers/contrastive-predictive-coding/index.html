@@ -870,22 +870,22 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measures</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measurements/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measurements</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/">Spectral Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/">Frobenius Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/chebyshev-distance/">Chebyshev Distance</a></li>
 
       
         </ul>
@@ -1160,6 +1160,10 @@
       
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/">总览</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
 
 
@@ -1172,6 +1176,10 @@
 
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
 
 
@@ -1181,10 +1189,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
 
 
 
@@ -1382,9 +1386,9 @@
 <h2 id="rationale">Rationale</h2>
 <p>CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the original data. The original data can either be the data before the encoding, or the future data after various steps.</p>
 <p>CPC learns the representation by minimizing the following loss function: <span class="math display">\[
-\newcommand{\c}{\mathrm{c}}
+\newcommand{\c}{\mathrm{c}} \label{loss}
 \mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
-\]</span> <span class="math inline">\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)</span> is a tuple of random variables and <span class="math inline">\(\Phi\)</span> is the distribution from which <span class="math inline">\(t\)</span> is drawn. <span class="math inline">\((\x:\c)_{1:N+1}\)</span> are drawn from the joint distribution <span class="math inline">\(\tilde p(\x,\c)\)</span>. All <span class="math inline">\(\c_i\)</span>’s but one randomly-chosen <span class="math inline">\(\c^*\)</span> are trimmed from the original samples. <span class="math inline">\(\c^*\)</span> is known but it is unknown which sample it is associated with. Denote by <span class="math inline">\(\ell\)</span> the index of this unique sample we are trying to predict.</p>
+\]</span> <span class="math inline">\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)</span> is a tuple of random variables and <span class="math inline">\(\Phi\)</span> is the distribution from which <span class="math inline">\(t\)</span> is drawn. <span class="math inline">\((\x:\c)_{1:N+1}\)</span> are drawn from the joint distribution <span class="math inline">\(\tilde p(\x,\c)\)</span>. All <span class="math inline">\(\c_i\)</span>’s but one randomly-chosen <span class="math inline">\(\c^*\)</span> are trimmed from the original samples. <span class="math inline">\(\c^*\)</span> is known but it is unknown which sample it is associated with. <span class="math inline">\(\ell\)</span> denotes the index of this unique sample we are trying to predict. In essence, <span class="math inline">\(\theta\)</span> is parameterizing the representation <span class="math inline">\(c\)</span>. The formal score function <span class="math inline">\(f_\theta\)</span> is simply a deterministic cosine similarity between <span class="math inline">\(\x\)</span> and <span class="math inline">\(c\)</span>.</p>
 <p><span class="math inline">\(\x_{1:N+1}\)</span> consists of one positive sample <span class="math inline">\(\x^*\)</span> that is matched with <span class="math inline">\(\c^*\)</span> and more other independent negative (noise) samples <span class="math inline">\(\x_i\)</span>’s that are not matched with <span class="math inline">\(\c\)</span>. <span class="math inline">\(N\)</span> is the fixed ratio of the number of negative samples to the number of positive samples. Let <span class="math inline">\(P(\ell=i|\x_{1:N+1},\c^*)\)</span> represent the probability that <span class="math inline">\(\x_i\)</span> is the positive sample given <span class="math inline">\(\x_1, \dots x_{N+1}\)</span> and <span class="math inline">\(\c^*\)</span>. <span class="math display">\[
 \begin{aligned}
 P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
@@ -1396,7 +1400,7 @@ P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(
 &amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
 &amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
 \end{aligned}
-\]</span> The loss function is in fact the expectation of categorical cross entropy of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, <span class="math display">\[
+\]</span> The loss function <span class="math inline">\(\eqref{loss}\)</span> is in fact the expectation (the outer <span class="math inline">\(\E\)</span>) of categorical cross entropy (the inner <span class="math inline">\(\E\)</span>) of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, <span class="math display">\[
 \begin{gather}
 P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
 f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\

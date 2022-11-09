@@ -870,22 +870,22 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measures/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measures</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/measurements/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Measurements</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/">Spectral Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/">Spectral Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/">Frobenius Normalization</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/">Frobenius Normalization</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/">Chebyshev Distance</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/measurements/chebyshev-distance/">Chebyshev Distance</a></li>
 
       
         </ul>
@@ -1160,6 +1160,10 @@
       
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/">总览</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
 
 
@@ -1172,6 +1176,10 @@
 
 
 
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
 
 
@@ -1181,10 +1189,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
-
-
-
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
 
 
 
@@ -1308,7 +1312,11 @@
     <li><a href="#i_textdv"><span class="math inline">\(I_\text{DV}\)</span></a></li>
     <li><a href="#i_texttuba"><span class="math inline">\(I_\text{TUBA}\)</span></a></li>
     <li><a href="#i_textnwj"><span class="math inline">\(I_\text{NWJ}\)</span></a></li>
-    <li><a href="#i_textnce"><span class="math inline">\(I_\text{NCE}\)</span></a></li>
+    <li><a href="#i_textnce"><span class="math inline">\(I_\text{NCE}\)</span></a>
+      <ul>
+        <li><a href="#with-i_textuba">With <span class="math inline">\(I_\text{UBA}\)</span></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1500,6 +1508,19 @@ I_\text{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fr
 &amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
 &amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{p(y_j)}{p(y_j|x_j)} ]} - \log(K-1) + \log K \\
 &amp;= I(X_1;Y) - \log(K-1) + \log K
+\end{aligned}
+\]</span> This derivation is much looser than <a href="/notes/papers/contrastive-predictive-coding/#Bounding the Mutual Information">that in the InfoNCE’s original paper</a>.</p>
+<h3 id="with-i_textuba">With <span class="math inline">\(I_\text{UBA}\)</span></h3>
+<p>There is another approach to the derivation of <span class="math inline">\(I_\text{NCE}\)</span>, that stems from an estimate of <span class="math inline">\(I_\text{UBA}\)</span> (which I won’t call empirical estimate) and that may be more intuitive: <span class="math display">\[
+\begin{aligned}
+&amp;I(X;Y) \ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
+&amp;= \E_{p^N(x,y)} f(x_1,y_1) - \E_{p^N(x,y)} \log Z(y_1) \\
+&amp;= \E_{p^N(x,y)} \log e^{f(x_1,y_1)} \\
+&amp;\quad\;- \E_{p^N(x,y)} \log \E_{p(x&#39;)} e^{f(x&#39;,y_1)} \\
+&amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}}{\E_{p(x&#39;)} e^{f(x&#39;,y)}} \\
+&amp;\simeq \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\frac{1}{N} \sum_i e^{f(x_i,y_1)}} \\
+&amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\sum_i e^{f(x_i,y_1)}} + \log N \\
+&amp;\triangleq I_\text{NCE} \le \log N
 \end{aligned}
 \]</span></p>
 

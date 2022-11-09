@@ -67,6 +67,7 @@
 &lt;li&gt;from binary classification to multi-class classification&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;linear vs. non-linear&lt;/li&gt;
+&lt;li&gt;parametric vs. non-parametric&lt;/li&gt;
 &lt;li&gt;boosting method
 &lt;ul&gt;
 &lt;li&gt;ensemble method&lt;/li&gt;
@@ -78,11 +79,8 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;training criterion&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;cost function
-&lt;ul&gt;
 &lt;li&gt;mean squared error&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;cross entropy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;impurity
 &lt;ul&gt;
 &lt;li&gt;Gini index&lt;/li&gt;
@@ -95,19 +93,19 @@
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;positive_pred&lt;/th&gt;
-&lt;th&gt;negative_pred&lt;/th&gt;
+&lt;th&gt;Real/Pred&lt;/th&gt;
+&lt;th&gt;Positive&lt;/th&gt;
+&lt;th&gt;Negative&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;positive_real&lt;/td&gt;
+&lt;td&gt;Positive&lt;/td&gt;
 &lt;td&gt;TP&lt;/td&gt;
 &lt;td&gt;FN&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;negative_real&lt;/td&gt;
+&lt;td&gt;Negative&lt;/td&gt;
 &lt;td&gt;FP&lt;/td&gt;
 &lt;td&gt;TN&lt;/td&gt;
 &lt;/tr&gt;
@@ -645,14 +643,14 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
       <guid>https://chunxy.github.io/notes/articles/machine-learning/clustering/</guid>
       <description>
 
-&lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\)&lt;/span&gt;, a clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; of the &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; points into &lt;span class=&#34;math inline&#34;&gt;\(K (K \le M)\)&lt;/span&gt; clusters is a partitioning of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; disjoint groups &lt;span class=&#34;math inline&#34;&gt;\(\{C_1,\dots,C_K\}\)&lt;/span&gt;. Suppose we have a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluates the clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\)&lt;/span&gt;, a clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; of the &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; points into &lt;span class=&#34;math inline&#34;&gt;\(K (K \le M)\)&lt;/span&gt; clusters is a partition of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; disjoint groups &lt;span class=&#34;math inline&#34;&gt;\(\{C_1,\dots,C_K\}\)&lt;/span&gt;. Suppose we have a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluates the clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
 \arg \min_{\mathcal C} f(\mathcal C)
 \]&lt;/span&gt; The number of all possibilities of clustering with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements is called the Bell number, denoted as &lt;span class=&#34;math inline&#34;&gt;\(B_M\)&lt;/span&gt;. The calculation of the Bell number is based on dynamic programming. The number of ways to cluster &lt;span class=&#34;math inline&#34;&gt;\(M+1\)&lt;/span&gt; elements is the sum of number of ways to:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; element and cluster it, with the rest belong to a new cluster&lt;/li&gt;
-&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
+&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; element and cluster it, with the rest belong to a new cluster&lt;/li&gt;
+&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
 &lt;li&gt;…&lt;/li&gt;
-&lt;li&gt;Select &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
+&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Therefore, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -663,29 +661,33 @@ B_0 = 1
 &lt;h3 id=&#34;k-means&#34;&gt;K-means&lt;/h3&gt;
 &lt;p&gt;K-means assumes there are &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; clusters. This greatly eliminates many possibilities described above. Its objective is &lt;span class=&#34;math display&#34;&gt;\[
 \min_{c_1,\dots,c_K}\sum_{i=1}^M||x^{(i)} - c_{z^{(i)}}||^2_2, \text{ where }z^{(i)} = \arg \min_{j \in \{1,\dots,K\}}||x^{(i)}-c_j||^2_2
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)}\)&lt;/span&gt; is also the cluster center index &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is assigned to. K-means’ objective is assign each point to the closest cluster center and minimize the within-cluster square errors. If &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is known, let &lt;span class=&#34;math inline&#34;&gt;\(C_j = \{x^{(i)}|z^{(i)} = j\}\)&lt;/span&gt; be the set of points assigned to Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;, the cluster center of Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)}\)&lt;/span&gt; is the cluster index &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is assigned to. K-means’ objective is to assign each point to its closest cluster center and minimize the total within-cluster square errors. If &lt;span class=&#34;math inline&#34;&gt;\(z=j\)&lt;/span&gt; is known, let &lt;span class=&#34;math inline&#34;&gt;\(C_j = \{x^{(i)}|z^{(i)} = j\}\)&lt;/span&gt; be the set of points assigned to cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;, the cluster center of cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
 c_j = \frac{1}{|C_j|}\sum_{x^{(i)} \in C_j}x^{(i)}
-\]&lt;/span&gt; Initially, however, &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is not known. K-means solves this by randomly pick up initial cluster centers and enter the assign data points - update cluster centers loop, until the cluster centers converge or become satisfactory.&lt;/p&gt;
-&lt;p&gt;Rewrite the objective of K-means: &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Initially, however, &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is not known. K-means solves this by randomly pick up initial cluster centers and enter the assign-data-points/update-cluster-centers loop, until the cluster centers converge or become satisfactory.&lt;/p&gt;
+&lt;p&gt;Rewrite the objective of K-means as: &lt;span class=&#34;math display&#34;&gt;\[
 \min_{z,c}(l(z,c) = \sum_{i=1}^M||x^{(i)}- c_{z^{(i)}}||^2_2)
-\]&lt;/span&gt; K-means is in essence a coordinate descent of the objective &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. The main loop of K-means is:&lt;/p&gt;
+\]&lt;/span&gt; K-means is in essence a coordinate descent of the objective &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. The main loop of K-means is to:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Assign data points to its nearest cluster center, i.e. minimizing over &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;Update cluster centers according to the points assigned to, i.e. minimizing over &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;assign data points to its nearest cluster center, i.e. minimizing over the assignment &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;update cluster centers according to the points assigned to, i.e. minimizing over the centroids &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is monotonically decreasing after each step in above loop. &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is also bounded by &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and thus K-means will converge finally.&lt;/p&gt;
+&lt;p&gt;The &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is monotonically decreasing after each step in the above loop. &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is also lower-bounded by &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and thus K-means will converge finally.&lt;/p&gt;
 &lt;p&gt;One problem with K-means is that it assumes that each cluster has a circular shape because of the Euclidean distance it uses.&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-mixture-model&#34;&gt;Gaussian Mixture Model&lt;/h3&gt;
-&lt;p&gt;A cluster can be modelled by a multi-variate Gaussian with elliptical shape. The elliptical shape controlled by the covariance matrix. The location is controlled by the mean. Gaussian Mixture Model a weighted sum of Gaussians: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;A cluster can be modelled by a multi-variate Gaussian with elliptical shape: the elliptical shape is controlled by the covariance matrix; the location is controlled by the mean. Gaussian Mixture Model is a weighted sum of Gaussians: &lt;span class=&#34;math display&#34;&gt;\[
 p(x) = \sum_{j=1}^K\pi_j\mathcal N(x;\mu_j, \Sigma_j)
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\pi_j\)&lt;/span&gt; is the prior that a sample is generated from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(x;\mu_j, \Sigma_j)\)&lt;/span&gt; is the probability to generate the sample &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. Put it together, &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; is the total probability of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; over its latent &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, with &lt;span class=&#34;math inline&#34;&gt;\(z = j\)&lt;/span&gt; representing the prior condition that &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is sampled from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math display&#34;&gt;\[
 p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^Kp(x|z = j)p(z = j)
 \]&lt;/span&gt; GMM is learned by &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)})\Big) \\
 s.t.\quad \sum_{j=1}^K\pi_j = 1
+\end{gather}
 \]&lt;/span&gt; The log-likelihood function form will be &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) = \log L(\pi,\mu,\Sigma)\Big) \\
 s.t.\quad \sum_{j=1}^K\pi_j = 1
+\end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h4 id=&#34;attempt-with-lagrange-multiplier&#34;&gt;Attempt with &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/&#34;&gt;Lagrange Multiplier&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -705,6 +707,7 @@ J(\pi,\mu,\Sigma,\lambda) = -\sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)}
 = \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K, \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;By far, the whole expression is too complicated for us to continue with.&lt;/p&gt;
 &lt;h4 id=&#34;attempt-with-expectation-maximization&#34;&gt;Attempt with &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/expectation-maximization/&#34;&gt;Expectation Maximization&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -712,11 +715,10 @@ L(\pi,\mu,\Sigma) = \prod_{i=1}^M p(x^{(i)}) = \prod_{i=1}^M \sum_{j=1}^K p(x^{(
 l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)\big)
 = \sum_{i=1}^M\log\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)
 \end{gather}
-\]&lt;/span&gt; By Jensen’s Inequality, if &lt;span class=&#34;math inline&#34;&gt;\(\forall j \in \{1,\dots,K\}, \alpha_j \ge 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^K\alpha_j = 1\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; By Jensen’s inequality, if &lt;span class=&#34;math inline&#34;&gt;\(\forall j \in \{1,\dots,K\}, \alpha_j \ge 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^K\alpha_j = 1\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-l(\pi,\mu,\Sigma) &amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) \\
-&amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
-&amp;amp;\ge B(\alpha,\pi,\mu,\Sigma) \coloneq \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
+l(\pi,\mu,\Sigma) &amp;amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) = \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
+&amp;amp;\ge B(\alpha,\pi,\mu,\Sigma) := \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
 \end{aligned}
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. If we can enlarge &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;, we can guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is increasing in this process. If we fix &lt;span class=&#34;math inline&#34;&gt;\(\pi,\mu,\Sigma\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; can be easily optimized by the equality condition of Jensen’s Inequality. The equality holds if and only if &lt;span class=&#34;math display&#34;&gt;\[
 \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} = c^{(i)}, i=1,\dots M, j=1,\dots,K
@@ -740,7 +742,7 @@ B(\alpha,\pi,\mu,\Sigma) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathca
 \max_\pi \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j \\
 s.t.\quad \sum_{i=1}^K \pi_j = 1
 \end{gather}
-\]&lt;/span&gt; We do this by Lagrangian Multipliers: &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; We do this by Lagrangian multipliers: &lt;span class=&#34;math display&#34;&gt;\[
 J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(1 - \sum_{i=1}^K\pi_i )
 \]&lt;/span&gt; Take derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\pi_k\)&lt;/span&gt; and make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
 \frac{\partial J}{\partial \pi_k} =\sum_{i=1}^M \frac{\alpha^{(i)}_k}{\pi_k} - \lambda \\
@@ -770,15 +772,18 @@ J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \begin{aligned}
 -\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) &amp;amp;= 0 \\
 \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T + I) &amp;amp;= 0 \\
-\Sigma_k &amp;amp;= \frac{\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T}{\sum_{i=1}^M \alpha^{(i)}_k} \\
-\end{aligned}
+\end{aligned} \\
+\Downarrow \\
+\Sigma_k = \frac{\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T}{\sum_{i=1}^M \alpha^{(i)}_k} \\
+\end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;soft-k-means&#34;&gt;Soft K-means&lt;/h3&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\alpha^{(i)}_j\)&lt;/span&gt; in GMM, which measures how likely the sample &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is generated from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian, can be viewed as a contribution of sample &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; to the Cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;. That is, a sample can contribute different portions to different clusters and these portions add up to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;In cases where &lt;span class=&#34;math inline&#34;&gt;\(\pi_j = \frac{1}{K}, \Sigma_k = I\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\alpha^{(i)}_j\)&lt;/span&gt; in GMM, which measures how likely the sample &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is generated from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian, can be viewed as a contribution of sample &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; to the cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;. That is, a sample can contribute different portions to different clusters and these portions add up to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In the case where &lt;span class=&#34;math inline&#34;&gt;\(\pi_j = \frac{1}{K}, \Sigma_k = I\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}}\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2) \\
 \alpha^{(i)}_j = p(z^{(i)} = j | x^{(i)}) = \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I) \frac{1}{K}}{\frac{1}{K} \sum_{k=1}^K \mathcal N(x;\mu_k, I)} = \frac{\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2)}{\sum_{k=1}^K \exp(-\frac{1}{2}||x^{(k)}-\mu_j||^2_2)}
@@ -1021,7 +1026,7 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
       <pubDate>Fri, 07 Jan 2022 12:40:50 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/eckart-young-mirsky-theorem/</guid>
       <description>
-&lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/&#34;&gt;Frobenius norm&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Given an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; of rank &lt;span class=&#34;math inline&#34;&gt;\(R \le \min\{M,N\}\)&lt;/span&gt; and its SVD &lt;span class=&#34;math inline&#34;&gt;\(X = U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)&lt;/span&gt;, among all the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrices of rank &lt;span class=&#34;math inline&#34;&gt;\(K \le R\)&lt;/span&gt;, the best approximation to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(Y^\star = U\Sigma_K V^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)&lt;/span&gt;, when distance between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is defined as &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/&#34;&gt;Frobenius norm&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 ||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
 \]&lt;/span&gt; Firstly we prove that, if &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is orthogonal, then &lt;span class=&#34;math inline&#34;&gt;\(||UA||_F = ||AU||_F = ||A||_F\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -1052,7 +1057,7 @@ Z_{ii} = 0, i = R, R + 1, \dots, \min\{M,N\} \\
 Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 \end{gather}
 \]&lt;/span&gt; Such &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; exists when &lt;span class=&#34;math inline&#34;&gt;\(Y = U\Sigma_KV^T\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/&#34;&gt;spectral norm&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;Eckart-Young-Mirsky Theorem also holds for &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/&#34;&gt;spectral norm&lt;/a&gt; .&lt;/p&gt;
 
 
 </description>

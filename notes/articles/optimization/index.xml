@@ -23,31 +23,31 @@
 &lt;p&gt;The standard form of the Lagrange Multiplier optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 &amp;amp;\inf f_0(x) \\
-s.t.\quad &amp;amp;f_i(x) \le 0, i = 1,\dots,r \\
-&amp;amp;h_i(x) = 0, i = 1,\dots,s \\
+s.t.\quad &amp;amp; f_i(x) \le 0, i = 1,\dots,r \\
+&amp;amp; h_i(x) = 0, i = 1,\dots,s \\
 \end{aligned}
-\]&lt;/span&gt; Denote the feasible set of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; that satisfies all the requirements in original problem as &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Then the Lagrangian function is &lt;span class=&#34;math inline&#34;&gt;\(L:\R^n \times \R^r \times \R^s \mapsto \R\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(dom(L) = \mathcal X \times \R^r \times \R^s\)&lt;/span&gt;:&lt;/p&gt;
+\]&lt;/span&gt; Denote the feasible set of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; that satisfies all the requirements in original problem as &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X \subseteq \R^n\)&lt;/span&gt;. Then the Lagrangian function is &lt;span class=&#34;math inline&#34;&gt;\(L:\R^n \times \R^r \times \R^s \mapsto \R\)&lt;/span&gt; (there is an implicit constraint that the variables must reside in the domain of the functions):&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 L(x, \lambda, \mu) = f_0(x) + \sum_{i=1}^r\lambda_if_i(x) + \sum_{i=1}^s\mu_ih_i(x)
 \]&lt;/span&gt; Define the function &lt;span class=&#34;math inline&#34;&gt;\(P: \mathcal X \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
 \]&lt;/span&gt; The primal problem is &lt;span class=&#34;math display&#34;&gt;\[
-\inf_{x \in \mathcal X} P(x)
-\]&lt;/span&gt; It is easy to derive &lt;span class=&#34;math inline&#34;&gt;\(P(x) =f_0(x)\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Thus the primal problem is equivalent to the original problem. Denote its optimal value as &lt;span class=&#34;math inline&#34;&gt;\(p^\star\)&lt;/span&gt;.&lt;/p&gt;
+\inf_{x \in \mathcal X} P(x) \label{primal}
+\]&lt;/span&gt; It is easy to derive &lt;span class=&#34;math inline&#34;&gt;\(P(x) =f_0(x)\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Thus the primal problem is equivalent to the original problem. Denote primal problem &lt;span class=&#34;math inline&#34;&gt;\(\eqref{primal}\)&lt;/span&gt;’s optimal value as &lt;span class=&#34;math inline&#34;&gt;\(p^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Define the Lagrangian dual function &lt;span class=&#34;math inline&#34;&gt;\(D: \R^r \times \R^s \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
-D(\lambda, \mu) = \inf_{x \in \mathcal X}L(x, \lambda, \mu)
+D(\lambda, \mu) = \inf_{x \in \mathcal \R^n}L(x, \lambda, \mu)
 \]&lt;/span&gt; The Lagrangian dual problem is &lt;span class=&#34;math display&#34;&gt;\[
-\sup_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \\
-\]&lt;/span&gt; Denote its optimal value as &lt;span class=&#34;math inline&#34;&gt;\(d^\star\)&lt;/span&gt;. We always have &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;
+\sup_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \label{dual}
+\]&lt;/span&gt; Denote dual problem &lt;span class=&#34;math inline&#34;&gt;\(\eqref{dual}\)&lt;/span&gt;’s optimal value as &lt;span class=&#34;math inline&#34;&gt;\(d^\star\)&lt;/span&gt;. We always have &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
-&lt;p&gt;For any feasible &lt;span class=&#34;math inline&#34;&gt;\(x \in \mathcal X, (\lambda, \mu) \in dom(D)\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu) \ge L(x,\lambda,\mu) \ge \inf_{x \in \mathcal X}L(x, \lambda, \mu) =D (\lambda, \mu)
+&lt;p&gt;For any feasible &lt;span class=&#34;math inline&#34;&gt;\(x \in \mathcal X, (\lambda, \mu) \in {\R^r}^+ \times \R^s\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu) \ge L(x,\lambda,\mu) \ge \inf_{x&amp;#39; \in \R^n}L(x&amp;#39;, \lambda, \mu) =D (\lambda, \mu)
 \]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;strong-duality&#34;&gt;Strong Duality&lt;/h3&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt; is called weak duality because it always holds. &lt;span class=&#34;math inline&#34;&gt;\(p^\star = d^\star\)&lt;/span&gt; is called a strong duality because it does not hold in general. But it does hold in general in &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/convex-optimization/&#34;&gt;convex optimization&lt;/a&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f_1,\dots,f_r\)&lt;/span&gt; are convex and &lt;span class=&#34;math inline&#34;&gt;\(h_1,\dots,h_s\)&lt;/span&gt; are affine transformations of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, i.e. in the form of &lt;span class=&#34;math inline&#34;&gt;\(Ax + b\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Assume a strong duality holds, &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; is the primal optima, &lt;span class=&#34;math inline&#34;&gt;\((\lambda^\star, \mu^\star)\)&lt;/span&gt; is the dual optima, then &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt; is called weak duality because it always holds. &lt;span class=&#34;math inline&#34;&gt;\(p^\star = d^\star\)&lt;/span&gt; is called strong duality because it does not hold in general. Assume, though, a strong duality holds, let &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; be the primal optima, &lt;span class=&#34;math inline&#34;&gt;\((\lambda^\star, \mu^\star)\)&lt;/span&gt; be the dual optima, then&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) \\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -62,17 +62,29 @@ L(x^\star,\lambda^\star,\mu^\star) \le f_0(x^\star) \le L(x^\star,\lambda^\star,
 f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\star,\mu^\star)
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;If the strong duality holds and &lt;span class=&#34;math inline&#34;&gt;\((x,\lambda,\mu)\)&lt;/span&gt; is the optima, they must satisfy the KKT conditions, and we can leverage the KKT conditions to solve the optima and optimal value:&lt;/p&gt;
 &lt;h4 id=&#34;karush-kuhn-tucker-conditions&#34;&gt;Karush-Kuhn-Tucker Conditions&lt;/h4&gt;
 &lt;p&gt;In standard optimization problem, KKT conditions refer to the below four:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Primal Constraints: &lt;span class=&#34;math inline&#34;&gt;\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Dual Constraints: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1,\dots,\lambda_r \ge 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Complementary Constraints: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Gradient of Lagrangian w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; vanishes: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;primal constraint&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;dual constraint&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1,\dots,\lambda_r \ge 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;complementary slackness&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;vanishing gradient&lt;/strong&gt; of Lagrangian w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; : &lt;span class=&#34;math display&#34;&gt;\[
 \nabla f_0(x) + \sum_{i=1}^r\lambda_i\nabla f_i(x) + \sum_{i=1}^s\mu_i\nabla h_i(x) = 0
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;If the strong duality holds and &lt;span class=&#34;math inline&#34;&gt;\((x,\lambda,\mu)\)&lt;/span&gt; is the optima, they must satisfy the KKT conditions. Note that KKT conditions do not imply the existence of a strong duality or optima point.&lt;/p&gt;
+&lt;p&gt;Note that solutions satisfying KKT conditions do not imply a strong duality or an optimal point. For a better discussion between strong duality and KKT conditions, please go to &lt;a href=&#34;https://math.stackexchange.com/questions/3616646/question-about-kkt-conditions-and-strong-duality&#34;&gt;this question&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;when-to-apply&#34;&gt;When-to-apply&lt;/h3&gt;
+&lt;h4 id=&#34;slater-condition&#34;&gt;Slater Condition&lt;/h4&gt;
+&lt;p&gt;Strong duality does not hold generally. But it does hold in &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/convex-optimization/#Standard Form of the Convex Optimization Problem&#34;&gt;standard convex optimization problem&lt;/a&gt;. In such case, KKT conditions are also sufficient for strong duality provided that &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; is an interior point of the feasible region.&lt;/p&gt;
+&lt;h4 id=&#34;general-case&#34;&gt;General Case&lt;/h4&gt;
+&lt;p&gt;In cases where we cannot tell strong duality directly, we may still try to apply Lagrangian multiplier to convert the primal problem to the less-constrained dual problem (&lt;span class=&#34;math inline&#34;&gt;\(\lambda \ge 0\)&lt;/span&gt; is much looser than the constraints in the original problem). That is, we solve &lt;span class=&#34;math inline&#34;&gt;\(d^\star\)&lt;/span&gt; first, and then check if &lt;span class=&#34;math inline&#34;&gt;\(d^\star = p^\star\)&lt;/span&gt;. We do so with the following process:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;firstly take derivative of &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; w.r.t. the unconstrained &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; and make it zero (vanishing gradient) to obtain the closed-form expression of &lt;span class=&#34;math inline&#34;&gt;\(D(\lambda, \mu)\)&lt;/span&gt;,&lt;/li&gt;
+&lt;li&gt;find &lt;span class=&#34;math inline&#34;&gt;\(\lambda^\star \ge 0\)&lt;/span&gt; (dual constraint) and &lt;span class=&#34;math inline&#34;&gt;\(\mu^\star\)&lt;/span&gt; that maximizes the &lt;span class=&#34;math inline&#34;&gt;\(D(\lambda, \mu)\)&lt;/span&gt; and solve &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\lambda^\star\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mu^\star\)&lt;/span&gt;,&lt;/li&gt;
+&lt;li&gt;finally verify that &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; satisfies the constraints (primal constraint and the implied complementary slackness) in the original problem and &lt;span class=&#34;math inline&#34;&gt;\(f_0(x^\star) = d^\star\)&lt;/span&gt; (strong duality).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If we can successfully go through the above process, we can still solve the problem with Lagrangian multiplier.&lt;/p&gt;
 
 
 </description>
@@ -370,32 +382,33 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
       <pubDate>Fri, 07 Jan 2022 12:58:37 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/expectation-maximization/</guid>
       <description>
-&lt;p&gt;If a probabilistic model contains only observable variables, Maximum likelihood estimation or Bayesian methods can be adopted to derive the model parameters. However it is also possible that a probabilistic model contains unobservable variables, or called latent variables. Latent variables are those that you cannot observe but you know its existence and effect in the model. In such case, Lagrange Multipliers may be hard to apply because of the existence of the “log of sum” term.&lt;/p&gt;
-&lt;p&gt;Given samples &lt;span class=&#34;math inline&#34;&gt;\(X = \{x^{(1)}, x^{(2)}, ..., x^{(m)}\} \in \mathcal{X}\)&lt;/span&gt;, and their corresponding latent variables &lt;span class=&#34;math inline&#34;&gt;\(Z = \{z^{(1)}, z^{(2)}, ..., z^{(m)}\} \in \mathcal{Z}\)&lt;/span&gt;, denoting the data as &lt;span class=&#34;math inline&#34;&gt;\(D = \{(x^{(1)}, z^{(1)}), (x^{(2)}, z^{(2)}), ..., (x^{(m)}, z^{(m)})\}\)&lt;/span&gt; try to the find best parameters &lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
-\hat \theta = arg\max_{\theta}\log(p(X;\theta))
+
+&lt;p&gt;If a probabilistic model contains only observable variables, Maximum likelihood estimation or Bayesian methods can be adopted to derive the model parameters. However it is also possible that a probabilistic model contains unobservable variables (called latent variables). Latent variables are those that you cannot observe but you know its existence and its corresponding random event in random trial. In such case, &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/&#34;&gt;Lagrange multipliers&lt;/a&gt; may be hard to apply because of the existence of the “log of sum” term.&lt;/p&gt;
+&lt;p&gt;Given observed samples &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X} = \{\x^{(1)}, \x^{(2)}, ..., \x^{(m)}\}\)&lt;/span&gt; (with unobservable latent variable samples &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{Z}\)&lt;/span&gt;), MLE tries to the find best parameters &lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+\hat \theta = \arg\max_{\theta}\log(p(\mathrm{X};\theta))
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;The log-likelihood function is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-l(\theta) &amp;amp;= \log p(X;\theta) \\
-&amp;amp;= \log\sum_{Z \in \mathcal{Z}}p(X, Z;\theta) \\
-&amp;amp;= \log\sum_{Z \in \mathcal{Z}}p(Z;\theta)\frac{p(X, Z;\theta)}{p(Z;\theta)} \\
-&amp;amp;\ge \sum_{Z \in \mathcal{Z}}p(Z;\theta)\log\frac{p(X, Z;\theta)}{p(Z;\theta)} \text{, by Jensen&amp;#39;s Inequality} \\
-&amp;amp;= E_{Z \sim q}[\log\frac{p(X, Z;\theta)}{q(Z)}] \text{, where $q(Z) = p(Z;\theta)$}
+l(\theta) &amp;amp;= \log p(\mathrm{X};\theta) = \sum_{\x \in \mathrm{X}} \log p(\x; \theta) \\
+&amp;amp;= \sum_{\x \in \mathrm{X}} \log \E_{\z \sim q(\z)} \frac{p(\x, \z; \theta)}{q(\z)} \\
+&amp;amp;\Downarrow_\text{by Jensen&amp;#39;s Inequality} \\
+&amp;amp;\ge \sum_{\x \in \mathrm{X}} \E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)} \\
+&amp;amp;\text{where $q(\z)$ is a reference distribution}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;If we maximize the &lt;span class=&#34;math inline&#34;&gt;\(E_{Z \sim q}[\log\frac{p(X, Z;\theta)}{q(Z)}]\)&lt;/span&gt;, the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; can be maximized, which gives us a good guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; will increase monotonically. &lt;span class=&#34;math inline&#34;&gt;\(E_{z \sim q}[\log\frac{p(X, z;\theta)}{q(z)}]\)&lt;/span&gt; is a function of &lt;span class=&#34;math inline&#34;&gt;\((q, \theta)\)&lt;/span&gt;, firstly we maximize it w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, and then w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, and then back and forth, making a Coordinate Ascent process.&lt;/p&gt;
-&lt;p&gt;The first step of Coordinate Ascent, i.e. maximizing over &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, happens by having &lt;span class=&#34;math inline&#34;&gt;\(E_{Z \sim q}[\log\frac{p(X, Z;\theta)}{q(Z)}]\)&lt;/span&gt; reach its upper bound when the equality in Jensen’s Inequality holds, where &lt;span class=&#34;math inline&#34;&gt;\(\log\frac{p(X, Z;\theta)}{q(Z)}\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(\frac{p(X, Z;\theta)}{q(Z)}\)&lt;/span&gt; is a constant &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(Z \in \mathcal{Z}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;If we maximize the &lt;span class=&#34;math inline&#34;&gt;\(\E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt;, the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; can be maximized, which gives us a good guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; will increase monotonically. &lt;span class=&#34;math inline&#34;&gt;\(\E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt; is a function of &lt;span class=&#34;math inline&#34;&gt;\((\phi, \theta)\)&lt;/span&gt;, firstly we maximize it w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;, and then w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, and then back and forth.&lt;/p&gt;
+&lt;p&gt;The first step is to fix &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; and have &lt;span class=&#34;math inline&#34;&gt;\(\E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt; reach its upper bound when the equality in Jensen’s inequality holds, where &lt;span class=&#34;math inline&#34;&gt;\(\frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt; is a constant &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; for every &lt;span class=&#34;math inline&#34;&gt;\(\z \in \mathcal{Z}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-p(X,Z;\theta) &amp;amp;= cq(Z) \\
-\sum_Zp(X,Z;\theta) &amp;amp;= c\sum_zq(Z) \\
-\sum_Zp(X,Z;\theta) &amp;amp;= c \\
+p(\x, \z) &amp;amp;= cq(\z) \\
+&amp;amp;\Downarrow \\
+\sum_{\z \in \mathcal{Z}} p(\x, \z) &amp;amp;= c\sum_{\z \in \mathcal{Z}} q(\z) \\
+p(\x;\theta) &amp;amp;= c \\
 \end{aligned}
-\]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
-q(Z) = \frac{p(X, Z;\theta)}{c} = \frac{p(X, Z;\theta)}{\sum_Zp(X,Z;\theta)} = \frac{p(X, Z;\theta)}{p(X;\theta)} = p(Z|X;\theta)
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(p(Z|X;\theta)\)&lt;/span&gt; is a shorthand for &lt;span class=&#34;math inline&#34;&gt;\(\frac{p(X, Z;\theta)}{p(X;\theta)}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-p(Z|X;\theta) = \frac{p(X, Z;\theta)}{p(X;\theta)} = \frac{\prod_{i=1}^m \sum_{z^{(i)}}p(x^{(i)}, z^{(i)})}{\prod_{i=1}^m p(x^{(i)})} = \prod_{i=1}^m \sum_{z^{(i)}}p(z^{(i)}|x^{(i)})
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/306016801/answer/624061631&#34;&gt;good comparison of latent variables&lt;/a&gt;&lt;/p&gt;
+\]&lt;/span&gt; Thus we know how to choose &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+q(\z) = \frac{p(\x, \z)}{c} = \frac{p(\x, \z)}{p(\x;\theta)} = p(\z|\x;\theta)
+\]&lt;/span&gt; The above step is called the &lt;strong&gt;expectation&lt;/strong&gt; step because we are deriving a closed-form expression for &lt;span class=&#34;math inline&#34;&gt;\(\E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt; w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;. The next step is the &lt;strong&gt;maximization&lt;/strong&gt; step where we fix &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; and optimize w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;. We do these two steps back and forth, comprising the whole expectation maximization algorithm.&lt;/p&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/306016801/answer/624061631&#34;&gt;A good comparison of latent variables&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

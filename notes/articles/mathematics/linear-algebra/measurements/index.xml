@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Measures | Chunxy&#39; Website</title>
-    <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/</link>
-      <atom:link href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/index.xml" rel="self" type="application/rss+xml" />
-    <description>Measures</description>
+    <title>Measurements | Chunxy&#39; Website</title>
+    <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/</link>
+      <atom:link href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/index.xml" rel="self" type="application/rss+xml" />
+    <description>Measurements</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
     <image>
       <url>https://chunxy.github.io/media/sharing.png</url>
-      <title>Measures</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/</link>
+      <title>Measurements</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/</link>
     </image>
     
     <item>
       <title>Spectral Normalization</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/</link>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/</link>
       <pubDate>Sat, 29 Jan 2022 21:23:58 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/spectral-normalization/</guid>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/</guid>
       <description>
 
 &lt;p&gt;Spectral Normalization of an &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
@@ -59,9 +59,9 @@ v_t &amp;amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
     
     <item>
       <title>Frobenius Normalization</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/</link>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/</link>
       <pubDate>Mon, 20 Dec 2021 15:43:54 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/frobenius-normalization/</guid>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/frobenius-normalization/</guid>
       <description>
 &lt;p&gt;Frobenius Normalization of an &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 ||A||_F = \sqrt{\sum_{ij}A_{ij}^2}
@@ -82,9 +82,9 @@ v_t &amp;amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
     
     <item>
       <title>Chebyshev Distance</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/</link>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/chebyshev-distance/</link>
       <pubDate>Sat, 18 Dec 2021 20:28:24 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measures/chebyshev-distance/</guid>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/chebyshev-distance/</guid>
       <description>
 
 &lt;h3 id=&#34;discrete-form&#34;&gt;Discrete form&lt;/h3&gt;

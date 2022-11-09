@@ -113,9 +113,9 @@ r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) - \ln q(
 &lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
 &lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the original data. The original data can either be the data before the encoding, or the future data after various steps.&lt;/p&gt;
 &lt;p&gt;CPC learns the representation by minimizing the following loss function: &lt;span class=&#34;math display&#34;&gt;\[
-\newcommand{\c}{\mathrm{c}}
+\newcommand{\c}{\mathrm{c}} \label{loss}
 \mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)&lt;/span&gt; is a tuple of random variables and &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; is the distribution from which &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is drawn. &lt;span class=&#34;math inline&#34;&gt;\((\x:\c)_{1:N+1}\)&lt;/span&gt; are drawn from the joint distribution &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(\x,\c)\)&lt;/span&gt;. All &lt;span class=&#34;math inline&#34;&gt;\(\c_i\)&lt;/span&gt;’s but one randomly-chosen &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; are trimmed from the original samples. &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; is known but it is unknown which sample it is associated with. Denote by &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; the index of this unique sample we are trying to predict.&lt;/p&gt;
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)&lt;/span&gt; is a tuple of random variables and &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; is the distribution from which &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is drawn. &lt;span class=&#34;math inline&#34;&gt;\((\x:\c)_{1:N+1}\)&lt;/span&gt; are drawn from the joint distribution &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(\x,\c)\)&lt;/span&gt;. All &lt;span class=&#34;math inline&#34;&gt;\(\c_i\)&lt;/span&gt;’s but one randomly-chosen &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; are trimmed from the original samples. &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; is known but it is unknown which sample it is associated with. &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; denotes the index of this unique sample we are trying to predict. In essence, &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; is parameterizing the representation &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;. The formal score function &lt;span class=&#34;math inline&#34;&gt;\(f_\theta\)&lt;/span&gt; is simply a deterministic cosine similarity between &lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\x_{1:N+1}\)&lt;/span&gt; consists of one positive sample &lt;span class=&#34;math inline&#34;&gt;\(\x^*\)&lt;/span&gt; that is matched with &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; and more other independent negative (noise) samples &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt;’s that are not matched with &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the fixed ratio of the number of negative samples to the number of positive samples. Let &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*)\)&lt;/span&gt; represent the probability that &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt; is the positive sample given &lt;span class=&#34;math inline&#34;&gt;\(\x_1, \dots x_{N+1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
@@ -127,7 +127,7 @@ P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1
 &amp;amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
 &amp;amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
 \end{aligned}
-\]&lt;/span&gt; The loss function is in fact the expectation of categorical cross entropy of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The loss function &lt;span class=&#34;math inline&#34;&gt;\(\eqref{loss}\)&lt;/span&gt; is in fact the expectation (the outer &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of categorical cross entropy (the inner &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
 f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
@@ -279,6 +279,19 @@ I_\text{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac
 &amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
 &amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{p(y_j)}{p(y_j|x_j)} ]} - \log(K-1) + \log K \\
 &amp;amp;= I(X_1;Y) - \log(K-1) + \log K
+\end{aligned}
+\]&lt;/span&gt; This derivation is much looser than &lt;a href=&#34;https://chunxy.github.io/notes/papers/contrastive-predictive-coding/#Bounding the Mutual Information&#34;&gt;that in the InfoNCE’s original paper&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;with-i_textuba&#34;&gt;With &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;There is another approach to the derivation of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt;, that stems from an estimate of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; (which I won’t call empirical estimate) and that may be more intuitive: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;I(X;Y) \ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
+&amp;amp;= \E_{p^N(x,y)} f(x_1,y_1) - \E_{p^N(x,y)} \log Z(y_1) \\
+&amp;amp;= \E_{p^N(x,y)} \log e^{f(x_1,y_1)} \\
+&amp;amp;\quad\;- \E_{p^N(x,y)} \log \E_{p(x&amp;#39;)} e^{f(x&amp;#39;,y_1)} \\
+&amp;amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}}{\E_{p(x&amp;#39;)} e^{f(x&amp;#39;,y)}} \\
+&amp;amp;\simeq \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\frac{1}{N} \sum_i e^{f(x_i,y_1)}} \\
+&amp;amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\sum_i e^{f(x_i,y_1)}} + \log N \\
+&amp;amp;\triangleq I_\text{NCE} \le \log N
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 
