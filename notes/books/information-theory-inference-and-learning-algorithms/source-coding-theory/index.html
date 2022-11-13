@@ -1308,12 +1308,8 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#notations-and-concepts">Notations and Concepts</a></li>
-    <li><a href="#shannons-source-coding-theorem">Shannon’s source coding theorem</a>
-      <ul>
-        <li><a href="#shannons-source-coding-theorem-verbose">Shannon’s source coding theorem (verbose)</a></li>
-      </ul>
-    </li>
-    <li><a href="#kraft-mcmillan-inequality">Kraft-McMillan Inequality</a></li>
+    <li><a href="#shannons-source-coding-theorem">Shannon’s source coding theorem</a></li>
+    <li><a href="#kraft-mcmillan-inequality">Kraft-McMillan inequality</a></li>
     <li><a href="#source-coding-theorem-for-symbol-codes">Source coding theorem for symbol codes</a></li>
   </ul>
 </nav>
@@ -1409,19 +1405,23 @@ P(X \in S_\delta) \ge 1 - \delta
 H_\delta(X) = \log |S_\delta|
 \]</span></p>
 <h2 id="shannons-source-coding-theorem">Shannon’s source coding theorem</h2>
-<p>Let <span class="math inline">\(X\)</span> be and ensemble with entropy <span class="math inline">\(H(X) = H\)</span> bits. Given <span class="math inline">\(\epsilon &gt; 0\)</span> and <span class="math inline">\(0 &lt; \delta &lt; 1\)</span>, there exists a positive integer <span class="math inline">\(N_0\)</span> such that for <span class="math inline">\(N &gt; N_0\)</span>, <span class="math display">\[
+<blockquote>
+<p>Let <span class="math inline">\(X\)</span> be an ensemble with entropy <span class="math inline">\(H(X) = H\)</span> bits, and <span class="math inline">\(X^N\)</span> be the ensemble composed of <span class="math inline">\(N\)</span> i.i.d. such random variables. Given <span class="math inline">\(\epsilon &gt; 0\)</span> and <span class="math inline">\(0 &lt; \delta &lt; 1\)</span>, there exists a positive integer <span class="math inline">\(N_0\)</span> such that for <span class="math inline">\(N &gt; N_0\)</span>, <span class="math display">\[
 |\frac{1}{N} H_\delta (X^N) - H| &lt; \epsilon
 \]</span></p>
-<h3 id="shannons-source-coding-theorem-verbose">Shannon’s source coding theorem (verbose)</h3>
+</blockquote>
+<p>Or put it in a verbal way,</p>
+<blockquote>
 <p><span class="math inline">\(N\)</span> i.i.d. random variables each with entropy <span class="math inline">\(H(X) = H\)</span> can be compressed into more than <span class="math inline">\(NH\)</span> bits with negligible information loss as <span class="math inline">\(N \to \infty\)</span>; conversely if they are compressed fewer than <span class="math inline">\(NH\)</span> bits, it is virtually certain that there is information loss.</p>
+</blockquote>
 <ul>
-<li><p><strong>Proof</strong>: The random variable <span class="math inline">\(\frac 1 N \log \frac 1 {P(Y)}\)</span> defined for <span class="math inline">\(y\)</span> drawn from the ensemble <span class="math inline">\(Y = X^N\)</span> which composes of <span class="math inline">\(N\)</span> i.i.d. <span class="math inline">\(X_1 \dots X_N\)</span>. <span class="math inline">\(Y\)</span> can be re-written as the average of <span class="math inline">\(N\)</span> information contents <span class="math inline">\(h_i = \log \frac 1 {P(X_i)}\)</span>: <span class="math display">\[
-\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log X_1 + \dots + \log X_N)
+<li><p><strong>Proof</strong>: The random variable <span class="math inline">\(\frac 1 N \log \frac 1 {P(Y)}\)</span> is defined for the ensemble <span class="math inline">\(Y = X^N\)</span> which composes of <span class="math inline">\(N\)</span> i.i.d. <span class="math inline">\(X_1 \dots X_N\)</span>. <span class="math inline">\(\frac 1 N \log \frac 1 {P(Y)}\)</span> can be re-written as the average of <span class="math inline">\(N\)</span> information contents <span class="math inline">\(h_i = \log \frac 1 {P(X_i)}\)</span>: <span class="math display">\[
+\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log \frac{1}{P(X_N)})
 \]</span> Each of these information contents is in turn a random variable with mean <span class="math inline">\(\bar h_i = H(X) = H\)</span> and variance <span class="math inline">\(\sigma_{h_i}^2 = \sigma^2\)</span>. The <strong>typical set</strong> with parameters <span class="math inline">\(N\)</span> and <span class="math inline">\(\beta\)</span> is defined as <span class="math display">\[
-T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac 1 {P(y)} - H]^2 &lt; \beta^2 \}
-\]</span> By the <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#弱大数定律（Weak Law of large numbers）">Weak Law of Large Numbers</a>, <span class="math inline">\(P((y - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)</span>, and thus <span class="math display">\[
+T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac{1}{P(y)} - H]^2 &lt; \beta^2 \}
+\]</span> By the <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律">Khinchin’s Law of Large Numbers</a>, <span class="math inline">\(P((\frac 1 N \log \frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)</span>, and thus <span class="math display">\[
 P(y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
-\]</span> As <span class="math inline">\(N\)</span> increases, the probability that <span class="math inline">\(y\)</span> falls in <span class="math inline">\(T_{N \beta}\)</span> draws near <span class="math inline">\(1\)</span>. We need to relate this to the theorem that for any given <span class="math inline">\(\delta\)</span>, there is a sufficiently-large <span class="math inline">\(N\)</span> such that <span class="math inline">\(H_\delta(X^N) \simeq NH\)</span>.</p>
+\]</span> As <span class="math inline">\(N\)</span> increases, the probability that <span class="math inline">\(y\)</span> falls in <span class="math inline">\(T_{N \beta}\)</span> draws near to <span class="math inline">\(1\)</span>. We need to relate this to the theorem that for any given <span class="math inline">\(\epsilon, \delta\)</span>, there is a sufficiently-large <span class="math inline">\(N\)</span> such that <span class="math inline">\(H_\delta(X^N) \simeq NH\)</span>.</p>
 <ol type="1">
 <li><p><span class="math inline">\(H_\delta(X^N) &lt; N(H + \epsilon)\)</span></p>
 <p>The set <span class="math inline">\(T_{N \beta}\)</span> is not the best sufficient subset for compression. Therefore, <span class="math inline">\(\log |T_{N \beta}|\)</span> upper-bounds the <span class="math inline">\(H_\delta(X^N)\)</span>. On the other hand, for all <span class="math inline">\(y \in T_{N \beta}\)</span>, <span class="math inline">\(2^{-N(H - \beta)} &lt; P(y) &lt; 2^{-N(H + \beta)}\)</span>, <span class="math display">\[
@@ -1440,7 +1440,7 @@ P(y \in S&#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} + \frac{\sigma^2}{\beta^
 \]</span> For arbitrary <span class="math inline">\(\delta\)</span> and a sufficiently-large <span class="math inline">\(N_0\)</span>, we can have <span class="math inline">\(P(y \in S&#39;) \le 1 - \delta\)</span> instead of <span class="math inline">\(P(y \in S&#39;) \ge 1 - \delta\)</span>. We shall conclude that <span class="math inline">\(S&#39;\)</span> with <span class="math inline">\(|S&#39;| \le 2^{N(H - 2\beta)}\)</span> cannot achieve <span class="math inline">\(P(y \in S&#39;) \ge 1 - \delta\)</span> and thus <span class="math inline">\(H_\delta(X^N) &gt; N(H - \epsilon)\)</span>.</p></li>
 </ol></li>
 </ul>
-<h2 id="kraft-mcmillan-inequality">Kraft-McMillan Inequality</h2>
+<h2 id="kraft-mcmillan-inequality">Kraft-McMillan inequality</h2>
 <ol type="1">
 <li><p>Denote the length of each symbol code as <span class="math inline">\(l_i\)</span> and there are <span class="math inline">\(I\)</span> symbols. If <span class="math display">\[
 \sum_{i=1}^I 2^{-l_i} \le 1
@@ -1485,7 +1485,7 @@ L(C,X) = \sum_i p_i l_i &amp;= -\sum_i [p_i \log (q_iz)] \\
 \]</span> The equality holds when <span class="math inline">\(z = 1\)</span> (the code is complete) and <span class="math inline">\(q = p\)</span> (<span class="math inline">\(l_i = \log 1/p_i\)</span>).</p>
 <p>From another perspective, suppose the coding is complete but not optimal, <span class="math display">\[
 \begin{aligned}
-L(C,X) = -\sum_i [p_i \log (q_iz)] &amp;= -\sum_i [p_i \log (q_i)] \\
+&amp;L(C,X) = -\sum_i [p_i \log (q_iz)] = -\sum_i [p_i \log (q_i)] \\
 &amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i \log (q_i)] \\
 &amp;= H(X) + D_{KL}(p || q)
 \end{aligned}

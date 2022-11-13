@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="泊松分布（Poisson distribution） \[ \begin{gather*} P(x;\lambda) = e^{-\lambda}" />
+  <meta name="description" content="离散型 二项分布（binomial distribution） 如" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/" />
   <meta property="og:title" content="常见分布 | Chunxy&#39; Website" />
-  <meta property="og:description" content="泊松分布（Poisson distribution） \[ \begin{gather*} P(x;\lambda) = e^{-\lambda}" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="离散型 二项分布（binomial distribution） 如" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1307,10 +1307,20 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#泊松分布poisson-distribution">泊松分布（Poisson distribution）</a></li>
-    <li><a href="#二项分布binomial-distribution">二项分布（binomial distribution）</a></li>
-    <li><a href="#伯努利分布bernoulli-distribution">伯努利分布（Bernoulli distribution）</a></li>
-    <li><a href="#多项分布multinomial-distribution">多项分布（multinomial distribution）</a></li>
+    <li><a href="#离散型">离散型</a>
+      <ul>
+        <li><a href="#二项分布binomial-distribution">二项分布（binomial distribution）</a></li>
+        <li><a href="#泊松分布poisson-distribution">泊松分布（Poisson distribution）</a></li>
+        <li><a href="#伯努利分布bernoulli-distribution">伯努利分布（Bernoulli distribution）</a></li>
+        <li><a href="#多项分布multinomial-distribution">多项分布（multinomial distribution）</a></li>
+      </ul>
+    </li>
+    <li><a href="#连续型">连续型</a>
+      <ul>
+        <li><a href="#指数分布exponential-distribution">指数分布（exponential distribution）</a></li>
+        <li><a href="#正态分布normal-distribution">正态分布（normal distribution）</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1395,33 +1405,54 @@
           <div class="article-style">
             
 
-<h2 id="泊松分布poisson-distribution">泊松分布（Poisson distribution）</h2>
-<p><span class="math display">\[
-\begin{gather*}
-P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!} \\
+<h2 id="离散型">离散型</h2>
+<h3 id="二项分布binomial-distribution">二项分布（binomial distribution）</h3>
+<p>如果离散型随机变量<span class="math inline">\(X\)</span>服从二项分布，一般记作<span class="math inline">\(X \sim B(n, p)\)</span>。 <span class="math display">\[
+\begin{gathered}
+B(x;n,p) = {n \choose x} p^x (1-p)^{n-x}, x = 0,1,\dots \\
+\E[X] = np \\
+\Var[X] = np(1-p)
+\end{gathered}
+\]</span></p>
+<h3 id="泊松分布poisson-distribution">泊松分布（Poisson distribution）</h3>
+<p>泊松分布可以看作是某种形式的二项分布取极限而得到，一般如果<span class="math inline">\(X \sim B(n,p)\)</span>且<span class="math inline">\(n\)</span>较大、<span class="math inline">\(p\)</span>较小、<span class="math inline">\(np = \lambda\)</span>不太大时，<span class="math inline">\(X\)</span>的分布接近于泊松分布<span class="math inline">\(P(\lambda)\)</span>。 <span class="math display">\[
+\begin{gathered}
+P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!}, x = 0,1,\dots \\
 \E[X] = \lambda \\
 \Var[X] = \lambda
-\end{gather*}
+\end{gathered}
 \]</span></p>
-<h2 id="二项分布binomial-distribution">二项分布（binomial distribution）</h2>
-<p><span class="math display">\[
-\begin{gather*}
-P(x;p,N) = {N \choose x} p^x (1-p)^{N-x} \\
-\E[X] = Np \\
-\Var[X] = Np(1-p)
-\end{gather*}
-\]</span></p>
-<h2 id="伯努利分布bernoulli-distribution">伯努利分布（Bernoulli distribution）</h2>
-<p>伯努利分布<span class="math inline">\(B(\{0,1\};p)\)</span>实际上是二项分布中<span class="math inline">\(N = 1\)</span>的一个特例： <span class="math display">\[
-\begin{gather*}
-B(1,p) = p, B(0,p) = 1 - p \\
+<h3 id="伯努利分布bernoulli-distribution">伯努利分布（Bernoulli distribution）</h3>
+<p>伯努利分布<span class="math inline">\(B(1, p)\)</span>实际上是二项分布中<span class="math inline">\(n = 1\)</span>的一个特例： <span class="math display">\[
+\begin{gathered}
+B(1;1,p) = p, B(0;1,p) = 1 - p \\
 \E[X] = p \\
 \Var[X] = p(1 - p)
-\end{gather*}
+\end{gathered}
 \]</span></p>
-<h2 id="多项分布multinomial-distribution">多项分布（multinomial distribution）</h2>
-<p>多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值是多值的而不是二值的（binary）。假设有<span class="math inline">\(k\)</span>种结果，且这<span class="math inline">\(k\)</span>种结果互相对立、完备穷举（mutually exclusive and collectively exhaustive），此时它们的概率之和为<span class="math inline">\(1\)</span>，即<span class="math inline">\(p_1 + \dots + p_k = 1\)</span>，多项分布计算的则是这<span class="math inline">\(k\)</span>种结果分别发生<span class="math inline">\(n_1, \dots, n_k\)</span>次时的概率。令<span class="math inline">\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k], \vec n = [n_1, \dots, n_k]\)</span>，则： <span class="math display">\[
+<h3 id="多项分布multinomial-distribution">多项分布（multinomial distribution）</h3>
+<p>多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值的是多值的而不是二值的（binary）。假设有<span class="math inline">\(k\)</span>种结果，且这<span class="math inline">\(k\)</span>种结果互相对立、完备穷举（mutually exclusive and collectively exhaustive），此时它们的概率之和为<span class="math inline">\(1\)</span>，即<span class="math inline">\(p_1 + \dots + p_k = 1\)</span>，多项分布计算的则是这<span class="math inline">\(k\)</span>种结果分别发生<span class="math inline">\(n_1, \dots, n_k\)</span>次时的概率。令<span class="math inline">\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k], \vec n = [n_1, \dots, n_k]\)</span>，则： <span class="math display">\[
 P(\vec n; \vec p, N) = \frac{N!}{n_1! \dots n_k!} p_1^{n_1} \dots p_k^{n_k}
+\]</span></p>
+<h2 id="连续型">连续型</h2>
+<h3 id="指数分布exponential-distribution">指数分布（exponential distribution）</h3>
+<p><span class="math display">\[
+\begin{gathered}
+p(x;\lambda) = \begin{cases}
+\lambda e^{-\lambda x}, &amp; x &gt; 0 \\
+0, &amp; x \le 0
+\end{cases} \\
+\E[X] = \lambda^{-1} \\
+\Var[X] = \lambda^{-2}
+\end{gathered}
+\]</span></p>
+<h3 id="正态分布normal-distribution">正态分布（normal distribution）</h3>
+<p>正态分布也叫作高斯分布（Gaussian distribution），一维情况下： <span class="math display">\[
+p(x; \mu, \sigma) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x - \mu)^2}{2 \sigma^2}}
+\]</span> 二维情况下： <span class="math display">\[
+p \Big( (x,y); \mu_X, \mu_Y, \sigma_X, \sigma_Y, \rho_{XY} \Big) = \frac{1}{2\pi \sqrt{(\sigma_X^2 \sigma_Y^2 - \rho_{XY}^2)}} e^{-\frac 1 {2(1 - \rho_{XY}^2)} \left(\frac{(x-\mu_X)^2} {\sigma_X^2} - \frac{2\rho_{XY}(x - \mu_X)(y - \mu_Y)} {\sigma_X \sigma_Y} + \frac{(y-\mu_Y)^2} {\sigma_Y^2} \right)}
+\]</span> 高维情况下： <span class="math display">\[
+p(\x; \mu, \Sigma) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_X|}} e^{-\frac{1}{2} (\x-\mu)^T \Sigma_X^{-1} (\x-\mu)}
 \]</span></p>
 
 

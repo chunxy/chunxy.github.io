@@ -1417,10 +1417,10 @@
 <li><p>定义</p>
 <p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) = 1\)</span>，抑或是，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)</span>），则称该随机变量序列<strong>依概率收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{P}{\to} c\)</span>。</p>
 <p>换言之，对于任意<span class="math inline">\(\epsilon, \delta &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有 <span class="math display">\[
-0 &lt; P(|X_n - c| \ge \epsilon) &lt; \delta
+1 - \delta &lt; P(|X_n - c| &lt; \epsilon) \le 1
 \]</span></p></li>
 </ul>
-<p>随机变量是事件的映射，当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。</p>
+<p>依概率收敛的一个例子便是<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Bernoulli大数定律">Bernoulli大数定律</a>，即当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。</p>
 <h2 id="几乎必然收敛almost-sure-convergence">几乎必然收敛（almost-sure convergence）</h2>
 <p>在某些情况下，若随机变量序列能够和某个数字<span class="math inline">\(c\)</span>几乎接近，我们说它几乎必然收敛。</p>
 <ul>
@@ -1430,17 +1430,27 @@
 P(|X_n - c| &lt; \epsilon) = 1
 \]</span></p></li>
 </ul>
-<p>显然，几乎必然收敛是强于依概率收敛的。</p>
+<p>需要注意的是，几乎必然收敛和依概率收敛是不等价的，因为<span class="math inline">\(\lim_{n \to \infty} f(x_n)\)</span>中的极限符号不总是能够交换到函数<span class="math inline">\(f\)</span>内部，举个简单的例子： <span class="math display">\[
+\begin{gathered}
+\{ x_n \} = -\frac{1}{n}, \
+f(x) = \begin{cases}
+x^2 - 1, &amp; -1 \le x &lt; 0 \\
+x, &amp; x \ge 0
+\end{cases} \\
+\lim_{n \to \infty} f(x_n) = \lim_{n \to \infty} n = -1 \ne f(\lim_{n \to \infty} x_n) = f(0) = 0
+\end{gathered}
+\]</span> 注意<span class="math inline">\(f\)</span>是右连续的，这也意味着，我们可以找到类似的右连续的分布函数<span class="math inline">\(P\)</span>，使得极限符号不能被移至<span class="math inline">\(P\)</span>内部。也就是说，几乎必然收敛和依概率收敛是不等价的，而显然，几乎必然收敛是强于依概率收敛的。</p>
 <h2 id="l_p收敛convergence-in-l_p"><span class="math inline">\(L_p\)</span>收敛（convergence in <span class="math inline">\(L_p\)</span>）</h2>
 <ul>
 <li><p>定义</p>
-<p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，对于某个<span class="math inline">\(p \ge 1\)</span>，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(\E[(\lim_{n \to \infty} X_n - c)^p] \to 0\)</span>，则称该随机变量序列<strong><span class="math inline">\(L_p\)</span>收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{L_p}{\to} c\)</span>。</p></li>
+<p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，对于某个<span class="math inline">\(p &gt; 0\)</span>，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(\lim_{n \to \infty} \E(|| X_n - c||_p^p) = 0\)</span>，则称该随机变量序列<strong><span class="math inline">\(L_p\)</span>收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{L_p}{\to} c\)</span>。</p></li>
 </ul>
-<p>相比较而言，<span class="math inline">\(L_P\)</span>收敛的表达式中多了一层偏差的<span class="math inline">\(p\)</span>次方的测度。</p>
 <h3 id="均方收敛">均方收敛</h3>
-<p>当<span class="math inline">\(p=2\)</span>时，<span class="math inline">\(L_P\)</span>收敛又称作均方收敛。根据<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式">Chebyshev不等式</a>， <span class="math display">\[
-P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
-\]</span> 均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。</p>
+<p>当<span class="math inline">\(p=2\)</span>时，<span class="math inline">\(L_p\)</span>收敛又称作均方收敛。根据<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式">Chebyshev不等式</a>， <span class="math display">\[
+P(|X_n-\E(X_n)| \ge \epsilon) \le \frac{\Var(X_n)}{\epsilon^2} = \frac{\E[(X_n - \E(X_n))^2]}{\epsilon^2}
+\]</span> 在两边取<span class="math inline">\(n \to \infty\)</span>可以得到 <span class="math display">\[
+\lim_{n \to \infty} P(|X_n-\E(X_n)| \ge \epsilon) \le \lim_{n \to \infty} \frac{\E[(X_n - \E(X_n))^2]}{\epsilon^2} = 0
+\]</span> 即均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也强于依概率收敛；但它和几乎必然收敛之间并没有推导关系。</p>
 <h2 id="依分布收敛convergence-in-distribution">依分布收敛（convergence in distribution）</h2>
 <p>前面三者描述的是随机变量序列取值的某种特性，而依分布收敛则不同，它描述的是随机变量序列分布函数的特性。</p>
 <ul>

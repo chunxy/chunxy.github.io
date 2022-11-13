@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Whitening Data whitening is the process of converting a random variable \(X\) with only first-order correlation into a new random variable \(Z\) such that the covariance matrix of \(Z\) is an identity matrix." />
+  <meta name="description" content="Whitening Data whitening is the process of converting a random vector \(X\) with only first-order correlation into a new random vector \(Z\) such that the covariance matrix of \(Z\) is an identity matrix." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/statistics/whitening/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/statistics/whitening/" />
   <meta property="og:title" content="Whitening | Chunxy&#39; Website" />
-  <meta property="og:description" content="Whitening Data whitening is the process of converting a random variable \(X\) with only first-order correlation into a new random variable \(Z\) such that the covariance matrix of \(Z\) is an identity matrix." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Whitening Data whitening is the process of converting a random vector \(X\) with only first-order correlation into a new random vector \(Z\) such that the covariance matrix of \(Z\) is an identity matrix." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1404,13 +1404,14 @@
             
 
 <h2 id="whitening">Whitening</h2>
-<p>Data whitening is the process of converting a random variable <span class="math inline">\(X\)</span> with only first-order correlation into a new random variable <span class="math inline">\(Z\)</span> such that the covariance matrix of <span class="math inline">\(Z\)</span> is an identity matrix.</p>
+<p>Data whitening is the process of converting a random vector <span class="math inline">\(X\)</span> with only first-order correlation into a new random vector <span class="math inline">\(Z\)</span> such that the covariance matrix of <span class="math inline">\(Z\)</span> is an identity matrix.</p>
 <p>To do so, we shall first apply the <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization">diagonalization</a> to <span class="math inline">\(\Sigma_X\)</span>: <span class="math display">\[
 \Sigma_X \Phi = \Phi \Lambda
-\]</span> where <span class="math inline">\(\Phi\)</span> contains the eigenvectors, <span class="math inline">\(\Lambda\)</span> is diagonal and contains the eigenvalues. Now let <span class="math inline">\(Y = \Phi^T X\)</span>, we can verify that <span class="math display">\[
+\]</span> where <span class="math inline">\(\Phi\)</span> contains the normalized eigenvectors, <span class="math inline">\(\Lambda\)</span> is diagonal and contains the eigenvalues. Now let <span class="math inline">\(Y = \Phi X\)</span>, we can verify that <span class="math display">\[
 \begin{aligned}
 \Sigma_Y &amp;= \E \{ \Phi^T (\x - \mu_X) [\Phi^T (\x - \mu_X)]^T \} \\
-&amp;= \E [\Phi^T (\x - \mu_X)  (\x - \mu_X)^T \Phi] \\
+&amp;= \E [\Phi^T (\x - \mu_X) (\x - \mu_X)^T \Phi] \\
+&amp;= \Phi^T \E [(\x - \mu_X) (\x - \mu_X)^T] \Phi \\
 &amp;= \Phi^T \Sigma_X \Phi = \Phi^T \Phi \Lambda = \Lambda
 \end{aligned}
 \]</span> which is diagonal. To further make an identity matrix, we apply <span class="math inline">\(Z = \Lambda^{-1/2} Y = \Lambda^{-1/2} \Phi^T X\)</span> to give <span class="math display">\[

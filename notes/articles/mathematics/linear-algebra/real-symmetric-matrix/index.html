@@ -61,8 +61,8 @@
     
   
   <meta name="description" content="Assume \(A\) is a \(n \times n\) real-valued symmetric matrix, then
- its eigenvalues and thus eigenvectors are real-valued
-Suppose \(A\) has some imaginary eigenvalue \(\lambda\), the corresponding imaginary eigenvector being \(x\): \[ \begin{aligned} Ax &amp;= \lambda x \\ A(x_{real} &#43; x_{img}) &amp;= (\lambda_{real} &#43; \lambda_{img})(x_{real} &#43; x_{img}) \\ Ax_{real} &#43; Ax_{img} &amp;= (\lambda_{real}x_{real} &#43; \lambda_{img}x_{img}) &#43; (\lambda_{real}x_{real} &#43; \lambda_{img}x_{real}) \\ \end{aligned} \] Suppose \(\lambda\)’s and \(x\)’s complex conjugate are \(\bar \lambda\) and \(\bar x\) respectively." />
+ its eigenvalues and thus eigenvectors are real-valued:
+Suppose \(A\) has some imaginary eigenvalue \(\lambda\) and the corresponding imaginary eigenvector \(x\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/" />
@@ -324,8 +324,8 @@ Suppose \(A\) has some imaginary eigenvalue \(\lambda\), the corresponding imagi
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/" />
   <meta property="og:title" content="Real Symmetric Matrix | Chunxy&#39; Website" />
   <meta property="og:description" content="Assume \(A\) is a \(n \times n\) real-valued symmetric matrix, then
- its eigenvalues and thus eigenvectors are real-valued
-Suppose \(A\) has some imaginary eigenvalue \(\lambda\), the corresponding imaginary eigenvector being \(x\): \[ \begin{aligned} Ax &amp;= \lambda x \\ A(x_{real} &#43; x_{img}) &amp;= (\lambda_{real} &#43; \lambda_{img})(x_{real} &#43; x_{img}) \\ Ax_{real} &#43; Ax_{img} &amp;= (\lambda_{real}x_{real} &#43; \lambda_{img}x_{img}) &#43; (\lambda_{real}x_{real} &#43; \lambda_{img}x_{real}) \\ \end{aligned} \] Suppose \(\lambda\)’s and \(x\)’s complex conjugate are \(\bar \lambda\) and \(\bar x\) respectively." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+ its eigenvalues and thus eigenvectors are real-valued:
+Suppose \(A\) has some imaginary eigenvalue \(\lambda\) and the corresponding imaginary eigenvector \(x\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1309,7 +1309,11 @@ Suppose \(A\) has some imaginary eigenvalue \(\lambda\), the corresponding imagi
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#external-material">External Material</a></li>
+  </ul>
+</nav>
 
       
     </div>
@@ -1402,59 +1406,69 @@ Suppose \(A\) has some imaginary eigenvalue \(\lambda\), the corresponding imagi
 
           <div class="article-style">
             
+
 <p>Assume <span class="math inline">\(A\)</span> is a <span class="math inline">\(n \times n\)</span> real-valued symmetric matrix, then</p>
 <ul>
-<li><p>its eigenvalues and thus eigenvectors are real-valued</p>
-<p>Suppose <span class="math inline">\(A\)</span> has some imaginary eigenvalue <span class="math inline">\(\lambda\)</span>, the corresponding imaginary eigenvector being <span class="math inline">\(x\)</span>: <span class="math display">\[
+<li><p>its eigenvalues and thus eigenvectors are real-valued:</p>
+<p>Suppose <span class="math inline">\(A\)</span> has some imaginary eigenvalue <span class="math inline">\(\lambda\)</span> and the corresponding imaginary eigenvector <span class="math inline">\(x\)</span>. We have <span class="math display">\[
 \begin{aligned}
 Ax &amp;= \lambda x \\
 A(x_{real} + x_{img}) &amp;= (\lambda_{real} + \lambda_{img})(x_{real} + x_{img}) \\
 Ax_{real} + Ax_{img} &amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) + (\lambda_{real}x_{real} + \lambda_{img}x_{real}) \\
 \end{aligned}
-\]</span> Suppose <span class="math inline">\(\lambda\)</span>’s and <span class="math inline">\(x\)</span>’s complex conjugate are <span class="math inline">\(\bar \lambda\)</span> and <span class="math inline">\(\bar x\)</span> respectively. <span class="math display">\[
+\]</span> Denoting <span class="math inline">\(\lambda\)</span>’s and <span class="math inline">\(x\)</span>’s complex conjugate by <span class="math inline">\(\bar \lambda\)</span> and <span class="math inline">\(\bar x\)</span> respectively, we have <span class="math display">\[
+\begin{gather}
+\left.
 \begin{aligned}
-A\bar x &amp;= Ax_{real} - Ax_{img} \\
-&amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) - (\lambda_{real}x_{real} + \lambda_{img}x_{real}) \\
-&amp;= \bar \lambda \bar x \\
+&amp;A\bar x = Ax_{real} - Ax_{img} \\
+&amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) \\
+&amp;\quad- (\lambda_{real}x_{real} + \lambda_{img}x_{real}) \\
+&amp;= \bar \lambda \bar x 
 \end{aligned}
-\]</span> <span class="math display">\[
+\right\} \Rightarrow
 \begin{aligned}
 (A\bar x)^T &amp;= (\bar \lambda \bar x)^T \\
 \bar x^TA^T &amp;= \bar \lambda \bar x^T \\
 \bar x^TA &amp;= \bar \lambda \bar x^T
 \end{aligned}
-\]</span> Left multiply <span class="math inline">\(\bar x^T\)</span> on both sides of <span class="math inline">\(Ax = \lambda x\)</span> to give: <span class="math display">\[
-\bar x^TAx = \bar \lambda \bar x^T x \\
-\]</span> Also note that: <span class="math display">\[
-\bar x^TAx = \bar x^T \lambda x = \lambda\bar x^Tx\\
-\]</span> Therefore <span class="math inline">\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)</span>. Since <span class="math inline">\(\bar x^Tx\)</span> is real-value, <span class="math inline">\(\bar \lambda = \lambda\)</span>. In other words, <span class="math inline">\(\lambda\)</span> is real-valued</p></li>
-<li><p>its eigenvectors corresponding to different eigenvalues are orthogonal</p>
-<p>Arbitrarily take <span class="math inline">\(A\)</span>’ s two eigenvectors <span class="math inline">\(v_1, v_2\)</span> and their eigenvalues <span class="math inline">\(\lambda_1, \lambda_2， \lambda_1 \ne \lambda_2\)</span> <span class="math display">\[
-\begin{aligned}
+\end{gather}
+\]</span> Left-multiply <span class="math inline">\(\bar x^T\)</span> on both sides of <span class="math inline">\(Ax = \lambda x\)</span> to give: <span class="math display">\[
+\bar x^TAx = \bar x^T \lambda x = \lambda \bar x^T x
+\]</span> Right-multiply <span class="math inline">\(x\)</span> on both side of <span class="math inline">\(\bar x^TA = \bar \lambda \bar x^T\)</span> to give: <span class="math display">\[
+\bar x^TAx = \bar \lambda \bar x^T x
+\]</span> Therefore <span class="math inline">\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)</span>. Since <span class="math inline">\(\bar x^Tx\)</span> is real-value, <span class="math inline">\(\bar \lambda = \lambda\)</span>. In other words, <span class="math inline">\(\lambda\)</span> is real-valued.</p></li>
+<li><p>its eigenvectors corresponding to different eigenvalues are orthogonal:</p>
+<p>Arbitrarily taking <span class="math inline">\(A\)</span>’ s two eigenvectors <span class="math inline">\(v_1, v_2\)</span> and their eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \lambda_1 \ne \lambda_2\)</span>, we have <span class="math display">\[
+\begin{align} 
+&amp;\begin{aligned}
 (Av_1)^Tv_2 &amp;= v_1^TA^Tv_2 \\
 &amp;= v_1^TAv_2 \\
 &amp;= v_1^T \lambda_2v_2 \\
 &amp;= \lambda_2v_1^Tv_2 \\
+\end{aligned} \\
+&amp;\begin{aligned}
 (Av_1)^Tv_2 &amp;= \lambda_1v_1^Tv_2
 \end{aligned}
+\end{align}
 \]</span></p>
-<p><span class="math display">\[
+<p>Therefore, <span class="math display">\[
 \begin{aligned}
 \lambda_1v_1^Tv_2 &amp;= \lambda_2v_1^Tv_2 \\
 (\lambda_1 - \lambda_2)v_1^Tv_2 &amp;= 0
 \end{aligned}
 \]</span></p>
-<p>Since <span class="math inline">\(\lambda_1 \ne \lambda_2\)</span>, we have <span class="math inline">\(v_1^Tv_2 = 0\)</span>, <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> are orthogonal</p></li>
+<p>Since <span class="math inline">\(\lambda_1 \ne \lambda_2\)</span>, we have <span class="math inline">\(v_1^Tv_2 = 0\)</span> and thus <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> are orthogonal.</p></li>
 <li><p>it has <span class="math inline">\(n\)</span> independent eigenvectors and thus <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization">diagonalizable</a></p>
-<p>In this case, suppose <span class="math inline">\(A = P\Lambda P^{-1}\)</span>. If <span class="math inline">\(A\)</span> is not invertible, by <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Eigenvalues">the relation between the matrix rank and the eigenvalues</a>, some of <span class="math inline">\(\Lambda\)</span>’s entries on the diagonal are zero. By adding <span class="math inline">\(A\)</span> with <span class="math inline">\(\lambda I\)</span>, we have <span class="math display">\[
+<p>In this case, suppose <span class="math inline">\(A = P\Lambda P^{-1}\)</span>. If <span class="math inline">\(A\)</span> is not invertible, by <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Eigenvalues: Rank, Trace and Determinant">the relation between the matrix rank and the eigenvalues</a>, some of <span class="math inline">\(\Lambda\)</span>’s entries on the diagonal are zero. By adding <span class="math inline">\(A\)</span> with <span class="math inline">\(\lambda I\)</span>, we have <span class="math display">\[
 \begin{aligned}
 A^\prime &amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 &amp;= P(\Lambda + \lambda I)P^{-1}
 \end{aligned}
 \]</span> where <span class="math inline">\(\lambda I\)</span> complements all the zero entries on the diagonal of <span class="math inline">\(\Lambda\)</span>. Thus <span class="math inline">\(A^\prime\)</span> has <span class="math inline">\(n\)</span> non-zero eigenvalues and is invertible. <span class="math inline">\(A\)</span> becomes invertible by adding <span class="math inline">\(\lambda I\)</span>.</p></li>
-<li><p>its diagonalization can be in the form of <span class="math inline">\(A = P\Lambda P^T\)</span> by properly selecting the eigenvectors, drawing from its orthogonal eigenvectors</p></li>
-<li><p>it is positive semi-definite <span class="math inline">\(\iff\)</span> its eigenvalues are non-negative</p></li>
+<li><p>its diagonalization can be in the form of <span class="math inline">\(A = P\Lambda P^T\)</span> by properly selecting the eigenvectors, drawing from its orthogonal eigenvectors;</p></li>
+<li><p>it is positive semi-definite <span class="math inline">\(\iff\)</span> its eigenvalues are non-negative.</p></li>
 </ul>
+<h2 id="external-material">External Material</h2>
 <p><a href="https://www.zybuluo.com/fsfzp888/note/1112344">real-valued eigenvalues and orthogonal eigenvectors</a></p>
 
 

@@ -1316,7 +1316,7 @@
     <li><a href="#弱大数定律weak-law-of-large-numbers">弱大数定律（Weak Law of large numbers）</a>
       <ul>
         <li><a href="#chebyshev大数定律">Chebyshev大数定律</a></li>
-        <li><a href="#辛钦大数定律">辛钦大数定律</a></li>
+        <li><a href="#khinchin大数定律">Khinchin大数定律</a></li>
         <li><a href="#bernoulli大数定律">Bernoulli大数定律</a></li>
       </ul>
     </li>
@@ -1439,7 +1439,7 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
 \]</span></p></li>
 </ol></li>
 </ul>
-<p>Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是证明其它大数定理的基础工具。</p>
+<p>Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是作为证明其它大数定理的基础工具。</p>
 <h3 id="依概率收敛">依概率收敛</h3>
 <p><strong>随机变量序列</strong>即是由随机变量构成。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
 <p>随机变量是事件的映射，当试验次数足够多时，事件的频率会<strong>依概率收敛</strong>到该事件的概率。</p>
@@ -1465,7 +1465,7 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
 \end{gather}
 \]</span></p></li>
 </ul>
-<h3 id="辛钦大数定律">辛钦大数定律</h3>
+<h3 id="khinchin大数定律">Khinchin大数定律</h3>
 <h4 id="相互独立同分布大数定律">相互独立同分布大数定律</h4>
 <ul>
 <li>设随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>相互独立且同分布，若<span class="math inline">\(\E(X_i) = \mu, \Var(X_i) = \sigma^2 \ne \infty, i=1,2,\dots\)</span>，则对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[

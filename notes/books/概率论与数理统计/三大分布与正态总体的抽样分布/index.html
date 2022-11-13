@@ -1319,6 +1319,7 @@
       </ul>
     </li>
     <li><a href="#t分布"><span class="math inline">\(t\)</span>分布</a></li>
+    <li><a href="#f分布"><span class="math inline">\(F\)</span>分布</a></li>
     <li><a href="#正态总体的抽样分布">正态总体的抽样分布</a></li>
   </ul>
 </nav>
@@ -1427,7 +1428,7 @@
 = \int_{-\infty}^{+\infty} e^{-u^2} du  \\
 \notag \\
 \begin{aligned}
-\Gamma^2(\frac{1}{2}) &amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
+&amp;\Gamma^2(\frac{1}{2}) = (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
 &amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)(\int_{-\infty}^{+\infty} e^{-v^2} dv) \\
 &amp;= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} e^{-(u^2+v^2)}dudv \\
 &amp;\downarrow_{u = r\sin\theta, v = r\cos\theta} \\
@@ -1435,7 +1436,7 @@
 &amp;= \int_{0}^{2\pi} [-\frac{1}{2}e^{-r^2}] \bigg|_{r=0}^{+\infty} d\theta \\
 &amp;= \int_{0}^{2\pi} \frac{1}{2} d\theta \\
 &amp;= \pi \\
-\Gamma (\frac{1}{2}) &amp;= \sqrt \pi
+&amp;\Gamma (\frac{1}{2}) = \sqrt \pi
 \end{aligned}
 \end{gather}
 \]</span></p></li>
@@ -1469,7 +1470,7 @@ p_Y(y) = P_Y(Y \le y) &amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \
 \end{aligned}
 \]</span> 其中<span class="math inline">\(\mathcal V\)</span>表示<span class="math inline">\(\sum_{i=1}^k x_i^2 \le y\)</span>的积分区域。可以看出，<span class="math inline">\(\mathcal V\)</span>对应一个<span class="math inline">\(k\)</span>维球体，且其半径<span class="math inline">\(R = \sqrt y\)</span>。对此，作<a href="/notes/articles/mathematics/calculus/spherical-coordinates/">高维球坐标变换</a>： <span class="math display">\[
 \begin{aligned}
-P_Y(Y \le y) &amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k = \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
+&amp;P_Y(Y \le y) = \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k = \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
 &amp;= \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \int_0^\sqrt{y} \\
 &amp;\quad\quad\quad\frac{e^{-\frac 1 2 (r^2\cos^2 \varphi_1 +
 r^2\sin^2 \varphi_1 \cos^2 \varphi_2 + \dots + 
@@ -1496,7 +1497,7 @@ c_k &amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})}
 \]</span></p>
 <p>故可得密度函数： <span class="math display">\[
 \begin{align}
-p_Y(y) &amp;= \frac{\d P_Y(Y \le y)}{\d y} \\
+&amp;p_Y(y) = \frac{\d P_Y(Y \le y)}{\d y} \\
 &amp;= \frac{\d [c_k \int_0^\sqrt{y} e^{-\frac 1 2 r^2} r^{k-1} \d r]}{\d y} \\
 &amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})} e^{-\frac y 2} y^\frac{k-1}{2} \frac{1}{2\sqrt y} \\
 &amp;= \frac{1} {2^{\frac k 2} \Gamma(\frac{k-2}{2})} e^{-\frac y 2} y^{\frac{k}{2} - 1}
@@ -1513,13 +1514,13 @@ p_Y(y) =
 <h3 id="参考-1">参考</h3>
 <p><a href="https://www.statlect.com/probability-distributions/chi-square-distribution">Chi Squared Distribution</a> || <a href="https://vtechworks.lib.vt.edu/bitstream/handle/10919/34329/10Apxb.pdf?sequence=12">Generating Function of Chi Squared Distribution</a> || <a href="https://www.zhihu.com/question/30020592">正向推导</a> || <a href="https://www.bilibili.com/video/BV1e54y1v7e5">数学归纳法</a></p>
 <h2 id="t分布"><span class="math inline">\(t\)</span>分布</h2>
-<p>设随机变量<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>相互独立，且<span class="math inline">\(X \sim N(0,1), Y \sim \chi^2(n)\)</span>，则称<span class="math inline">\(T = \frac{X}{\sqrt{Y/n}}\)</span>服从自由度为<span class="math inline">\(n\)</span>的<span class="math inline">\(t\)</span>分布，记为<span class="math inline">\(T \sim t(n)\)</span>。其密度函数为： <span class="math display">\[
-p_T(t) = \frac{\Gamma((n+1)/2)} {\sqrt{n\pi} \Gamma(n/2)} \big( 1 + \frac{t^2} n \big)^{-(n+1)/2}
+<p>设随机变量<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>相互独立，且<span class="math inline">\(X \sim N(0,1), Y \sim \chi^2(n)\)</span>，则称<span class="math inline">\(Z = \frac{X}{\sqrt{Y/n}}\)</span>服从自由度为<span class="math inline">\(n\)</span>的<span class="math inline">\(t\)</span>分布，记为<span class="math inline">\(Z \sim t(n)\)</span>。其密度函数为： <span class="math display">\[
+p_Z(z) = \frac{\Gamma((n+1)/2)} {\sqrt{n\pi} \Gamma(n/2)} \big( 1 + \frac{z^2} n \big)^{-(n+1)/2}
 \]</span></p>
-<p>## <span class="math inline">\(F\)</span>分布</p>
+<h2 id="f分布"><span class="math inline">\(F\)</span>分布</h2>
 <p>设随机变量<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>相互独立，且<span class="math inline">\(X \sim \chi^2(m), Y \sim \chi^2(n)\)</span>，则称<span class="math inline">\(Z = \frac{X/m}{Y/n}\)</span>服从自由度为<span class="math inline">\((m,n)\)</span>的<span class="math inline">\(F\)</span>分布，记为<span class="math inline">\(Z \sim F(m,n)\)</span>。其密度函数为： <span class="math display">\[
 p_Z(z) = \begin{cases}
-\frac{\Gamma((m+n)/2} {\Gamma(m/2) \Gamma(n/2)} {m \choose n}^{\frac m 2} y^{\frac m 2 - 1} (1 + \frac m n y)^{-\frac{m+n}{2}}, &amp;y &gt; 0 \\
+\frac{\Gamma((m+n)/2} {\Gamma(m/2) \Gamma(n/2)} {m \choose n}^{\frac m 2} z^{\frac m 2 - 1} (1 + \frac m n z)^{-\frac{m+n}{2}}, &amp;z &gt; 0 \\
 0, &amp;\text{otherwise}
 \end{cases}
 \]</span></p>

@@ -1310,6 +1310,7 @@
     <li><a href="#theorem">Theorem</a></li>
     <li><a href="#proof">Proof</a></li>
     <li><a href="#note">Note</a></li>
+    <li><a href="#external-materials">External Materials</a></li>
   </ul>
 </nav>
 
@@ -1429,8 +1430,10 @@ V^{T}(A^TA)V = \Lambda
 \]</span> Let <span class="math inline">\(V\)</span>’s columns be permuted such that their corresponding eigenvalues are ordered in <span class="math inline">\(\lambda_1 \ge \lambda_2 \ge ... \ge \lambda_N \ge 0\)</span></p>
 <p>Let <span class="math inline">\(\sigma_i = \sqrt{\lambda_i}, i = 1, 2, ..., N\)</span> (which are defined as <span class="math inline">\(A\)</span>’s the singular values).</p>
 <p>Let <span class="math inline">\(\rank(A) = r\)</span>, then <span class="math inline">\(\rank(A^TA) = r\)</span>. And because <span class="math inline">\(A^TA\)</span> is symmetric, <span class="math inline">\(r\)</span> is the number of its positive eigenvalues: <span class="math display">\[
+\begin{gather}
 \lambda_1, \lambda_2, ..., \lambda_r \ge 0, \lambda_r, \lambda_{r+1}, ..., \lambda_{N} = 0 \\
 \sigma_1, \sigma_2, ..., \sigma_r \ge 0, \sigma_r, \sigma_{r+1}, ..., \sigma_{N} = 0
+\end{gather}
 \]</span> Let <span class="math inline">\(V_1 = [v_1, v_2, ..., v_r], V_2 = [v_{r+1}, v_{r+2}, ..., v_n], V = [V_1, V_2]\)</span>. Let</p>
 <p><span class="math display">\[
 \Sigma_1 = 
@@ -1449,9 +1452,10 @@ V^{T}(A^TA)V = \Lambda
 \]</span> Because <span class="math inline">\(V_2\)</span> consists of <span class="math inline">\(A^TA\)</span>’s eigenvectors whose eigenvalues are <span class="math inline">\(0\)</span>, <span class="math display">\[
 A^TAV_2 = 0
 \]</span> <span class="math inline">\(\rank(A^TA) = r\)</span> and <span class="math inline">\(V_2\)</span> has <span class="math inline">\(N - r\)</span> independent columns. Therefore, <span class="math inline">\(V_2\)</span> spans the <span class="math inline">\(N(A^TA) = N(A)\)</span>: <span class="math display">\[
-I = VV^T = [V_1, V_2][V_1, V_2]^T = V_1V_1^T + V_2V_2^T
-\]</span> <span class="math display">\[
+\begin{gather}
+I = VV^T = [V_1, V_2][V_1, V_2]^T = V_1V_1^T + V_2V_2^T \\
 A = AI = AV_1V_1^T + AV_2V_2^T = AV_1V_1^T
+\end{gather}
 \]</span></p></li>
 <li><p>Constructing <span class="math inline">\(U\)</span></p>
 <p>Let <span class="math display">\[
@@ -1507,16 +1511,17 @@ V_2^T \\
 AA^TU = [AA^TU_1, AA^TU_2]
 \]</span> Breaking it into two parts, <span class="math inline">\(\forall i = 1, 2, ..., r\)</span>, <span class="math display">\[
 \begin{aligned}
-AA^Tu_i &amp;= AA^T\frac{1}{\sigma_i}Av_i \\
-&amp;= \frac{1}{\sigma_i}A(A^TA)v_i \\
-&amp;= \frac{1}{\sigma_i}A\lambda_iv_i \\
-&amp;= \lambda_i(\frac{1}{\sigma_i}Av_i) \\
-&amp;= \lambda_iu_i
+A A^T u_i &amp;= A A^T \frac{1}{\sigma_i} A v_i \\
+&amp;= \frac{1}{\sigma_i}A (A^T A) v_i \\
+&amp;= \frac{1}{\sigma_i}A \lambda_i v_i \\
+&amp;= \lambda_i(\frac{1}{\sigma_i} A v_i) \\
+&amp;= \lambda_i u_i
 \end{aligned}
 \]</span> <span class="math inline">\(U_1\)</span> is <span class="math inline">\(AA^T\)</span>’s stacked eigenvectors, ordered by corresponding eigenvalues. <span class="math display">\[
 AA^TU_2 = 0 = 0U_2
 \]</span> <span class="math inline">\(U_2\)</span> is the corresponding eigenvectors with eigenvalues being <span class="math inline">\(0\)</span>.</p>
 <p>In all, <span class="math inline">\(U\)</span> is the stacked orthonormal eigenvectors of <span class="math inline">\(AA^T\)</span>. It doesn’t matter how <span class="math inline">\(U_2\)</span> is permuted.</p>
+<h2 id="external-materials">External Materials</h2>
 <p><a href="https://www.cnblogs.com/pinard/p/6251584.html">奇异值分解(SVD)原理与在降维中的应用</a></p>
 <p><a href="https://www.zhihu.com/question/22237507">奇异值的物理意义是什么？ - 知乎 (zhihu.com)</a></p>
 <p><a href="/uploads/Singular%20Value%20Decomposition.pdf" target="_blank">Singular Value Decomposition.pdf</a></p>

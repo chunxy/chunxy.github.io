@@ -62,33 +62,54 @@
       <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/</guid>
       <description>
 
-&lt;h2 id=&#34;泊松分布poisson-distribution&#34;&gt;泊松分布（Poisson distribution）&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather*}
-P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!} \\
+&lt;h2 id=&#34;离散型&#34;&gt;离散型&lt;/h2&gt;
+&lt;h3 id=&#34;二项分布binomial-distribution&#34;&gt;二项分布（binomial distribution）&lt;/h3&gt;
+&lt;p&gt;如果离散型随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;服从二项分布，一般记作&lt;span class=&#34;math inline&#34;&gt;\(X \sim B(n, p)\)&lt;/span&gt;。 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+B(x;n,p) = {n \choose x} p^x (1-p)^{n-x}, x = 0,1,\dots \\
+\E[X] = np \\
+\Var[X] = np(1-p)
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;泊松分布poisson-distribution&#34;&gt;泊松分布（Poisson distribution）&lt;/h3&gt;
+&lt;p&gt;泊松分布可以看作是某种形式的二项分布取极限而得到，一般如果&lt;span class=&#34;math inline&#34;&gt;\(X \sim B(n,p)\)&lt;/span&gt;且&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;较大、&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;较小、&lt;span class=&#34;math inline&#34;&gt;\(np = \lambda\)&lt;/span&gt;不太大时，&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的分布接近于泊松分布&lt;span class=&#34;math inline&#34;&gt;\(P(\lambda)\)&lt;/span&gt;。 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!}, x = 0,1,\dots \\
 \E[X] = \lambda \\
 \Var[X] = \lambda
-\end{gather*}
+\end{gathered}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;二项分布binomial-distribution&#34;&gt;二项分布（binomial distribution）&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather*}
-P(x;p,N) = {N \choose x} p^x (1-p)^{N-x} \\
-\E[X] = Np \\
-\Var[X] = Np(1-p)
-\end{gather*}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;伯努利分布bernoulli-distribution&#34;&gt;伯努利分布（Bernoulli distribution）&lt;/h2&gt;
-&lt;p&gt;伯努利分布&lt;span class=&#34;math inline&#34;&gt;\(B(\{0,1\};p)\)&lt;/span&gt;实际上是二项分布中&lt;span class=&#34;math inline&#34;&gt;\(N = 1\)&lt;/span&gt;的一个特例： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather*}
-B(1,p) = p, B(0,p) = 1 - p \\
+&lt;h3 id=&#34;伯努利分布bernoulli-distribution&#34;&gt;伯努利分布（Bernoulli distribution）&lt;/h3&gt;
+&lt;p&gt;伯努利分布&lt;span class=&#34;math inline&#34;&gt;\(B(1, p)\)&lt;/span&gt;实际上是二项分布中&lt;span class=&#34;math inline&#34;&gt;\(n = 1\)&lt;/span&gt;的一个特例： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+B(1;1,p) = p, B(0;1,p) = 1 - p \\
 \E[X] = p \\
 \Var[X] = p(1 - p)
-\end{gather*}
+\end{gathered}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;多项分布multinomial-distribution&#34;&gt;多项分布（multinomial distribution）&lt;/h2&gt;
-&lt;p&gt;多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值是多值的而不是二值的（binary）。假设有&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果，且这&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果互相对立、完备穷举（mutually exclusive and collectively exhaustive），此时它们的概率之和为&lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，即&lt;span class=&#34;math inline&#34;&gt;\(p_1 + \dots + p_k = 1\)&lt;/span&gt;，多项分布计算的则是这&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果分别发生&lt;span class=&#34;math inline&#34;&gt;\(n_1, \dots, n_k\)&lt;/span&gt;次时的概率。令&lt;span class=&#34;math inline&#34;&gt;\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k], \vec n = [n_1, \dots, n_k]\)&lt;/span&gt;，则： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h3 id=&#34;多项分布multinomial-distribution&#34;&gt;多项分布（multinomial distribution）&lt;/h3&gt;
+&lt;p&gt;多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值的是多值的而不是二值的（binary）。假设有&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果，且这&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果互相对立、完备穷举（mutually exclusive and collectively exhaustive），此时它们的概率之和为&lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，即&lt;span class=&#34;math inline&#34;&gt;\(p_1 + \dots + p_k = 1\)&lt;/span&gt;，多项分布计算的则是这&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果分别发生&lt;span class=&#34;math inline&#34;&gt;\(n_1, \dots, n_k\)&lt;/span&gt;次时的概率。令&lt;span class=&#34;math inline&#34;&gt;\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k], \vec n = [n_1, \dots, n_k]\)&lt;/span&gt;，则： &lt;span class=&#34;math display&#34;&gt;\[
 P(\vec n; \vec p, N) = \frac{N!}{n_1! \dots n_k!} p_1^{n_1} \dots p_k^{n_k}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;连续型&#34;&gt;连续型&lt;/h2&gt;
+&lt;h3 id=&#34;指数分布exponential-distribution&#34;&gt;指数分布（exponential distribution）&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+p(x;\lambda) = \begin{cases}
+\lambda e^{-\lambda x}, &amp;amp; x &amp;gt; 0 \\
+0, &amp;amp; x \le 0
+\end{cases} \\
+\E[X] = \lambda^{-1} \\
+\Var[X] = \lambda^{-2}
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;正态分布normal-distribution&#34;&gt;正态分布（normal distribution）&lt;/h3&gt;
+&lt;p&gt;正态分布也叫作高斯分布（Gaussian distribution），一维情况下： &lt;span class=&#34;math display&#34;&gt;\[
+p(x; \mu, \sigma) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x - \mu)^2}{2 \sigma^2}}
+\]&lt;/span&gt; 二维情况下： &lt;span class=&#34;math display&#34;&gt;\[
+p \Big( (x,y); \mu_X, \mu_Y, \sigma_X, \sigma_Y, \rho_{XY} \Big) = \frac{1}{2\pi \sqrt{(\sigma_X^2 \sigma_Y^2 - \rho_{XY}^2)}} e^{-\frac 1 {2(1 - \rho_{XY}^2)} \left(\frac{(x-\mu_X)^2} {\sigma_X^2} - \frac{2\rho_{XY}(x - \mu_X)(y - \mu_Y)} {\sigma_X \sigma_Y} + \frac{(y-\mu_Y)^2} {\sigma_Y^2} \right)}
+\]&lt;/span&gt; 高维情况下： &lt;span class=&#34;math display&#34;&gt;\[
+p(\x; \mu, \Sigma) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_X|}} e^{-\frac{1}{2} (\x-\mu)^T \Sigma_X^{-1} (\x-\mu)}
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -603,7 +624,7 @@ A^TAx = 0 \iff x^TA^TAx = 0 \iff (Ax)^TAx = 0 \iff Ax = 0
       <description>
 
 &lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
-&lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue. Note that by definition, &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; is an eigenvalue of any square matrix. However, &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; is just too trivial that people exclude it from the eigen discussion.&lt;/p&gt;
+&lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;strong&gt;nonzero&lt;/strong&gt; vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue. Note that by definition, &lt;span class=&#34;math inline&#34;&gt;\((0, \x)\)&lt;/span&gt; is a pair of eigenvalue and eigenvector of any square matrix for any nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;. However, &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; is just too trivial an eigenvalue that people exclude it from the eigen discussion.&lt;/p&gt;
 &lt;h3 id=&#34;similarity&#34;&gt;Similarity&lt;/h3&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrices, then &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is similar to &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; if there is an invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(PAP^{-1} = B\)&lt;/span&gt;, or equivalently &lt;span class=&#34;math inline&#34;&gt;\(P^{-1}BP = A\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are similar, then they have the same characteristic polynomial and hence then the same eigenvalues: &lt;span class=&#34;math display&#34;&gt;\[
@@ -611,7 +632,7 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\det(B - \lambda I) &amp;amp;= \det(P(A - \lambda I)P^{-1}) \\
+&amp;amp;\det(B - \lambda I) = \det(P(A - \lambda I)P^{-1}) \\
 &amp;amp;= \det(P) \cdot \det(A - \lambda I) \cdot \det(P^{-1}) \\
 &amp;amp;= \det(A - \lambda I)
 \end{aligned}
@@ -619,19 +640,19 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 &lt;h3 id=&#34;independence-between-eigenvectors&#34;&gt;Independence between Eigenvectors&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Theorem&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are the eigenvectors corresponding to the distinct eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, ..., \lambda_r\)&lt;/span&gt; of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_r\}\)&lt;/span&gt; is linearly independent.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are the eigenvectors corresponding to the distinct eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, ..., \lambda_r\)&lt;/span&gt; of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_r\)&lt;/span&gt; are linearly independent.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
 &lt;p&gt;Suppose instead these vectors are dependent. Let &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; be the least index such that &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is a linear combination of previous vectors. Then there exists scalars &lt;span class=&#34;math inline&#34;&gt;\(c_1, c_2, ..., c_p\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
-  \label{lincom} c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1}
+  c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1} \label{lincom} 
   \]&lt;/span&gt; Multiply both sides with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; to obtain &lt;span class=&#34;math display&#34;&gt;\[
-  c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1}
+  c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1} \label{eq1}
   \]&lt;/span&gt; Multiply both sides of &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda_{p+1}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-  c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1}
-  \]&lt;/span&gt; Subtract &lt;span class=&#34;math inline&#34;&gt;\((3)\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\((2)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-  \label{diff} c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0
-  \]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(\{v_1, v_2, ..., v_p\}\)&lt;/span&gt; is independent, the weights in &lt;span class=&#34;math inline&#34;&gt;\(\eqref{diff}\)&lt;/span&gt; are all zeros. None of &lt;span class=&#34;math inline&#34;&gt;\((\lambda_i - \lambda_{p+1})\)&lt;/span&gt; is zero, so &lt;span class=&#34;math inline&#34;&gt;\(c_i = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(i = 1,...p\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; says &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which is impossible. Q.E.D.&lt;/p&gt;&lt;/li&gt;
+  c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1} \label{eq2}
+  \]&lt;/span&gt; Subtract &lt;span class=&#34;math inline&#34;&gt;\(\eqref{eq2}\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\(\eqref{eq1}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+  c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0 \label{diff} 
+  \]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_p\)&lt;/span&gt; are independent, the weights in &lt;span class=&#34;math inline&#34;&gt;\(\eqref{diff}\)&lt;/span&gt; are all zeros. None of &lt;span class=&#34;math inline&#34;&gt;\((\lambda_i - \lambda_{p+1})\)&lt;/span&gt; is zero, so &lt;span class=&#34;math inline&#34;&gt;\(c_i = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(i = 1,...p\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; says &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which is impossible. Q.E.D.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Note&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt;, as the eigenvector, should be nonzero so that &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; can hold even for &lt;span class=&#34;math inline&#34;&gt;\(p=1\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt;, as the eigenvector, is nonzero so that the conclusion can hold even for &lt;span class=&#34;math inline&#34;&gt;\(p=1\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;diagonalization&#34;&gt;Diagonalization&lt;/h3&gt;
 &lt;ul&gt;
@@ -640,9 +661,9 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Necessity&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(AP = PD\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(P = [\rm p_1, \rm p_2, ..., \rm p_N]\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; is a diagonal matrix, &lt;span class=&#34;math display&#34;&gt;\[
-AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22}\mathrm p_2, ..., D_{NN}\mathrm p_N]
-\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;’s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent eigenvectors&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(AP = PD\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\newcommand{\p}{\mathrm{p}} P = [\p_1, \p_2, ..., \p_n]\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; is a diagonal matrix, &lt;span class=&#34;math display&#34;&gt;\[
+AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11}\ p_1, D_{22}\p_2, ..., D_{nn}\p_n]
+\]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\p_i\)&lt;/span&gt;’s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;’s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors.&lt;/p&gt;
 &lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the diagonal matrix filled with corresponding eigenvalues.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Sufficiency&lt;/p&gt;
 &lt;p&gt;Easy to show.&lt;/p&gt;&lt;/li&gt;
@@ -650,11 +671,10 @@ AP = [A\mathrm p_1, A\mathrm p_2, ..., A\mathrm p_N] = [D_{11}\mathrm p_1, D_{22
 &lt;/ul&gt;
 &lt;h4 id=&#34;linear-transformation&#34;&gt;Linear Transformation&lt;/h4&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then the transformation &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x \mapsto A\mathrm x\)&lt;/span&gt; in coordinate system formed by &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s columns can be viewed as &lt;span class=&#34;math inline&#34;&gt;\([\mathrm x]_{\cal B} \mapsto D[\mathrm x]_\cal B\)&lt;/span&gt; in coordinate system &lt;span class=&#34;math inline&#34;&gt;\(\cal B\)&lt;/span&gt;, which is formed by &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;’s columns.&lt;/p&gt;
-&lt;h3 id=&#34;eigenvalues&#34;&gt;Eigenvalues&lt;/h3&gt;
-&lt;h4 id=&#34;rank-trace-and-determinant&#34;&gt;Rank, trace and determinant&lt;/h4&gt;
+&lt;h3 id=&#34;eigenvalues-rank-trace-and-determinant&#34;&gt;Eigenvalues: Rank, Trace and Determinant&lt;/h3&gt;
 &lt;p&gt;Since the characteristic equation of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix involves a polynomial of degree &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, the equation always has exactly &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; roots, counting multiplicities, including complex roots. There are some relations between eigenvalues and matrix’s rank, trace and determinant: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-\rank = \text{the number of non-zero, real eigenvalues, including multiplicities} \\
+\rank = \text{the number of (non-zero) real eigenvalues, including multiplicities} \\
 \tr = \text{sum of the eigenvalues} \\
 \det = \text{product of the eigenvalues}
 \end{gather}
@@ -960,19 +980,23 @@ P(X \in S_\delta) \ge 1 - \delta
 H_\delta(X) = \log |S_\delta|
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;shannons-source-coding-theorem&#34;&gt;Shannon’s source coding theorem&lt;/h2&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; be and ensemble with entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; bits. Given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \delta &amp;lt; 1\)&lt;/span&gt;, there exists a positive integer &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; such that for &lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+&lt;blockquote&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; be an ensemble with entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; bits, and &lt;span class=&#34;math inline&#34;&gt;\(X^N\)&lt;/span&gt; be the ensemble composed of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. such random variables. Given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \delta &amp;lt; 1\)&lt;/span&gt;, there exists a positive integer &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; such that for &lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 |\frac{1}{N} H_\delta (X^N) - H| &amp;lt; \epsilon
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;shannons-source-coding-theorem-verbose&#34;&gt;Shannon’s source coding theorem (verbose)&lt;/h3&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Or put it in a verbal way,&lt;/p&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. random variables each with entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; can be compressed into more than &lt;span class=&#34;math inline&#34;&gt;\(NH\)&lt;/span&gt; bits with negligible information loss as &lt;span class=&#34;math inline&#34;&gt;\(N \to \infty\)&lt;/span&gt;; conversely if they are compressed fewer than &lt;span class=&#34;math inline&#34;&gt;\(NH\)&lt;/span&gt; bits, it is virtually certain that there is information loss.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: The random variable &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; defined for &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; drawn from the ensemble &lt;span class=&#34;math inline&#34;&gt;\(Y = X^N\)&lt;/span&gt; which composes of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. &lt;span class=&#34;math inline&#34;&gt;\(X_1 \dots X_N\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; can be re-written as the average of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; information contents &lt;span class=&#34;math inline&#34;&gt;\(h_i = \log \frac 1 {P(X_i)}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log X_1 + \dots + \log X_N)
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: The random variable &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; is defined for the ensemble &lt;span class=&#34;math inline&#34;&gt;\(Y = X^N\)&lt;/span&gt; which composes of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. &lt;span class=&#34;math inline&#34;&gt;\(X_1 \dots X_N\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; can be re-written as the average of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; information contents &lt;span class=&#34;math inline&#34;&gt;\(h_i = \log \frac 1 {P(X_i)}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log \frac{1}{P(X_N)})
 \]&lt;/span&gt; Each of these information contents is in turn a random variable with mean &lt;span class=&#34;math inline&#34;&gt;\(\bar h_i = H(X) = H\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{h_i}^2 = \sigma^2\)&lt;/span&gt;. The &lt;strong&gt;typical set&lt;/strong&gt; with parameters &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
-T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac 1 {P(y)} - H]^2 &amp;lt; \beta^2 \}
-\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#弱大数定律（Weak Law of large numbers）&#34;&gt;Weak Law of Large Numbers&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P((y - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
+T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac{1}{P(y)} - H]^2 &amp;lt; \beta^2 \}
+\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;Khinchin’s Law of Large Numbers&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P((\frac 1 N \log \frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
 P(y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
-\]&lt;/span&gt; As &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; increases, the probability that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; falls in &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; draws near &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. We need to relate this to the theorem that for any given &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;, there is a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \simeq NH\)&lt;/span&gt;.&lt;/p&gt;
+\]&lt;/span&gt; As &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; increases, the probability that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; falls in &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; draws near to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. We need to relate this to the theorem that for any given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta\)&lt;/span&gt;, there is a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \simeq NH\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;lt; N(H + \epsilon)\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;The set &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; is not the best sufficient subset for compression. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(\log |T_{N \beta}|\)&lt;/span&gt; upper-bounds the &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N)\)&lt;/span&gt;. On the other hand, for all &lt;span class=&#34;math inline&#34;&gt;\(y \in T_{N \beta}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(2^{-N(H - \beta)} &amp;lt; P(y) &amp;lt; 2^{-N(H + \beta)}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
@@ -991,7 +1015,7 @@ P(y \in S&amp;#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} + \frac{\sigma^2}{\b
 \]&lt;/span&gt; For arbitrary &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt; and a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt;, we can have &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \le 1 - \delta\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \ge 1 - \delta\)&lt;/span&gt;. We shall conclude that &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt; cannot achieve &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \ge 1 - \delta\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;gt; N(H - \epsilon)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;kraft-mcmillan-inequality&#34;&gt;Kraft-McMillan Inequality&lt;/h2&gt;
+&lt;h2 id=&#34;kraft-mcmillan-inequality&#34;&gt;Kraft-McMillan inequality&lt;/h2&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;p&gt;Denote the length of each symbol code as &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; and there are &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; symbols. If &lt;span class=&#34;math display&#34;&gt;\[
 \sum_{i=1}^I 2^{-l_i} \le 1
@@ -1036,7 +1060,7 @@ L(C,X) = \sum_i p_i l_i &amp;amp;= -\sum_i [p_i \log (q_iz)] \\
 \]&lt;/span&gt; The equality holds when &lt;span class=&#34;math inline&#34;&gt;\(z = 1\)&lt;/span&gt; (the code is complete) and &lt;span class=&#34;math inline&#34;&gt;\(q = p\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(l_i = \log 1/p_i\)&lt;/span&gt;).&lt;/p&gt;
 &lt;p&gt;From another perspective, suppose the coding is complete but not optimal, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-L(C,X) = -\sum_i [p_i \log (q_iz)] &amp;amp;= -\sum_i [p_i \log (q_i)] \\
+&amp;amp;L(C,X) = -\sum_i [p_i \log (q_iz)] = -\sum_i [p_i \log (q_i)] \\
 &amp;amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i \log (q_i)] \\
 &amp;amp;= H(X) + D_{KL}(p || q)
 \end{aligned}
@@ -1620,59 +1644,69 @@ H(Y|X) = -\sum_{(x,y) \in X:Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
       <pubDate>Sun, 30 Jan 2022 13:46:12 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/</guid>
       <description>
+
 &lt;p&gt;Assume &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; real-valued symmetric matrix, then&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;its eigenvalues and thus eigenvectors are real-valued&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has some imaginary eigenvalue &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, the corresponding imaginary eigenvector being &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;li&gt;&lt;p&gt;its eigenvalues and thus eigenvectors are real-valued:&lt;/p&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has some imaginary eigenvalue &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; and the corresponding imaginary eigenvector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. We have &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 Ax &amp;amp;= \lambda x \\
 A(x_{real} + x_{img}) &amp;amp;= (\lambda_{real} + \lambda_{img})(x_{real} + x_{img}) \\
 Ax_{real} + Ax_{img} &amp;amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) + (\lambda_{real}x_{real} + \lambda_{img}x_{real}) \\
 \end{aligned}
-\]&lt;/span&gt; Suppose &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;’s and &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;’s complex conjugate are &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\bar x\)&lt;/span&gt; respectively. &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Denoting &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;’s and &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;’s complex conjugate by &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\bar x\)&lt;/span&gt; respectively, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\left.
 \begin{aligned}
-A\bar x &amp;amp;= Ax_{real} - Ax_{img} \\
-&amp;amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) - (\lambda_{real}x_{real} + \lambda_{img}x_{real}) \\
-&amp;amp;= \bar \lambda \bar x \\
+&amp;amp;A\bar x = Ax_{real} - Ax_{img} \\
+&amp;amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) \\
+&amp;amp;\quad- (\lambda_{real}x_{real} + \lambda_{img}x_{real}) \\
+&amp;amp;= \bar \lambda \bar x 
 \end{aligned}
-\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\right\} \Rightarrow
 \begin{aligned}
 (A\bar x)^T &amp;amp;= (\bar \lambda \bar x)^T \\
 \bar x^TA^T &amp;amp;= \bar \lambda \bar x^T \\
 \bar x^TA &amp;amp;= \bar \lambda \bar x^T
 \end{aligned}
-\]&lt;/span&gt; Left multiply &lt;span class=&#34;math inline&#34;&gt;\(\bar x^T\)&lt;/span&gt; on both sides of &lt;span class=&#34;math inline&#34;&gt;\(Ax = \lambda x\)&lt;/span&gt; to give: &lt;span class=&#34;math display&#34;&gt;\[
-\bar x^TAx = \bar \lambda \bar x^T x \\
-\]&lt;/span&gt; Also note that: &lt;span class=&#34;math display&#34;&gt;\[
-\bar x^TAx = \bar x^T \lambda x = \lambda\bar x^Tx\\
-\]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(\bar x^Tx\)&lt;/span&gt; is real-value, &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda = \lambda\)&lt;/span&gt;. In other words, &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is real-valued&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;its eigenvectors corresponding to different eigenvalues are orthogonal&lt;/p&gt;
-&lt;p&gt;Arbitrarily take &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’ s two eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2\)&lt;/span&gt; and their eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2， \lambda_1 \ne \lambda_2\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
+\end{gather}
+\]&lt;/span&gt; Left-multiply &lt;span class=&#34;math inline&#34;&gt;\(\bar x^T\)&lt;/span&gt; on both sides of &lt;span class=&#34;math inline&#34;&gt;\(Ax = \lambda x\)&lt;/span&gt; to give: &lt;span class=&#34;math display&#34;&gt;\[
+\bar x^TAx = \bar x^T \lambda x = \lambda \bar x^T x
+\]&lt;/span&gt; Right-multiply &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; on both side of &lt;span class=&#34;math inline&#34;&gt;\(\bar x^TA = \bar \lambda \bar x^T\)&lt;/span&gt; to give: &lt;span class=&#34;math display&#34;&gt;\[
+\bar x^TAx = \bar \lambda \bar x^T x
+\]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(\bar x^Tx\)&lt;/span&gt; is real-value, &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda = \lambda\)&lt;/span&gt;. In other words, &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is real-valued.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;its eigenvectors corresponding to different eigenvalues are orthogonal:&lt;/p&gt;
+&lt;p&gt;Arbitrarily taking &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’ s two eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2\)&lt;/span&gt; and their eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, \lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{align} 
+&amp;amp;\begin{aligned}
 (Av_1)^Tv_2 &amp;amp;= v_1^TA^Tv_2 \\
 &amp;amp;= v_1^TAv_2 \\
 &amp;amp;= v_1^T \lambda_2v_2 \\
 &amp;amp;= \lambda_2v_1^Tv_2 \\
+\end{aligned} \\
+&amp;amp;\begin{aligned}
 (Av_1)^Tv_2 &amp;amp;= \lambda_1v_1^Tv_2
 \end{aligned}
+\end{align}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Therefore, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \lambda_1v_1^Tv_2 &amp;amp;= \lambda_2v_1^Tv_2 \\
 (\lambda_1 - \lambda_2)v_1^Tv_2 &amp;amp;= 0
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Since &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have &lt;span class=&#34;math inline&#34;&gt;\(v_1^Tv_2 = 0\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(v_2\)&lt;/span&gt; are orthogonal&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Since &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have &lt;span class=&#34;math inline&#34;&gt;\(v_1^Tv_2 = 0\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(v_2\)&lt;/span&gt; are orthogonal.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;it has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors and thus &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization&#34;&gt;diagonalizable&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;In this case, suppose &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^{-1}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is not invertible, by &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Eigenvalues&#34;&gt;the relation between the matrix rank and the eigenvalues&lt;/a&gt;, some of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;’s entries on the diagonal are zero. By adding &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;In this case, suppose &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^{-1}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is not invertible, by &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Eigenvalues: Rank, Trace and Determinant&#34;&gt;the relation between the matrix rank and the eigenvalues&lt;/a&gt;, some of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;’s entries on the diagonal are zero. By adding &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 &amp;amp;= P(\Lambda + \lambda I)P^{-1}
 \end{aligned}
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt; complements all the zero entries on the diagonal of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;. Thus &lt;span class=&#34;math inline&#34;&gt;\(A^\prime\)&lt;/span&gt; has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; non-zero eigenvalues and is invertible. &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; becomes invertible by adding &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;its diagonalization can be in the form of &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^T\)&lt;/span&gt; by properly selecting the eigenvectors, drawing from its orthogonal eigenvectors&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;it is positive semi-definite &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; its eigenvalues are non-negative&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;its diagonalization can be in the form of &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^T\)&lt;/span&gt; by properly selecting the eigenvectors, drawing from its orthogonal eigenvectors;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;it is positive semi-definite &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; its eigenvalues are non-negative.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;external-material&#34;&gt;External Material&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zybuluo.com/fsfzp888/note/1112344&#34;&gt;real-valued eigenvalues and orthogonal eigenvectors&lt;/a&gt;&lt;/p&gt;
 
 
@@ -1814,8 +1848,10 @@ V^{T}(A^TA)V = \Lambda
 \]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;’s columns be permuted such that their corresponding eigenvalues are ordered in &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ge \lambda_2 \ge ... \ge \lambda_N \ge 0\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\sigma_i = \sqrt{\lambda_i}, i = 1, 2, ..., N\)&lt;/span&gt; (which are defined as &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s the singular values).&lt;/p&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\rank(A) = r\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\rank(A^TA) = r\)&lt;/span&gt;. And because &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is symmetric, &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; is the number of its positive eigenvalues: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
 \lambda_1, \lambda_2, ..., \lambda_r \ge 0, \lambda_r, \lambda_{r+1}, ..., \lambda_{N} = 0 \\
 \sigma_1, \sigma_2, ..., \sigma_r \ge 0, \sigma_r, \sigma_{r+1}, ..., \sigma_{N} = 0
+\end{gather}
 \]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(V_1 = [v_1, v_2, ..., v_r], V_2 = [v_{r+1}, v_{r+2}, ..., v_n], V = [V_1, V_2]\)&lt;/span&gt;. Let&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \Sigma_1 = 
@@ -1834,9 +1870,10 @@ V^{T}(A^TA)V = \Lambda
 \]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(V_2\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s eigenvectors whose eigenvalues are &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 A^TAV_2 = 0
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rank(A^TA) = r\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(V_2\)&lt;/span&gt; has &lt;span class=&#34;math inline&#34;&gt;\(N - r\)&lt;/span&gt; independent columns. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(V_2\)&lt;/span&gt; spans the &lt;span class=&#34;math inline&#34;&gt;\(N(A^TA) = N(A)\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-I = VV^T = [V_1, V_2][V_1, V_2]^T = V_1V_1^T + V_2V_2^T
-\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+I = VV^T = [V_1, V_2][V_1, V_2]^T = V_1V_1^T + V_2V_2^T \\
 A = AI = AV_1V_1^T + AV_2V_2^T = AV_1V_1^T
+\end{gather}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Constructing &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Let &lt;span class=&#34;math display&#34;&gt;\[
@@ -1892,16 +1929,17 @@ V_2^T \\
 AA^TU = [AA^TU_1, AA^TU_2]
 \]&lt;/span&gt; Breaking it into two parts, &lt;span class=&#34;math inline&#34;&gt;\(\forall i = 1, 2, ..., r\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-AA^Tu_i &amp;amp;= AA^T\frac{1}{\sigma_i}Av_i \\
-&amp;amp;= \frac{1}{\sigma_i}A(A^TA)v_i \\
-&amp;amp;= \frac{1}{\sigma_i}A\lambda_iv_i \\
-&amp;amp;= \lambda_i(\frac{1}{\sigma_i}Av_i) \\
-&amp;amp;= \lambda_iu_i
+A A^T u_i &amp;amp;= A A^T \frac{1}{\sigma_i} A v_i \\
+&amp;amp;= \frac{1}{\sigma_i}A (A^T A) v_i \\
+&amp;amp;= \frac{1}{\sigma_i}A \lambda_i v_i \\
+&amp;amp;= \lambda_i(\frac{1}{\sigma_i} A v_i) \\
+&amp;amp;= \lambda_i u_i
 \end{aligned}
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(U_1\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;’s stacked eigenvectors, ordered by corresponding eigenvalues. &lt;span class=&#34;math display&#34;&gt;\[
 AA^TU_2 = 0 = 0U_2
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is the corresponding eigenvectors with eigenvalues being &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the stacked orthonormal eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;. It doesn’t matter how &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is permuted.&lt;/p&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Singular%20Value%20Decomposition.pdf&#34; target=&#34;_blank&#34;&gt;Singular Value Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
@@ -2219,10 +2257,10 @@ d_p(x, x^\prime) &amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1\)&lt;/span&gt;，抑或是，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)&lt;/span&gt;），则称该随机变量序列&lt;strong&gt;依概率收敛&lt;/strong&gt;于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{P}{\to} c\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;换言之，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta &amp;gt; 0\)&lt;/span&gt;，都存在&lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; 0\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(n &amp;gt; N\)&lt;/span&gt;时，始终有 &lt;span class=&#34;math display&#34;&gt;\[
-0 &amp;lt; P(|X_n - c| \ge \epsilon) &amp;lt; \delta
+1 - \delta &amp;lt; P(|X_n - c| &amp;lt; \epsilon) \le 1
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。&lt;/p&gt;
+&lt;p&gt;依概率收敛的一个例子便是&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Bernoulli大数定律&#34;&gt;Bernoulli大数定律&lt;/a&gt;，即当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。&lt;/p&gt;
 &lt;h2 id=&#34;几乎必然收敛almost-sure-convergence&#34;&gt;几乎必然收敛（almost-sure convergence）&lt;/h2&gt;
 &lt;p&gt;在某些情况下，若随机变量序列能够和某个数字&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;几乎接近，我们说它几乎必然收敛。&lt;/p&gt;
 &lt;ul&gt;
@@ -2232,17 +2270,27 @@ d_p(x, x^\prime) &amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p
 P(|X_n - c| &amp;lt; \epsilon) = 1
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;显然，几乎必然收敛是强于依概率收敛的。&lt;/p&gt;
+&lt;p&gt;需要注意的是，几乎必然收敛和依概率收敛是不等价的，因为&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} f(x_n)\)&lt;/span&gt;中的极限符号不总是能够交换到函数&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;内部，举个简单的例子： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\{ x_n \} = -\frac{1}{n}, \
+f(x) = \begin{cases}
+x^2 - 1, &amp;amp; -1 \le x &amp;lt; 0 \\
+x, &amp;amp; x \ge 0
+\end{cases} \\
+\lim_{n \to \infty} f(x_n) = \lim_{n \to \infty} n = -1 \ne f(\lim_{n \to \infty} x_n) = f(0) = 0
+\end{gathered}
+\]&lt;/span&gt; 注意&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;是右连续的，这也意味着，我们可以找到类似的右连续的分布函数&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;，使得极限符号不能被移至&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;内部。也就是说，几乎必然收敛和依概率收敛是不等价的，而显然，几乎必然收敛是强于依概率收敛的。&lt;/p&gt;
 &lt;h2 id=&#34;l_p收敛convergence-in-l_p&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(L_p\)&lt;/span&gt;收敛（convergence in &lt;span class=&#34;math inline&#34;&gt;\(L_p\)&lt;/span&gt;）&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;是一个随机变量序列，对于某个&lt;span class=&#34;math inline&#34;&gt;\(p \ge 1\)&lt;/span&gt;，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(\E[(\lim_{n \to \infty} X_n - c)^p] \to 0\)&lt;/span&gt;，则称该随机变量序列&lt;strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(L_p\)&lt;/span&gt;收敛&lt;/strong&gt;于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{L_p}{\to} c\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;是一个随机变量序列，对于某个&lt;span class=&#34;math inline&#34;&gt;\(p &amp;gt; 0\)&lt;/span&gt;，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} \E(|| X_n - c||_p^p) = 0\)&lt;/span&gt;，则称该随机变量序列&lt;strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(L_p\)&lt;/span&gt;收敛&lt;/strong&gt;于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{L_p}{\to} c\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;相比较而言，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛的表达式中多了一层偏差的&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;次方的测度。&lt;/p&gt;
 &lt;h3 id=&#34;均方收敛&#34;&gt;均方收敛&lt;/h3&gt;
-&lt;p&gt;当&lt;span class=&#34;math inline&#34;&gt;\(p=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(L_P\)&lt;/span&gt;收敛又称作均方收敛。根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/a&gt;， &lt;span class=&#34;math display&#34;&gt;\[
-P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2} = \frac{\E(X - \E(X))}{\epsilon^2}
-\]&lt;/span&gt; 均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也比依概率收敛强。但它和几乎必然收敛之间并没有推导关系。&lt;/p&gt;
+&lt;p&gt;当&lt;span class=&#34;math inline&#34;&gt;\(p=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(L_p\)&lt;/span&gt;收敛又称作均方收敛。根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式&#34;&gt;Chebyshev不等式&lt;/a&gt;， &lt;span class=&#34;math display&#34;&gt;\[
+P(|X_n-\E(X_n)| \ge \epsilon) \le \frac{\Var(X_n)}{\epsilon^2} = \frac{\E[(X_n - \E(X_n))^2]}{\epsilon^2}
+\]&lt;/span&gt; 在两边取&lt;span class=&#34;math inline&#34;&gt;\(n \to \infty\)&lt;/span&gt;可以得到 &lt;span class=&#34;math display&#34;&gt;\[
+\lim_{n \to \infty} P(|X_n-\E(X_n)| \ge \epsilon) \le \lim_{n \to \infty} \frac{\E[(X_n - \E(X_n))^2]}{\epsilon^2} = 0
+\]&lt;/span&gt; 即均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也强于依概率收敛；但它和几乎必然收敛之间并没有推导关系。&lt;/p&gt;
 &lt;h2 id=&#34;依分布收敛convergence-in-distribution&#34;&gt;依分布收敛（convergence in distribution）&lt;/h2&gt;
 &lt;p&gt;前面三者描述的是随机变量序列取值的某种特性，而依分布收敛则不同，它描述的是随机变量序列分布函数的特性。&lt;/p&gt;
 &lt;ul&gt;
@@ -3196,13 +3244,14 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
       <description>
 
 &lt;h2 id=&#34;whitening&#34;&gt;Whitening&lt;/h2&gt;
-&lt;p&gt;Data whitening is the process of converting a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; with only first-order correlation into a new random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; such that the covariance matrix of &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is an identity matrix.&lt;/p&gt;
+&lt;p&gt;Data whitening is the process of converting a random vector &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; with only first-order correlation into a new random vector &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; such that the covariance matrix of &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is an identity matrix.&lt;/p&gt;
 &lt;p&gt;To do so, we shall first apply the &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization&#34;&gt;diagonalization&lt;/a&gt; to &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_X\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \Sigma_X \Phi = \Phi \Lambda
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; contains the eigenvectors, &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt; is diagonal and contains the eigenvalues. Now let &lt;span class=&#34;math inline&#34;&gt;\(Y = \Phi^T X\)&lt;/span&gt;, we can verify that &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; contains the normalized eigenvectors, &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt; is diagonal and contains the eigenvalues. Now let &lt;span class=&#34;math inline&#34;&gt;\(Y = \Phi X\)&lt;/span&gt;, we can verify that &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \Sigma_Y &amp;amp;= \E \{ \Phi^T (\x - \mu_X) [\Phi^T (\x - \mu_X)]^T \} \\
-&amp;amp;= \E [\Phi^T (\x - \mu_X)  (\x - \mu_X)^T \Phi] \\
+&amp;amp;= \E [\Phi^T (\x - \mu_X) (\x - \mu_X)^T \Phi] \\
+&amp;amp;= \Phi^T \E [(\x - \mu_X) (\x - \mu_X)^T] \Phi \\
 &amp;amp;= \Phi^T \Sigma_X \Phi = \Phi^T \Phi \Lambda = \Lambda
 \end{aligned}
 \]&lt;/span&gt; which is diagonal. To further make an identity matrix, we apply &lt;span class=&#34;math inline&#34;&gt;\(Z = \Lambda^{-1/2} Y = \Lambda^{-1/2} \Phi^T X\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
@@ -3394,7 +3443,7 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是证明其它大数定理的基础工具。&lt;/p&gt;
+&lt;p&gt;Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是作为证明其它大数定理的基础工具。&lt;/p&gt;
 &lt;h3 id=&#34;依概率收敛&#34;&gt;依概率收敛&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;随机变量序列&lt;/strong&gt;即是由随机变量构成。对于一个普通数列&lt;span class=&#34;math inline&#34;&gt;\(\{x_n\}\)&lt;/span&gt;来说，若其收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，则当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;充分大时，&lt;span class=&#34;math inline&#34;&gt;\(x_n\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离可以达到任意小。而随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;的极限却不能按照这样定义，因为&lt;span class=&#34;math inline&#34;&gt;\(X_n\)&lt;/span&gt;取值不确定，不可能和某个数字&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;的距离任意小。&lt;/p&gt;
 &lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会&lt;strong&gt;依概率收敛&lt;/strong&gt;到该事件的概率。&lt;/p&gt;
@@ -3420,7 +3469,7 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;辛钦大数定律&#34;&gt;辛钦大数定律&lt;/h3&gt;
+&lt;h3 id=&#34;khinchin大数定律&#34;&gt;Khinchin大数定律&lt;/h3&gt;
 &lt;h4 id=&#34;相互独立同分布大数定律&#34;&gt;相互独立同分布大数定律&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，若&lt;span class=&#34;math inline&#34;&gt;\(\E(X_i) = \mu, \Var(X_i) = \sigma^2 \ne \infty, i=1,2,\dots\)&lt;/span&gt;，则对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
@@ -3823,8 +3872,8 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 &lt;h2 id=&#34;样本均值和样本方差&#34;&gt;样本均值和样本方差&lt;/h2&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-\mathbb{样本均值}:\bar X = \frac{1}{n} \sum_{i=1}^n X_i \\
-\mathbb{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)
+\text{样本均值：}\bar X = \frac{1}{n} \sum_{i=1}^n X_i \\
+\text{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;令&lt;span class=&#34;math inline&#34;&gt;\(A_k = \frac{1}{n} \sum_{i=1}^n X_i^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(M_k = \frac{1}{n} \sum_{i=1}^n (X_i - \bar X)^k\)&lt;/span&gt;为&lt;strong&gt;样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶中心矩&lt;/strong&gt;，当&lt;span class=&#34;math inline&#34;&gt;\(k=2\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(S_n^2 \triangleq M_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2\)&lt;/span&gt;。&lt;/p&gt;
@@ -3858,11 +3907,11 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 \end{aligned}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。而假设&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;已知，我们定义一个新的统计量&lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \mu)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \mu^2)\)&lt;/span&gt;，我们会发现&lt;span class=&#34;math inline&#34;&gt;\(\E(S&amp;#39;^2) = \sigma^2\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;归根结底，样本方差使用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n-1}\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;的原因是，其使用的“均值”为&lt;span class=&#34;math inline&#34;&gt;\(\bar X\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;，这导致了一个自由度的缺失。而假设&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;已知，我们定义一个新的统计量&lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;^2 = \frac{1}{n} \sum_{i=1}^N (X_i - \mu)^2 = \frac{1}{n} (n \mu^2 - 2n\mu \bar X + \sum_{i=1}^n X_i^2)\)&lt;/span&gt;，我们会发现&lt;span class=&#34;math inline&#34;&gt;\(\E(S&amp;#39;^2) = \sigma^2\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-&amp;amp;\E(S&amp;#39;^2) = \frac{1}{n} \E[(\sum_{i=1}^n (X_i^2) - n \mu^2)] \\
-&amp;amp;= \frac{1}{n} (\sum_{i=1}^n \E (X_i^2) - n \mu^2) \\
-&amp;amp;= \frac{1}{n} (\sum_{i=1}^n (\sigma^2 + \mu^2) - n \mu^2) \\
+&amp;amp;\E(S&amp;#39;^2) = \frac{1}{n} \E(n \mu^2 - 2n\mu \bar X + \sum_{i=1}^n X_i^2) \\
+&amp;amp;= \frac{1}{n} (n \mu^2 - 2n\mu \E(\bar X) + \sum_{i=1}^n \E (X_i^2)) \\
+&amp;amp;= \frac{1}{n} (n \mu^2 - 2n\mu^2 + \sum_{i=1}^n (\sigma^2 + \mu^2)) \\
 &amp;amp;= \sigma^2
 \end{aligned}
 \]&lt;/span&gt; 至于三个统计量的依概率收敛证明，根据&lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;相互独立同分布大数定律&lt;/a&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
@@ -3881,7 +3930,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
 0 &amp;lt; P(\text{事件$C$}) \le P(\text{事件$A$ 或 事件$B$}) \le P(\text{事件$A$}) + P(\text{事件$B$}) &amp;lt; \delta
 \]&lt;/span&gt; 即&lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; P(|\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2 \ - \sigma^2| \ge \epsilon) &amp;lt; \delta\)&lt;/span&gt;。又由于对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta &amp;gt; 0\)&lt;/span&gt;该结论都成立，故 &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gathered}
-\lim_{n \to \infty} P(|\underbrace{\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2}_{S_n^2} - \sigma^2| \ge \epsilon) = 0 \Rightarrow \\
+\lim_{n \to \infty} P(|\underbrace{\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2}_{S_n^2} - \sigma^2| \ge \epsilon) = 0 \iff \\
 S_n^2 \stackrel{P}{\to} \sigma^2
 \end{gathered}
 \]&lt;/span&gt; 运用类似的&lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta\)&lt;/span&gt;语言，我们可以证明&lt;span class=&#34;math inline&#34;&gt;\(S^2 = \frac{n}{n-1} S_n^2 \stackrel{P}{\to} \sigma^2\)&lt;/span&gt;。&lt;/p&gt;
@@ -4221,7 +4270,7 @@ S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln p(X_i;\theta)} 
 &lt;p&gt;点估计得到是未知参数的某个特定值，然而实际上由于点估计的方差因素，我们不可能得到完全准确的估计值。如果我们能够给出一个区间，使得我们有较大把握参数的真实值落在这个区间范围内，则显得我们的估计更加有效、可信，这个区间也叫作&lt;strong&gt;置信区间&lt;/strong&gt;（confidence interval）。&lt;/p&gt;
 &lt;p&gt;设总体&lt;span class=&#34;math inline&#34;&gt;\(X \sim f(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;未知。设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;为总体的一个样本，给定一个很小的数&lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \alpha &amp;lt; 1\)&lt;/span&gt;，若有统计量&lt;span class=&#34;math inline&#34;&gt;\(\theta_l = \theta_l (X_1, \dots, X_n) \le \theta_r(X_1, \dots, X_n) = \theta_r\)&lt;/span&gt;，使得 &lt;span class=&#34;math display&#34;&gt;\[
 P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
-\]&lt;/span&gt; 我们称&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\([\theta_;, \theta_r]\)&lt;/span&gt;的&lt;strong&gt;置信水平&lt;/strong&gt;（confidence level），&lt;span class=&#34;math inline&#34;&gt;\(\theta_l\)&lt;/span&gt;为&lt;strong&gt;置信下限&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\theta_r\)&lt;/span&gt;为&lt;strong&gt;置信上限&lt;/strong&gt;。一般来说置信水平不唯一，因为若&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;是某个区间的置信水平，则对于任意&lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;lt; \tilde \alpha &amp;lt; 1\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(1 - \tilde \alpha\)&lt;/span&gt;亦是该区间的置信水平。故一般的“置信水平”是这一系列置信水平中的最大者。&lt;/p&gt;
+\]&lt;/span&gt; 我们称&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\([\theta_l, \theta_r]\)&lt;/span&gt;的&lt;strong&gt;置信水平&lt;/strong&gt;（confidence level），&lt;span class=&#34;math inline&#34;&gt;\(\theta_l\)&lt;/span&gt;为&lt;strong&gt;置信下限&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\theta_r\)&lt;/span&gt;为&lt;strong&gt;置信上限&lt;/strong&gt;。一般来说置信水平不唯一，因为若&lt;span class=&#34;math inline&#34;&gt;\(1 - \alpha\)&lt;/span&gt;是某个区间的置信水平，则对于任意&lt;span class=&#34;math inline&#34;&gt;\(\alpha &amp;lt; \tilde \alpha &amp;lt; 1\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(1 - \tilde \alpha\)&lt;/span&gt;亦是该区间的置信水平。故一般的“置信水平”是这一系列置信水平中的最大者。&lt;/p&gt;
 &lt;h3 id=&#34;枢轴变量法&#34;&gt;枢轴变量法&lt;/h3&gt;
 &lt;p&gt;区间估计一般采用枢轴变量法，枢轴变量法的一般步骤为：&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
@@ -4365,7 +4414,7 @@ K \ge \frac{8\log M}{\epsilon^2}
 = \int_{-\infty}^{+\infty} e^{-u^2} du  \\
 \notag \\
 \begin{aligned}
-\Gamma^2(\frac{1}{2}) &amp;amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
+&amp;amp;\Gamma^2(\frac{1}{2}) = (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
 &amp;amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)(\int_{-\infty}^{+\infty} e^{-v^2} dv) \\
 &amp;amp;= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} e^{-(u^2+v^2)}dudv \\
 &amp;amp;\downarrow_{u = r\sin\theta, v = r\cos\theta} \\
@@ -4373,7 +4422,7 @@ K \ge \frac{8\log M}{\epsilon^2}
 &amp;amp;= \int_{0}^{2\pi} [-\frac{1}{2}e^{-r^2}] \bigg|_{r=0}^{+\infty} d\theta \\
 &amp;amp;= \int_{0}^{2\pi} \frac{1}{2} d\theta \\
 &amp;amp;= \pi \\
-\Gamma (\frac{1}{2}) &amp;amp;= \sqrt \pi
+&amp;amp;\Gamma (\frac{1}{2}) = \sqrt \pi
 \end{aligned}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
@@ -4407,7 +4456,7 @@ p_Y(y) = P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x
 \end{aligned}
 \]&lt;/span&gt; 其中&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k x_i^2 \le y\)&lt;/span&gt;的积分区域。可以看出，&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;对应一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维球体，且其半径&lt;span class=&#34;math inline&#34;&gt;\(R = \sqrt y\)&lt;/span&gt;。对此，作&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/&#34;&gt;高维球坐标变换&lt;/a&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k = \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
+&amp;amp;P_Y(Y \le y) = \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k = \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
 &amp;amp;= \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \int_0^\sqrt{y} \\
 &amp;amp;\quad\quad\quad\frac{e^{-\frac 1 2 (r^2\cos^2 \varphi_1 +
 r^2\sin^2 \varphi_1 \cos^2 \varphi_2 + \dots + 
@@ -4434,7 +4483,7 @@ c_k &amp;amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;故可得密度函数： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
-p_Y(y) &amp;amp;= \frac{\d P_Y(Y \le y)}{\d y} \\
+&amp;amp;p_Y(y) = \frac{\d P_Y(Y \le y)}{\d y} \\
 &amp;amp;= \frac{\d [c_k \int_0^\sqrt{y} e^{-\frac 1 2 r^2} r^{k-1} \d r]}{\d y} \\
 &amp;amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})} e^{-\frac y 2} y^\frac{k-1}{2} \frac{1}{2\sqrt y} \\
 &amp;amp;= \frac{1} {2^{\frac k 2} \Gamma(\frac{k-2}{2})} e^{-\frac y 2} y^{\frac{k}{2} - 1}
@@ -4451,13 +4500,13 @@ p_Y(y) =
 &lt;h3 id=&#34;参考-1&#34;&gt;参考&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.statlect.com/probability-distributions/chi-square-distribution&#34;&gt;Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://vtechworks.lib.vt.edu/bitstream/handle/10919/34329/10Apxb.pdf?sequence=12&#34;&gt;Generating Function of Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/30020592&#34;&gt;正向推导&lt;/a&gt; || &lt;a href=&#34;https://www.bilibili.com/video/BV1e54y1v7e5&#34;&gt;数学归纳法&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;t分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布&lt;/h2&gt;
-&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim N(0,1), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(T = \frac{X}{\sqrt{Y/n}}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(T \sim t(n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
-p_T(t) = \frac{\Gamma((n+1)/2)} {\sqrt{n\pi} \Gamma(n/2)} \big( 1 + \frac{t^2} n \big)^{-(n+1)/2}
+&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim N(0,1), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(Z = \frac{X}{\sqrt{Y/n}}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(Z \sim t(n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
+p_Z(z) = \frac{\Gamma((n+1)/2)} {\sqrt{n\pi} \Gamma(n/2)} \big( 1 + \frac{z^2} n \big)^{-(n+1)/2}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;## &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布&lt;/p&gt;
+&lt;h2 id=&#34;f分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布&lt;/h2&gt;
 &lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim \chi^2(m), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(Z = \frac{X/m}{Y/n}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\((m,n)\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(Z \sim F(m,n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
 p_Z(z) = \begin{cases}
-\frac{\Gamma((m+n)/2} {\Gamma(m/2) \Gamma(n/2)} {m \choose n}^{\frac m 2} y^{\frac m 2 - 1} (1 + \frac m n y)^{-\frac{m+n}{2}}, &amp;amp;y &amp;gt; 0 \\
+\frac{\Gamma((m+n)/2} {\Gamma(m/2) \Gamma(n/2)} {m \choose n}^{\frac m 2} z^{\frac m 2 - 1} (1 + \frac m n z)^{-\frac{m+n}{2}}, &amp;amp;z &amp;gt; 0 \\
 0, &amp;amp;\text{otherwise}
 \end{cases}
 \]&lt;/span&gt;&lt;/p&gt;
