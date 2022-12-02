@@ -1313,6 +1313,7 @@
         <li><a href="#泊松分布poisson-distribution">泊松分布（Poisson distribution）</a></li>
         <li><a href="#伯努利分布bernoulli-distribution">伯努利分布（Bernoulli distribution）</a></li>
         <li><a href="#多项分布multinomial-distribution">多项分布（multinomial distribution）</a></li>
+        <li><a href="#分类分布categorical-distribution">分类分布（categorical distribution）</a></li>
       </ul>
     </li>
     <li><a href="#连续型">连续型</a>
@@ -1414,8 +1415,12 @@ B(x;n,p) = {n \choose x} p^x (1-p)^{n-x}, x = 0,1,\dots \\
 \Var[X] = np(1-p)
 \end{gathered}
 \]</span></p>
+<p>二项分布可以帮助纠正一个生活中很常见的谬误，比如说身高高于两米的人占人类总体的<span class="math inline">\(1\%\)</span>，那么是否说明随机选取的100个人中一定至少有1个人高于两米呢？记<span class="math inline">\(X\)</span>为100个人中身高高于两米的人数，显然<span class="math inline">\(X \sim B(100, 0.01)\)</span>，经计算可得<span class="math inline">\(P(X=0) \approx 0.366\)</span>。其实也就意味着，100个人中，能至少看到1个身高高于两米的人的概率其实大约是<span class="math inline">\(1-0.366 = 63.4\%\)</span>。</p>
 <h3 id="泊松分布poisson-distribution">泊松分布（Poisson distribution）</h3>
-<p>泊松分布可以看作是某种形式的二项分布取极限而得到，一般如果<span class="math inline">\(X \sim B(n,p)\)</span>且<span class="math inline">\(n\)</span>较大、<span class="math inline">\(p\)</span>较小、<span class="math inline">\(np = \lambda\)</span>不太大时，<span class="math inline">\(X\)</span>的分布接近于泊松分布<span class="math inline">\(P(\lambda)\)</span>。 <span class="math display">\[
+<p>泊松分布可以看作是某种形式的二项分布取极限而得到： <span class="math display">\[
+P(X = i; \lambda) = \lim_{n \to \infty} = {n \choose i} (\frac{\lambda}{n})^i (1 - \frac{\lambda}{n})^{n-i}
+\]</span> 将<span class="math inline">\(\lim_{n \to \infty} {n \choose i} / n^i = 1 / i!\)</span>、<span class="math inline">\(\lim_{n \to \infty} (1 - \frac{\lambda}{n})^{n-i} = e^{-\lambda}\)</span>代入即可得到泊松分布的分布律。</p>
+<p>一般如果<span class="math inline">\(X \sim B(n,p)\)</span>且<span class="math inline">\(n\)</span>较大、<span class="math inline">\(p\)</span>较小、<span class="math inline">\(np = \lambda\)</span>不太大时，<span class="math inline">\(X\)</span>的分布接近于泊松分布<span class="math inline">\(P(\lambda)\)</span>。 <span class="math display">\[
 \begin{gathered}
 P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!}, x = 0,1,\dots \\
 \E[X] = \lambda \\
@@ -1433,6 +1438,14 @@ B(1;1,p) = p, B(0;1,p) = 1 - p \\
 <h3 id="多项分布multinomial-distribution">多项分布（multinomial distribution）</h3>
 <p>多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值的是多值的而不是二值的（binary）。假设有<span class="math inline">\(k\)</span>种结果，且这<span class="math inline">\(k\)</span>种结果互相对立、完备穷举（mutually exclusive and collectively exhaustive），此时它们的概率之和为<span class="math inline">\(1\)</span>，即<span class="math inline">\(p_1 + \dots + p_k = 1\)</span>，多项分布计算的则是这<span class="math inline">\(k\)</span>种结果分别发生<span class="math inline">\(n_1, \dots, n_k\)</span>次时的概率。令<span class="math inline">\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k], \vec n = [n_1, \dots, n_k]\)</span>，则： <span class="math display">\[
 P(\vec n; \vec p, N) = \frac{N!}{n_1! \dots n_k!} p_1^{n_1} \dots p_k^{n_k}
+\]</span></p>
+<h3 id="分类分布categorical-distribution">分类分布（categorical distribution）</h3>
+<p>类似伯努利分布是二项分布<span class="math inline">\(n=1\)</span>时的特例，分类分布则是多项分布<span class="math inline">\(N=1\)</span>时的特例： <span class="math display">\[
+\begin{gathered}
+P(\vec n; \vec p, 1) = \prod_{i=1}^k p_i ^{n_i} \\
+\E[X] = \vec p \\
+\Var[X] = \vec p (1 - \vec p)
+\end{gathered}
 \]</span></p>
 <h2 id="连续型">连续型</h2>
 <h3 id="指数分布exponential-distribution">指数分布（exponential distribution）</h3>

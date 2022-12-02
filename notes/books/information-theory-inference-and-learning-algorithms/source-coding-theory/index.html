@@ -1309,8 +1309,12 @@
   <ul>
     <li><a href="#notations-and-concepts">Notations and Concepts</a></li>
     <li><a href="#shannons-source-coding-theorem">Shannon’s source coding theorem</a></li>
-    <li><a href="#kraft-mcmillan-inequality">Kraft-McMillan inequality</a></li>
-    <li><a href="#source-coding-theorem-for-symbol-codes">Source coding theorem for symbol codes</a></li>
+    <li><a href="#source-coding-theorem-for-symbol-codes">Source coding theorem for symbol codes</a>
+      <ul>
+        <li><a href="#kraft-mcmillan-inequality">Kraft-McMillan inequality</a></li>
+        <li><a href="#the-source-coding-theorem">The source coding theorem</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1419,7 +1423,7 @@ H_\delta(X) = \log |S_\delta|
 \frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log \frac{1}{P(X_N)})
 \]</span> Each of these information contents is in turn a random variable with mean <span class="math inline">\(\bar h_i = H(X) = H\)</span> and variance <span class="math inline">\(\sigma_{h_i}^2 = \sigma^2\)</span>. The <strong>typical set</strong> with parameters <span class="math inline">\(N\)</span> and <span class="math inline">\(\beta\)</span> is defined as <span class="math display">\[
 T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac{1}{P(y)} - H]^2 &lt; \beta^2 \}
-\]</span> By the <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律">Khinchin’s Law of Large Numbers</a>, <span class="math inline">\(P((\frac 1 N \log \frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)</span>, and thus <span class="math display">\[
+\]</span> By the <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律">Weak Law of Large Numbers</a>, <span class="math inline">\(P((\frac 1 N \log \frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)</span>, and thus <span class="math display">\[
 P(y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
 \]</span> As <span class="math inline">\(N\)</span> increases, the probability that <span class="math inline">\(y\)</span> falls in <span class="math inline">\(T_{N \beta}\)</span> draws near to <span class="math inline">\(1\)</span>. We need to relate this to the theorem that for any given <span class="math inline">\(\epsilon, \delta\)</span>, there is a sufficiently-large <span class="math inline">\(N\)</span> such that <span class="math inline">\(H_\delta(X^N) \simeq NH\)</span>.</p>
 <ol type="1">
@@ -1440,7 +1444,8 @@ P(y \in S&#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} + \frac{\sigma^2}{\beta^
 \]</span> For arbitrary <span class="math inline">\(\delta\)</span> and a sufficiently-large <span class="math inline">\(N_0\)</span>, we can have <span class="math inline">\(P(y \in S&#39;) \le 1 - \delta\)</span> instead of <span class="math inline">\(P(y \in S&#39;) \ge 1 - \delta\)</span>. We shall conclude that <span class="math inline">\(S&#39;\)</span> with <span class="math inline">\(|S&#39;| \le 2^{N(H - 2\beta)}\)</span> cannot achieve <span class="math inline">\(P(y \in S&#39;) \ge 1 - \delta\)</span> and thus <span class="math inline">\(H_\delta(X^N) &gt; N(H - \epsilon)\)</span>.</p></li>
 </ol></li>
 </ul>
-<h2 id="kraft-mcmillan-inequality">Kraft-McMillan inequality</h2>
+<h2 id="source-coding-theorem-for-symbol-codes">Source coding theorem for symbol codes</h2>
+<h3 id="kraft-mcmillan-inequality">Kraft-McMillan inequality</h3>
 <ol type="1">
 <li><p>Denote the length of each symbol code as <span class="math inline">\(l_i\)</span> and there are <span class="math inline">\(I\)</span> symbols. If <span class="math display">\[
 \sum_{i=1}^I 2^{-l_i} \le 1
@@ -1471,7 +1476,7 @@ S^N \le \sum_{l = Nl_\min}^{Nl_\max} 2^{-l} 2^l \le Nl_\max
 \]</span> If <span class="math inline">\(S &gt; 1\)</span>, the above cannot hold for arbitrary <span class="math inline">\(N\)</span>. Therefore <span class="math inline">\(S \le 1\)</span>.</li>
 </ul></li>
 </ol>
-<h2 id="source-coding-theorem-for-symbol-codes">Source coding theorem for symbol codes</h2>
+<h3 id="the-source-coding-theorem">The source coding theorem</h3>
 <p>For an ensemble <span class="math inline">\(X\)</span>, there exists a prefix code <span class="math inline">\(C\)</span> with expected length satisfying <span class="math display">\[
 H(X) \le L(C,X) &lt; H(X) + 1
 \]</span></p>

@@ -43,7 +43,7 @@ H_\delta(X) = \log |S_\delta|
 \frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log \frac{1}{P(X_N)})
 \]&lt;/span&gt; Each of these information contents is in turn a random variable with mean &lt;span class=&#34;math inline&#34;&gt;\(\bar h_i = H(X) = H\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{h_i}^2 = \sigma^2\)&lt;/span&gt;. The &lt;strong&gt;typical set&lt;/strong&gt; with parameters &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac{1}{P(y)} - H]^2 &amp;lt; \beta^2 \}
-\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;Khinchin’s Law of Large Numbers&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P((\frac 1 N \log \frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;Weak Law of Large Numbers&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P((\frac 1 N \log \frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
 P(y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
 \]&lt;/span&gt; As &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; increases, the probability that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; falls in &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; draws near to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. We need to relate this to the theorem that for any given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon, \delta\)&lt;/span&gt;, there is a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \simeq NH\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
@@ -64,7 +64,8 @@ P(y \in S&amp;#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} + \frac{\sigma^2}{\b
 \]&lt;/span&gt; For arbitrary &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt; and a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt;, we can have &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \le 1 - \delta\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \ge 1 - \delta\)&lt;/span&gt;. We shall conclude that &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt; cannot achieve &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \ge 1 - \delta\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;gt; N(H - \epsilon)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;kraft-mcmillan-inequality&#34;&gt;Kraft-McMillan inequality&lt;/h2&gt;
+&lt;h2 id=&#34;source-coding-theorem-for-symbol-codes&#34;&gt;Source coding theorem for symbol codes&lt;/h2&gt;
+&lt;h3 id=&#34;kraft-mcmillan-inequality&#34;&gt;Kraft-McMillan inequality&lt;/h3&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;p&gt;Denote the length of each symbol code as &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; and there are &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; symbols. If &lt;span class=&#34;math display&#34;&gt;\[
 \sum_{i=1}^I 2^{-l_i} \le 1
@@ -95,7 +96,7 @@ S^N \le \sum_{l = Nl_\min}^{Nl_\max} 2^{-l} 2^l \le Nl_\max
 \]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\(S &amp;gt; 1\)&lt;/span&gt;, the above cannot hold for arbitrary &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;. Therefore &lt;span class=&#34;math inline&#34;&gt;\(S \le 1\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;source-coding-theorem-for-symbol-codes&#34;&gt;Source coding theorem for symbol codes&lt;/h2&gt;
+&lt;h3 id=&#34;the-source-coding-theorem&#34;&gt;The source coding theorem&lt;/h3&gt;
 &lt;p&gt;For an ensemble &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, there exists a prefix code &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; with expected length satisfying &lt;span class=&#34;math display&#34;&gt;\[
 H(X) \le L(C,X) &amp;lt; H(X) + 1
 \]&lt;/span&gt;&lt;/p&gt;

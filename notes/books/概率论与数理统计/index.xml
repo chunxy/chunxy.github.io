@@ -71,8 +71,12 @@ B(x;n,p) = {n \choose x} p^x (1-p)^{n-x}, x = 0,1,\dots \\
 \Var[X] = np(1-p)
 \end{gathered}
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;二项分布可以帮助纠正一个生活中很常见的谬误，比如说身高高于两米的人占人类总体的&lt;span class=&#34;math inline&#34;&gt;\(1\%\)&lt;/span&gt;，那么是否说明随机选取的100个人中一定至少有1个人高于两米呢？记&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;为100个人中身高高于两米的人数，显然&lt;span class=&#34;math inline&#34;&gt;\(X \sim B(100, 0.01)\)&lt;/span&gt;，经计算可得&lt;span class=&#34;math inline&#34;&gt;\(P(X=0) \approx 0.366\)&lt;/span&gt;。其实也就意味着，100个人中，能至少看到1个身高高于两米的人的概率其实大约是&lt;span class=&#34;math inline&#34;&gt;\(1-0.366 = 63.4\%\)&lt;/span&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;泊松分布poisson-distribution&#34;&gt;泊松分布（Poisson distribution）&lt;/h3&gt;
-&lt;p&gt;泊松分布可以看作是某种形式的二项分布取极限而得到，一般如果&lt;span class=&#34;math inline&#34;&gt;\(X \sim B(n,p)\)&lt;/span&gt;且&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;较大、&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;较小、&lt;span class=&#34;math inline&#34;&gt;\(np = \lambda\)&lt;/span&gt;不太大时，&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的分布接近于泊松分布&lt;span class=&#34;math inline&#34;&gt;\(P(\lambda)\)&lt;/span&gt;。 &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;泊松分布可以看作是某种形式的二项分布取极限而得到： &lt;span class=&#34;math display&#34;&gt;\[
+P(X = i; \lambda) = \lim_{n \to \infty} = {n \choose i} (\frac{\lambda}{n})^i (1 - \frac{\lambda}{n})^{n-i}
+\]&lt;/span&gt; 将&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} {n \choose i} / n^i = 1 / i!\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} (1 - \frac{\lambda}{n})^{n-i} = e^{-\lambda}\)&lt;/span&gt;代入即可得到泊松分布的分布律。&lt;/p&gt;
+&lt;p&gt;一般如果&lt;span class=&#34;math inline&#34;&gt;\(X \sim B(n,p)\)&lt;/span&gt;且&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;较大、&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;较小、&lt;span class=&#34;math inline&#34;&gt;\(np = \lambda\)&lt;/span&gt;不太大时，&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的分布接近于泊松分布&lt;span class=&#34;math inline&#34;&gt;\(P(\lambda)\)&lt;/span&gt;。 &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gathered}
 P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!}, x = 0,1,\dots \\
 \E[X] = \lambda \\
@@ -90,6 +94,14 @@ B(1;1,p) = p, B(0;1,p) = 1 - p \\
 &lt;h3 id=&#34;多项分布multinomial-distribution&#34;&gt;多项分布（multinomial distribution）&lt;/h3&gt;
 &lt;p&gt;多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值的是多值的而不是二值的（binary）。假设有&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果，且这&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果互相对立、完备穷举（mutually exclusive and collectively exhaustive），此时它们的概率之和为&lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，即&lt;span class=&#34;math inline&#34;&gt;\(p_1 + \dots + p_k = 1\)&lt;/span&gt;，多项分布计算的则是这&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;种结果分别发生&lt;span class=&#34;math inline&#34;&gt;\(n_1, \dots, n_k\)&lt;/span&gt;次时的概率。令&lt;span class=&#34;math inline&#34;&gt;\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k], \vec n = [n_1, \dots, n_k]\)&lt;/span&gt;，则： &lt;span class=&#34;math display&#34;&gt;\[
 P(\vec n; \vec p, N) = \frac{N!}{n_1! \dots n_k!} p_1^{n_1} \dots p_k^{n_k}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;分类分布categorical-distribution&#34;&gt;分类分布（categorical distribution）&lt;/h3&gt;
+&lt;p&gt;类似伯努利分布是二项分布&lt;span class=&#34;math inline&#34;&gt;\(n=1\)&lt;/span&gt;时的特例，分类分布则是多项分布&lt;span class=&#34;math inline&#34;&gt;\(N=1\)&lt;/span&gt;时的特例： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+P(\vec n; \vec p, 1) = \prod_{i=1}^k p_i ^{n_i} \\
+\E[X] = \vec p \\
+\Var[X] = \vec p (1 - \vec p)
+\end{gathered}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;连续型&#34;&gt;连续型&lt;/h2&gt;
 &lt;h3 id=&#34;指数分布exponential-distribution&#34;&gt;指数分布（exponential distribution）&lt;/h3&gt;
@@ -234,8 +246,11 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
 &lt;p&gt;随机变量是事件的映射，当试验次数足够多时，事件的频率会&lt;strong&gt;依概率收敛&lt;/strong&gt;到该事件的概率。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;定义&lt;/p&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots,\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1\)&lt;/span&gt;，则称该随机变量序列依概率收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{P}{\to} c\)&lt;/span&gt;。或者，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots,\)&lt;/span&gt;是一个随机变量序列，如果存在一个常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，使得对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| &amp;lt; \epsilon) = 1\)&lt;/span&gt;，则称该随机变量序列依概率收敛于&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(X_n \stackrel{P}{\to} c\)&lt;/span&gt;。或者，对于任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，都有&lt;span class=&#34;math inline&#34;&gt;\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)&lt;/span&gt;。 ### Markov不等式&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Chebyshev不等式其实是Markov不等式的一个特例。令&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;为一非负随机变量、&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;为一非负实数，Markov不等式描述的是以下关系： &lt;span class=&#34;math display&#34;&gt;\[
+P(X \ge \alpha) \le \frac{\E(X)}{\alpha}
+\]&lt;/span&gt; 将其中的&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;替换为&lt;span class=&#34;math inline&#34;&gt;\(|X - \E(X)|\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;替换为&lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt;即可得到Chebyshev不等式。不过由于Markov不等式有随机变量非负的要求，适用范围就小了一些；而且同样，Markov不等式的这种估计也是很粗糙的。&lt;/p&gt;
 &lt;h2 id=&#34;弱大数定律weak-law-of-large-numbers&#34;&gt;弱大数定律（Weak Law of large numbers）&lt;/h2&gt;
 &lt;h3 id=&#34;chebyshev大数定律&#34;&gt;Chebyshev大数定律&lt;/h3&gt;
 &lt;ul&gt;
@@ -284,9 +299,10 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
 &lt;p&gt;设随机变量序列&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;相互独立且同分布，且&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim B(1,p), i=1,2,\dots\)&lt;/span&gt;，则对任意实数&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
 \lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}} \le x) = \Phi(x)
 \]&lt;/span&gt; 显然de Moivre-Laplace中心极限定理是Lindburg-Levy中心极限定理的特例。&lt;/p&gt;
-&lt;p&gt;前面的Bernoulli大数定律告诉我们可以用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n} \sum_{i=1}^n X_i\)&lt;/span&gt;（频率）近似&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;（概率），而至于近似程度如何，却不得而知。de Moivre-Laplace中心极限定理则告诉我们近似程度如何： &lt;span class=&#34;math display&#34;&gt;\[
-P(|\frac{1}{n}\sum_{i=1}^n X_i - p| &amp;lt; \epsilon) = P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| &amp;lt; \frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) = 2N(0,1,\frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) - 1
+&lt;p&gt;前面的Bernoulli大数定律告诉我们可以用&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n} \sum_{i=1}^n X_i\)&lt;/span&gt;（频率）近似&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;（概率），而至于近似程度如何，却不得而知。de Moivre-Laplace中心极限定理则告诉我们当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;足够大时，近似程度如何： &lt;span class=&#34;math display&#34;&gt;\[
+P(|\frac{1}{n}\sum_{i=1}^n X_i - p| \le \epsilon) = P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| \le \frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) \simeq 2\Phi(\frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) - 1
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;上式实际是在用正态分布近似二项分布（多个伯努利分布随机变量加和为伯努利分布）。在&lt;a href=&#34;https://www.mathsisfun.com/data/quincunx-explained.html&#34;&gt;Galton Board游戏&lt;/a&gt;我们可以近似应用de Moivre-Laplace中心极限定理，这样或许能够帮助理解该定理。&lt;/p&gt;
 
 
 </description>
@@ -402,15 +418,15 @@ L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n 
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个估计量，&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的取值空间为&lt;span class=&#34;math inline&#34;&gt;\(\Theta\)&lt;/span&gt;，若对任意的&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
 \E [\hat \theta(X_1, \dots, X_n)] = \theta
 \]&lt;/span&gt; 则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个无偏估计（量），否则则称作有偏估计（量）。如果有 &lt;span class=&#34;math display&#34;&gt;\[
-\lim_{n \to \infty} \E [\hat \theta(X_1, \dots, X_n)] = \theta
+\lim_{n \to \infty} \E [\hat \theta(X_1, \dots, X_n)] = \theta, \text{亦即} \hat \theta \stackrel{L_1}{\to} \theta
 \]&lt;/span&gt; 则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个渐进无偏估计（量）。&lt;/p&gt;
-&lt;p&gt;估计的无偏性是指，估计量相对于未知参数真值来说，取某些样本时估计值偏大，取另一些样本时估计量偏小，多次取样本进行估计，平均来讲偏差为&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;。如果估计量不具有无偏性，则无论取多少次样本，其平均值与真值也有偏差，亦即系统误差。&lt;/p&gt;
+&lt;p&gt;估计的无偏性是指，估计量相对于未知参数真值来说，取某些样本时估计值也许偏大，取另一些样本时估计量也许偏小，但多次取样本进行估计，平均来讲偏差为&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;。如果估计量不具有无偏性，则无论取多少次样本，其平均值与真值也有偏差，亦即系统误差。&lt;/p&gt;
 &lt;h4 id=&#34;最小方差minimum-variance&#34;&gt;最小方差（Minimum-variance）&lt;/h4&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_1 = \hat \theta_2\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的两个估计量，&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的取值空间为&lt;span class=&#34;math inline&#34;&gt;\(\Theta\)&lt;/span&gt;，若对任意的&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(\Var(\hat \theta_1) \le \Var(\hat \theta_2)\)&lt;/span&gt;，且至少有一个&lt;span class=&#34;math inline&#34;&gt;\(\theta \in \Theta\)&lt;/span&gt;使得该不等式严格成立，则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_1\)&lt;/span&gt;比&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta_2\)&lt;/span&gt;有效。&lt;/p&gt;
 &lt;h4 id=&#34;一致性consistent&#34;&gt;一致性（Consistent）&lt;/h4&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个估计量，若对任意&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
 \lim_{n \to \infty} P(|\hat \theta - \theta| \ge \epsilon) = 0, \text{亦即} \hat \theta \stackrel{P}{\to} \theta
-\]&lt;/span&gt; 则称估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;具有一致性。一致性是一个很基本的要求，随着样本数量增加，如果估计量不能够将偏差缩小到任意指定精度，那么这个估计通常是不好的。不满足一致性的估计量一般不予考虑。&lt;/p&gt;
+\]&lt;/span&gt; 则称估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;具有一致性。一致性是一个很基本的要求：随着样本数量增加，如果估计量不能够将偏差缩小到任意指定精度，那么这个估计通常是不好的。不满足一致性的估计量一般不予考虑。&lt;/p&gt;
 &lt;h3 id=&#34;cramer-rao不等式&#34;&gt;Cramer-Rao不等式&lt;/h3&gt;
 &lt;p&gt;实际上，点估计量不仅仅可以估计未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;本身（假设为一元情况），更可以估计未知参数的某个函数&lt;span class=&#34;math inline&#34;&gt;\(g(\theta)\)&lt;/span&gt;，即给定总体的一个样本&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;，用统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat g = \hat g(X_1, \dots, X_n)\)&lt;/span&gt;估计&lt;span class=&#34;math inline&#34;&gt;\(g(\theta)\)&lt;/span&gt;。估计量最好的效果便是达到最小方差无偏（minimum-variance unbiased &amp;lt;MVU&amp;gt;）估计，Cramer-Rao不等式给出了点估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat g\)&lt;/span&gt;方差的一个下界。 &lt;span class=&#34;math display&#34;&gt;\[
 \label{cr} \Var(\hat g) \ge (g&amp;#39;(\theta))^2 / (nI(\theta))
@@ -462,7 +478,7 @@ P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;的分布函数&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;完全已知，且其分布与&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;无关，&lt;/li&gt;
 &lt;li&gt;对任何常数&lt;span class=&#34;math inline&#34;&gt;\(a &amp;lt; b\)&lt;/span&gt;，不等式&lt;span class=&#34;math inline&#34;&gt;\(a \le G(\theta, \hat \theta) \le b\)&lt;/span&gt;能够改写成等价的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;，且&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;仅与&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta,a,b\)&lt;/span&gt;有关，与&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;无关。&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;取&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;的上&lt;span class=&#34;math inline&#34;&gt;\(\alpha/2\)&lt;/span&gt;分位点&lt;span class=&#34;math inline&#34;&gt;\(w_{\alpha/2}\)&lt;/span&gt;及上&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha/2\)&lt;/span&gt;分位点&lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2}\)&lt;/span&gt;，此时有&lt;span class=&#34;math inline&#34;&gt;\(F(w_{\alpha/2}) - F(w_{1-w_{\alpha/2}}) = 1 - \alpha\)&lt;/span&gt;，即 &lt;span class=&#34;math display&#34;&gt;\[
+&lt;li&gt;&lt;p&gt;取&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;的上&lt;span class=&#34;math inline&#34;&gt;\(\alpha/2\)&lt;/span&gt;分位点&lt;span class=&#34;math inline&#34;&gt;\(w_{\alpha/2}\)&lt;/span&gt;（&lt;span class=&#34;math inline&#34;&gt;\(F(w_{\alpha / 2}) = 1 - \alpha/2\)&lt;/span&gt;）及上&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha/2\)&lt;/span&gt;分位点&lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2}\)&lt;/span&gt;（&lt;span class=&#34;math inline&#34;&gt;\(F(w_{1 - \alpha / 2}) = \alpha / 2\)&lt;/span&gt;），此时有&lt;span class=&#34;math inline&#34;&gt;\(F(w_{\alpha/2}) - F(w_{1 - \alpha / 2}) = 1 - \alpha\)&lt;/span&gt;，即 &lt;span class=&#34;math display&#34;&gt;\[
 P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}\)&lt;/span&gt;可改写为对应的&lt;span class=&#34;math inline&#34;&gt;\(A \le \theta \le B\)&lt;/span&gt;的形式，且&lt;span class=&#34;math inline&#34;&gt;\(A, B\)&lt;/span&gt;仅与估计量和两个分位点有关，&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;就构成了&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个置信水平为&lt;span class=&#34;math inline&#34;&gt;\(1-\alpha\)&lt;/span&gt;的置信区间。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -479,7 +495,7 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
       <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</guid>
       <description>
 
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布都从正态分布中衍生出来，之前介绍的常用统计量在正态总体的假设下，都与这三种分布有关，所以他们在正态总体的统计推断中起着很大的作用。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布都从正态分布中衍生出来，常用统计量在正态总体的假设下，都与这三种分布有关，所以他们在正态总体的统计推断中起着很大的作用。&lt;/p&gt;
 &lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
 &lt;h3 id=&#34;gamma函数&#34;&gt;Gamma函数&lt;/h3&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -519,24 +535,25 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 &lt;p&gt;&lt;a href=&#34;https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php&#34;&gt;The Gamma Function&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=XAoe4th0F1k&#34;&gt;The derivation of &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2)\)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;chi2分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布&lt;/h2&gt;
 &lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1,\dots,X_n\)&lt;/span&gt;为相互独立的标准正态分布随机变量，即&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim N(0,1)\)&lt;/span&gt;则称&lt;span class=&#34;math inline&#34;&gt;\(Y = X_1^2 + \dots + X_n^2\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布，记作&lt;span class=&#34;math inline&#34;&gt;\(Y \sim \chi^2(n)\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-P_{X_i^2}(x) = P_{X_i}(X_i^2 \le x) = 2 P_{X_i}(\sqrt x) - 1
-\]&lt;/span&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=1\)&lt;/span&gt;时，容易得到&lt;span class=&#34;math inline&#34;&gt;\(\forall y \le 0, P_Y(y) = 0, p_Y(y)= 0\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}[t]
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=1\)&lt;/span&gt;时，容易得到&lt;span class=&#34;math inline&#34;&gt;\(\forall y \le 0, P_Y(y) = 0, p_Y(y)= 0\)&lt;/span&gt;， $$ &lt;span class=&#34;math display&#34;&gt;\[\begin{align}
+\begin{split}
 \forall y &amp;gt; 0, P_Y(y) &amp;amp;= 2P_X(\sqrt y) - 1 \\ 
-p_Y(y) &amp;amp;= 2P_X&amp;#39;(\sqrt y) \frac 1 {2 \sqrt y} \\
+\end{split} \\
+
+\begin{split}
+&amp;amp;p_Y(y) = 2P_X&amp;#39;(\sqrt y) \frac 1 {2 \sqrt y} \\
 &amp;amp;= \frac 1 {\sqrt {2\pi y}}  e^{-\frac 1 2 y} \\
 &amp;amp;= \frac 1 {2^\frac{1}{2} \Gamma(\frac 1 2)} y^{\frac 1 2 - 1} e^{-\frac y 2}
-\end{aligned}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\chi^2(1)\)&lt;/span&gt;分布的密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
-p_Y(y) =
-\begin{cases}
+\end{split}
+\end{align}\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+$\chi^2(1)$分布的密度函数为：
+\]&lt;/span&gt; p_Y(y) =&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{cases}
 \frac 1 {2^\frac{1}{2} \Gamma(\frac 1 2)} y^{\frac 1 2 - 1} e^{-\frac y 2}, &amp;amp;y &amp;gt; 0 \\
 0, &amp;amp; y \le 0
-\end{cases}
-\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+\end{cases}\]&lt;/span&gt;
+&lt;p&gt;$$&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=k\)&lt;/span&gt;时，令&lt;span class=&#34;math inline&#34;&gt;\(X_1,\dots,X_k\)&lt;/span&gt;表示一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维空间中的点， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 p_Y(y) = P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k \\
@@ -560,22 +577,22 @@ r^{k-1} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2})
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(c_k\)&lt;/span&gt;是和&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;相关的常数项，并且由于&lt;span class=&#34;math inline&#34;&gt;\(P_Y(Y \le \infty) = 1\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\begin{align}
+\begin{aligned}
 1 &amp;amp;= c_k \int_0^\infty e^{-\frac 1 2 r^2} r^{k-1} \d r \\
 &amp;amp;\Downarrow_{r = \sqrt{2t}} \\
 1 &amp;amp;= c_k \int_0^\infty e^{-t} \sqrt{2t}^{k-1} \frac{1}{\sqrt{2t}} \d t \\
 1 &amp;amp;= 2^{(k-2)/2} c_k \int_0^\infty e^{-t} t^{(k-2)/2} \d t \\
 1 &amp;amp;= 2^{(k-2)/2} c_k \Gamma(\frac{k}{2}) \\
 c_k &amp;amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})}
-\end{align}
+\end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;故可得密度函数： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{align}
+\begin{aligned}
 &amp;amp;p_Y(y) = \frac{\d P_Y(Y \le y)}{\d y} \\
 &amp;amp;= \frac{\d [c_k \int_0^\sqrt{y} e^{-\frac 1 2 r^2} r^{k-1} \d r]}{\d y} \\
 &amp;amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})} e^{-\frac y 2} y^\frac{k-1}{2} \frac{1}{2\sqrt y} \\
 &amp;amp;= \frac{1} {2^{\frac k 2} \Gamma(\frac{k-2}{2})} e^{-\frac y 2} y^{\frac{k}{2} - 1}
-\end{align}
+\end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;最终可得密度函数如下： &lt;span class=&#34;math display&#34;&gt;\[
 p_Y(y) =
@@ -606,6 +623,11 @@ p_Z(z) = \begin{cases}
 \text{$\bar X$与$S^2$相互独立，$\bar X$与$S_n^2$相互独立}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;分布计算器&#34;&gt;分布计算器&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/normal.html&#34;&gt;Normal Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/chisq.html&#34;&gt;Chi-Square Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/t.html&#34;&gt;Student’s t-Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/f.html&#34;&gt;F-Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

@@ -1418,15 +1418,15 @@ L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n 
 <p>设<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)</span>是<span class="math inline">\(\theta\)</span>的一个估计量，<span class="math inline">\(\theta\)</span>的取值空间为<span class="math inline">\(\Theta\)</span>，若对任意的<span class="math inline">\(\theta \in \Theta\)</span>，有 <span class="math display">\[
 \E [\hat \theta(X_1, \dots, X_n)] = \theta
 \]</span> 则称<span class="math inline">\(\hat \theta\)</span>是<span class="math inline">\(\theta\)</span>的一个无偏估计（量），否则则称作有偏估计（量）。如果有 <span class="math display">\[
-\lim_{n \to \infty} \E [\hat \theta(X_1, \dots, X_n)] = \theta
+\lim_{n \to \infty} \E [\hat \theta(X_1, \dots, X_n)] = \theta, \text{亦即} \hat \theta \stackrel{L_1}{\to} \theta
 \]</span> 则称<span class="math inline">\(\hat \theta\)</span>是<span class="math inline">\(\theta\)</span>的一个渐进无偏估计（量）。</p>
-<p>估计的无偏性是指，估计量相对于未知参数真值来说，取某些样本时估计值偏大，取另一些样本时估计量偏小，多次取样本进行估计，平均来讲偏差为<span class="math inline">\(0\)</span>。如果估计量不具有无偏性，则无论取多少次样本，其平均值与真值也有偏差，亦即系统误差。</p>
+<p>估计的无偏性是指，估计量相对于未知参数真值来说，取某些样本时估计值也许偏大，取另一些样本时估计量也许偏小，但多次取样本进行估计，平均来讲偏差为<span class="math inline">\(0\)</span>。如果估计量不具有无偏性，则无论取多少次样本，其平均值与真值也有偏差，亦即系统误差。</p>
 <h4 id="最小方差minimum-variance">最小方差（Minimum-variance）</h4>
 <p>设<span class="math inline">\(\hat \theta_1 = \hat \theta_2\)</span>是<span class="math inline">\(\theta\)</span>的两个估计量，<span class="math inline">\(\theta\)</span>的取值空间为<span class="math inline">\(\Theta\)</span>，若对任意的<span class="math inline">\(\theta \in \Theta\)</span>，有<span class="math inline">\(\Var(\hat \theta_1) \le \Var(\hat \theta_2)\)</span>，且至少有一个<span class="math inline">\(\theta \in \Theta\)</span>使得该不等式严格成立，则称<span class="math inline">\(\hat \theta_1\)</span>比<span class="math inline">\(\hat \theta_2\)</span>有效。</p>
 <h4 id="一致性consistent">一致性（Consistent）</h4>
 <p>设<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)</span>是<span class="math inline">\(\theta\)</span>的一个估计量，若对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[
 \lim_{n \to \infty} P(|\hat \theta - \theta| \ge \epsilon) = 0, \text{亦即} \hat \theta \stackrel{P}{\to} \theta
-\]</span> 则称估计量<span class="math inline">\(\hat \theta\)</span>具有一致性。一致性是一个很基本的要求，随着样本数量增加，如果估计量不能够将偏差缩小到任意指定精度，那么这个估计通常是不好的。不满足一致性的估计量一般不予考虑。</p>
+\]</span> 则称估计量<span class="math inline">\(\hat \theta\)</span>具有一致性。一致性是一个很基本的要求：随着样本数量增加，如果估计量不能够将偏差缩小到任意指定精度，那么这个估计通常是不好的。不满足一致性的估计量一般不予考虑。</p>
 <h3 id="cramer-rao不等式">Cramer-Rao不等式</h3>
 <p>实际上，点估计量不仅仅可以估计未知参数<span class="math inline">\(\theta\)</span>本身（假设为一元情况），更可以估计未知参数的某个函数<span class="math inline">\(g(\theta)\)</span>，即给定总体的一个样本<span class="math inline">\(X_1, \dots, X_n\)</span>，用统计量<span class="math inline">\(\hat g = \hat g(X_1, \dots, X_n)\)</span>估计<span class="math inline">\(g(\theta)\)</span>。估计量最好的效果便是达到最小方差无偏（minimum-variance unbiased &lt;MVU&gt;）估计，Cramer-Rao不等式给出了点估计量<span class="math inline">\(\hat g\)</span>方差的一个下界。 <span class="math display">\[
 \label{cr} \Var(\hat g) \ge (g&#39;(\theta))^2 / (nI(\theta))
@@ -1478,7 +1478,7 @@ P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
 <li><span class="math inline">\(G\)</span>的分布函数<span class="math inline">\(F\)</span>完全已知，且其分布与<span class="math inline">\(\theta\)</span>无关，</li>
 <li>对任何常数<span class="math inline">\(a &lt; b\)</span>，不等式<span class="math inline">\(a \le G(\theta, \hat \theta) \le b\)</span>能够改写成等价的<span class="math inline">\(A \le \theta \le B\)</span>，且<span class="math inline">\(A,B\)</span>仅与<span class="math inline">\(\hat \theta,a,b\)</span>有关，与<span class="math inline">\(\theta\)</span>无关。</li>
 </ul></li>
-<li><p>取<span class="math inline">\(F\)</span>的上<span class="math inline">\(\alpha/2\)</span>分位点<span class="math inline">\(w_{\alpha/2}\)</span>及上<span class="math inline">\(1-\alpha/2\)</span>分位点<span class="math inline">\(w_{1-\alpha/2}\)</span>，此时有<span class="math inline">\(F(w_{\alpha/2}) - F(w_{1-w_{\alpha/2}}) = 1 - \alpha\)</span>，即 <span class="math display">\[
+<li><p>取<span class="math inline">\(F\)</span>的上<span class="math inline">\(\alpha/2\)</span>分位点<span class="math inline">\(w_{\alpha/2}\)</span>（<span class="math inline">\(F(w_{\alpha / 2}) = 1 - \alpha/2\)</span>）及上<span class="math inline">\(1-\alpha/2\)</span>分位点<span class="math inline">\(w_{1-\alpha/2}\)</span>（<span class="math inline">\(F(w_{1 - \alpha / 2}) = \alpha / 2\)</span>），此时有<span class="math inline">\(F(w_{\alpha/2}) - F(w_{1 - \alpha / 2}) = 1 - \alpha\)</span>，即 <span class="math display">\[
 P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 \]</span> <span class="math inline">\(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}\)</span>可改写为对应的<span class="math inline">\(A \le \theta \le B\)</span>的形式，且<span class="math inline">\(A, B\)</span>仅与估计量和两个分位点有关，<span class="math inline">\(A,B\)</span>就构成了<span class="math inline">\(\theta\)</span>的一个置信水平为<span class="math inline">\(1-\alpha\)</span>的置信区间。</p></li>
 </ol>

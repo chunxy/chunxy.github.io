@@ -695,6 +695,7 @@
         <li><a href="#bellman-ford算法">Bellman-Ford算法</a></li>
         <li><a href="#dijkstra算法">Dijkstra算法</a></li>
         <li><a href="#有向无环图中的最短路径">有向无环图中的最短路径</a></li>
+        <li><a href="#对比">对比</a></li>
       </ul>
     </li>
   </ul>
@@ -703,7 +704,7 @@
 
 <p><img src="sssp.png"/></p>
 <h2 id="问题描述及定义">问题描述及定义</h2>
-<p>单源最短路径问题，旨在求解<strong>带权有向图</strong>（weighted directed graph）中无向图可以很便捷的转换为带权有向图，从某个<strong>点</strong>（vertex）出发，到图中任意一<strong>点</strong>的最短距离，某些情况下，还需要找出这一条最短距离的<strong>路径</strong>，称之为<strong>最短路径</strong>，若无特殊指明且不致歧义，以下最短路径问题均指代单源最短路径问题。</p>
+<p>单源最短路径问题，旨在求解<strong>带权有向图</strong>（weighted directed graph）中<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，从某个<strong>点</strong>（vertex）出发，到图中任意一<strong>点</strong>的最短距离，某些情况下，还需要找出这一条最短距离的<strong>路径</strong>，称之为<strong>最短路径</strong>，若无特殊指明且不致歧义，以下最短路径问题均指代单源最短路径问题。</p>
 <p>更严格一些，设<span class="math inline">\(G(V, E)\)</span>表示带权有向图，<span class="math inline">\(w : E \to \mathbb{R}\)</span>表示<strong>权重</strong>，<strong>路径</strong><span class="math inline">\(p = \left &lt;v_0, v_1, ... v_k\right &gt;\)</span>的<strong>距离</strong>定义为： <span class="math display">\[
 W(p) = \sum\limits_{i = 1}^k w(v_{k-1}, v_k)
 \]</span> 其中， <span class="math display">\[
@@ -711,12 +712,12 @@ W(p) = \sum\limits_{i = 1}^k w(v_{k-1}, v_k)
 \forall i \in [0, k], v_i \in V \\
 \forall i \in [1, k], (v_{i-1}, v_i) \in E
 \end{gather*}
-\]</span> 我们从某一点<span class="math inline">\(s\)</span>（叫作<strong>起点</strong>，或者源点）出发，设其到图中任意一<strong>点</strong><span class="math inline">\(v\)</span>的最短路径距离为<span class="math inline">\(\delta(v)\)</span>，<strong>单源最短路径</strong>求解的就是任意一条从<span class="math inline">\(s\)</span>到<span class="math inline">\(v\)</span>的路径<span class="math inline">\(p\)</span>，使得<span class="math inline">\(W(p) = \delta(v)\)</span>。</p>
-<p>为了方便，我们为每一个点<span class="math inline">\(v \in V\)</span>设立一个中间变量<span class="math inline">\(d\)</span>，用<span class="math inline">\(v.d\)</span>来表示求解过程中的最短距离的<strong>上界</strong>，也就是说始终有<span class="math inline">\(\delta(v) \leq v.d\)</span>，算法初始化时，<span class="math inline">\(v.d = +\infty\)</span>，算法运行过程中，我们使<span class="math inline">\(v.d\)</span>这个上界不断减小，直到<span class="math inline">\(v.d = \delta(v)\)</span>。</p>
+\]</span> 我们从某一点<span class="math inline">\(s\)</span>（叫作<strong>起点</strong>，或者源点）出发，记其到图中任意一<strong>点</strong><span class="math inline">\(v\)</span>的最短路径距离为<span class="math inline">\(\delta(v)\)</span>，<strong>单源最短路径</strong>求解的就是任意一条从<span class="math inline">\(s\)</span>到<span class="math inline">\(v\)</span>的路径<span class="math inline">\(p\)</span>，使得<span class="math inline">\(W(p) = \delta(v)\)</span>。</p>
+<p>为了方便，我们为每一个点<span class="math inline">\(v \in V\)</span>设立一个中间变量<span class="math inline">\(d\)</span>，用<span class="math inline">\(v.d\)</span>来表示求解过程中的最短距离的<strong>可行上界</strong>，也就是说始终有<span class="math inline">\(\delta(v) \leq v.d\)</span>，算法初始化时，<span class="math inline">\(v.d = +\infty\)</span>，算法运行过程中，我们通过寻找路径使<span class="math inline">\(v.d\)</span>这个上界不断减小，直到<span class="math inline">\(v.d = \delta(v)\)</span>。</p>
 <h2 id="解决思路">解决思路</h2>
 <p>最短路径问题（包括多源最短路径问题）都隐含着一个最优子结构（optimal substructure），即：</p>
 <blockquote>
-<p>如果是一条连接两个点的最短路径，那么的任意一条<strong>子路径</strong>，一定也是连接其两个端点的最短路径。</p>
+<p>如果<span class="math inline">\(p\)</span>是一条连接两个点的最短路径，那么<span class="math inline">\(p\)</span>的任意一条<strong>子路径</strong>，一定也是连接其两个端点的最短路径。</p>
 </blockquote>
 <p>这条性质可由反证法轻松得到，也将是后续寻找最短路径所需要理解的一个重要概念。</p>
 <h2 id="正文之前">正文之前</h2>
@@ -727,9 +728,9 @@ W(p) = \sum\limits_{i = 1}^k w(v_{k-1}, v_k)
 <p>一旦从起点可以到达这个环路上的点，那么最短路径问题就变得没有意义了：我们可以不断重复地走这条环路，然后 “拐出” 环路，到达目标点，使得到达目标点的路径的权重变得任意小（arbitrarily short），所以也就不存在什么 “最短路径” 了。</p>
 <p>一个成熟的算法应当能够检测出图中是否有可以由<span class="math inline">\(s\)</span>到达的负权环路，如果没有，则算法照常进行；如果有，应予以通报。</p>
 <h3 id="非负权环路">非负权环路</h3>
-<p>负权环路指的是图中某些边构成一条<strong>环路</strong>，并且这条环路上的所有边的权重相加的结果大于等于0。</p>
-<p>负权环路会使最短路径问题没有意义，那么非负权环路呢？或者说，最短路径可不可以不包含非负权环路呢？</p>
-<p>答案是可以，如果一条最短路径包含了非负权环路，我们大可将这段环路从路径中 “拿掉”，得到的路径和原路径可以达到同样的终点，并且新路径的权重不大于原路径的权重。</p>
+<p>非负权环路指的是图中某些边构成一条<strong>环路</strong>，并且这条环路上的所有边的权重相加的结果大于等于0。</p>
+<p>负权环路会使最短路径问题没有意义，那么非负权环路呢？或者说，最短路径是否包含非负权环路呢？</p>
+<p>答案是否，如果一条最短路径包含了非负权环路，我们大可将这段环路从路径中 “拿掉”，得到的路径和原路径可以达到同样的终点，并且新路径的权重不大于原路径的权重。</p>
 <h3 id="放缩操作">放缩操作</h3>
 <p>放缩操作的对象是边，对于边<span class="math inline">\((u,v)\)</span>，放缩操作将检测能否优化点<span class="math inline">\(v\)</span>的上界：</p>
 <pre class="pseudocode"><code>RELAX(u, v, w):
@@ -739,11 +740,11 @@ if v.d &gt; u.d + w(u, v):
 <p>即如果路径<span class="math inline">\(s \sim u \to v\)</span>的长度小于当前<span class="math inline">\(v\)</span>的上界，我们便可以借此优化<span class="math inline">\(v\)</span>的上界，并同时通过将的<span class="math inline">\(v\)</span>前继设为<span class="math inline">\(u\)</span>来记录这一次优化。</p>
 <h2 id="解决方法">解决方法</h2>
 <h3 id="bellman-ford算法">Bellman-Ford算法</h3>
-<p>Bellman-Ford算法是最短路径问题中最为 robust 的一种了，能处理负权边，能检测负权环路，不要求当前图为有向无环图。Bellman-Ford算法基本框架如下：</p>
+<p>Bellman-Ford算法是最短路径问题中最为robust的一种了，能处理负权边、能检测负权环路、不要求当前图为有向无环图（directed acyclic graph）。Bellman-Ford算法基本框架如下：</p>
 <blockquote>
 <ul>
-<li>原图中存在负权环路，返回 false，用以告知存在负权环路，最短路径问题无意义</li>
-<li>原图中不存在负权环路，返回 true，用以告知最短路径问题已解决，并将结果蕴含在相应的数据结构中</li>
+<li>原图中存在可由起点抵达的负权环路，返回 false，用以告知存在负权环路，最短路径问题无意义</li>
+<li>原图中不存在可由起点抵达的负权环路，返回 true，用以告知最短路径问题已解决，并将结果蕴含在相应的数据结构中</li>
 </ul>
 </blockquote>
 <pre class="pseudocode"><code>// 算法主体
@@ -764,17 +765,17 @@ return true</code></pre>
 p=\left &lt;v_0,v_1, ... v_k\right &gt;，其中v_0 = s，v_k = t
 \]</span> 在寻找<span class="math inline">\(t\)</span>的最短路径时，任一<span class="math inline">\(v \in \{u | (u,t) \in E, u.d = \delta(s, u)\}\)</span>（即此时<span class="math inline">\(v\)</span>的最短路径已找到，且点<span class="math inline">\(v\)</span>有一条连向点<span class="math inline">\(t\)</span>的边） ，都是<span class="math inline">\(v_{k-1}\)</span>（也就是<span class="math inline">\(t\)</span>在其最短路径中的前继）的一个候选，我们需要证明的是，<span class="math inline">\(t\)</span>的实际前继能够在Bellman-Ford算法运行之下被发现，从而被真正地选为<span class="math inline">\(t\)</span>的前继。</p>
 <p><img src="bellman.png"/></p>
-<p>根据前面的讨论，路径<span class="math inline">\(p\)</span>的前缀<span class="math inline">\(\left &lt;v_0, v_1\right &gt;, \left &lt; v_0, v_1, v_2\right &gt;...\)</span>分别是<span class="math inline">\(v_1, v_2, ...\)</span>的最短路径，在外侧第一轮for-loop后，边<span class="math inline">\((v_0, v_1)\)</span>一定会被放缩，而由于<span class="math inline">\(\left &lt;v_0, v_1\right&gt;\)</span>实际是最短路径，故放缩之后，<span class="math inline">\(v_1.d = \delta(v_1)\)</span>且将不再变化（因为这已经是最小）；在外侧第二轮for-loop后，边<span class="math inline">\((v_1, v_2)\)</span>一定会被放缩，而由于<span class="math inline">\(\left &lt;v_0, v_1, v_2\right&gt;\)</span>实际是最短路径，故放缩之后，且将不再变化（因为这已经是最小）……如此放缩<span class="math inline">\(k\)</span>轮后，我们便寻找到了<span class="math inline">\(v_1, ... v_k\)</span>一众节点的最短路径以及其最短路径的前继。</p></li>
+<p>根据前面的讨论，路径<span class="math inline">\(p\)</span>的前缀<span class="math inline">\(\left &lt;v_0, v_1\right &gt;, \left &lt; v_0, v_1, v_2\right &gt;...\)</span>分别是<span class="math inline">\(v_1, v_2, ...\)</span>的最短路径，在外侧第一轮for-loop后，边<span class="math inline">\((v_0, v_1)\)</span>一定会被放缩，而由于<span class="math inline">\(\left &lt;v_0, v_1\right&gt;\)</span>实际是最短路径，故放缩之后，<span class="math inline">\(v_1.d = \delta(v_1)\)</span>且将不再变化（因为这已经是最小）；在外侧第二轮for-loop后，边<span class="math inline">\((v_1, v_2)\)</span>一定会被放缩，而由于<span class="math inline">\(\left &lt;v_0, v_1, v_2\right&gt;\)</span>实际是最短路径，故放缩之后，<span class="math inline">\(v_2.d = \delta(v_2)\)</span>且将不再变化（因为这已经是最小）<span class="math inline">\(\dots\)</span>如此放缩<span class="math inline">\(k\)</span>轮后，我们便寻找到了<span class="math inline">\(v_1, ... v_k\)</span>一众节点的最短路径以及其最短路径的前继。</p></li>
 <li><p>负权回路检测</p>
 <p>至于负权回路检测部分的正确性，则不得不引入一些公式，但其实并不复杂。</p>
-<p>假设原图存在可由到达的负权回路<span class="math inline">\(c = \left &lt;v_0, v_1, ... v_k\right &gt;, v_0 = v_k\)</span>，其中，<span class="math inline">\(W(c) = \sum_{i=0}^{k-1}w(v_i, v_{i+1}) &lt; 0\)</span>。应用反证法，即假设最终不存在点<span class="math inline">\(u,v\)</span>，使得<span class="math inline">\(v.d &gt; u.d + w(u, v)\)</span>，则有： <span class="math display">\[
+<p>假设原图存在可由到达的负权回路<span class="math inline">\(c = \left &lt;v_0, v_1, ... v_k\right &gt;, v_0 = v_k\)</span>，其中，<span class="math inline">\(W(c) = \sum_{i=0}^{k-1}w(v_i, v_{i+1}) &lt; 0\)</span>。运用反证法，即假设最终不存在点<span class="math inline">\(u,v\)</span>，使得<span class="math inline">\(v.d &gt; u.d + w(u, v)\)</span>，则有： <span class="math display">\[
 \begin{aligned}
-\forall i \in [1, k], v_i.d &amp;\leq v_{i-1}.d + w(v_{i-1}, v_i) \\
+v_i.d &amp;\leq v_{i-1}.d + w(v_{i-1}, v_i), \forall i \in [1, k] \Rightarrow  \\
 \sum_{i=1}^k v_i.d &amp;\leq \sum_{i=1}^k (v_{i-1}.d + w(v_{i-1},v_i)) \\
 v_k.d + \sum_{i=1}^{k-1} v_i.d &amp;\leq v_0.d + \sum_{i=1}^{k-1} v_{i}.d + \sum_{i=1}^k w(v_{i-1},v_i) \\
-0 &amp;\leq \sum_{i=1}^k w(v_{i-1},v_i) = W(c)，与W(c) &lt; 0矛盾
+0 &amp;\leq \sum_{i=1}^k w(v_{i-1},v_i) = W(c)
 \end{aligned}
-\]</span> 故得证。</p></li>
+\]</span> 与<span class="math inline">\(W(c) &lt; 0\)</span>矛盾，故得证。</p></li>
 </ul>
 <h3 id="dijkstra算法">Dijkstra算法</h3>
 <p>Dijkstra算法相对于Bellman-Ford算法来说，可以在时间复杂度上有所优化，但是能够处理的情形也就少了一些：Dijkstra算法不能处理负权边（所以更不用提负权环路了）。Dijkstra算法基本框架如下：</p>
@@ -784,20 +785,64 @@ v_k.d + \sum_{i=1}^{k-1} v_i.d &amp;\leq v_0.d + \sum_{i=1}^{k-1} v_{i}.d + \sum
 <li>不断向中加入能够确定最短路径的点，直到所有中的点都被加入。</li>
 </ul>
 </blockquote>
+<pre class="pseudocode"><code>S = {}
+Q = G.V
+while Q is not empty
+    u = EXTRACT-MIN(Q)
+    add u to S
+    for each v in G.adj[u]
+        RELAX(u, v, w)</code></pre>
 <p>当然，难点在于如何根据<span class="math inline">\(S\)</span>找出能够确定最短路径的点。寻找到一个点的最短路径的必要条件是：在对到达这个点的最短路径中的前继节点进行放缩操作时，该前继节点的最短路径已经确定，而点集<span class="math inline">\(S\)</span>，正是一个最短路径已经确定的点的集合。</p>
 <p><img src="dijkstra.png"/></p>
-<p><span class="math inline">\(\forall u \in S\)</span>且<span class="math inline">\((u, t) \in E\)</span>，对<span class="math inline">\((u, t)\)</span>进行放缩后得到的值<span class="math inline">\(t.d\)</span>，都是<span class="math inline">\(\delta(t)\)</span>的一个备选，<span class="math inline">\(S\)</span>中每加入一个点<span class="math inline">\(v\)</span>（非<span class="math inline">\(t\)</span>的点），若边<span class="math inline">\((v,t)\)</span>存在，对该边进行放缩后，<span class="math inline">\(\delta(t)\)</span>的备选（也就是当前的<span class="math inline">\(t.d\)</span>）就会多一个，而<span class="math inline">\(\delta(t)\)</span>自然是这些备选中最小的那个。而当<span class="math inline">\(t\)</span>的最短路径确定后，便可以将<span class="math inline">\(t\)</span>加入到点集<span class="math inline">\(S\)</span>中，<span class="math inline">\(S\)</span>不断扩展，直至最终包含整个点集<span class="math inline">\(V\)</span>，也就是所有点的最短路径都被找到。</p>
-<p>之前提到过，Dijkstra算法不能处理负权边的情况，但上述 Dijkstra算法的讨论中似乎也没有涉及到负权边，为什么它就不能处理了呢？并且，我们只知道放缩后<span class="math inline">\(t.d\)</span>的是<span class="math inline">\(\delta(t)\)</span>的备选，那么对<span class="math inline">\(t.d\)</span>的放缩要进行到什么时候，才能确认<span class="math inline">\(t.d=\delta(t)\)</span>呢？Dijkstra算法告诉我们，<span class="math inline">\(\forall w \in V - S\)</span>，有<span class="math inline">\(t.d \leq u.d\)</span>时，<span class="math inline">\(\delta(t) = t.d\)</span>，也就是当<span class="math inline">\(t\)</span>的上界小于所有待确认点<span class="math inline">\((V-S)\)</span>的上界时，我们就能确定<span class="math inline">\(t\)</span>的最短路径，也就能够将点<span class="math inline">\(t\)</span>加入到<span class="math inline">\(S\)</span>中。</p>
-<p>为什么？如果没有负权边，我们可以会发现，<span class="math inline">\(\forall w \in V - S\)</span>，其上界<span class="math inline">\(w.d\)</span>总是由放缩操作得到的，所以它必然是单调递减的，而且它代表了一条具体的到达<span class="math inline">\(w\)</span>的路径。但为什么<span class="math inline">\(V - S\)</span>中的所有点的上界的最小值，却能够成为某个特定点<span class="math inline">\(t\)</span>的最短路径呢？</p>
-<p>我们来看看<span class="math inline">\(t\)</span>的上界成为最小上界的之前之后都发生了什么，换言之，在此之前，或者在此之后，<span class="math inline">\(t.d\)</span>有没有可能更小？之前是不会更小了，因为我们说过，<span class="math inline">\(t.d\)</span>是单调递减的；那么之后呢？如果在的上界成为最小上界时，我们选取另外一个点<span class="math inline">\(v \in V - S\)</span>，作为此轮加入<span class="math inline">\(S\)</span>的点，在随后的操作中<span class="math inline">\(t.d\)</span>会不会因为某个放缩操作继续减小呢？不会的。对于某个新加入的点<span class="math inline">\(u\)</span>，<span class="math inline">\(\delta(u)\)</span>必然不小于任何一个<span class="math inline">\(S\)</span>中的点的最短距离。此时，<span class="math inline">\(t.d &lt; v.d = \delta(v)\)</span>，而<span class="math inline">\(t\)</span>如果在<span class="math inline">\(v\)</span>之后加入<span class="math inline">\(S\)</span>，必有<span class="math inline">\(\delta(t) &gt;= \delta(v) &gt; t.d\)</span>，最短路径竟然比一条 “普通” 路径还要长！</p>
-<p>而如果有负权边，则不能保证在后续的放缩操作中能够保持单调递减，故不能用以上论证来证明Dijkstra算法的正确性了，何况，这种情况下，强行使用Dijkstra算法，很轻易地就能举出反例来证明结果的错误，比如对下图以<span class="math inline">\(s\)</span>为起点应用Dijkstra算法，就会得到错误结果：</p>
+<p><span class="math inline">\(\forall u \in S\)</span>且<span class="math inline">\((u, t) \in E\)</span>，对<span class="math inline">\((u, t)\)</span>进行放缩后得到的值<span class="math inline">\(t.d\)</span>，都是<span class="math inline">\(\delta(t)\)</span>的一个备选，<span class="math inline">\(S\)</span>中每加入一个点<span class="math inline">\(v\)</span>（非<span class="math inline">\(t\)</span>的点），若边<span class="math inline">\((v,t)\)</span>存在，对该边进行放缩后，<span class="math inline">\(\delta(t)\)</span>的备选（也就是放缩后的<span class="math inline">\(t.d\)</span>）就会多一个，而<span class="math inline">\(\delta(t)\)</span>自然是这些备选中最小的那个。而当<span class="math inline">\(t\)</span>的最短路径确定后，便可以将<span class="math inline">\(t\)</span>加入到点集<span class="math inline">\(S\)</span>中，<span class="math inline">\(S\)</span>不断扩展，直至最终包含整个点集<span class="math inline">\(V\)</span>，也就是所有点的最短路径都被找到。</p>
+<p>之前提到过，Dijkstra算法不能处理负权边的情况，但上述 Dijkstra算法的讨论中似乎也没有涉及到负权边，为什么它就不能处理了呢？并且，我们只知道放缩后<span class="math inline">\(t.d\)</span>的是<span class="math inline">\(\delta(t)\)</span>的备选，那么对<span class="math inline">\(t.d\)</span>的放缩要进行到什么时候，才能确认<span class="math inline">\(t.d=\delta(t)\)</span>呢？Dijkstra算法告诉我们，<span class="math inline">\(\forall u \in V - S\)</span>，有<span class="math inline">\(t.d \leq u.d\)</span>时，<span class="math inline">\(\delta(t) = t.d\)</span>，也就是当<span class="math inline">\(t\)</span>的上界小于所有待确认点<span class="math inline">\((V-S)\)</span>的上界时，我们就能确定<span class="math inline">\(t\)</span>的最短路径，也就能够将点<span class="math inline">\(t\)</span>加入到<span class="math inline">\(S\)</span>中。</p>
+<p>为什么？如果没有负权边，我们可以会发现，<span class="math inline">\(\forall u \in V - S\)</span>，其上界<span class="math inline">\(u.d\)</span>总是由放缩操作得到的，所以在算法运行过程中，它必然是单调递减的，而且它代表了一条具体的到达<span class="math inline">\(u\)</span>的路径。但为什么<span class="math inline">\(V - S\)</span>中的所有点的上界的最小值，却能够成为某个特定点<span class="math inline">\(t\)</span>的最短路径呢？</p>
+<p>我们来看看<span class="math inline">\(t\)</span>的上界成为最小上界的之前之后都发生了什么，换言之，在此之前，或者在此之后，<span class="math inline">\(t.d\)</span>有没有可能更小？之前是不会更小了，因为我们说过，<span class="math inline">\(t.d\)</span>是单调递减的；那么之后呢？如果在<span class="math inline">\(t\)</span>的上界成为<span class="math inline">\((V-S)\)</span>中的最小上界、从而被加入<span class="math inline">\(S\)</span>之后，我们在新的某一轮中选取另外一个点<span class="math inline">\(u \in V - S\)</span>，作为此轮加入<span class="math inline">\(S\)</span>的点，在随后的操作中<span class="math inline">\(t.d\)</span>会不会因为某个由<span class="math inline">\(u\)</span>出发的放缩操作继续减小呢？</p>
+<p>不会的，对于某个新加入的点<span class="math inline">\(u\)</span>，<span class="math inline">\(\delta(u)\)</span>必然不小于任何一个<span class="math inline">\(S\)</span>中的点的最短距离。运用数学归纳法，假设某一时刻<span class="math inline">\(S\)</span>按加入顺序排列为<span class="math inline">\(\{ u_0, \dots, u_k \}\)</span>，且有<span class="math inline">\(u_0.d \le \dots \le u_k.d\)</span>。若<span class="math inline">\(u\)</span>是由<span class="math inline">\(u_k\)</span>“引荐”进来（也就是说进行了<span class="math inline">\(RELAX(u_k, u, w)\)</span>操作）的，则必有<span class="math inline">\(u.d = u_k.d + w(u_k, u) \ge u_k.d\)</span>；而若<span class="math inline">\(u\)</span>是由非<span class="math inline">\(u_k\)</span>的某个<span class="math inline">\(u_i\)</span>引荐而来，则也必然应该有<span class="math inline">\(u.d \ge u_k.d\)</span>，运用反证法：如果<span class="math inline">\(u.d &lt; u_k.d\)</span>，则在我们的算法中，<span class="math inline">\(u\)</span>至少应该在选择<span class="math inline">\(u_k\)</span>加入的一轮中，因优于<span class="math inline">\(u_k\)</span>被加入，和<span class="math inline">\(S\)</span>的当前情况矛盾，从而得证。</p>
+<p>而如果有负权边，则不能保证在后续加入的点的最短距离单调递增，故不能用以上论证来证明Dijkstra算法的正确性了。何况，这种情况下，强行使用Dijkstra算法，很轻易地就能举出反例来证明结果的错误，比如对下图以<span class="math inline">\(s\)</span>为起点应用Dijkstra算法，就会得到错误结果：</p>
 <p><img src="counterexample.png"/></p>
+<p>当然我们也得证明，每一轮加入新点<span class="math inline">\(t\)</span>时，<span class="math inline">\(t.d = \delta(t)\)</span>，因为此时虽然<span class="math inline">\(t.d\)</span>达到整个算法流程中的最小，但这个最小值尚未被证明等于<span class="math inline">\(\delta(t)\)</span>。但正如前面所说：</p>
+<blockquote>
+<p>寻找到一个点的最短路径的必要条件是：在对到达这个点的最短路径中的前继节点进行放缩操作时，该前继节点的最短路径已经确定，而点集<span class="math inline">\(S\)</span>，正是一个最短路径已经确定的点的集合。</p>
+</blockquote>
+<p>我们可以使用数学归纳法，来证明<span class="math inline">\(S\)</span>始终是一个最短路径已经确定的点的集合，也就是说，假设此时<span class="math inline">\(S\)</span>是一个最短路径已经确定的点的集合，加入<span class="math inline">\(t\)</span>后，<span class="math inline">\(S&#39;\)</span>依然保持它的性质。<span class="math inline">\(t\)</span>前继的候选无非就是图中所有点，我们已经证明，<span class="math inline">\(t.d\)</span>不可能再由于<span class="math inline">\(V-S\)</span>中的点放缩而变小了，所以<span class="math inline">\(t\)</span>在最短路径中的前继只可能来自于<span class="math inline">\(S\)</span>，而<span class="math inline">\(t.d\)</span>正是由<span class="math inline">\(S\)</span>中的点放缩而来，故<span class="math inline">\(t.d\)</span>正式所有可能中最小的那一个，证毕。</p>
 <h3 id="有向无环图中的最短路径">有向无环图中的最短路径</h3>
 <p>有向无环图，从定义上就排除了负权环路存在的可能，故所有点的最短路径必然存在，问题就在于如何寻找到这些最短路径。</p>
 <p>我们当不能对其直接应用Dijkstra算法，因为有向无环图并不排除负权边存在的可能——那就直接用Bellman-Ford算法咯？</p>
 <p>也不尽然。有向无环图显然只是Bellman-Ford算法能够处理的情况中的一小部分，并且这一小部分具有一些特殊的性质：无环。设任意一点<span class="math inline">\(t\)</span>的最短路径为<span class="math inline">\(\left &lt;v_0, v_1, ... v_k\right &gt;\)</span>，其中<span class="math inline">\(v_0 = s，v_k = t\)</span>，既然不存在环路，从起点<span class="math inline">\(s\)</span>出发，只要沿着边走，一步一步放缩，必然是先放缩边<span class="math inline">\(\left &lt;v_0, v_1\right &gt;\)</span>并由此得到<span class="math inline">\(v_1.d = \delta(v_1)\)</span>；然后放缩边<span class="math inline">\(\left &lt;v_1, v_2\right &gt;\)</span>并由此得到<span class="math inline">\(v_2.d = \delta(v_2)\)</span>……如此放缩<span class="math inline">\(k\)</span>轮后，我们便按顺序寻找到了<span class="math inline">\(v_1, ... v_k\)</span>一众节点的最短路径以及其最短路径的前继。</p>
-<p>“沿着边走” 有一个专业名词，叫做按<strong>拓扑顺序</strong>遍历。事实上，我们放缩过边<span class="math inline">\((v_{i-1}, v_i)\)</span>之后，并不一定要马上放缩边<span class="math inline">\((v_i, v_{i+1})\)</span>，只要我们能够保证<span class="math inline">\((v_k, v_{k+1})\)</span>一定在<span class="math inline">\((v_{i-1}, v_i)\)</span>之后放缩即可，至于中间是否穿插其他边的放缩操作，都无所谓。而拓扑顺序正是满足上述性质的一组顺序，为了得到一组拓扑顺序，我们需要对原图进行<strong>拓扑排序</strong>，然后按照得到的拓扑顺序进行放缩。</p>
+<p>“沿着边走” 有一个专业名词，叫做按<strong>拓扑顺序</strong>遍历。事实上，我们放缩过边<span class="math inline">\((v_{i-1}, v_i)\)</span>之后，并不一定要马上放缩边<span class="math inline">\((v_i, v_{i+1})\)</span>，只要我们能够保证<span class="math inline">\((v_i, v_{i+1})\)</span>一定在<span class="math inline">\((v_{i-1}, v_i)\)</span>之后放缩即可，至于中间是否穿插其他边的放缩操作，都无所谓。而拓扑顺序正是满足上述性质的一组顺序，为了得到一组拓扑顺序，我们需要对原图进行<strong>拓扑排序</strong>，然后按照得到的拓扑顺序进行放缩。</p>
 <p>如何进行拓扑排序呢？实际很简单，首先对原图进行<strong>深度优先遍历</strong>（还有一种基于<strong>入度</strong>的拓扑排序，此处不表），将完成遍历的点依次插入队列的首部，便可得到按照拓扑顺序排列的一个队列，拓扑顺序的实际意义是，如果边<span class="math inline">\((u,v)\)</span>存在，那么对点<span class="math inline">\(u\)</span>的访问必须先于对点<span class="math inline">\(v\)</span>的访问。我们每次从队列中取出一个点，并对从其出发的所有边进行放缩操作即可。虽说拓扑顺序是对点的一个排序，但从该点出发的边和这个点是关联的，所以，先访问点，也就相当于先访问从这个点出发的边了，我们先<span class="math inline">\(v_{i}\)</span>访问，也就必然先于<span class="math inline">\((v_i,v_{i+1})\)</span>放缩<span class="math inline">\((v_{i-1},v_i)\)</span>。</p>
+<h3 id="对比">对比</h3>
+<table>
+<thead>
+<tr class="header">
+<th>条目</th>
+<th>Bellman-Ford</th>
+<th>Dijkstra</th>
+<th>DAG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>复杂度</td>
+<td><span class="math inline">\(\Theta(|V| |E|)\)</span></td>
+<td><span class="math inline">\(\Theta(|E| \log |V|)\)</span></td>
+<td><span class="math inline">\(\Theta(|V| + |E|)\)</span></td>
+</tr>
+<tr class="even">
+<td>条件</td>
+<td>-</td>
+<td>无负权边</td>
+<td>有向无环</td>
+</tr>
+</tbody>
+</table>
+<section class="footnotes" role="doc-endnotes">
+<hr/>
+<ol>
+<li id="fn1" role="doc-endnote"><p>无向图可以很便捷的转换为带权有向图。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
     </div>
 
     
