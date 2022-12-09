@@ -188,7 +188,7 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 ||f||_{Lip} = \sup_x \sigma[\nabla f(x)] = \sup_x \sup_{||v||=1} \nabla f(x) \cdot v
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\sigma[\nabla f(x)]\)&lt;/span&gt; denotes the spectral norm of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;’s gradient at &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;The Lipschitz constant for a matrix transformation will be the matrix’s &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/measurements/spectral-normalization/&#34;&gt;spectral norm&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The Lipschitz constant for a matrix transformation will be the matrix’s &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/&#34;&gt;spectral norm&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;The Lipschitz constant for a &lt;span class=&#34;math inline&#34;&gt;\(\R \mapsto \R\)&lt;/span&gt; function will be its largest &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/subgradient/#Properties&#34;&gt;subgradient&lt;/a&gt; over its domain&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;composition-of-functions&#34;&gt;Composition of Functions&lt;/h3&gt;

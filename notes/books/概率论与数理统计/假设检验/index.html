@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="假设检验 样本中包含了总体分布的信息，而**假设检验（hypo" />
+  <meta name="description" content="假设检验 参数估计是根据样本值得出参数的一个估计量，并且在区间" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/" />
@@ -320,12 +320,14 @@
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/" />
-  <meta property="og:title" content="Chunxy&#39; Website" />
-  <meta property="og:description" content="假设检验 样本中包含了总体分布的信息，而**假设检验（hypo" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:title" content="假设检验 | Chunxy&#39; Website" />
+  <meta property="og:description" content="假设检验 参数估计是根据样本值得出参数的一个估计量，并且在区间" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
+      <meta property="article:published_time" content="2022-12-06T19:02:13&#43;00:00" />
     
+    <meta property="article:modified_time" content="2022-12-06T19:02:13&#43;00:00">
   
 
   
@@ -338,7 +340,7 @@
 
   
 
-  <title>Chunxy&#39; Website</title>
+  <title>假设检验 | Chunxy&#39; Website</title>
 </head>
 
 
@@ -557,10 +559,783 @@
     
     
     
-      
-      
-      <div class="article-container py-1" style="background: initial">
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
+        
+          概率论与数理统计
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/notes/">Notes</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/"><i class="far fa-file-lines pr-1"></i>Articles</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/information-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Information Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/machine-learning/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/ransac/">RANSAC</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Mathematics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/calculus/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Calculus</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/spherical-coordinates/">Spherical Coordinates</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Linear Algebra</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/metrics/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Metrics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/">Spectral Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/frobenius-normalization/">Frobenius Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/chebyshev-distance/">Chebyshev Distance</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/"></a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/numerical-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Numerical Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Statistics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/optimization/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/coordinate-descent/">Coordinate Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-conjugate/"></a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/"><i class="fas fa-book pr-1"></i>Books</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/information-theory-inference-and-learning-algorithms/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Information Theory, Inference and Learning Algorithms</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/linear-algebra-and-its-applications/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Linear Algebra and Its Applications</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/">Orthogonality and Projection</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">概率论与数理统计</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/">总览</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/">事件与概率</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0/">随机变量的函数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></li>
+
+
+
+  <li class="active"><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">高等数学</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/papers/"><i class="fas fa-paperclip pr-1"></i>Papers</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/papers/noise-contrastive-estimation/">Noise Contrastive Estimation</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#假设检验">假设检验</a>
+      <ul>
+        <li><a href="#一般检验方法">一般检验方法</a></li>
+        <li><a href="#p值和p值检验法"><span class="math inline">\(p\)</span>值和<span class="math inline">\(p\)</span>值检验法</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
   <nav class="d-none d-md-flex" aria-label="breadcrumb">
     <ol class="breadcrumb">
       
@@ -611,7 +1386,7 @@
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        
+        假设检验
       </li>
     </ol>
   </nav>
@@ -619,211 +1394,140 @@
 
 
 
-      </div>
-    
+          
+        </div>
 
-    <article class="article">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-  
-  
-<div class="article-container pt-3">
-  <h1></h1>
-
-  
-
-  
-    
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Jan 1, 0001
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-    
-
-
-
-
-
-  
-</div>
-
-
-
-  <div class="article-container">
-
-    <div class="article-style">
-      <h2 id="假设检验">假设检验</h2>
-<p>样本中包含了总体分布的信息，而**假设检验（hypothesis test）**的含义就是指能否通过样本去判断某个命题（比如关于总体分布的命题）是否成立。在统计上，如果判断其成立，一般称作“接受（accept）该假设”；如果判断其不成立，一般称作“否定（reject）该假设”。这里的“假设”要避免和平常常用的带有“假定”含义的“假设”混淆。</p>
-<p>在假设检验中，有时会将需要判断的命题称作<strong>原假设</strong>或者<strong>零假设</strong>，原假设的对立面就称作<strong>对立假设</strong>。在假设检验中使用的统计量称作<strong>检验统计量</strong>，使原假设得到接收的那些样本所在的区域称为该检验的<strong>接受域</strong>，使原假设被否定的那些样本所在的区域称为该检验的<strong>否定域</strong>。</p>
-
-    </div>
-
-    
-
-
-
-
-
-
-<div class="share-box">
-  <ul class="share">
-    
-      
-      
-      
         
-      
-      
-      
-      <li>
-        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-    
-      
-      
-      
         
-      
-      
-      
-      <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="whatsapp://send?text=%20https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
-          <i class="fab fa-weibo"></i>
-        </a>
-      </li>
-    
-  </ul>
-</div>
+
+        <div class="docs-article-container">
+          <h1>假设检验</h1>
+
+          <div class="article-style">
+            
+
+<h2 id="假设检验">假设检验</h2>
+<p>参数估计是根据样本值得出参数的一个估计量，并且在区间估计中，我们还能得到一个这个参数<strong>置信区间</strong>和相应的<strong>置信水平</strong>。而在假设检验中，我们要做的则是根据某个<strong>假设</strong>（hypothesis）以及给定的样本，决定是否接受这个假设。注意我们特地将假设和估计（estimation）区分开，因为这个假设并不是由样本得到的一个估计量，而是一条已有的断言（assertion）；我们要做的，则是给出在什么样的情况下（对应置信区间），我们能够以多高的信心否定这个断言（对应置信水平）。</p>
+<p>至于假设检验和区间估计的关系，其实我们会发现，如果本身就能对未知参数做有效的区间估计，那其实对它的假设检验设计，自然迎刃而解。</p>
+<h3 id="一般检验方法">一般检验方法</h3>
+<p>一般检验方法指Neyman-Pearson方法。</p>
+<h4 id="建立假设">建立假设</h4>
+<p>对要检验的问题，一般有一个<strong>原假设</strong><span class="math inline">\(H_0\)</span>（也叫零假设，null hypothesis）以及一个<strong>备择假设</strong><span class="math inline">\(H_1\)</span>（alternative hypothesis）。原假设一般是总体的某个未知参数<span class="math inline">\(\theta\)</span>等于某个具体值<span class="math inline">\(\theta_0\)</span>，即 <span class="math display">\[
+H_0: \theta = \theta_0
+\]</span> 这种只包含一个假设值（即<span class="math inline">\(\theta_0\)</span>）的原假设又叫作<strong>简单原假设</strong>（simple hypothesis null）。而备择假设一般和原假设互斥，它通常有以下三种形式：</p>
+<ol type="1">
+<li><span class="math inline">\(H_1: \theta \ne \theta_0\)</span>，此时<span class="math inline">\(H_0\)</span>与<span class="math inline">\(H_1\)</span>为对立关系，我们要检验<span class="math inline">\(\theta\)</span>落在<span class="math inline">\(\theta_0\)</span>两侧的可能，这样的检测问题也称为双边检验；</li>
+<li><span class="math inline">\(H_1: \theta &gt; \theta_0\)</span>，此时我们要检验<span class="math inline">\(\theta\)</span>落在<span class="math inline">\(\theta_0\)</span>右侧的可能，这样的检测问题也称为右侧的单边检验；</li>
+<li><span class="math inline">\(H_1: \theta &lt; \theta_0\)</span>，此时我们要检验<span class="math inline">\(\theta\)</span>落在<span class="math inline">\(\theta_0\)</span>左侧的可能，这样的检测问题也称为左侧的单边检验；</li>
+</ol>
+<h4 id="选择否定域形式">选择否定域形式</h4>
+<p>根据已有的样本，我们能够给出未知参数的点估计量<span class="math inline">\(\hat \theta\)</span>（在假设检验中又称作<strong>检验统计量</strong>&lt;test statistic&gt;），如果<span class="math inline">\(\hat \theta\)</span>和<span class="math inline">\(\theta_0\)</span>的距离小于某个<strong>临界值</strong><span class="math inline">\(c &gt; 0\)</span>（critical value），我们就可以接受原假设（即便<span class="math inline">\(\hat \theta\)</span>与<span class="math inline">\(\theta_0\)</span>不完全相等），否则则否定原假设。使得原假设被接受的样本所在的区域就被称作<strong>接受域</strong>（acceptance region）；使得原假设被否定的样本所在的区域就被称作<strong>否定域</strong>（也叫拒绝域，rejection region）；一般我们习惯先构造否定域<span class="math inline">\(W\)</span>，则剩余区域就为接受域<span class="math inline">\(\overline W\)</span>： <span class="math display">\[
+\begin{gather}
+W = \{ (x_1, \dots, x_n) \big | \|\hat \theta(x_1, \dots, x_n) - \theta_0\| &gt; c \} \\
+\overline W = W^c
+\end{gather}
+\]</span> 对于某些参数，可能本身越小越好（比如故障率），所以我们仅需要进行右侧的单边检测，此时对应的否定域为 <span class="math display">\[
+W = \{ (x_1, \dots, x_n) \big | \hat \theta(x_1, \dots, x_n) - \theta_0 &gt; c \} \\
+\]</span> 此时可以等价认为<span class="math inline">\(H_0: \theta \le \theta_0\)</span>，这种情况下，<span class="math inline">\(H_0\)</span>是一个<strong>复合原假设</strong>（composite hypothesis null），因为其包含的假设值不止一个。</p>
+<p>对于另外一些参数，可能本身越大越好（比如身高均值），所以我们仅需要左侧的单边检测，此时对应的否定域为 <span class="math display">\[
+W = \{ (x_1, \dots, x_n) \big | \hat \theta(x_1, \dots, x_n) - \theta_0 &lt; c \} \\
+\]</span> 同理，此时可以等价认为<span class="math inline">\(H_0: \theta \ge \theta_0\)</span>，这种情况下，<span class="math inline">\(H_0\)</span>也是一个复合原假设。</p>
+<h4 id="设定显著性水平">设定显著性水平</h4>
+<p>给定假设，我们已经可以根据样本属于接受域还是否定域，做出接受或是否定假设的决策了。但和点估计中的问题一样，我们依然是基于样本提供的不完全信息做出的判断，所以我们的判断不总是正确的。这种判断会有四种结果：</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>判断：接受<span class="math inline">\(H_0\)</span></th>
+<th>判断：否定<span class="math inline">\(H_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>实际：<span class="math inline">\(H_0\)</span>成立</td>
+<td>判断正确</td>
+<td><strong>第一类错误</strong></td>
+</tr>
+<tr class="even">
+<td>实际：<span class="math inline">\(H_1\)</span>成立</td>
+<td><strong>第二类错误</strong></td>
+<td>判断正确</td>
+</tr>
+</tbody>
+</table>
+<p>通常较低的第一类错误风险<span class="math inline">\(P(\text{否定$H_0$};\text{$H_0$成立})\)</span>和较低的第二类错误风险<span class="math inline">\(P(\text{接受$H_0$};\text{$H_1$成立})\)</span>不可兼得，因为在检验统计量确定后，这两个概率主要是由临界值<span class="math inline">\(c\)</span>导出的否定域大小来控制的。而我们更希望降低第一类错误发生的风险。也就是说我们一旦否定，<span class="math inline">\(H_0\)</span>很大概率确实是不成立的；尽管这意味着我们在接受<span class="math inline">\(H_0\)</span>时，<span class="math inline">\(H_0\)</span>有可能不成立——不过虚惊一场总好过后知后觉。所以实际应用中，<span class="math inline">\(H_0\)</span>往往对应了比较严重的结果，我们不希望在<span class="math inline">\(H_0\)</span>成立时，我们却没有发现（即否定<span class="math inline">\(H_0\)</span>）；或者<span class="math inline">\(H_0\)</span>本身就对应了我们比较想否定的结果，这样我们否定时，它确实不成立的概率也更高。</p>
+<p>我们会将第一类错误发生的概率限制在<span class="math inline">\(\alpha\)</span>之内，这个<span class="math inline">\(\alpha\)</span>便是<strong>显著性水平</strong>（significance level）。显著性水平其实代表了我们对小概率事件的接受程度，即我们认为概率小于<span class="math inline">\(\alpha\)</span>事件应该是小概率事件，是不应该被正好碰上的；而此时在<span class="math inline">\(H_0\)</span>成立的假设下，“给定的一组样本属于否定域”正是这样的一个小概率事件，如果碰上了这样的小概率事件，则有理由怀疑<span class="math inline">\(H_0\)</span>不成立。</p>
+<p>前面我们之所以说单边检验等价于原假设对应某个形式的复合假设（比如<span class="math inline">\(\theta \le \theta_0\)</span>或<span class="math inline">\(\theta \ge \theta_0\)</span>），是因为这种情况下，有 <span class="math display">\[
+\max_{h \in H_0} \beta_W(h) = \beta_W(\theta_0) \le \alpha
+\]</span></p>
+<h4 id="确定临界值">确定临界值</h4>
+<p>在确定显著性水平后，我们便可以进一步确定临界值，从而给出完整的否定域。此时我们调整临界值<span class="math inline">\(c\)</span>，从而使得 <span class="math display">\[
+P(\text{否定$H_0$};\text{$H_0$成立}) = P( (X_1, \dots, X_n) \in W;\theta = \theta_0) \le \alpha
+\]</span> 问题就变成了一个简单的分布问题。此处需要指出的是，<span class="math inline">\(P(\text{否定$H_0$};\text{$H_0$成立})\)</span>不应写作<span class="math inline">\(P( (X_1, \dots, X_n) \in W | \theta = \theta_0)\)</span>，因为假设检验是频率学派中的概念，频率学派中的未知参数<span class="math inline">\(\theta\)</span>并没有先验分布。<span class="math inline">\(P( (X_1, \dots, X_n) \in W;\theta = \theta_0)\)</span>又叫作<strong>功效</strong>（power）函数，记作<span class="math inline">\(\beta_W(\cdot)\)</span>，表示在未知参数取特定值时，一组随机样本属于否定域的概率。</p>
+<h3 id="p值和p值检验法"><span class="math inline">\(p\)</span>值和<span class="math inline">\(p\)</span>值检验法</h3>
+<p><span class="math inline">\(p\)</span>值检验法指的是数学家Fisher提出的检验方法。</p>
+<p>假设检验的<span class="math inline">\(p\)</span>值是在原假设<span class="math inline">\(H_0\)</span>成立的情况下，检验统计量<span class="math inline">\(\hat \theta(X_1, \dots, X_n)\)</span>出现其具体观测值<span class="math inline">\(z = \hat \theta(x_1,\dots,x_n)\)</span>或者比之更极端的值的概率，即<span class="math inline">\(p = P(\hat \theta = z; \theta = \theta_0)\)</span>（类似likelihood）。<span class="math inline">\(p\)</span>值检验中，我们检验<span class="math inline">\(p\)</span>值是否足够小，如果<span class="math inline">\(p\)</span>值小到一定程度，我们还是会否定<span class="math inline">\(H_0\)</span>，即</p>
+<ul>
+<li>如果<span class="math inline">\(p \le \alpha\)</span>，则我们在显著性水平<span class="math inline">\(\alpha\)</span>下否定原假设<span class="math inline">\(H_0\)</span>；</li>
+<li>如果<span class="math inline">\(p &gt; \alpha\)</span>，则我们在显著性水平<span class="math inline">\(\alpha\)</span>下接受原假设<span class="math inline">\(H_0\)</span>。</li>
+</ul>
+<h2 id="参考">参考</h2>
+<p><a href="https://stats.stackexchange.com/questions/291968/are-type-i-error-fwer-both-conditional-probabilities">hypothesis testing - Are type I error &amp; FWER both conditional probabilities? - Cross Validated (stackexchange.com)</a></p>
+<p><a href="https://bookdown.org/hezhijian/book/test.html">第 3 章 假设检验 | 数理统计讲义 (bookdown.org)</a></p>
 
 
 
+          </div>
+
+          
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/" rel="next">参数估计</a>
   </div>
-</article>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/" rel="prev">贝叶斯推断</a>
   </div>
+  
+</div>
 
-  <div class="page-footer">
-    
-    
-    <div class="container">
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Dec 6, 2022</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
       <footer class="site-footer">
 
   
@@ -895,7 +1599,15 @@
   </p>
 </footer>
 
-    </div>
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
     
   </div>
 
@@ -921,6 +1633,11 @@
     
 
     
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
     
 
     
@@ -968,11 +1685,10 @@
     
     
     
-    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
 
     
     
-      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
     
     
     

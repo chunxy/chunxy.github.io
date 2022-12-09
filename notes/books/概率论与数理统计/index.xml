@@ -56,6 +56,94 @@
     </item>
     
     <item>
+      <title>事件与概率</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/</link>
+      <pubDate>Fri, 09 Dec 2022 17:37:15 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/</guid>
+      <description>
+
+&lt;h2 id=&#34;事件的运算&#34;&gt;事件的运算&lt;/h2&gt;
+&lt;h3 id=&#34;事件的包含和相等&#34;&gt;事件的包含和相等&lt;/h3&gt;
+&lt;p&gt;同一试验下的两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，如果&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;发生时B也发生，则称&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;包含&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(A \subseteq B\)&lt;/span&gt;。如果&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;互相包含，则二者相等。&lt;/p&gt;
+&lt;h3 id=&#34;事件的互斥和对立&#34;&gt;事件的互斥和对立&lt;/h3&gt;
+&lt;p&gt;若两事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;不能再同一试验中同时发生，则称它们是互斥的。互斥事件的一个特例是对立事件，对于事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;，其对立事件&lt;span class=&#34;math inline&#34;&gt;\(\bar A\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(\{ \text{$A$不发生} \}\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;事件的和并与加法定理&#34;&gt;事件的和（并）与加法定理&lt;/h3&gt;
+&lt;p&gt;设两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，定义新事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(C = \{ \text{$A$发生，或$B$发生} \}\)&lt;/span&gt;，则称事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;与事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;的和，记作&lt;span class=&#34;math inline&#34;&gt;\(C = A + B\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;概率论中的&lt;strong&gt;加法定理&lt;/strong&gt;描述的则是：若干互斥事件之和的概率，等于各事件的概率之和。&lt;/p&gt;
+&lt;h4 id=&#34;全概率公式&#34;&gt;全概率公式&lt;/h4&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(B_1, B_2, \cdots\)&lt;/span&gt;为有限或无限个事件，它们两两互斥且在每次实验中至少发生一个（mutually exclusive and collectively exhaustive），即 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+B_i B_j = \emptyset (i \ne j) \\
+B_1 + B_2 + \cdots = \Omega \\
+P(B_1 + B_2 + \cdots) = P(\Omega) = 1
+\end{gather}
+\]&lt;/span&gt; 根据事件运算的性质，&lt;span class=&#34;math inline&#34;&gt;\(A = A \Omega = A B_1 + A B_2 + \cdots\)&lt;/span&gt;，由于&lt;span class=&#34;math inline&#34;&gt;\(B_1, B_2, \cdots\)&lt;/span&gt;两两互斥，则显然&lt;span class=&#34;math inline&#34;&gt;\(A B_1, A B_2, \cdots\)&lt;/span&gt;也两两互斥，故依据加法定理，有 &lt;span class=&#34;math display&#34;&gt;\[
+P(A) = \sum_i P(A B_i) = P(A B_1) + P(A B_2) + \cdots
+\]&lt;/span&gt; 再根据条件概率公式，有 &lt;span class=&#34;math display&#34;&gt;\[
+P(A) = \sum_i P(B_i) P(A | B_i) = P(B_1) P(A|B_1) + P(B_2) P(A|B_2) + \cdots
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;这便是全概率公式。&lt;/p&gt;
+&lt;h3 id=&#34;事件的积交&#34;&gt;事件的积（交）&lt;/h3&gt;
+&lt;p&gt;设两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，定义新事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(C = \{ \text{$A$，$B$都发生} \}\)&lt;/span&gt;，则称事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;与事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;的积，记作&lt;span class=&#34;math inline&#34;&gt;\(C = A B\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;事件的差&#34;&gt;事件的差&lt;/h3&gt;
+&lt;p&gt;设两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，定义新事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(C = \{ \text{$A$发生，$B$不发生} \}\)&lt;/span&gt;，则称事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;与事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;的差，记作&lt;span class=&#34;math inline&#34;&gt;\(C = A - B\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;我们对事件引入了和、积、差、对立运算。显然，这些运算符在数字运算中成立的运算规律，不一定对事件运算成立，比如说&lt;span class=&#34;math inline&#34;&gt;\(A + A = A\)&lt;/span&gt;而非&lt;span class=&#34;math inline&#34;&gt;\(2 A\)&lt;/span&gt;（无意义），&lt;span class=&#34;math inline&#34;&gt;\(A A = A\)&lt;/span&gt;而非&lt;span class=&#34;math inline&#34;&gt;\(A^2\)&lt;/span&gt;（无意义），&lt;span class=&#34;math inline&#34;&gt;\((A - B) + B = A + B\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;基于这些基本运算，我们也可以表示出更多的事件，比如：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th style=&#34;text-align: center;&#34;&gt;表达式&lt;/th&gt;
+&lt;th style=&#34;text-align: center;&#34;&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(ABC\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;三者同时发生&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(A B \bar C + A B \bar C + \bar A B C\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;三者有且仅有两件发生&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(A \bar B \bar C + \bar A B \bar C + \bar A \bar B C\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;三者有且仅有一件发生&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(A + B + C\)&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align: center;&#34;&gt;三者至少其中之一发生&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;条件概率与独立性&#34;&gt;条件概率与独立性&lt;/h2&gt;
+&lt;p&gt;设两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，且&lt;span class=&#34;math inline&#34;&gt;\(P(B) \ne 0\)&lt;/span&gt;，记&lt;span class=&#34;math inline&#34;&gt;\(P(A|B)\)&lt;/span&gt;为“在给定&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;发生的条件下&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;的条件概率”，则 &lt;span class=&#34;math display&#34;&gt;\[
+P(A|B) = \frac{P(AB)}{P(B)}
+\]&lt;/span&gt; 在计数测度之下，这个式子很好证明。记&lt;span class=&#34;math inline&#34;&gt;\(M_A\)&lt;/span&gt;为使得事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;发生的基本事件个数，记&lt;span class=&#34;math inline&#34;&gt;\(M_B\)&lt;/span&gt;为使得事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;发生的基本事件个数，记&lt;span class=&#34;math inline&#34;&gt;\(M_{AB}\)&lt;/span&gt;为使得事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;同时发生的基本事件个数，记&lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;为所有基本事件个数，则 &lt;span class=&#34;math display&#34;&gt;\[
+P(A|B) = \frac{M_{AB}}{M_B} = \frac{M_{AB}/M}{M_B/M} = \frac{P(AB)}{P(B)}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;两个事件的独立&#34;&gt;两个事件的独立&lt;/h3&gt;
+&lt;p&gt;设两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(P(A)\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(P(A|B)\)&lt;/span&gt;可能是有差异的，这个差异便反映了二者之间的关联。而如果&lt;span class=&#34;math inline&#34;&gt;\(P(A) = P(A|B)\)&lt;/span&gt;，则称这两事件独立。根据条件概率的定义，两事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;独立时，有 &lt;span class=&#34;math display&#34;&gt;\[
+P(AB) = P(A) P(B)
+\]&lt;/span&gt; 我们往往是根据事件属性，而非根据以上公式，来确定事件的独立性。比如说在连续抛两次硬币的试验中，这两次试验的结果之间确实不应该有什么关联，我们自然而然地认为它们之间是相互独立的（&lt;strong&gt;相互独立同分布&lt;/strong&gt;）。&lt;/p&gt;
+&lt;p&gt;有时我们会觉得所有的独立事件可能都来自于这样的多次相互独立同分布试验，但其实独立事件也可以来自一次试验，比如说从52张扑克牌中随机抽取一张，记事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;为抽中红桃花色、事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;为抽中数字6，则可以验证，这两个事件也是相互独立的。&lt;/p&gt;
+&lt;h3 id=&#34;相互独立与乘法定理&#34;&gt;相互独立与乘法定理&lt;/h3&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(A_1, A_2, \cdots\)&lt;/span&gt;为有限或无限个事件，如果从其中任意取出有限个&lt;span class=&#34;math inline&#34;&gt;\(A_{i_1}, A_{i_2}, \cdots, A_{i_m}\)&lt;/span&gt;，都有 &lt;span class=&#34;math display&#34;&gt;\[
+P(A_{i_1} A_{i_2} \cdots A_{i_m}) = P(A_{i_1}) P(A_{i_2}) \cdots P(A_{i_m})
+\]&lt;/span&gt; 则称事件&lt;span class=&#34;math inline&#34;&gt;\(A_1, A_2, \cdots\)&lt;/span&gt;相互独立。概率论中的&lt;strong&gt;乘法定理&lt;/strong&gt;描述的是：多个事件相互独立时，它们同时发生的概率，等于各自概率的乘积。&lt;/p&gt;
+&lt;p&gt;需要注意的是，多个事件之间两两独立并不意味着它们相互独立，比如在掷两次硬币的实验中，定义以下事件： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+A：第一次为正， P(A) = 1/2 \\
+B：第二次为反， P(B) = 1/2 \\
+C：两次结果相同， P(C) = 1/2
+\end{gathered}
+\]&lt;/span&gt; 则可以轻易验证三者两两独立，但是&lt;span class=&#34;math inline&#34;&gt;\(P(ABC) = 0 \ne 1/8 = P(A) P(B) P(C)\)&lt;/span&gt;。这三者的关系有如下图中的三个环：两两之间本可以相互分开（独立），但三者同在，便互相捆绑住了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./borromean-rings-illusion.png&#34; style=&#34;max-width: 30%;&#34;/&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>常见分布</title>
       <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/</link>
       <pubDate>Thu, 11 Aug 2022 17:12:01 +0000</pubDate>
@@ -129,6 +217,40 @@ p(\x; \mu, \Sigma) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_X|}} e^{-\frac{1}{2} (\x-\mu
     </item>
     
     <item>
+      <title>协方差与相关系数</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
+      <pubDate>Sun, 01 May 2022 10:41:15 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
+      <description>
+
+&lt;p&gt;以下以二维随机变量为例，展示协方差以及相关系数的概念。&lt;/p&gt;
+&lt;h2 id=&#34;协方差&#34;&gt;协方差&lt;/h2&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\([X, Y]\)&lt;/span&gt;为一组二维随机变量，如果&lt;span class=&#34;math inline&#34;&gt;\(\mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}\)&lt;/span&gt;存在，则称 &lt;span class=&#34;math display&#34;&gt;\[
+\notag \mathrm {Cov}(X, Y) \triangleq \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}
+\]&lt;/span&gt; 为随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的协方差。在实际中计算协方差时，更多的是使用以下公式：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\mathrm {Cov}(X, Y) = \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\} \\
+&amp;amp;= \mathrm E[XY - X\mathrm E(Y) - \mathrm E(X)Y + \mathrm E(X) \mathrm E(Y)] \\
+&amp;amp;= \mathrm E(XY) - \mathrm E(X)\mathrm E(Y) - \mathrm E(X)\mathrm E(Y) + \mathrm E(X) \mathrm E(Y) \\
+&amp;amp;= \mathrm E(XY) - \mathrm E(X) \mathrm E(Y)
+\end{aligned}
+\]&lt;/span&gt; 而二维随机变量[X, Y]对应的协方差矩阵即为&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\Sigma = \begin{bmatrix} \Cov(X,X) &amp;amp; \Cov(X,Y) \\ \Cov(Y,X) &amp;amp; \Cov(Y,Y) \\ \end{bmatrix}  
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;相关系数&#34;&gt;相关系数&lt;/h2&gt;
+&lt;p&gt;协方差考察了随机变量之间协同变化的关系，但如果采取不同的量纲，同样的数据产生的协方差相差非常大。为避免这种情况发生，我们可以首先将随机变量标准化： &lt;span class=&#34;math display&#34;&gt;\[
+X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\Var(Y)}}
+\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\Cov(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数： &lt;span class=&#34;math display&#34;&gt;\[
+\rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\Cov(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>随机变量的函数</title>
       <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0/</link>
       <pubDate>Thu, 31 Mar 2022 10:08:24 +0000</pubDate>
@@ -165,40 +287,6 @@ p_Y(y) &amp;amp;= \frac{\partial P_Y(Y \le y)}{\partial y} \\
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;总而言之，&lt;span class=&#34;math inline&#34;&gt;\(p_Y(y) = p_X(f^{-1}(y)) \cdot |(f^{-1})^\prime (y)|\)&lt;/span&gt;。&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>协方差与相关系数</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
-      <pubDate>Sun, 01 May 2022 10:41:15 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
-      <description>
-
-&lt;p&gt;以下以二维随机变量为例，展示协方差以及相关系数的概念。&lt;/p&gt;
-&lt;h2 id=&#34;协方差&#34;&gt;协方差&lt;/h2&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\([X, Y]\)&lt;/span&gt;为一组二维随机变量，如果&lt;span class=&#34;math inline&#34;&gt;\(\mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}\)&lt;/span&gt;存在，则称 &lt;span class=&#34;math display&#34;&gt;\[
-\notag \mathrm {Cov}(X, Y) \triangleq \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\}
-\]&lt;/span&gt; 为随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的协方差。在实际中计算协方差时，更多的是使用以下公式：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-&amp;amp;\mathrm {Cov}(X, Y) = \mathrm E\{[X - \mathrm E(X)][Y - \mathrm E(Y)]\} \\
-&amp;amp;= \mathrm E[XY - X\mathrm E(Y) - \mathrm E(X)Y + \mathrm E(X) \mathrm E(Y)] \\
-&amp;amp;= \mathrm E(XY) - \mathrm E(X)\mathrm E(Y) - \mathrm E(X)\mathrm E(Y) + \mathrm E(X) \mathrm E(Y) \\
-&amp;amp;= \mathrm E(XY) - \mathrm E(X) \mathrm E(Y)
-\end{aligned}
-\]&lt;/span&gt; 而二维随机变量[X, Y]对应的协方差矩阵即为&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\Sigma = \begin{bmatrix} \Cov(X,X) &amp;amp; \Cov(X,Y) \\ \Cov(Y,X) &amp;amp; \Cov(Y,Y) \\ \end{bmatrix}  
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;相关系数&#34;&gt;相关系数&lt;/h2&gt;
-&lt;p&gt;协方差考察了随机变量之间协同变化的关系，但如果采取不同的量纲，同样的数据产生的协方差相差非常大。为避免这种情况发生，我们可以首先将随机变量标准化： &lt;span class=&#34;math display&#34;&gt;\[
-X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y - \E(Y)}{\sqrt{\Var(Y)}}
-\]&lt;/span&gt; 再求协方差&lt;span class=&#34;math inline&#34;&gt;\(\Cov(X^\star, Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数： &lt;span class=&#34;math display&#34;&gt;\[
-\rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\Cov(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
-\]&lt;/span&gt;&lt;/p&gt;
 
 
 </description>
@@ -303,6 +391,151 @@ P(X \ge \alpha) \le \frac{\E(X)}{\alpha}
 P(|\frac{1}{n}\sum_{i=1}^n X_i - p| \le \epsilon) = P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| \le \frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) \simeq 2\Phi(\frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) - 1
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;上式实际是在用正态分布近似二项分布（多个伯努利分布随机变量加和为伯努利分布）。在&lt;a href=&#34;https://www.mathsisfun.com/data/quincunx-explained.html&#34;&gt;Galton Board游戏&lt;/a&gt;我们可以近似应用de Moivre-Laplace中心极限定理，这样或许能够帮助理解该定理。&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>三大分布与正态总体的抽样分布</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</link>
+      <pubDate>Sat, 09 Jul 2022 22:21:22 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</guid>
+      <description>
+
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布都从正态分布中衍生出来，常用统计量在正态总体的假设下，都与这三种分布有关，所以他们在正态总体的统计推断中起着很大的作用。&lt;/p&gt;
+&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
+&lt;h3 id=&#34;gamma函数&#34;&gt;Gamma函数&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\Gamma (x) = \int_0^{+\infty} e^{-t} t^{x-1} dt \quad (x &amp;gt; 0)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma\)&lt;/span&gt;函数具有&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(x + 1) = x \Gamma(x)\)&lt;/span&gt;的性质：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\Gamma (x+1) = \int_0^{+\infty} e^{-t} t^{x} dt = [-e^{-t} t^x] \bigg|^{+\infty}_{t=0} - \int_0^{+\infty} -e^{-t} xt^{x-1} dt
+\]&lt;/span&gt; 根据洛必达法则，&lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to +\infty} = \frac{-t^x}{e^t} = \lim_{t \to +\infty} \frac{x!}{e^t} = 0\)&lt;/span&gt;，故 &lt;span class=&#34;math display&#34;&gt;\[
+\Gamma (x+1) = 0 + x\int_0^{+\infty} e^{-t} t^{x-1} dt = x \Gamma(x)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1) = \int_0^{+\infty} e^{-t} dt = 1\)&lt;/span&gt;，故&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;为正整数时，&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(x) = x!\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2) = \sqrt \pi\)&lt;/span&gt;，故&lt;span class=&#34;math inline&#34;&gt;\(x = 2k + 1\)&lt;/span&gt;为正奇数时，&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(\frac{x}{2}) = \sqrt \pi \prod_{i=0}^{k-1} \frac{2 * i + 1}{2}\)&lt;/span&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\Gamma (\frac{1}{2}) = \int_0^{+\infty} e^{-t} t^{-\frac{1}{2}} dt 
+\stackrel{u = t^\frac{1}{2}}{\Longrightarrow} \int_0^{+\infty} e^{-u^2} u^{-1} \;2u du 
+= 2 \int_0^{+\infty} e^{-u^2} du 
+= \int_{-\infty}^{+\infty} e^{-u^2} du  \\
+\notag \\
+\begin{aligned}
+&amp;amp;\Gamma^2(\frac{1}{2}) = (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
+&amp;amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)(\int_{-\infty}^{+\infty} e^{-v^2} dv) \\
+&amp;amp;= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} e^{-(u^2+v^2)}dudv \\
+&amp;amp;\downarrow_{u = r\sin\theta, v = r\cos\theta} \\
+&amp;amp;= \int_{0}^{2\pi} \int_{0}^{+\infty} e^{-r^2}\; rdrd\theta \\
+&amp;amp;= \int_{0}^{2\pi} [-\frac{1}{2}e^{-r^2}] \bigg|_{r=0}^{+\infty} d\theta \\
+&amp;amp;= \int_{0}^{2\pi} \frac{1}{2} d\theta \\
+&amp;amp;= \pi \\
+&amp;amp;\Gamma (\frac{1}{2}) = \sqrt \pi
+\end{aligned}
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php&#34;&gt;The Gamma Function&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=XAoe4th0F1k&#34;&gt;The derivation of &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2)\)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;chi2分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布&lt;/h2&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1,\dots,X_n\)&lt;/span&gt;为相互独立的标准正态分布随机变量，即&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim N(0,1)\)&lt;/span&gt;则称&lt;span class=&#34;math inline&#34;&gt;\(Y = X_1^2 + \dots + X_n^2\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布，记作&lt;span class=&#34;math inline&#34;&gt;\(Y \sim \chi^2(n)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=1\)&lt;/span&gt;时，容易得到&lt;span class=&#34;math inline&#34;&gt;\(\forall y \le 0, P_Y(y) = 0, p_Y(y)= 0\)&lt;/span&gt;， $$ &lt;span class=&#34;math display&#34;&gt;\[\begin{align}
+\begin{split}
+\forall y &amp;gt; 0, P_Y(y) &amp;amp;= 2P_X(\sqrt y) - 1 \\ 
+\end{split} \\
+
+\begin{split}
+&amp;amp;p_Y(y) = 2P_X&amp;#39;(\sqrt y) \frac 1 {2 \sqrt y} \\
+&amp;amp;= \frac 1 {\sqrt {2\pi y}}  e^{-\frac 1 2 y} \\
+&amp;amp;= \frac 1 {2^\frac{1}{2} \Gamma(\frac 1 2)} y^{\frac 1 2 - 1} e^{-\frac y 2}
+\end{split}
+\end{align}\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+$\chi^2(1)$分布的密度函数为：
+\]&lt;/span&gt; p_Y(y) =&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{cases}
+\frac 1 {2^\frac{1}{2} \Gamma(\frac 1 2)} y^{\frac 1 2 - 1} e^{-\frac y 2}, &amp;amp;y &amp;gt; 0 \\
+0, &amp;amp; y \le 0
+\end{cases}\]&lt;/span&gt;
+&lt;p&gt;$$&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=k\)&lt;/span&gt;时，令&lt;span class=&#34;math inline&#34;&gt;\(X_1,\dots,X_k\)&lt;/span&gt;表示一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维空间中的点， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+p_Y(y) = P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k \\
+&amp;amp;= \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
+\end{aligned}
+\]&lt;/span&gt; 其中&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k x_i^2 \le y\)&lt;/span&gt;的积分区域。可以看出，&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;对应一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维球体，且其半径&lt;span class=&#34;math inline&#34;&gt;\(R = \sqrt y\)&lt;/span&gt;。对此，作&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/&#34;&gt;高维球坐标变换&lt;/a&gt;： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;P_Y(Y \le y) = \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k = \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
+&amp;amp;= \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \int_0^\sqrt{y} \\
+&amp;amp;\quad\quad\quad\frac{e^{-\frac 1 2 (r^2\cos^2 \varphi_1 +
+r^2\sin^2 \varphi_1 \cos^2 \varphi_2 + \dots + 
+r^2\sin^2 \varphi_1 \dots \sin^2 \varphi_{k-2} \cos^2 \varphi_{k-1} + 
+r^2\sin^2 \varphi_1 \dots \sin^2 \varphi_{k-2} \sin^2 \varphi_{k-1})} } {(2\pi)^{k / 2}}\\
+&amp;amp;\quad\quad\quad r^{k-1} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2})
+\ \d r\ \d \varphi_1 \dots \d \varphi_k \\
+&amp;amp;= \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \int_0^\sqrt{y} \frac{e^{-\frac 1 2 r^2}} {(2\pi)^{k / 2}}
+r^{k-1} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2})
+\ \d r\ \d \varphi_1 \dots \d \varphi_k \\
+&amp;amp;= \int_0^\sqrt{y} \underbrace{ \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \frac{1} {(2\pi)^{k / 2}} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2})\ \d \varphi_1 \dots \d \varphi_k}_{c_k} e^{-\frac 1 2 r^2} r^{k-1} \d r \\
+&amp;amp;= c_k \int_0^\sqrt{y} e^{-\frac 1 2 r^2} r^{k-1} \d r \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(c_k\)&lt;/span&gt;是和&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;相关的常数项，并且由于&lt;span class=&#34;math inline&#34;&gt;\(P_Y(Y \le \infty) = 1\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+1 &amp;amp;= c_k \int_0^\infty e^{-\frac 1 2 r^2} r^{k-1} \d r \\
+&amp;amp;\Downarrow_{r = \sqrt{2t}} \\
+1 &amp;amp;= c_k \int_0^\infty e^{-t} \sqrt{2t}^{k-1} \frac{1}{\sqrt{2t}} \d t \\
+1 &amp;amp;= 2^{(k-2)/2} c_k \int_0^\infty e^{-t} t^{(k-2)/2} \d t \\
+1 &amp;amp;= 2^{(k-2)/2} c_k \Gamma(\frac{k}{2}) \\
+c_k &amp;amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;故可得密度函数： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;p_Y(y) = \frac{\d P_Y(Y \le y)}{\d y} \\
+&amp;amp;= \frac{\d [c_k \int_0^\sqrt{y} e^{-\frac 1 2 r^2} r^{k-1} \d r]}{\d y} \\
+&amp;amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})} e^{-\frac y 2} y^\frac{k-1}{2} \frac{1}{2\sqrt y} \\
+&amp;amp;= \frac{1} {2^{\frac k 2} \Gamma(\frac{k-2}{2})} e^{-\frac y 2} y^{\frac{k}{2} - 1}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;最终可得密度函数如下： &lt;span class=&#34;math display&#34;&gt;\[
+p_Y(y) =
+\begin{cases}
+\frac 1 {2^\frac{k}{2} \Gamma(\frac k 2)} e^{-\frac y 2} y^{\frac k 2 - 1}, &amp;amp;y &amp;gt; 0 \\
+0, &amp;amp; y \le 0
+\end{cases}
+\]&lt;/span&gt; 另外，该密度函数也可以通过数学归纳法验证。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参考-1&#34;&gt;参考&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.statlect.com/probability-distributions/chi-square-distribution&#34;&gt;Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://vtechworks.lib.vt.edu/bitstream/handle/10919/34329/10Apxb.pdf?sequence=12&#34;&gt;Generating Function of Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/30020592&#34;&gt;正向推导&lt;/a&gt; || &lt;a href=&#34;https://www.bilibili.com/video/BV1e54y1v7e5&#34;&gt;数学归纳法&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;t分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布&lt;/h2&gt;
+&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim N(0,1), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(Z = \frac{X}{\sqrt{Y/n}}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(Z \sim t(n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
+p_Z(z) = \frac{\Gamma((n+1)/2)} {\sqrt{n\pi} \Gamma(n/2)} \big( 1 + \frac{z^2} n \big)^{-(n+1)/2}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;f分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布&lt;/h2&gt;
+&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim \chi^2(m), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(Z = \frac{X/m}{Y/n}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\((m,n)\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(Z \sim F(m,n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
+p_Z(z) = \begin{cases}
+\frac{\Gamma((m+n)/2} {\Gamma(m/2) \Gamma(n/2)} {m \choose n}^{\frac m 2} z^{\frac m 2 - 1} (1 + \frac m n z)^{-\frac{m+n}{2}}, &amp;amp;z &amp;gt; 0 \\
+0, &amp;amp;\text{otherwise}
+\end{cases}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;正态总体的抽样分布&#34;&gt;正态总体的抽样分布&lt;/h2&gt;
+&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;是抽自正态总体&lt;span class=&#34;math inline&#34;&gt;\(N(\mu, \sigma^2)\)&lt;/span&gt;的一组样本，样本均值&lt;span class=&#34;math inline&#34;&gt;\(\bar X = \frac 1 n \sum_{i=1}^n X_i\)&lt;/span&gt;，样本方差&lt;span class=&#34;math inline&#34;&gt;\(S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar X)^2\)&lt;/span&gt;，则存在如下定理： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\bar X \sim N(\mu, \frac{\sigma^2}{n}) \\
+\frac{\sum_{i=1}^n (X_i - \bar X)^2}{\sigma^2} \sim \chi^2(n - 1),\text 即 \frac{(n-1) S^2}{\sigma^2} = \frac{n S_n^2}{\sigma^2} \sim \chi^2(n-1) \\
+\text{$\bar X$与$S^2$相互独立，$\bar X$与$S_n^2$相互独立}
+\end{gather}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;分布计算器&#34;&gt;分布计算器&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/normal.html&#34;&gt;Normal Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/chisq.html&#34;&gt;Chi-Square Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/t.html&#34;&gt;Student’s t-Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/f.html&#34;&gt;F-Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -489,158 +722,113 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
     </item>
     
     <item>
-      <title>三大分布与正态总体的抽样分布</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</link>
-      <pubDate>Sat, 09 Jul 2022 22:21:22 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/</guid>
+      <title>假设检验</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</link>
+      <pubDate>Tue, 06 Dec 2022 19:02:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</guid>
       <description>
 
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布、&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布都从正态分布中衍生出来，常用统计量在正态总体的假设下，都与这三种分布有关，所以他们在正态总体的统计推断中起着很大的作用。&lt;/p&gt;
-&lt;h2 id=&#34;前置知识&#34;&gt;前置知识&lt;/h2&gt;
-&lt;h3 id=&#34;gamma函数&#34;&gt;Gamma函数&lt;/h3&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\Gamma (x) = \int_0^{+\infty} e^{-t} t^{x-1} dt \quad (x &amp;gt; 0)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma\)&lt;/span&gt;函数具有&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(x + 1) = x \Gamma(x)\)&lt;/span&gt;的性质：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\Gamma (x+1) = \int_0^{+\infty} e^{-t} t^{x} dt = [-e^{-t} t^x] \bigg|^{+\infty}_{t=0} - \int_0^{+\infty} -e^{-t} xt^{x-1} dt
-\]&lt;/span&gt; 根据洛必达法则，&lt;span class=&#34;math inline&#34;&gt;\(\lim_{t \to +\infty} = \frac{-t^x}{e^t} = \lim_{t \to +\infty} \frac{x!}{e^t} = 0\)&lt;/span&gt;，故 &lt;span class=&#34;math display&#34;&gt;\[
-\Gamma (x+1) = 0 + x\int_0^{+\infty} e^{-t} t^{x-1} dt = x \Gamma(x)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1) = \int_0^{+\infty} e^{-t} dt = 1\)&lt;/span&gt;，故&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;为正整数时，&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(x) = x!\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2) = \sqrt \pi\)&lt;/span&gt;，故&lt;span class=&#34;math inline&#34;&gt;\(x = 2k + 1\)&lt;/span&gt;为正奇数时，&lt;span class=&#34;math inline&#34;&gt;\(\Gamma(\frac{x}{2}) = \sqrt \pi \prod_{i=0}^{k-1} \frac{2 * i + 1}{2}\)&lt;/span&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+&lt;h2 id=&#34;假设检验&#34;&gt;假设检验&lt;/h2&gt;
+&lt;p&gt;参数估计是根据样本值得出参数的一个估计量，并且在区间估计中，我们还能得到一个这个参数&lt;strong&gt;置信区间&lt;/strong&gt;和相应的&lt;strong&gt;置信水平&lt;/strong&gt;。而在假设检验中，我们要做的则是根据某个&lt;strong&gt;假设&lt;/strong&gt;（hypothesis）以及给定的样本，决定是否接受这个假设。注意我们特地将假设和估计（estimation）区分开，因为这个假设并不是由样本得到的一个估计量，而是一条已有的断言（assertion）；我们要做的，则是给出在什么样的情况下（对应置信区间），我们能够以多高的信心否定这个断言（对应置信水平）。&lt;/p&gt;
+&lt;p&gt;至于假设检验和区间估计的关系，其实我们会发现，如果本身就能对未知参数做有效的区间估计，那其实对它的假设检验设计，自然迎刃而解。&lt;/p&gt;
+&lt;h3 id=&#34;一般检验方法&#34;&gt;一般检验方法&lt;/h3&gt;
+&lt;p&gt;一般检验方法指Neyman-Pearson方法。&lt;/p&gt;
+&lt;h4 id=&#34;建立假设&#34;&gt;建立假设&lt;/h4&gt;
+&lt;p&gt;对要检验的问题，一般有一个&lt;strong&gt;原假设&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;（也叫零假设，null hypothesis）以及一个&lt;strong&gt;备择假设&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_1\)&lt;/span&gt;（alternative hypothesis）。原假设一般是总体的某个未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;等于某个具体值&lt;span class=&#34;math inline&#34;&gt;\(\theta_0\)&lt;/span&gt;，即 &lt;span class=&#34;math display&#34;&gt;\[
+H_0: \theta = \theta_0
+\]&lt;/span&gt; 这种只包含一个假设值（即&lt;span class=&#34;math inline&#34;&gt;\(\theta_0\)&lt;/span&gt;）的原假设又叫作&lt;strong&gt;简单原假设&lt;/strong&gt;（simple hypothesis null）。而备择假设一般和原假设互斥，它通常有以下三种形式：&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_1: \theta \ne \theta_0\)&lt;/span&gt;，此时&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;与&lt;span class=&#34;math inline&#34;&gt;\(H_1\)&lt;/span&gt;为对立关系，我们要检验&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;落在&lt;span class=&#34;math inline&#34;&gt;\(\theta_0\)&lt;/span&gt;两侧的可能，这样的检测问题也称为双边检验；&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_1: \theta &amp;gt; \theta_0\)&lt;/span&gt;，此时我们要检验&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;落在&lt;span class=&#34;math inline&#34;&gt;\(\theta_0\)&lt;/span&gt;右侧的可能，这样的检测问题也称为右侧的单边检验；&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_1: \theta &amp;lt; \theta_0\)&lt;/span&gt;，此时我们要检验&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;落在&lt;span class=&#34;math inline&#34;&gt;\(\theta_0\)&lt;/span&gt;左侧的可能，这样的检测问题也称为左侧的单边检验；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;选择否定域形式&#34;&gt;选择否定域形式&lt;/h4&gt;
+&lt;p&gt;根据已有的样本，我们能够给出未知参数的点估计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;（在假设检验中又称作&lt;strong&gt;检验统计量&lt;/strong&gt;&amp;lt;test statistic&amp;gt;），如果&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(\theta_0\)&lt;/span&gt;的距离小于某个&lt;strong&gt;临界值&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(c &amp;gt; 0\)&lt;/span&gt;（critical value），我们就可以接受原假设（即便&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;与&lt;span class=&#34;math inline&#34;&gt;\(\theta_0\)&lt;/span&gt;不完全相等），否则则否定原假设。使得原假设被接受的样本所在的区域就被称作&lt;strong&gt;接受域&lt;/strong&gt;（acceptance region）；使得原假设被否定的样本所在的区域就被称作&lt;strong&gt;否定域&lt;/strong&gt;（也叫拒绝域，rejection region）；一般我们习惯先构造否定域&lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;，则剩余区域就为接受域&lt;span class=&#34;math inline&#34;&gt;\(\overline W\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-\Gamma (\frac{1}{2}) = \int_0^{+\infty} e^{-t} t^{-\frac{1}{2}} dt 
-\stackrel{u = t^\frac{1}{2}}{\Longrightarrow} \int_0^{+\infty} e^{-u^2} u^{-1} \;2u du 
-= 2 \int_0^{+\infty} e^{-u^2} du 
-= \int_{-\infty}^{+\infty} e^{-u^2} du  \\
-\notag \\
-\begin{aligned}
-&amp;amp;\Gamma^2(\frac{1}{2}) = (\int_{-\infty}^{+\infty} e^{-u^2} du)^2 \\
-&amp;amp;= (\int_{-\infty}^{+\infty} e^{-u^2} du)(\int_{-\infty}^{+\infty} e^{-v^2} dv) \\
-&amp;amp;= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} e^{-(u^2+v^2)}dudv \\
-&amp;amp;\downarrow_{u = r\sin\theta, v = r\cos\theta} \\
-&amp;amp;= \int_{0}^{2\pi} \int_{0}^{+\infty} e^{-r^2}\; rdrd\theta \\
-&amp;amp;= \int_{0}^{2\pi} [-\frac{1}{2}e^{-r^2}] \bigg|_{r=0}^{+\infty} d\theta \\
-&amp;amp;= \int_{0}^{2\pi} \frac{1}{2} d\theta \\
-&amp;amp;= \pi \\
-&amp;amp;\Gamma (\frac{1}{2}) = \sqrt \pi
-\end{aligned}
+W = \{ (x_1, \dots, x_n) \big | \|\hat \theta(x_1, \dots, x_n) - \theta_0\| &amp;gt; c \} \\
+\overline W = W^c
 \end{gather}
-\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php&#34;&gt;The Gamma Function&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=XAoe4th0F1k&#34;&gt;The derivation of &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(1/2)\)&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;chi2分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布&lt;/h2&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1,\dots,X_n\)&lt;/span&gt;为相互独立的标准正态分布随机变量，即&lt;span class=&#34;math inline&#34;&gt;\(X_i \sim N(0,1)\)&lt;/span&gt;则称&lt;span class=&#34;math inline&#34;&gt;\(Y = X_1^2 + \dots + X_n^2\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt;分布，记作&lt;span class=&#34;math inline&#34;&gt;\(Y \sim \chi^2(n)\)&lt;/span&gt;。&lt;/p&gt;
+\]&lt;/span&gt; 对于某些参数，可能本身越小越好（比如故障率），所以我们仅需要进行右侧的单边检测，此时对应的否定域为 &lt;span class=&#34;math display&#34;&gt;\[
+W = \{ (x_1, \dots, x_n) \big | \hat \theta(x_1, \dots, x_n) - \theta_0 &amp;gt; c \} \\
+\]&lt;/span&gt; 此时可以等价认为&lt;span class=&#34;math inline&#34;&gt;\(H_0: \theta \le \theta_0\)&lt;/span&gt;，这种情况下，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;是一个&lt;strong&gt;复合原假设&lt;/strong&gt;（composite hypothesis null），因为其包含的假设值不止一个。&lt;/p&gt;
+&lt;p&gt;对于另外一些参数，可能本身越大越好（比如身高均值），所以我们仅需要左侧的单边检测，此时对应的否定域为 &lt;span class=&#34;math display&#34;&gt;\[
+W = \{ (x_1, \dots, x_n) \big | \hat \theta(x_1, \dots, x_n) - \theta_0 &amp;lt; c \} \\
+\]&lt;/span&gt; 同理，此时可以等价认为&lt;span class=&#34;math inline&#34;&gt;\(H_0: \theta \ge \theta_0\)&lt;/span&gt;，这种情况下，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;也是一个复合原假设。&lt;/p&gt;
+&lt;h4 id=&#34;设定显著性水平&#34;&gt;设定显著性水平&lt;/h4&gt;
+&lt;p&gt;给定假设，我们已经可以根据样本属于接受域还是否定域，做出接受或是否定假设的决策了。但和点估计中的问题一样，我们依然是基于样本提供的不完全信息做出的判断，所以我们的判断不总是正确的。这种判断会有四种结果：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;判断：接受&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;&lt;/th&gt;
+&lt;th&gt;判断：否定&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;实际：&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;成立&lt;/td&gt;
+&lt;td&gt;判断正确&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;第一类错误&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;实际：&lt;span class=&#34;math inline&#34;&gt;\(H_1\)&lt;/span&gt;成立&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;第二类错误&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;判断正确&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;通常较低的第一类错误风险&lt;span class=&#34;math inline&#34;&gt;\(P(\text{否定$H_0$};\text{$H_0$成立})\)&lt;/span&gt;和较低的第二类错误风险&lt;span class=&#34;math inline&#34;&gt;\(P(\text{接受$H_0$};\text{$H_1$成立})\)&lt;/span&gt;不可兼得，因为在检验统计量确定后，这两个概率主要是由临界值&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;导出的否定域大小来控制的。而我们更希望降低第一类错误发生的风险。也就是说我们一旦否定，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;很大概率确实是不成立的；尽管这意味着我们在接受&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;有可能不成立——不过虚惊一场总好过后知后觉。所以实际应用中，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;往往对应了比较严重的结果，我们不希望在&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;成立时，我们却没有发现（即否定&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;）；或者&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;本身就对应了我们比较想否定的结果，这样我们否定时，它确实不成立的概率也更高。&lt;/p&gt;
+&lt;p&gt;我们会将第一类错误发生的概率限制在&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;之内，这个&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;便是&lt;strong&gt;显著性水平&lt;/strong&gt;（significance level）。显著性水平其实代表了我们对小概率事件的接受程度，即我们认为概率小于&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;事件应该是小概率事件，是不应该被正好碰上的；而此时在&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;成立的假设下，“给定的一组样本属于否定域”正是这样的一个小概率事件，如果碰上了这样的小概率事件，则有理由怀疑&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;不成立。&lt;/p&gt;
+&lt;p&gt;前面我们之所以说单边检验等价于原假设对应某个形式的复合假设（比如&lt;span class=&#34;math inline&#34;&gt;\(\theta \le \theta_0\)&lt;/span&gt;或&lt;span class=&#34;math inline&#34;&gt;\(\theta \ge \theta_0\)&lt;/span&gt;），是因为这种情况下，有 &lt;span class=&#34;math display&#34;&gt;\[
+\max_{h \in H_0} \beta_W(h) = \beta_W(\theta_0) \le \alpha
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;确定临界值&#34;&gt;确定临界值&lt;/h4&gt;
+&lt;p&gt;在确定显著性水平后，我们便可以进一步确定临界值，从而给出完整的否定域。此时我们调整临界值&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，从而使得 &lt;span class=&#34;math display&#34;&gt;\[
+P(\text{否定$H_0$};\text{$H_0$成立}) = P( (X_1, \dots, X_n) \in W;\theta = \theta_0) \le \alpha
+\]&lt;/span&gt; 问题就变成了一个简单的分布问题。此处需要指出的是，&lt;span class=&#34;math inline&#34;&gt;\(P(\text{否定$H_0$};\text{$H_0$成立})\)&lt;/span&gt;不应写作&lt;span class=&#34;math inline&#34;&gt;\(P( (X_1, \dots, X_n) \in W | \theta = \theta_0)\)&lt;/span&gt;，因为假设检验是频率学派中的概念，频率学派中的未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;并没有先验分布。&lt;span class=&#34;math inline&#34;&gt;\(P( (X_1, \dots, X_n) \in W;\theta = \theta_0)\)&lt;/span&gt;又叫作&lt;strong&gt;功效&lt;/strong&gt;（power）函数，记作&lt;span class=&#34;math inline&#34;&gt;\(\beta_W(\cdot)\)&lt;/span&gt;，表示在未知参数取特定值时，一组随机样本属于否定域的概率。&lt;/p&gt;
+&lt;h3 id=&#34;p值和p值检验法&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;值和&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;值检验法&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;值检验法指的是数学家Fisher提出的检验方法。&lt;/p&gt;
+&lt;p&gt;假设检验的&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;值是在原假设&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;成立的情况下，检验统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta(X_1, \dots, X_n)\)&lt;/span&gt;出现其具体观测值&lt;span class=&#34;math inline&#34;&gt;\(z = \hat \theta(x_1,\dots,x_n)\)&lt;/span&gt;或者比之更极端的值的概率，即&lt;span class=&#34;math inline&#34;&gt;\(p = P(\hat \theta = z; \theta = \theta_0)\)&lt;/span&gt;（类似likelihood）。&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;值检验中，我们检验&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;值是否足够小，如果&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;值小到一定程度，我们还是会否定&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;，即&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=1\)&lt;/span&gt;时，容易得到&lt;span class=&#34;math inline&#34;&gt;\(\forall y \le 0, P_Y(y) = 0, p_Y(y)= 0\)&lt;/span&gt;， $$ &lt;span class=&#34;math display&#34;&gt;\[\begin{align}
-\begin{split}
-\forall y &amp;gt; 0, P_Y(y) &amp;amp;= 2P_X(\sqrt y) - 1 \\ 
-\end{split} \\
-
-\begin{split}
-&amp;amp;p_Y(y) = 2P_X&amp;#39;(\sqrt y) \frac 1 {2 \sqrt y} \\
-&amp;amp;= \frac 1 {\sqrt {2\pi y}}  e^{-\frac 1 2 y} \\
-&amp;amp;= \frac 1 {2^\frac{1}{2} \Gamma(\frac 1 2)} y^{\frac 1 2 - 1} e^{-\frac y 2}
-\end{split}
-\end{align}\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
-$\chi^2(1)$分布的密度函数为：
-\]&lt;/span&gt; p_Y(y) =&lt;/p&gt;
-&lt;span class=&#34;math display&#34;&gt;\[\begin{cases}
-\frac 1 {2^\frac{1}{2} \Gamma(\frac 1 2)} y^{\frac 1 2 - 1} e^{-\frac y 2}, &amp;amp;y &amp;gt; 0 \\
-0, &amp;amp; y \le 0
-\end{cases}\]&lt;/span&gt;
-&lt;p&gt;$$&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n=k\)&lt;/span&gt;时，令&lt;span class=&#34;math inline&#34;&gt;\(X_1,\dots,X_k\)&lt;/span&gt;表示一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维空间中的点， &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p_Y(y) = P_Y(Y \le y) &amp;amp;= \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k \\
-&amp;amp;= \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
-\end{aligned}
-\]&lt;/span&gt; 其中&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k x_i^2 \le y\)&lt;/span&gt;的积分区域。可以看出，&lt;span class=&#34;math inline&#34;&gt;\(\mathcal V\)&lt;/span&gt;对应一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;维球体，且其半径&lt;span class=&#34;math inline&#34;&gt;\(R = \sqrt y\)&lt;/span&gt;。对此，作&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/&#34;&gt;高维球坐标变换&lt;/a&gt;： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-&amp;amp;P_Y(Y \le y) = \int_\mathcal V \prod_{i=1}^k N(0,1,x_i)\; \d x_1 \dots \d x_k = \int_\mathcal V \frac{e^{-\frac 1 2 (x_1^2 + \dots + x_k^2)}} {(2\pi)^{k / 2}}\ \d x_1 \dots \d x_k \\
-&amp;amp;= \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \int_0^\sqrt{y} \\
-&amp;amp;\quad\quad\quad\frac{e^{-\frac 1 2 (r^2\cos^2 \varphi_1 +
-r^2\sin^2 \varphi_1 \cos^2 \varphi_2 + \dots + 
-r^2\sin^2 \varphi_1 \dots \sin^2 \varphi_{k-2} \cos^2 \varphi_{k-1} + 
-r^2\sin^2 \varphi_1 \dots \sin^2 \varphi_{k-2} \sin^2 \varphi_{k-1})} } {(2\pi)^{k / 2}}\\
-&amp;amp;\quad\quad\quad r^{k-1} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2})
-\ \d r\ \d \varphi_1 \dots \d \varphi_k \\
-&amp;amp;= \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \int_0^\sqrt{y} \frac{e^{-\frac 1 2 r^2}} {(2\pi)^{k / 2}}
-r^{k-1} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2})
-\ \d r\ \d \varphi_1 \dots \d \varphi_k \\
-&amp;amp;= \int_0^\sqrt{y} \underbrace{ \int_0^{2\pi} \underbrace{\int_0^\pi \dots \int_0^\pi}_{k-2} \frac{1} {(2\pi)^{k / 2}} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2})\ \d \varphi_1 \dots \d \varphi_k}_{c_k} e^{-\frac 1 2 r^2} r^{k-1} \d r \\
-&amp;amp;= c_k \int_0^\sqrt{y} e^{-\frac 1 2 r^2} r^{k-1} \d r \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(c_k\)&lt;/span&gt;是和&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;相关的常数项，并且由于&lt;span class=&#34;math inline&#34;&gt;\(P_Y(Y \le \infty) = 1\)&lt;/span&gt;，有 &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-1 &amp;amp;= c_k \int_0^\infty e^{-\frac 1 2 r^2} r^{k-1} \d r \\
-&amp;amp;\Downarrow_{r = \sqrt{2t}} \\
-1 &amp;amp;= c_k \int_0^\infty e^{-t} \sqrt{2t}^{k-1} \frac{1}{\sqrt{2t}} \d t \\
-1 &amp;amp;= 2^{(k-2)/2} c_k \int_0^\infty e^{-t} t^{(k-2)/2} \d t \\
-1 &amp;amp;= 2^{(k-2)/2} c_k \Gamma(\frac{k}{2}) \\
-c_k &amp;amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;故可得密度函数： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-&amp;amp;p_Y(y) = \frac{\d P_Y(Y \le y)}{\d y} \\
-&amp;amp;= \frac{\d [c_k \int_0^\sqrt{y} e^{-\frac 1 2 r^2} r^{k-1} \d r]}{\d y} \\
-&amp;amp;= \frac{1} {2^{(k-2)/2} \Gamma(\frac{k}{2})} e^{-\frac y 2} y^\frac{k-1}{2} \frac{1}{2\sqrt y} \\
-&amp;amp;= \frac{1} {2^{\frac k 2} \Gamma(\frac{k-2}{2})} e^{-\frac y 2} y^{\frac{k}{2} - 1}
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;最终可得密度函数如下： &lt;span class=&#34;math display&#34;&gt;\[
-p_Y(y) =
-\begin{cases}
-\frac 1 {2^\frac{k}{2} \Gamma(\frac k 2)} e^{-\frac y 2} y^{\frac k 2 - 1}, &amp;amp;y &amp;gt; 0 \\
-0, &amp;amp; y \le 0
-\end{cases}
-\]&lt;/span&gt; 另外，该密度函数也可以通过数学归纳法验证。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;如果&lt;span class=&#34;math inline&#34;&gt;\(p \le \alpha\)&lt;/span&gt;，则我们在显著性水平&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;下否定原假设&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;；&lt;/li&gt;
+&lt;li&gt;如果&lt;span class=&#34;math inline&#34;&gt;\(p &amp;gt; \alpha\)&lt;/span&gt;，则我们在显著性水平&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;下接受原假设&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;参考-1&#34;&gt;参考&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.statlect.com/probability-distributions/chi-square-distribution&#34;&gt;Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://vtechworks.lib.vt.edu/bitstream/handle/10919/34329/10Apxb.pdf?sequence=12&#34;&gt;Generating Function of Chi Squared Distribution&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/30020592&#34;&gt;正向推导&lt;/a&gt; || &lt;a href=&#34;https://www.bilibili.com/video/BV1e54y1v7e5&#34;&gt;数学归纳法&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;t分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布&lt;/h2&gt;
-&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim N(0,1), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(Z = \frac{X}{\sqrt{Y/n}}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(Z \sim t(n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
-p_Z(z) = \frac{\Gamma((n+1)/2)} {\sqrt{n\pi} \Gamma(n/2)} \big( 1 + \frac{z^2} n \big)^{-(n+1)/2}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;f分布&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布&lt;/h2&gt;
-&lt;p&gt;设随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;相互独立，且&lt;span class=&#34;math inline&#34;&gt;\(X \sim \chi^2(m), Y \sim \chi^2(n)\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(Z = \frac{X/m}{Y/n}\)&lt;/span&gt;服从自由度为&lt;span class=&#34;math inline&#34;&gt;\((m,n)\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;分布，记为&lt;span class=&#34;math inline&#34;&gt;\(Z \sim F(m,n)\)&lt;/span&gt;。其密度函数为： &lt;span class=&#34;math display&#34;&gt;\[
-p_Z(z) = \begin{cases}
-\frac{\Gamma((m+n)/2} {\Gamma(m/2) \Gamma(n/2)} {m \choose n}^{\frac m 2} z^{\frac m 2 - 1} (1 + \frac m n z)^{-\frac{m+n}{2}}, &amp;amp;z &amp;gt; 0 \\
-0, &amp;amp;\text{otherwise}
-\end{cases}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;正态总体的抽样分布&#34;&gt;正态总体的抽样分布&lt;/h2&gt;
-&lt;p&gt;设&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_n\)&lt;/span&gt;是抽自正态总体&lt;span class=&#34;math inline&#34;&gt;\(N(\mu, \sigma^2)\)&lt;/span&gt;的一个样本，样本均值&lt;span class=&#34;math inline&#34;&gt;\(\bar X = \frac 1 n \sum_{i=1}^n X_i\)&lt;/span&gt;，样本方差&lt;span class=&#34;math inline&#34;&gt;\(S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar X)^2\)&lt;/span&gt;，则存在如下定理： &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
-\bar X \sim N(\mu, \frac{\sigma^2}{n}) \\
-\frac{\sum_{i=1}^n (X_i - \bar X)^2}{\sigma^2} \sim \chi^2(n - 1),\text 即 \frac{(n-1) S^2}{\sigma^2} = \frac{n S_n^2}{\sigma^2} \sim \chi^2(n-1) \\
-\text{$\bar X$与$S^2$相互独立，$\bar X$与$S_n^2$相互独立}
-\end{gather}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;分布计算器&#34;&gt;分布计算器&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/normal.html&#34;&gt;Normal Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/chisq.html&#34;&gt;Chi-Square Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/t.html&#34;&gt;Student’s t-Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://homepage.divms.uiowa.edu/~mbognar/applets/f.html&#34;&gt;F-Distribution Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/291968/are-type-i-error-fwer-both-conditional-probabilities&#34;&gt;hypothesis testing - Are type I error &amp;amp; FWER both conditional probabilities? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bookdown.org/hezhijian/book/test.html&#34;&gt;第 3 章 假设检验 | 数理统计讲义 (bookdown.org)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
     </item>
     
     <item>
-      <title></title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</guid>
-      <description>&lt;h2 id=&#34;假设检验&#34;&gt;假设检验&lt;/h2&gt;
-&lt;p&gt;样本中包含了总体分布的信息，而**假设检验（hypothesis test）**的含义就是指能否通过样本去判断某个命题（比如关于总体分布的命题）是否成立。在统计上，如果判断其成立，一般称作“接受（accept）该假设”；如果判断其不成立，一般称作“否定（reject）该假设”。这里的“假设”要避免和平常常用的带有“假定”含义的“假设”混淆。&lt;/p&gt;
-&lt;p&gt;在假设检验中，有时会将需要判断的命题称作&lt;strong&gt;原假设&lt;/strong&gt;或者&lt;strong&gt;零假设&lt;/strong&gt;，原假设的对立面就称作&lt;strong&gt;对立假设&lt;/strong&gt;。在假设检验中使用的统计量称作&lt;strong&gt;检验统计量&lt;/strong&gt;，使原假设得到接收的那些样本所在的区域称为该检验的&lt;strong&gt;接受域&lt;/strong&gt;，使原假设被否定的那些样本所在的区域称为该检验的&lt;strong&gt;否定域&lt;/strong&gt;。&lt;/p&gt;
+      <title>贝叶斯推断</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/</link>
+      <pubDate>Fri, 09 Dec 2022 17:22:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/</guid>
+      <description>
+
+&lt;h2 id=&#34;贝叶斯公式&#34;&gt;贝叶斯公式&lt;/h2&gt;
+&lt;p&gt;在全概率公式之下，有 &lt;span class=&#34;math display&#34;&gt;\[
+P(B_i | A) = \frac{P(A B_i)}{P(A)} = \frac{P(B_i) P(A|B_i)} {\sum_j P(B_j) P(A|B_j)}
+\]&lt;/span&gt; 这便是贝叶斯公式。贝叶斯公式中的项目也有它们在贝叶斯学派中相应的称呼： &lt;span class=&#34;math display&#34;&gt;\[
+\text{posterior} = \frac{\text{prior} \times \text{likelihood}}{\text{evidence}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;贝叶斯估计&#34;&gt;贝叶斯估计&lt;/h2&gt;
+&lt;p&gt;在参数估计问题中，记&lt;span class=&#34;math inline&#34;&gt;\(D = \{ X_1, \dots, X_n \}\)&lt;/span&gt;为样本、&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;为参数，并用将&lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;代入后验概率中的事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;代入后验概率中的&lt;span class=&#34;math inline&#34;&gt;\(B_i\)&lt;/span&gt;，我们得到：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+P(\theta | D) = \frac{P(\theta) P(D|\theta)} {\sum_j P(\theta) P(D|\theta)} \\
+\]&lt;/span&gt; 取决于&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;和单个样本的取值是连续型或是离散型，上式中的&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;可代表密度函数或分布律，而分母中的求和运算应当在&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;取值连续的时候被替换在&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;所有可行范围内的积分运算。比较值得注意的一点是，贝叶斯推断为参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;引入了先验分布，而在频率学派中，参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;是不存在什么先验分布的。&lt;/p&gt;
+&lt;h3 id=&#34;最大后验估计&#34;&gt;最大后验估计&lt;/h3&gt;
+&lt;p&gt;最大后验估计（maximum a posteriori estimation）得到的点估计是以下： &lt;span class=&#34;math display&#34;&gt;\[
+\hat \theta = \arg \max_{\theta} \frac{P(\theta) P(D | \theta)}{\int P(\theta&amp;#39;)(D|\theta&amp;#39;) \d \theta&amp;#39;} = \arg \max_{\theta} {P(\theta) P(D | \theta)}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;最小均方差估计&#34;&gt;最小均方差估计&lt;/h3&gt;
+&lt;p&gt;最小均方差估计（minimum mean squared error estimation）得到的点估计是以下： &lt;span class=&#34;math display&#34;&gt;\[
+\theta^\star = \arg \min_{\hat \theta} \E_{\theta \sim \text{posterior}} [(\hat \theta - \theta)^2]
+\]&lt;/span&gt; 换言之，此时的估计&lt;span class=&#34;math inline&#34;&gt;\(\theta^\star\)&lt;/span&gt;即为&lt;span class=&#34;math inline&#34;&gt;\(\E_{\theta \sim \text{posterior}} \theta\)&lt;/span&gt;。&lt;/p&gt;
+
+
 </description>
     </item>
     
