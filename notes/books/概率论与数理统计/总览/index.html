@@ -678,11 +678,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+  <li class=""><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -739,7 +743,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/dimensionality-reduction/">Dimension Reduction</a></li>
 
 
 
@@ -861,6 +865,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
   
     
     
@@ -929,6 +937,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
       
         </ul>
       
@@ -949,30 +961,30 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Statistics</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/probability-and-statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Probability and Statistics</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/">Unconscious Statistics</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1123,6 +1135,10 @@
       
 
 
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
   <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
 
@@ -1201,35 +1217,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
-
-      
-        </ul>
-      
-    
-
-    
-      </div>
-    
-
-
-
-  
-    
-    
-    
-    
-    
-
-    
-      <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">高等数学</a>
-    
-      
-        <ul class="nav docs-sidenav">
-      
-
-
-  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
 
       
         </ul>
@@ -1403,7 +1390,7 @@
 <h2 id="概率论与统计总览">概率论与统计：总览</h2>
 <p>随机变量其实是一个从事件（概率空间的子集）到数字的映射，是一个抽象事件数字化的过程。概率论和统计的一个共同的主要话题就是随机变量，可以说它们像是随机变量的一体两面。</p>
 <p>概率论更加注重随机变量取值集合相对应事件的概率。为此，概率论需要讨论事件所有可能的试验结果、事件的运算、事件的独立性、随机变量的取值范围、随机变量的概率分布等话题。</p>
-<p>统计中的随机变量来自于对总体的随机抽样，这个过程中，我们会得到一组样本，每个样本在被观测之前，都是服从总体分布的随机变量；观测之后，它们便有了一个具体的观测值。我们可以将观测行为类比概率论中的试验，而这种观测行为将会导致一个随机变量坍缩成为一个具体的观测值。</p>
+<p>统计中的随机变量来自于对总体的随机抽样，这个过程中，我们会得到一组样本，每个样本在被观测之前，都是服从总体分布的随机变量；观测（observation）之后，它们便有了一个具体的观测值（realization）。我们可以将观测行为类比概率论中的试验，而这种观测行为将会导致一个随机变量坍缩成为一个具体的观测值。</p>
 <p>可以这样理解概率论与统计：概率论是根据事件总体的自身属性，正向推导所有事件对应概率分布的分布函数；统计是根据某个概率分布（即总体分布）采样得到的结果，反向推导该分布的分布函数。</p>
 <table>
 <thead>
@@ -1514,7 +1501,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 

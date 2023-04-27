@@ -19,8 +19,10 @@
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/</guid>
       <description>
 
+&lt;h2 id=&#34;eigenvectors-and-eigenvalues&#34;&gt;Eigenvectors and Eigenvalues&lt;/h2&gt;
 &lt;h3 id=&#34;definition&#34;&gt;Definition&lt;/h3&gt;
-&lt;p&gt;An eigenvector of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;strong&gt;nonzero&lt;/strong&gt; vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding eigenvalue. Note that by definition, &lt;span class=&#34;math inline&#34;&gt;\((0, \x)\)&lt;/span&gt; is a pair of eigenvalue and eigenvector of any square matrix for any nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;. However, &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; is just too trivial an eigenvalue that people exclude it from the eigen discussion.&lt;/p&gt;
+&lt;p&gt;An &lt;strong&gt;eigenvector&lt;/strong&gt; of a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;strong&gt;nonzero&lt;/strong&gt; vector &lt;span class=&#34;math inline&#34;&gt;\(\rm x\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(A\rm x = \lambda \rm x\)&lt;/span&gt; for some scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;. This scalar &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is the corresponding &lt;strong&gt;eigenvalue&lt;/strong&gt;. Note that by definition, &lt;span class=&#34;math inline&#34;&gt;\((\lambda, \vec 0)\)&lt;/span&gt; is a pair of eigenvalue and eigenvector of any square matrix. However, &lt;span class=&#34;math inline&#34;&gt;\(\vec 0\)&lt;/span&gt; is just too trivial an eigenvector that people exclude it from the eigen discussion.&lt;/p&gt;
+&lt;p&gt;Note, though, &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; can be an eigenvalue. Also note that if &lt;span class=&#34;math inline&#34;&gt;\((\lambda, v)\)&lt;/span&gt; is a pair of eigen of matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\((\lambda, kv)\)&lt;/span&gt; is also a pair of eigen.&lt;/p&gt;
 &lt;h3 id=&#34;similarity&#34;&gt;Similarity&lt;/h3&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrices, then &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is similar to &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; if there is an invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(PAP^{-1} = B\)&lt;/span&gt;, or equivalently &lt;span class=&#34;math inline&#34;&gt;\(P^{-1}BP = A\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; are similar, then they have the same characteristic polynomial and hence then the same eigenvalues: &lt;span class=&#34;math display&#34;&gt;\[
@@ -36,7 +38,7 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 &lt;h3 id=&#34;independence-between-eigenvectors&#34;&gt;Independence between Eigenvectors&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Theorem&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are the eigenvectors corresponding to the distinct eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, ..., \lambda_r\)&lt;/span&gt; of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_r\)&lt;/span&gt; are linearly independent.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are the eigenvectors corresponding to the distinct eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, ..., \lambda_r\)&lt;/span&gt; of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ... , v_r\)&lt;/span&gt; are also called eigenvectors from different &lt;strong&gt;eigenspaces&lt;/strong&gt;), then &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_r\)&lt;/span&gt; are linearly independent.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
 &lt;p&gt;Suppose instead these vectors are dependent. Let &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; be the least index such that &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is a linear combination of previous vectors. Then there exists scalars &lt;span class=&#34;math inline&#34;&gt;\(c_1, c_2, ..., c_p\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
   c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1} \label{lincom} 
@@ -46,27 +48,25 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
   c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1} \label{eq2}
   \]&lt;/span&gt; Subtract &lt;span class=&#34;math inline&#34;&gt;\(\eqref{eq2}\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\(\eqref{eq1}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
   c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0 \label{diff} 
-  \]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_p\)&lt;/span&gt; are independent, the weights in &lt;span class=&#34;math inline&#34;&gt;\(\eqref{diff}\)&lt;/span&gt; are all zeros. None of &lt;span class=&#34;math inline&#34;&gt;\((\lambda_i - \lambda_{p+1})\)&lt;/span&gt; is zero, so &lt;span class=&#34;math inline&#34;&gt;\(c_i = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(i = 1,...p\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; says &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which is impossible. Q.E.D.&lt;/p&gt;&lt;/li&gt;
+  \]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_p\)&lt;/span&gt; are independent, the weights in &lt;span class=&#34;math inline&#34;&gt;\(\eqref{diff}\)&lt;/span&gt; are all zeros. None of &lt;span class=&#34;math inline&#34;&gt;\((\lambda_i - \lambda_{p+1})\)&lt;/span&gt; is zero, so &lt;span class=&#34;math inline&#34;&gt;\(c_i = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(i = 1,...p\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lincom}\)&lt;/span&gt; says &lt;span class=&#34;math inline&#34;&gt;\(v_{p+1}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which is impossible.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Note&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt;, as the eigenvector, is nonzero so that the conclusion can hold even for &lt;span class=&#34;math inline&#34;&gt;\(p=1\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;diagonalization&#34;&gt;Diagonalization&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Theorem&lt;/p&gt;
-&lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has n independent eigenvectors.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Necessity&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(AP = PD\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\newcommand{\p}{\mathrm{p}} P = [\p_1, \p_2, ..., \p_n]\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; is a diagonal matrix, &lt;span class=&#34;math display&#34;&gt;\[
-AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11}\ p_1, D_{22}\p_2, ..., D_{nn}\p_n]
+AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11} \p_1, D_{22} \p_2, ..., D_{nn} \p_n]
 \]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(\p_i\)&lt;/span&gt;’s are independent, which indicates that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm p_i\)&lt;/span&gt;’s are &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors.&lt;/p&gt;
-&lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix stacked with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the diagonal matrix filled with corresponding eigenvalues.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;From this, we could also see that if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is diagonalizable, then &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt; must be the matrix concatenated with &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; must be the diagonal matrix filled with corresponding eigenvalues.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Sufficiency&lt;/p&gt;
 &lt;p&gt;Easy to show.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;linear-transformation&#34;&gt;Linear Transformation&lt;/h4&gt;
-&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A = PDP^{-1}\)&lt;/span&gt;, then the transformation &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x \mapsto A\mathrm x\)&lt;/span&gt; in coordinate system formed by &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s columns can be viewed as &lt;span class=&#34;math inline&#34;&gt;\([\mathrm x]_{\cal B} \mapsto D[\mathrm x]_\cal B\)&lt;/span&gt; in coordinate system &lt;span class=&#34;math inline&#34;&gt;\(\cal B\)&lt;/span&gt;, which is formed by &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;’s columns.&lt;/p&gt;
 &lt;h3 id=&#34;eigenvalues-rank-trace-and-determinant&#34;&gt;Eigenvalues: Rank, Trace and Determinant&lt;/h3&gt;
 &lt;p&gt;Since the characteristic equation of an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix involves a polynomial of degree &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, the equation always has exactly &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; roots, counting multiplicities, including complex roots. There are some relations between eigenvalues and matrix’s rank, trace and determinant: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -89,10 +89,9 @@ AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11}\ p_1, D_{22}\p_2, ..., D_{nn}\p_n]
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/</guid>
       <description>
 
-&lt;p&gt;Assume &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; real-valued symmetric matrix, then&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;its eigenvalues and thus eigenvectors are real-valued:&lt;/p&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has some imaginary eigenvalue &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; and the corresponding imaginary eigenvector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. We have &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Assume &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; real-valued symmetric matrix. We have its properties as following.&lt;/p&gt;
+&lt;h3 id=&#34;real-valued-eigenvalues-and-eigenvectors&#34;&gt;Real-valued Eigenvalues and Eigenvectors&lt;/h3&gt;
+&lt;p&gt;Its eigenvalues and thus eigenvectors are real-valued. Suppose by contradiction that &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; has some imaginary eigenvalue &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; and the corresponding imaginary eigenvector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. We have &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 Ax &amp;amp;= \lambda x \\
 A(x_{real} + x_{img}) &amp;amp;= (\lambda_{real} + \lambda_{img})(x_{real} + x_{img}) \\
@@ -118,9 +117,10 @@ Ax_{real} + Ax_{img} &amp;amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) 
 \bar x^TAx = \bar x^T \lambda x = \lambda \bar x^T x
 \]&lt;/span&gt; Right-multiply &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; on both side of &lt;span class=&#34;math inline&#34;&gt;\(\bar x^TA = \bar \lambda \bar x^T\)&lt;/span&gt; to give: &lt;span class=&#34;math display&#34;&gt;\[
 \bar x^TAx = \bar \lambda \bar x^T x
-\]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(\bar x^Tx\)&lt;/span&gt; is real-value, &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda = \lambda\)&lt;/span&gt;. In other words, &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is real-valued.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;its eigenvectors corresponding to different eigenvalues are orthogonal:&lt;/p&gt;
-&lt;p&gt;Arbitrarily taking &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’ s two eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2\)&lt;/span&gt; and their eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, \lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(\bar x^Tx\)&lt;/span&gt; is real-value, &lt;span class=&#34;math inline&#34;&gt;\(\bar \lambda = \lambda\)&lt;/span&gt;. In other words, &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is real-valued and thus so is &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;orthogonal-eigenvectors&#34;&gt;Orthogonal Eigenvectors&lt;/h3&gt;
+&lt;p&gt;Its eigenvectors corresponding to different eigenvalues are orthogonal. Arbitrarily taking &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’ s two eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2\)&lt;/span&gt; and their eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1, \lambda_2, \lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{align} 
 &amp;amp;\begin{aligned}
 (Av_1)^Tv_2 &amp;amp;= v_1^TA^Tv_2 \\
@@ -139,17 +139,25 @@ Ax_{real} + Ax_{img} &amp;amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) 
 (\lambda_1 - \lambda_2)v_1^Tv_2 &amp;amp;= 0
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Since &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have &lt;span class=&#34;math inline&#34;&gt;\(v_1^Tv_2 = 0\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(v_2\)&lt;/span&gt; are orthogonal.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;it has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors and thus &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization&#34;&gt;diagonalizable&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;In this case, suppose &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^{-1}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is not invertible, by &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Eigenvalues: Rank, Trace and Determinant&#34;&gt;the relation between the matrix rank and the eigenvalues&lt;/a&gt;, some of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;’s entries on the diagonal are zero. By adding &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Since &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ne \lambda_2\)&lt;/span&gt;, we have &lt;span class=&#34;math inline&#34;&gt;\(v_1^Tv_2 = 0\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(v_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(v_2\)&lt;/span&gt; are orthogonal.&lt;/p&gt;
+&lt;h3 id=&#34;diagonalizable&#34;&gt;Diagonalizable&lt;/h3&gt;
+&lt;p&gt;It has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; independent eigenvectors and thus &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization&#34;&gt;diagonalizable&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;easily-invertible&#34;&gt;“Easily Invertible”&lt;/h4&gt;
+&lt;p&gt;Further on the diagonalizable property, suppose &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^{-1}\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is not invertible, by &lt;a href=&#34;Eigenvectors%20and%20Eigenvalues.md#Eigenvalues:%20Rank,%20Trace%20and%20Determinant&#34;&gt;the relation between the matrix rank and the eigenvalues&lt;/a&gt;, some of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;’s entries on the diagonal are zero. By adding &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 &amp;amp;= P(\Lambda + \lambda I)P^{-1}
 \end{aligned}
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt; complements all the zero entries on the diagonal of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;. Thus &lt;span class=&#34;math inline&#34;&gt;\(A^\prime\)&lt;/span&gt; has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; non-zero eigenvalues and is invertible. &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; becomes invertible by adding &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;its diagonalization can be in the form of &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^T\)&lt;/span&gt; by properly selecting the eigenvectors, drawing from its orthogonal eigenvectors;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;it is positive semi-definite &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; its eigenvalues are non-negative.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt; complements all the zero entries on the diagonal of &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt;. Thus &lt;span class=&#34;math inline&#34;&gt;\(A^\prime\)&lt;/span&gt; has &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; non-zero eigenvalues and is invertible. A singular symmetric matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; becomes invertible by adding &lt;span class=&#34;math inline&#34;&gt;\(\lambda I\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;orthogonally-diagonalizable&#34;&gt;Orthogonally Diagonalizable&lt;/h4&gt;
+&lt;p&gt;Its diagonalization can be in the form of &lt;span class=&#34;math inline&#34;&gt;\(A = P\Lambda P^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(P^TP = I\)&lt;/span&gt;, by properly selecting the orthonormal eigenvectors.&lt;/p&gt;
+&lt;p&gt;Eigenvectors from different eigenspaces are already orthogonal. Eigenvectors from the same eigenspace are independent but not necessarily orthogonal. However, the linear combination of these homo-spatial independent eigenvectors is still an eigenvector. Thus we can apply the Gram-Schmidt process to these eigenvectors and obtain the orthogonal basis for this eigenspace.&lt;/p&gt;
+&lt;p&gt;Finally, we pull together all the orthogonal eigenvectors, normalize them to unit vector, and get the orthonormal matrix &lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In fact, an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is orthogonally diagonalizable if and only if &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is a symmetric matrix.&lt;/p&gt;
+&lt;h3 id=&#34;eigenvalues-and-positive-definiteness&#34;&gt;Eigenvalues and Positive Definiteness&lt;/h3&gt;
+&lt;p&gt;A real symmetric matrix is positive (semi-)definite if and only if its eigenvalues are (non-)negative.&lt;/p&gt;
+&lt;h3 id=&#34;covariance-matrix&#34;&gt;Covariance Matrix&lt;/h3&gt;
+&lt;p&gt;Covariance matrix is a special kind of real symmetric matrix. It is positive semi-definite and thus its eigenvalues are non-negative.&lt;/p&gt;
 &lt;h2 id=&#34;external-material&#34;&gt;External Material&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zybuluo.com/fsfzp888/note/1112344&#34;&gt;real-valued eigenvalues and orthogonal eigenvectors&lt;/a&gt;&lt;/p&gt;
 
@@ -165,35 +173,35 @@ A^\prime &amp;amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
       <description>
 
 &lt;h3 id=&#34;theorem&#34;&gt;Theorem&lt;/h3&gt;
-&lt;p&gt;Any &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; can be decomposed into &lt;span class=&#34;math inline&#34;&gt;\(U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Any &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; can be decomposed into &lt;span class=&#34;math inline&#34;&gt;\(U\Sigma V^T\)&lt;/span&gt;, where &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-\text{$U$ is $M \times M$, $\Sigma$ is diagonal, $V$ is $N \times N$} \\
+\text{$U$ is $m \times m$, $\Sigma$ is diagonal, $V$ is $n \times n$} \\
 UU^T = I \\
 VV^T = I \\
-\Sigma = diag_{M \times N}(\sigma_1, \sigma_2, ..., \sigma_p) \\
+\Sigma = diag_{m \times n}(\sigma_1, \sigma_2, ..., \sigma_p) \\
 \sigma_1 \ge \sigma_2 \ge ... \ge \sigma_p \ge 0 \\
-p = min(M, N)
+p = min(m, n)
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;proof&#34;&gt;Proof&lt;/h3&gt;
 &lt;p&gt;This is shown by construction.&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;p&gt;Constructing &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; real symmetric matrix, so it can be diagonalized by an orthogonal matrix. Let &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt; be this matrix: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; real symmetric matrix, so it can be diagonalized by an orthonormal matrix. Let &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt; be this matrix: &lt;span class=&#34;math display&#34;&gt;\[
 V^{-1}(A^TA)V = \Lambda \text{, where $\Lambda$ is the diagonal matrix consisting of $A^TA$&amp;#39;s eigenvalues}
 \]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt; consists of orthonormal basis, we have &lt;span class=&#34;math inline&#34;&gt;\(V^TV = I\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math display&#34;&gt;\[
 V^{T}(A^TA)V = \Lambda
-\]&lt;/span&gt; Note that &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s eigenvalues are non-negative. Let &lt;span class=&#34;math inline&#34;&gt;\((\lambda, x)\)&lt;/span&gt; be one pair of its eigen, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Note that &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s eigenvalues are non-negative. To show that, let &lt;span class=&#34;math inline&#34;&gt;\((\lambda, x)\)&lt;/span&gt; be one pair of its eigen, &lt;span class=&#34;math display&#34;&gt;\[
 ||Ax||^2 = (Ax)^TAx = x^T(A^TA)x = x^T\lambda x = \lambda||x||^2 \ge 0
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;’s columns be permuted such that their corresponding eigenvalues are ordered in &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ge \lambda_2 \ge ... \ge \lambda_N \ge 0\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\sigma_i = \sqrt{\lambda_i}, i = 1, 2, ..., N\)&lt;/span&gt; (which are defined as &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s the singular values).&lt;/p&gt;
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;’s columns be permuted such that their corresponding eigenvalues are ordered in &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ge \lambda_2 \ge ... \ge \lambda_n \ge 0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\sigma_i = \sqrt{\lambda_i}, i = 1, 2, ..., n\)&lt;/span&gt; (which are defined as &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s the singular values).&lt;/p&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\rank(A) = r\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\rank(A^TA) = r\)&lt;/span&gt;. And because &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is symmetric, &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; is the number of its positive eigenvalues: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-\lambda_1, \lambda_2, ..., \lambda_r \ge 0, \lambda_r, \lambda_{r+1}, ..., \lambda_{N} = 0 \\
-\sigma_1, \sigma_2, ..., \sigma_r \ge 0, \sigma_r, \sigma_{r+1}, ..., \sigma_{N} = 0
+\lambda_1, \lambda_2, ..., \lambda_r \ge 0, \lambda_r, \lambda_{r+1}, ..., \lambda_{n} = 0 \\
+\sigma_1, \sigma_2, ..., \sigma_r \ge 0, \sigma_r, \sigma_{r+1}, ..., \sigma_{n} = 0
 \end{gather}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(V_1 = [v_1, v_2, ..., v_r], V_2 = [v_{r+1}, v_{r+2}, ..., v_n], V = [V_1, V_2]\)&lt;/span&gt;. Let&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(V_1 = [v_1, v_2, ..., v_r], V_2 = [v_{r+1}, v_{r+2}, ..., v_n], V = [V_1, V_2]\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Also let &lt;span class=&#34;math display&#34;&gt;\[
 \Sigma_1 = 
 \begin{bmatrix}
 \sigma_1 \\
@@ -201,7 +209,7 @@ V^{T}(A^TA)V = \Lambda
 &amp;amp; &amp;amp; \ddots \\
 &amp;amp; &amp;amp; &amp;amp; \sigma_r
 \end{bmatrix}
-\]&lt;/span&gt; Complement it with &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to get the &lt;span class=&#34;math inline&#34;&gt;\(M \times N\)&lt;/span&gt; matrix: &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Complement it with &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to get the &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix: &lt;span class=&#34;math display&#34;&gt;\[
 \Sigma =
 \begin{bmatrix}
 \Sigma_1 &amp;amp; 0 \\
@@ -209,7 +217,7 @@ V^{T}(A^TA)V = \Lambda
 \end{bmatrix}
 \]&lt;/span&gt; Because &lt;span class=&#34;math inline&#34;&gt;\(V_2\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s eigenvectors whose eigenvalues are &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 A^TAV_2 = 0
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rank(A^TA) = r\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(V_2\)&lt;/span&gt; has &lt;span class=&#34;math inline&#34;&gt;\(N - r\)&lt;/span&gt; independent columns. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(V_2\)&lt;/span&gt; spans the &lt;span class=&#34;math inline&#34;&gt;\(N(A^TA) = N(A)\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rank(A^TA) = r\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(V_2\)&lt;/span&gt; has &lt;span class=&#34;math inline&#34;&gt;\(n - r\)&lt;/span&gt; independent columns. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(V_2\)&lt;/span&gt; spans the &lt;span class=&#34;math inline&#34;&gt;\(n(A^TA) = n(A)\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 I = VV^T = [V_1, V_2][V_1, V_2]^T = V_1V_1^T + V_2V_2^T \\
 A = AI = AV_1V_1^T + AV_2V_2^T = AV_1V_1^T
@@ -235,9 +243,9 @@ u_i^Tu_j &amp;amp;= (\frac{1}{\sigma_i}Av_i)^T(\frac{1}{\sigma_j}Av_j) \\
 \end{cases}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Since &lt;span class=&#34;math inline&#34;&gt;\(u_i, i = 1, 2, ..., r\)&lt;/span&gt; is from &lt;span class=&#34;math inline&#34;&gt;\(Col(A)\)&lt;/span&gt; and they are orthogonal as shown, and &lt;span class=&#34;math inline&#34;&gt;\(\rank(A) = r\)&lt;/span&gt;, they form the &lt;span class=&#34;math inline&#34;&gt;\(Col(A)\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(Col(A)^\perp\)&lt;/span&gt; be &lt;span class=&#34;math inline&#34;&gt;\(Col(A)\)&lt;/span&gt;’s complement. we have &lt;span class=&#34;math inline&#34;&gt;\(Col(A)^\perp = N(A^T)\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\{u_{r+1}, u_{r+2}, ..., u_{M}\}\)&lt;/span&gt; be an orthonormal basis of &lt;span class=&#34;math inline&#34;&gt;\(N(A^T)\)&lt;/span&gt;. They will be orthogonal to &lt;span class=&#34;math inline&#34;&gt;\(U_1\)&lt;/span&gt;’s column vectors.&lt;/p&gt;
+&lt;p&gt;Since &lt;span class=&#34;math inline&#34;&gt;\(u_i, i = 1, 2, ..., r\)&lt;/span&gt; is from &lt;span class=&#34;math inline&#34;&gt;\(Col(A)\)&lt;/span&gt; and they are orthogonal as shown, and &lt;span class=&#34;math inline&#34;&gt;\(\rank(A) = r\)&lt;/span&gt;, they form the &lt;span class=&#34;math inline&#34;&gt;\(Col(A)\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(Col(A)^\perp\)&lt;/span&gt; be &lt;span class=&#34;math inline&#34;&gt;\(Col(A)\)&lt;/span&gt;’s complement. we have &lt;span class=&#34;math inline&#34;&gt;\(Col(A)^\perp = n(A^T)\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\{u_{r+1}, u_{r+2}, ..., u_{m}\}\)&lt;/span&gt; be an orthonormal basis of &lt;span class=&#34;math inline&#34;&gt;\(n(A^T)\)&lt;/span&gt;. They will be orthogonal to &lt;span class=&#34;math inline&#34;&gt;\(U_1\)&lt;/span&gt;’s column vectors.&lt;/p&gt;
 &lt;p&gt;Let &lt;span class=&#34;math display&#34;&gt;\[
-U_2 = [u_{r+1}, u_{r+2}, ..., u_{M}] \\
+U_2 = [u_{r+1}, u_{r+2}, ..., u_{m}] \\
 U = [U_1, U_2]
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Prove that &lt;span class=&#34;math inline&#34;&gt;\(U\Sigma V^T = A\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
@@ -275,11 +283,11 @@ A A^T u_i &amp;amp;= A A^T \frac{1}{\sigma_i} A v_i \\
 &amp;amp;= \lambda_i(\frac{1}{\sigma_i} A v_i) \\
 &amp;amp;= \lambda_i u_i
 \end{aligned}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(U_1\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;’s stacked eigenvectors, ordered by corresponding eigenvalues. &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(U_1\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;’s concatenated eigenvectors, ordered by corresponding eigenvalues. &lt;span class=&#34;math display&#34;&gt;\[
 AA^TU_2 = 0 = 0U_2
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is the corresponding eigenvectors with eigenvalues being &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the stacked orthonormal eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;. It doesn’t matter how &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is permuted.&lt;/p&gt;
-&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
+&lt;p&gt;In all, &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the concatenated orthonormal eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(AA^T\)&lt;/span&gt;. It doesn’t matter how &lt;span class=&#34;math inline&#34;&gt;\(U_2\)&lt;/span&gt; is permuted.&lt;/p&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External materials&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/pinard/p/6251584.html&#34;&gt;奇异值分解(SVD)原理与在降维中的应用&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/22237507&#34;&gt;奇异值的物理意义是什么？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Singular%20Value%20Decomposition.pdf&#34; target=&#34;_blank&#34;&gt;Singular Value Decomposition.pdf&lt;/a&gt;&lt;/p&gt;
@@ -317,6 +325,92 @@ AA^TU_2 = 0 = 0U_2
 \iff A &amp;amp;= A
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Difference Equation</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/difference-equation/</link>
+      <pubDate>Sat, 25 Dec 2021 20:08:33 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/difference-equation/</guid>
+      <description>
+
+&lt;h2 id=&#34;difference-equation&#34;&gt;Difference Equation&lt;/h2&gt;
+&lt;p&gt;To solve difference equation like &lt;span class=&#34;math inline&#34;&gt;\(x_t = a_{t-1} x_{t-1} + a_{t-2} x_{t-2} + \dots + a_0\)&lt;/span&gt;, we first rewrite it into the matrix form:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\left[ \begin{array} \\
+x_t \\
+x_{t-1} \\
+\vdots \\
+x_2 \\
+x_1
+\end{array} \right] =
+\underbrace{
+\left[
+\begin{array} \\
+a_{t-1} &amp;amp; a_{t-2} &amp;amp; \cdots &amp;amp; a_1 &amp;amp; a_0 \\
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \vdots \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0
+\end{array}
+\right]
+}_{A}
+\left[ \begin{array} \\
+x_{t-1} \\
+x_{t-2} \\
+\vdots \\
+x_1 \\
+x_0
+\end{array} \right]
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;To solve it, we try to find the eigenvalues and eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+A - \lambda I = \left[
+\begin{array} \\
+a_{t-1} - \lambda &amp;amp; a_{t-2} &amp;amp; \cdots &amp;amp; a_1 &amp;amp; a_0 \\
+1 &amp;amp; -\lambda &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; \vdots  &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; -\lambda &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; -\lambda
+\end{array}
+\right]
+\]&lt;/span&gt; Apply Laplacian expansion along the first column to get its determinant as &lt;span class=&#34;math display&#34;&gt;\[
+\det (A - \lambda I) = (a_{t-1} -\lambda) (-\lambda)^{t-1} - \det B_{t-1}
+\]&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+B_{t-1} = 
+\underbrace{
+\begin{bmatrix}
+a_{t-2} &amp;amp; a_{t-3} &amp;amp; \cdots &amp;amp; a_1 &amp;amp; a_0 \\
+1 &amp;amp; -\lambda &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; \vdots &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; -\lambda &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; -\lambda
+\end{bmatrix}
+}_\text{$t-1$ columns}
+\]&lt;/span&gt; Apply Laplacian expansion along the first column of &lt;span class=&#34;math inline&#34;&gt;\(B_{n-1}\)&lt;/span&gt; to give the following recurrence relation: &lt;span class=&#34;math display&#34;&gt;\[
+\left.
+\begin{array} \\
+\det B_{t-1} = a_{t-2} (-\lambda)^{t-2} - \det B_{t-2} \\
+\det B_1 = a_0
+\end{array}
+\right\} \Rightarrow
+\det B_{t-1} = (-1)^t (a_{t-2} \lambda^{t-2} + a_{t-3} \lambda^{t-3} + \dots + a_0)
+\]&lt;/span&gt; In all, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\det (A - \lambda I) &amp;amp;= (a_{t-1} - \lambda)(-\lambda)^{t-1} - (-1)^t (a_{t-2} \lambda^{t-2} + a_{t-3} \lambda^{t-3} + \dots + a_0) \\
+&amp;amp;= (-1)^t (\lambda^t - a_{t-1} \lambda^{t-1} - a_{t-2} \lambda^{t-2} - \dots - a_0)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;After solving the eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 \ge \dots \ge \lambda_t\)&lt;/span&gt; and corresponding eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(\newcommand{\v}{\mathrm{v}} \v_1, \dots, \v_t\)&lt;/span&gt; from above equation, we can rewrite the vector formed by the initial &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; terms as the linear combination of &lt;span class=&#34;math inline&#34;&gt;\(\v_1, \dots, \v_t\)&lt;/span&gt;, say &lt;span class=&#34;math display&#34;&gt;\[
+\x_0 = \left[ 
+x_{t-1}, \cdots, x_0
+\right]^T
+= c_1 \v_1 + \dots c_t \v_t
+\]&lt;/span&gt; Then for every &lt;span class=&#34;math inline&#34;&gt;\(n \ge t\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+x_n = \left[ A^{n-t+1} \x_0 \right]_0 = \left[ \lambda_1^{n-t+1} c_1 \v_1 + \dots + \lambda_t^{n-t+1} c_t \v_t\right]_0
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(x_n\)&lt;/span&gt; will be asymptotic to &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1^{n}\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(n \to \infty\)&lt;/span&gt; if &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1\)&lt;/span&gt; is strictly larger than other eigenvalues.&lt;/p&gt;
 
 
 </description>

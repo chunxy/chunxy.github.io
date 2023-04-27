@@ -127,7 +127,7 @@ P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1
 &amp;amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
 &amp;amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
 \end{aligned}
-\]&lt;/span&gt; The loss function &lt;span class=&#34;math inline&#34;&gt;\(\eqref{loss}\)&lt;/span&gt; is in fact the expectation (the outer &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of categorical cross entropy (the inner &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of correctly identifying the sample as positive. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The loss function &lt;span class=&#34;math inline&#34;&gt;\(\eqref{loss}\)&lt;/span&gt; is in fact the expectation (the outer &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of the categorical cross entropy (the inner &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of identifying the sample as positive or negative. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
 f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
@@ -135,9 +135,9 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;bounding-the-mutual-information&#34;&gt;Bounding the Mutual Information&lt;/h2&gt;
-&lt;p&gt;CPC helps estimate the lower bound of the mutual information when optimizing the InfoNCE loss. &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;CPC helps estimate the lower bound of the mutual information between the encoded representation and the original data when optimizing the InfoNCE loss: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\mathcal L_N^{\text{opt}} &amp;amp;= -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} {\sum_{\x&amp;#39; \in X} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} \\
+&amp;amp;\mathcal L_N^{\text{opt}} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} {\sum_{\x&amp;#39; \in X} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} \\
 &amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)} + \sum_{\x&amp;#39; \in X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} {\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} \\
 &amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} \sum_{\x&amp;#39; \in X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)} \big) \\
 &amp;amp;\approx \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \E_{\tilde p_X(\x&amp;#39;)} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)} \big) \\
@@ -162,7 +162,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
       <description>
 
 &lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;The very basic bound on the Mutual Information is based on the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/differentiation/#KL-divergence Entropy and Conditional Entropy&#34;&gt;non-negativity&lt;/a&gt; of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The very basic bound on the Mutual Information is based on the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/overview/#KL-divergence Entropy and Conditional Entropy&#34;&gt;non-negativity&lt;/a&gt; of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) = &amp;amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
 = &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)p(x|y)}{p(x)q(x|y)} \\

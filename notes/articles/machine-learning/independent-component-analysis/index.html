@@ -678,11 +678,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+  <li class=""><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -739,7 +743,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/dimensionality-reduction/">Dimension Reduction</a></li>
 
 
 
@@ -861,6 +865,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
   
     
     
@@ -929,6 +937,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
       
         </ul>
       
@@ -949,30 +961,30 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Statistics</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/probability-and-statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Probability and Statistics</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/">Unconscious Statistics</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1123,6 +1135,10 @@
       
 
 
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
   <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
 
@@ -1201,35 +1217,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
-
-      
-        </ul>
-      
-    
-
-    
-      </div>
-    
-
-
-
-  
-    
-    
-    
-    
-    
-
-    
-      <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">高等数学</a>
-    
-      
-        <ul class="nav docs-sidenav">
-      
-
-
-  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
 
       
         </ul>
@@ -1423,7 +1410,7 @@ C &amp;= \frac{1}{M}x^{(i)}(x^{(i)})^T \\
 &amp;= U\Sigma^2U^T \text{ (by property of SVD, note that $\Sigma$ is $n \times n$ diagonal)} \\
 \end{aligned}
 \]</span></p>
-<p>If our assumptions are correct, then the <span class="math inline">\(U\)</span> is the stacked eigenvectors of the matrix <span class="math inline">\(CC^T\)</span>. <span class="math inline">\(\Sigma^2\)</span> is the diagonal matrix consisting of corresponding eigenvalues of the matrix <span class="math inline">\(C^TC\)</span>. Since <span class="math inline">\(C\)</span> is symmetric, <span class="math inline">\(CC^T = C^TC = C^2\)</span>.</p>
+<p>If our assumptions are correct, then the <span class="math inline">\(U\)</span> is the concatenated eigenvectors of the matrix <span class="math inline">\(CC^T\)</span>. <span class="math inline">\(\Sigma^2\)</span> is the diagonal matrix consisting of corresponding eigenvalues of the matrix <span class="math inline">\(C^TC\)</span>. Since <span class="math inline">\(C\)</span> is symmetric, <span class="math inline">\(CC^T = C^TC = C^2\)</span>.</p>
 <p>In other words, <span class="math inline">\(U\)</span> and <span class="math inline">\(\Sigma\)</span> can be solved by eigen decomposition. Define <span class="math inline">\(\hat x^{(i)} = \Sigma^{-1}U^Tx^{(i)}\)</span>: <span class="math display">\[
 \begin{aligned}
 \hat C &amp;= \frac{1}{M}\hat x^{(i)}(\hat x^{(i)})^T \\
@@ -1458,7 +1445,7 @@ V^\star &amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 \]</span> Calculating entropy and then taking derivative is no easy task and therefore ICA algorithms focus on approximations or equivalences to the above equation. For example, it can be approximated by finding the rotation that maximizes the expected log-likelihood of the observed data by assuming that the source distributions are known.</p>
 <h3 id="non-gaussian-and-pca">Non-Gaussian and <a href="/notes/articles/machine-learning/principal-component-analysis/">PCA</a></h3>
 <p>The key assumption of ICA is that signals are non-Gaussian. We are trying to recover the <span class="math inline">\(S\)</span> (by finding <span class="math inline">\(W\)</span>) to be as non-Gaussian as possible. <span class="math inline">\(\hat X\)</span> consists of independent components because its covariance matrix <span class="math inline">\(\hat C\)</span> is shown to be an identity matrix (and thus diagonal). <span class="math inline">\(S\)</span> is reconstructed by the linear combination of independent components. Thus it will be the most non-Gaussian when each variable is formed by exactly one component of <span class="math inline">\(\hat X\)</span> by Central Limit Theorem, i.e. <span class="math inline">\(S\)</span>’s components are independent.</p>
-<p>Consider the case when <span class="math inline">\(S\)</span> consists of <span class="math inline">\(N\)</span> independent Gaussian, which invalidate the above analysis. If we forcibly calculate <span class="math inline">\(V^\star\)</span>, due to the property of multi-variate Gaussian that its iso-density maps are spherical, then any <span class="math inline">\(N \times N\)</span> rotation matrix will be a solution to Equation (9), including the left singular matrix of <span class="math inline">\(X\)</span>, i.e. the stacked eigenvectors of <span class="math inline">\(XX^T\)</span>, which is exactly the projection basis obtained in PCA. If any <span class="math inline">\(N \times N\)</span> rotation matrix can be a solution, there are infinite many solutions to <span class="math inline">\(A\)</span>, and thus ICA will just fail.</p>
+<p>Consider the case when <span class="math inline">\(S\)</span> consists of <span class="math inline">\(N\)</span> independent Gaussian, which invalidate the above analysis. If we forcibly calculate <span class="math inline">\(V^\star\)</span>, due to the property of multi-variate Gaussian that its iso-density maps are spherical, then any <span class="math inline">\(N \times N\)</span> rotation matrix will be a solution to Equation (9), including the left singular matrix of <span class="math inline">\(X\)</span>, i.e. the concatenated eigenvectors of <span class="math inline">\(XX^T\)</span>, which is exactly the projection basis obtained in PCA. If any <span class="math inline">\(N \times N\)</span> rotation matrix can be a solution, there are infinite many solutions to <span class="math inline">\(A\)</span>, and thus ICA will just fail.</p>
 <p>The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to <span class="math inline">\(V^\star\)</span>.</p>
 <h2 id="external-materials">External Materials</h2>
 <p><a href="http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html">ICA</a></p>
@@ -1552,7 +1539,7 @@ V^\star &amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 

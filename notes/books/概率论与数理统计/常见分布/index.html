@@ -678,11 +678,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+  <li class=""><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -739,7 +743,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/dimensionality-reduction/">Dimension Reduction</a></li>
 
 
 
@@ -861,6 +865,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
   
     
     
@@ -929,6 +937,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
       
         </ul>
       
@@ -949,30 +961,30 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Statistics</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/probability-and-statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Probability and Statistics</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/">Unconscious Statistics</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1123,6 +1135,10 @@
       
 
 
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
   <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
 
@@ -1201,35 +1217,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
-
-      
-        </ul>
-      
-    
-
-    
-      </div>
-    
-
-
-
-  
-    
-    
-    
-    
-    
-
-    
-      <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">高等数学</a>
-    
-      
-        <ul class="nav docs-sidenav">
-      
-
-
-  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
 
       
         </ul>
@@ -1425,8 +1412,13 @@ B(x;n,p) = {n \choose x} p^x (1-p)^{n-x}, x = 0,1,\dots \\
 \]</span></p>
 <p>二项分布可以帮助纠正一个生活中很常见的谬误，比如说身高高于两米的人占人类总体的<span class="math inline">\(1\%\)</span>，那么是否说明随机选取的100个人中一定至少有1个人高于两米呢？记<span class="math inline">\(X\)</span>为100个人中身高高于两米的人数，显然<span class="math inline">\(X \sim B(100, 0.01)\)</span>，经计算可得<span class="math inline">\(P(X=0) \approx 0.366\)</span>。其实也就意味着，100个人中，能至少看到1个身高高于两米的人的概率其实大约是<span class="math inline">\(1-0.366 = 63.4\%\)</span>。</p>
 <h3 id="泊松分布poisson-distribution">泊松分布（Poisson distribution）</h3>
-<p>泊松分布可以看作是某种形式的二项分布取极限而得到： <span class="math display">\[
-P(X = i; \lambda) = \lim_{n \to \infty} = {n \choose i} (\frac{\lambda}{n})^i (1 - \frac{\lambda}{n})^{n-i}
+<p>泊松分布产生于<span class="math inline">\(X\)</span>用来表示在一定时间或空间内出现的事件个数的场景中。泊松分布有一些基本假设，设观察的这一单位时间或空间为<span class="math inline">\([0, 1)\)</span>，取一个很大的自然数<span class="math inline">\(n\)</span>，将<span class="math inline">\([0,1)\)</span>平分为<span class="math inline">\(n\)</span>段窗口：<span class="math inline">\(l_1 = [0, \frac{1}{n}), l_2 = [\frac{1}{n}, \frac{2}{n}), \dots, l_n = [\frac{n-1}{n}, 1)\)</span>，则：</p>
+<ol type="1">
+<li>在每段<span class="math inline">\(l_i\)</span>内，恰发生一个事件的概率正比于这段的长度<span class="math inline">\(\frac{1}{n}\)</span>，即可取为<span class="math inline">\(\frac{\lambda}{n}\)</span>；又假定<span class="math inline">\(n\)</span>很大故<span class="math inline">\(\frac{1}{n}\)</span>很小时，不可能发生两次以上事件；</li>
+<li><span class="math inline">\(l_1, l_2, \dots, l_n\)</span>中是否发生时间是相互独立的；</li>
+</ol>
+<p>这样的基本假设下，单位窗口内发生事件的总数记为随机变量<span class="math inline">\(X\)</span>。此时<span class="math inline">\(X\)</span>应当服从二项分布，而当<span class="math inline">\(n \to \infty\)</span>时，<span class="math inline">\(X\)</span>则服从泊松分布，故泊松分布也可以看作是某种形式的二项分布取极限而得到： <span class="math display">\[
+P(X = i; \lambda) = \lim_{n \to \infty} {n \choose i} (\frac{\lambda}{n})^i (1 - \frac{\lambda}{n})^{n-i}
 \]</span> 将<span class="math inline">\(\lim_{n \to \infty} {n \choose i} / n^i = 1 / i!\)</span>、<span class="math inline">\(\lim_{n \to \infty} (1 - \frac{\lambda}{n})^{n-i} = e^{-\lambda}\)</span>代入即可得到泊松分布的分布律。</p>
 <p>一般如果<span class="math inline">\(X \sim B(n,p)\)</span>且<span class="math inline">\(n\)</span>较大、<span class="math inline">\(p\)</span>较小、<span class="math inline">\(np = \lambda\)</span>不太大时，<span class="math inline">\(X\)</span>的分布接近于泊松分布<span class="math inline">\(P(\lambda)\)</span>。 <span class="math display">\[
 \begin{gathered}
@@ -1457,7 +1449,18 @@ P(\vec n; \vec p, 1) = \prod_{i=1}^k p_i ^{n_i} \\
 \]</span></p>
 <h2 id="连续型">连续型</h2>
 <h3 id="指数分布exponential-distribution">指数分布（exponential distribution）</h3>
-<p><span class="math display">\[
+<p>指数分布最常见的一个场景是寿命估计。设想一中大批生产的电器元件，其寿命<span class="math inline">\(X\)</span>是随机变量，在“无老化”的假定下——即“若元件在时刻<span class="math inline">\(x\)</span>尚正常工作，则其失效率总为某个与<span class="math inline">\(x\)</span>无关的常数<span class="math inline">\(\lambda &gt; 0\)</span>”，<span class="math inline">\(X\)</span>服从参数为<span class="math inline">\(\lambda\)</span>的指数分布。</p>
+<p>上述假设用概率语言描述则是 <span class="math display">\[
+\lim_{h \to 0} P(x \le X \le x+h | X &gt; x) / h = \lambda
+\]</span> 注意到 <span class="math display">\[
+P(x \le X \le x+h | X &gt; x) = \frac{P(\{ x \le X \le x+h \} \cap \{ X &gt; x \})}{P(X &gt; x)} = \frac{P(x &lt; X \le x+h)}{P(X &gt; x)}
+\]</span> 所以 <span class="math display">\[
+\begin{aligned}
+\lim_{h \to 0} \frac{P(x &lt; X \le x+h)}{h P(x &lt; X))} &amp;= \lambda \\
+\lim_{h \to 0} \frac{F(x + h) - F(x)}{h(1 - F(x))} &amp;= \lambda \\
+\frac{F&#39;(x)}{(1 - F(x))} &amp;= \lambda
+\end{aligned}
+\]</span> 上述微分方程的通解为<span class="math inline">\(F(x) = 1 - Ce^{-\lambda x}\)</span>，而<span class="math inline">\(F(0) = 0\)</span>，故<span class="math inline">\(C = 1\)</span>。 <span class="math display">\[
 \begin{gathered}
 p(x;\lambda) = \begin{cases}
 \lambda e^{-\lambda x}, &amp; x &gt; 0 \\
@@ -1472,8 +1475,8 @@ p(x;\lambda) = \begin{cases}
 p(x; \mu, \sigma) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x - \mu)^2}{2 \sigma^2}}
 \]</span> 二维情况下： <span class="math display">\[
 p \Big( (x,y); \mu_X, \mu_Y, \sigma_X, \sigma_Y, \rho_{XY} \Big) = \frac{1}{2\pi \sqrt{(\sigma_X^2 \sigma_Y^2 - \rho_{XY}^2)}} e^{-\frac 1 {2(1 - \rho_{XY}^2)} \left(\frac{(x-\mu_X)^2} {\sigma_X^2} - \frac{2\rho_{XY}(x - \mu_X)(y - \mu_Y)} {\sigma_X \sigma_Y} + \frac{(y-\mu_Y)^2} {\sigma_Y^2} \right)}
-\]</span> 高维情况下： <span class="math display">\[
-p(\x; \mu, \Sigma) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_X|}} e^{-\frac{1}{2} (\x-\mu)^T \Sigma_X^{-1} (\x-\mu)}
+\]</span> <span class="math inline">\(n\)</span>维情况下： <span class="math display">\[
+p(\x; \mu, \Sigma) = \frac{1}{\sqrt{|(2\pi) \Sigma|}} e^{-\frac{1}{2} (\x-\mu)^T \Sigma^{-1} (\x-\mu)}
 \]</span></p>
 
 
@@ -1565,7 +1568,7 @@ p(\x; \mu, \Sigma) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_X|}} e^{-\frac{1}{2} (\x-\mu
 
   
   <p class="powered-by copyright-license-text">
-    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 

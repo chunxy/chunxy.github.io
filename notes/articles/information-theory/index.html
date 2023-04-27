@@ -677,11 +677,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+  <li class=""><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -738,7 +742,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/dimensionality-reduction/">Dimension Reduction</a></li>
 
 
 
@@ -860,6 +864,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
   
     
     
@@ -928,6 +936,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
       
         </ul>
       
@@ -948,30 +960,30 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Statistics</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/probability-and-statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Probability and Statistics</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/">Unconscious Statistics</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1122,6 +1134,10 @@
       
 
 
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
   <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
 
@@ -1200,35 +1216,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
-
-      
-        </ul>
-      
-    
-
-    
-      </div>
-    
-
-
-
-  
-    
-    
-    
-    
-    
-
-    
-      <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">高等数学</a>
-    
-      
-        <ul class="nav docs-sidenav">
-      
-
-
-  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
 
       
         </ul>
@@ -1388,40 +1375,45 @@
     
       <li>
         <h5><a href="/notes/articles/information-theory/entropy/">Entropy</a></h5>
-        <p>The Entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The Entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x \] This is actually the differential entropy introduced by Shannon.</p>
+        <p>The entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x \] This is actually the differential entropy introduced by Shannon.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></h5>
-        <p>The Conditional Entropy measures the the amount of information needed to describe the outcome of a random variable \(Y\) given that the value of another random variable \(X\) is known.</p>
+        <p>The conditional entropy measures the the amount of information needed to describe the outcome of a random variable \(Y\) given that the value of another random variable \(X\) is known.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></h5>
-        <p>The Cross Entropy between two distributions over the same underlying set of events measures the average number of bits to identify the event drawn from the set if a coding scheme is used for the set is optimized for probability distribution \(q\), instead of the true distribution \(p\).</p>
+        <p>The cross entropy between two distributions over the same underlying set of events measures the average number of bits to identify the event drawn from the set if a coding scheme is used for the set is optimized for probability distribution \(q\), instead of the true distribution \(p\).</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></h5>
-        <p>Mutual Information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable.</p>
+        <p>Mutual information of two random variables \(X\) and \(Y\) is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable.</p>
       </li>
     
       <li>
         <h5><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></h5>
-        <p>KL-divergence, \(D_{KL}(p\|q)\) is statistical distance, measuring how the probability distribution \(q\) is different from the reference probability distribution \(p\), both defined on \(X \in \mathcal{X}\).
+        <p>KL-divergence KL-divergence, denoted as \(D_{KL}(p\|q)\), is statistical distance, measuring how the probability distribution \(q\) is different from the reference probability distribution \(p\), both defined on \(X \in \mathcal{X}\).
 In information theory, it measures the relative entropy from \(q\) to \(p\), which is the average number of extra bits required to represent a message with \(q\) instead of \(p\).</p>
       </li>
     
       <li>
-        <h5><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></h5>
+        <h5><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></h5>
         <p>\(f\)-divergence can be treated as the generalization of the KL-divergence. It is defined as \[ D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \] where \(f\) has to satisfy that \(f(1) = 0\) and \(f\) is a convex function.</p>
       </li>
     
       <li>
-        <h5><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></h5>
+        <h5><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></h5>
+        <p>Jenson-Shannon Divergence In probability theory and statistics, Jenson-Shannon divergence is another method of measuring the distance between two distributions. It is based on KL-divergence with some notable differences. KL-divergence does not make a good measure of distance between distributions, since in the first place it is not symmetric.</p>
+      </li>
+    
+      <li>
+        <h5><a href="/notes/articles/information-theory/overview/">Overview</a></h5>
         <p>Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
 Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Both Conditional Entropy and Cross Entropy would better be applied on discrete random variables.</p>
+Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case.</p>
       </li>
     
   </ul>
@@ -1502,7 +1494,7 @@ Both Conditional Entropy and Cross Entropy would better be applied on discrete r
 
   
   <p class="powered-by copyright-license-text">
-    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 

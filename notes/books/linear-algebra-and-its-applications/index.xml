@@ -13,6 +13,35 @@
     </image>
     
     <item>
+      <title>Gram-Schmidt Orthogonalization</title>
+      <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/</link>
+      <pubDate>Fri, 07 Jan 2022 12:53:45 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/</guid>
+      <description>
+
+&lt;h2 id=&#34;gram-schmidt-orthogonalization&#34;&gt;Gram-Schmidt Orthogonalization&lt;/h2&gt;
+&lt;p&gt;The Gram-Schmidt process is a simple algorithm for producing orthogonal basis for any nonzero subspace of &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Given a basis &lt;span class=&#34;math inline&#34;&gt;\(\{ \x_1, \dots, \x_p \}\)&lt;/span&gt; for a nonzero subspace &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; of &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;, define&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned} \newcommand{\v}{\mathrm{v}}
+\v_1 &amp;amp;= \x_1 \\
+\v_2 &amp;amp;= \x_2 - \frac{\x_2 \cdot \v_1}{\v_1 \cdot \v_1} \v_1 \\
+\v_3 &amp;amp;= \x_3 - \frac{\x_3 \cdot \v_1}{\v_1 \cdot \v_1} \v_1 - \frac{\x_3 \cdot \v_2}{\v_2 \cdot \v_2} \v_2 \\
+&amp;amp;\vdots \\
+\v_p &amp;amp;= \x_p - \frac{\x_p \cdot \v_1}{\v_1 \cdot \v_1} \v_1 - \frac{\x_p \cdot \v_{p-1}}{\v_{p-1} \cdot \v_{p-1}} \v_{p-1}
+\end{aligned}
+\]&lt;/span&gt; Then &lt;span class=&#34;math inline&#34;&gt;\(\{ \v_1, \dots, \v_p \}\)&lt;/span&gt; is an orthogonal basis for &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;. In addition, &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\span}[1]{\mathrm{Span}\{#1\}}
+\span{\v_1, \dots,\v_k} = \span{\x_1, \dots, \x_k} \text{\quad for $1 \le k \le p$}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;qr-factorization&#34;&gt;QR Factorization&lt;/h3&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is an &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix with linearly independent columns, then &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; can be factored as &lt;span class=&#34;math inline&#34;&gt;\(A = QR\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt; is an &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix whose columns form an orthonormal basis for &lt;span class=&#34;math inline&#34;&gt;\(\mathop{\mathrm{Col}}A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(R\)&lt;/span&gt; is an &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; upper triangular invertible matrix with positive entries on its diagonal.&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Least Squares</title>
       <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/least-squares/</link>
       <pubDate>Fri, 07 Jan 2022 12:53:45 +0000</pubDate>
@@ -24,16 +53,16 @@
 \begin{gather}
 (b - \hat b) \perp Col(A) \iff (b - \hat b) \in Nul(A^T)\iff A^T(b - \hat b) = 0 \\
 A^T(b - Ax) = 0 \\
-A^TAx = A^Tb
+A^TAx = A^Tb \label{solution}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;We will show that if columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent, then the least-square solution &lt;span class=&#34;math inline&#34;&gt;\(\hat x\)&lt;/span&gt; is uniquely given by &lt;span class=&#34;math inline&#34;&gt;\((A^TA)^{-1}A^Tb\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Firstly, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = Nul(A^TA)\)&lt;/span&gt;. This is because &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-Ax = 0 \iff A^TAx = A^T0 = 0 \\
-A^TAx = 0 \iff x^TA^TAx = 0 \iff (Ax)^TAx = 0 \iff Ax = 0
+Ax = 0 \Rightarrow A^TAx = A^T0 = 0 \\
+A^TAx = 0 \iff x^TA^TAx = 0 \iff (Ax)^TAx = 0 \Rightarrow Ax = 0
 \end{gather}
-\]&lt;/span&gt; When columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = 0\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Nul(A^TA) = 0\)&lt;/span&gt;, which indicates that equation (1) has the unique solution. Conversely, when &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A^TA) = 0\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = 0\)&lt;/span&gt;, which indicates that columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent.&lt;/p&gt;
+\]&lt;/span&gt; When columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = 0\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Nul(A^TA) = 0\)&lt;/span&gt;, which indicates that equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{solution}\)&lt;/span&gt; has the unique solution. Conversely, as an aside, when &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is invertible, &lt;span class=&#34;math inline&#34;&gt;\(Nul(A^TA) = 0\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(Nul(A) = 0\)&lt;/span&gt;, which indicates that columns of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; are independent.&lt;/p&gt;
 
 
 </description>
@@ -49,7 +78,7 @@ A^TAx = 0 \iff x^TA^TAx = 0 \iff (Ax)^TAx = 0 \iff Ax = 0
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\{u_1, u_2, ..., u_k\}\)&lt;/span&gt; be an orthogonal basis for a subspace &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; of &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;. Then for each &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;, the weights in the linear combination &lt;span class=&#34;math display&#34;&gt;\[
 y = c_1u_1 + c_2u_2 + ... + c_ku_k
 \]&lt;/span&gt; are given by &lt;span class=&#34;math display&#34;&gt;\[
-c_1 = \frac{y_1 \cdot u_1}{u_1 \cdot u_1}
+c_i = \frac{y \cdot u_i}{u_i \cdot u_i}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Given a nonzero vector &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt; and another vector &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;, we wish to decompose &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
 y = \hat y + z
@@ -73,13 +102,13 @@ y = \hat y + z
 y - v = (y - \hat y) + (\hat y - v)
 \]&lt;/span&gt; which gives &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-||y - v||^2 &amp;amp;= ||(y - \hat y) + (\hat y - v)|| \\
+&amp;amp;||y - v||^2 = ||(y - \hat y) + (\hat y - v)|| \\
 &amp;amp;= ||(y - \hat y)||^2 + ||(\hat y - v)||^2 + 2(y - \hat y) \cdot (\hat y - v) \\
 &amp;amp;= ||(y - \hat y)||^2 + ||(\hat y - v)||^2 \text{($y - \hat y$ is in $W^\perp$, $\hat y - v$ is in $W$)} \\
 &amp;amp;&amp;gt; ||(y - \hat y)||^2
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;A &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; has orthonormal columns if and only if &lt;span class=&#34;math inline&#34;&gt;\(U^TU = I\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;An &lt;span class=&#34;math inline&#34;&gt;\(m \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; has orthonormal columns if and only if &lt;span class=&#34;math inline&#34;&gt;\(U^TU = I\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;An orthogonal matrix is a square invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(U^{-1} = U^T\)&lt;/span&gt;. By its definition, it has orthonormal columns and orthonormal rows.&lt;/p&gt;
 
 
@@ -97,25 +126,25 @@ x = q_1b_1 + q_2b_2 + ... + q_nb_n
 \]&lt;/span&gt; These scalars are called the coordinates of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; relative to the basis &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 [x]_\mathcal{B} = 
 \begin{bmatrix}
-q_1 \\
-\vdots \\
+q_1 
+\cdots 
 q_n
-\end{bmatrix}
+\end{bmatrix}^T
 \]&lt;/span&gt; is the coordinate vectors of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; relative to &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;. The mapping &lt;span class=&#34;math inline&#34;&gt;\(x \mapsto [x]_\mathcal{B}\)&lt;/span&gt; is called the coordinate mapping determined by &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(P_\mathcal{B} = [b_1, b_2, ..., b_n]\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(x = P_\mathcal{B}[x]_\mathcal{B}\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{C}\)&lt;/span&gt; both be an basis for an n-dimensional vector space &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;. Then there is a unique &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{C \leftarrow B}\)&lt;/span&gt; such that: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{C}\)&lt;/span&gt; both be a basis for an n-dimensional vector space &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt;. Then there is a unique &lt;span class=&#34;math inline&#34;&gt;\(n \times n\)&lt;/span&gt; matrix &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{C \leftarrow B}\)&lt;/span&gt; such that: &lt;span class=&#34;math display&#34;&gt;\[
 [x]_\mathcal{C} = \mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B}
 \]&lt;/span&gt; The columns of &lt;span class=&#34;math inline&#34;&gt;\(\mathop{P}\limits_\mathcal{C \leftarrow B}\)&lt;/span&gt; are the &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{C}\)&lt;/span&gt;-coordinate vectors of the vectors in the basis &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{B}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \mathop{P}\limits_\mathcal{C \leftarrow B} = [[b_1]_\mathcal{C}, [b_2]_\mathcal{C}, ..., [b_n]_\mathcal{C}]
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B} &amp;amp;=  P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}
+&amp;amp;P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B} =  P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}
 \begin{bmatrix}
-q_1 \\
-\vdots \\
+q_1 
+\cdots 
 q_n
-\end{bmatrix} \\
+\end{bmatrix}^T \\
 &amp;amp;= P_\mathcal{C}(q_1[b_1]_\mathcal{C} + q_2[b_2]_\mathcal{C} + ... + q_n[b_n]_\mathcal{C}) \\
 &amp;amp;= q_1P_\mathcal{C}[b_1]_\mathcal{C} + q_2P_\mathcal{C}[b_2]_\mathcal{C} + ... + q_nP_\mathcal{C}[b_n]_\mathcal{C} \\
 &amp;amp;= q_1b_1 + q_2b_2 + ... + q_nb_n \\

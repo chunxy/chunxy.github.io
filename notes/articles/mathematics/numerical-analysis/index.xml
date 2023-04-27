@@ -90,7 +90,7 @@
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;In other words, we can use the linear combination of &lt;span class=&#34;math inline&#34;&gt;\(1, \cos(x), \sin(x), \cos(2x), \sin(2x), \dots\)&lt;/span&gt; to fit any &lt;strong&gt;continuous function&lt;/strong&gt; on interval &lt;span class=&#34;math inline&#34;&gt;\([-\pi, \pi]\)&lt;/span&gt;. Or use &lt;span class=&#34;math inline&#34;&gt;\(1, \cos(2\pi fx), \sin(2\pi fx), \cos(2\pi f2x), \sin(2\pi f2x), \dots\)&lt;/span&gt; to fit any function on interval &lt;span class=&#34;math inline&#34;&gt;\([\frac{-1}{2f} + \frac{k}{f}, \frac{1}{2f} + \frac{k}{f}]\)&lt;/span&gt;, which can be any interval depending on the value of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; (frequency) and the integer &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In other words, we can use the linear combination of &lt;span class=&#34;math inline&#34;&gt;\(1, \cos(x), \sin(x), \cos(2x), \sin(2x), \dots\)&lt;/span&gt; to fit any &lt;strong&gt;continuous function&lt;/strong&gt; on interval &lt;span class=&#34;math inline&#34;&gt;\([-\pi, \pi]\)&lt;/span&gt;. Or use &lt;span class=&#34;math inline&#34;&gt;\(1, \cos(2\pi fx), \sin(2\pi fx), \cos(2\pi f2x), \sin(2\pi f2x), \dots\)&lt;/span&gt; to fit any function on interval &lt;span class=&#34;math inline&#34;&gt;\([\frac{-1}{2f} + \frac{k}{f}, \frac{1}{2f} + \frac{k}{f}]\)&lt;/span&gt;, which can be any interval by choosing the value of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; (frequency) and the integer &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;A continuous function &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; approximated with such series up to level &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; can be written as: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
 &amp;amp;\begin{split}
@@ -162,6 +162,47 @@ Laplace Transform&lt;/li&gt;
 Fast Fourier Transform&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://charlesliuyx.github.io/2018/02/18/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E8%AE%A9%E4%BD%A0%E6%B0%B8%E8%BF%9C%E5%BF%98%E4%B8%8D%E4%BA%86%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E8%A7%A3%E6%9E%90/&#34;&gt;傅立叶变换与群&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/1119070975&#34;&gt;如何理解傅里叶变换公式？ - 苗华栋的回答 - 知乎&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/334686351&#34;&gt;如何理解傅里叶变换公式？ - 马同学的回答 - 知乎&lt;/a&gt; || &lt;a href=&#34;https://en.wikipedia.org/wiki/Fourier_transform&#34;&gt;Wiki&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Stirling&#39;s Approximation</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/stirlings-approximation/</link>
+      <pubDate>Mon, 09 May 2022 19:39:49 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/stirlings-approximation/</guid>
+      <description>
+
+&lt;h2 id=&#34;stirlings-approximation&#34;&gt;Stirling’s Approximation&lt;/h2&gt;
+&lt;p&gt;Stirling’s approximation, which states that &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(n+1) \sim \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(n \to \infty\)&lt;/span&gt;, is useful when estimating the order of &lt;span class=&#34;math inline&#34;&gt;\(n!\)&lt;/span&gt;. Notably, it is quite accurate even when &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is small.&lt;/p&gt;
+&lt;p&gt;The authentic proof entails Gamma function and Laplace’s method. However in integer case, Stirling’s approximation can be approached with Poisson distribution. Start from a Poisson distribution with mean &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+P(r ; \lambda) = e^{-\lambda} \frac{\lambda^r}{r!}
+\]&lt;/span&gt; When &lt;span class=&#34;math inline&#34;&gt;\(X \sim P(\lambda_1)\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(Y \sim P(\lambda_2)\)&lt;/span&gt;, and suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are independent, &lt;span class=&#34;math inline&#34;&gt;\(X + Y \sim P(\lambda_1 + \lambda_2)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Proof &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp; \Pr(X + Y = r) = \sum_{k=0}^r \Pr(X = k) \Pr(Y = r-k) \\
+&amp;amp;= \sum_{k=0}^r e^{-\lambda_1} \frac{\lambda_1^k}{k!} e^{-\lambda_2} \frac{\lambda_2^{r-k}}{(r-k)!} \\
+&amp;amp;= \frac{e^{-(\lambda_1 + \lambda_2)}}{r!} \sum_{k=0}^r \frac{r!}{k! (r-k)!} \lambda_1^k \lambda_2^{r-k} \\
+&amp;amp;= e^{-(\lambda_1 + \lambda_2)} \frac{(\lambda_1 + \lambda_2)^r}{r!} \\
+&amp;amp;= P(r; \lambda_1 + \lambda_2)
+\end{aligned}
+\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Therefore, a random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim P(\lambda)\)&lt;/span&gt; (with integer &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;) can be treated as the addition of &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; independent &lt;span class=&#34;math inline&#34;&gt;\(Y_i \sim P(1)\)&lt;/span&gt;. By the central limit theorem, for a large &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\mathbb \Pr(\frac{\underbrace{\sum_i Y_i}_X - \lambda}{\sqrt{\lambda}} \le x) \simeq \Phi(x)
+\]&lt;/span&gt; Or put it another way, the mass of the Poisson distribution &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; follows is well approximated by the density of the Gaussian distribution with mean &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+P(x;\lambda) &amp;amp;\simeq N(x; \lambda, \lambda) \\
+e^{-r} \frac{\lambda^r}{r!} &amp;amp;\approx \frac{1}{\sqrt{2\pi \lambda}} e^{-\frac{(r - \lambda)^2}{2\lambda}}
+\end{aligned}
+\]&lt;/span&gt; Plug &lt;span class=&#34;math inline&#34;&gt;\(r = \lambda\)&lt;/span&gt; into this formula and rearrange it to have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+e^{-\lambda} \frac{\lambda^\lambda}{\lambda!} &amp;amp;\approx \frac{1}{\sqrt{2\pi \lambda}} \\
+\lambda! &amp;amp;\approx \sqrt{2\pi \lambda} \left( \frac{\lambda}{e} \right)^\lambda 
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 
 
 </description>

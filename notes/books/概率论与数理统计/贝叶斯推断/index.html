@@ -678,11 +678,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+  <li class=""><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -739,7 +743,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/dimensionality-reduction/">Dimension Reduction</a></li>
 
 
 
@@ -861,6 +865,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
   
     
     
@@ -929,6 +937,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
       
         </ul>
       
@@ -949,30 +961,30 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Statistics</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/probability-and-statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Probability and Statistics</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/">Unconscious Statistics</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1123,6 +1135,10 @@
       
 
 
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
   <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
 
@@ -1211,35 +1227,6 @@
       </div>
     
 
-
-
-  
-    
-    
-    
-    
-    
-
-    
-      <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">高等数学</a>
-    
-      
-        <ul class="nav docs-sidenav">
-      
-
-
-  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
-
-      
-        </ul>
-      
-    
-
-    
-      </div>
-    
-
       
         </ul>
       
@@ -1316,7 +1303,7 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#贝叶斯公式">贝叶斯公式</a></li>
-    <li><a href="#贝叶斯估计">贝叶斯估计</a>
+    <li><a href="#贝叶斯推断">贝叶斯推断</a>
       <ul>
         <li><a href="#最大后验估计">最大后验估计</a></li>
         <li><a href="#最小均方差估计">最小均方差估计</a></li>
@@ -1412,7 +1399,7 @@ P(B_i | A) = \frac{P(A B_i)}{P(A)} = \frac{P(B_i) P(A|B_i)} {\sum_j P(B_j) P(A|B
 \]</span> 这便是贝叶斯公式。贝叶斯公式中的项目也有它们在贝叶斯学派中相应的称呼： <span class="math display">\[
 \text{posterior} = \frac{\text{prior} \times \text{likelihood}}{\text{evidence}}
 \]</span></p>
-<h2 id="贝叶斯估计">贝叶斯估计</h2>
+<h2 id="贝叶斯推断">贝叶斯推断</h2>
 <p>在参数估计问题中，记<span class="math inline">\(D = \{ X_1, \dots, X_n \}\)</span>为样本、<span class="math inline">\(\theta\)</span>为参数，并用将<span class="math inline">\(D\)</span>代入后验概率中的事件<span class="math inline">\(A\)</span>、<span class="math inline">\(\theta\)</span>代入后验概率中的<span class="math inline">\(B_i\)</span>，我们得到：</p>
 <p><span class="math display">\[
 P(\theta | D) = \frac{P(\theta) P(D|\theta)} {\sum_j P(\theta) P(D|\theta)} \\
@@ -1424,7 +1411,7 @@ P(\theta | D) = \frac{P(\theta) P(D|\theta)} {\sum_j P(\theta) P(D|\theta)} \\
 <h3 id="最小均方差估计">最小均方差估计</h3>
 <p>最小均方差估计（minimum mean squared error estimation）得到的点估计是以下： <span class="math display">\[
 \theta^\star = \arg \min_{\hat \theta} \E_{\theta \sim \text{posterior}} [(\hat \theta - \theta)^2]
-\]</span> 换言之，此时的估计<span class="math inline">\(\theta^\star\)</span>即为<span class="math inline">\(\E_{\theta \sim \text{posterior}} \theta\)</span>。</p>
+\]</span> 换言之，此时的点估计<span class="math inline">\(\theta^\star\)</span>即为<span class="math inline">\(\E_{\theta \sim \text{posterior}} \theta\)</span>。</p>
 
 
 
@@ -1509,7 +1496,7 @@ P(\theta | D) = \frac{P(\theta) P(D|\theta)} {\sum_j P(\theta) P(D|\theta)} \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 

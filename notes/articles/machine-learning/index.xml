@@ -20,9 +20,9 @@
       <description>
 
 &lt;p&gt;This post lists out various topics under the machine learning subject.&lt;/p&gt;
-&lt;h3 id=&#34;datafeature&#34;&gt;Data/Feature&lt;/h3&gt;
+&lt;h3 id=&#34;data&#34;&gt;Data&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;data speciation
+&lt;li&gt;data modalities
 &lt;ul&gt;
 &lt;li&gt;numbers&lt;/li&gt;
 &lt;li&gt;texts&lt;/li&gt;
@@ -55,8 +55,9 @@
 &lt;li&gt;includes:
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/clustering/&#34;&gt;clustering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/&#34;&gt;dimension reduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimensionality-reduction/&#34;&gt;dimension reduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;manifold embedding&lt;/li&gt;
+&lt;li&gt;anomaly detection&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -130,7 +131,7 @@
       <pubDate>Fri, 07 Jan 2022 12:42:22 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</guid>
       <description>
-&lt;p&gt;Linear Discriminant Analysis is another approximation to the Bayes optimal classifier. Instead of assuming independence between each pair of input dimensions given certain label, LDA assumes a single common shared covariance matrix among the input dimensions, no matter the label is. Take the Gaussian distribution as an example: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Linear discriminant analysis is another approximation to the Bayes optimal classifier. Instead of assuming independence between each pair of input dimensions given certain label, LDA assumes a single common shared covariance matrix among the input dimensions, no matter the label is. Take the Gaussian distribution as an example: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 p(x|y=C_j) &amp;amp;= \mathcal{N}(x;\mu_j, \Sigma) \\
 &amp;amp;= \frac{1}{\sqrt{(2\pi)^n|\Sigma|}}e^{-\frac{1}{2}(x-\mu_j)^T\Sigma^{-1}(x-\mu_j)}
@@ -206,8 +207,7 @@ J(\varphi, \lambda) = \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varph
       <description>
 
 &lt;h2 id=&#34;two-class-logistic-regression&#34;&gt;Two-class Logistic Regression&lt;/h2&gt;
-&lt;p&gt;A linear classifier is a classifier with a linear separation hyperplane. That is to say, suppose the feature space is &lt;span class=&#34;math inline&#34;&gt;\(\R^N\)&lt;/span&gt;, then we will process the feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; with a feature extractor function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = w^Tx + b\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(w \in \R^N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(b \in \R\)&lt;/span&gt;, and then operate on &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt;, without directly depending on &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; anymore.&lt;/p&gt;
-&lt;p&gt;Logistic Regression is a binary linear classifier, which takes a probabilistic approach. It maps the &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; to a probability value between &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; by applying a sigmoid function &lt;span class=&#34;math inline&#34;&gt;\(\sigma(z) = \frac{1}{1 + e^{-z}}\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Logistic Regression is a binary linear classifier. Suppose the feature space is &lt;span class=&#34;math inline&#34;&gt;\(\R^N\)&lt;/span&gt;, then it processes the feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; with a linear function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = w^Tx + b\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(w \in \R^N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(b \in \R\)&lt;/span&gt;. It takes a probabilistic approach and maps &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; to a probability value between &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; by applying a sigmoid function &lt;span class=&#34;math inline&#34;&gt;\(\sigma(z) = \frac{1}{1 + e^{-z}}\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 p(y = +1|x) &amp;amp;= \sigma(f(x)) \\
 p(y = -1|x) &amp;amp;= 1 - \sigma(f(x)) = \sigma(-f(x)) \\
@@ -217,27 +217,29 @@ p(y = -1|x) &amp;amp;= 1 - \sigma(f(x)) = \sigma(-f(x)) \\
 &lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{D} = {x^{(i)}, y^{(i)}, i=1, \dots, M}\)&lt;/span&gt;, Logistic Regression is learning by maximizing the &lt;strong&gt;conditional&lt;/strong&gt; log-likelihood of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{D}\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 l(w, b) = \log L(w, b) = \log \prod_{i=1}^Mp(y^{(i)}|x^{(i)};w,b) = \sum_{i=1}^M\log p(y^{(i)}|x^{(i)};w,b)
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-(w^\star, b^\star) &amp;amp;= \arg \max\limits_{w, b}l(w, b) \\
+$$
+&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
+&amp;amp;(w^\star, b^\star) = \arg \max\limits_{w, b}l(w, b) \\
 &amp;amp;= \arg \max\limits_{w, b}\sum_{i=1}^M\log p(y^{(i)}|x^{(i)};w,b) \\
-&amp;amp;= \arg \max\limits_{w, b}\sum_{i=1}^M\log \frac{1}{1 + e^{-y^{(i)}(w^Tx^{(i)}+b)}} \\
-&amp;amp;= \arg \max\limits_{w, b}--\sum_{i=1}^M\log \frac{1}{1 + e^{-y^{(i)}(w^Tx^{(i)}+b)}} \\
+&amp;amp;= \arg \max\limits_{w, b}\sum_{i=1}^M\log \sigma(y^{(i)}(w^Tx^{(i)}+b)) \\
+
 &amp;amp;= \arg \min\limits_{w, b}-\sum_{i=1}^M\log \sigma(y^{(i)}(w^Tx^{(i)}+b)) \\
-\end{aligned}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(J(w, b) = -\sum_{i=1}^M\log \sigma(y^{(i)}(w^Tx^{(i)}+b))\)&lt;/span&gt; be the target function. There is no closed-form solution to this optimization problem. Rather, it is to be solved by iterative algorithm, e.g. gradient descent. For each iteration, parameters are updated by &lt;span class=&#34;math display&#34;&gt;\[
-\begin{gather}
+\end{aligned}\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[
+Let $J(w, b) = -\sum_{i=1}^M\log \sigma(y^{(i)}(w^Tx^{(i)}+b))$ be the target function. There is no closed-form solution to this optimization problem. Rather, it is to be solved by some iterative algorithm, e.g. gradient descent. For each iteration, parameters are updated by
+\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[\begin{gather}
 w \leftarrow w - \eta\frac{\partial J}{\partial w} \\
 b \leftarrow b - \eta\frac{\partial J}{\partial b}
-\end{gather}
-\]&lt;/span&gt; Specifically, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
+\end{gather}\]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+Specifically,
+\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{aligned}
 \frac{\partial J}{\partial w} &amp;amp;= -\sum_{i=1}^M\frac{\partial\log \sigma(y^{(i)}f(x^{(i)}))}{\partial w} \\
 &amp;amp;= -\sum_{i=1}^M \frac{\partial\log \sigma(y^{(i)}f(x^{(i)}))}{\partial \sigma(y^{(i)}f(x^{(i)}))} \frac{\partial \sigma(y^{(i)}f(x^{(i)}))}{\partial (y^{(i)}f(x^{(i)}))} \frac{\partial (y^{(i)}f(x^{(i)}))}{\partial w} \\
 &amp;amp;= -\sum_{i=1}^M \frac{1}{\sigma(y^{(i)}f(x^{(i)}))} \sigma(y^{(i)}f(x^{(i)}))(1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)}x^{(i)} \\
 &amp;amp;= -\sum_{i=1}^M (1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)}x^{(i)} \\
-\end{aligned}
-\]&lt;/span&gt;&lt;/p&gt;
+\end{aligned}\]&lt;/span&gt;
+&lt;p&gt;$$&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \frac{\partial J}{\partial b} &amp;amp;= -\sum_{i=1}^M\frac{\partial\log \sigma(y^{(i)}f(x^{(i)}))}{\partial b} \\
@@ -246,9 +248,9 @@ b \leftarrow b - \eta\frac{\partial J}{\partial b}
 &amp;amp;= -\sum_{i=1}^M (1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The posterior obtained by binary &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/&#34;&gt;Linear Discriminant Analysis&lt;/a&gt; has the form of &lt;span class=&#34;math display&#34;&gt;\[
-p(y|x) = \frac{1}{1 + e^{-(wx + b)}}
-\]&lt;/span&gt; This is not to say LDA and LR are the same in binary case. Note that LDA is a generative model which learns &lt;span class=&#34;math inline&#34;&gt;\(p(x|y)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;, LR is a discriminative model which only learns &lt;span class=&#34;math inline&#34;&gt;\(p(y|x)\)&lt;/span&gt;. One can discriminate with a generative model, but not reversely.&lt;/p&gt;
+&lt;p&gt;Note that the posterior obtained by binary &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/&#34;&gt;Linear Discriminant Analysis&lt;/a&gt; also has the form of &lt;span class=&#34;math display&#34;&gt;\[
+p(y|x) = \frac{1}{1 + e^{-(w^Tx + b)}}
+\]&lt;/span&gt; This is not to say LDA and LR are the same in binary case. LDA is a generative model which learns &lt;span class=&#34;math inline&#34;&gt;\(p(x|y)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;, LR is a discriminative model which only learns &lt;span class=&#34;math inline&#34;&gt;\(p(y|x)\)&lt;/span&gt;. One can discriminate with a generative model, but not reversely.&lt;/p&gt;
 &lt;h2 id=&#34;multi-class-logistic-regression&#34;&gt;Multi-class Logistic Regression&lt;/h2&gt;
 &lt;p&gt;One way to train use Logistic Regression in multi-class classification in to for each class &lt;span class=&#34;math inline&#34;&gt;\(i = {1, \dots, C}\)&lt;/span&gt;, assign a weight vector &lt;span class=&#34;math inline&#34;&gt;\(w^{(i)}\)&lt;/span&gt;, the probability is define by the softmax function: &lt;span class=&#34;math display&#34;&gt;\[
 p(y = c|x) =\frac{exp(w^{(c)}\cdot x + b^{(c)})}{\sum_{i=1}^Cexp(w^{(i)} \cdot x + b^{(i)})}
@@ -268,7 +270,7 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
       <guid>https://chunxy.github.io/notes/articles/machine-learning/support-vector-machine/</guid>
       <description>
 
-&lt;p&gt;Support Vector Machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary. These points are called &lt;strong&gt;support vectors&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Support vector machine is used in binary classification task. It aims to find a linear hyperplane that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary. These points are called &lt;strong&gt;support vectors&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;hard-margin-svm&#34;&gt;Hard Margin SVM&lt;/h3&gt;
 &lt;p&gt;Suppose the data &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1, \dots, M\}\)&lt;/span&gt;, and is linearly separable. The separation hyperplane will be in the form of &lt;span class=&#34;math inline&#34;&gt;\(w^Tx + b = 0\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} = 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is above the hyperplane (&lt;span class=&#34;math inline&#34;&gt;\(w^Tx^{(i)} + b &amp;gt; 0\)&lt;/span&gt;), &lt;span class=&#34;math inline&#34;&gt;\(y^{(i)} = -1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is below the hyperplane (&lt;span class=&#34;math inline&#34;&gt;\(w^Tx^{(i)} + b &amp;lt; 0\)&lt;/span&gt;).&lt;/p&gt;
 &lt;p&gt;The distance (margin) from a data point to the separation hyperplane will be &lt;span class=&#34;math display&#34;&gt;\[
@@ -466,7 +468,7 @@ X\hat W = proj_{Col(X)}Y \Rightarrow Y &amp;amp;- X\hat W \in Nul(X^T) \Rightarr
 X^T(Y - X\hat W) &amp;amp;= 0 \\
 X^TX\hat W &amp;amp;= X^TY
 \end{aligned}
-\]&lt;/span&gt; Columns of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; are independent &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is not invertible, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt;. We can get one specific &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; by enforcing regularization on &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; or adding more samples when &lt;span class=&#34;math inline&#34;&gt;\(M &amp;lt; N + 1\)&lt;/span&gt;. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible, there is unique solution that &lt;span class=&#34;math inline&#34;&gt;\(\hat W = (X^TX)^{-1}X^TY\)&lt;/span&gt;.&lt;/p&gt;
+\]&lt;/span&gt; Columns of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; are independent &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is not invertible, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt;. We can get one specific &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; by enforcing regularization on &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; or adding more samples when &lt;span class=&#34;math inline&#34;&gt;\(M &amp;lt; N + 1\)&lt;/span&gt;. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible, there is a unique solution that &lt;span class=&#34;math inline&#34;&gt;\(\hat W = (X^TX)^{-1}X^TY\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This gives the same result with minimizing the MSE: &lt;span class=&#34;math display&#34;&gt;\[
 W^\star = \arg \min_{W}MSE(W) = \frac{1}{M}(Y - XW)^T(Y - XW)
 \]&lt;/span&gt;&lt;/p&gt;
@@ -643,14 +645,14 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;amp;\frac{1}{2}||w||^2_2 + C\sum_{i=
       <guid>https://chunxy.github.io/notes/articles/machine-learning/clustering/</guid>
       <description>
 
-&lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1,\dots,M\}\)&lt;/span&gt;, a clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; of the &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; points into &lt;span class=&#34;math inline&#34;&gt;\(K (K \le M)\)&lt;/span&gt; clusters is a partition of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; disjoint groups &lt;span class=&#34;math inline&#34;&gt;\(\{C_1,\dots,C_K\}\)&lt;/span&gt;. Suppose we have a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluates the clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Given dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{x^{(i)}, i=1,\dots,M\}\)&lt;/span&gt;, a clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; of the &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; points into &lt;span class=&#34;math inline&#34;&gt;\(K (K \le M)\)&lt;/span&gt; clusters is a partition of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; disjoint groups &lt;span class=&#34;math inline&#34;&gt;\(\{C_1,\dots,C_K\}\)&lt;/span&gt;. Suppose we have a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluates the clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
 \arg \min_{\mathcal C} f(\mathcal C)
 \]&lt;/span&gt; The number of all possibilities of clustering with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements is called the Bell number, denoted as &lt;span class=&#34;math inline&#34;&gt;\(B_M\)&lt;/span&gt;. The calculation of the Bell number is based on dynamic programming. The number of ways to cluster &lt;span class=&#34;math inline&#34;&gt;\(M+1\)&lt;/span&gt; elements is the sum of number of ways to:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; element and cluster it, with the rest belong to a new cluster&lt;/li&gt;
-&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
+&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; element and cluster it, with the rest belong to one cluster&lt;/li&gt;
+&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt; elements and cluster them, with the rest belong to one cluster&lt;/li&gt;
 &lt;li&gt;…&lt;/li&gt;
-&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements and cluster them, with the rest belong to a new cluster&lt;/li&gt;
+&lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements and cluster them, with the rest belong to one cluster&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Therefore, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -661,20 +663,20 @@ B_0 = 1
 &lt;h3 id=&#34;k-means&#34;&gt;K-means&lt;/h3&gt;
 &lt;p&gt;K-means assumes there are &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; clusters. This greatly eliminates many possibilities described above. Its objective is &lt;span class=&#34;math display&#34;&gt;\[
 \min_{c_1,\dots,c_K}\sum_{i=1}^M||x^{(i)} - c_{z^{(i)}}||^2_2, \text{ where }z^{(i)} = \arg \min_{j \in \{1,\dots,K\}}||x^{(i)}-c_j||^2_2
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)}\)&lt;/span&gt; is the cluster index &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is assigned to. K-means’ objective is to assign each point to its closest cluster center and minimize the total within-cluster square errors. If &lt;span class=&#34;math inline&#34;&gt;\(z=j\)&lt;/span&gt; is known, let &lt;span class=&#34;math inline&#34;&gt;\(C_j = \{x^{(i)}|z^{(i)} = j\}\)&lt;/span&gt; be the set of points assigned to cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;, the cluster center of cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(z^{(i)}\)&lt;/span&gt; is the cluster index &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is assigned to. K-means’ objective is to assign each point to its closest cluster center and minimize the total within-cluster square errors. For cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;, let &lt;span class=&#34;math inline&#34;&gt;\(C_j = \{x^{(i)}|z^{(i)} = j\}\)&lt;/span&gt; be the set of points assigned to it, then the cluster center of cluster &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
 c_j = \frac{1}{|C_j|}\sum_{x^{(i)} \in C_j}x^{(i)}
-\]&lt;/span&gt; Initially, however, &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is not known. K-means solves this by randomly pick up initial cluster centers and enter the assign-data-points/update-cluster-centers loop, until the cluster centers converge or become satisfactory.&lt;/p&gt;
-&lt;p&gt;Rewrite the objective of K-means as: &lt;span class=&#34;math display&#34;&gt;\[
-\min_{z,c}(l(z,c) = \sum_{i=1}^M||x^{(i)}- c_{z^{(i)}}||^2_2)
-\]&lt;/span&gt; K-means is in essence a coordinate descent of the objective &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;. The main loop of K-means is to:&lt;/p&gt;
+\]&lt;/span&gt; However, both the cluster center &lt;span class=&#34;math inline&#34;&gt;\(\newcommand{\c}{\mathrm{c}} \c\)&lt;/span&gt; and the assignment &lt;span class=&#34;math inline&#34;&gt;\(\newcommand{\z}{\mathrm{z}} \z\)&lt;/span&gt; is initially unknown. K-means solves this by randomly pick up initial cluster centers and enter the assign-data-to-clusters/update-cluster-centers loop, until the cluster centers converge or become satisfactory. Rewrite the objective of K-means as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\min_{\z,\c}(l(\z,\c) = \sum_{i=1}^M||x^{(i)}- c_{z^{(i)}}||^2_2)
+\]&lt;/span&gt; K-means is in essence a coordinate descent of the loss &lt;span class=&#34;math inline&#34;&gt;\(l(\z,\c)\)&lt;/span&gt;. The main loop of K-means is to:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;assign data points to its nearest cluster center, i.e. minimizing over the assignment &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;.&lt;/li&gt;
-&lt;li&gt;update cluster centers according to the points assigned to, i.e. minimizing over the centroids &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;assign data points to its nearest cluster center, i.e. minimizing over the assignment &lt;span class=&#34;math inline&#34;&gt;\(\z\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;update cluster centers according to the points assigned to, i.e. minimizing over the centroids &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is monotonically decreasing after each step in the above loop. &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is also lower-bounded by &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and thus K-means will converge finally.&lt;/p&gt;
-&lt;p&gt;One problem with K-means is that it assumes that each cluster has a circular shape because of the Euclidean distance it uses.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is monotonically decreasing after each step in the above loop. Also, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is lower-bounded by &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and thus K-means will converge finally.&lt;/p&gt;
+&lt;p&gt;Each cluster in K-means has a circular shape because of the Euclidean distance it uses.&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-mixture-model&#34;&gt;Gaussian Mixture Model&lt;/h3&gt;
-&lt;p&gt;A cluster can be modelled by a multi-variate Gaussian with elliptical shape: the elliptical shape is controlled by the covariance matrix; the location is controlled by the mean. Gaussian Mixture Model is a weighted sum of Gaussians: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;A cluster can also be modelled by a multi-variate Gaussian with elliptical shape: the elliptical shape is controlled by the covariance matrix; the location is controlled by the mean. Gaussian Mixture Model is a weighted sum of Gaussians: &lt;span class=&#34;math display&#34;&gt;\[
 p(x) = \sum_{j=1}^K\pi_j\mathcal N(x;\mu_j, \Sigma_j)
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\pi_j\)&lt;/span&gt; is the prior that a sample is generated from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(x;\mu_j, \Sigma_j)\)&lt;/span&gt; is the probability to generate the sample &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. Put it together, &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; is the total probability of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; over its latent &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, with &lt;span class=&#34;math inline&#34;&gt;\(z = j\)&lt;/span&gt; representing the prior condition that &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is sampled from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math display&#34;&gt;\[
 p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^Kp(x|z = j)p(z = j)
@@ -796,30 +798,30 @@ p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}
     
     <item>
       <title>Dimension Reduction</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/</link>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/dimensionality-reduction/</link>
       <pubDate>Fri, 07 Jan 2022 12:39:56 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/dimension-reduction/</guid>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/dimensionality-reduction/</guid>
       <description>
 
 &lt;h2 id=&#34;unsupervised-dimension-reduction&#34;&gt;Unsupervised Dimension Reduction&lt;/h2&gt;
-&lt;p&gt;Dimension reduction&lt;/p&gt;
+&lt;p&gt;Dimensionality reduction&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;reduces computational cost,&lt;/li&gt;
-&lt;li&gt;de-noises by projecting onto lower-dimensional space and back to original space,&lt;/li&gt;
-&lt;li&gt;makes results easier to understand.&lt;/li&gt;
+&lt;li&gt;reduces computational cost;&lt;/li&gt;
+&lt;li&gt;de-noises by projecting onto lower-dimensional space and back to original space;&lt;/li&gt;
+&lt;li&gt;makes results easier to understand by reducing the collinearity.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;vs. feature selection&lt;/p&gt;
+&lt;p&gt;Compared to feature selection,&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;The goal of feature selection is to remove features that are not informative with respect to the class label. This obviously reduces the dimensionality of the feature space.&lt;/li&gt;
-&lt;li&gt;Dimension reduction can be used to find a meaningful lower-dim feature space even when there is information in each feature dimension so that none can be discarded.&lt;/li&gt;
-&lt;li&gt;Dimension reduction is unsupervised while feature selection is supervised.&lt;/li&gt;
+&lt;li&gt;the goal of feature selection is to remove features that are not informative with respect to the class label. This obviously reduces the dimensionality of the feature space;&lt;/li&gt;
+&lt;li&gt;dimension reduction can be used to find a meaningful lower-dim feature space even when there is information in each feature dimension so that none can be discarded;&lt;/li&gt;
+&lt;li&gt;dimension reduction is unsupervised while feature selection is supervised.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;vs. data compression&lt;/p&gt;
+&lt;p&gt;Compared to data compression,&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Dimension reduction can be seen as a simplistic form of data compression. But they are not equivalent, as the goal of data compression is to reduce the entropy of the representation, which is not limited to the dimension reduction.&lt;/li&gt;
+&lt;li&gt;dimension reduction can be seen as a simplistic form of data compression. But they are not equivalent, as the goal of data compression is to reduce the entropy of the representation, which is not limited to the dimension reduction.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;linear-dimension-reduction&#34;&gt;Linear Dimension Reduction&lt;/h3&gt;
-&lt;p&gt;Linear Dimension Reduction projects data onto lower-dimensional space by representing the data with a new basis consisting of some major components. Mathematically, &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h3 id=&#34;linear-dimensionality-reduction&#34;&gt;Linear Dimensionality Reduction&lt;/h3&gt;
+&lt;p&gt;Linear Dimensionality Reduction projects data onto lower-dimensional space by representing the data with a new basis consisting of some major components. Mathematically, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 x^{(i)} = \sum_{k=1}^Kz^{(i)}_kb^{(k)}, \text{ where $z^{(i)} \in \R^K$ is the weight, $b^{(k)} \in \R^N$ is the basis vector.} \\
 X = BZ, \text{ where $X = [x^{(i)}, \dots, x^{(M)}], B = [b^{(1)}, \dots, b^{(K)}], Z = [z^{(1)}, \dots, z^{(M)}]$}
@@ -879,9 +881,9 @@ B^\star = U_K \Sigma_K^{\frac{1}{2}}, Z^\star = \Sigma_K^{\frac{1}{2}} V^T_K
 \]&lt;/span&gt; with the probability at least &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{M}\)&lt;/span&gt; as long as &lt;span class=&#34;math display&#34;&gt;\[
 K \ge \frac{8\log M}{\epsilon^2}
 \]&lt;/span&gt; And usually this requirement is quite conservative.&lt;/p&gt;
-&lt;h3 id=&#34;non-linear-dimension-reduction&#34;&gt;Non-linear Dimension Reduction&lt;/h3&gt;
-&lt;p&gt;We can introduce the feature mapping to handle the non-linearity problem in Dimension Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case. &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/#Kernel PCA&#34;&gt;Principal Component Analysis &amp;gt; Kernel PCA&lt;/a&gt; is just such an example.&lt;/p&gt;
-&lt;h2 id=&#34;supervised-dimension-reduction&#34;&gt;Supervised Dimension Reduction&lt;/h2&gt;
+&lt;h3 id=&#34;non-linear-dimensionality-reduction&#34;&gt;Non-linear Dimensionality Reduction&lt;/h3&gt;
+&lt;p&gt;We can introduce the feature mapping to handle the non-linearity problem in Dimensionality Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case. &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/#Kernel PCA&#34;&gt;Principal Component Analysis &amp;gt; Kernel PCA&lt;/a&gt; is just such an example.&lt;/p&gt;
+&lt;h2 id=&#34;supervised-dimensionality-reduction&#34;&gt;Supervised Dimensionality Reduction&lt;/h2&gt;
 &lt;p&gt;There is no guarantee that the unsupervised Dimension Reduction can throw insight into the classification problem. It may or may not help. Otherwise supervised Dimension Reduction such as &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/fishers-linear-discriminant/&#34;&gt;Fisher’s Linear Discriminant&lt;/a&gt; finds a lower-dimensional space so as to minimize the class overlap.&lt;/p&gt;
 
 
@@ -1088,7 +1090,7 @@ C &amp;amp;= \frac{1}{M}x^{(i)}(x^{(i)})^T \\
 &amp;amp;= U\Sigma^2U^T \text{ (by property of SVD, note that $\Sigma$ is $n \times n$ diagonal)} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;If our assumptions are correct, then the &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the stacked eigenvectors of the matrix &lt;span class=&#34;math inline&#34;&gt;\(CC^T\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma^2\)&lt;/span&gt; is the diagonal matrix consisting of corresponding eigenvalues of the matrix &lt;span class=&#34;math inline&#34;&gt;\(C^TC\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; is symmetric, &lt;span class=&#34;math inline&#34;&gt;\(CC^T = C^TC = C^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If our assumptions are correct, then the &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the concatenated eigenvectors of the matrix &lt;span class=&#34;math inline&#34;&gt;\(CC^T\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma^2\)&lt;/span&gt; is the diagonal matrix consisting of corresponding eigenvalues of the matrix &lt;span class=&#34;math inline&#34;&gt;\(C^TC\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; is symmetric, &lt;span class=&#34;math inline&#34;&gt;\(CC^T = C^TC = C^2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In other words, &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt; can be solved by eigen decomposition. Define &lt;span class=&#34;math inline&#34;&gt;\(\hat x^{(i)} = \Sigma^{-1}U^Tx^{(i)}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \hat C &amp;amp;= \frac{1}{M}\hat x^{(i)}(\hat x^{(i)})^T \\
@@ -1123,7 +1125,7 @@ V^\star &amp;amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 \]&lt;/span&gt; Calculating entropy and then taking derivative is no easy task and therefore ICA algorithms focus on approximations or equivalences to the above equation. For example, it can be approximated by finding the rotation that maximizes the expected log-likelihood of the observed data by assuming that the source distributions are known.&lt;/p&gt;
 &lt;h3 id=&#34;non-gaussian-and-pca&#34;&gt;Non-Gaussian and &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/&#34;&gt;PCA&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The key assumption of ICA is that signals are non-Gaussian. We are trying to recover the &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; (by finding &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;) to be as non-Gaussian as possible. &lt;span class=&#34;math inline&#34;&gt;\(\hat X\)&lt;/span&gt; consists of independent components because its covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\hat C\)&lt;/span&gt; is shown to be an identity matrix (and thus diagonal). &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; is reconstructed by the linear combination of independent components. Thus it will be the most non-Gaussian when each variable is formed by exactly one component of &lt;span class=&#34;math inline&#34;&gt;\(\hat X\)&lt;/span&gt; by Central Limit Theorem, i.e. &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;’s components are independent.&lt;/p&gt;
-&lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its iso-density maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the stacked eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
+&lt;p&gt;Consider the case when &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; consists of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; independent Gaussian, which invalidate the above analysis. If we forcibly calculate &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;, due to the property of multi-variate Gaussian that its iso-density maps are spherical, then any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix will be a solution to Equation (9), including the left singular matrix of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, i.e. the concatenated eigenvectors of &lt;span class=&#34;math inline&#34;&gt;\(XX^T\)&lt;/span&gt;, which is exactly the projection basis obtained in PCA. If any &lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt; rotation matrix can be a solution, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;, and thus ICA will just fail.&lt;/p&gt;
 &lt;p&gt;The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to &lt;span class=&#34;math inline&#34;&gt;\(V^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html&#34;&gt;ICA&lt;/a&gt;&lt;/p&gt;

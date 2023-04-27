@@ -36,7 +36,7 @@ L(\mathrm z, \lambda) = \mathrm z^TA^TA\mathrm z + \lambda(||\mathrm z||^2_2 - 1
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;The extrapolation of the Spectral Normalization will be related to Rayleigh Quotient.&lt;/p&gt;
 &lt;h3 id=&#34;power-iteration&#34;&gt;Power Iteration&lt;/h3&gt;
-&lt;p&gt;We can apply a SVD to obtain a matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s Spectral Norm, i.e. the square root of &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s largest eigenvalue. There is also an iterative method to do so.&lt;/p&gt;
+&lt;p&gt;We can apply &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/singular-value-decomposition/&#34;&gt;SVD&lt;/a&gt; to obtain a matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;’s Spectral Norm, i.e. the square root of &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s largest eigenvalue. There is also an iterative method to do so.&lt;/p&gt;
 &lt;p&gt;Begin with an arbitrary vector &lt;span class=&#34;math inline&#34;&gt;\(v_0 = v \in \R^N\)&lt;/span&gt;, the iteration rule will be &lt;span class=&#34;math display&#34;&gt;\[
 v_{t+1} = A^TAv_t
 \]&lt;/span&gt; Unroll &lt;span class=&#34;math inline&#34;&gt;\(v_{t}\)&lt;/span&gt; to get &lt;span class=&#34;math inline&#34;&gt;\(v_t = (A^TA)^tv\)&lt;/span&gt;. Because &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt; is real symmetric, &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; can be written as a linear combination of &lt;span class=&#34;math inline&#34;&gt;\(A^TA\)&lt;/span&gt;’s orthonormal eigenvectors: &lt;span class=&#34;math display&#34;&gt;\[

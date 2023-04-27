@@ -20,20 +20,20 @@
       <description>
 
 &lt;h2 id=&#34;standard-form&#34;&gt;Standard Form&lt;/h2&gt;
-&lt;p&gt;The standard form of the Lagrange Multiplier optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The standard form of the Lagrange multiplier optimization problem is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 &amp;amp;\inf f_0(x) \\
 s.t.\quad &amp;amp; f_i(x) \le 0, i = 1,\dots,r \\
 &amp;amp; h_i(x) = 0, i = 1,\dots,s \\
 \end{aligned}
-\]&lt;/span&gt; Denote the feasible set of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; that satisfies all the requirements in original problem as &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X \subseteq \R^n\)&lt;/span&gt;. Then the Lagrangian function is &lt;span class=&#34;math inline&#34;&gt;\(L:\R^n \times \R^r \times \R^s \mapsto \R\)&lt;/span&gt; (there is an implicit constraint that the variables must reside in the domain of the functions):&lt;/p&gt;
+\]&lt;/span&gt; Denote the feasible set of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; that satisfies all the requirements in the above problem as &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X \subseteq \R^n\)&lt;/span&gt;. Then the Lagrangian function is &lt;span class=&#34;math inline&#34;&gt;\(L:\R^n \times \R^r \times \R^s \mapsto \R\)&lt;/span&gt; (there is an implicit constraint that the variables must reside in the natural domain of the functions):&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 L(x, \lambda, \mu) = f_0(x) + \sum_{i=1}^r\lambda_if_i(x) + \sum_{i=1}^s\mu_ih_i(x)
 \]&lt;/span&gt; Define the function &lt;span class=&#34;math inline&#34;&gt;\(P: \mathcal X \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
 \]&lt;/span&gt; The primal problem is &lt;span class=&#34;math display&#34;&gt;\[
 \inf_{x \in \mathcal X} P(x) \label{primal}
-\]&lt;/span&gt; It is easy to derive &lt;span class=&#34;math inline&#34;&gt;\(P(x) =f_0(x)\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Thus the primal problem is equivalent to the original problem. Denote primal problem &lt;span class=&#34;math inline&#34;&gt;\(\eqref{primal}\)&lt;/span&gt;’s optimal value as &lt;span class=&#34;math inline&#34;&gt;\(p^\star\)&lt;/span&gt;.&lt;/p&gt;
+\]&lt;/span&gt; It is easy to have &lt;span class=&#34;math inline&#34;&gt;\(P(x) =f_0(x)\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Thus the primal problem is equivalent to the original problem. Denote primal problem &lt;span class=&#34;math inline&#34;&gt;\(\eqref{primal}\)&lt;/span&gt;’s optimal value as &lt;span class=&#34;math inline&#34;&gt;\(p^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Define the Lagrangian dual function &lt;span class=&#34;math inline&#34;&gt;\(D: \R^r \times \R^s \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
 D(\lambda, \mu) = \inf_{x \in \mathcal \R^n}L(x, \lambda, \mu)
 \]&lt;/span&gt; The Lagrangian dual problem is &lt;span class=&#34;math display&#34;&gt;\[
@@ -42,7 +42,7 @@ D(\lambda, \mu) = \inf_{x \in \mathcal \R^n}L(x, \lambda, \mu)
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
 &lt;p&gt;For any feasible &lt;span class=&#34;math inline&#34;&gt;\(x \in \mathcal X, (\lambda, \mu) \in {\R^r}^+ \times \R^s\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu) \ge L(x,\lambda,\mu) \ge \inf_{x&amp;#39; \in \R^n}L(x&amp;#39;, \lambda, \mu) =D (\lambda, \mu)
+P(x) = \sup\limits_{\lambda&amp;#39;,\mu&amp;#39;;\lambda&amp;#39;_i \ge 0}L(x,\lambda&amp;#39;,\mu&amp;#39;) \ge L(x,\lambda,\mu) \ge \inf_{x&amp;#39; \in \R^n}L(x&amp;#39;, \lambda, \mu) =D (\lambda, \mu)
 \]&lt;/span&gt; Therefore &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;strong-duality&#34;&gt;Strong Duality&lt;/h3&gt;
@@ -53,8 +53,8 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) \\
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Proof &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gathered}
-f_0(x^\star) = D(\lambda^\star, \mu^\star) = \inf_{x \in \mathcal X}L(x,\lambda^\star,\mu^\star) \le L(x^\star,\lambda^\star,\mu^\star) \\
-f_0(x^\star) = P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x^\star,\lambda,\mu) \ge L(x^\star,\lambda^\star,\mu^\star) \\
+f_0(x^\star) = p^\star = d^\star = D(\lambda^\star, \mu^\star) = \inf_{x \in \R^n}L(x,\lambda^\star,\mu^\star) \le L(x^\star,\lambda^\star,\mu^\star) \\
+f_0(x^\star) = p^\star = P(x^\star) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x^\star,\lambda,\mu) \ge L(x^\star,\lambda^\star,\mu^\star) \\
 L(x^\star,\lambda^\star,\mu^\star) \le f_0(x^\star) \le L(x^\star,\lambda^\star,\mu^\star)
 \end{gathered}
 \]&lt;/span&gt;&lt;/p&gt;
@@ -62,7 +62,7 @@ L(x^\star,\lambda^\star,\mu^\star) \le f_0(x^\star) \le L(x^\star,\lambda^\star,
 f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\star,\mu^\star)
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;If the strong duality holds and &lt;span class=&#34;math inline&#34;&gt;\((x,\lambda,\mu)\)&lt;/span&gt; is the optima, they must satisfy the KKT conditions, and we can leverage the KKT conditions to solve the optima and optimal value:&lt;/p&gt;
+&lt;p&gt;If the strong duality holds and &lt;span class=&#34;math inline&#34;&gt;\((x^\star,\lambda^\star,\mu^\star)\)&lt;/span&gt; is the optima, they must satisfy the KKT conditions, and we can leverage the KKT conditions to solve the optima and optimal value:&lt;/p&gt;
 &lt;h4 id=&#34;karush-kuhn-tucker-conditions&#34;&gt;Karush-Kuhn-Tucker Conditions&lt;/h4&gt;
 &lt;p&gt;In standard optimization problem, KKT conditions refer to the below four:&lt;/p&gt;
 &lt;ul&gt;
@@ -73,7 +73,7 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
 \nabla f_0(x) + \sum_{i=1}^r\lambda_i\nabla f_i(x) + \sum_{i=1}^s\mu_i\nabla h_i(x) = 0
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Note that solutions satisfying KKT conditions do not imply a strong duality or an optimal point. For a better discussion between strong duality and KKT conditions, please go to &lt;a href=&#34;https://math.stackexchange.com/questions/3616646/question-about-kkt-conditions-and-strong-duality&#34;&gt;this question&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note that solutions satisfying KKT conditions do not imply a strong duality or an optimal point. For a better discussion between strong duality and KKT conditions, please go to &lt;a href=&#34;https://math.stackexchange.com/questions/3616646/question-about-kkt-conditions-and-strong-duality&#34;&gt;this discussion&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;when-to-apply&#34;&gt;When-to-apply&lt;/h3&gt;
 &lt;h4 id=&#34;slater-condition&#34;&gt;Slater Condition&lt;/h4&gt;
 &lt;p&gt;Strong duality does not hold generally. But it does hold in &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/convex-optimization/#Standard Form of the Convex Optimization Problem&#34;&gt;standard convex optimization problem&lt;/a&gt;. In such case, KKT conditions are also sufficient for strong duality provided that &lt;span class=&#34;math inline&#34;&gt;\(x^\star\)&lt;/span&gt; is an interior point of the feasible region.&lt;/p&gt;

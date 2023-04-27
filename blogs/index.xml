@@ -5,12 +5,45 @@
     <link>https://chunxy.github.io/blogs/</link>
       <atom:link href="https://chunxy.github.io/blogs/index.xml" rel="self" type="application/rss+xml" />
     <description>Blogs</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 23 Jun 2022 15:03:21 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 13 Aug 2022 11:23:21 +0000</lastBuildDate>
     <image>
       <url>https://chunxy.github.io/media/sharing.png</url>
       <title>Blogs</title>
       <link>https://chunxy.github.io/blogs/</link>
     </image>
+    
+    <item>
+      <title>Generating Covariance Matrix</title>
+      <link>https://chunxy.github.io/blogs/generating-covariance-matrix/</link>
+      <pubDate>Sat, 13 Aug 2022 11:23:21 +0000</pubDate>
+      <guid>https://chunxy.github.io/blogs/generating-covariance-matrix/</guid>
+      <description>
+
+&lt;p&gt;Covariance matrix of a random vector can usually be deduced from the distribution’s property, or estimated from samples. But how to generate an arbitrary covariance matrix? How should we populate the entries in a square matrix so that it makes a legitimate covariance matrix?&lt;/p&gt;
+&lt;h2 id=&#34;first-method&#34;&gt;First Method&lt;/h2&gt;
+&lt;p&gt;In general, we construct the target covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt; by giving its eigenvalues and its orthonormal eigenvectors (&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/#Orthogonal Eigenvectors&#34;&gt;any real symmetric matrix, including the covariance matrix of course, can be constructed in this way&lt;/a&gt;). A diagonal matrix of eigenvalues (denoted as &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;) are easy to synthesize. It remains that how to synthesize a square matrix that has orthonormal column vectors.&lt;/p&gt;
+&lt;p&gt;Let the dimension of the target covariance matrix be &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;. Given an arbitrary square matrix &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; of dimension &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, we can decompose &lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;, which is a real symmetric matrix, into &lt;span class=&#34;math inline&#34;&gt;\(U \Lambda U^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the orthonormal matrix consisting of &lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt; is the diagonal matrix populated with &lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;’s eigenvalues, due to the property of real symmetric matrix.&lt;/p&gt;
+&lt;p&gt;Then we define &lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+(M M^T)^{1/2} &amp;amp;\coloneqq U \Lambda^{1/2} U^T \\
+(M M^T)^{-1/2} &amp;amp;\coloneqq U \Lambda^{-1/2} U^T \\
+\end{align}
+\]&lt;/span&gt; We take &lt;span class=&#34;math inline&#34;&gt;\(E = (M M^T)^{-1/2} M\)&lt;/span&gt;. Now &lt;span class=&#34;math inline&#34;&gt;\(E\)&lt;/span&gt; will contain the orthonormal column vectors as expected. To verify, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;E E^T = \left[ (M M^T)^{-1/2} M \right] \left[ M^T ((M M^T)^{-1/2})^T \right] \\
+&amp;amp;= \left[ (M M^T)^{-1/2} \right] \left[ M M^T \right] \left[ ((M M^T)^{-1/2})^T \right] \\
+&amp;amp;= \left[ U \Lambda^{-1/2} U^T \right] \left[ U \Lambda U^T \right] \left[ U \Lambda^{-1/2} U^T \right] \\
+&amp;amp;= U \Lambda^{-1/2} \underbrace{\left[ U^T U \right]}_{I} \Lambda \underbrace{\left[ U^T U \right]}_{I} \Lambda^{-1/2} U^T \\
+&amp;amp;= U \Lambda^{-1/2} \Lambda \Lambda^{-1/2} U^T = U U^T = I
+\end{aligned}
+\]&lt;/span&gt; Thus, the targeting covariance matrix can be constructed as &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = E D E^T\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;second-method&#34;&gt;Second Method&lt;/h2&gt;
+&lt;p&gt;The easiest way to generate a legitimate covariance matrix would be to arbitrarily synthesize a square matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; of dimension &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, and take &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = A A^T\)&lt;/span&gt; (see &lt;a href=&#34;https://stats.stackexchange.com/questions/215497/how-to-create-an-arbitrary-covariance-matrix&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;By doing so, we can obtain a covariance matrix very fast. But you lose the control over it. Since &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is totally arbitrary, you can tell little about &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’ s eigenvalues, eigenvectors, etc.&lt;/p&gt;
+
+
+</description>
+    </item>
     
     <item>
       <title>椭圆曲线加密算法</title>

@@ -678,11 +678,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/f-divergence/">$f$-divergence</a></li>
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/information-theory/differentiation/">$\nabla$Differentiation</a></li>
+  <li class=""><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -739,7 +743,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/dimension-reduction/">Dimension Reduction</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/dimensionality-reduction/">Dimension Reduction</a></li>
 
 
 
@@ -861,6 +865,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
   
     
     
@@ -929,6 +937,10 @@
 
   <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
       
         </ul>
       
@@ -949,30 +961,30 @@
 
     
       <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/articles/mathematics/statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Statistics</a>
+        <a class="docs-toc-link " href="/notes/articles/mathematics/probability-and-statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Probability and Statistics</a>
     
       
         <ul class="nav docs-sidenav">
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/">Unconscious Statistics</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/statistics/whitening/">Whitening</a></li>
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1123,6 +1135,10 @@
       
 
 
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
   <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
 
@@ -1201,35 +1217,6 @@
 
 
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
-
-      
-        </ul>
-      
-    
-
-    
-      </div>
-    
-
-
-
-  
-    
-    
-    
-    
-    
-
-    
-      <div class="docs-toc-item">
-        <a class="docs-toc-link " href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">高等数学</a>
-    
-      
-        <ul class="nav docs-sidenav">
-      
-
-
-  <li class=""><a href="/notes/books/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/limit-computing-tricks/">Limit Computing Tricks</a></li>
 
       
         </ul>
@@ -1400,25 +1387,25 @@ x = q_1b_1 + q_2b_2 + ... + q_nb_n
 \]</span> These scalars are called the coordinates of <span class="math inline">\(x\)</span> relative to the basis <span class="math inline">\(\mathcal{B}\)</span>. <span class="math display">\[
 [x]_\mathcal{B} = 
 \begin{bmatrix}
-q_1 \\
-\vdots \\
+q_1 
+\cdots 
 q_n
-\end{bmatrix}
+\end{bmatrix}^T
 \]</span> is the coordinate vectors of <span class="math inline">\(x\)</span> relative to <span class="math inline">\(\mathcal{B}\)</span>. The mapping <span class="math inline">\(x \mapsto [x]_\mathcal{B}\)</span> is called the coordinate mapping determined by <span class="math inline">\(\mathcal{B}\)</span>.</p>
 <p>Let <span class="math inline">\(P_\mathcal{B} = [b_1, b_2, ..., b_n]\)</span>, then <span class="math inline">\(x = P_\mathcal{B}[x]_\mathcal{B}\)</span></p>
-<p>Let <span class="math inline">\(\mathcal{B}\)</span> and <span class="math inline">\(\mathcal{C}\)</span> both be an basis for an n-dimensional vector space <span class="math inline">\(\R^n\)</span>. Then there is a unique <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathop{P}\limits_\mathcal{C \leftarrow B}\)</span> such that: <span class="math display">\[
+<p>Let <span class="math inline">\(\mathcal{B}\)</span> and <span class="math inline">\(\mathcal{C}\)</span> both be a basis for an n-dimensional vector space <span class="math inline">\(\R^n\)</span>. Then there is a unique <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathop{P}\limits_\mathcal{C \leftarrow B}\)</span> such that: <span class="math display">\[
 [x]_\mathcal{C} = \mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B}
 \]</span> The columns of <span class="math inline">\(\mathop{P}\limits_\mathcal{C \leftarrow B}\)</span> are the <span class="math inline">\(\mathcal{C}\)</span>-coordinate vectors of the vectors in the basis <span class="math inline">\(\mathcal{B}\)</span>: <span class="math display">\[
 \mathop{P}\limits_\mathcal{C \leftarrow B} = [[b_1]_\mathcal{C}, [b_2]_\mathcal{C}, ..., [b_n]_\mathcal{C}]
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B} &amp;=  P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}
+&amp;P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}[x]_\mathcal{B} =  P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow B}
 \begin{bmatrix}
-q_1 \\
-\vdots \\
+q_1 
+\cdots 
 q_n
-\end{bmatrix} \\
+\end{bmatrix}^T \\
 &amp;= P_\mathcal{C}(q_1[b_1]_\mathcal{C} + q_2[b_2]_\mathcal{C} + ... + q_n[b_n]_\mathcal{C}) \\
 &amp;= q_1P_\mathcal{C}[b_1]_\mathcal{C} + q_2P_\mathcal{C}[b_2]_\mathcal{C} + ... + q_nP_\mathcal{C}[b_n]_\mathcal{C} \\
 &amp;= q_1b_1 + q_2b_2 + ... + q_nb_n \\
@@ -1524,7 +1511,7 @@ P_\mathcal{C}\mathop{P}\limits_\mathcal{C \leftarrow I} &amp;= P_\mathcal{C}[[e_
 
   
   <p class="powered-by copyright-license-text">
-    © 2022 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
