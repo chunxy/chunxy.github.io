@@ -769,6 +769,10 @@
 
   <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
       
         </ul>
       
@@ -849,11 +853,11 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
@@ -861,11 +865,19 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
 
 
 
@@ -903,10 +915,6 @@
     
       </div>
     
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/"></a></li>
 
       
         </ul>
@@ -968,6 +976,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
@@ -976,15 +988,15 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1135,11 +1147,7 @@
       
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
-
-
-
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
 
 
 
@@ -1147,7 +1155,11 @@
 
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
       
         </ul>
@@ -1212,11 +1224,11 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
 
       
         </ul>
@@ -1305,6 +1317,7 @@
     <li><a href="#k-means">K-means</a></li>
     <li><a href="#gaussian-mixture-model">Gaussian Mixture Model</a></li>
     <li><a href="#soft-k-means">Soft K-means</a></li>
+    <li><a href="#external-material">External Material</a></li>
   </ul>
 </nav>
 
@@ -1407,11 +1420,11 @@ B_0 = 1
 <h3 id="k-means">K-means</h3>
 <p>K-means assumes there are <span class="math inline">\(K\)</span> clusters. This greatly eliminates many possibilities described above. Its objective is <span class="math display">\[
 \min_{c_1,\dots,c_K}\sum_{i=1}^M||x^{(i)} - c_{z^{(i)}}||^2_2, \text{ where }z^{(i)} = \arg \min_{j \in \{1,\dots,K\}}||x^{(i)}-c_j||^2_2
-\]</span> <span class="math inline">\(z^{(i)}\)</span> is the cluster index <span class="math inline">\(x^{(i)}\)</span> is assigned to. K-means’ objective is to assign each point to its closest cluster center and minimize the total within-cluster square errors. For cluster <span class="math inline">\(j\)</span>, let <span class="math inline">\(C_j = \{x^{(i)}|z^{(i)} = j\}\)</span> be the set of points assigned to it, then the cluster center of cluster <span class="math inline">\(j\)</span> is <span class="math display">\[
+\]</span> <span class="math inline">\(z^{(i)}\)</span> is the cluster index to which <span class="math inline">\(x^{(i)}\)</span> is assigned. K-means’ objective is to assign each point to its closest cluster center and minimize the total within-cluster square errors. For cluster <span class="math inline">\(j\)</span>, let <span class="math inline">\(C_j = \{x^{(i)}|z^{(i)} = j\}\)</span> be the set of points assigned to it, then the cluster center of cluster <span class="math inline">\(j\)</span> is <span class="math display">\[
 c_j = \frac{1}{|C_j|}\sum_{x^{(i)} \in C_j}x^{(i)}
 \]</span> However, both the cluster center <span class="math inline">\(\newcommand{\c}{\mathrm{c}} \c\)</span> and the assignment <span class="math inline">\(\newcommand{\z}{\mathrm{z}} \z\)</span> is initially unknown. K-means solves this by randomly pick up initial cluster centers and enter the assign-data-to-clusters/update-cluster-centers loop, until the cluster centers converge or become satisfactory. Rewrite the objective of K-means as:</p>
 <p><span class="math display">\[
-\min_{\z,\c}(l(\z,\c) = \sum_{i=1}^M||x^{(i)}- c_{z^{(i)}}||^2_2)
+\min_{\z,\c}(l(\z,\c) \coloneq \sum_{i=1}^M||x^{(i)}- c_{z^{(i)}}||^2_2)
 \]</span> K-means is in essence a coordinate descent of the loss <span class="math inline">\(l(\z,\c)\)</span>. The main loop of K-means is to:</p>
 <ul>
 <li>assign data points to its nearest cluster center, i.e. minimizing over the assignment <span class="math inline">\(\z\)</span>.</li>
@@ -1420,18 +1433,18 @@ c_j = \frac{1}{|C_j|}\sum_{x^{(i)} \in C_j}x^{(i)}
 <p><span class="math inline">\(l\)</span> is monotonically decreasing after each step in the above loop. Also, <span class="math inline">\(l\)</span> is lower-bounded by <span class="math inline">\(0\)</span>. Therefore, <span class="math inline">\(l\)</span> and thus K-means will converge finally.</p>
 <p>Each cluster in K-means has a circular shape because of the Euclidean distance it uses.</p>
 <h3 id="gaussian-mixture-model">Gaussian Mixture Model</h3>
-<p>A cluster can also be modelled by a multi-variate Gaussian with elliptical shape: the elliptical shape is controlled by the covariance matrix; the location is controlled by the mean. Gaussian Mixture Model is a weighted sum of Gaussians: <span class="math display">\[
+<p>A cluster can also be modelled by a multi-variate Gaussian with elliptical shape: the elliptical shape is controlled by the covariance matrix; the location is controlled by the mean. Gaussian mixture model is a weighted sum of, say <span class="math inline">\(K\)</span>, Gaussian distributions: <span class="math display">\[
 p(x) = \sum_{j=1}^K\pi_j\mathcal N(x;\mu_j, \Sigma_j)
 \]</span> <span class="math inline">\(\pi_j\)</span> is the prior that a sample is generated from the <span class="math inline">\(j\)</span>-th Gaussian. <span class="math inline">\(\mathcal N(x;\mu_j, \Sigma_j)\)</span> is the probability to generate the sample <span class="math inline">\(x\)</span> from the <span class="math inline">\(j\)</span>-th Gaussian. Put it together, <span class="math inline">\(p(x)\)</span> is the total probability of <span class="math inline">\(x\)</span> over its latent <span class="math inline">\(z\)</span>, with <span class="math inline">\(z = j\)</span> representing the prior condition that <span class="math inline">\(x\)</span> is sampled from <span class="math inline">\(j\)</span>-th Gaussian. <span class="math display">\[
 p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^Kp(x|z = j)p(z = j)
 \]</span> GMM is learned by <span class="math display">\[
 \begin{gather}
-\max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)})\Big) \\
+\max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) \triangleq \prod_{i=1}^Mp(x^{(i)})\Big) \\
 s.t.\quad \sum_{j=1}^K\pi_j = 1
 \end{gather}
 \]</span> The log-likelihood function form will be <span class="math display">\[
 \begin{gather}
-\max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) = \log L(\pi,\mu,\Sigma)\Big) \\
+\max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) \triangleq \log L(\pi,\mu,\Sigma)\Big) \\
 s.t.\quad \sum_{j=1}^K\pi_j = 1
 \end{gather}
 \]</span></p>
@@ -1445,41 +1458,29 @@ l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\m
 \]</span> The Lagrangian function will be <span class="math display">\[
 J(\pi,\mu,\Sigma,\lambda) = -\sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) + \lambda(\sum_{j=1}^K\pi_j - 1)
 \]</span> This expression is just too hard to zero the derivatives. For example, writing <span class="math inline">\(\mathcal N(x^{(i)};\mu_j, \Sigma_j)\)</span> as <span class="math inline">\(z^{(i)}_j\)</span>, then take derivative w.r.t. <span class="math inline">\(\pi\)</span> and make it zero to give <span class="math display">\[
-\begin{gather}
-\frac{\partial J}{\partial \pi_j} = -\sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_j, \Sigma_j)} + \lambda \\
-\lambda = \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_1, \Sigma_1)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_1, \Sigma_1)} 
-= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_2, \Sigma_2)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_2, \Sigma_2} 
-= \dots 
-= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K, \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K}
-\end{gather}
+\begin{align}
+\frac{\partial J}{\partial \pi_j} &amp;= -\sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_j, \Sigma_j)} + \lambda \\
+&amp;\Downarrow \\
+\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_1, \Sigma_1)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_1, \Sigma_1)} \\
+\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_2, \Sigma_2)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_2, \Sigma_2)} \\
+&amp;\dots \\
+\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K, \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K)}\\
+\end{align}
 \]</span></p>
 <p>By far, the whole expression is too complicated for us to continue with.</p>
-<h4 id="attempt-with-expectation-maximization">Attempt with <a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></h4>
+<h4 id="attempt-with-expectation-maximization">Attempt with Expectation Maximization</h4>
 <p><span class="math display">\[
 \begin{gather}
 L(\pi,\mu,\Sigma) = \prod_{i=1}^M p(x^{(i)}) = \prod_{i=1}^M \sum_{j=1}^K p(x^{(i)}, z^{(i)} = j) \\
 l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)\big)
 = \sum_{i=1}^M\log\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)
 \end{gather}
-\]</span> By Jensen’s inequality, if <span class="math inline">\(\forall j \in \{1,\dots,K\}, \alpha_j \ge 0\)</span> and <span class="math inline">\(\sum_{j=1}^K\alpha_j = 1\)</span>, <span class="math display">\[
+\]</span> By Jensen’s inequality, if <span class="math inline">\(\forall i \in \{ 1,\dots,M \}, j \in \{1,\dots,K\}, \alpha_j^{(i)} \ge 0\)</span> and <span class="math inline">\(\sum_{j=1}^K\alpha_j^{(i)} = 1\)</span>, <span class="math display">\[
 \begin{aligned}
 l(\pi,\mu,\Sigma) &amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) = \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
 &amp;\ge B(\alpha,\pi,\mu,\Sigma) := \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
 \end{aligned}
-\]</span> <span class="math inline">\(B\)</span> is the lower bound of <span class="math inline">\(l\)</span>. If we can enlarge <span class="math inline">\(B\)</span>, we can guarantee that <span class="math inline">\(l\)</span> is increasing in this process. If we fix <span class="math inline">\(\pi,\mu,\Sigma\)</span>, <span class="math inline">\(\alpha\)</span> can be easily optimized by the equality condition of Jensen’s Inequality. The equality holds if and only if <span class="math display">\[
-\frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} = c^{(i)}, i=1,\dots M, j=1,\dots,K
-\]</span> In this case, <span class="math display">\[
-\begin{gather}
-\frac{\mathcal N(x^{(i)};\mu_1, \Sigma_1) \pi_j + \dots + \mathcal N(x^{(i)};\mu_K, \Sigma_j) \pi_K}{\alpha^{(i)}_1 + \dots + \alpha^{(i)}_K} = c^{(i)} \\
-c^{(i)} = \sum_{j=1}^K \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j \\
-\begin{aligned}
-\alpha^{(i)}_j &amp;= \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\sum_{j=1}^K \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j} \\
-&amp;= \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} \\
-&amp;= \frac{p(x^{(i)}, z^{(i)} = j)}{p(x^{(i)})} \\
-&amp;= p(z^{(i)} = j|x^{(i)})
-\end{aligned}
-\end{gather}
-\]</span> If we fix <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
+\]</span> <span class="math inline">\(B\)</span> is the lower bound of <span class="math inline">\(l\)</span>. If we can enlarge <span class="math inline">\(B\)</span>, we can gently guarantee that <span class="math inline">\(l\)</span> is increasing in this process. As illustrated in <a href="/notes/articles/optimization/expectation-maximization/">expectation maximization</a>, <span class="math inline">\(\alpha^{(i)}_j\)</span> is chosen to be <span class="math inline">\(p(z^{(i)}=j | x^{(i)}; \pi^t, \mu^t,\Sigma^t)\)</span>, where <span class="math inline">\(\pi^t, \mu^t,\Sigma^t\)</span> are estimations in current iteration. With <span class="math inline">\(\alpha\)</span> being fixed, <span class="math display">\[
 \begin{aligned}
 B(\alpha,\pi,\mu,\Sigma) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j - \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \alpha^{(i)}_j \\
 \end{aligned}
@@ -1492,9 +1493,10 @@ s.t.\quad \sum_{i=1}^K \pi_j = 1
 J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(1 - \sum_{i=1}^K\pi_i )
 \]</span> Take derivative w.r.t. <span class="math inline">\(\pi_k\)</span> and make it zero to give <span class="math display">\[
 \frac{\partial J}{\partial \pi_k} =\sum_{i=1}^M \frac{\alpha^{(i)}_k}{\pi_k} - \lambda \\
-\pi_k = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{\lambda}
+\Downarrow \\
+\pi_k^{t+1} = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{\lambda}
 \]</span> With the knowledge that <span class="math inline">\(\sum_{j=1}^K \pi_j = 1, \sum_{i=1}^M\alpha^{(i)}_j = 1\)</span>, we have <span class="math display">\[
-\pi_k = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{M}
+\pi_k^{t+1} = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{M}
 \]</span></p>
 <p>Take derivative w.r.t. <span class="math inline">\(\mu_k\)</span> and make it zero to give <span class="math display">\[
 \begin{aligned}
@@ -1507,7 +1509,8 @@ J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(
 \begin{aligned}
 \sum_{i=1}^M \alpha^{(i)}_k \Sigma_k^{-1} (x^{(i)} - \mu_k) &amp;= 0 \\
 \sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) &amp;= 0, \text{ by the invertibility of $\Sigma_j^{-1}$} \\
-\mu_k &amp;= \frac{\sum_{i=1}^M \alpha^{(i)}_k x^{(i)}}{M}
+\Downarrow \\
+\mu_k^{t+1} &amp;= \frac{\sum_{i=1}^M \alpha^{(i)}_k x^{(i)}}{M}
 \end{aligned}
 \]</span></p>
 <p>Take derivative w.r.t. <span class="math inline">\(\Sigma_k\)</span> and make it zero to give <span class="math display">\[
@@ -1524,7 +1527,7 @@ J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(
 \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T + I) &amp;= 0 \\
 \end{aligned} \\
 \Downarrow \\
-\Sigma_k = \frac{\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T}{\sum_{i=1}^M \alpha^{(i)}_k} \\
+\Sigma_k^{t+1} = \frac{\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T}{\sum_{i=1}^M \alpha^{(i)}_k} \\
 \end{gather}
 \]</span></p>
 <h3 id="soft-k-means">Soft K-means</h3>
@@ -1534,7 +1537,9 @@ J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(
 p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}}\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2) \\
 \alpha^{(i)}_j = p(z^{(i)} = j | x^{(i)}) = \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I) \frac{1}{K}}{\frac{1}{K} \sum_{k=1}^K \mathcal N(x;\mu_k, I)} = \frac{\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2)}{\sum_{k=1}^K \exp(-\frac{1}{2}||x^{(k)}-\mu_j||^2_2)}
 \end{gather}
-\]</span> The “Soft K-means” comes from the softmax of the Euclidean distance.</p>
+\]</span> The “soft K-means” comes from the softmax of the Euclidean distance.</p>
+<h2 id="external-material">External Material</h2>
+<p><a href="https://towardsdatascience.com/gaussian-mixture-models-vs-k-means-which-one-to-choose-62f2736025f0">Gaussian Mixture Models vs K-Means. | by K.Kubara | Towards Data Science</a></p>
 
 
 

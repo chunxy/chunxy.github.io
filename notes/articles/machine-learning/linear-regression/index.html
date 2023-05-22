@@ -769,6 +769,10 @@
 
   <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
       
         </ul>
       
@@ -849,11 +853,11 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
@@ -861,11 +865,19 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
 
 
 
@@ -903,10 +915,6 @@
     
       </div>
     
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/"></a></li>
 
       
         </ul>
@@ -968,6 +976,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
@@ -976,15 +988,15 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1135,11 +1147,7 @@
       
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
-
-
-
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
 
 
 
@@ -1147,7 +1155,11 @@
 
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
       
         </ul>
@@ -1212,11 +1224,11 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
 
       
         </ul>
@@ -1305,6 +1317,7 @@
     <li><a href="#ordinary-least-squares">Ordinary Least Squares</a></li>
     <li><a href="#ridge-regression">Ridge Regression</a></li>
     <li><a href="#lasso-regression">Lasso Regression</a></li>
+    <li><a href="#external-materials">External Materials</a></li>
   </ul>
 </nav>
 
@@ -1390,10 +1403,10 @@
             
 
 <p>Given a dataset <span class="math inline">\(\mathcal D = \{(x^{(i)}, y^{(i)}),i=1,\dots,M\}\)</span> where <span class="math inline">\(x^{(i)} \in \R^N\)</span> is the feature vector and <span class="math inline">\(y^{(i)} \in R\)</span> is the output, learn a linear function <span class="math inline">\(f = w^Tx + b: \R^N \mapsto \R\)</span>, where <span class="math inline">\(w \in \R^N, b \in \R\)</span>, that best predicts the <span class="math inline">\(y\)</span> for any feature vector <span class="math inline">\(x\)</span>. The “best” is usually measured by the Mean Square Error: <span class="math display">\[
-MSE(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} - f(x^{(i)}))^2
+\mathrm{MSE}(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} - f(x^{(i)}))^2
 \]</span></p>
 <h3 id="ordinary-least-squares">Ordinary Least Squares</h3>
-<p>OLS selects the linear regression parameters <span class="math inline">\(w, b\)</span> the minimize the MSE: <span class="math display">\[
+<p>OLS selects the linear regression parameters <span class="math inline">\(w, b\)</span> that minimizes the mean squared error: <span class="math display">\[
 w^\star, b^\star = \arg \min_{w,b}\frac{1}{M}\sum_{i=1}^M(y^{(i)} - w^Tx^{(i)} - b)^2
 \]</span> This is equivalent to the below Least Squares problem. Let <span class="math display">\[
 \begin{gather}
@@ -1421,17 +1434,18 @@ XW =  Y
 \end{gather}
 \]</span> <span class="math inline">\(Y\)</span> may not lie in the column space of <span class="math inline">\(X\)</span>. Therefore we have to approximate <span class="math inline">\(W\)</span> by <span class="math display">\[
 \begin{aligned}
-X\hat W = proj_{Col(X)}Y \Rightarrow Y &amp;- X\hat W \in Nul(X^T) \Rightarrow\\
+X\hat W = proj_{\Col(X)}Y \Rightarrow Y &amp;- X\hat W \in \Nul(X^T) \\
+\Downarrow\\
 X^T(Y - X\hat W) &amp;= 0 \\
 X^TX\hat W &amp;= X^TY
 \end{aligned}
 \]</span> Columns of <span class="math inline">\(X\)</span> are independent <span class="math inline">\(\iff\)</span> <span class="math inline">\(X^TX\)</span> is invertible. When <span class="math inline">\(X^TX\)</span> is not invertible, there are infinite many solutions to <span class="math inline">\(\hat W\)</span>. We can get one specific <span class="math inline">\(\hat W\)</span> by enforcing regularization on <span class="math inline">\(\hat W\)</span> or adding more samples when <span class="math inline">\(M &lt; N + 1\)</span>. When <span class="math inline">\(X^TX\)</span> is invertible, there is a unique solution that <span class="math inline">\(\hat W = (X^TX)^{-1}X^TY\)</span>.</p>
 <p>This gives the same result with minimizing the MSE: <span class="math display">\[
-W^\star = \arg \min_{W}MSE(W) = \frac{1}{M}(Y - XW)^T(Y - XW)
+W^\star = \arg \min_{W} \mathrm{MSE}(W) = \frac{1}{M}(Y - XW)^T(Y - XW) \label{target}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-\frac{\partial MSE}{\partial W} &amp;= \frac{\partial(Y^TY - Y^TXW - W^TX^TY + W^TX^TXW)}{\partial W} \\
+\frac{\partial \mathrm{MSE}}{\partial W} &amp;= \frac{\partial(Y^TY - Y^TXW - W^TX^TY + W^TX^TXW)}{\partial W} \\
 &amp;= \frac{\partial(Y^TY - Y^TXW - Y^TXW + (XW)^TXW)}{\partial W} \\
 &amp;= -2X^TY + 2X^TXW \\
 \end{aligned}
@@ -1440,19 +1454,19 @@ W^\star = \arg \min_{W}MSE(W) = \frac{1}{M}(Y - XW)^T(Y - XW)
 0 = -2X^TY + 2X^TXW^\star \\
 X^TXW^\star = X^TY 
 \]</span></p>
-<p>There are chances that <span class="math inline">\(N\)</span> is too large, making equation (7) too computationally expensive. In this case, we can use gradient descent. The update rule will be <span class="math display">\[
+<p>There are chances that <span class="math inline">\(N\)</span> is too large, making equation <span class="math inline">\(\eqref{target}\)</span> much computationally expensive. In this case, we can use gradient descent. The update rule will be <span class="math display">\[
 \begin{aligned}
-W^{(t+1)} &amp;= W^{(t)} - \frac{\eta}{2}\nabla MSE(W^{(t)}) \\
+W^{(t+1)} &amp;= W^{(t)} - \frac{\eta}{2} \nabla \mathrm{MSE}(W^{(t)}) \\
 &amp;= W^{(t)} - \eta(X^TXW^{(t)} -X^TY)
 \end{aligned}
 \]</span></p>
 <h4 id="a-probabilistic-view">A Probabilistic View</h4>
 <h5 id="maximum-likelihood-estimation">Maximum Likelihood Estimation</h5>
-<p>In classification task, <span class="math inline">\(x\)</span> is the feature, <span class="math inline">\(y\)</span> is the label; in regression task, <span class="math inline">\(x\)</span> is the ‘label’, <span class="math inline">\(y\)</span> is the ‘feature’. From a probabilistic point of view, we would like estimate <span class="math inline">\(p(feature|label)\)</span>. In this case, we treat <span class="math inline">\(y\)</span> as the ‘feature’ composed of a deterministic function with a noise sampled from an identical and independent Gaussian distribution, i.e., for random variable <span class="math inline">\(\mathcal X, \mathcal Y\)</span> (to distinguish from matrix <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>), <span class="math display">\[
-\mathcal Y = \mathcal XW + \epsilon, \text{ where }p(\epsilon;\sigma^2) = \mathcal N(\epsilon;0, \sigma^2)
+<p>In classification task, <span class="math inline">\(x\)</span> is the feature, <span class="math inline">\(y\)</span> is the label; in regression task, <span class="math inline">\(x\)</span> is the “label”, <span class="math inline">\(y\)</span> is the “feature”. From a probabilistic point of view, we would like estimate <span class="math inline">\(p(\text{feature}|\text{label})\)</span>. In this case, we treat <span class="math inline">\(y\)</span> as the “feature” composed of a deterministic function and a noise sampled from an identical and independent Gaussian distribution, i.e., for random variable <span class="math inline">\(\mathcal X, \mathcal Y\)</span> (to distinguish from matrix <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>), <span class="math display">\[
+\mathcal Y = \mathcal XW + \epsilon, \text{ where }\epsilon \sim \mathcal N(0, \sigma^2)
 \]</span> Thus, <span class="math display">\[
 p(Y|X;W,\sigma^2) = p(\epsilon=Y - XW;\sigma^2) = \mathcal N(Y - XW;0,\sigma^2I)
-\]</span> Then OLS can be attacked by Maximum Likelihood Estimation. The log-likelihood function will be</p>
+\]</span> Then OLS can be attacked by maximum likelihood estimation. The log-likelihood function will be</p>
 <p><span class="math display">\[
 \begin{aligned}
 l(W,\sigma^2) &amp;= \log(L(W, \sigma^2)) = \log(p(Y|X;W,\sigma^2)) = \log \mathcal N(Y - XW;0,\sigma^2I) \\
@@ -1471,16 +1485,36 @@ l(W,\sigma^2) &amp;= \log(L(W, \sigma^2)) = \log(p(Y|X;W,\sigma^2)) = \log \math
 \frac{1}{\sigma^2}(X^TXW^\star - X^TY) = 0 \\
 X^TXW^\star = X^TY
 \end{gather}
-\]</span> Substitute the solution <span class="math inline">\(W^\star\)</span> back, take derivative w.r.t. <span class="math inline">\(\sigma^2\)</span> and make it <span class="math inline">\(0\)</span> to give <span class="math inline">\(\sigma^{\star2}\)</span>: <span class="math display">\[
+\]</span> Substitute <span class="math inline">\(W^\star\)</span> back, take derivative w.r.t. <span class="math inline">\(\sigma^2\)</span> and make it <span class="math inline">\(0\)</span> to give <span class="math inline">\(\sigma^{\star2}\)</span>: <span class="math display">\[
 \begin{gather}
 \frac{M}{2\sigma^{\star2}} - \frac{(Y - XW^\star)^T(Y - XW^\star)}{2(\sigma^{\star2})^2} = 0 \\
 \sigma^{\star2} = \frac{1}{M}(Y - XW^\star)^T(Y - XW^\star)
 \end{gather}
 \]</span></p>
-<h5 id="maximizing-a-posteriori">Maximizing a Posteriori</h5>
+<p>We may further analyze the efficacy of <span class="math inline">\(W^\star\)</span> as a point estimator. Suppose <span class="math inline">\(X^T X\)</span> is invertible. We have <span class="math display">\[
+\begin{aligned}
+&amp;W^\star = (X^T X)^{-1} X^T Y \\
+&amp;= (X^T X)^{-1} X^T (X W_\text{real} + Z) \\
+&amp;= W_\text{real} + (X^T X)^{-1} X^T Z
+\end{aligned}
+\]</span> where <span class="math inline">\(Z\)</span> contains the noise term for each sample. <span class="math inline">\(W^\star\)</span> is unbiased because <span class="math display">\[
+\begin{aligned}
+&amp;\E[W^\star] = \E[W_\text{real} + (X^T X)^{-1} X^T Z] \\
+&amp;= W_\text{real} + (X^T X)^{-1} X^T \E[Z] = W_\text{real}
+\end{aligned}
+\]</span></p>
+<p>The covariance matrix of <span class="math inline">\(W^\star\)</span> will be: <span class="math display">\[
+\begin{aligned}
+&amp;\Cov[W^\star] = \Cov[W_\text{real} + (X^T X)^{-1} X^T Z] \\
+&amp;= 0 + (X^T X)^{-1} X^T \Cov[Z] X (X^T X)^{-1} \\
+&amp;= (X^T X)^{-1} X^T {\sigma^\star}^2 I X (X^T X)^{-1} \\
+&amp;= {\sigma^\star}^2 (X^T X)^{-1}
+\end{aligned}
+\]</span></p>
+<h5 id="maximum-a-posteriori">Maximum a Posteriori</h5>
 <p>If we add a priori to <span class="math inline">\(W\)</span> by <span class="math inline">\(W \sim \mathcal N(0,\frac{C}{2}I)\)</span>, then <span class="math inline">\(p(W) \propto \exp(-\frac{1}{C}W^TW)\)</span>. <span class="math display">\[
 \begin{aligned}
-p(W|X, Y) &amp;= \frac{p(W, X, Y)}{p(X, Y)} \\
+&amp;p(W|X, Y) = \frac{p(W, X, Y)}{p(X, Y)} \\
 &amp;= \frac{p(Y|X, W)P(X, W)}{P(X, Y)} \\
 &amp;= \frac{p(Y|X, W)P(W)P(X)}{P(X, Y)} \\
 &amp;= \frac{p(Y|X, W)P(W)}{P(Y|X)} \\
@@ -1508,7 +1542,8 @@ W^\star = \arg \max_W p(W|X,Y)
 <p>In Ridge Regression, there is still chance that some weights are small but not zero, because the regularization term is small so far as the weights are fairly small. Think in this way: <span class="math inline">\(0.01^2 = 0.0001 \ll 0.01\)</span>, though it is not rigid.</p>
 <p>To get better regularization, we can change the regularization term to <span class="math inline">\(l_1\)</span>-norm: <span class="math display">\[
 \min_{W} \frac{1}{2}||Y - XW||^2_2 + \alpha||W||_1
-\]</span> The above problem can be efficiently solved using Coordinate Descent or <a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a>.</p>
+\]</span> The above problem can be efficiently solved using <a href="/notes/articles/optimization/coordinate-descent/">coordinate descent</a> or <a href="/notes/articles/optimization/least-angle-regression/">least angle regression</a>.</p>
+<h2 id="external-materials">External Materials</h2>
 <p><a href="https://www.cnblogs.com/pinard/p/6018889.html">Lasso回归算法： 坐标轴下降法与最小角回归法小结 - 刘建平Pinard - 博客园 (cnblogs.com)</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/76055830">LASSO回归求解 - 知乎 (zhihu.com)</a></p>
 

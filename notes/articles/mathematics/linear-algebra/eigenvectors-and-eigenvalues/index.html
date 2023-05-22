@@ -769,6 +769,10 @@
 
   <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
       
         </ul>
       
@@ -849,11 +853,11 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
   <li class="active"><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
@@ -861,11 +865,19 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
 
 
 
@@ -903,10 +915,6 @@
     
       </div>
     
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/"></a></li>
 
       
         </ul>
@@ -968,6 +976,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
@@ -976,15 +988,15 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1135,11 +1147,7 @@
       
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
-
-
-
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
 
 
 
@@ -1147,7 +1155,11 @@
 
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
       
         </ul>
@@ -1212,11 +1224,11 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
 
       
         </ul>
@@ -1443,22 +1455,24 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 <h3 id="diagonalization">Diagonalization</h3>
 <ul>
 <li><p>Theorem</p>
-<p>An <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is diagonalizable if and only if <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> independent eigenvectors.</p></li>
+<p>An <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is diagonalizable if and only if <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors.</p></li>
 <li><p>Proof</p>
 <ul>
 <li><p>Necessity</p>
 <p>Suppose <span class="math inline">\(A = PDP^{-1}\)</span>, then <span class="math inline">\(AP = PD\)</span>. Let <span class="math inline">\(\newcommand{\p}{\mathrm{p}} P = [\p_1, \p_2, ..., \p_n]\)</span>. Since <span class="math inline">\(D\)</span> is a diagonal matrix, <span class="math display">\[
 AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11} \p_1, D_{22} \p_2, ..., D_{nn} \p_n]
-\]</span> Because <span class="math inline">\(P\)</span> is invertible, <span class="math inline">\(\p_i\)</span>’s are independent, which indicates that <span class="math inline">\(\mathrm p_i\)</span>’s are <span class="math inline">\(A\)</span>’s <span class="math inline">\(n\)</span> independent eigenvectors.</p>
+\]</span> Because <span class="math inline">\(P\)</span> is invertible, <span class="math inline">\(\p_i\)</span>’s are linearly independent, which indicates that <span class="math inline">\(\mathrm p_i\)</span>’s are <span class="math inline">\(A\)</span>’s <span class="math inline">\(n\)</span> independent eigenvectors.</p>
 <p>From this, we could also see that if <span class="math inline">\(A\)</span> is diagonalizable, then <span class="math inline">\(P\)</span> must be the matrix concatenated with <span class="math inline">\(A\)</span>’s eigenvectors and <span class="math inline">\(D\)</span> must be the diagonal matrix filled with corresponding eigenvalues.</p></li>
 <li><p>Sufficiency</p>
 <p>Easy to show.</p></li>
 </ul></li>
 </ul>
+<p>As a counter-example, the matrix <span class="math inline">\(\begin{bmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{bmatrix}\)</span> is not diagonalizable.</p>
+<p>The diagonalization of a square matrix is also referred to as <strong>eigen decomposition</strong>.</p>
 <h3 id="eigenvalues-rank-trace-and-determinant">Eigenvalues: Rank, Trace and Determinant</h3>
-<p>Since the characteristic equation of an <span class="math inline">\(n \times n\)</span> matrix involves a polynomial of degree <span class="math inline">\(n\)</span>, the equation always has exactly <span class="math inline">\(n\)</span> roots, counting multiplicities, including complex roots. There are some relations between eigenvalues and matrix’s rank, trace and determinant: <span class="math display">\[
+<p>Since the characteristic equation of an <span class="math inline">\(n \times n\)</span> matrix is a polynomial of degree <span class="math inline">\(n\)</span>, the equation always has exactly <span class="math inline">\(n\)</span> roots, counting multiplicities, including complex roots. There are some relations between eigenvalues and matrix’s rank, trace and determinant: <span class="math display">\[
 \begin{gather}
-\rank = \text{the number of (non-zero) real eigenvalues, including multiplicities} \\
+\rank = \text{the number of nonzero real eigenvalues, including multiplicities} \\
 \tr = \text{sum of the eigenvalues} \\
 \det = \text{product of the eigenvalues}
 \end{gather}
@@ -1483,8 +1497,15 @@ AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11} \p_1, D_{22} \p_2, ..., D_{nn} \p_n]
   
   
   <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/notes/articles/mathematics/linear-algebra/determinant/" rel="next">Determinant</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
     <div class="meta-nav">Next</div>
-    <a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/" rel="prev">Real Symmetric Matrix</a>
+    <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/" rel="prev">Singular Value Decomposition</a>
   </div>
   
 </div>

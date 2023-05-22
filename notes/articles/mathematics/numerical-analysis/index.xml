@@ -152,7 +152,7 @@ s(x) = \int_{-\infty}^{+\infty} \hat s(f) e^{i 2\pi f x} \d f
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\omega\)&lt;/span&gt; is the angular speed. &lt;span class=&#34;math inline&#34;&gt;\(\omega\)&lt;/span&gt; is in the unit of radian/sample. &lt;span class=&#34;math inline&#34;&gt;\(\hat s(\omega)\)&lt;/span&gt; is the weight of the component which walks &lt;span class=&#34;math inline&#34;&gt;\(\omega\)&lt;/span&gt; between two signal samples. &lt;span class=&#34;math display&#34;&gt;\[
 \hat s(f) = \sum_{k=-\infty}^{+\infty} s[k] e^{-i 2\pi f k}
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is the “frequency”. &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is in the unit of cycles/sample. &lt;span class=&#34;math inline&#34;&gt;\(\hat s(f)\)&lt;/span&gt; is the weight of the component which walks &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; cycles between two signal samples.&lt;/p&gt;
-&lt;h2 id=&#34;todo&#34;&gt;TODO&lt;/h2&gt;
+&lt;p&gt;Todo&lt;/p&gt;
 &lt;ul class=&#34;task-list&#34;&gt;
 &lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34;/&gt;
 Laplace Transform&lt;/li&gt;
@@ -161,7 +161,8 @@ Laplace Transform&lt;/li&gt;
 &lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34;/&gt;
 Fast Fourier Transform&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://charlesliuyx.github.io/2018/02/18/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E8%AE%A9%E4%BD%A0%E6%B0%B8%E8%BF%9C%E5%BF%98%E4%B8%8D%E4%BA%86%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E8%A7%A3%E6%9E%90/&#34;&gt;傅立叶变换与群&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/1119070975&#34;&gt;如何理解傅里叶变换公式？ - 苗华栋的回答 - 知乎&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/334686351&#34;&gt;如何理解傅里叶变换公式？ - 马同学的回答 - 知乎&lt;/a&gt; || &lt;a href=&#34;https://en.wikipedia.org/wiki/Fourier_transform&#34;&gt;Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jezzamon.com/fourier/zh-cn.html&#34;&gt;傅里叶变换交互式入门 (jezzamon.com)&lt;/a&gt; || &lt;a href=&#34;https://charlesliuyx.github.io/2018/02/18/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E8%AE%A9%E4%BD%A0%E6%B0%B8%E8%BF%9C%E5%BF%98%E4%B8%8D%E4%BA%86%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E8%A7%A3%E6%9E%90/&#34;&gt;傅立叶变换与群&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/1119070975&#34;&gt;如何理解傅里叶变换公式？ - 苗华栋的回答 - 知乎&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/334686351&#34;&gt;如何理解傅里叶变换公式？ - 马同学的回答 - 知乎&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

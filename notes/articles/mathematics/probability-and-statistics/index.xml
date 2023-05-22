@@ -13,6 +13,34 @@
     </image>
     
     <item>
+      <title>Law of Total Variance</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/</link>
+      <pubDate>Wed, 05 Apr 2023 09:06:42 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/</guid>
+      <description>
+
+&lt;h2 id=&#34;conditional-expectation&#34;&gt;Conditional Expectation&lt;/h2&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; be two discrete random variables. The &lt;strong&gt;conditional probability function of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; given &lt;span class=&#34;math inline&#34;&gt;\(Y=y\)&lt;/span&gt;&lt;/strong&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+\Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)}
+\]&lt;/span&gt; Thus the &lt;strong&gt;conditional expectation of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; given that &lt;span class=&#34;math inline&#34;&gt;\(Y=y\)&lt;/span&gt;&lt;/strong&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+\mu_{X|Y} = \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y)
+\]&lt;/span&gt; Clearly the &lt;strong&gt;conditional expectation&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(\E(X|Y)\)&lt;/span&gt; is a function of &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, or put it another way, a random variable depending on &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, instead of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conditional-variance&#34;&gt;Conditional Variance&lt;/h2&gt;
+&lt;p&gt;Conditional variance can be similarly defined. &lt;span class=&#34;math inline&#34;&gt;\(\Var(X|Y=y)\)&lt;/span&gt; is the conditional variance of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; given &lt;span class=&#34;math inline&#34;&gt;\(Y=y\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\Var(X|Y)\)&lt;/span&gt; is a random variable depending on &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\Var(X|Y) \coloneq \E[(X - \mu_{X|Y})^2 | Y] = \E(X^2|Y) - \E^2(X|Y)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;laws-of-total-expectation-and-variance&#34;&gt;Laws of Total Expectation and Variance&lt;/h2&gt;
+&lt;p&gt;If all the expectations below exist, then for any random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\E(X) = \E_Y(\E(X|Y)) \quad \textbf{Law of Total Expectation}
+\]&lt;/span&gt; and &lt;span class=&#34;math display&#34;&gt;\[
+\Var(X) = \E_Y(\Var(X|Y)) + \Var_Y(\E(X|Y)) \quad \textbf{Law of Total Variance}
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Gaussian Distribution</title>
       <link>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/</link>
       <pubDate>Sun, 08 May 2022 19:09:42 +0000</pubDate>
@@ -59,18 +87,16 @@ p(\z) &amp;amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}} e^{
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;first-order-correlated-n-dimensional&#34;&gt;First-order correlated &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional&lt;/h3&gt;
-&lt;p&gt;We have given the joint distribution function of independent &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional standard Gaussian distribution. What if &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; dimensions are not standard, are not independent with each other, but are correlated only in first order?&lt;/p&gt;
-&lt;p&gt;Formally, &lt;span class=&#34;math inline&#34;&gt;\(Z = [Z_1, Z_2, ..., Z_n]^T\)&lt;/span&gt;. Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are not independent and &lt;span class=&#34;math inline&#34;&gt;\(Z_i (i=1,...,n)\)&lt;/span&gt; observes &lt;span class=&#34;math inline&#34;&gt;\(N(\mu_i, \sigma_i^2)\)&lt;/span&gt;. We would like to linearly transform &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(X_i, X_j (i,j=1,...,n \and i \ne j)\)&lt;/span&gt; are independent and &lt;span class=&#34;math inline&#34;&gt;\(X_i (i=1,...,n)\)&lt;/span&gt; observes standard Gaussian distribution.&lt;/p&gt;
-&lt;p&gt;Denote &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;’s covariance matrix as &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_Z\)&lt;/span&gt; is &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/&#34;&gt;real-symmetric&lt;/a&gt; and thus can be diagonalized into &lt;span class=&#34;math inline&#34;&gt;\(U\Lambda U^T\)&lt;/span&gt;. There is an invertible transformation matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1} = \Lambda^{-\frac{1}{2}} U^T\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
-X = B^{-1}(Z - \mu) \sim \mathcal{N}(0, I)
-\]&lt;/span&gt; That is &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p_X(\x) &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} \x^T\x} 
-\end{aligned}
+&lt;p&gt;We have given the joint distribution function of independent &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional standard Gaussian distribution. What if &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; dimensions of &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; are not standard, are not independent with each other, but are correlated only in first order?&lt;/p&gt;
+&lt;p&gt;We may begin with standard Gaussian random variables &lt;span class=&#34;math inline&#34;&gt;\(X = [X_1, \dots, X_n]\)&lt;/span&gt;. Then we can shift &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; by &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; and linearly transform it with an invertible matrix &lt;span class=&#34;math inline&#34;&gt;\(B^{-1}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; mentioned above will just be such a matrix as &lt;span class=&#34;math inline&#34;&gt;\(Z = B^{-1} (X - \mu)\)&lt;/span&gt; and &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+X = B^{-1}(Z - \mu) \sim \mathcal{N}(0, I) \\
+p_X(\x) = \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} \x^T\x} 
+\end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is to take on values in &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{Z}\)&lt;/span&gt;, which is a subset of &lt;span class=&#34;math inline&#34;&gt;\(\R^{n}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \newcommand{z}{\mathrm{z}} P_Z(Z \in \mathcal{Z}) = \int_\mathcal{Z} p_Z(\z) \d \z
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/&#34;&gt;Jacobian transformation&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(Z = f(X) = BX + \mu\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; is invertible, the mapping &lt;span class=&#34;math inline&#34;&gt;\(X \to Z\)&lt;/span&gt; is one-to-one, therefore the multivariate &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/calculus/jacobian-matrix/&#34;&gt;Jacobian transformation&lt;/a&gt; is &lt;span class=&#34;math display&#34;&gt;\[
 J(X \to Z) = B^{-1} \\
 \]&lt;/span&gt; with its determinant &lt;span class=&#34;math inline&#34;&gt;\(J = |J(X \to Z)| = |B^{-1}| = |B|^{-1}\)&lt;/span&gt;. Note that &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -82,11 +108,14 @@ J(X \to Z) = B^{-1} \\
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 P_Z (Z \in \mathcal{Z}) &amp;amp;= P_X (X \in f^{-1}(\mathcal{Z})) \\
-&amp;amp;= \int_{f^{-1}(S)} p_X(\x) \d \x \\
-&amp;amp;= [\int_\mathcal{Z} p_X (f^{-1}(\z)) |J| \d \z]_{\x = f^{-1}(\z)} \\
-&amp;amp;= \int_\mathcal{Z} p_X (f^{-1}(\z)) |J| \d \z \\
+P_Z (Z \in \mathcal{Z}) &amp;amp;= \int_{f^{-1}(\mathcal{Z})} p_X(\x) \d \x \\
+&amp;amp;\Downarrow_{\x = f^{-1}(\z)} \\
 \int_\mathcal{Z} p_Z (\z) \d \z &amp;amp;= \int_\mathcal{Z} p_X (f^{-1}(\z)) |J| \d \z \\
-p_Z (\z) &amp;amp;= p_X (f^{-1}(\z))|J| = p_X (B^{-1} (\z - \mu) |J| \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;p_Z (\z) = p_X (f^{-1}(\z))|J| = p_X (B^{-1} (\z - \mu) |J| \\
 &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T(B^{-1})^T B^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
 &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T (B^T)^{-1} B^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
 &amp;amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T (BB^T)^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
@@ -102,10 +131,11 @@ p_Z (\z) &amp;amp;= p_X (f^{-1}(\z))|J| = p_X (B^{-1} (\z - \mu) |J| \\
 &amp;amp;= B B^T
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Then, &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Thus, &lt;span class=&#34;math display&#34;&gt;\[
 p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T \Sigma_Z^{-1} (\z-\mu)}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/40225646&#34;&gt;Integration&lt;/a&gt; || &lt;a href=&#34;https://zhuanlan.zhihu.com/p/58987388&#34;&gt;Multi-variate&lt;/a&gt; || &lt;a href=&#34;https://en.wikipedia.org/wiki/Integration_by_substitution&#34;&gt;Change of variable&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/40225646&#34;&gt;为什么高斯分布概率密度函数的积分等于1 - 知乎 (zhihu.com)&lt;/a&gt; || &lt;a href=&#34;https://zhuanlan.zhihu.com/p/58987388&#34;&gt;多元高斯分布完全解析 - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -165,6 +195,36 @@ p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T \Sigma_
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; be the PDF and &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; be the CDF of a random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(Q = F^{-1}\)&lt;/span&gt; be the inverse of &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt; is called the &lt;strong&gt;quantile function&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, and &lt;span class=&#34;math display&#34;&gt;\[
 \int_0^1 Q(p)\ \d p \stackrel{p=F(x)}{\Longrightarrow} = \int_{-\infty}^{+\infty} x f(x)\ \d x = \E(X) 
 \]&lt;/span&gt; &lt;a href=&#34;https://stats.stackexchange.com/a/18439&#34;&gt;StackExchange Answer&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Whitening</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/whitening/</link>
+      <pubDate>Thu, 11 Aug 2022 17:52:02 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/whitening/</guid>
+      <description>
+
+&lt;h2 id=&#34;whitening&#34;&gt;Whitening&lt;/h2&gt;
+&lt;p&gt;Data whitening is the process of converting a random vector &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; with only first-order correlation into a new random vector &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; such that the covariance matrix of &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is an identity matrix.&lt;/p&gt;
+&lt;p&gt;To do so, we shall first apply the &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/#Orthonormally Diagonalizable&#34;&gt;spectral decomposition&lt;/a&gt; to &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;’s covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_X\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\Sigma_X \Phi = \Phi \Lambda
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; contains the normalized eigenvectors, &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt; is diagonal and contains the eigenvalues. Now let &lt;span class=&#34;math inline&#34;&gt;\(Y = \Phi X\)&lt;/span&gt;, we can verify that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Sigma_Y &amp;amp;= \E \{ \Phi^T (\x - \mu_X) [\Phi^T (\x - \mu_X)]^T \} \\
+&amp;amp;= \E [\Phi^T (\x - \mu_X) (\x - \mu_X)^T \Phi] \\
+&amp;amp;= \Phi^T \E [(\x - \mu_X) (\x - \mu_X)^T] \Phi \\
+&amp;amp;= \Phi^T \Sigma_X \Phi = \Phi^T \Phi \Lambda = \Lambda
+\end{aligned}
+\]&lt;/span&gt; which is diagonal. To further make an identity matrix, we apply &lt;span class=&#34;math inline&#34;&gt;\(Z = \Lambda^{-1/2} Y = \Lambda^{-1/2} \Phi^T X\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Sigma_Z &amp;amp;= \E \{\Lambda^{-1/2} \Phi^T (\x - \mu_X) [\Lambda^{-1/2} \Phi^T (\x - \mu_X)]^T \} \\
+&amp;amp;= \E [\Lambda^{-1/2} \Phi^T (\x - \mu_X)  (\x - \mu_X)^T \Phi \Lambda^{-1/2}] \\
+&amp;amp;= \Lambda^{-1/2} \Phi^T \Sigma_X \Phi \Lambda^{-1/2} = I
+\end{aligned}
+\]&lt;/span&gt; The inverse of data whitening can be used to derive density function of first-order correlated random variables, e.g. for &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/#First-order correlated $n$-dimensional&#34;&gt;Gaussian case&lt;/a&gt;. Data whitening looks a lot like &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/&#34;&gt;PCA&lt;/a&gt;: they both compute the eigen pairs; they both project the original data onto the basis formed by eigenvectors. But unlike PCA, data whitening uses all the eigenvectors as the basis instead of &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt; most prominent ones. Therefore, data whitening does not reduce the data’s dimensionality as PCA does.&lt;/p&gt;
 
 
 </description>
@@ -270,36 +330,6 @@ F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/23686709&#34;&gt;特征函数的理解&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Whitening</title>
-      <link>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/whitening/</link>
-      <pubDate>Thu, 11 Aug 2022 17:52:02 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/whitening/</guid>
-      <description>
-
-&lt;h2 id=&#34;whitening&#34;&gt;Whitening&lt;/h2&gt;
-&lt;p&gt;Data whitening is the process of converting a random vector &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; with only first-order correlation into a new random vector &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; such that the covariance matrix of &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is an identity matrix.&lt;/p&gt;
-&lt;p&gt;To do so, we shall first apply the &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization&#34;&gt;diagonalization&lt;/a&gt; to &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_X\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\Sigma_X \Phi = \Phi \Lambda
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; contains the normalized eigenvectors, &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt; is diagonal and contains the eigenvalues. Now let &lt;span class=&#34;math inline&#34;&gt;\(Y = \Phi X\)&lt;/span&gt;, we can verify that &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\Sigma_Y &amp;amp;= \E \{ \Phi^T (\x - \mu_X) [\Phi^T (\x - \mu_X)]^T \} \\
-&amp;amp;= \E [\Phi^T (\x - \mu_X) (\x - \mu_X)^T \Phi] \\
-&amp;amp;= \Phi^T \E [(\x - \mu_X) (\x - \mu_X)^T] \Phi \\
-&amp;amp;= \Phi^T \Sigma_X \Phi = \Phi^T \Phi \Lambda = \Lambda
-\end{aligned}
-\]&lt;/span&gt; which is diagonal. To further make an identity matrix, we apply &lt;span class=&#34;math inline&#34;&gt;\(Z = \Lambda^{-1/2} Y = \Lambda^{-1/2} \Phi^T X\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-\Sigma_Z &amp;amp;= \E \{\Lambda^{-1/2} \Phi^T (\x - \mu_X) [\Lambda^{-1/2} \Phi^T (\x - \mu_X)]^T \} \\
-&amp;amp;= \E [\Lambda^{-1/2} \Phi^T (\x - \mu_X)  (\x - \mu_X)^T \Phi \Lambda^{-1/2}] \\
-&amp;amp;= \Lambda^{-1/2} \Phi^T \Sigma_X \Phi \Lambda^{-1/2} = I
-\end{aligned}
-\]&lt;/span&gt; Data whitening in Gaussian case is discussed &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/#First-order correlated n -dimensional&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 
 </description>

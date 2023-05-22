@@ -34,11 +34,11 @@ P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
 \]&lt;/span&gt; The primal problem is &lt;span class=&#34;math display&#34;&gt;\[
 \inf_{x \in \mathcal X} P(x) \label{primal}
 \]&lt;/span&gt; It is easy to have &lt;span class=&#34;math inline&#34;&gt;\(P(x) =f_0(x)\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(\mathcal X\)&lt;/span&gt;. Thus the primal problem is equivalent to the original problem. Denote primal problem &lt;span class=&#34;math inline&#34;&gt;\(\eqref{primal}\)&lt;/span&gt;’s optimal value as &lt;span class=&#34;math inline&#34;&gt;\(p^\star\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Define the Lagrangian dual function &lt;span class=&#34;math inline&#34;&gt;\(D: \R^r \times \R^s \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Define the dual function &lt;span class=&#34;math inline&#34;&gt;\(D: \R^r \times \R^s \mapsto \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
 D(\lambda, \mu) = \inf_{x \in \mathcal \R^n}L(x, \lambda, \mu)
 \]&lt;/span&gt; The Lagrangian dual problem is &lt;span class=&#34;math display&#34;&gt;\[
 \sup_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \label{dual}
-\]&lt;/span&gt; Denote dual problem &lt;span class=&#34;math inline&#34;&gt;\(\eqref{dual}\)&lt;/span&gt;’s optimal value as &lt;span class=&#34;math inline&#34;&gt;\(d^\star\)&lt;/span&gt;. We always have &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;
+\]&lt;/span&gt; Denote the dual problem &lt;span class=&#34;math inline&#34;&gt;\(\eqref{dual}\)&lt;/span&gt;’s optimal value as &lt;span class=&#34;math inline&#34;&gt;\(d^\star\)&lt;/span&gt;. We always have &lt;span class=&#34;math inline&#34;&gt;\(p^\star \ge d^\star\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
 &lt;p&gt;For any feasible &lt;span class=&#34;math inline&#34;&gt;\(x \in \mathcal X, (\lambda, \mu) \in {\R^r}^+ \times \R^s\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
@@ -66,9 +66,9 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
 &lt;h4 id=&#34;karush-kuhn-tucker-conditions&#34;&gt;Karush-Kuhn-Tucker Conditions&lt;/h4&gt;
 &lt;p&gt;In standard optimization problem, KKT conditions refer to the below four:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;primal constraint&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;dual constraint&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1,\dots,\lambda_r \ge 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;complementary slackness&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;primal constraint&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;dual constraint&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1,\dots,\lambda_r \ge 0\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;complementary slackness&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;vanishing gradient&lt;/strong&gt; of Lagrangian w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; : &lt;span class=&#34;math display&#34;&gt;\[
 \nabla f_0(x) + \sum_{i=1}^r\lambda_i\nabla f_i(x) + \sum_{i=1}^s\mu_i\nabla h_i(x) = 0
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
@@ -349,10 +349,10 @@ k||\nabla f(\tilde x)||^2_2 &amp;amp;\le 2L(f(x_0) - f(x^\star)) \\
 \right]
 = 0
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;convex-and-non-differentiable-function-but-non-smooth-separable&#34;&gt;Convex and Non-differentiable Function, but Non-smooth Separable&lt;/h3&gt;
+&lt;h3 id=&#34;convex-but-non-differentiable-function&#34;&gt;Convex but Non-differentiable Function&lt;/h3&gt;
 &lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is only convex but not differentiable, the above will not necessarily hold. However, if &lt;span class=&#34;math display&#34;&gt;\[
 f(x) = g(x) + \sum_{i=1}^nh_i(x_i)
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(g(x)\)&lt;/span&gt; is convex and differentiable, and each &lt;span class=&#34;math inline&#34;&gt;\(h_i(x_i)\)&lt;/span&gt; is convex, the global minima still holds. For any &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(g(x)\)&lt;/span&gt; is convex and differentiable, and each &lt;span class=&#34;math inline&#34;&gt;\(h_i(x_i)\)&lt;/span&gt; is convex but possibly non-differentiable, the global minima still holds. For any &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 f(y) - f(x) &amp;amp;= g(y) - g(x) + \sum_{i=1}^nh_i(y_i) - \sum_{i=1}^nh_i(x_i) \\
 &amp;amp;\ge \nabla g(x)^T(y - x) + \sum_{i=1}^n[h_i(y_i) - h_i(x_i)] \\
@@ -369,8 +369,8 @@ h_k(y_k) - h_k(x_k) \ge -\nabla_k g(x)(y_k - x_k)
 \]&lt;/span&gt; Then, &lt;span class=&#34;math display&#34;&gt;\[
 f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/uploads/Coordinate%20Descent.pdf&#34; target=&#34;_blank&#34;&gt;Coordinate Descent.pdf&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/&#34;&gt;Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD &lt;a href=&#34;https://chunxy.github.io/uploads/Coordinate%20Descent.pdf&#34; target=&#34;_blank&#34;&gt;Coordinate Descent.pdf&lt;/a&gt; ======= ## External Materials &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; notes&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;Coordinate%20Descent.pdf&#34;&gt;Coordinate Descent.pdf&lt;/a&gt; || &lt;a href=&#34;https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/&#34;&gt;Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -382,8 +382,7 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
       <pubDate>Fri, 07 Jan 2022 12:58:37 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/optimization/expectation-maximization/</guid>
       <description>
-
-&lt;p&gt;If a probabilistic model contains only observable variables, Maximum likelihood estimation or Bayesian methods can be adopted to derive the model parameters. However it is also possible that a probabilistic model contains unobservable variables (called latent variables). Latent variables are those that you cannot observe but you know its existence and its corresponding random event in random trial. In such case, &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/&#34;&gt;Lagrange multipliers&lt;/a&gt; may be hard to apply because of the existence of the “log of sum” term.&lt;/p&gt;
+&lt;p&gt;If a probabilistic model contains only observable variables, maximum likelihood estimation or Bayesian methods can be adopted to derive the model parameters. However it is also possible that a probabilistic model contains unobservable variables (called &lt;strong&gt;latent variables&lt;/strong&gt;). Latent variables are those that you cannot observe but you know its existence and its influence in a random trial. In such case, &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/&#34;&gt;Lagrange multipliers&lt;/a&gt; may be hard to apply because of the existence of the “log of sum” term.&lt;/p&gt;
 &lt;p&gt;Given observed samples &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X} = \{\x^{(1)}, \x^{(2)}, ..., \x^{(m)}\}\)&lt;/span&gt; (with unobservable latent variable samples &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{Z}\)&lt;/span&gt;), MLE tries to the find best parameters &lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
 \hat \theta = \arg\max_{\theta}\log(p(\mathrm{X};\theta))
 \]&lt;/span&gt;&lt;/p&gt;
@@ -392,23 +391,18 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 l(\theta) &amp;amp;= \log p(\mathrm{X};\theta) = \sum_{\x \in \mathrm{X}} \log p(\x; \theta) \\
 &amp;amp;= \sum_{\x \in \mathrm{X}} \log \E_{\z \sim q(\z)} \frac{p(\x, \z; \theta)}{q(\z)} \\
 &amp;amp;\Downarrow_\text{by Jensen&amp;#39;s Inequality} \\
-&amp;amp;\ge \sum_{\x \in \mathrm{X}} \E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)} \\
-&amp;amp;\text{where $q(\z)$ is a reference distribution}
+&amp;amp;\ge \sum_{\x \in \mathrm{X}} \E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)} \triangleq B(q, \theta) \\
+&amp;amp;\text{where $q(\z)$ is an arbitrary reference probability measure}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;If we maximize the &lt;span class=&#34;math inline&#34;&gt;\(\E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt;, the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; can be maximized, which gives us a good guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; will increase monotonically. &lt;span class=&#34;math inline&#34;&gt;\(\E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt; is a function of &lt;span class=&#34;math inline&#34;&gt;\((\phi, \theta)\)&lt;/span&gt;, firstly we maximize it w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;, and then w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, and then back and forth.&lt;/p&gt;
-&lt;p&gt;The first step is to fix &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; and have &lt;span class=&#34;math inline&#34;&gt;\(\E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt; reach its upper bound when the equality in Jensen’s inequality holds, where &lt;span class=&#34;math inline&#34;&gt;\(\frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt; is a constant &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; for every &lt;span class=&#34;math inline&#34;&gt;\(\z \in \mathcal{Z}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-p(\x, \z) &amp;amp;= cq(\z) \\
-&amp;amp;\Downarrow \\
-\sum_{\z \in \mathcal{Z}} p(\x, \z) &amp;amp;= c\sum_{\z \in \mathcal{Z}} q(\z) \\
-p(\x;\theta) &amp;amp;= c \\
-\end{aligned}
-\]&lt;/span&gt; Thus we know how to choose &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-q(\z) = \frac{p(\x, \z)}{c} = \frac{p(\x, \z)}{p(\x;\theta)} = p(\z|\x;\theta)
-\]&lt;/span&gt; The above step is called the &lt;strong&gt;expectation&lt;/strong&gt; step because we are deriving a closed-form expression for &lt;span class=&#34;math inline&#34;&gt;\(\E_{\z \sim q(\z)} \log \frac{p(\x, \z; \theta)}{q(\z)}\)&lt;/span&gt; w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;. The next step is the &lt;strong&gt;maximization&lt;/strong&gt; step where we fix &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; and optimize w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;. We do these two steps back and forth, comprising the whole expectation maximization algorithm.&lt;/p&gt;
-&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/306016801/answer/624061631&#34;&gt;A good comparison of latent variables&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If we enlarge the &lt;span class=&#34;math inline&#34;&gt;\(B(q, \theta)\)&lt;/span&gt;, the lower bound of &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; can be lifted, which gives us a gentle guarantee that &lt;span class=&#34;math inline&#34;&gt;\(l(\theta)\)&lt;/span&gt; may increase.&lt;/p&gt;
+&lt;p&gt;Expectation maximization lifts this bound iteratively. To begin with, we choose a random initial estimation for &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, say &lt;span class=&#34;math inline&#34;&gt;\(\theta^0\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(B(q, \theta)\)&lt;/span&gt; is a function of &lt;span class=&#34;math inline&#34;&gt;\((q, \theta)\)&lt;/span&gt;. We can specifically set &lt;span class=&#34;math inline&#34;&gt;\(q(\z) = p(\z | \x; \theta^{t})\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\theta^t\)&lt;/span&gt; is the estimation in current iteration. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(B(q, \theta)\)&lt;/span&gt; becomes &lt;span class=&#34;math display&#34;&gt;\[
+Q(\theta^t, \theta) \triangleq B(q, \theta) = \sum_{\x \in \mathrm{X}} \E_{\z \sim p(\z | \x; \theta^{t})} \log \frac{p(\x, \z; \theta)}{p(\z | \x; \theta^{t})} \label{q-function}
+\]&lt;/span&gt; The above step is called the &lt;strong&gt;expectation&lt;/strong&gt; step because we are choosing a probability measure for the expectation term in &lt;span class=&#34;math inline&#34;&gt;\(B(q, \theta)\)&lt;/span&gt;. The next step is the &lt;strong&gt;maximization&lt;/strong&gt; step where we fix &lt;span class=&#34;math inline&#34;&gt;\(\theta^t\)&lt;/span&gt; and optimize w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;. This accounts for the estimation in the next iteration: &lt;span class=&#34;math display&#34;&gt;\[
+\theta^{t+1} = \arg\max_{\theta} Q(\theta^t, \theta)
+\]&lt;/span&gt; We do these two steps back and forth, comprising the whole expectation maximization algorithm.&lt;/p&gt;
+&lt;p&gt;The reason we choose &lt;span class=&#34;math inline&#34;&gt;\(q(\z) = p(\z | \x; \theta^{t})\)&lt;/span&gt;, which is conditioned on &lt;span class=&#34;math inline&#34;&gt;\(\theta^t\)&lt;/span&gt;, is that we want to inject some dynamics into the algorithm. Say if we choose &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; to be some static measure not relative to &lt;span class=&#34;math inline&#34;&gt;\(\theta^t\)&lt;/span&gt;, the algorithm will end at the very first iteration. On the other hand, &lt;span class=&#34;math inline&#34;&gt;\(p(\z | \x; \theta^t)\)&lt;/span&gt; is the most approachable probability measure w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\z\)&lt;/span&gt; and relative to &lt;span class=&#34;math inline&#34;&gt;\(\theta^t\)&lt;/span&gt;. After all, in latent models, &lt;span class=&#34;math inline&#34;&gt;\(p(\z | \x; \theta^t)\)&lt;/span&gt; is much easier to compute than &lt;span class=&#34;math inline&#34;&gt;\(p(\z; \theta^t)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;By the way, the definition of &lt;strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;-function&lt;/strong&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\eqref{q-function}\)&lt;/span&gt; serves as a template to the specific cases.&lt;/p&gt;
 
 
 </description>
@@ -540,7 +534,7 @@ Y_{res} = Y_{res} - \hat Y
 &lt;/ol&gt;
 &lt;p&gt;Apparently this algorithm is efficient. However, it does not guarantee an exact solution, even when &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; lies in the column space of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;forward-stagewise&#34;&gt;Forward Stagewise&lt;/h3&gt;
-&lt;p&gt;Like Forward Selection, Forward Stagewise selects a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Unlike Forward Selection, Forward Selection does not subtract the whole projection from &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Instead, it proceeds along &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; with a small step.&lt;/p&gt;
+&lt;p&gt;Like forward selection, forward stagewise selects a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Unlike Forward Selection, Forward Selection does not subtract the whole projection from &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Instead, it proceeds along &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; with a small step.&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\},\eta\text{ is a small constant}\)&lt;/span&gt; initially.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Select among &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. Then for each &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(i)}\)&lt;/span&gt; from left to right, do the following:&lt;/p&gt;&lt;/li&gt;
@@ -552,9 +546,9 @@ Y_{res} = Y_{res} - \hat Y
 &lt;ol start=&#34;3&#34; type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;del&gt;Remove &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;.&lt;/del&gt; Go to step 2 until &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt; is sufficiently small.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Apparently Forward Stagewise gives an exact solution when &lt;span class=&#34;math inline&#34;&gt;\(\eta\)&lt;/span&gt; is small enough. But it is more time-consuming.&lt;/p&gt;
+&lt;p&gt;Apparently forward stagewise gives an exact solution when &lt;span class=&#34;math inline&#34;&gt;\(\eta\)&lt;/span&gt; is small enough. But it is more time-consuming.&lt;/p&gt;
 &lt;h3 id=&#34;least-angle-regression&#34;&gt;Least Angle Regression&lt;/h3&gt;
-&lt;p&gt;LARS a is compromise of Forward Selection and Forward Stagewise. Likewise, LARS selects a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. LARS proceeds stagewise like Forward Stagewise, however with its own methodology to determine the step size.&lt;/p&gt;
+&lt;p&gt;LARS a is compromise of forward selection and forward stagewise. Likewise, LARS selects a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(\mathrm x^{(k)}\)&lt;/span&gt; has the largest cosine distance to &lt;span class=&#34;math inline&#34;&gt;\(Y_{res}\)&lt;/span&gt;. LARS proceeds stagewise like forward stagewise, however with its own methodology to determine the step size.&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}, \mathrm d = \arg\max_{\mathrm x \in C}\frac{Y \cdot \mathrm x }{||\mathrm x||_2}\)&lt;/span&gt; initially.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Then do the following: &lt;span class=&#34;math display&#34;&gt;\[

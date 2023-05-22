@@ -769,6 +769,10 @@
 
   <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
       
         </ul>
       
@@ -849,11 +853,11 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
@@ -861,11 +865,19 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
 
 
 
@@ -903,10 +915,6 @@
     
       </div>
     
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/"></a></li>
 
       
         </ul>
@@ -968,6 +976,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
@@ -976,15 +988,15 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1135,11 +1147,7 @@
       
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
-
-
-
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
 
 
 
@@ -1147,7 +1155,11 @@
 
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
       
         </ul>
@@ -1212,11 +1224,11 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
 
       
         </ul>
@@ -1300,7 +1312,11 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#external-material">External Material</a></li>
+  </ul>
+</nav>
 
       
     </div>
@@ -1382,21 +1398,22 @@
 
           <div class="article-style">
             
+
 <p>Outliers (noises) in the data can diverge the regression model to reduce prediction errors for them, instead of the majority real data points. <strong>RAN</strong>dom <strong>SA</strong>mple <strong>C</strong>onsensus is a methodology to robustly fit the model in the presence of outliers.</p>
 <p>RANSAC does the following:</p>
 <ul>
-<li>Randomly sample a subset of data of an fairly enough amount for training.</li>
-<li>Fit a model to the this subset.</li>
-<li>Determine data points in the whole data set as inliers or outliers by comparing the residuals (prediction errors) to a threshold. The set of inliers is called a consensus set.</li>
-<li>Repeat above for some iterations and retrain the final model with the largest consensus set (since inliers should be the majority).</li>
+<li>randomly sample a subset of data of an fairly enough amount for training;</li>
+<li>fit a model to the this subset;</li>
+<li>determine data points in the whole data set as inliers or outliers by comparing the residuals (prediction errors) to a threshold. The set of inliers is called a consensus set;</li>
+<li>repeat above for some iterations and retrain the final model with the largest consensus set (since inliers should be the majority).</li>
 </ul>
 <p>Parameters of RANSAC include:</p>
 <ul>
-<li><p><span class="math inline">\(s\)</span> - number of points to fit the model</p></li>
-<li><p><span class="math inline">\(t\)</span> - threshold of the residual</p></li>
-<li><p><span class="math inline">\(e\)</span> - proportion the outliers</p></li>
-<li><p><span class="math inline">\(\delta\)</span> - probability of success (at least one iteration is finished with no outlier)</p></li>
-<li><p><span class="math inline">\(T\)</span> - number of iterations to be determined</p></li>
+<li><p><span class="math inline">\(s\)</span>: number of points to fit the model;</p></li>
+<li><p><span class="math inline">\(t\)</span>: threshold of the residual;</p></li>
+<li><p><span class="math inline">\(e\)</span>: proportion the outliers;</p></li>
+<li><p><span class="math inline">\(\delta\)</span>: probability of success (at least one iteration is finished with no outlier);</p></li>
+<li><p><span class="math inline">\(T\)</span>: number of iterations to be determined.</p></li>
 </ul>
 <p>Then,</p>
 <ul>
@@ -1410,6 +1427,7 @@ p\text{(all T subsets have outliers)} = (1 - (1 - e)^s)^T &lt; 1 - \delta \\
 T &gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
 \end{gather}
 \]</span> The threshold <span class="math inline">\(t\)</span> is usually set as the median absolute deviation of <span class="math inline">\(y\)</span>.</p>
+<h2 id="external-material">External Material</h2>
 <p><a href="https://www.cnblogs.com/xingshansi/p/6763668.html">随机抽样一致算法（Random sample consensus，RANSAC） - 桂。 - 博客园 (cnblogs.com)</a></p>
 
 

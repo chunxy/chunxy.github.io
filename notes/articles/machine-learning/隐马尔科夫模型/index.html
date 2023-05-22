@@ -60,12 +60,10 @@
   
     
   
-  <meta name="description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case." />
+  <meta name="description" content="隐马尔可夫模型 隐马尔可夫模型（Hidden Markov Model）的对" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/overview/" />
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/" />
 
   
   
@@ -299,7 +297,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://chunxy.github.io/notes/articles/information-theory/overview/" />
+  <link rel="canonical" href="https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/" />
 
   
   
@@ -321,17 +319,15 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
-  <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/overview/" />
-  <meta property="og:title" content="Overview | Chunxy&#39; Website" />
-  <meta property="og:description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/" />
+  <meta property="og:title" content="隐马尔可夫模型 | Chunxy&#39; Website" />
+  <meta property="og:description" content="隐马尔可夫模型 隐马尔可夫模型（Hidden Markov Model）的对" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="article:published_time" content="2022-04-22T21:13:30&#43;00:00" />
+      <meta property="article:published_time" content="2023-05-22T09:43:15&#43;00:00" />
     
-    <meta property="article:modified_time" content="2022-04-22T21:13:30&#43;00:00">
+    <meta property="article:modified_time" content="2023-05-22T09:43:15&#43;00:00">
   
 
   
@@ -344,11 +340,11 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
   
 
-  <title>Overview | Chunxy&#39; Website</title>
+  <title>隐马尔可夫模型 | Chunxy&#39; Website</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c117287a25f16f15da190d218940051d" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="587887e7cbf6ca44c1fa63048698197d" >
 
   
   
@@ -578,7 +574,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
       <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
         
-          Information Theory
+          Machine Learning
         
       </span>
       <span><i class="fas fa-chevron-down"></i></span>
@@ -690,7 +686,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
 
 
-  <li class="active"><a href="/notes/articles/information-theory/overview/">Overview</a></li>
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -775,7 +771,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class="active"><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
 
       
         </ul>
@@ -1318,9 +1314,13 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#distribution-or-random-variable">Distribution or Random Variable?</a></li>
-    <li><a href="#kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy and Cross Entropy</a></li>
-    <li><a href="#kl-divergence-and-mutual-information">KL-divergence and Mutual Information</a></li>
+    <li><a href="#隐马尔可夫模型">隐马尔可夫模型</a>
+      <ul>
+        <li><a href="#概率问题">概率问题</a></li>
+        <li><a href="#学习问题">学习问题</a></li>
+        <li><a href="#预测问题">预测问题</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1376,16 +1376,16 @@ Since the notion of entropy is the basis of all other concepts in this section a
   
 
     <li class="breadcrumb-item">
-      <a href="/notes/articles/information-theory/">
+      <a href="/notes/articles/machine-learning/">
         
-          Information Theory
+          Machine Learning
         
       </a>
     </li>
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        Overview
+        隐马尔可夫模型
       </li>
     </ol>
   </nav>
@@ -1400,42 +1400,121 @@ Since the notion of entropy is the basis of all other concepts in this section a
         
 
         <div class="docs-article-container">
-          <h1>Overview</h1>
+          <h1>隐马尔可夫模型</h1>
 
           <div class="article-style">
             
 
-<h2 id="distribution-or-random-variable">Distribution or Random Variable?</h2>
-<p>Both <a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a> and <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> describe the relationship between <strong>two distributions</strong>.</p>
-<p>Both <a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a> and <a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a> describe the relationship between <strong>two random variables</strong>.</p>
-<p>Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case.</p>
-<h2 id="kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy and Cross Entropy</h2>
-<p>By definition, <span class="math display">\[
-\begin{align}
-D_{KL}(p||q) &amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)} \\
-&amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log {p(x)}) \\
-&amp;= H(p||q) - H(p)
-\end{align}
-\]</span> By the convexity of <span class="math inline">\(-\log\)</span>, <span class="math display">\[
-\begin{align}
-D_{KL}(p||q) &amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}] \\
-&amp;\ge -\log(\mathrm{E}_{x \sim p} \frac{q(x)}{p(x)}) \\
-&amp;= 0
-\end{align}
-\]</span> That is <span class="math display">\[
-H(p||q) \ge H(p)
-\]</span> The equality holds if and only if <span class="math inline">\(p = q\)</span>.</p>
-<h2 id="kl-divergence-and-mutual-information">KL-divergence and Mutual Information</h2>
-<p>Given that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the same dimension, <span class="math display">\[
+<h2 id="隐马尔可夫模型">隐马尔可夫模型</h2>
+<p>隐马尔可夫模型（Hidden Markov Model）的对象是序列类型的数据，其基本假设为：该序列的观测值实际上是来自于完全关于当前时序下的状态（state，也可叫作隐变量&lt;latent variable&gt;）取值的一个条件概率分布，而状态取值亦会随着时序发生变化，且其状态变化遵从马尔可夫过程。</p>
+<p>令<span class="math inline">\(Y_1, \dots, Y_T\)</span>表示<span class="math inline">\(T\)</span>个时序下的观测值，<span class="math inline">\(X_1, \dots, X_T\)</span>表示<span class="math inline">\(T\)</span>个时序下的状态取值，对于任意<span class="math inline">\(i = 1, \dots, T\)</span>，有<span class="math inline">\(Y_i \sim p(\cdot | X_i)\)</span>；一般来说，HMM模型中假设状态取值和观测取值都是离散的，假设共有<span class="math inline">\(N\)</span>种状态取值<span class="math inline">\(x_1, \dots, x_N\)</span>和<span class="math inline">\(M\)</span>种观测取值<span class="math inline">\(y_1, \dots, y_M\)</span>，令状态转移矩阵（transition matrix）为<span class="math inline">\(N \times N\)</span>的方阵<span class="math inline">\(A\)</span>，令观测概率矩阵（emission matrix）为<span class="math inline">\(N \times M\)</span>的矩阵<span class="math inline">\(B\)</span>；令<span class="math inline">\(\pi\)</span>为初始状态概率向量。</p>
+<p>隐马尔可夫模型即是由<span class="math inline">\(\pi, A, B\)</span>三者决定，所以其可以用三元组表示： <span class="math display">\[
+\lambda = (\pi, A, B)
+\]</span></p>
+<p>隐马尔可夫模型有三个基本问题：</p>
+<ol type="1">
+<li>概率问题。给定模型<span class="math inline">\(\lambda = (\pi, A, B)\)</span>和观测序列<span class="math inline">\(\Y = (y_{o_1}, \dots, y_{o_T})\)</span>，计算模型<span class="math inline">\(\lambda\)</span>产生观测序列<span class="math inline">\(\Y\)</span>的概率。</li>
+<li>学习问题。给定观测序列<span class="math inline">\(\Y = (y_{o_1}, \dots, y_{o_T})\)</span>，估计模型参数<span class="math inline">\(\lambda = (\pi, A, B)\)</span>。</li>
+<li>预测问题（也叫解码&lt;decoding&gt;问题）。给定模型<span class="math inline">\(\lambda = (\pi, A, B)\)</span>和观测序列<span class="math inline">\(\Y = (y_{o_1}, \dots, y_{o_T})\)</span>，求使得条件概率<span class="math inline">\(P(\X | \Y)\)</span>最大的状态序列<span class="math inline">\(\X\)</span>。</li>
+</ol>
+<h3 id="概率问题">概率问题</h3>
+<h4 id="暴力解法">暴力解法</h4>
+<p>在预测问题中，最直接的想法便是首先枚举出所有的状态序列，然后根据状态序列计算观测序列的概率。某个状态序列<span class="math inline">\(\X = (x_{i_1}, \dots, x_{i_T})\)</span>出现的概率为 <span class="math display">\[
+P(\X) = \pi_{i_1} a_{i_1, i_2} a_{i_2, i_3} \dots a_{i_{T-1}, i_T}
+\]</span> 给定这个状态序列<span class="math inline">\(\X\)</span>的情况下，观测序列<span class="math inline">\(\Y\)</span>出现的概率为 <span class="math display">\[
+P(\Y | \X) = b_{i_1, o_1} b_{i_2, o_2} \dots b_{i_T, o_T}
+\]</span> 两者同时出现的联合概率为 <span class="math display">\[
+P(\X, \Y) = P(\X) \times P(\Y | \X) = \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
+\]</span> 然后对上式关于所有可能的状态序列求和，得到 <span class="math display">\[
+P(\Y) = \sum_\X P(\X, \Y) = \sum_{i_1, i_2, \dots, i_T} \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
+\]</span> 该式共有<span class="math inline">\(N^T\)</span>项，每一项有<span class="math inline">\(O(T)\)</span>次相乘，故整体复杂度为<span class="math inline">\(O(T N^T)\)</span>，难以接受。</p>
+<h4 id="前向算法">前向算法</h4>
+<p>首先引入前向概率的概念。给定隐马尔可夫模型<span class="math inline">\(\lambda\)</span>，定义到时刻<span class="math inline">\(t\)</span>的观测序列为<span class="math inline">\(\Y = (y_{o_1}, \dots, y_{o_t})\)</span>且<span class="math inline">\(t\)</span>时刻状态为<span class="math inline">\(x_{i}\)</span>的概率为前向概率，记作 <span class="math display">\[
+\alpha_t(i) = P(Y_1 = y_{o_1}, \dots, Y_T = y_{o_t}, X_T = x_i; \lambda)
+\]</span> 初始情况下，即<span class="math inline">\(t=1\)</span>时，有 <span class="math display">\[
+\alpha_1(i) = \pi_i a_{i, o_1}
+\]</span> 对<span class="math inline">\(t = 2, \dots, T\)</span>，有 <span class="math display">\[
+\alpha_t(i) = \left[ \sum_{j=1}^N \alpha_{t-1}(j) a_{j, i} \right] b_{j, o_t}
+\]</span> 最终， <span class="math display">\[
+P(\Y) = \sum_{i=1}^N \alpha_T(i)
+\]</span> 前向算法主要利用了状态变化的序列结构，记录了状态变化的中间过程，从而节省了计算时间。整个算法最耗时的步骤为递推这一步，<span class="math inline">\(\alpha_t(i)\)</span>对应的加和表达式包含了<span class="math inline">\(O(N)\)</span>个项，而对于每一个时刻<span class="math inline">\(t\)</span>，有<span class="math inline">\(N\)</span>个这样的加和表达式，故<span class="math inline">\(T\)</span>个时刻整体耗时为<span class="math inline">\(O(N^2 T)\)</span>。</p>
+<h3 id="学习问题">学习问题</h3>
+<h4 id="有监督学习">有监督学习</h4>
+<p>有监督学习是较好处理的一种问题，在这种情况下，<span class="math inline">\(\X, \Y\)</span>都已知，需要我们估计模型参数<span class="math inline">\(\pi, A, B\)</span>。</p>
+<p>设样本中状态由<span class="math inline">\(i\)</span>转移到<span class="math inline">\(j\)</span>的频数为<span class="math inline">\(A_{i, j}\)</span>，则<span class="math inline">\(a_{i, j}\)</span>的估计为 <span class="math display">\[
+\hat a_{i, j} = \frac{A_{i, j}} {\sum_{k=1}^N A_{i, k}}
+\]</span> 设样本中状态为<span class="math inline">\(i\)</span>且观测为<span class="math inline">\(j\)</span>的频数是<span class="math inline">\(B_{i, j}\)</span>，则<span class="math inline">\(b_{i, j}\)</span>的估计为 <span class="math display">\[
+\hat b_{i, j} = \frac{B_{i, j}} {\sum_{k=1}^N B_{i, k}}
+\]</span> 至于初始状态向量<span class="math inline">\(\pi\)</span>，若样本中由多条时序链，<span class="math inline">\(\pi\)</span>亦可由相应频次估计而来。</p>
+<h4 id="无监督学习">无监督学习</h4>
+<p>多数情况下，状态——或者说隐变量<span class="math inline">\(\X\)</span>——是没有办法观测到的，而这时就可以采用<a href="/notes/articles/optimization/expectation-maximization/">EM算法</a>，通过优化似然函数的下界，找出最好的模型参数。EM算法在隐马尔科夫模型中具体实现由Baum和Welch提出，故实际求解算法被称作Baum-Welch算法。</p>
+<p>此问题的似然函数以及对数似然函数分别为： <span class="math display">\[
 \begin{aligned}
-&amp;I(X;Y) = \sum_{x,y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)} \\
-&amp;= \sum_{x,y} p(x) p(y|x) \log \frac{p(y|x)}{p(y)} \\
-&amp;= \sum_{x} \sum_{y} p(x) p(y|x) \log \frac{p(y|x)}{p(y)} \\
-&amp;= \sum_{x} p(x) D_{KL}[p(y|x), p(y)] \\
-&amp;= \E_{x} D_{KL}[p(y|x), p(y)] \\
-&amp;= \E_{y} D_{KL}[p(x|y), p(x)] \\
+P(\Y; \lambda) &amp;= \sum_{\X} P(\X, \Y; \lambda) \\
+\log P(\Y; \lambda) &amp;= \log \sum_{\X} P(\X, \Y; \lambda)
+\end{aligned}
+\]</span> 根据EM算法， <span class="math display">\[
+\begin{aligned}
+&amp;\log P(\Y; \lambda) = \log \E_{\X \sim P(\X | \Y; \lambda^t)} P(\X, \Y; \lambda) \\
+&amp;\ge \E_{\X \sim P(\X | \Y; \lambda^t)} \log P(\X, \Y; \lambda) \triangleq Q(\lambda^t, \lambda) \\
 \end{aligned}
 \]</span></p>
+<p>而下一轮迭代中，新的估计<span class="math inline">\(\lambda^{t+1}\)</span>为： <span class="math display">\[
+\lambda^{t+1} = \arg \max_\lambda Q(\lambda^t, \lambda)
+\]</span></p>
+<p>又由于 <span class="math display">\[
+\begin{aligned}
+&amp;Q(\lambda^t, \lambda) = \E_{\X \sim P(\X | \Y; \lambda^t)} \log P(\X, \Y; \lambda) \\
+&amp;= \sum_\X P(\X | \Y; \lambda^t) \log P(\X, \Y; \lambda) \\
+&amp;= \sum_\X \frac{P(\X, \Y; \lambda^t)}{P(\Y; \lambda^t)} \log P(\X, \Y; \lambda) \\
+&amp;= \frac{\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)}{P(\Y; \lambda^t)} \\
+\end{aligned}
+\]</span> 其中的<span class="math inline">\(\frac{1}{P(\Y; \lambda^t)}\)</span>与<span class="math inline">\(\lambda\)</span>无关，所以 <span class="math display">\[
+\lambda^{t+1} = \arg \max_\lambda \sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)
+\]</span></p>
+<p>注意在接下来的讨论中，我们会令<span class="math inline">\(\X = (x_{i_1}, \dots, x_{i_T})\)</span>，但为了整体简洁，我们不会在每一个<span class="math inline">\(\X\)</span>出现的地方将此式展开。对上式做进一步展开， <span class="math display">\[
+\begin{aligned}
+&amp;\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda) = \sum_\X P(\X, \Y; \lambda^t) \log \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T} \\
+&amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1} a_{i_t, i_{t+1}} + \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log b_{i_t, o_t}
+\end{aligned}
+\]</span></p>
+<p>我们可以对其中的三项分别最大化，以达到整体最大化。</p>
+<ol type="1">
+<li><p>注意到<span class="math inline">\(\pi\)</span>满足约束条件<span class="math inline">\(\sum_{j=1}^N \pi_j = 1\)</span>，写出其拉格朗日函数： <span class="math display">\[
+\begin{aligned}
+L_\pi (\pi, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \gamma (\sum_{j=1}^N \pi_j - 1) \\
+&amp;= \sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) \log \pi_{j} + \gamma (\sum_{j=1}^N \pi_j - 1)
+\end{aligned}
+\]</span> 对上式关于<span class="math inline">\(\pi\)</span>求导并令其为<span class="math inline">\(0\)</span>，得到对于任意<span class="math inline">\(j = 1, \dots, N\)</span>， <span class="math display">\[
+\begin{align}
+\frac{P(\Y, i_1 = j; \lambda^t)}{\pi_j} + \gamma &amp;= 0 \\
+P(\Y, i_1 = j; \lambda^t) + \pi_j \gamma &amp;= 0 \label{pi-eq}
+\end{align}
+\]</span> 对上式关于<span class="math inline">\(j\)</span>求和，得到 <span class="math display">\[
+\sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) + \sum_{j=1}^N \pi_j \gamma = 0 \\
+\gamma = -P(\Y; \lambda^t)
+\]</span> 重新代入<span class="math inline">\(\eqref{pi-eq}\)</span>得到 <span class="math display">\[
+\pi_j = \frac{P(\Y, i_1=j; \lambda^t)}{P(\Y; \lambda^t)}
+\]</span></p></li>
+<li><p>注意到<span class="math inline">\(A\)</span>满足约束条件<span class="math inline">\(\forall j = 1, \dots, N, \sum_{k=1}^N a_{j, k} = 1\)</span>，写出其拉格朗日函数： <span class="math display">\[
+\begin{aligned}
+L_A (A, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1} \log a_{i_t, i_{t+1}} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} - 1) \\
+&amp;= \sum_{j=1}^N \sum_{k=1}^N \sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k; \lambda^t) \log a_{j, k} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} - 1)
+\end{aligned}
+\]</span> 类似对<span class="math inline">\(\pi\)</span>的求解，我们可以得到 <span class="math display">\[
+a_{j, k} = \frac{\sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k; \lambda^t)}{\sum_{t=1}^{T-1} P(\Y, i_1=j; \lambda^t)}
+\]</span></p></li>
+<li><p>注意到<span class="math inline">\(B\)</span>满足约束条件<span class="math inline">\(\forall j = 1, \dots, N, \sum_{k=1}^M b_{j, k} = 1\)</span>，写出其拉格朗日函数： <span class="math display">\[
+\begin{aligned}
+L_B (B, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log b_{i_t, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1) \\
+&amp;= \sum_{j=1}^N \sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \log b_{j, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1)
+\end{aligned}
+\]</span> 类似对<span class="math inline">\(\pi\)</span>的求解，我们可以得到 <span class="math display">\[
+b_{j, k} = \frac{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \mathbb{I}[o_t = y_k]}{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t)}
+\]</span></p></li>
+</ol>
+<h3 id="预测问题">预测问题</h3>
+<p>预测问题常用的算法是Viterbi算法，它是通过动态规划求解出一条最优路径。</p>
 
 
 
@@ -1455,7 +1534,7 @@ H(p||q) \ge H(p)
   
   <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/notes/articles/information-theory/jenson-shannon-divergence/" rel="next">Jenson-Shannon Divergence</a>
+    <a href="/notes/articles/machine-learning/bias-variance-decomposition/" rel="next">Bias-variance Decomposition</a>
   </div>
   
   
@@ -1466,7 +1545,7 @@ H(p||q) \ge H(p)
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Apr 22, 2022</p>
+          <p>Last updated on May 22, 2023</p>
 
           
 

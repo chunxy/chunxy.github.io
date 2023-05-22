@@ -753,6 +753,61 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
     </item>
     
     <item>
+      <title>贝叶斯推断</title>
+      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/</link>
+      <pubDate>Sun, 14 May 2023 18:27:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/</guid>
+      <description>
+
+&lt;h2 id=&#34;贝叶斯公式&#34;&gt;贝叶斯公式&lt;/h2&gt;
+&lt;p&gt;在全概率公式之下，有 &lt;span class=&#34;math display&#34;&gt;\[
+P(B_i | A) = \frac{P(A B_i)}{P(A)} = \frac{P(B_i) P(A|B_i)}{P(A)} = \frac{P(B_i) P(A|B_i)} {\sum_j P(B_j) P(A|B_j)}
+\]&lt;/span&gt; 这便是贝叶斯公式。贝叶斯公式中的项目也有它们在贝叶斯学派中相应的称呼： &lt;span class=&#34;math display&#34;&gt;\[
+\text{posterior} = \frac{\text{prior} \times \text{likelihood}}{\text{evidence}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;贝叶斯估计&#34;&gt;贝叶斯估计&lt;/h2&gt;
+&lt;p&gt;在参数估计问题中，记&lt;span class=&#34;math inline&#34;&gt;\(D = \{ X_1, \dots, X_n \}\)&lt;/span&gt;为样本、&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;为参数，并用将&lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;代入后验概率中的事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;代入后验概率中的&lt;span class=&#34;math inline&#34;&gt;\(B_i\)&lt;/span&gt;，我们得到：&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+P(\theta | D) = \frac{P(\theta) P(D|\theta)} {\sum_j P(\theta) P(D|\theta)} \\
+\]&lt;/span&gt; 取决于&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;和单个样本的取值是连续型或是离散型，上式中的&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;可代表密度函数或分布律，而分母中的求和运算应当在&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;取值连续的时候被替换在&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;所有可行范围内的积分运算。比较值得注意的一点是，贝叶斯推断为参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;引入了先验分布，而在频率学派中，参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;是不存在什么先验分布的。&lt;/p&gt;
+&lt;h3 id=&#34;最大后验估计&#34;&gt;最大后验估计&lt;/h3&gt;
+&lt;p&gt;最大后验估计（maximum a posteriori estimation）得到的点估计是以下： &lt;span class=&#34;math display&#34;&gt;\[
+\hat \theta = \arg \max_{\theta} \frac{P(\theta) P(D | \theta)}{\int P(\theta&amp;#39;)(D|\theta&amp;#39;) \d \theta&amp;#39;} = \arg \max_{\theta} {P(\theta) P(D | \theta)}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;最小均方差估计&#34;&gt;最小均方差估计&lt;/h3&gt;
+&lt;p&gt;最小均方差估计（minimum mean squared error estimation）得到的点估计是以下： &lt;span class=&#34;math display&#34;&gt;\[
+\theta^\star = \arg \min_{\hat \theta} \E_{\theta \sim \text{posterior}} [(\hat \theta - \theta)^2]
+\]&lt;/span&gt; 换言之，此时的到的点估计&lt;span class=&#34;math inline&#34;&gt;\(\theta^\star\)&lt;/span&gt;即为&lt;span class=&#34;math inline&#34;&gt;\(\E_{\theta \sim \text{posterior}} \theta\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;可信区间&#34;&gt;可信区间&lt;/h3&gt;
+&lt;p&gt;可信区间（credible interval），或者叫最大后验密度（highest posterior density）得到的是一个区间，该区间是使得随机变量落在该区间内的概率大于某一个数字（常用的有95%、98%）的最小区间。&lt;/p&gt;
+&lt;h3 id=&#34;案例抛硬币&#34;&gt;案例：抛硬币&lt;/h3&gt;
+&lt;p&gt;在具体的抛硬币案例中（抛&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;次硬币，其中&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;次正面朝上，未知参数为正面朝上概率&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;）， &lt;span class=&#34;math display&#34;&gt;\[
+\text{likelihood: } P(n|p) = {N \choose n} p^n (1-p)^{N-n} \\
+\text{prior: } \rho(p) = 1 \\
+\text{evidence: } \int_0^1 P(n|p) \rho(p) \d p \\
+\text{posterior: } \rho(p|n)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp; \rho(p|n) = \frac{P(n|p) \rho(p)}{\int_0^1 P(n|p) \rho(p) \d p} \\
+&amp;amp;= \frac{{N \choose n} p^n (1-p)^{N-n} \rho(p)}{\int_0^1 {N \choose n} x^n (1-x)^{N-n} \rho(x) \d x} \\
+&amp;amp;= \frac{p^n (1-p)^{N-n} 1}{\int_0^1 x^n (1-x)^{N-n} 1 \d x} \\
+&amp;amp;= \frac{p^{n+1-1} (1-p)^{N-n+1-1}} {\underbrace{\int_0^1 x^{n+1-1} (1-x)^{N-n+1-1} \d x}_{\mathrm{Beta}(n+1, N-n+1)}} \\   
+&amp;amp;= \mathrm{Beta}(p|n+1,N-n+1)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;其中&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{Beta}(n+1, N-n+1)\)&lt;/span&gt;表示&lt;strong&gt;&lt;em&gt;Beta函数&lt;/em&gt;&lt;/strong&gt;在&lt;span class=&#34;math inline&#34;&gt;\((n+1, N-n+1)\)&lt;/span&gt;处的取值；&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{Beta}(p|\underbrace{n+1}_{a&amp;gt;0}, \underbrace{N-n+1}_{b&amp;gt;0})\)&lt;/span&gt;表示参数&lt;span class=&#34;math inline&#34;&gt;\(a =n+1, b=N-n+1\)&lt;/span&gt;时的&lt;strong&gt;&lt;em&gt;Beta分布&lt;/em&gt;&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;需要注意的是&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{Beta}(p|1,1)\)&lt;/span&gt;等价于&lt;span class=&#34;math inline&#34;&gt;\([0,1]\)&lt;/span&gt;之间的均匀分布： &lt;span class=&#34;math display&#34;&gt;\[
+\mathrm{Beta}(p|1,1) = \text{Uniform}(p|0,1)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;在prior为Beta分布、likelihood为二项分布时，得到的posterior依旧是Beta分布（不过该Beta分布的参数和prior中Beta分布的参数有所不同），此时的prior和likelihood称作&lt;strong&gt;conjugate distributions&lt;/strong&gt;，此时的prior称作likelihood的&lt;strong&gt;conjugate prior&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;Beta分布是二项分布的conjugate prior；高斯分布是高斯分布的conjugate prior。&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>假设检验</title>
       <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</link>
       <pubDate>Tue, 06 Dec 2022 19:02:13 +0000</pubDate>
@@ -827,37 +882,6 @@ P(\text{否定$H_0$};\text{$H_0$成立}) = P( (X_1, \dots, X_n) \in W;\theta = \
 &lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/291968/are-type-i-error-fwer-both-conditional-probabilities&#34;&gt;hypothesis testing - Are type I error &amp;amp; FWER both conditional probabilities? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://bookdown.org/hezhijian/book/test.html&#34;&gt;第 3 章 假设检验 | 数理统计讲义 (bookdown.org)&lt;/a&gt;&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>贝叶斯推断</title>
-      <link>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/</link>
-      <pubDate>Fri, 09 Dec 2022 17:22:13 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/</guid>
-      <description>
-
-&lt;h2 id=&#34;贝叶斯公式&#34;&gt;贝叶斯公式&lt;/h2&gt;
-&lt;p&gt;在全概率公式之下，有 &lt;span class=&#34;math display&#34;&gt;\[
-P(B_i | A) = \frac{P(A B_i)}{P(A)} = \frac{P(B_i) P(A|B_i)} {\sum_j P(B_j) P(A|B_j)}
-\]&lt;/span&gt; 这便是贝叶斯公式。贝叶斯公式中的项目也有它们在贝叶斯学派中相应的称呼： &lt;span class=&#34;math display&#34;&gt;\[
-\text{posterior} = \frac{\text{prior} \times \text{likelihood}}{\text{evidence}}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;贝叶斯推断&#34;&gt;贝叶斯推断&lt;/h2&gt;
-&lt;p&gt;在参数估计问题中，记&lt;span class=&#34;math inline&#34;&gt;\(D = \{ X_1, \dots, X_n \}\)&lt;/span&gt;为样本、&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;为参数，并用将&lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;代入后验概率中的事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;代入后验概率中的&lt;span class=&#34;math inline&#34;&gt;\(B_i\)&lt;/span&gt;，我们得到：&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-P(\theta | D) = \frac{P(\theta) P(D|\theta)} {\sum_j P(\theta) P(D|\theta)} \\
-\]&lt;/span&gt; 取决于&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;和单个样本的取值是连续型或是离散型，上式中的&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;可代表密度函数或分布律，而分母中的求和运算应当在&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;取值连续的时候被替换在&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;所有可行范围内的积分运算。比较值得注意的一点是，贝叶斯推断为参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;引入了先验分布，而在频率学派中，参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;是不存在什么先验分布的。&lt;/p&gt;
-&lt;h3 id=&#34;最大后验估计&#34;&gt;最大后验估计&lt;/h3&gt;
-&lt;p&gt;最大后验估计（maximum a posteriori estimation）得到的点估计是以下： &lt;span class=&#34;math display&#34;&gt;\[
-\hat \theta = \arg \max_{\theta} \frac{P(\theta) P(D | \theta)}{\int P(\theta&amp;#39;)(D|\theta&amp;#39;) \d \theta&amp;#39;} = \arg \max_{\theta} {P(\theta) P(D | \theta)}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;最小均方差估计&#34;&gt;最小均方差估计&lt;/h3&gt;
-&lt;p&gt;最小均方差估计（minimum mean squared error estimation）得到的点估计是以下： &lt;span class=&#34;math display&#34;&gt;\[
-\theta^\star = \arg \min_{\hat \theta} \E_{\theta \sim \text{posterior}} [(\hat \theta - \theta)^2]
-\]&lt;/span&gt; 换言之，此时的点估计&lt;span class=&#34;math inline&#34;&gt;\(\theta^\star\)&lt;/span&gt;即为&lt;span class=&#34;math inline&#34;&gt;\(\E_{\theta \sim \text{posterior}} \theta\)&lt;/span&gt;。&lt;/p&gt;
 
 
 </description>

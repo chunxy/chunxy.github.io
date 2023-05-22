@@ -769,6 +769,10 @@
 
   <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
       
         </ul>
       
@@ -849,11 +853,11 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
@@ -861,11 +865,19 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
 
 
 
@@ -903,10 +915,6 @@
     
       </div>
     
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/"></a></li>
 
       
         </ul>
@@ -968,6 +976,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
@@ -976,15 +988,15 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1135,11 +1147,7 @@
       
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
-
-
-
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
 
 
 
@@ -1147,7 +1155,11 @@
 
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
       
         </ul>
@@ -1212,11 +1224,11 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
 
       
         </ul>
@@ -1407,11 +1419,11 @@ P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
 \]</span> The primal problem is <span class="math display">\[
 \inf_{x \in \mathcal X} P(x) \label{primal}
 \]</span> It is easy to have <span class="math inline">\(P(x) =f_0(x)\)</span> on <span class="math inline">\(\mathcal X\)</span>. Thus the primal problem is equivalent to the original problem. Denote primal problem <span class="math inline">\(\eqref{primal}\)</span>’s optimal value as <span class="math inline">\(p^\star\)</span>.</p>
-<p>Define the Lagrangian dual function <span class="math inline">\(D: \R^r \times \R^s \mapsto \R\)</span> as <span class="math display">\[
+<p>Define the dual function <span class="math inline">\(D: \R^r \times \R^s \mapsto \R\)</span> as <span class="math display">\[
 D(\lambda, \mu) = \inf_{x \in \mathcal \R^n}L(x, \lambda, \mu)
 \]</span> The Lagrangian dual problem is <span class="math display">\[
 \sup_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \label{dual}
-\]</span> Denote dual problem <span class="math inline">\(\eqref{dual}\)</span>’s optimal value as <span class="math inline">\(d^\star\)</span>. We always have <span class="math inline">\(p^\star \ge d^\star\)</span>.</p>
+\]</span> Denote the dual problem <span class="math inline">\(\eqref{dual}\)</span>’s optimal value as <span class="math inline">\(d^\star\)</span>. We always have <span class="math inline">\(p^\star \ge d^\star\)</span>.</p>
 <ul>
 <li><p>Proof</p>
 <p>For any feasible <span class="math inline">\(x \in \mathcal X, (\lambda, \mu) \in {\R^r}^+ \times \R^s\)</span>, <span class="math display">\[
@@ -1439,9 +1451,9 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
 <h4 id="karush-kuhn-tucker-conditions">Karush-Kuhn-Tucker Conditions</h4>
 <p>In standard optimization problem, KKT conditions refer to the below four:</p>
 <ul>
-<li><p><strong>primal constraint</strong>: <span class="math inline">\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)</span></p></li>
-<li><p><strong>dual constraint</strong>: <span class="math inline">\(\lambda_1,\dots,\lambda_r \ge 0\)</span></p></li>
-<li><p><strong>complementary slackness</strong>: <span class="math inline">\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)</span></p></li>
+<li><p><strong>primal constraint</strong>: <span class="math inline">\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)</span>;</p></li>
+<li><p><strong>dual constraint</strong>: <span class="math inline">\(\lambda_1,\dots,\lambda_r \ge 0\)</span>;</p></li>
+<li><p><strong>complementary slackness</strong>: <span class="math inline">\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)</span>;</p></li>
 <li><p><strong>vanishing gradient</strong> of Lagrangian w.r.t. <span class="math inline">\(x\)</span> : <span class="math display">\[
 \nabla f_0(x) + \sum_{i=1}^r\lambda_i\nabla f_i(x) + \sum_{i=1}^s\mu_i\nabla h_i(x) = 0
 \]</span></p></li>

@@ -153,7 +153,7 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 &lt;li&gt;On row &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;, before column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(J^{(k)}\)&lt;/span&gt; has an extra &lt;span class=&#34;math inline&#34;&gt;\(\sin(\varphi_{k-1})\)&lt;/span&gt; term in each element than the elements of &lt;span class=&#34;math inline&#34;&gt;\(J^{(k-1)}\)&lt;/span&gt; on row &lt;span class=&#34;math inline&#34;&gt;\(k-1\)&lt;/span&gt;,&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(J^{(k)}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(J^{(k-1)}\)&lt;/span&gt; are totally the same on the region delimited by row &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, row &lt;span class=&#34;math inline&#34;&gt;\(k-2\)&lt;/span&gt;, column &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, column &lt;span class=&#34;math inline&#34;&gt;\(k-1\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Apply the &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/laplace-expansion/&#34;&gt;Laplace Expansion&lt;/a&gt; along column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and combine the property of determinant to give &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Apply the Laplace expansion along column &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and combine the property of determinant to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 |J^{(k)}| =\ &amp;amp; \underbrace{0 + \dots + 0}_{n-2} + (-1)^{(n-1)+n} [-r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \sin(\varphi_{k-1}) \big( \sin(\varphi_{k-1}) |J^{(k-1)}| \big)] + \\
 &amp;amp; (-1)^{n+n} [r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) \big( \cos(\varphi_{k-1}) |J^{(k-1)}| \big)] \\
@@ -166,7 +166,7 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 \d x_1 \dots \d x_k = r^{k-1} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2}) \d r \d \varphi_1 \dots \d \varphi_{k-1}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/N-sphere#Spherical_coordinates&#34;&gt;Wiki&lt;/a&gt;|&lt;a href=&#34;https://wuli.wiki//online/SphCar.html&#34;&gt;3d Case Blog 1&lt;/a&gt;|&lt;a href=&#34;https://www.cnblogs.com/hans_gis/archive/2012/11/21/2755126.html&#34;&gt;3d Case Blog 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/N-sphere#Spherical_coordinates&#34;&gt;Wiki&lt;/a&gt; || &lt;a href=&#34;https://wuli.wiki//online/SphCar.html&#34;&gt;3d Case Blog 1&lt;/a&gt; || &lt;a href=&#34;https://www.cnblogs.com/hans_gis/archive/2012/11/21/2755126.html&#34;&gt;3d Case Blog 2&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

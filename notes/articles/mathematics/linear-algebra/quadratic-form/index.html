@@ -60,12 +60,11 @@
   
     
   
-  <meta name="description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case." />
+  <meta name="description" content="Quadratic Form Quadratic form involves many concepts like real symmetric matrix, positive definiteness and singular value decomposition. It can be quite helpful to glue these things together.
+A quadratic function \(f\) of \(n\) variables, or say a vector \(\x\) of length \(n\), is the sum of second-order terms: \[ f(\x) = \sum_{i=1}^n \sum_{j=1}^n c_{ij} x_i x_j \]" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/overview/" />
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/quadratic-form/" />
 
   
   
@@ -299,7 +298,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://chunxy.github.io/notes/articles/information-theory/overview/" />
+  <link rel="canonical" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/quadratic-form/" />
 
   
   
@@ -321,17 +320,16 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
-  <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/overview/" />
-  <meta property="og:title" content="Overview | Chunxy&#39; Website" />
-  <meta property="og:description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/quadratic-form/" />
+  <meta property="og:title" content="Quadratic Form | Chunxy&#39; Website" />
+  <meta property="og:description" content="Quadratic Form Quadratic form involves many concepts like real symmetric matrix, positive definiteness and singular value decomposition. It can be quite helpful to glue these things together.
+A quadratic function \(f\) of \(n\) variables, or say a vector \(\x\) of length \(n\), is the sum of second-order terms: \[ f(\x) = \sum_{i=1}^n \sum_{j=1}^n c_{ij} x_i x_j \]" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="article:published_time" content="2022-04-22T21:13:30&#43;00:00" />
+      <meta property="article:published_time" content="2023-05-05T10:21:12&#43;00:00" />
     
-    <meta property="article:modified_time" content="2022-04-22T21:13:30&#43;00:00">
+    <meta property="article:modified_time" content="2023-05-05T10:21:12&#43;00:00">
   
 
   
@@ -344,11 +342,11 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
   
 
-  <title>Overview | Chunxy&#39; Website</title>
+  <title>Quadratic Form | Chunxy&#39; Website</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c117287a25f16f15da190d218940051d" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="ab0a4a551cc9fdaf813df443a8f01282" >
 
   
   
@@ -578,7 +576,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
       <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
         
-          Information Theory
+          Linear Algebra
         
       </span>
       <span><i class="fas fa-chevron-down"></i></span>
@@ -690,7 +688,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
 
 
-  <li class="active"><a href="/notes/articles/information-theory/overview/">Overview</a></li>
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -881,7 +879,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
+  <li class="active"><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
 
 
 
@@ -1318,9 +1316,11 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#distribution-or-random-variable">Distribution or Random Variable?</a></li>
-    <li><a href="#kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy and Cross Entropy</a></li>
-    <li><a href="#kl-divergence-and-mutual-information">KL-divergence and Mutual Information</a></li>
+    <li><a href="#quadratic-form">Quadratic Form</a>
+      <ul>
+        <li><a href="#positive-definiteness">Positive Definiteness</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1338,6 +1338,8 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <nav class="d-none d-md-flex" aria-label="breadcrumb">
     <ol class="breadcrumb">
       
+  
+    
   
     
   
@@ -1376,16 +1378,25 @@ Since the notion of entropy is the basis of all other concepts in this section a
   
 
     <li class="breadcrumb-item">
-      <a href="/notes/articles/information-theory/">
+      <a href="/notes/articles/mathematics/">
         
-          Information Theory
+          Mathematics
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/articles/mathematics/linear-algebra/">
+        
+          Linear Algebra
         
       </a>
     </li>
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        Overview
+        Quadratic Form
       </li>
     </ol>
   </nav>
@@ -1400,42 +1411,39 @@ Since the notion of entropy is the basis of all other concepts in this section a
         
 
         <div class="docs-article-container">
-          <h1>Overview</h1>
+          <h1>Quadratic Form</h1>
 
           <div class="article-style">
             
 
-<h2 id="distribution-or-random-variable">Distribution or Random Variable?</h2>
-<p>Both <a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a> and <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> describe the relationship between <strong>two distributions</strong>.</p>
-<p>Both <a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a> and <a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a> describe the relationship between <strong>two random variables</strong>.</p>
-<p>Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case.</p>
-<h2 id="kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy and Cross Entropy</h2>
-<p>By definition, <span class="math display">\[
-\begin{align}
-D_{KL}(p||q) &amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)} \\
-&amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log {p(x)}) \\
-&amp;= H(p||q) - H(p)
-\end{align}
-\]</span> By the convexity of <span class="math inline">\(-\log\)</span>, <span class="math display">\[
-\begin{align}
-D_{KL}(p||q) &amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}] \\
-&amp;\ge -\log(\mathrm{E}_{x \sim p} \frac{q(x)}{p(x)}) \\
-&amp;= 0
-\end{align}
-\]</span> That is <span class="math display">\[
-H(p||q) \ge H(p)
-\]</span> The equality holds if and only if <span class="math inline">\(p = q\)</span>.</p>
-<h2 id="kl-divergence-and-mutual-information">KL-divergence and Mutual Information</h2>
-<p>Given that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the same dimension, <span class="math display">\[
-\begin{aligned}
-&amp;I(X;Y) = \sum_{x,y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)} \\
-&amp;= \sum_{x,y} p(x) p(y|x) \log \frac{p(y|x)}{p(y)} \\
-&amp;= \sum_{x} \sum_{y} p(x) p(y|x) \log \frac{p(y|x)}{p(y)} \\
-&amp;= \sum_{x} p(x) D_{KL}[p(y|x), p(y)] \\
-&amp;= \E_{x} D_{KL}[p(y|x), p(y)] \\
-&amp;= \E_{y} D_{KL}[p(x|y), p(x)] \\
-\end{aligned}
+<h2 id="quadratic-form">Quadratic Form</h2>
+<p>Quadratic form involves many concepts like real symmetric matrix, positive definiteness and singular value decomposition. It can be quite helpful to glue these things together.</p>
+<p>A <strong>quadratic function</strong> <span class="math inline">\(f\)</span> of <span class="math inline">\(n\)</span> variables, or say a vector <span class="math inline">\(\x\)</span> of length <span class="math inline">\(n\)</span>, is the sum of second-order terms: <span class="math display">\[
+f(\x) = \sum_{i=1}^n \sum_{j=1}^n c_{ij} x_i x_j
 \]</span></p>
+<p>The above summation can be simplified as matrix product <span class="math inline">\(\x^T A \x\)</span> where <span class="math inline">\(A\)</span> is <span class="math inline">\(n \times n\)</span> and <span class="math inline">\(a_{ij} = c_{ij}\)</span>. <span class="math inline">\(\x^T A \x\)</span> is called the <strong>quadratic form</strong> of <span class="math inline">\(A\)</span>.</p>
+<p>In essence, there is a nicer formulation for <span class="math inline">\(A\)</span>. Firstly define the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(a_{ij} = \frac{1}{2} (c_{ij} + c_{ji})\)</span>. It suffices to show <span class="math inline">\(A\)</span> is a real symmetric matrix and <span class="math display">\[
+f(\x) = \x^T A \x
+\]</span></p>
+<p>Thus the discussion of quadratic form usually encompasses the real symmetric matrix.</p>
+<h3 id="positive-definiteness">Positive Definiteness</h3>
+<p>Let <span class="math inline">\(A\)</span> be a real symmetric matrix. <span class="math inline">\(A\)</span> is <strong>positive definite</strong> if and only if the quadratic form of <span class="math inline">\(A\)</span> is positive. Specifically, for every <span class="math inline">\(\x \ne 0\)</span>, <span class="math inline">\(\x^T A \x &gt; 0\)</span>.</p>
+<ul>
+<li><p>Theorem</p>
+<p>A real symmetric matrix <span class="math inline">\(A\)</span> is positive definite if and only if <span class="math inline">\(A\)</span>’s eigenvalues are positive.</p></li>
+<li><p>Proof</p>
+<ul>
+<li><p>Necessity</p>
+<p>For every <span class="math inline">\(A\)</span>’s eigenpair <span class="math inline">\((\lambda, \v)\)</span>, we have <span class="math inline">\(\v^T A \v = \lambda \v^T \v &gt; 0 \Rightarrow \lambda &gt; 0\)</span>.</p></li>
+<li><p>Sufficiency</p>
+<p>Take <span class="math inline">\(A\)</span>’s spectral decomposition as <span class="math inline">\(A = Q \Lambda Q^T\)</span> where <span class="math inline">\(Q Q^T = I\)</span>. For every <span class="math inline">\(\x &gt; 0\)</span>, we have <span class="math display">\[
+\x^T A \x = \overbrace{\x^T Q}^{y^T} \Lambda \overbrace{Q^T \x}^{y} &gt; 0
+\]</span></p></li>
+</ul></li>
+</ul>
+<p>One possible reason why we would like to define positive definiteness on real symmetric matrix is that, any real matrix can be easily decomposed into the addition of a real symmetric matrix and a real <strong>skew-symmetric</strong> matrix whose quadratic form is zero: <span class="math display">\[
+A = \frac{A + A^T}{2} + \frac{A - A^T}{2}
+\]</span> Since <span class="math inline">\(\frac{A - A^T}{2}\)</span>’s quadratic form is zero and it makes no contribution to <span class="math inline">\(A\)</span>’s, the only component of interest will be the real symmetric <span class="math inline">\(\frac{A + A^T}{2}\)</span>. So why not just focus on the real symmetric matrix?</p>
 
 
 
@@ -1455,7 +1463,7 @@ H(p||q) \ge H(p)
   
   <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/notes/articles/information-theory/jenson-shannon-divergence/" rel="next">Jenson-Shannon Divergence</a>
+    <a href="/notes/articles/mathematics/linear-algebra/matrix-identity/" rel="next">Matrix Identity</a>
   </div>
   
   
@@ -1466,7 +1474,7 @@ H(p||q) \ge H(p)
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Apr 22, 2022</p>
+          <p>Last updated on May 5, 2023</p>
 
           
 

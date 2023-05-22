@@ -87,14 +87,10 @@ v_t &amp;amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/metrics/chebyshev-distance/</guid>
       <description>
 
-&lt;h3 id=&#34;discrete-form&#34;&gt;Discrete form&lt;/h3&gt;
 &lt;p&gt;Chebyshev distance is a specific form of Minkowski norm (&lt;span class=&#34;math inline&#34;&gt;\(l_p\)&lt;/span&gt; norm): &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-d_p(x, x^\prime) &amp;amp;= ||x - x^\prime||_p \\
-&amp;amp;= (\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \text{, where $p \to \infty$ }
-\end{aligned}
-\]&lt;/span&gt; Chebyshev distance is in effect &lt;span class=&#34;math inline&#34;&gt;\(\max\limits_i (|x_i - x^\prime_i|)\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h4 id=&#34;proof&#34;&gt;Proof&lt;/h4&gt;
+d_p(x, x^\prime) = ||x - x^\prime||_p \coloneq (\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(p \to \infty\)&lt;/span&gt;. Chebyshev distance is in effect &lt;span class=&#34;math inline&#34;&gt;\(\max\limits_i (|x_i - x^\prime_i|)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;proof-of-discrete-form&#34;&gt;Proof of Discrete Form&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(a_i = |x_i - x^\prime_i|\)&lt;/span&gt; and without loss of generality let &lt;span class=&#34;math inline&#34;&gt;\(a_1 = \max\limits_ia_i = \max\limits_i|x_i - x^\prime_i|\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 d_p(x, x^\prime) &amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \\
@@ -112,11 +108,10 @@ d_p(x, x^\prime) &amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Therefore, &lt;span class=&#34;math inline&#34;&gt;\(d_p(x, x^\prime) = a_1 \cdot 1 = a_1 = \max\limits_i|x_i - x^\prime_i|\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;continuous-form&#34;&gt;Continuous form&lt;/h3&gt;
+&lt;h3 id=&#34;proof-of-continuous-form&#34;&gt;Proof of Continuous Form&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; be continuous and bounded on interval &lt;span class=&#34;math inline&#34;&gt;\((a, b)\)&lt;/span&gt;, then, &lt;span class=&#34;math display&#34;&gt;\[
 \lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = \sup\limits_{x \in (a,b)}|f(x)|
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h4 id=&#34;proof-1&#34;&gt;Proof&lt;/h4&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(S = \sup\limits_{x \in (a,b)}|f(x)|\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\forall\varepsilon &amp;gt; 0, \exists x_0 \in (a,b), |f(x_0)| &amp;gt; S - \varepsilon\)&lt;/span&gt;. By continuity, &lt;span class=&#34;math inline&#34;&gt;\(\lim\limits_{x \to x_0}|f(x)| &amp;gt; S - \varepsilon\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(\exists\delta &amp;gt; 0, \forall x \in U(x_0, \delta), ||f(x)| - \lim\limits_{x \to x_0}|f(x)|| &amp;lt; \varepsilon \rightarrow |f(x)| &amp;gt; S - 2\varepsilon\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 (\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} &amp;amp;\ge (\int_{x_0 - \delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
@@ -136,6 +131,7 @@ d_p(x, x^\prime) &amp;amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p
 \]&lt;/span&gt; then, &lt;span class=&#34;math display&#34;&gt;\[
 \lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = S = \sup\limits_{x \in (a,b)}|f(x)|
 \]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;external-material&#34;&gt;External Material&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/267575473&#34;&gt;p范数的极限（无穷范数）为什么是极大值范数？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
 
 

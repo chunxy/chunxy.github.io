@@ -769,6 +769,10 @@
 
   <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
       
         </ul>
       
@@ -849,11 +853,11 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
@@ -861,11 +865,19 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
 
 
 
@@ -903,10 +915,6 @@
     
       </div>
     
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/"></a></li>
 
       
         </ul>
@@ -968,6 +976,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
@@ -976,15 +988,15 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1135,11 +1147,7 @@
       
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
-
-
-
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
 
 
 
@@ -1147,7 +1155,11 @@
 
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
       
         </ul>
@@ -1212,11 +1224,11 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
 
       
         </ul>
@@ -1404,7 +1416,7 @@ Y_{res} = Y_{res} - \hat Y
 </ol>
 <p>Apparently this algorithm is efficient. However, it does not guarantee an exact solution, even when <span class="math inline">\(Y\)</span> lies in the column space of <span class="math inline">\(X\)</span>.</p>
 <h3 id="forward-stagewise">Forward Stagewise</h3>
-<p>Like Forward Selection, Forward Stagewise selects a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. Unlike Forward Selection, Forward Selection does not subtract the whole projection from <span class="math inline">\(Y_{res}\)</span>. Instead, it proceeds along <span class="math inline">\(\mathrm x^{(k)}\)</span> with a small step.</p>
+<p>Like forward selection, forward stagewise selects a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. Unlike Forward Selection, Forward Selection does not subtract the whole projection from <span class="math inline">\(Y_{res}\)</span>. Instead, it proceeds along <span class="math inline">\(\mathrm x^{(k)}\)</span> with a small step.</p>
 <ol type="1">
 <li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\},\eta\text{ is a small constant}\)</span> initially.</p></li>
 <li><p>Select among <span class="math inline">\(C\)</span> a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. Then for each <span class="math inline">\(\mathrm x^{(i)}\)</span> from left to right, do the following:</p></li>
@@ -1416,9 +1428,9 @@ Y_{res} = Y_{res} - \hat Y
 <ol start="3" type="1">
 <li><del>Remove <span class="math inline">\(\mathrm x^{(k)}\)</span> from <span class="math inline">\(C\)</span>.</del> Go to step 2 until <span class="math inline">\(Y_{res}\)</span> is sufficiently small.</li>
 </ol>
-<p>Apparently Forward Stagewise gives an exact solution when <span class="math inline">\(\eta\)</span> is small enough. But it is more time-consuming.</p>
+<p>Apparently forward stagewise gives an exact solution when <span class="math inline">\(\eta\)</span> is small enough. But it is more time-consuming.</p>
 <h3 id="least-angle-regression">Least Angle Regression</h3>
-<p>LARS a is compromise of Forward Selection and Forward Stagewise. Likewise, LARS selects a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. LARS proceeds stagewise like Forward Stagewise, however with its own methodology to determine the step size.</p>
+<p>LARS a is compromise of forward selection and forward stagewise. Likewise, LARS selects a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. LARS proceeds stagewise like forward stagewise, however with its own methodology to determine the step size.</p>
 <ol type="1">
 <li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}, \mathrm d = \arg\max_{\mathrm x \in C}\frac{Y \cdot \mathrm x }{||\mathrm x||_2}\)</span> initially.</p></li>
 <li><p>Then do the following: <span class="math display">\[

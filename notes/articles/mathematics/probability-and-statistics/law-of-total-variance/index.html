@@ -60,12 +60,10 @@
   
     
   
-  <meta name="description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case." />
+  <meta name="description" content="Conditional Expectation Let \(X\) and \(Y\) be two discrete random variables. The conditional probability function of \(X\) given \(Y=y\) is \[ \Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)} \] Thus the conditional expectation of \(X\) given that \(Y=y\) is \[ \mu_{X|Y} = \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y) \] Clearly the conditional expectation \(\E(X|Y)\) is a function of \(Y\), or put it another way, a random variable depending on \(Y\), instead of \(X\)." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/overview/" />
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/" />
 
   
   
@@ -299,7 +297,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://chunxy.github.io/notes/articles/information-theory/overview/" />
+  <link rel="canonical" href="https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/" />
 
   
   
@@ -321,17 +319,15 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
-  <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/overview/" />
-  <meta property="og:title" content="Overview | Chunxy&#39; Website" />
-  <meta property="og:description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/" />
+  <meta property="og:title" content="Law of Total Variance | Chunxy&#39; Website" />
+  <meta property="og:description" content="Conditional Expectation Let \(X\) and \(Y\) be two discrete random variables. The conditional probability function of \(X\) given \(Y=y\) is \[ \Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)} \] Thus the conditional expectation of \(X\) given that \(Y=y\) is \[ \mu_{X|Y} = \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y) \] Clearly the conditional expectation \(\E(X|Y)\) is a function of \(Y\), or put it another way, a random variable depending on \(Y\), instead of \(X\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="article:published_time" content="2022-04-22T21:13:30&#43;00:00" />
+      <meta property="article:published_time" content="2023-04-05T09:06:42&#43;00:00" />
     
-    <meta property="article:modified_time" content="2022-04-22T21:13:30&#43;00:00">
+    <meta property="article:modified_time" content="2023-04-05T09:06:42&#43;00:00">
   
 
   
@@ -344,11 +340,11 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
   
 
-  <title>Overview | Chunxy&#39; Website</title>
+  <title>Law of Total Variance | Chunxy&#39; Website</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c117287a25f16f15da190d218940051d" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="74319081d501400d57ae8cc73d0c6a53" >
 
   
   
@@ -578,7 +574,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
       <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
         
-          Information Theory
+          Probability and Statistics
         
       </span>
       <span><i class="fas fa-chevron-down"></i></span>
@@ -690,7 +686,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
 
 
-  <li class="active"><a href="/notes/articles/information-theory/overview/">Overview</a></li>
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
 
       
         </ul>
@@ -980,7 +976,7 @@ Since the notion of entropy is the basis of all other concepts in this section a
       
 
 
-  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+  <li class="active"><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
 
 
 
@@ -1318,9 +1314,9 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#distribution-or-random-variable">Distribution or Random Variable?</a></li>
-    <li><a href="#kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy and Cross Entropy</a></li>
-    <li><a href="#kl-divergence-and-mutual-information">KL-divergence and Mutual Information</a></li>
+    <li><a href="#conditional-expectation">Conditional Expectation</a></li>
+    <li><a href="#conditional-variance">Conditional Variance</a></li>
+    <li><a href="#laws-of-total-expectation-and-variance">Laws of Total Expectation and Variance</a></li>
   </ul>
 </nav>
 
@@ -1338,6 +1334,8 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <nav class="d-none d-md-flex" aria-label="breadcrumb">
     <ol class="breadcrumb">
       
+  
+    
   
     
   
@@ -1376,16 +1374,25 @@ Since the notion of entropy is the basis of all other concepts in this section a
   
 
     <li class="breadcrumb-item">
-      <a href="/notes/articles/information-theory/">
+      <a href="/notes/articles/mathematics/">
         
-          Information Theory
+          Mathematics
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/notes/articles/mathematics/probability-and-statistics/">
+        
+          Probability and Statistics
         
       </a>
     </li>
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        Overview
+        Law of Total Variance
       </li>
     </ol>
   </nav>
@@ -1400,41 +1407,26 @@ Since the notion of entropy is the basis of all other concepts in this section a
         
 
         <div class="docs-article-container">
-          <h1>Overview</h1>
+          <h1>Law of Total Variance</h1>
 
           <div class="article-style">
             
 
-<h2 id="distribution-or-random-variable">Distribution or Random Variable?</h2>
-<p>Both <a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a> and <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> describe the relationship between <strong>two distributions</strong>.</p>
-<p>Both <a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a> and <a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a> describe the relationship between <strong>two random variables</strong>.</p>
-<p>Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case.</p>
-<h2 id="kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy and Cross Entropy</h2>
-<p>By definition, <span class="math display">\[
-\begin{align}
-D_{KL}(p||q) &amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)} \\
-&amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log {p(x)}) \\
-&amp;= H(p||q) - H(p)
-\end{align}
-\]</span> By the convexity of <span class="math inline">\(-\log\)</span>, <span class="math display">\[
-\begin{align}
-D_{KL}(p||q) &amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}] \\
-&amp;\ge -\log(\mathrm{E}_{x \sim p} \frac{q(x)}{p(x)}) \\
-&amp;= 0
-\end{align}
-\]</span> That is <span class="math display">\[
-H(p||q) \ge H(p)
-\]</span> The equality holds if and only if <span class="math inline">\(p = q\)</span>.</p>
-<h2 id="kl-divergence-and-mutual-information">KL-divergence and Mutual Information</h2>
-<p>Given that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the same dimension, <span class="math display">\[
-\begin{aligned}
-&amp;I(X;Y) = \sum_{x,y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)} \\
-&amp;= \sum_{x,y} p(x) p(y|x) \log \frac{p(y|x)}{p(y)} \\
-&amp;= \sum_{x} \sum_{y} p(x) p(y|x) \log \frac{p(y|x)}{p(y)} \\
-&amp;= \sum_{x} p(x) D_{KL}[p(y|x), p(y)] \\
-&amp;= \E_{x} D_{KL}[p(y|x), p(y)] \\
-&amp;= \E_{y} D_{KL}[p(x|y), p(x)] \\
-\end{aligned}
+<h2 id="conditional-expectation">Conditional Expectation</h2>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two discrete random variables. The <strong>conditional probability function of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span></strong> is <span class="math display">\[
+\Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)}
+\]</span> Thus the <strong>conditional expectation of <span class="math inline">\(X\)</span> given that <span class="math inline">\(Y=y\)</span></strong> is <span class="math display">\[
+\mu_{X|Y} = \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y)
+\]</span> Clearly the <strong>conditional expectation</strong> <span class="math inline">\(\E(X|Y)\)</span> is a function of <span class="math inline">\(Y\)</span>, or put it another way, a random variable depending on <span class="math inline">\(Y\)</span>, instead of <span class="math inline">\(X\)</span>.</p>
+<h2 id="conditional-variance">Conditional Variance</h2>
+<p>Conditional variance can be similarly defined. <span class="math inline">\(\Var(X|Y=y)\)</span> is the conditional variance of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span> and <span class="math inline">\(\Var(X|Y)\)</span> is a random variable depending on <span class="math inline">\(Y\)</span>: <span class="math display">\[
+\Var(X|Y) \coloneq \E[(X - \mu_{X|Y})^2 | Y] = \E(X^2|Y) - \E^2(X|Y)
+\]</span></p>
+<h2 id="laws-of-total-expectation-and-variance">Laws of Total Expectation and Variance</h2>
+<p>If all the expectations below exist, then for any random variable <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, we have <span class="math display">\[
+\E(X) = \E_Y(\E(X|Y)) \quad \textbf{Law of Total Expectation}
+\]</span> and <span class="math display">\[
+\Var(X) = \E_Y(\Var(X|Y)) + \Var_Y(\E(X|Y)) \quad \textbf{Law of Total Variance}
 \]</span></p>
 
 
@@ -1454,10 +1446,9 @@ H(p||q) \ge H(p)
   
   
   <div class="post-nav-item">
-    <div class="meta-nav">Previous</div>
-    <a href="/notes/articles/information-theory/jenson-shannon-divergence/" rel="next">Jenson-Shannon Divergence</a>
+    <div class="meta-nav">Next</div>
+    <a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/" rel="prev">Gaussian Distribution</a>
   </div>
-  
   
 </div>
 
@@ -1466,7 +1457,7 @@ H(p||q) \ge H(p)
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Apr 22, 2022</p>
+          <p>Last updated on Apr 5, 2023</p>
 
           
 

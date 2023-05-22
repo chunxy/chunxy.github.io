@@ -769,6 +769,10 @@
 
   <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
 
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
       
         </ul>
       
@@ -849,11 +853,11 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
@@ -861,11 +865,19 @@
 
 
 
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
 
 
 
@@ -903,10 +915,6 @@
     
       </div>
     
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/linear-algebra/laplace-expansion/"></a></li>
 
       
         </ul>
@@ -968,6 +976,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
 
 
@@ -976,15 +988,15 @@
 
 
 
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
 
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
-
-
-
-  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
 
       
         </ul>
@@ -1135,11 +1147,7 @@
       
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
-
-
-
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
 
 
 
@@ -1147,7 +1155,11 @@
 
 
 
-  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
 
       
         </ul>
@@ -1212,11 +1224,11 @@
 
 
 
-  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
-
-
-
   <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
 
       
         </ul>
@@ -1383,7 +1395,7 @@
 <p>CPC learns the representation by minimizing the following loss function: <span class="math display">\[
 \newcommand{\c}{\mathrm{c}} \label{loss}
 \mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
-\]</span> <span class="math inline">\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)</span> is a tuple of random variables and <span class="math inline">\(\Phi\)</span> is the distribution from which <span class="math inline">\(t\)</span> is drawn. <span class="math inline">\((\x:\c)_{1:N+1}\)</span> are drawn from the joint distribution <span class="math inline">\(\tilde p(\x,\c)\)</span>. All <span class="math inline">\(\c_i\)</span>’s but one randomly-chosen <span class="math inline">\(\c^*\)</span> are trimmed from the original samples. <span class="math inline">\(\c^*\)</span> is known but it is unknown which sample it is associated with. <span class="math inline">\(\ell\)</span> denotes the index of this unique sample we are trying to predict. In essence, <span class="math inline">\(\theta\)</span> is parameterizing the representation <span class="math inline">\(c\)</span>. The formal score function <span class="math inline">\(f_\theta\)</span> is simply a deterministic cosine similarity between <span class="math inline">\(\x\)</span> and <span class="math inline">\(c\)</span>.</p>
+\]</span> <span class="math inline">\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)</span> is a tuple of random variables and <span class="math inline">\(\Phi\)</span> is the distribution from which <span class="math inline">\(t\)</span> is drawn. <span class="math inline">\((\x:\c)_{1:N+1}\)</span> are drawn from the joint distribution <span class="math inline">\(\tilde p(\x,\c)\)</span>. All <span class="math inline">\(\c_i\)</span>’s but one randomly-chosen <span class="math inline">\(\c^*\)</span> are trimmed from the original samples. <span class="math inline">\(\c^*\)</span> is known but it is unknown which sample it is associated with. <span class="math inline">\(\ell\)</span> denotes the index of this unique sample we are trying to predict. In essence, <span class="math inline">\(\theta\)</span> is parameterizing the representation <span class="math inline">\(\c\)</span>. The formal score function <span class="math inline">\(f_\theta\)</span> is simply chosen to be a deterministic cosine similarity between <span class="math inline">\(\x\)</span> and <span class="math inline">\(\c\)</span>.</p>
 <p><span class="math inline">\(\x_{1:N+1}\)</span> consists of one positive sample <span class="math inline">\(\x^*\)</span> that is matched with <span class="math inline">\(\c^*\)</span> and more other independent negative (noise) samples <span class="math inline">\(\x_i\)</span>’s that are not matched with <span class="math inline">\(\c\)</span>. <span class="math inline">\(N\)</span> is the fixed ratio of the number of negative samples to the number of positive samples. Let <span class="math inline">\(P(\ell=i|\x_{1:N+1},\c^*)\)</span> represent the probability that <span class="math inline">\(\x_i\)</span> is the positive sample given <span class="math inline">\(\x_1, \dots x_{N+1}\)</span> and <span class="math inline">\(\c^*\)</span>. <span class="math display">\[
 \begin{aligned}
 P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
