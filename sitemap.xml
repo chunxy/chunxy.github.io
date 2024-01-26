@@ -12,6 +12,8 @@
   <url>
     <loc>https://chunxy.github.io/blogs/generating-covariance-matrix/</loc><lastmod>2022-08-13T11:23:21+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
+    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/introduction/</loc><lastmod>2022-07-07T11:06:13+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
     <loc>https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</loc><lastmod>2022-06-23T15:03:21+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/information-theory/entropy/</loc><lastmod>2022-04-28T22:47:16+00:00</lastmod><changefreq>weekly</changefreq></url>
@@ -19,8 +21,6 @@
     <loc>https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/</loc><lastmod>2022-01-07T13:00:06+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/machine-learning/bullet-points/</loc><lastmod>2021-12-19T13:59:49+00:00</lastmod><changefreq>weekly</changefreq></url>
-  <url>
-    <loc>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</loc><lastmod>2021-12-19T13:59:49+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</loc><lastmod>2021-12-18T20:47:37+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
@@ -55,10 +55,6 @@
     <loc>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/</loc><lastmod>2022-07-10T12:58:49+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc><lastmod>2022-07-10T12:58:49+00:00</lastmod><changefreq>weekly</changefreq></url>
-  <url>
-    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/</loc><lastmod>2022-07-07T11:06:13+00:00</lastmod><changefreq>weekly</changefreq></url>
-  <url>
-    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/</loc><lastmod>2022-07-07T11:06:13+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/papers/noise-contrastive-estimation/</loc><lastmod>2022-05-12T11:26:01+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
@@ -130,6 +126,8 @@
   <url>
     <loc>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</loc><lastmod>2022-01-11T16:10:51+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
+    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/</loc><lastmod>2022-07-07T11:06:13+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/stirlings-approximation/</loc><lastmod>2022-05-09T19:39:49+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/information-theory/jenson-shannon-divergence/</loc><lastmod>2022-05-03T15:10:21+00:00</lastmod><changefreq>weekly</changefreq></url>
@@ -164,6 +162,8 @@
   <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/whitening/</loc><lastmod>2022-08-11T17:52:02+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
+    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/</loc><lastmod>2022-07-07T11:06:13+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
     <loc>https://chunxy.github.io/notes/articles/information-theory/overview/</loc><lastmod>2022-04-22T21:13:30+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/difference-equation/</loc><lastmod>2021-12-25T20:08:33+00:00</lastmod><changefreq>weekly</changefreq></url>
@@ -182,11 +182,15 @@
   <url>
     <loc>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</loc><lastmod>2022-12-06T19:02:13+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
+    <loc>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</loc><lastmod>2023-05-22T09:43:15+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</loc><lastmod>2023-05-22T09:43:15+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</loc><lastmod>2022-05-09T11:51:08+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/metrics/</loc><lastmod>2022-07-10T12:58:49+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://chunxy.github.io/</loc><lastmod>2023-05-16T11:42:12+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://chunxy.github.io/</loc><lastmod>2023-05-22T09:43:15+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/blogs/</loc><lastmod>2022-08-13T11:23:21+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
@@ -210,17 +214,9 @@
   <url>
     <loc>https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/</loc><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</loc><changefreq>weekly</changefreq></url>
-  <url>
-    <loc>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</loc><changefreq>weekly</changefreq></url>
-  <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/</loc><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/optimization/convex-conjugate/</loc><changefreq>weekly</changefreq></url>
-  <url>
-    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/introduction/</loc><changefreq>weekly</changefreq></url>
-  <url>
-    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/</loc><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/authors/</loc><changefreq>weekly</changefreq></url>
   <url>

@@ -161,121 +161,6 @@ precision&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
     </item>
     
     <item>
-      <title>Machine Learning Bullet Points</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</link>
-      <pubDate>Sun, 19 Dec 2021 13:59:49 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</guid>
-      <description>
-
-&lt;p&gt;This post lists out various topics under the machine learning
-subject.&lt;/p&gt;
-&lt;h3 id=&#34;data&#34;&gt;Data&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;data modalities
-&lt;ul&gt;
-&lt;li&gt;numbers&lt;/li&gt;
-&lt;li&gt;texts&lt;/li&gt;
-&lt;li&gt;images&lt;/li&gt;
-&lt;li&gt;videos&lt;/li&gt;
-&lt;li&gt;audios&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;data sampling
-&lt;ul&gt;
-&lt;li&gt;bootstrap aggregation&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;data cleaning&lt;/li&gt;
-&lt;li&gt;imbalanced data&lt;/li&gt;
-&lt;li&gt;data augmentation&lt;/li&gt;
-&lt;li&gt;data splitting&lt;/li&gt;
-&lt;li&gt;feature extraction/engineering
-&lt;ul&gt;
-&lt;li&gt;domain expertise&lt;/li&gt;
-&lt;li&gt;statistics&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;feature normalization&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;model&#34;&gt;Model&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;supervised vs. unsupervised
-&lt;ul&gt;
-&lt;li&gt;unsupervised learning
-&lt;ul&gt;
-&lt;li&gt;discovers inherent properties (latent variables) in the data&lt;/li&gt;
-&lt;li&gt;includes:
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/clustering/&#34;&gt;clustering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimensionality-reduction/&#34;&gt;dimensionality
-reduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;manifold embedding&lt;/li&gt;
-&lt;li&gt;anomaly detection&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;discriminative vs. generative&lt;/li&gt;
-&lt;li&gt;classification vs. regression
-&lt;ul&gt;
-&lt;li&gt;from classification model to regression model&lt;/li&gt;
-&lt;li&gt;from binary classification to multi-class classification&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;linear vs. non-linear&lt;/li&gt;
-&lt;li&gt;parametric vs. non-parametric&lt;/li&gt;
-&lt;li&gt;boosting method
-&lt;ul&gt;
-&lt;li&gt;ensemble method&lt;/li&gt;
-&lt;li&gt;Adaboost&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;regularization and overfitting&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;training criterion&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;mean squared error&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;cross entropy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;impurity
-&lt;ul&gt;
-&lt;li&gt;Gini index&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/entropy/&#34;&gt;entropy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;testing criterion&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;confusion matrix&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;Real/Pred&lt;/th&gt;
-&lt;th&gt;Positive&lt;/th&gt;
-&lt;th&gt;Negative&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Positive&lt;/td&gt;
-&lt;td&gt;TP&lt;/td&gt;
-&lt;td&gt;FN&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Negative&lt;/td&gt;
-&lt;td&gt;FP&lt;/td&gt;
-&lt;td&gt;TN&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ul&gt;
-&lt;li&gt;accuracy&lt;/li&gt;
-&lt;li&gt;precision&lt;/li&gt;
-&lt;li&gt;recall&lt;/li&gt;
-&lt;li&gt;F-score&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Linear Discriminant Analysis</title>
       <link>https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/</link>
       <pubDate>Fri, 07 Jan 2022 12:42:22 +0000</pubDate>
@@ -2225,6 +2110,241 @@ Niwratti Kasture | Analytics Vidhya | Medium&lt;/a&gt;&lt;/p&gt;
     </item>
     
     <item>
+      <title>贝叶斯分类器</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</link>
+      <pubDate>Mon, 22 May 2023 09:43:15 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
+      <description>
+
+&lt;h2 id=&#34;贝叶斯分类器&#34;&gt;贝叶斯分类器&lt;/h2&gt;
+&lt;p&gt;贝叶斯分类器（Bayes classifier）基于“能够根据标签&lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;预测特征&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;”的思想，在训练环节，它学习&lt;span class=&#34;math inline&#34;&gt;\(p(\x|y)\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;；在预测环节，它给出&lt;span class=&#34;math inline&#34;&gt;\(\arg \max_y p(y|\x) = \arg \max_y p(\x|y)
+p(y)\)&lt;/span&gt;。可以看出，贝叶斯分类器的两个关键部分便是“似然”和“先验”，其预测环节采用了最大后验估计的思想，从这个角度或许能够理解为什么它叫做“贝叶斯”分类器。&lt;/p&gt;
+&lt;h3 id=&#34;朴素贝叶斯分类器&#34;&gt;朴素贝叶斯分类器&lt;/h3&gt;
+&lt;p&gt;贝叶斯分类器在训练环节学习&lt;span class=&#34;math inline&#34;&gt;\(p(\x|y)\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;可以直接由频率估计得来，而&lt;span class=&#34;math inline&#34;&gt;\(p(\x|y)\)&lt;/span&gt;这个条件概率则不太好求，尤其当&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;为多元随机变量时，其各个成分之间的关系难以捕捉。&lt;/p&gt;
+&lt;p&gt;为简化问题，朴素贝叶斯分类器（naive Bayes
+classifier）做出这样的假设：&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;的各个成分在&lt;span class=&#34;math inline&#34;&gt;\(Y=y\)&lt;/span&gt;给定的情况下，是相互独立的，此时有&lt;span class=&#34;math inline&#34;&gt;\(p(\x|y) = p(x_1|y) \dots
+p(x_n|y)\)&lt;/span&gt;。进一步，为了求解各个成分在&lt;span class=&#34;math inline&#34;&gt;\(Y=y\)&lt;/span&gt;给定时的条件概率分布，我们还可以对条件概率的分布形式作出假设，比如假设&lt;span class=&#34;math inline&#34;&gt;\(p(x_i|y)\)&lt;/span&gt;服从伯努利分布、多项分布、高斯分布（分别对应伯努利朴素贝叶斯分类器&amp;lt;Bernoulli
+naive Bayes classifier&amp;gt;、多项分布朴素贝叶斯分类器&amp;lt;multinomial
+naive Bayes classifier&amp;gt;、高斯分布朴素贝叶斯&amp;lt;Gaussian naive Bayes
+classifier&amp;gt;）等等。&lt;/p&gt;
+&lt;h2 id=&#34;贝叶斯最优分类器&#34;&gt;贝叶斯最优分类器&lt;/h2&gt;
+&lt;p&gt;给定贝叶斯分类器&lt;span class=&#34;math inline&#34;&gt;\(f \in
+\mathcal{H}\)&lt;/span&gt;，给定样本&lt;span class=&#34;math inline&#34;&gt;\((\x,y)\)&lt;/span&gt;，0-1损失函数&lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;定义为， &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\I}{\mathbb{I}} l(f(\x), y) = \I[f(\x) \ne y] = 1 - \I[f(\x)
+= y]
+\]&lt;/span&gt; 我们的目标是最小化&lt;span class=&#34;math inline&#34;&gt;\(l(f) \triangleq
+\E_{\x,y} l(f(\x), y)\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;l(f) = \sum_{\x} \sum_{y} p(\x,y) l(f(\x), y) \\
+&amp;amp;= \sum_x p(\x) [\sum_y p(y|\x) l(f(\x), y)] \\
+&amp;amp;= \E_\x [\sum_y p(y|\x) l(f(\x), y)]
+\end{aligned}
+\]&lt;/span&gt; 用&lt;span class=&#34;math inline&#34;&gt;\(f^\star\)&lt;/span&gt;表示贝叶斯最优分类器（Bayes
+optimal classifier），则&lt;span class=&#34;math inline&#34;&gt;\(f^\star = \arg
+\min_{f \in \mathcal{H}} \E_\x [\sum_y p(y|\x) l(f(\x),
+y)]\)&lt;/span&gt;；故对于每一个样本&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;，都应该有： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;f^\star(\x) = \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x)
+l(f(\x), y)] \\
+&amp;amp;= \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) (1 - \I[f(\x) =
+y])] \\
+&amp;amp;= \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) - \sum_y p(y|\x)
+\I[f(\x) = y]] \\
+&amp;amp;= \arg \min_{f \in \mathcal{H}} [1 - \sum_y p(y|\x) \I[f(\x) = y]]
+\\
+&amp;amp;= \arg \min_{f \in \mathcal{H}} [- \sum_y p(y|\x) \I[f(\x) = y]] \\
+&amp;amp;= \arg \max_{f \in \mathcal{H}} [\sum_y p(y|\x) \I[f(\x) = y]] \\
+&amp;amp;= \arg \max_{y \in \mathcal{Y}} p(y|\x)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;以&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;仅有两种取值举例： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f^\star(x) &amp;amp;= \arg \max_{f \in \mathcal{H}} [p(y_1|\x) \I[f(\x) =
+y_1] + p(y_2|\x) \I[f(\x) = y_2] ] \\
+&amp;amp;= \arg \max_{y \in \mathcal{Y}} p(y|\x)
+\end{aligned}
+\]&lt;/span&gt; 以上结论在&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;为连续型随机变量或者&lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;为连续型随机变量时也成立。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://artint.info/html1e/ArtInt_181.html&#34;&gt;Artificial
+Intelligence - foundations of computational agents – 7.3.3 Bayesian
+Classifiers (artint.info)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/567299/what-does-it-mean-for-the-bayes-classifier-to-be-optimal&#34;&gt;machine
+learning - What does it mean for the Bayes Classifier to be optimal? -
+Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>隐马尔可夫模型</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Mon, 22 May 2023 09:43:15 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</guid>
+      <description>
+
+&lt;h2 id=&#34;隐马尔可夫模型&#34;&gt;隐马尔可夫模型&lt;/h2&gt;
+&lt;p&gt;隐马尔可夫模型（Hidden Markov
+Model）的对象是序列类型的数据，其基本假设为：该序列的观测值实际上是来自于完全关于当前时序下的状态（state，也可叫作隐变量&amp;lt;latent
+variable&amp;gt;）取值的一个条件概率分布，而状态取值亦会随着时序发生变化，且其状态变化遵从马尔可夫过程。&lt;/p&gt;
+&lt;p&gt;令&lt;span class=&#34;math inline&#34;&gt;\(Y_1, \dots, Y_T\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;个时序下的观测值，&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_T\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;个时序下的状态取值，对于任意&lt;span class=&#34;math inline&#34;&gt;\(i = 1, \dots, T\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(Y_i \sim p(\cdot |
+X_i)\)&lt;/span&gt;；一般来说，隐马尔科夫模型中假设状态取值和观测取值都是离散的，假设共有&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;种状态取值&lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_N\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;种观测取值&lt;span class=&#34;math inline&#34;&gt;\(y_1, \dots,
+y_M\)&lt;/span&gt;，令状态转移矩阵（transition matrix）为&lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt;的方阵&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;，令观测概率矩阵（emission
+matrix）为&lt;span class=&#34;math inline&#34;&gt;\(N \times M\)&lt;/span&gt;的矩阵&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;；令&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;为初始状态概率向量。&lt;/p&gt;
+&lt;p&gt;隐马尔可夫模型即是由&lt;span class=&#34;math inline&#34;&gt;\(\pi, A,
+B\)&lt;/span&gt;三者决定，所以其可以用三元组表示： &lt;span class=&#34;math display&#34;&gt;\[
+\lambda = (\pi, A, B)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;隐马尔可夫模型有三类基本问题： 1. 概率问题。给定模型&lt;span class=&#34;math inline&#34;&gt;\(\lambda = (\pi, A, B)\)&lt;/span&gt;和观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)&lt;/span&gt;，计算模型&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;产生观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y\)&lt;/span&gt;的概率。 2. 学习问题。给定观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)&lt;/span&gt;，估计模型参数&lt;span class=&#34;math inline&#34;&gt;\(\lambda =
+(\pi, A, B)\)&lt;/span&gt;。 3.
+预测问题（也叫解码&amp;lt;decoding&amp;gt;问题）。给定模型&lt;span class=&#34;math inline&#34;&gt;\(\lambda = (\pi, A, B)\)&lt;/span&gt;和观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)&lt;/span&gt;，求使得条件概率&lt;span class=&#34;math inline&#34;&gt;\(P(\X |
+\Y)\)&lt;/span&gt;最大的状态序列&lt;span class=&#34;math inline&#34;&gt;\(\X\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;概率问题&#34;&gt;概率问题&lt;/h3&gt;
+&lt;h4 id=&#34;暴力解法&#34;&gt;暴力解法&lt;/h4&gt;
+&lt;p&gt;在预测问题中，最直接的想法便是首先枚举出所有的状态序列，然后根据状态序列计算观测序列的概率。某个状态序列&lt;span class=&#34;math inline&#34;&gt;\(\X = (x_{i_1}, \dots,
+x_{i_T})\)&lt;/span&gt;出现的概率为 &lt;span class=&#34;math display&#34;&gt;\[
+P(\X) = \pi_{i_1} a_{i_1, i_2} a_{i_2, i_3} \dots a_{i_{T-1}, i_T}
+\]&lt;/span&gt; 给定这个状态序列&lt;span class=&#34;math inline&#34;&gt;\(\X\)&lt;/span&gt;的情况下，观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y\)&lt;/span&gt;出现的概率为 &lt;span class=&#34;math display&#34;&gt;\[
+P(\Y | \X) = b_{i_1, o_1} b_{i_2, o_2} \dots b_{i_T, o_T}
+\]&lt;/span&gt; 两者同时出现的联合概率为 &lt;span class=&#34;math display&#34;&gt;\[
+P(\X, \Y) = P(\X) \times P(\Y | \X) = \pi_{i_1} a_{i_1, i_2} b_{i_1,
+o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
+\]&lt;/span&gt; 然后对上式关于所有可能的状态序列求和，得到 &lt;span class=&#34;math display&#34;&gt;\[
+P(\Y) = \sum_\X P(\X, \Y) = \sum_{i_1, i_2, \dots, i_T} \pi_{i_1}
+a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
+\]&lt;/span&gt; 该式共有&lt;span class=&#34;math inline&#34;&gt;\(N^T\)&lt;/span&gt;项，每一项有&lt;span class=&#34;math inline&#34;&gt;\(O(T)\)&lt;/span&gt;次相乘，故整体复杂度为&lt;span class=&#34;math inline&#34;&gt;\(O(T N^T)\)&lt;/span&gt;，难以接受。&lt;/p&gt;
+&lt;h4 id=&#34;前向算法&#34;&gt;前向算法&lt;/h4&gt;
+&lt;p&gt;首先引入前向概率的概念。给定隐马尔可夫模型&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;及观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)&lt;/span&gt;，定义到时刻&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的观测序列为给定的&lt;span class=&#34;math inline&#34;&gt;\((y_{o_1}, \dots,
+y_{o_t})\)&lt;/span&gt;且此时状态为&lt;span class=&#34;math inline&#34;&gt;\(x_{i}\)&lt;/span&gt;的概率为前向概率，记作 &lt;span class=&#34;math display&#34;&gt;\[
+\alpha_t(i) = P(Y_1 = y_{o_1}, \dots, Y_T = y_{o_t}, X_T = x_i; \lambda)
+\]&lt;/span&gt; 初始情况下，即&lt;span class=&#34;math inline&#34;&gt;\(t=1\)&lt;/span&gt;时，有
+&lt;span class=&#34;math display&#34;&gt;\[
+\alpha_1(i) = \pi_i a_{i, o_1}
+\]&lt;/span&gt; 对&lt;span class=&#34;math inline&#34;&gt;\(t = 2, \dots, T\)&lt;/span&gt;，有
+&lt;span class=&#34;math display&#34;&gt;\[
+\alpha_t(i) = \left[ \sum_{j=1}^N \alpha_{t-1}(j) a_{j, i} \right] b_{i,
+o_t}
+\]&lt;/span&gt; 最终， &lt;span class=&#34;math display&#34;&gt;\[
+P(\Y) = \sum_{i=1}^N \alpha_T(i)
+\]&lt;/span&gt;
+前向算法主要利用了状态变化的序列结构，记录了状态变化的中间过程，从而节省了计算时间。整个算法最耗时的步骤为递推这一步，&lt;span class=&#34;math inline&#34;&gt;\(\alpha_t(i)\)&lt;/span&gt;对应的加和表达式包含了&lt;span class=&#34;math inline&#34;&gt;\(O(N)\)&lt;/span&gt;个项，而对于每一个时刻&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;个这样的加和表达式，故&lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;个时刻整体耗时为&lt;span class=&#34;math inline&#34;&gt;\(O(N^2 T)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;学习问题&#34;&gt;学习问题&lt;/h3&gt;
+&lt;h4 id=&#34;有监督学习&#34;&gt;有监督学习&lt;/h4&gt;
+&lt;p&gt;有监督学习是较好处理的一种问题，在这种情况下，&lt;span class=&#34;math inline&#34;&gt;\(\X, \Y\)&lt;/span&gt;都已知，需要我们估计模型参数&lt;span class=&#34;math inline&#34;&gt;\(\pi, A, B\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;设样本中状态由&lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;转移到&lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;的频数为&lt;span class=&#34;math inline&#34;&gt;\(A_{i, j}\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(a_{i, j}\)&lt;/span&gt;的估计为 &lt;span class=&#34;math display&#34;&gt;\[
+\hat a_{i, j} = \frac{A_{i, j}} {\sum_{k=1}^N A_{i, k}}
+\]&lt;/span&gt; 设样本中状态为&lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;且观测为&lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;的频数是&lt;span class=&#34;math inline&#34;&gt;\(B_{i, j}\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(b_{i, j}\)&lt;/span&gt;的估计为 &lt;span class=&#34;math display&#34;&gt;\[
+\hat b_{i, j} = \frac{B_{i, j}} {\sum_{k=1}^N B_{i, k}}
+\]&lt;/span&gt; 至于初始状态向量&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;，若样本中由多条时序链，&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;亦可由相应频次估计而来。&lt;/p&gt;
+&lt;h4 id=&#34;无监督学习&#34;&gt;无监督学习&lt;/h4&gt;
+&lt;p&gt;多数情况下，状态——或者说隐变量&lt;span class=&#34;math inline&#34;&gt;\(\X\)&lt;/span&gt;——是没有办法观测到的，而这时就可以采用&lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/expectation-maximization/&#34;&gt;EM算法&lt;/a&gt;，通过优化似然函数的下界，找出最好的模型参数。EM算法在隐马尔科夫模型中具体实现由Baum和Welch提出，故实际求解算法被称作Baum-Welch算法。&lt;/p&gt;
+&lt;p&gt;此问题的似然函数以及对数似然函数分别为： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+P(\Y; \lambda) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda) \\
+\log P(\Y; \lambda) &amp;amp;= \log \sum_{\X} P(\X, \Y; \lambda)
+\end{aligned}
+\]&lt;/span&gt; 根据EM算法， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\log P(\Y; \lambda) = \log \E_{\X \sim P(\cdot | \Y; \lambda^t)}
+P(\X, \Y; \lambda) \\
+&amp;amp;\ge \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda)
+\triangleq Q(\lambda^t, \lambda) \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;而下一轮迭代中，新的估计&lt;span class=&#34;math inline&#34;&gt;\(\lambda^{t+1}\)&lt;/span&gt;为： &lt;span class=&#34;math display&#34;&gt;\[
+\lambda^{t+1} = \arg \max_\lambda Q(\lambda^t, \lambda)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;又由于 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;Q(\lambda^t, \lambda) = \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log
+P(\X, \Y; \lambda) \\
+&amp;amp;= \sum_\X P(\X | \Y; \lambda^t) \log P(\X, \Y; \lambda) \\
+&amp;amp;= \sum_\X \frac{P(\X, \Y; \lambda^t)}{P(\Y; \lambda^t)} \log P(\X,
+\Y; \lambda) \\
+&amp;amp;= \frac{\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)}{P(\Y;
+\lambda^t)} \\
+\end{aligned}
+\]&lt;/span&gt; 其中的&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{P(\Y;
+\lambda^t)}\)&lt;/span&gt;与&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;无关，所以 &lt;span class=&#34;math display&#34;&gt;\[
+\lambda^{t+1} = \arg \max_\lambda \sum_\X P(\X, \Y; \lambda^t) \log
+P(\X, \Y; \lambda)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;注意在接下来的讨论中，我们会令&lt;span class=&#34;math inline&#34;&gt;\(\X =
+(x_{i_1}, \dots,
+x_{i_T})\)&lt;/span&gt;，但为了整体简洁，我们不会在每一个&lt;span class=&#34;math inline&#34;&gt;\(\X\)&lt;/span&gt;出现的地方将此式展开。对上式做进一步展开，
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda) = \sum_\X
+P(\X, \Y; \lambda^t) \log \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots
+a_{i_{T-1}, i_T} b_{i_T, o_T} \\
+&amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \sum_{\X} P(\X,
+\Y; \lambda^t) \sum_{t=1}^{T-1} a_{i_t, i_{t+1}} + \sum_{\X} P(\X, \Y;
+\lambda^t) \sum_{t=1}^T \log b_{i_t, o_t}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;我们可以对其中的三项分别最大化，以达到整体最大化。&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;注意到&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;满足约束条件&lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^N \pi_j =
+1\)&lt;/span&gt;，写出其拉格朗日函数： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L_\pi (\pi, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1}
++ \gamma (\sum_{j=1}^N \pi_j - 1) \\
+&amp;amp;= \sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) \log \pi_{j} + \gamma
+(\sum_{j=1}^N \pi_j - 1)
+\end{aligned}
+\]&lt;/span&gt; 对上式关于&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;求导并令其为&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;，得到对于任意&lt;span class=&#34;math inline&#34;&gt;\(j = 1, \dots, N\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+\frac{P(\Y, i_1 = j; \lambda^t)}{\pi_j} + \gamma &amp;amp;= 0 \\
+P(\Y, i_1 = j; \lambda^t) + \pi_j \gamma &amp;amp;= 0 \label{pi-eq}
+\end{align}
+\]&lt;/span&gt; 对上式关于&lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;求和，得到
+&lt;span class=&#34;math display&#34;&gt;\[
+\sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) + \sum_{j=1}^N \pi_j \gamma = 0
+\\
+\gamma = -P(\Y; \lambda^t)
+\]&lt;/span&gt; 重新代入&lt;span class=&#34;math inline&#34;&gt;\(\eqref{pi-eq}\)&lt;/span&gt;得到
+&lt;span class=&#34;math display&#34;&gt;\[
+\pi_j = \frac{P(\Y, i_1=j; \lambda^t)}{P(\Y; \lambda^t)}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;注意到&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;满足约束条件&lt;span class=&#34;math inline&#34;&gt;\(\forall j = 1, \dots, N, \sum_{k=1}^N a_{j, k} =
+1\)&lt;/span&gt;，写出其拉格朗日函数： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L_A (A, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1}
+\log a_{i_t, i_{t+1}} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} -
+1) \\
+&amp;amp;= \sum_{j=1}^N \sum_{k=1}^N \sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k;
+\lambda^t) \log a_{j, k} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k}
+- 1)
+\end{aligned}
+\]&lt;/span&gt; 类似对&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;的求解，我们可以得到 &lt;span class=&#34;math display&#34;&gt;\[
+a_{j, k} = \frac{\sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k;
+\lambda^t)}{\sum_{t=1}^{T-1} P(\Y, i_1=j; \lambda^t)}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;注意到&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;满足约束条件&lt;span class=&#34;math inline&#34;&gt;\(\forall j = 1, \dots, N, \sum_{k=1}^M b_{j, k} =
+1\)&lt;/span&gt;，写出其拉格朗日函数： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L_B (B, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log
+b_{i_t, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1) \\
+&amp;amp;= \sum_{j=1}^N \sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \log b_{j, o_t}
++ \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1)
+\end{aligned}
+\]&lt;/span&gt; 类似对&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;的求解，我们可以得到 &lt;span class=&#34;math display&#34;&gt;\[
+b_{j, k} = \frac{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \mathbb{I}[o_t =
+y_k]}{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t)}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;预测问题&#34;&gt;预测问题&lt;/h3&gt;
+&lt;p&gt;预测问题常用的算法是Viterbi算法，它是通过动态规划求解出一条最优路径。&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title></title>
       <link>https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2249,229 +2369,6 @@ $$&lt;/p&gt;
 &lt;p&gt;We can also obtain a series of average precisions for different classes of objects, yielding the concept of &lt;strong&gt;mean average precision&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;average-mean-average-precision&#34;&gt;&amp;ldquo;Average Mean Average Precision&amp;rdquo;&lt;/h3&gt;
 &lt;p&gt;Moreover, we may change the IoU threshold to obtain a series of mean average precisions to average upon; in some sense this is the &amp;ldquo;average mean average precision&amp;rdquo;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
-      <description>&lt;h2 id=&#34;贝叶斯分类器&#34;&gt;贝叶斯分类器&lt;/h2&gt;
-&lt;p&gt;贝叶斯分类器（Bayes classifier）基于“能够根据标签$y$预测特征$\x$”的思想，在训练环节，它学习$p(\x|y)$和$p(y)$；在预测环节，它给出$\arg \max_y p(y|\x) = \arg \max_y p(\x|y) p(y)$。可以看出，贝叶斯分类器的两个关键部分便是“似然”和“先验”，其预测环节采用了最大后验估计的思想，从这个角度或许能够理解为什么它叫做“贝叶斯”分类器。&lt;/p&gt;
-&lt;h3 id=&#34;朴素贝叶斯分类器&#34;&gt;朴素贝叶斯分类器&lt;/h3&gt;
-&lt;p&gt;贝叶斯分类器在训练环节学习$p(\x|y)$和$p(y)$，$p(y)$可以直接由频率估计得来，而$p(\x|y)$这个条件概率则不太好求，尤其当$\x$为多元随机变量时，其各个成分之间的关系难以捕捉。&lt;/p&gt;
-&lt;p&gt;为简化问题，朴素贝叶斯分类器（naive Bayes classifier）做出这样的假设：$\x$的各个成分在$Y=y$给定的情况下，是相互独立的，此时有$p(\x|y) = p(x_1|y) \dots p(x_n|y)$。进一步，为了求解各个成分在$Y=y$给定时的条件概率分布，我们还可以对条件概率的分布形式作出假设，比如假设$p(x_i|y)$服从伯努利分布、多项分布、高斯分布（分别对应伯努利朴素贝叶斯分类器&amp;lt;Bernoulli naive Bayes classifier&amp;gt;、多项分布朴素贝叶斯分类器&amp;lt;multinomial naive Bayes classifier&amp;gt;、高斯分布朴素贝叶斯&amp;lt;Gaussian naive Bayes classifier&amp;gt;）等等。&lt;/p&gt;
-&lt;h2 id=&#34;贝叶斯最优分类器&#34;&gt;贝叶斯最优分类器&lt;/h2&gt;
-&lt;p&gt;给定贝叶斯分类器$f \in \mathcal{H}$，给定样本$(\x,y)$，0-1损失函数$l$定义为，
-$$
-\newcommand{\I}{\mathbb{I}} l(f(\x), y) = \I[f(\x) \ne y] = 1 - \I[f(\x) = y]
-$$
-我们的目标是最小化$l(f) \triangleq \E_{\x,y} l(f(\x), y)$：
-$$
-\begin{aligned}
-&amp;amp;l(f) = \sum_{\x} \sum_{y} p(\x,y) l(f(\x), y) \
-&amp;amp;= \sum_x p(\x) [\sum_y p(y|\x) l(f(\x), y)] \
-&amp;amp;= \E_\x [\sum_y p(y|\x) l(f(\x), y)]
-\end{aligned}
-$$
-用$f^\star$表示贝叶斯最优分类器（Bayes optimal classifier），则$f^\star = \arg \min_{f \in \mathcal{H}} \E_\x [\sum_y p(y|\x) l(f(\x), y)]$；故对于每一个样本$\x$，都应该有：
-$$
-\begin{aligned}
-&amp;amp;f^\star(\x) = \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) l(f(\x), y)] \
-&amp;amp;= \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) (1 - \I[f(\x) = y])] \
-&amp;amp;= \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) - \sum_y p(y|\x) \I[f(\x) = y]] \
-&amp;amp;= \arg \min_{f \in \mathcal{H}} [1 - \sum_y p(y|\x) \I[f(\x) = y]] \
-&amp;amp;= \arg \min_{f \in \mathcal{H}} [- \sum_y p(y|\x) \I[f(\x) = y]] \
-&amp;amp;= \arg \max_{f \in \mathcal{H}} [\sum_y p(y|\x) \I[f(\x) = y]] \
-&amp;amp;= \arg \max_{y \in \mathcal{Y}} p(y|\x)
-\end{aligned}
-$$&lt;/p&gt;
-&lt;p&gt;以$Y$仅有两种取值举例：
-$$
-\begin{aligned}
-f^\star(x) &amp;amp;= \arg \max_{f \in \mathcal{H}} [p(y_1|\x) \I[f(\x) = y_1] + p(y_2|\x) \I[f(\x) = y_2] ] \
-&amp;amp;= \arg \max_{y \in \mathcal{Y}} p(y|\x)
-\end{aligned}
-$$
-以上结论在$\x$为连续型随机变量或者$y$为连续型随机变量时也成立。&lt;/p&gt;
-&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://artint.info/html1e/ArtInt_181.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Artificial Intelligence - foundations of computational agents &amp;ndash; 7.3.3 Bayesian Classifiers (artint.info)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/567299/what-does-it-mean-for-the-bayes-classifier-to-be-optimal&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;machine learning - What does it mean for the Bayes Classifier to be optimal? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</guid>
-      <description>&lt;p&gt;z&amp;mdash;
-title: 隐马尔可夫模型
-linktitle: 隐马尔可夫模型
-type: book
-lastmod: &amp;lsquo;2023-05-22T09:43:15&amp;rsquo;&lt;/p&gt;
-&lt;h1 id=&#34;prevnext-pager-order-if-docs_section_pager-enabled-in-paramstoml&#34;&gt;Prev/next pager order (if &lt;code&gt;docs_section_pager&lt;/code&gt; enabled in &lt;code&gt;params.toml&lt;/code&gt;)&lt;/h1&gt;
-&lt;h2 id=&#34;markup-pandoc&#34;&gt;weight: 40
-markup: pandoc&lt;/h2&gt;
-&lt;h2 id=&#34;隐马尔可夫模型&#34;&gt;隐马尔可夫模型&lt;/h2&gt;
-&lt;p&gt;隐马尔可夫模型（Hidden Markov Model）的对象是序列类型的数据，其基本假设为：该序列的观测值实际上是来自于完全关于当前时序下的状态（state，也可叫作隐变量&amp;lt;latent variable&amp;gt;）取值的一个条件概率分布，而状态取值亦会随着时序发生变化，且其状态变化遵从马尔可夫过程。&lt;/p&gt;
-&lt;p&gt;令$Y_1, \dots, Y_T$表示$T$个时序下的观测值，$X_1, \dots, X_T$表示$T$个时序下的状态取值，对于任意$i = 1, \dots, T$，有$Y_i \sim p(\cdot | X_i)$；一般来说，隐马尔科夫模型中假设状态取值和观测取值都是离散的，假设共有$N$种状态取值$x_1, \dots, x_N$和$M$种观测取值$y_1, \dots, y_M$，令状态转移矩阵（transition matrix）为$N \times N$的方阵$A$，令观测概率矩阵（emission matrix）为$N \times M$的矩阵$B$；令$\pi$为初始状态概率向量。&lt;/p&gt;
-&lt;p&gt;隐马尔可夫模型即是由$\pi, A, B$三者决定，所以其可以用三元组表示：
-$$
-\lambda = (\pi, A, B)
-$$&lt;/p&gt;
-&lt;p&gt;隐马尔可夫模型有三类基本问题：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;概率问题。给定模型$\lambda = (\pi, A, B)$和观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，计算模型$\lambda$产生观测序列$\Y$的概率。&lt;/li&gt;
-&lt;li&gt;学习问题。给定观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，估计模型参数$\lambda = (\pi, A, B)$。&lt;/li&gt;
-&lt;li&gt;预测问题（也叫解码&amp;lt;decoding&amp;gt;问题）。给定模型$\lambda = (\pi, A, B)$和观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，求使得条件概率$P(\X | \Y)$最大的状态序列$\X$。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;概率问题&#34;&gt;概率问题&lt;/h3&gt;
-&lt;h4 id=&#34;暴力解法&#34;&gt;暴力解法&lt;/h4&gt;
-&lt;p&gt;在预测问题中，最直接的想法便是首先枚举出所有的状态序列，然后根据状态序列计算观测序列的概率。某个状态序列$\X = (x_{i_1}, \dots, x_{i_T})$出现的概率为
-$$
-P(\X) = \pi_{i_1} a_{i_1, i_2} a_{i_2, i_3} \dots a_{i_{T-1}, i_T}
-$$
-给定这个状态序列$\X$的情况下，观测序列$\Y$出现的概率为
-$$
-P(\Y | \X) = b_{i_1, o_1} b_{i_2, o_2} \dots b_{i_T, o_T}
-$$
-两者同时出现的联合概率为
-$$
-P(\X, \Y) = P(\X) \times P(\Y | \X) = \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
-$$
-然后对上式关于所有可能的状态序列求和，得到
-$$
-P(\Y) = \sum_\X P(\X, \Y) = \sum_{i_1, i_2, \dots, i_T} \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
-$$
-该式共有$N^T$项，每一项有$O(T)$次相乘，故整体复杂度为$O(T N^T)$，难以接受。&lt;/p&gt;
-&lt;h4 id=&#34;前向算法&#34;&gt;前向算法&lt;/h4&gt;
-&lt;p&gt;首先引入前向概率的概念。给定隐马尔可夫模型$\lambda$及观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，定义到时刻$t$的观测序列为给定的$(y_{o_1}, \dots, y_{o_t})$且此时状态为$x_{i}$的概率为前向概率，记作
-$$
-\alpha_t(i) = P(Y_1 = y_{o_1}, \dots, Y_T = y_{o_t}, X_T = x_i; \lambda)
-$$
-初始情况下，即$t=1$时，有
-$$
-\alpha_1(i) = \pi_i a_{i, o_1}
-$$
-对$t = 2, \dots, T$，有
-$$
-\alpha_t(i) = \left[ \sum_{j=1}^N \alpha_{t-1}(j) a_{j, i} \right] b_{i, o_t}
-$$
-最终，
-$$
-P(\Y) = \sum_{i=1}^N \alpha_T(i)
-$$
-前向算法主要利用了状态变化的序列结构，记录了状态变化的中间过程，从而节省了计算时间。整个算法最耗时的步骤为递推这一步，$\alpha_t(i)$对应的加和表达式包含了$O(N)$个项，而对于每一个时刻$t$，有$N$个这样的加和表达式，故$T$个时刻整体耗时为$O(N^2 T)$。&lt;/p&gt;
-&lt;h3 id=&#34;学习问题&#34;&gt;学习问题&lt;/h3&gt;
-&lt;h4 id=&#34;有监督学习&#34;&gt;有监督学习&lt;/h4&gt;
-&lt;p&gt;有监督学习是较好处理的一种问题，在这种情况下，$\X, \Y$都已知，需要我们估计模型参数$\pi, A, B$。&lt;/p&gt;
-&lt;p&gt;设样本中状态由$i$转移到$j$的频数为$A_{i, j}$，则$a_{i, j}$的估计为
-$$
-\hat a_{i, j} = \frac{A_{i, j}} {\sum_{k=1}^N A_{i, k}}
-$$
-设样本中状态为$i$且观测为$j$的频数是$B_{i, j}$，则$b_{i, j}$的估计为
-$$
-\hat b_{i, j} = \frac{B_{i, j}} {\sum_{k=1}^N B_{i, k}}
-$$
-至于初始状态向量$\pi$，若样本中由多条时序链，$\pi$亦可由相应频次估计而来。&lt;/p&gt;
-&lt;h4 id=&#34;无监督学习&#34;&gt;无监督学习&lt;/h4&gt;
-&lt;p&gt;多数情况下，状态——或者说隐变量$\X$——是没有办法观测到的，而这时就可以采用&lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/expectation-maximization/&#34;&gt;EM算法&lt;/a&gt;，通过优化似然函数的下界，找出最好的模型参数。EM算法在隐马尔科夫模型中具体实现由Baum和Welch提出，故实际求解算法被称作Baum-Welch算法。&lt;/p&gt;
-&lt;p&gt;此问题的似然函数以及对数似然函数分别为：
-$$
-\begin{aligned}
-P(\Y; \lambda) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda) \
-\log P(\Y; \lambda) &amp;amp;= \log \sum_{\X} P(\X, \Y; \lambda)
-\end{aligned}
-$$
-根据EM算法，
-$$
-\begin{aligned}
-&amp;amp;\log P(\Y; \lambda) = \log \E_{\X \sim P(\cdot | \Y; \lambda^t)} P(\X, \Y; \lambda) \
-&amp;amp;\ge \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda) \triangleq Q(\lambda^t, \lambda) \
-\end{aligned}
-$$&lt;/p&gt;
-&lt;p&gt;而下一轮迭代中，新的估计$\lambda^{t+1}$为：
-$$
-\lambda^{t+1} = \arg \max_\lambda Q(\lambda^t, \lambda)
-$$&lt;/p&gt;
-&lt;p&gt;又由于
-$$
-\begin{aligned}
-&amp;amp;Q(\lambda^t, \lambda) = \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda) \
-&amp;amp;= \sum_\X P(\X | \Y; \lambda^t) \log P(\X, \Y; \lambda) \
-&amp;amp;= \sum_\X \frac{P(\X, \Y; \lambda^t)}{P(\Y; \lambda^t)} \log P(\X, \Y; \lambda) \
-&amp;amp;= \frac{\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)}{P(\Y; \lambda^t)} \
-\end{aligned}
-$$
-其中的$\frac{1}{P(\Y; \lambda^t)}$与$\lambda$无关，所以
-$$
-\lambda^{t+1} = \arg \max_\lambda \sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)
-$$&lt;/p&gt;
-&lt;p&gt;注意在接下来的讨论中，我们会令$\X = (x_{i_1}, \dots, x_{i_T})$，但为了整体简洁，我们不会在每一个$\X$出现的地方将此式展开。对上式做进一步展开，
-$$
-\begin{aligned}
-&amp;amp;\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda) = \sum_\X P(\X, \Y; \lambda^t) \log \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T} \
-&amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1} a_{i_t, i_{t+1}} + \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log b_{i_t, o_t}
-\end{aligned}
-$$&lt;/p&gt;
-&lt;p&gt;我们可以对其中的三项分别最大化，以达到整体最大化。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;注意到$\pi$满足约束条件$\sum_{j=1}^N \pi_j = 1$，写出其拉格朗日函数：
-$$
-\begin{aligned}
-L_\pi (\pi, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \gamma (\sum_{j=1}^N \pi_j - 1) \
-&amp;amp;= \sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) \log \pi_{j} + \gamma (\sum_{j=1}^N \pi_j - 1)
-\end{aligned}
-$$
-对上式关于$\pi$求导并令其为$0$，得到对于任意$j = 1, \dots, N$，
-$$
-\begin{align}
-\frac{P(\Y, i_1 = j; \lambda^t)}{\pi_j} + \gamma &amp;amp;= 0 \
-P(\Y, i_1 = j; \lambda^t) + \pi_j \gamma &amp;amp;= 0 \label{pi-eq}
-\end{align}
-$$
-对上式关于$j$求和，得到
-$$
-\sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) + \sum_{j=1}^N \pi_j \gamma = 0 \
-\gamma = -P(\Y; \lambda^t)
-$$
-重新代入$\eqref{pi-eq}$得到
-$$
-\pi_j = \frac{P(\Y, i_1=j; \lambda^t)}{P(\Y; \lambda^t)}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;注意到$A$满足约束条件$\forall j = 1, \dots, N, \sum_{k=1}^N a_{j, k} = 1$，写出其拉格朗日函数：
-$$
-\begin{aligned}
-L_A (A, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1} \log a_{i_t, i_{t+1}} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} - 1) \
-&amp;amp;= \sum_{j=1}^N \sum_{k=1}^N \sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k; \lambda^t) \log a_{j, k} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} - 1)
-\end{aligned}
-$$
-类似对$\pi$的求解，我们可以得到
-$$
-a_{j, k} = \frac{\sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k; \lambda^t)}{\sum_{t=1}^{T-1} P(\Y, i_1=j; \lambda^t)}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;注意到$B$满足约束条件$\forall j = 1, \dots, N, \sum_{k=1}^M b_{j, k} = 1$，写出其拉格朗日函数：
-$$
-\begin{aligned}
-L_B (B, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log b_{i_t, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1) \
-&amp;amp;= \sum_{j=1}^N \sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \log b_{j, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1)
-\end{aligned}
-$$
-类似对$\pi$的求解，我们可以得到
-$$
-b_{j, k} = \frac{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \mathbb{I}[o_t = y_k]}{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t)}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;预测问题&#34;&gt;预测问题&lt;/h3&gt;
-&lt;p&gt;预测问题常用的算法是Viterbi算法，它是通过动态规划求解出一条最优路径。&lt;/p&gt;
 </description>
     </item>
     

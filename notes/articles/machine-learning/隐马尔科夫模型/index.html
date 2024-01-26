@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="z&mdash; title: 隐马尔可夫模型 linktitle: 隐马尔可夫模型 type: book lastmod: &lsquo;2023-05-22T09:43:15&rsquo; Prev/next pager order (if docs_section_pager enabled in params.toml) weight:" />
+  <meta name="description" content="隐马尔可夫模型 隐马尔可夫模型（Hidden Markov Model）的对" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/" />
@@ -320,12 +320,14 @@
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/" />
-  <meta property="og:title" content="Chunxy&#39; Website" />
-  <meta property="og:description" content="z&mdash; title: 隐马尔可夫模型 linktitle: 隐马尔可夫模型 type: book lastmod: &lsquo;2023-05-22T09:43:15&rsquo; Prev/next pager order (if docs_section_pager enabled in params.toml) weight:" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:title" content="隐马尔可夫模型 | Chunxy&#39; Website" />
+  <meta property="og:description" content="隐马尔可夫模型 隐马尔可夫模型（Hidden Markov Model）的对" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
+      <meta property="article:published_time" content="2023-05-22T09:43:15&#43;00:00" />
     
+    <meta property="article:modified_time" content="2023-05-22T09:43:15&#43;00:00">
   
 
   
@@ -338,7 +340,7 @@
 
   
 
-  <title>Chunxy&#39; Website</title>
+  <title>隐马尔可夫模型 | Chunxy&#39; Website</title>
 </head>
 
 
@@ -557,10 +559,802 @@
     
     
     
-      
-      
-      <div class="article-container py-1" style="background: initial">
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
+        
+          Machine Learning
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/notes/">Notes</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/"><i class="far fa-file-lines pr-1"></i>Articles</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/information-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Information Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/machine-learning/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/dimensionality-reduction/">Dimension Reduction</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/ransac/">RANSAC</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
+
+
+
+  <li class="active"><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Mathematics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/calculus/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Calculus</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/spherical-coordinates/">Spherical Coordinates</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Linear Algebra</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/metrics/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Metrics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/">Spectral Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/frobenius-normalization/">Frobenius Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/chebyshev-distance/">Chebyshev Distance</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/numerical-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Numerical Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/probability-and-statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Probability and Statistics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/optimization/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/coordinate-descent/">Coordinate Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-conjugate/"></a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/"><i class="fas fa-book pr-1"></i>Books</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/information-theory-inference-and-learning-algorithms/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Information Theory, Inference and Learning Algorithms</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/">Introduction</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/">Symbol Code</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/linear-algebra-and-its-applications/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Linear Algebra and Its Applications</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/">Orthogonality and Projection</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">概率论与数理统计</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/">总览</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/">事件与概率</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0/">随机变量的函数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/papers/"><i class="fas fa-paperclip pr-1"></i>Papers</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/papers/noise-contrastive-estimation/">Noise Contrastive Estimation</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#隐马尔可夫模型">隐马尔可夫模型</a>
+      <ul>
+        <li><a href="#概率问题">概率问题</a></li>
+        <li><a href="#学习问题">学习问题</a></li>
+        <li><a href="#预测问题">预测问题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
   <nav class="d-none d-md-flex" aria-label="breadcrumb">
     <ol class="breadcrumb">
       
@@ -611,7 +1405,7 @@
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        
+        隐马尔可夫模型
       </li>
     </ol>
   </nav>
@@ -619,374 +1413,228 @@
 
 
 
-      </div>
-    
+          
+        </div>
 
-    <article class="article">
+        
+        
 
-  
+        <div class="docs-article-container">
+          <h1>隐马尔可夫模型</h1>
 
+          <div class="article-style">
+            
 
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-  
-  
-<div class="article-container pt-3">
-  <h1></h1>
-
-  
-
-  
-    
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Jan 1, 0001
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-    
-
-
-
-
-
-  
-</div>
-
-
-
-  <div class="article-container">
-
-    <div class="article-style">
-      <p>z&mdash;
-title: 隐马尔可夫模型
-linktitle: 隐马尔可夫模型
-type: book
-lastmod: &lsquo;2023-05-22T09:43:15&rsquo;</p>
-<h1 id="prevnext-pager-order-if-docs_section_pager-enabled-in-paramstoml">Prev/next pager order (if <code>docs_section_pager</code> enabled in <code>params.toml</code>)</h1>
-<h2 id="markup-pandoc">weight: 40
-markup: pandoc</h2>
 <h2 id="隐马尔可夫模型">隐马尔可夫模型</h2>
-<p>隐马尔可夫模型（Hidden Markov Model）的对象是序列类型的数据，其基本假设为：该序列的观测值实际上是来自于完全关于当前时序下的状态（state，也可叫作隐变量&lt;latent variable&gt;）取值的一个条件概率分布，而状态取值亦会随着时序发生变化，且其状态变化遵从马尔可夫过程。</p>
-<p>令$Y_1, \dots, Y_T$表示$T$个时序下的观测值，$X_1, \dots, X_T$表示$T$个时序下的状态取值，对于任意$i = 1, \dots, T$，有$Y_i \sim p(\cdot | X_i)$；一般来说，隐马尔科夫模型中假设状态取值和观测取值都是离散的，假设共有$N$种状态取值$x_1, \dots, x_N$和$M$种观测取值$y_1, \dots, y_M$，令状态转移矩阵（transition matrix）为$N \times N$的方阵$A$，令观测概率矩阵（emission matrix）为$N \times M$的矩阵$B$；令$\pi$为初始状态概率向量。</p>
-<p>隐马尔可夫模型即是由$\pi, A, B$三者决定，所以其可以用三元组表示：
-$$
+<p>隐马尔可夫模型（Hidden Markov
+Model）的对象是序列类型的数据，其基本假设为：该序列的观测值实际上是来自于完全关于当前时序下的状态（state，也可叫作隐变量&lt;latent
+variable&gt;）取值的一个条件概率分布，而状态取值亦会随着时序发生变化，且其状态变化遵从马尔可夫过程。</p>
+<p>令<span class="math inline">\(Y_1, \dots, Y_T\)</span>表示<span class="math inline">\(T\)</span>个时序下的观测值，<span class="math inline">\(X_1, \dots, X_T\)</span>表示<span class="math inline">\(T\)</span>个时序下的状态取值，对于任意<span class="math inline">\(i = 1, \dots, T\)</span>，有<span class="math inline">\(Y_i \sim p(\cdot |
+X_i)\)</span>；一般来说，隐马尔科夫模型中假设状态取值和观测取值都是离散的，假设共有<span class="math inline">\(N\)</span>种状态取值<span class="math inline">\(x_1, \dots, x_N\)</span>和<span class="math inline">\(M\)</span>种观测取值<span class="math inline">\(y_1, \dots,
+y_M\)</span>，令状态转移矩阵（transition matrix）为<span class="math inline">\(N \times N\)</span>的方阵<span class="math inline">\(A\)</span>，令观测概率矩阵（emission
+matrix）为<span class="math inline">\(N \times M\)</span>的矩阵<span class="math inline">\(B\)</span>；令<span class="math inline">\(\pi\)</span>为初始状态概率向量。</p>
+<p>隐马尔可夫模型即是由<span class="math inline">\(\pi, A,
+B\)</span>三者决定，所以其可以用三元组表示： <span class="math display">\[
 \lambda = (\pi, A, B)
-$$</p>
-<p>隐马尔可夫模型有三类基本问题：</p>
-<ol>
-<li>概率问题。给定模型$\lambda = (\pi, A, B)$和观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，计算模型$\lambda$产生观测序列$\Y$的概率。</li>
-<li>学习问题。给定观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，估计模型参数$\lambda = (\pi, A, B)$。</li>
-<li>预测问题（也叫解码&lt;decoding&gt;问题）。给定模型$\lambda = (\pi, A, B)$和观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，求使得条件概率$P(\X | \Y)$最大的状态序列$\X$。</li>
-</ol>
+\]</span></p>
+<p>隐马尔可夫模型有三类基本问题： 1. 概率问题。给定模型<span class="math inline">\(\lambda = (\pi, A, B)\)</span>和观测序列<span class="math inline">\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)</span>，计算模型<span class="math inline">\(\lambda\)</span>产生观测序列<span class="math inline">\(\Y\)</span>的概率。 2. 学习问题。给定观测序列<span class="math inline">\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)</span>，估计模型参数<span class="math inline">\(\lambda =
+(\pi, A, B)\)</span>。 3.
+预测问题（也叫解码&lt;decoding&gt;问题）。给定模型<span class="math inline">\(\lambda = (\pi, A, B)\)</span>和观测序列<span class="math inline">\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)</span>，求使得条件概率<span class="math inline">\(P(\X |
+\Y)\)</span>最大的状态序列<span class="math inline">\(\X\)</span>。</p>
 <h3 id="概率问题">概率问题</h3>
 <h4 id="暴力解法">暴力解法</h4>
-<p>在预测问题中，最直接的想法便是首先枚举出所有的状态序列，然后根据状态序列计算观测序列的概率。某个状态序列$\X = (x_{i_1}, \dots, x_{i_T})$出现的概率为
-$$
+<p>在预测问题中，最直接的想法便是首先枚举出所有的状态序列，然后根据状态序列计算观测序列的概率。某个状态序列<span class="math inline">\(\X = (x_{i_1}, \dots,
+x_{i_T})\)</span>出现的概率为 <span class="math display">\[
 P(\X) = \pi_{i_1} a_{i_1, i_2} a_{i_2, i_3} \dots a_{i_{T-1}, i_T}
-$$
-给定这个状态序列$\X$的情况下，观测序列$\Y$出现的概率为
-$$
+\]</span> 给定这个状态序列<span class="math inline">\(\X\)</span>的情况下，观测序列<span class="math inline">\(\Y\)</span>出现的概率为 <span class="math display">\[
 P(\Y | \X) = b_{i_1, o_1} b_{i_2, o_2} \dots b_{i_T, o_T}
-$$
-两者同时出现的联合概率为
-$$
-P(\X, \Y) = P(\X) \times P(\Y | \X) = \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
-$$
-然后对上式关于所有可能的状态序列求和，得到
-$$
-P(\Y) = \sum_\X P(\X, \Y) = \sum_{i_1, i_2, \dots, i_T} \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
-$$
-该式共有$N^T$项，每一项有$O(T)$次相乘，故整体复杂度为$O(T N^T)$，难以接受。</p>
+\]</span> 两者同时出现的联合概率为 <span class="math display">\[
+P(\X, \Y) = P(\X) \times P(\Y | \X) = \pi_{i_1} a_{i_1, i_2} b_{i_1,
+o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
+\]</span> 然后对上式关于所有可能的状态序列求和，得到 <span class="math display">\[
+P(\Y) = \sum_\X P(\X, \Y) = \sum_{i_1, i_2, \dots, i_T} \pi_{i_1}
+a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
+\]</span> 该式共有<span class="math inline">\(N^T\)</span>项，每一项有<span class="math inline">\(O(T)\)</span>次相乘，故整体复杂度为<span class="math inline">\(O(T N^T)\)</span>，难以接受。</p>
 <h4 id="前向算法">前向算法</h4>
-<p>首先引入前向概率的概念。给定隐马尔可夫模型$\lambda$及观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，定义到时刻$t$的观测序列为给定的$(y_{o_1}, \dots, y_{o_t})$且此时状态为$x_{i}$的概率为前向概率，记作
-$$
+<p>首先引入前向概率的概念。给定隐马尔可夫模型<span class="math inline">\(\lambda\)</span>及观测序列<span class="math inline">\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)</span>，定义到时刻<span class="math inline">\(t\)</span>的观测序列为给定的<span class="math inline">\((y_{o_1}, \dots,
+y_{o_t})\)</span>且此时状态为<span class="math inline">\(x_{i}\)</span>的概率为前向概率，记作 <span class="math display">\[
 \alpha_t(i) = P(Y_1 = y_{o_1}, \dots, Y_T = y_{o_t}, X_T = x_i; \lambda)
-$$
-初始情况下，即$t=1$时，有
-$$
+\]</span> 初始情况下，即<span class="math inline">\(t=1\)</span>时，有
+<span class="math display">\[
 \alpha_1(i) = \pi_i a_{i, o_1}
-$$
-对$t = 2, \dots, T$，有
-$$
-\alpha_t(i) = \left[ \sum_{j=1}^N \alpha_{t-1}(j) a_{j, i} \right] b_{i, o_t}
-$$
-最终，
-$$
+\]</span> 对<span class="math inline">\(t = 2, \dots, T\)</span>，有
+<span class="math display">\[
+\alpha_t(i) = \left[ \sum_{j=1}^N \alpha_{t-1}(j) a_{j, i} \right] b_{i,
+o_t}
+\]</span> 最终， <span class="math display">\[
 P(\Y) = \sum_{i=1}^N \alpha_T(i)
-$$
-前向算法主要利用了状态变化的序列结构，记录了状态变化的中间过程，从而节省了计算时间。整个算法最耗时的步骤为递推这一步，$\alpha_t(i)$对应的加和表达式包含了$O(N)$个项，而对于每一个时刻$t$，有$N$个这样的加和表达式，故$T$个时刻整体耗时为$O(N^2 T)$。</p>
+\]</span>
+前向算法主要利用了状态变化的序列结构，记录了状态变化的中间过程，从而节省了计算时间。整个算法最耗时的步骤为递推这一步，<span class="math inline">\(\alpha_t(i)\)</span>对应的加和表达式包含了<span class="math inline">\(O(N)\)</span>个项，而对于每一个时刻<span class="math inline">\(t\)</span>，有<span class="math inline">\(N\)</span>个这样的加和表达式，故<span class="math inline">\(T\)</span>个时刻整体耗时为<span class="math inline">\(O(N^2 T)\)</span>。</p>
 <h3 id="学习问题">学习问题</h3>
 <h4 id="有监督学习">有监督学习</h4>
-<p>有监督学习是较好处理的一种问题，在这种情况下，$\X, \Y$都已知，需要我们估计模型参数$\pi, A, B$。</p>
-<p>设样本中状态由$i$转移到$j$的频数为$A_{i, j}$，则$a_{i, j}$的估计为
-$$
+<p>有监督学习是较好处理的一种问题，在这种情况下，<span class="math inline">\(\X, \Y\)</span>都已知，需要我们估计模型参数<span class="math inline">\(\pi, A, B\)</span>。</p>
+<p>设样本中状态由<span class="math inline">\(i\)</span>转移到<span class="math inline">\(j\)</span>的频数为<span class="math inline">\(A_{i, j}\)</span>，则<span class="math inline">\(a_{i, j}\)</span>的估计为 <span class="math display">\[
 \hat a_{i, j} = \frac{A_{i, j}} {\sum_{k=1}^N A_{i, k}}
-$$
-设样本中状态为$i$且观测为$j$的频数是$B_{i, j}$，则$b_{i, j}$的估计为
-$$
+\]</span> 设样本中状态为<span class="math inline">\(i\)</span>且观测为<span class="math inline">\(j\)</span>的频数是<span class="math inline">\(B_{i, j}\)</span>，则<span class="math inline">\(b_{i, j}\)</span>的估计为 <span class="math display">\[
 \hat b_{i, j} = \frac{B_{i, j}} {\sum_{k=1}^N B_{i, k}}
-$$
-至于初始状态向量$\pi$，若样本中由多条时序链，$\pi$亦可由相应频次估计而来。</p>
+\]</span> 至于初始状态向量<span class="math inline">\(\pi\)</span>，若样本中由多条时序链，<span class="math inline">\(\pi\)</span>亦可由相应频次估计而来。</p>
 <h4 id="无监督学习">无监督学习</h4>
-<p>多数情况下，状态——或者说隐变量$\X$——是没有办法观测到的，而这时就可以采用<a href="/notes/articles/optimization/expectation-maximization/">EM算法</a>，通过优化似然函数的下界，找出最好的模型参数。EM算法在隐马尔科夫模型中具体实现由Baum和Welch提出，故实际求解算法被称作Baum-Welch算法。</p>
-<p>此问题的似然函数以及对数似然函数分别为：
-$$
+<p>多数情况下，状态——或者说隐变量<span class="math inline">\(\X\)</span>——是没有办法观测到的，而这时就可以采用<a href="/notes/articles/optimization/expectation-maximization/">EM算法</a>，通过优化似然函数的下界，找出最好的模型参数。EM算法在隐马尔科夫模型中具体实现由Baum和Welch提出，故实际求解算法被称作Baum-Welch算法。</p>
+<p>此问题的似然函数以及对数似然函数分别为： <span class="math display">\[
 \begin{aligned}
-P(\Y; \lambda) &amp;= \sum_{\X} P(\X, \Y; \lambda) \
+P(\Y; \lambda) &amp;= \sum_{\X} P(\X, \Y; \lambda) \\
 \log P(\Y; \lambda) &amp;= \log \sum_{\X} P(\X, \Y; \lambda)
 \end{aligned}
-$$
-根据EM算法，
-$$
+\]</span> 根据EM算法， <span class="math display">\[
 \begin{aligned}
-&amp;\log P(\Y; \lambda) = \log \E_{\X \sim P(\cdot | \Y; \lambda^t)} P(\X, \Y; \lambda) \
-&amp;\ge \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda) \triangleq Q(\lambda^t, \lambda) \
+&amp;\log P(\Y; \lambda) = \log \E_{\X \sim P(\cdot | \Y; \lambda^t)}
+P(\X, \Y; \lambda) \\
+&amp;\ge \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda)
+\triangleq Q(\lambda^t, \lambda) \\
 \end{aligned}
-$$</p>
-<p>而下一轮迭代中，新的估计$\lambda^{t+1}$为：
-$$
+\]</span></p>
+<p>而下一轮迭代中，新的估计<span class="math inline">\(\lambda^{t+1}\)</span>为： <span class="math display">\[
 \lambda^{t+1} = \arg \max_\lambda Q(\lambda^t, \lambda)
-$$</p>
-<p>又由于
-$$
+\]</span></p>
+<p>又由于 <span class="math display">\[
 \begin{aligned}
-&amp;Q(\lambda^t, \lambda) = \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda) \
-&amp;= \sum_\X P(\X | \Y; \lambda^t) \log P(\X, \Y; \lambda) \
-&amp;= \sum_\X \frac{P(\X, \Y; \lambda^t)}{P(\Y; \lambda^t)} \log P(\X, \Y; \lambda) \
-&amp;= \frac{\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)}{P(\Y; \lambda^t)} \
+&amp;Q(\lambda^t, \lambda) = \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log
+P(\X, \Y; \lambda) \\
+&amp;= \sum_\X P(\X | \Y; \lambda^t) \log P(\X, \Y; \lambda) \\
+&amp;= \sum_\X \frac{P(\X, \Y; \lambda^t)}{P(\Y; \lambda^t)} \log P(\X,
+\Y; \lambda) \\
+&amp;= \frac{\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)}{P(\Y;
+\lambda^t)} \\
 \end{aligned}
-$$
-其中的$\frac{1}{P(\Y; \lambda^t)}$与$\lambda$无关，所以
-$$
-\lambda^{t+1} = \arg \max_\lambda \sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)
-$$</p>
-<p>注意在接下来的讨论中，我们会令$\X = (x_{i_1}, \dots, x_{i_T})$，但为了整体简洁，我们不会在每一个$\X$出现的地方将此式展开。对上式做进一步展开，
-$$
+\]</span> 其中的<span class="math inline">\(\frac{1}{P(\Y;
+\lambda^t)}\)</span>与<span class="math inline">\(\lambda\)</span>无关，所以 <span class="math display">\[
+\lambda^{t+1} = \arg \max_\lambda \sum_\X P(\X, \Y; \lambda^t) \log
+P(\X, \Y; \lambda)
+\]</span></p>
+<p>注意在接下来的讨论中，我们会令<span class="math inline">\(\X =
+(x_{i_1}, \dots,
+x_{i_T})\)</span>，但为了整体简洁，我们不会在每一个<span class="math inline">\(\X\)</span>出现的地方将此式展开。对上式做进一步展开，
+<span class="math display">\[
 \begin{aligned}
-&amp;\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda) = \sum_\X P(\X, \Y; \lambda^t) \log \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T} \
-&amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1} a_{i_t, i_{t+1}} + \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log b_{i_t, o_t}
+&amp;\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda) = \sum_\X
+P(\X, \Y; \lambda^t) \log \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots
+a_{i_{T-1}, i_T} b_{i_T, o_T} \\
+&amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \sum_{\X} P(\X,
+\Y; \lambda^t) \sum_{t=1}^{T-1} a_{i_t, i_{t+1}} + \sum_{\X} P(\X, \Y;
+\lambda^t) \sum_{t=1}^T \log b_{i_t, o_t}
 \end{aligned}
-$$</p>
+\]</span></p>
 <p>我们可以对其中的三项分别最大化，以达到整体最大化。</p>
-<ol>
-<li>
-<p>注意到$\pi$满足约束条件$\sum_{j=1}^N \pi_j = 1$，写出其拉格朗日函数：
-$$
+<ol type="1">
+<li><p>注意到<span class="math inline">\(\pi\)</span>满足约束条件<span class="math inline">\(\sum_{j=1}^N \pi_j =
+1\)</span>，写出其拉格朗日函数： <span class="math display">\[
 \begin{aligned}
-L_\pi (\pi, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \gamma (\sum_{j=1}^N \pi_j - 1) \
-&amp;= \sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) \log \pi_{j} + \gamma (\sum_{j=1}^N \pi_j - 1)
+L_\pi (\pi, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1}
++ \gamma (\sum_{j=1}^N \pi_j - 1) \\
+&amp;= \sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) \log \pi_{j} + \gamma
+(\sum_{j=1}^N \pi_j - 1)
 \end{aligned}
-$$
-对上式关于$\pi$求导并令其为$0$，得到对于任意$j = 1, \dots, N$，
-$$
+\]</span> 对上式关于<span class="math inline">\(\pi\)</span>求导并令其为<span class="math inline">\(0\)</span>，得到对于任意<span class="math inline">\(j = 1, \dots, N\)</span>， <span class="math display">\[
 \begin{align}
-\frac{P(\Y, i_1 = j; \lambda^t)}{\pi_j} + \gamma &amp;= 0 \
+\frac{P(\Y, i_1 = j; \lambda^t)}{\pi_j} + \gamma &amp;= 0 \\
 P(\Y, i_1 = j; \lambda^t) + \pi_j \gamma &amp;= 0 \label{pi-eq}
 \end{align}
-$$
-对上式关于$j$求和，得到
-$$
-\sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) + \sum_{j=1}^N \pi_j \gamma = 0 \
+\]</span> 对上式关于<span class="math inline">\(j\)</span>求和，得到
+<span class="math display">\[
+\sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) + \sum_{j=1}^N \pi_j \gamma = 0
+\\
 \gamma = -P(\Y; \lambda^t)
-$$
-重新代入$\eqref{pi-eq}$得到
-$$
+\]</span> 重新代入<span class="math inline">\(\eqref{pi-eq}\)</span>得到
+<span class="math display">\[
 \pi_j = \frac{P(\Y, i_1=j; \lambda^t)}{P(\Y; \lambda^t)}
-$$</p>
-</li>
-<li>
-<p>注意到$A$满足约束条件$\forall j = 1, \dots, N, \sum_{k=1}^N a_{j, k} = 1$，写出其拉格朗日函数：
-$$
+\]</span></p></li>
+<li><p>注意到<span class="math inline">\(A\)</span>满足约束条件<span class="math inline">\(\forall j = 1, \dots, N, \sum_{k=1}^N a_{j, k} =
+1\)</span>，写出其拉格朗日函数： <span class="math display">\[
 \begin{aligned}
-L_A (A, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1} \log a_{i_t, i_{t+1}} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} - 1) \
-&amp;= \sum_{j=1}^N \sum_{k=1}^N \sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k; \lambda^t) \log a_{j, k} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} - 1)
+L_A (A, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1}
+\log a_{i_t, i_{t+1}} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} -
+1) \\
+&amp;= \sum_{j=1}^N \sum_{k=1}^N \sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k;
+\lambda^t) \log a_{j, k} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k}
+- 1)
 \end{aligned}
-$$
-类似对$\pi$的求解，我们可以得到
-$$
-a_{j, k} = \frac{\sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k; \lambda^t)}{\sum_{t=1}^{T-1} P(\Y, i_1=j; \lambda^t)}
-$$</p>
-</li>
-<li>
-<p>注意到$B$满足约束条件$\forall j = 1, \dots, N, \sum_{k=1}^M b_{j, k} = 1$，写出其拉格朗日函数：
-$$
+\]</span> 类似对<span class="math inline">\(\pi\)</span>的求解，我们可以得到 <span class="math display">\[
+a_{j, k} = \frac{\sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k;
+\lambda^t)}{\sum_{t=1}^{T-1} P(\Y, i_1=j; \lambda^t)}
+\]</span></p></li>
+<li><p>注意到<span class="math inline">\(B\)</span>满足约束条件<span class="math inline">\(\forall j = 1, \dots, N, \sum_{k=1}^M b_{j, k} =
+1\)</span>，写出其拉格朗日函数： <span class="math display">\[
 \begin{aligned}
-L_B (B, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log b_{i_t, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1) \
-&amp;= \sum_{j=1}^N \sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \log b_{j, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1)
+L_B (B, \gamma) &amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log
+b_{i_t, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1) \\
+&amp;= \sum_{j=1}^N \sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \log b_{j, o_t}
++ \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1)
 \end{aligned}
-$$
-类似对$\pi$的求解，我们可以得到
-$$
-b_{j, k} = \frac{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \mathbb{I}[o_t = y_k]}{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t)}
-$$</p>
-</li>
+\]</span> 类似对<span class="math inline">\(\pi\)</span>的求解，我们可以得到 <span class="math display">\[
+b_{j, k} = \frac{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \mathbb{I}[o_t =
+y_k]}{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t)}
+\]</span></p></li>
 </ol>
 <h3 id="预测问题">预测问题</h3>
 <p>预测问题常用的算法是Viterbi算法，它是通过动态规划求解出一条最优路径。</p>
 
-    </div>
-
-    
 
 
+          </div>
+
+          
 
 
 
-
-<div class="share-box">
-  <ul class="share">
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="whatsapp://send?text=%20https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
-          <i class="fab fa-weibo"></i>
-        </a>
-      </li>
-    
-  </ul>
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/" rel="next">贝叶斯分类器</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/notes/articles/machine-learning/mean-average-precision/" rel="prev"></a>
+  </div>
+  
 </div>
 
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 22, 2023</p>
+
+          
+
+
+
+          
 
 
 
 
+          
 
 
+        </div>
 
+      </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-</article>
-  </div>
-
-  <div class="page-footer">
-    
-    
-    <div class="container">
       <footer class="site-footer">
 
   
@@ -1058,7 +1706,15 @@ $$</p>
   </p>
 </footer>
 
-    </div>
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
     
   </div>
 
@@ -1084,6 +1740,11 @@ $$</p>
     
 
     
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
     
 
     
@@ -1131,11 +1792,10 @@ $$</p>
     
     
     
-    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
 
     
     
-      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
     
     
     

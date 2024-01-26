@@ -5,7 +5,7 @@
     <link>https://chunxy.github.io/</link>
       <atom:link href="https://chunxy.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Chunxy&#39; Website</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 16 May 2023 11:42:12 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 22 May 2023 09:43:15 +0000</lastBuildDate>
     <image>
       <url>https://chunxy.github.io/media/sharing.png</url>
       <title>Chunxy&#39; Website</title>
@@ -383,6 +383,86 @@ to arbitrarily synthesize a square matrix &lt;span class=&#34;math inline&#34;&g
 lose the control over it. Since &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;
 is totally arbitrary, you can tell little about &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’ s eigenvalues, eigenvectors,
 etc.&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/introduction/</link>
+      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/introduction/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;The fundamental problem of communication is that of reproducing at
+one point either exactly or approximately a message selected at another
+point (Claude Shannon, 1948).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Similar to that stated above, the fundamental subject of machine
+learning is about with best effort recovering the original data using
+the so-called model or algorithm.&lt;/p&gt;
+&lt;p&gt;The recovery can be done by memoizing. In communication system, this
+is exactly what we want: we need to try our best to convey the message
+with the achievable highest fidelity. But it may be overwhelmingly
+costly when the volume of data becomes larger, such as in the case faced
+by machine learning. Thus, a better way would be to summarizing,
+i.e. using a function to reveal the correlation (here I don’t mean the
+mathematical term correlation) among data.&lt;/p&gt;
+&lt;p&gt;This book reviews the classic concepts and methods of the recovery
+process in communication system field. But it would also be interesting
+for machine learning folks, as the two fields meet the same capacity
+limit of the recovery.&lt;/p&gt;
+&lt;h2 id=&#34;a-system-view&#34;&gt;A System View&lt;/h2&gt;
+&lt;p&gt;Let’s make the life easier by introducing a few concepts. In
+communication, we have &lt;strong&gt;source&lt;/strong&gt; message to convey. After
+being passed to and encoded by the &lt;strong&gt;encoder&lt;/strong&gt;, the message
+travels along the &lt;strong&gt;channel&lt;/strong&gt; to be finally decoded by the
+&lt;strong&gt;decoder&lt;/strong&gt; and received by the receiver.&lt;/p&gt;
+&lt;p&gt;The encoding process includes transforming the data into digital form
+and introducing redundant information for the actual transmission. The
+redundancy is necessary to keep the underlying data from the
+&lt;strong&gt;noisy&lt;/strong&gt; channel, which may alter bits, or add/drop bits
+(these two cases are very rare though) to the bit flow transmitting on
+it.&lt;/p&gt;
+&lt;p&gt;Information theory is concerned with the theoretical limit and
+potential for such systems. The coding theory is concerned with
+designing such a coding theme as to reach the limit/potential.&lt;/p&gt;
+&lt;h2 id=&#34;error-correcting-codes&#34;&gt;Error-correcting Codes&lt;/h2&gt;
+&lt;p&gt;By the name of “error-correcting”, we mean that we want to be able to
+detect and correct errors; the retransmission is not an option.&lt;/p&gt;
+&lt;p&gt;The way we do this, as stated above, is to add redundancy. But that
+the redundancy needs to be cost-effective. The &lt;strong&gt;rate&lt;/strong&gt; is
+the ratio between the amount of source data and that of the transmitted
+data; the higher the better.&lt;/p&gt;
+&lt;p&gt;There are some examples of coding scheme in this genre:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;repetition code&lt;/li&gt;
+&lt;li&gt;block code
+&lt;ul&gt;
+&lt;li&gt;Hamming code&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-best-performance&#34;&gt;The Best Performance?&lt;/h2&gt;
+&lt;p&gt;There seems to be a tradeoff between the error probability (which we
+want to minimize) and the rate (which we want to maximize), which can be
+seen mathematically in the case of repetition code and Hamming code.&lt;/p&gt;
+&lt;p&gt;It seems that the error-rate curve, no matter for which kind of
+coding scheme, would pass the &lt;span class=&#34;math inline&#34;&gt;\((0,
+0)\)&lt;/span&gt; point: in order to achieve a vanishingly small error
+probability, one would have to reduce the rate correspondingly to
+zero.&lt;/p&gt;
+&lt;p&gt;However, Shannon proved that this curve may intersect with the rate
+axis at some nonzero point! And this maximum rate at which the
+communication is possible with arbitrarily small error probability is
+called the &lt;strong&gt;capacity&lt;/strong&gt; of the channel. The capacity is
+only related to the noise level of this channel. For any noisy binary
+symmetric channel with noise level of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; (i.e., the probability that a bit is
+flipped), its capacity is &lt;span class=&#34;math display&#34;&gt;\[
+C(f) = 1 - H_2(f) = 1 - \left[ f \log \frac{1}{f} + (1-f) \log
+\frac{1}{1-f} \right]
+\]&lt;/span&gt;&lt;/p&gt;
 
 
 </description>
@@ -1080,121 +1160,6 @@ precision&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
     </item>
     
     <item>
-      <title>Machine Learning Bullet Points</title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</link>
-      <pubDate>Sun, 19 Dec 2021 13:59:49 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</guid>
-      <description>
-
-&lt;p&gt;This post lists out various topics under the machine learning
-subject.&lt;/p&gt;
-&lt;h3 id=&#34;data&#34;&gt;Data&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;data modalities
-&lt;ul&gt;
-&lt;li&gt;numbers&lt;/li&gt;
-&lt;li&gt;texts&lt;/li&gt;
-&lt;li&gt;images&lt;/li&gt;
-&lt;li&gt;videos&lt;/li&gt;
-&lt;li&gt;audios&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;data sampling
-&lt;ul&gt;
-&lt;li&gt;bootstrap aggregation&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;data cleaning&lt;/li&gt;
-&lt;li&gt;imbalanced data&lt;/li&gt;
-&lt;li&gt;data augmentation&lt;/li&gt;
-&lt;li&gt;data splitting&lt;/li&gt;
-&lt;li&gt;feature extraction/engineering
-&lt;ul&gt;
-&lt;li&gt;domain expertise&lt;/li&gt;
-&lt;li&gt;statistics&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;feature normalization&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;model&#34;&gt;Model&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;supervised vs. unsupervised
-&lt;ul&gt;
-&lt;li&gt;unsupervised learning
-&lt;ul&gt;
-&lt;li&gt;discovers inherent properties (latent variables) in the data&lt;/li&gt;
-&lt;li&gt;includes:
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/clustering/&#34;&gt;clustering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimensionality-reduction/&#34;&gt;dimensionality
-reduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;manifold embedding&lt;/li&gt;
-&lt;li&gt;anomaly detection&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;discriminative vs. generative&lt;/li&gt;
-&lt;li&gt;classification vs. regression
-&lt;ul&gt;
-&lt;li&gt;from classification model to regression model&lt;/li&gt;
-&lt;li&gt;from binary classification to multi-class classification&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;linear vs. non-linear&lt;/li&gt;
-&lt;li&gt;parametric vs. non-parametric&lt;/li&gt;
-&lt;li&gt;boosting method
-&lt;ul&gt;
-&lt;li&gt;ensemble method&lt;/li&gt;
-&lt;li&gt;Adaboost&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;regularization and overfitting&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;training criterion&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;mean squared error&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;cross entropy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;impurity
-&lt;ul&gt;
-&lt;li&gt;Gini index&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/entropy/&#34;&gt;entropy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;testing criterion&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;confusion matrix&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;Real/Pred&lt;/th&gt;
-&lt;th&gt;Positive&lt;/th&gt;
-&lt;th&gt;Negative&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Positive&lt;/td&gt;
-&lt;td&gt;TP&lt;/td&gt;
-&lt;td&gt;FN&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Negative&lt;/td&gt;
-&lt;td&gt;FP&lt;/td&gt;
-&lt;td&gt;TN&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ul&gt;
-&lt;li&gt;accuracy&lt;/li&gt;
-&lt;li&gt;precision&lt;/li&gt;
-&lt;li&gt;recall&lt;/li&gt;
-&lt;li&gt;F-score&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-
-</description>
-    </item>
-    
-    <item>
       <title>Coordinate System and Change of Basis</title>
       <link>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</link>
       <pubDate>Sat, 18 Dec 2021 20:47:37 +0000</pubDate>
@@ -1510,373 +1475,6 @@ v_i)\)&lt;/span&gt;之后放缩即可，至于中间是否穿插其他边的放�
 &lt;li id=&#34;fn1&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;无向图可以很便捷的转换为带权有向图。&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;</description>
-    </item>
-    
-    <item>
-      <title>Source Coding Theorem</title>
-      <link>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/</link>
-      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/</guid>
-      <description>
-
-&lt;h2 id=&#34;notations-and-concepts&#34;&gt;Notations and Concepts&lt;/h2&gt;
-&lt;p&gt;An &lt;strong&gt;ensemble &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;
-(we specifically use the random variable symbol to denote the ensemble)
-is a triplet &lt;span class=&#34;math inline&#34;&gt;\((X, \newcommand{A}{\mathcal A}
-\newcommand{P}{\mathcal P} \A_X, \P_X)\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; denotes the random variable, which
-takes on values from &lt;span class=&#34;math inline&#34;&gt;\(\A_X = \{a_1, a_1,
-\dots \}\)&lt;/span&gt;, that has probability &lt;span class=&#34;math inline&#34;&gt;\(\P_X
-= \{p_1, p_2, \dots \}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;The &lt;strong&gt;Shannon information content of an outcome &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/strong&gt; is: &lt;span class=&#34;math display&#34;&gt;\[
-h(x) = \log_2 \frac{1}{P(x)}
-\]&lt;/span&gt; The &lt;strong&gt;raw bit content of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt; is &lt;span class=&#34;math display&#34;&gt;\[
-H_0(X) = \log |\mathcal A_X|
-\]&lt;/span&gt; The &lt;strong&gt;smallest &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;-sufficient subset &lt;span class=&#34;math inline&#34;&gt;\(S_\delta\)&lt;/span&gt; of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal A_X\)&lt;/span&gt;&lt;/strong&gt; is the smallest
-subset satisfying &lt;span class=&#34;math display&#34;&gt;\[
-P(X \in S_\delta) \ge 1 - \delta
-\]&lt;/span&gt; The &lt;strong&gt;essential bit content of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt; is &lt;span class=&#34;math display&#34;&gt;\[
-H_\delta(X) = \log |S_\delta|
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;shannons-source-coding-theorem&#34;&gt;Shannon’s Source Coding
-Theorem&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; be an ensemble with
-entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; bits, and &lt;span class=&#34;math inline&#34;&gt;\(X^N\)&lt;/span&gt; be the ensemble composed of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such i.i.d. random variables. Given
-&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \delta &amp;lt; 1\)&lt;/span&gt;, there exists a
-positive integer &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; such that for
-&lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-|\frac{1}{N} H_\delta (X^N) - H| &amp;lt; \epsilon
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Or put it in a verbal way,&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. random variables each
-with entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; can be
-compressed into more than &lt;span class=&#34;math inline&#34;&gt;\(NH\)&lt;/span&gt; bits
-with negligible information loss as &lt;span class=&#34;math inline&#34;&gt;\(N \to
-\infty\)&lt;/span&gt;; conversely if they are compressed fewer than &lt;span class=&#34;math inline&#34;&gt;\(NH\)&lt;/span&gt; bits, it is virtually certain that
-there is information loss.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: Let the random variable &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; be defined
-for the ensemble &lt;span class=&#34;math inline&#34;&gt;\(Y = X^N\)&lt;/span&gt;, which
-composes of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. ensembles
-&lt;span class=&#34;math inline&#34;&gt;\(X_1 \dots X_N\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; can be
-re-written as the average of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;
-information contents &lt;span class=&#34;math inline&#34;&gt;\(h_i = \log \frac 1
-{P(X_i)}, i \in 1,2,\dots,N\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots
-P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log
-\frac{1}{P(X_N)})
-\]&lt;/span&gt; Each of these information contents is in turn a random
-variable with mean &lt;span class=&#34;math inline&#34;&gt;\(\bar h_i = H(X) =
-H\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{h_i}^2 =
-\sigma^2\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;A long string of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; symbols would
-usually contain roughly &lt;span class=&#34;math inline&#34;&gt;\(p_1 N\)&lt;/span&gt;
-occurrences of symbol &lt;span class=&#34;math inline&#34;&gt;\(a_1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(p_2 N\)&lt;/span&gt; occurrences of symbol &lt;span class=&#34;math inline&#34;&gt;\(a_2\)&lt;/span&gt;… The probability of those elements is
-roughly &lt;span class=&#34;math inline&#34;&gt;\((p_1)^{p_1 N} (p_2)^{p_2 N}
-\dots\)&lt;/span&gt; The information content of each such element is thus
-roughly &lt;span class=&#34;math inline&#34;&gt;\(N \sum_i p_i \log \frac{1}{p_i} = N
-H\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;We define the typical elements of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{A}_X^N\)&lt;/span&gt; to be just those element
-that have probability close to &lt;span class=&#34;math inline&#34;&gt;\(2^{-NH}\)&lt;/span&gt;. Note that interestingly, the
-most probable string is not usually typical because its probability is
-far away from &lt;span class=&#34;math inline&#34;&gt;\(2^{-NH}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;We introduce another parameter &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; to control how close the
-probability has to be to &lt;span class=&#34;math inline&#34;&gt;\(2^{-NH}\)&lt;/span&gt;
-for an element to be typical. The set of typical elements is called
-&lt;strong&gt;typical set&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(T_{N
-\beta}\)&lt;/span&gt; and is defined as &lt;span class=&#34;math display&#34;&gt;\[
-T_{N \beta} = \left\{y \in \mathcal A_X^N: [\frac 1 N \log
-\frac{1}{P(y)} - H]^2 &amp;lt; \beta^2 \right\}
-\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;Weak Law of Large
-Numbers&lt;/a&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-P \left( \left( \frac 1 N \log \frac{1}{P(Y)} - H \right)^2 \ge \beta^2
-\right) \le \frac{\sigma^2}{\beta^2 N}
-\]&lt;/span&gt; and thus &lt;span class=&#34;math display&#34;&gt;\[
-P(Y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
-\]&lt;/span&gt; As &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; increases, the
-probability that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; falls in &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; draws near to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. We need to relate this to the theorem
-that for any given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon,
-\delta\)&lt;/span&gt;, there is a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \simeq NH\)&lt;/span&gt;.&lt;/p&gt;
-&lt;ol type=&#34;1&#34;&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;lt; N(H +
-\epsilon)\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The set &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; is not the
-best sufficient subset for compression (because it doesn’t include those
-most probable). Therefore, &lt;span class=&#34;math inline&#34;&gt;\(\log |T_{N
-\beta}|\)&lt;/span&gt; upper-bounds the &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N)\)&lt;/span&gt; for any &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;. On the other hand, for all &lt;span class=&#34;math inline&#34;&gt;\(y \in T_{N \beta}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P(y) &amp;gt; 2^{-N(H + \beta)}\)&lt;/span&gt;, thus &lt;span class=&#34;math display&#34;&gt;\[
-\begin{align*}
-|T_{N \beta}| 2^{-N(H + \beta)} &amp;amp;&amp;lt; \sum_{y \in T_{N \beta}} P(y)
-&amp;lt; 1 \\
-&amp;amp;\Downarrow \\
-|T_{N \beta}| &amp;amp;&amp;lt; 2^{N(H + \beta)} \\
-\end{align*}
-\]&lt;/span&gt; If we set &lt;span class=&#34;math inline&#34;&gt;\(\beta =
-\epsilon\)&lt;/span&gt; and set &lt;span class=&#34;math inline&#34;&gt;\(N \ge N_0\)&lt;/span&gt;
-in a way such that &lt;span class=&#34;math inline&#34;&gt;\(\frac{\sigma^2}{\epsilon^2 N_0} \le
-\delta\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(P(Y \in T_{N
-\epsilon}) \ge 1 - \delta\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(T_{N
-\epsilon}\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;-sufficient subset. Then, &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \le \log |T_{N \epsilon}| \le N(H +
-\epsilon)\)&lt;/span&gt; holds for any &lt;span class=&#34;math inline&#34;&gt;\(N \ge
-N_0\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;gt; N(H -
-\epsilon)\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;This part is reached by contradiction. Suppose instead there exists a
-&lt;span class=&#34;math inline&#34;&gt;\(\delta&amp;#39;\)&lt;/span&gt; such that there exists
-a sufficiently large &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; which
-results in &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^{N}) \le N(H -
-\epsilon)\)&lt;/span&gt; for arbitrary &lt;span class=&#34;math inline&#34;&gt;\(\epsilon
-&amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;. Let
-&lt;span class=&#34;math inline&#34;&gt;\(\beta = \epsilon/2\)&lt;/span&gt;, we now have
-&lt;span class=&#34;math display&#34;&gt;\[
-H_\delta(X^N) \le N_0(H - 2\beta)
-\]&lt;/span&gt; Denote the associated subset by &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt;. We are to disprove &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt; can
-achieve &lt;span class=&#34;math inline&#34;&gt;\(P(Y \in S&amp;#39;) \ge 1 -
-\delta\)&lt;/span&gt;. We break this probability into two parts: &lt;span class=&#34;math display&#34;&gt;\[
-P(Y \in S&amp;#39;) = P(Y \in S&amp;#39; \cap T_{N \beta}) + P(Y \in S&amp;#39; \cap
-\overline{T_{N \beta}})
-\]&lt;/span&gt; For the first part, we have &lt;span class=&#34;math display&#34;&gt;\[
-|S&amp;#39; \cap T_{N \beta}| \le |S&amp;#39;| \le 2^{N(H - 2\beta)}
-\]&lt;/span&gt; Thus, the maximum value of the first part is obtained when
-&lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39; \cap T_{N \beta}\)&lt;/span&gt; contains
-&lt;span class=&#34;math inline&#34;&gt;\(2^{N(H - 2\beta)}\)&lt;/span&gt; outcomes all with
-probability &lt;span class=&#34;math inline&#34;&gt;\(2^{-N(H - \beta)}\)&lt;/span&gt;
-(property of elements in &lt;span class=&#34;math inline&#34;&gt;\(T_{N
-\beta}\)&lt;/span&gt;).&lt;/p&gt;
-&lt;p&gt;As for the second part, since &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39; \cap
-\overline{T_{N \beta}} \subseteq \overline{T_{N \beta}}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-P(Y \in S&amp;#39; \cap \overline{T_{N \beta}}) \le P(Y \in \overline{T_{N
-\beta}}) &amp;lt; \frac{\sigma^2}{\beta^2 N}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
-P(Y \in S&amp;#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} +
-\frac{\sigma^2}{\beta^2 N} = 2^{-N \beta} + \frac{\sigma^2}{\beta^2 N}
-\]&lt;/span&gt; For arbitrary &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt; and
-a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;, we can have
-&lt;span class=&#34;math inline&#34;&gt;\(P(Y \in S&amp;#39;) \le 1 - \delta\)&lt;/span&gt;
-instead of &lt;span class=&#34;math inline&#34;&gt;\(P(Y \in S&amp;#39;) \ge 1 -
-\delta\)&lt;/span&gt;. Then we shall conclude that &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt; cannot
-achieve &lt;span class=&#34;math inline&#34;&gt;\(P(Y \in S&amp;#39;) \ge 1 -
-\delta\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;gt;
-N(H - \epsilon)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The &lt;strong&gt;intuition&lt;/strong&gt; behind Shannon’s source coding theorem
-is that, as &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; grows, the deviation
-of the random variable may grow in a lower order than that of the number
-of values the random variable can take on. Therefore, the resulting
-outcomes will fall in a narrower range, making the typical set smaller.
-Encoding the elements inside the typical set is &lt;em&gt;almost&lt;/em&gt; enough
-for the purpose of communication.&lt;/p&gt;
-
-
-</description>
-    </item>
-    
-    <item>
-      <title>Source Coding Theory</title>
-      <link>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/</link>
-      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/</guid>
-      <description>
-
-&lt;h2 id=&#34;notations-and-concepts&#34;&gt;Notations and Concepts&lt;/h2&gt;
-&lt;p&gt;An &lt;strong&gt;ensemble &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;
-is a triple &lt;span class=&#34;math inline&#34;&gt;\((X, \newcommand{A}{\mathcal A}
-\newcommand{P}{\mathcal P} \A_X, \P_X)\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the outcome of a random variable,
-which takes on values from &lt;span class=&#34;math inline&#34;&gt;\(\A_X = \{a_1,
-a_1, \dots \}\)&lt;/span&gt;, that has probability &lt;span class=&#34;math inline&#34;&gt;\(\P_X = \{p_1, p_2, \dots \}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;The raw bit content&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
-H_0(X) = \log |\mathcal A_X|
-\]&lt;/span&gt; &lt;strong&gt;The smallest &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;-sufficient subset&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(S_\delta\)&lt;/span&gt; is the smallest subset of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal A_X\)&lt;/span&gt; satisfying &lt;span class=&#34;math display&#34;&gt;\[
-P(X \in S_\delta) \ge 1 - \delta
-\]&lt;/span&gt; &lt;strong&gt;The essential bit content&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
-H_\delta(X) = \log |S_\delta|
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;shannons-source-coding-theorem&#34;&gt;Shannon’s source coding
-theorem&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; be an ensemble with
-entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; bits, and &lt;span class=&#34;math inline&#34;&gt;\(X^N\)&lt;/span&gt; be the ensemble composed of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. such random variables. Given
-&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \delta &amp;lt; 1\)&lt;/span&gt;, there exists a
-positive integer &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; such that for
-&lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-|\frac{1}{N} H_\delta (X^N) - H| &amp;lt; \epsilon
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Or put it in a verbal way,&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. random variables each
-with entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; can be
-compressed into more than &lt;span class=&#34;math inline&#34;&gt;\(NH\)&lt;/span&gt; bits
-with negligible information loss as &lt;span class=&#34;math inline&#34;&gt;\(N \to
-\infty\)&lt;/span&gt;; conversely if they are compressed fewer than &lt;span class=&#34;math inline&#34;&gt;\(NH\)&lt;/span&gt; bits, it is virtually certain that
-there is information loss.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: The random variable &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; is defined
-for the ensemble &lt;span class=&#34;math inline&#34;&gt;\(Y = X^N\)&lt;/span&gt; which
-composes of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. &lt;span class=&#34;math inline&#34;&gt;\(X_1 \dots X_N\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; can be
-re-written as the average of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;
-information contents &lt;span class=&#34;math inline&#34;&gt;\(h_i = \log \frac 1
-{P(X_i)}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
-\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots
-P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log
-\frac{1}{P(X_N)})
-\]&lt;/span&gt; Each of these information contents is in turn a random
-variable with mean &lt;span class=&#34;math inline&#34;&gt;\(\bar h_i = H(X) =
-H\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{h_i}^2 =
-\sigma^2\)&lt;/span&gt;. The &lt;strong&gt;typical set&lt;/strong&gt; with parameters
-&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
-T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac{1}{P(y)} -
-H]^2 &amp;lt; \beta^2 \}
-\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;Weak Law of Large
-Numbers&lt;/a&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P((\frac 1 N \log
-\frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2
-N}\)&lt;/span&gt;, and thus &lt;span class=&#34;math display&#34;&gt;\[
-P(y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
-\]&lt;/span&gt; As &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; increases, the
-probability that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; falls in &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; draws near to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. We need to relate this to the theorem
-that for any given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon,
-\delta\)&lt;/span&gt;, there is a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \simeq NH\)&lt;/span&gt;.&lt;/p&gt;
-&lt;ol type=&#34;1&#34;&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;lt; N(H +
-\epsilon)\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The set &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; is not the
-best sufficient subset for compression. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(\log |T_{N \beta}|\)&lt;/span&gt; upper-bounds the &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N)\)&lt;/span&gt;. On the other hand, for all
-&lt;span class=&#34;math inline&#34;&gt;\(y \in T_{N \beta}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(2^{-N(H - \beta)} &amp;lt; P(y) &amp;lt; 2^{-N(H +
-\beta)}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{align*}
-|T_{N \beta}| 2^{-N(H + \beta)} &amp;amp;&amp;lt; 1 \\
-|T_{N \beta}| &amp;amp;&amp;lt; 2^{N(H + \beta)} \\
-\end{align*}
-\]&lt;/span&gt; If we set &lt;span class=&#34;math inline&#34;&gt;\(\beta =
-\epsilon\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(N = N_0\)&lt;/span&gt; in a
-way such that &lt;span class=&#34;math inline&#34;&gt;\(\frac{\sigma^2}{\epsilon^2
-N_0} \le \delta\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(P(y \in
-T_{N_0 \epsilon}) \ge 1 - \delta\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(T_{N_0 \epsilon}\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;-sufficient subset. Then, &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \le \log |T_{N_0 \epsilon}| \le
-N_0(H + \epsilon)\)&lt;/span&gt; holds for any &lt;span class=&#34;math inline&#34;&gt;\(N
-\ge N_0\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;gt; N(H -
-\epsilon)\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;This part is reached by contradiction. Suppose instead there exists a
-&lt;span class=&#34;math inline&#34;&gt;\(\delta&amp;#39;\)&lt;/span&gt; such that there exists
-a sufficiently large &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; which
-results in &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^{N_0}) \le N_0(H -
-\epsilon)\)&lt;/span&gt; for arbitrary &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt;. When &lt;span class=&#34;math inline&#34;&gt;\(\beta = \epsilon/2\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
-H_\delta(X^N) \le N_0(H - 2\beta)
-\]&lt;/span&gt; Denote the associated subset by &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt;. We are to disprove &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt; can
-achieve &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \ge 1 -
-\delta\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
-P(y \in S&amp;#39;) = P(y \in S&amp;#39; \cap T_{N \beta}) + P(y \in S&amp;#39; \cap
-\overline{T_{N \beta}})
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39; \cap T_{N \beta}| \le
-|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt;. The maximum value of the first
-term is obtained when &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39; \cap T_{N
-\beta}\)&lt;/span&gt; contains &lt;span class=&#34;math inline&#34;&gt;\(2^{N(H -
-2\beta)}\)&lt;/span&gt; outcomes all with probability &lt;span class=&#34;math inline&#34;&gt;\(2^{-N(H - \beta)}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39; \cap \overline{T_{N \beta}} \subseteq
-\overline{T_{N \beta}}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P(y \in
-S&amp;#39; \cap \overline{T_{N \beta}}) \le P(y \in \overline{T_{N \beta}})
-&amp;lt; \frac{\sigma^2}{\beta^2 N}\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math display&#34;&gt;\[
-P(y \in S&amp;#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} +
-\frac{\sigma^2}{\beta^2 N} = 2^{-N \beta} + \frac{\sigma^2}{\beta^2 N}
-\]&lt;/span&gt; For arbitrary &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt; and
-a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt;, we can
-have &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \le 1 - \delta\)&lt;/span&gt;
-instead of &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \ge 1 -
-\delta\)&lt;/span&gt;. We shall conclude that &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt; cannot
-achieve &lt;span class=&#34;math inline&#34;&gt;\(P(y \in S&amp;#39;) \ge 1 -
-\delta\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;gt;
-N(H - \epsilon)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;source-coding-theorem-for-symbol-codes&#34;&gt;Source coding theorem
-for symbol codes&lt;/h2&gt;
-&lt;h3 id=&#34;kraft-mcmillan-inequality&#34;&gt;Kraft-McMillan inequality&lt;/h3&gt;
-&lt;ol type=&#34;1&#34;&gt;
-&lt;li&gt;&lt;p&gt;Denote the length of each symbol code as &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; and there are &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; symbols. If &lt;span class=&#34;math display&#34;&gt;\[
-\sum_{i=1}^I 2^{-l_i} \le 1
-\]&lt;/span&gt; there exists a set of uniquely-decodable prefix coding with
-these lengths as their symbol codes’ lengths.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: The proof is done by construction. The
-number of codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; should
-be less than &lt;span class=&#34;math inline&#34;&gt;\(2^{l+1}\)&lt;/span&gt;, or else the
-above condition will be violated. Therefore we can loosely arrange all
-the codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; to be unique.
-Then the uniqueness condition is checked.&lt;/p&gt;
-&lt;p&gt;Denote the number of codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; by &lt;span class=&#34;math inline&#34;&gt;\(C_l\)&lt;/span&gt;. For any two consecutive lengths
-&lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(l+1\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-2^{-l} C_l + 2^{-(l+1)} C_{l+1} &amp;amp;\le 1 \\
-C_{l+1} &amp;amp;\le 2^{l+1} - 2 C_l \\
-C_{l+1} &amp;amp;\le 2(2^l - C_l) \\
-\end{aligned}
-\]&lt;/span&gt; This means we can append these unused &lt;span class=&#34;math inline&#34;&gt;\(2^l - C_l\)&lt;/span&gt; codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; to meet the number of codes of length
-&lt;span class=&#34;math inline&#34;&gt;\(l+1\)&lt;/span&gt;. Construction
-completes.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Suppose we have a set of uniquely-decodable prefix coding. Denote
-the length of each symbol code as &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; and there are &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; symbols. Then, &lt;span class=&#34;math display&#34;&gt;\[
-\sum_{i=1}^I 2^{-l_i} \le 1
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Proof&lt;/strong&gt;: Let &lt;span class=&#34;math inline&#34;&gt;\(S =
-\sum_{i=1}^I 2^{-l_i} \le 1\)&lt;/span&gt;, then, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-  S^N &amp;amp;= (\sum_{i=1}^I 2^{-l_i})^N \\
-  &amp;amp;= \sum_{i_1=1}^I \dots \sum_{i_N=1}^I 2^{-(l_{i_1} + \dots +
-l_{i_N})}
-  \end{aligned}
-\]&lt;/span&gt; The &lt;span class=&#34;math inline&#34;&gt;\((l_{i_1} + \dots +
-l_{i_N})\)&lt;/span&gt; term can be treated as the length of encoding of &lt;span class=&#34;math inline&#34;&gt;\(a_{i_1} \dots a_{i_N}\)&lt;/span&gt; of arbitrary length
-&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(l_\min = \min_i l_i, l_\max = \max_i l_i\)&lt;/span&gt;,
-the above can be re-written as &lt;span class=&#34;math display&#34;&gt;\[
-  S^N = \sum_{l = Nl_\min}^{Nl_\max} 2^{-l}C_l
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(C_l\)&lt;/span&gt; represents the
-number of symbol codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;.
-Since the coding is uniquely-decodable, &lt;span class=&#34;math inline&#34;&gt;\(C_l
-\le 2^l\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math display&#34;&gt;\[
-S^N \le \sum_{l = Nl_\min}^{Nl_\max} 2^{-l} 2^l \le Nl_\max
-\]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\(S &amp;gt; 1\)&lt;/span&gt;, the above
-cannot hold for arbitrary &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;.
-Therefore &lt;span class=&#34;math inline&#34;&gt;\(S \le 1\)&lt;/span&gt;.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;the-source-coding-theorem&#34;&gt;The source coding theorem&lt;/h3&gt;
-&lt;p&gt;For an ensemble &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, there exists
-a prefix code &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; with expected
-length satisfying &lt;span class=&#34;math display&#34;&gt;\[
-H(X) \le L(C,X) &amp;lt; H(X) + 1
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: We define the implicit probabilities
-&lt;span class=&#34;math inline&#34;&gt;\(q_i = 2^{-l_i} / z\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(z = \sum_i 2^{-l_i}\)&lt;/span&gt;. Then, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-L(C,X) = \sum_i p_i l_i &amp;amp;= -\sum_i [p_i \log (q_iz)] \\
-&amp;amp;=\sum_i [p_i \log 1/q_i] - \log z \\
-&amp;amp;\ge H(X)
-\end{aligned}
-\]&lt;/span&gt; The equality holds when &lt;span class=&#34;math inline&#34;&gt;\(z =
-1\)&lt;/span&gt; (the code is complete) and &lt;span class=&#34;math inline&#34;&gt;\(q =
-p\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(l_i = \log 1/p_i\)&lt;/span&gt;).&lt;/p&gt;
-&lt;p&gt;From another perspective, suppose the coding is complete but not
-optimal, &lt;span class=&#34;math display&#34;&gt;\[
-\begin{aligned}
-&amp;amp;L(C,X) = -\sum_i [p_i \log (q_iz)] = -\sum_i [p_i \log (q_i)] \\
-&amp;amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i
-\log (q_i)] \\
-&amp;amp;= H(X) + D_{KL}(p || q)
-\end{aligned}
-\]&lt;/span&gt; where the cost is the extra &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p || q)\)&lt;/span&gt; bits, which is brought by
-instead treating &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; as the real
-distribution. &lt;span class=&#34;math inline&#34;&gt;\(D_{KL(p||q)}\)&lt;/span&gt; is
-termed as relative entropy or the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-
-</description>
     </item>
     
     <item>
@@ -6631,6 +6229,168 @@ variance&lt;/a&gt;&lt;/p&gt;
     </item>
     
     <item>
+      <title>Source Coding Theorem</title>
+      <link>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/</link>
+      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/</guid>
+      <description>
+
+&lt;h2 id=&#34;notations-and-concepts&#34;&gt;Notations and Concepts&lt;/h2&gt;
+&lt;p&gt;An &lt;strong&gt;ensemble &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt;
+(we specifically use the random variable symbol to denote the ensemble)
+is a triplet &lt;span class=&#34;math inline&#34;&gt;\((X, \newcommand{A}{\mathcal A}
+\newcommand{P}{\mathcal P} \A_X, \P_X)\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; denotes the random variable, which
+takes on values from &lt;span class=&#34;math inline&#34;&gt;\(\A_X = \{a_1, a_1,
+\dots \}\)&lt;/span&gt;, that has probability &lt;span class=&#34;math inline&#34;&gt;\(\P_X
+= \{p_1, p_2, \dots \}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;Shannon information content of an outcome &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;&lt;/strong&gt; is: &lt;span class=&#34;math display&#34;&gt;\[
+h(x) = \log_2 \frac{1}{P(x)}
+\]&lt;/span&gt; The &lt;strong&gt;raw bit content of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+H_0(X) = \log |\mathcal A_X|
+\]&lt;/span&gt; The &lt;strong&gt;smallest &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;-sufficient subset &lt;span class=&#34;math inline&#34;&gt;\(S_\delta\)&lt;/span&gt; of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal A_X\)&lt;/span&gt;&lt;/strong&gt; is the smallest
+subset satisfying &lt;span class=&#34;math display&#34;&gt;\[
+P(X \in S_\delta) \ge 1 - \delta
+\]&lt;/span&gt; The &lt;strong&gt;essential bit content of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;&lt;/strong&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+H_\delta(X) = \log |S_\delta|
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;shannons-source-coding-theorem&#34;&gt;Shannon’s Source Coding
+Theorem&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; be an ensemble with
+entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; bits, and &lt;span class=&#34;math inline&#34;&gt;\(X^N\)&lt;/span&gt; be the ensemble composed of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such i.i.d. random variables. Given
+&lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(0 &amp;lt; \delta &amp;lt; 1\)&lt;/span&gt;, there exists a
+positive integer &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; such that for
+&lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+|\frac{1}{N} H_\delta (X^N) - H| &amp;lt; \epsilon
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Or put it in a verbal way,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. random variables each
+with entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X) = H\)&lt;/span&gt; can be
+compressed into more than &lt;span class=&#34;math inline&#34;&gt;\(NH\)&lt;/span&gt; bits
+with negligible information loss as &lt;span class=&#34;math inline&#34;&gt;\(N \to
+\infty\)&lt;/span&gt;; conversely if they are compressed fewer than &lt;span class=&#34;math inline&#34;&gt;\(NH\)&lt;/span&gt; bits, it is virtually certain that
+there is information loss.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: Let the random variable &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; be defined
+for the ensemble &lt;span class=&#34;math inline&#34;&gt;\(Y = X^N\)&lt;/span&gt;, which
+composes of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; i.i.d. ensembles
+&lt;span class=&#34;math inline&#34;&gt;\(X_1 \dots X_N\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 N \log \frac 1 {P(Y)}\)&lt;/span&gt; can be
+re-written as the average of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;
+information contents &lt;span class=&#34;math inline&#34;&gt;\(h_i = \log \frac 1
+{P(X_i)}, i \in 1,2,\dots,N\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots
+P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log
+\frac{1}{P(X_N)})
+\]&lt;/span&gt; Each of these information contents is in turn a random
+variable with mean &lt;span class=&#34;math inline&#34;&gt;\(\bar h_i = H(X) =
+H\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{h_i}^2 =
+\sigma^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;A long string of &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; symbols would
+usually contain roughly &lt;span class=&#34;math inline&#34;&gt;\(p_1 N\)&lt;/span&gt;
+occurrences of symbol &lt;span class=&#34;math inline&#34;&gt;\(a_1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(p_2 N\)&lt;/span&gt; occurrences of symbol &lt;span class=&#34;math inline&#34;&gt;\(a_2\)&lt;/span&gt;… The probability of those elements is
+roughly &lt;span class=&#34;math inline&#34;&gt;\((p_1)^{p_1 N} (p_2)^{p_2 N}
+\dots\)&lt;/span&gt; The information content of each such element is thus
+roughly &lt;span class=&#34;math inline&#34;&gt;\(N \sum_i p_i \log \frac{1}{p_i} = N
+H\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;We define the typical elements of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{A}_X^N\)&lt;/span&gt; to be just those element
+that have probability close to &lt;span class=&#34;math inline&#34;&gt;\(2^{-NH}\)&lt;/span&gt;. Note that interestingly, the
+most probable string is not usually typical because its probability is
+far away from &lt;span class=&#34;math inline&#34;&gt;\(2^{-NH}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;We introduce another parameter &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; to control how close the
+probability has to be to &lt;span class=&#34;math inline&#34;&gt;\(2^{-NH}\)&lt;/span&gt;
+for an element to be typical. The set of typical elements is called
+&lt;strong&gt;typical set&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(T_{N
+\beta}\)&lt;/span&gt; and is defined as &lt;span class=&#34;math display&#34;&gt;\[
+T_{N \beta} = \left\{y \in \mathcal A_X^N: [\frac 1 N \log
+\frac{1}{P(y)} - H]^2 &amp;lt; \beta^2 \right\}
+\]&lt;/span&gt; By the &lt;a href=&#34;https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律&#34;&gt;Weak Law of Large
+Numbers&lt;/a&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+P \left( \left( \frac 1 N \log \frac{1}{P(Y)} - H \right)^2 \ge \beta^2
+\right) \le \frac{\sigma^2}{\beta^2 N}
+\]&lt;/span&gt; and thus &lt;span class=&#34;math display&#34;&gt;\[
+P(Y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
+\]&lt;/span&gt; As &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; increases, the
+probability that &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; falls in &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; draws near to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. We need to relate this to the theorem
+that for any given &lt;span class=&#34;math inline&#34;&gt;\(\epsilon,
+\delta\)&lt;/span&gt;, there is a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \simeq NH\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;lt; N(H +
+\epsilon)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The set &lt;span class=&#34;math inline&#34;&gt;\(T_{N \beta}\)&lt;/span&gt; is not the
+best sufficient subset for compression (because it doesn’t include those
+most probable). Therefore, &lt;span class=&#34;math inline&#34;&gt;\(\log |T_{N
+\beta}|\)&lt;/span&gt; upper-bounds the &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N)\)&lt;/span&gt; for any &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;. On the other hand, for all &lt;span class=&#34;math inline&#34;&gt;\(y \in T_{N \beta}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(P(y) &amp;gt; 2^{-N(H + \beta)}\)&lt;/span&gt;, thus &lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+|T_{N \beta}| 2^{-N(H + \beta)} &amp;amp;&amp;lt; \sum_{y \in T_{N \beta}} P(y)
+&amp;lt; 1 \\
+&amp;amp;\Downarrow \\
+|T_{N \beta}| &amp;amp;&amp;lt; 2^{N(H + \beta)} \\
+\end{align*}
+\]&lt;/span&gt; If we set &lt;span class=&#34;math inline&#34;&gt;\(\beta =
+\epsilon\)&lt;/span&gt; and set &lt;span class=&#34;math inline&#34;&gt;\(N \ge N_0\)&lt;/span&gt;
+in a way such that &lt;span class=&#34;math inline&#34;&gt;\(\frac{\sigma^2}{\epsilon^2 N_0} \le
+\delta\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(P(Y \in T_{N
+\epsilon}) \ge 1 - \delta\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(T_{N
+\epsilon}\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt;-sufficient subset. Then, &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) \le \log |T_{N \epsilon}| \le N(H +
+\epsilon)\)&lt;/span&gt; holds for any &lt;span class=&#34;math inline&#34;&gt;\(N \ge
+N_0\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;gt; N(H -
+\epsilon)\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This part is reached by contradiction. Suppose instead there exists a
+&lt;span class=&#34;math inline&#34;&gt;\(\delta&amp;#39;\)&lt;/span&gt; such that there exists
+a sufficiently large &lt;span class=&#34;math inline&#34;&gt;\(N_0\)&lt;/span&gt; which
+results in &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^{N}) \le N(H -
+\epsilon)\)&lt;/span&gt; for arbitrary &lt;span class=&#34;math inline&#34;&gt;\(\epsilon
+&amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(N &amp;gt; N_0\)&lt;/span&gt;. Let
+&lt;span class=&#34;math inline&#34;&gt;\(\beta = \epsilon/2\)&lt;/span&gt;, we now have
+&lt;span class=&#34;math display&#34;&gt;\[
+H_\delta(X^N) \le N_0(H - 2\beta)
+\]&lt;/span&gt; Denote the associated subset by &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt;. We are to disprove &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt; can
+achieve &lt;span class=&#34;math inline&#34;&gt;\(P(Y \in S&amp;#39;) \ge 1 -
+\delta\)&lt;/span&gt;. We break this probability into two parts: &lt;span class=&#34;math display&#34;&gt;\[
+P(Y \in S&amp;#39;) = P(Y \in S&amp;#39; \cap T_{N \beta}) + P(Y \in S&amp;#39; \cap
+\overline{T_{N \beta}})
+\]&lt;/span&gt; For the first part, we have &lt;span class=&#34;math display&#34;&gt;\[
+|S&amp;#39; \cap T_{N \beta}| \le |S&amp;#39;| \le 2^{N(H - 2\beta)}
+\]&lt;/span&gt; Thus, the maximum value of the first part is obtained when
+&lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39; \cap T_{N \beta}\)&lt;/span&gt; contains
+&lt;span class=&#34;math inline&#34;&gt;\(2^{N(H - 2\beta)}\)&lt;/span&gt; outcomes all with
+probability &lt;span class=&#34;math inline&#34;&gt;\(2^{-N(H - \beta)}\)&lt;/span&gt;
+(property of elements in &lt;span class=&#34;math inline&#34;&gt;\(T_{N
+\beta}\)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;As for the second part, since &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39; \cap
+\overline{T_{N \beta}} \subseteq \overline{T_{N \beta}}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+P(Y \in S&amp;#39; \cap \overline{T_{N \beta}}) \le P(Y \in \overline{T_{N
+\beta}}) &amp;lt; \frac{\sigma^2}{\beta^2 N}
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+P(Y \in S&amp;#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} +
+\frac{\sigma^2}{\beta^2 N} = 2^{-N \beta} + \frac{\sigma^2}{\beta^2 N}
+\]&lt;/span&gt; For arbitrary &lt;span class=&#34;math inline&#34;&gt;\(\delta\)&lt;/span&gt; and
+a sufficiently-large &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;, we can have
+&lt;span class=&#34;math inline&#34;&gt;\(P(Y \in S&amp;#39;) \le 1 - \delta\)&lt;/span&gt;
+instead of &lt;span class=&#34;math inline&#34;&gt;\(P(Y \in S&amp;#39;) \ge 1 -
+\delta\)&lt;/span&gt;. Then we shall conclude that &lt;span class=&#34;math inline&#34;&gt;\(S&amp;#39;\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(|S&amp;#39;| \le 2^{N(H - 2\beta)}\)&lt;/span&gt; cannot
+achieve &lt;span class=&#34;math inline&#34;&gt;\(P(Y \in S&amp;#39;) \ge 1 -
+\delta\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(H_\delta(X^N) &amp;gt;
+N(H - \epsilon)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;strong&gt;intuition&lt;/strong&gt; behind Shannon’s source coding theorem
+is that, as &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; grows, the deviation
+of the random variable may grow in a lower order than that of the number
+of values the random variable can take on. Therefore, the resulting
+outcomes will fall in a narrower range, making the typical set smaller.
+Encoding the elements inside the typical set is &lt;em&gt;almost&lt;/em&gt; enough
+for the purpose of communication.&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Stirling&#39;s Approximation</title>
       <link>https://chunxy.github.io/notes/articles/mathematics/numerical-analysis/stirlings-approximation/</link>
       <pubDate>Mon, 09 May 2022 19:39:49 +0000</pubDate>
@@ -8324,6 +8084,107 @@ whitening does not reduce the data’s dimensionality as PCA does.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Symbol Code</title>
+      <link>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/</link>
+      <pubDate>Thu, 07 Jul 2022 11:06:13 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/</guid>
+      <description>
+
+&lt;p&gt;Other than block code where symbols are encoded in chunks, symbol
+code will assign each symbol a unique codeword. Among the codeword
+schemes, we prefer those where no codeword is a prefix of any other
+codeword. These are called &lt;strong&gt;prefix code&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The problem is how to give such scheme, or does it really exist?&lt;/p&gt;
+&lt;h2 id=&#34;kraft-mcmillan-inequality&#34;&gt;Kraft-McMillan Inequality&lt;/h2&gt;
+&lt;p&gt;Kraft-McMillan inequality reveals the relation&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;Denote the length of each symbol code as &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; and suppose there are &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; symbols. If &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^I 2^{-l_i} \le 1\)&lt;/span&gt;, then there
+exists a set of uniquely-decodable prefix coding with these lengths as
+their symbol codes’ lengths.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: The proof is done by construction. The
+number of codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; should
+be less than &lt;span class=&#34;math inline&#34;&gt;\(2^{l}\)&lt;/span&gt;, or else the
+inequality will be violated. Therefore &lt;span class=&#34;math inline&#34;&gt;\(\forall l = 0,1,\dots\)&lt;/span&gt;, we can loosely
+arrange all the codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;
+to be unique (since there are &lt;span class=&#34;math inline&#34;&gt;\(2^l\)&lt;/span&gt;
+many distinct bit strings of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;). Then the uniqueness condition is
+checked.&lt;/p&gt;
+&lt;p&gt;Denote the number of codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; by &lt;span class=&#34;math inline&#34;&gt;\(C_l\)&lt;/span&gt;. For any two consecutive lengths
+&lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\((l+1)\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+2^{-l} C_l + 2^{-(l+1)} C_{l+1} &amp;amp;\le\sum_{i=1}^I 2^{-l_i}\le 1 \\
+C_{l+1} &amp;amp;\le 2^{l+1} - 2 C_l \\
+C_{l+1} &amp;amp;\le 2(2^l - C_l) \\
+\end{aligned}
+\]&lt;/span&gt; This means we can append these unused &lt;span class=&#34;math inline&#34;&gt;\((2^l - C_l)\)&lt;/span&gt; codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; to suit the number of codes of length
+&lt;span class=&#34;math inline&#34;&gt;\(l+1\)&lt;/span&gt;. Construction
+completes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Suppose we have a set of uniquely-decodable prefix coding. Denote
+the length of each symbol code as &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; and there are &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; symbols. Then, &lt;span class=&#34;math display&#34;&gt;\[
+\sum_{i=1}^I 2^{-l_i} \le 1
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Proof&lt;/strong&gt;: Let &lt;span class=&#34;math inline&#34;&gt;\(S =
+\sum_{i=1}^I 2^{-l_i} \le 1\)&lt;/span&gt;, then, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+  S^N &amp;amp;= (\sum_{i=1}^I 2^{-l_i})^N \\
+  &amp;amp;= \sum_{i_1=1}^I \dots \sum_{i_N=1}^I 2^{-(l_{i_1} + \dots +
+l_{i_N})}
+  \end{aligned}
+\]&lt;/span&gt; The &lt;span class=&#34;math inline&#34;&gt;\((l_{i_1} + \dots +
+l_{i_N})\)&lt;/span&gt; term can be treated as the length of encoding of &lt;span class=&#34;math inline&#34;&gt;\(a_{i_1} \dots a_{i_N}\)&lt;/span&gt; of arbitrary length
+&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(l_\min = \min_i l_i, l_\max = \max_i l_i\)&lt;/span&gt;,
+the above can be re-written as &lt;span class=&#34;math display&#34;&gt;\[
+  S^N = \sum_{l = Nl_\min}^{Nl_\max} 2^{-l}C_l
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(C_l\)&lt;/span&gt; represents the
+number of symbol codes of length &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;.
+Since the coding is uniquely-decodable, &lt;span class=&#34;math inline&#34;&gt;\(C_l
+\le 2^l\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+S^N \le \sum_{l = Nl_\min}^{Nl_\max} 2^{-l} 2^l \le Nl_\max
+\]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\(S &amp;gt; 1\)&lt;/span&gt;, the above
+cannot hold for arbitrary &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;.
+Therefore &lt;span class=&#34;math inline&#34;&gt;\(S \le 1\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;source-coding-theorem-for-symbol-code&#34;&gt;Source Coding Theorem for
+Symbol Code&lt;/h2&gt;
+&lt;p&gt;For an ensemble &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;, there exists
+a prefix code &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; with expected
+length satisfying &lt;span class=&#34;math display&#34;&gt;\[
+H(X) \le L(C,X) &amp;lt; H(X) + 1
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: We define the implicit probabilities
+&lt;span class=&#34;math inline&#34;&gt;\(q_i = 2^{-l_i} / z\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(z = \sum_i 2^{-l_i}\)&lt;/span&gt;. Then, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L(C,X) &amp;amp;= \sum_i p_i l_i = -\sum_i [p_i \log (q_iz)] \\
+&amp;amp;=\sum_i [p_i \log 1/q_i] - \log z \\
+&amp;amp;\ge H(X)
+\end{aligned}
+\]&lt;/span&gt; The equality holds when &lt;span class=&#34;math inline&#34;&gt;\(z =
+1\)&lt;/span&gt; (the code is complete) and &lt;span class=&#34;math inline&#34;&gt;\(q =
+p\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(l_i = \log 1/p_i\)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;From another perspective, suppose the coding is complete but not
+optimal, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L(C,X) &amp;amp;= -\sum_i [p_i \log (q_iz)] = -\sum_i [p_i \log (q_i)] \\
+&amp;amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i
+\log (q_i)] \\
+&amp;amp;= H(X) + D_{KL}(p || q)
+\end{aligned}
+\]&lt;/span&gt; where the cost is the extra &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p || q)\)&lt;/span&gt; bits, which is brought by
+instead treating &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; as the real
+distribution. &lt;span class=&#34;math inline&#34;&gt;\(D_{KL(p||q)}\)&lt;/span&gt; is
+termed as relative entropy or the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Overview</title>
       <link>https://chunxy.github.io/notes/articles/information-theory/overview/</link>
       <pubDate>Fri, 22 Apr 2022 21:13:30 +0000</pubDate>
@@ -9184,6 +9045,241 @@ testing - Are type I error &amp;amp; FWER both conditional probabilities? -
 Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://bookdown.org/hezhijian/book/test.html&#34;&gt;第 3 章
 假设检验 | 数理统计讲义 (bookdown.org)&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>贝叶斯分类器</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</link>
+      <pubDate>Mon, 22 May 2023 09:43:15 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
+      <description>
+
+&lt;h2 id=&#34;贝叶斯分类器&#34;&gt;贝叶斯分类器&lt;/h2&gt;
+&lt;p&gt;贝叶斯分类器（Bayes classifier）基于“能够根据标签&lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;预测特征&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;”的思想，在训练环节，它学习&lt;span class=&#34;math inline&#34;&gt;\(p(\x|y)\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;；在预测环节，它给出&lt;span class=&#34;math inline&#34;&gt;\(\arg \max_y p(y|\x) = \arg \max_y p(\x|y)
+p(y)\)&lt;/span&gt;。可以看出，贝叶斯分类器的两个关键部分便是“似然”和“先验”，其预测环节采用了最大后验估计的思想，从这个角度或许能够理解为什么它叫做“贝叶斯”分类器。&lt;/p&gt;
+&lt;h3 id=&#34;朴素贝叶斯分类器&#34;&gt;朴素贝叶斯分类器&lt;/h3&gt;
+&lt;p&gt;贝叶斯分类器在训练环节学习&lt;span class=&#34;math inline&#34;&gt;\(p(\x|y)\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;可以直接由频率估计得来，而&lt;span class=&#34;math inline&#34;&gt;\(p(\x|y)\)&lt;/span&gt;这个条件概率则不太好求，尤其当&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;为多元随机变量时，其各个成分之间的关系难以捕捉。&lt;/p&gt;
+&lt;p&gt;为简化问题，朴素贝叶斯分类器（naive Bayes
+classifier）做出这样的假设：&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;的各个成分在&lt;span class=&#34;math inline&#34;&gt;\(Y=y\)&lt;/span&gt;给定的情况下，是相互独立的，此时有&lt;span class=&#34;math inline&#34;&gt;\(p(\x|y) = p(x_1|y) \dots
+p(x_n|y)\)&lt;/span&gt;。进一步，为了求解各个成分在&lt;span class=&#34;math inline&#34;&gt;\(Y=y\)&lt;/span&gt;给定时的条件概率分布，我们还可以对条件概率的分布形式作出假设，比如假设&lt;span class=&#34;math inline&#34;&gt;\(p(x_i|y)\)&lt;/span&gt;服从伯努利分布、多项分布、高斯分布（分别对应伯努利朴素贝叶斯分类器&amp;lt;Bernoulli
+naive Bayes classifier&amp;gt;、多项分布朴素贝叶斯分类器&amp;lt;multinomial
+naive Bayes classifier&amp;gt;、高斯分布朴素贝叶斯&amp;lt;Gaussian naive Bayes
+classifier&amp;gt;）等等。&lt;/p&gt;
+&lt;h2 id=&#34;贝叶斯最优分类器&#34;&gt;贝叶斯最优分类器&lt;/h2&gt;
+&lt;p&gt;给定贝叶斯分类器&lt;span class=&#34;math inline&#34;&gt;\(f \in
+\mathcal{H}\)&lt;/span&gt;，给定样本&lt;span class=&#34;math inline&#34;&gt;\((\x,y)\)&lt;/span&gt;，0-1损失函数&lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt;定义为， &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\I}{\mathbb{I}} l(f(\x), y) = \I[f(\x) \ne y] = 1 - \I[f(\x)
+= y]
+\]&lt;/span&gt; 我们的目标是最小化&lt;span class=&#34;math inline&#34;&gt;\(l(f) \triangleq
+\E_{\x,y} l(f(\x), y)\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;l(f) = \sum_{\x} \sum_{y} p(\x,y) l(f(\x), y) \\
+&amp;amp;= \sum_x p(\x) [\sum_y p(y|\x) l(f(\x), y)] \\
+&amp;amp;= \E_\x [\sum_y p(y|\x) l(f(\x), y)]
+\end{aligned}
+\]&lt;/span&gt; 用&lt;span class=&#34;math inline&#34;&gt;\(f^\star\)&lt;/span&gt;表示贝叶斯最优分类器（Bayes
+optimal classifier），则&lt;span class=&#34;math inline&#34;&gt;\(f^\star = \arg
+\min_{f \in \mathcal{H}} \E_\x [\sum_y p(y|\x) l(f(\x),
+y)]\)&lt;/span&gt;；故对于每一个样本&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;，都应该有： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;f^\star(\x) = \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x)
+l(f(\x), y)] \\
+&amp;amp;= \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) (1 - \I[f(\x) =
+y])] \\
+&amp;amp;= \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) - \sum_y p(y|\x)
+\I[f(\x) = y]] \\
+&amp;amp;= \arg \min_{f \in \mathcal{H}} [1 - \sum_y p(y|\x) \I[f(\x) = y]]
+\\
+&amp;amp;= \arg \min_{f \in \mathcal{H}} [- \sum_y p(y|\x) \I[f(\x) = y]] \\
+&amp;amp;= \arg \max_{f \in \mathcal{H}} [\sum_y p(y|\x) \I[f(\x) = y]] \\
+&amp;amp;= \arg \max_{y \in \mathcal{Y}} p(y|\x)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;以&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;仅有两种取值举例： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f^\star(x) &amp;amp;= \arg \max_{f \in \mathcal{H}} [p(y_1|\x) \I[f(\x) =
+y_1] + p(y_2|\x) \I[f(\x) = y_2] ] \\
+&amp;amp;= \arg \max_{y \in \mathcal{Y}} p(y|\x)
+\end{aligned}
+\]&lt;/span&gt; 以上结论在&lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt;为连续型随机变量或者&lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;为连续型随机变量时也成立。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://artint.info/html1e/ArtInt_181.html&#34;&gt;Artificial
+Intelligence - foundations of computational agents – 7.3.3 Bayesian
+Classifiers (artint.info)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/567299/what-does-it-mean-for-the-bayes-classifier-to-be-optimal&#34;&gt;machine
+learning - What does it mean for the Bayes Classifier to be optimal? -
+Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>隐马尔可夫模型</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Mon, 22 May 2023 09:43:15 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</guid>
+      <description>
+
+&lt;h2 id=&#34;隐马尔可夫模型&#34;&gt;隐马尔可夫模型&lt;/h2&gt;
+&lt;p&gt;隐马尔可夫模型（Hidden Markov
+Model）的对象是序列类型的数据，其基本假设为：该序列的观测值实际上是来自于完全关于当前时序下的状态（state，也可叫作隐变量&amp;lt;latent
+variable&amp;gt;）取值的一个条件概率分布，而状态取值亦会随着时序发生变化，且其状态变化遵从马尔可夫过程。&lt;/p&gt;
+&lt;p&gt;令&lt;span class=&#34;math inline&#34;&gt;\(Y_1, \dots, Y_T\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;个时序下的观测值，&lt;span class=&#34;math inline&#34;&gt;\(X_1, \dots, X_T\)&lt;/span&gt;表示&lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;个时序下的状态取值，对于任意&lt;span class=&#34;math inline&#34;&gt;\(i = 1, \dots, T\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(Y_i \sim p(\cdot |
+X_i)\)&lt;/span&gt;；一般来说，隐马尔科夫模型中假设状态取值和观测取值都是离散的，假设共有&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;种状态取值&lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_N\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;种观测取值&lt;span class=&#34;math inline&#34;&gt;\(y_1, \dots,
+y_M\)&lt;/span&gt;，令状态转移矩阵（transition matrix）为&lt;span class=&#34;math inline&#34;&gt;\(N \times N\)&lt;/span&gt;的方阵&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;，令观测概率矩阵（emission
+matrix）为&lt;span class=&#34;math inline&#34;&gt;\(N \times M\)&lt;/span&gt;的矩阵&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;；令&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;为初始状态概率向量。&lt;/p&gt;
+&lt;p&gt;隐马尔可夫模型即是由&lt;span class=&#34;math inline&#34;&gt;\(\pi, A,
+B\)&lt;/span&gt;三者决定，所以其可以用三元组表示： &lt;span class=&#34;math display&#34;&gt;\[
+\lambda = (\pi, A, B)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;隐马尔可夫模型有三类基本问题： 1. 概率问题。给定模型&lt;span class=&#34;math inline&#34;&gt;\(\lambda = (\pi, A, B)\)&lt;/span&gt;和观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)&lt;/span&gt;，计算模型&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;产生观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y\)&lt;/span&gt;的概率。 2. 学习问题。给定观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)&lt;/span&gt;，估计模型参数&lt;span class=&#34;math inline&#34;&gt;\(\lambda =
+(\pi, A, B)\)&lt;/span&gt;。 3.
+预测问题（也叫解码&amp;lt;decoding&amp;gt;问题）。给定模型&lt;span class=&#34;math inline&#34;&gt;\(\lambda = (\pi, A, B)\)&lt;/span&gt;和观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)&lt;/span&gt;，求使得条件概率&lt;span class=&#34;math inline&#34;&gt;\(P(\X |
+\Y)\)&lt;/span&gt;最大的状态序列&lt;span class=&#34;math inline&#34;&gt;\(\X\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;概率问题&#34;&gt;概率问题&lt;/h3&gt;
+&lt;h4 id=&#34;暴力解法&#34;&gt;暴力解法&lt;/h4&gt;
+&lt;p&gt;在预测问题中，最直接的想法便是首先枚举出所有的状态序列，然后根据状态序列计算观测序列的概率。某个状态序列&lt;span class=&#34;math inline&#34;&gt;\(\X = (x_{i_1}, \dots,
+x_{i_T})\)&lt;/span&gt;出现的概率为 &lt;span class=&#34;math display&#34;&gt;\[
+P(\X) = \pi_{i_1} a_{i_1, i_2} a_{i_2, i_3} \dots a_{i_{T-1}, i_T}
+\]&lt;/span&gt; 给定这个状态序列&lt;span class=&#34;math inline&#34;&gt;\(\X\)&lt;/span&gt;的情况下，观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y\)&lt;/span&gt;出现的概率为 &lt;span class=&#34;math display&#34;&gt;\[
+P(\Y | \X) = b_{i_1, o_1} b_{i_2, o_2} \dots b_{i_T, o_T}
+\]&lt;/span&gt; 两者同时出现的联合概率为 &lt;span class=&#34;math display&#34;&gt;\[
+P(\X, \Y) = P(\X) \times P(\Y | \X) = \pi_{i_1} a_{i_1, i_2} b_{i_1,
+o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
+\]&lt;/span&gt; 然后对上式关于所有可能的状态序列求和，得到 &lt;span class=&#34;math display&#34;&gt;\[
+P(\Y) = \sum_\X P(\X, \Y) = \sum_{i_1, i_2, \dots, i_T} \pi_{i_1}
+a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
+\]&lt;/span&gt; 该式共有&lt;span class=&#34;math inline&#34;&gt;\(N^T\)&lt;/span&gt;项，每一项有&lt;span class=&#34;math inline&#34;&gt;\(O(T)\)&lt;/span&gt;次相乘，故整体复杂度为&lt;span class=&#34;math inline&#34;&gt;\(O(T N^T)\)&lt;/span&gt;，难以接受。&lt;/p&gt;
+&lt;h4 id=&#34;前向算法&#34;&gt;前向算法&lt;/h4&gt;
+&lt;p&gt;首先引入前向概率的概念。给定隐马尔可夫模型&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;及观测序列&lt;span class=&#34;math inline&#34;&gt;\(\Y = (y_{o_1}, \dots,
+y_{o_T})\)&lt;/span&gt;，定义到时刻&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的观测序列为给定的&lt;span class=&#34;math inline&#34;&gt;\((y_{o_1}, \dots,
+y_{o_t})\)&lt;/span&gt;且此时状态为&lt;span class=&#34;math inline&#34;&gt;\(x_{i}\)&lt;/span&gt;的概率为前向概率，记作 &lt;span class=&#34;math display&#34;&gt;\[
+\alpha_t(i) = P(Y_1 = y_{o_1}, \dots, Y_T = y_{o_t}, X_T = x_i; \lambda)
+\]&lt;/span&gt; 初始情况下，即&lt;span class=&#34;math inline&#34;&gt;\(t=1\)&lt;/span&gt;时，有
+&lt;span class=&#34;math display&#34;&gt;\[
+\alpha_1(i) = \pi_i a_{i, o_1}
+\]&lt;/span&gt; 对&lt;span class=&#34;math inline&#34;&gt;\(t = 2, \dots, T\)&lt;/span&gt;，有
+&lt;span class=&#34;math display&#34;&gt;\[
+\alpha_t(i) = \left[ \sum_{j=1}^N \alpha_{t-1}(j) a_{j, i} \right] b_{i,
+o_t}
+\]&lt;/span&gt; 最终， &lt;span class=&#34;math display&#34;&gt;\[
+P(\Y) = \sum_{i=1}^N \alpha_T(i)
+\]&lt;/span&gt;
+前向算法主要利用了状态变化的序列结构，记录了状态变化的中间过程，从而节省了计算时间。整个算法最耗时的步骤为递推这一步，&lt;span class=&#34;math inline&#34;&gt;\(\alpha_t(i)\)&lt;/span&gt;对应的加和表达式包含了&lt;span class=&#34;math inline&#34;&gt;\(O(N)\)&lt;/span&gt;个项，而对于每一个时刻&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;个这样的加和表达式，故&lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;个时刻整体耗时为&lt;span class=&#34;math inline&#34;&gt;\(O(N^2 T)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;学习问题&#34;&gt;学习问题&lt;/h3&gt;
+&lt;h4 id=&#34;有监督学习&#34;&gt;有监督学习&lt;/h4&gt;
+&lt;p&gt;有监督学习是较好处理的一种问题，在这种情况下，&lt;span class=&#34;math inline&#34;&gt;\(\X, \Y\)&lt;/span&gt;都已知，需要我们估计模型参数&lt;span class=&#34;math inline&#34;&gt;\(\pi, A, B\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;设样本中状态由&lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;转移到&lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;的频数为&lt;span class=&#34;math inline&#34;&gt;\(A_{i, j}\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(a_{i, j}\)&lt;/span&gt;的估计为 &lt;span class=&#34;math display&#34;&gt;\[
+\hat a_{i, j} = \frac{A_{i, j}} {\sum_{k=1}^N A_{i, k}}
+\]&lt;/span&gt; 设样本中状态为&lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;且观测为&lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;的频数是&lt;span class=&#34;math inline&#34;&gt;\(B_{i, j}\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(b_{i, j}\)&lt;/span&gt;的估计为 &lt;span class=&#34;math display&#34;&gt;\[
+\hat b_{i, j} = \frac{B_{i, j}} {\sum_{k=1}^N B_{i, k}}
+\]&lt;/span&gt; 至于初始状态向量&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;，若样本中由多条时序链，&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;亦可由相应频次估计而来。&lt;/p&gt;
+&lt;h4 id=&#34;无监督学习&#34;&gt;无监督学习&lt;/h4&gt;
+&lt;p&gt;多数情况下，状态——或者说隐变量&lt;span class=&#34;math inline&#34;&gt;\(\X\)&lt;/span&gt;——是没有办法观测到的，而这时就可以采用&lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/expectation-maximization/&#34;&gt;EM算法&lt;/a&gt;，通过优化似然函数的下界，找出最好的模型参数。EM算法在隐马尔科夫模型中具体实现由Baum和Welch提出，故实际求解算法被称作Baum-Welch算法。&lt;/p&gt;
+&lt;p&gt;此问题的似然函数以及对数似然函数分别为： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+P(\Y; \lambda) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda) \\
+\log P(\Y; \lambda) &amp;amp;= \log \sum_{\X} P(\X, \Y; \lambda)
+\end{aligned}
+\]&lt;/span&gt; 根据EM算法， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\log P(\Y; \lambda) = \log \E_{\X \sim P(\cdot | \Y; \lambda^t)}
+P(\X, \Y; \lambda) \\
+&amp;amp;\ge \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda)
+\triangleq Q(\lambda^t, \lambda) \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;而下一轮迭代中，新的估计&lt;span class=&#34;math inline&#34;&gt;\(\lambda^{t+1}\)&lt;/span&gt;为： &lt;span class=&#34;math display&#34;&gt;\[
+\lambda^{t+1} = \arg \max_\lambda Q(\lambda^t, \lambda)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;又由于 &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;Q(\lambda^t, \lambda) = \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log
+P(\X, \Y; \lambda) \\
+&amp;amp;= \sum_\X P(\X | \Y; \lambda^t) \log P(\X, \Y; \lambda) \\
+&amp;amp;= \sum_\X \frac{P(\X, \Y; \lambda^t)}{P(\Y; \lambda^t)} \log P(\X,
+\Y; \lambda) \\
+&amp;amp;= \frac{\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)}{P(\Y;
+\lambda^t)} \\
+\end{aligned}
+\]&lt;/span&gt; 其中的&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{P(\Y;
+\lambda^t)}\)&lt;/span&gt;与&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;无关，所以 &lt;span class=&#34;math display&#34;&gt;\[
+\lambda^{t+1} = \arg \max_\lambda \sum_\X P(\X, \Y; \lambda^t) \log
+P(\X, \Y; \lambda)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;注意在接下来的讨论中，我们会令&lt;span class=&#34;math inline&#34;&gt;\(\X =
+(x_{i_1}, \dots,
+x_{i_T})\)&lt;/span&gt;，但为了整体简洁，我们不会在每一个&lt;span class=&#34;math inline&#34;&gt;\(\X\)&lt;/span&gt;出现的地方将此式展开。对上式做进一步展开，
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda) = \sum_\X
+P(\X, \Y; \lambda^t) \log \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots
+a_{i_{T-1}, i_T} b_{i_T, o_T} \\
+&amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \sum_{\X} P(\X,
+\Y; \lambda^t) \sum_{t=1}^{T-1} a_{i_t, i_{t+1}} + \sum_{\X} P(\X, \Y;
+\lambda^t) \sum_{t=1}^T \log b_{i_t, o_t}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;我们可以对其中的三项分别最大化，以达到整体最大化。&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;注意到&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;满足约束条件&lt;span class=&#34;math inline&#34;&gt;\(\sum_{j=1}^N \pi_j =
+1\)&lt;/span&gt;，写出其拉格朗日函数： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L_\pi (\pi, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1}
++ \gamma (\sum_{j=1}^N \pi_j - 1) \\
+&amp;amp;= \sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) \log \pi_{j} + \gamma
+(\sum_{j=1}^N \pi_j - 1)
+\end{aligned}
+\]&lt;/span&gt; 对上式关于&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;求导并令其为&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;，得到对于任意&lt;span class=&#34;math inline&#34;&gt;\(j = 1, \dots, N\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+\frac{P(\Y, i_1 = j; \lambda^t)}{\pi_j} + \gamma &amp;amp;= 0 \\
+P(\Y, i_1 = j; \lambda^t) + \pi_j \gamma &amp;amp;= 0 \label{pi-eq}
+\end{align}
+\]&lt;/span&gt; 对上式关于&lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;求和，得到
+&lt;span class=&#34;math display&#34;&gt;\[
+\sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) + \sum_{j=1}^N \pi_j \gamma = 0
+\\
+\gamma = -P(\Y; \lambda^t)
+\]&lt;/span&gt; 重新代入&lt;span class=&#34;math inline&#34;&gt;\(\eqref{pi-eq}\)&lt;/span&gt;得到
+&lt;span class=&#34;math display&#34;&gt;\[
+\pi_j = \frac{P(\Y, i_1=j; \lambda^t)}{P(\Y; \lambda^t)}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;注意到&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;满足约束条件&lt;span class=&#34;math inline&#34;&gt;\(\forall j = 1, \dots, N, \sum_{k=1}^N a_{j, k} =
+1\)&lt;/span&gt;，写出其拉格朗日函数： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L_A (A, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1}
+\log a_{i_t, i_{t+1}} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} -
+1) \\
+&amp;amp;= \sum_{j=1}^N \sum_{k=1}^N \sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k;
+\lambda^t) \log a_{j, k} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k}
+- 1)
+\end{aligned}
+\]&lt;/span&gt; 类似对&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;的求解，我们可以得到 &lt;span class=&#34;math display&#34;&gt;\[
+a_{j, k} = \frac{\sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k;
+\lambda^t)}{\sum_{t=1}^{T-1} P(\Y, i_1=j; \lambda^t)}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;注意到&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;满足约束条件&lt;span class=&#34;math inline&#34;&gt;\(\forall j = 1, \dots, N, \sum_{k=1}^M b_{j, k} =
+1\)&lt;/span&gt;，写出其拉格朗日函数： &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+L_B (B, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log
+b_{i_t, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1) \\
+&amp;amp;= \sum_{j=1}^N \sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \log b_{j, o_t}
++ \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1)
+\end{aligned}
+\]&lt;/span&gt; 类似对&lt;span class=&#34;math inline&#34;&gt;\(\pi\)&lt;/span&gt;的求解，我们可以得到 &lt;span class=&#34;math display&#34;&gt;\[
+b_{j, k} = \frac{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \mathbb{I}[o_t =
+y_k]}{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t)}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;预测问题&#34;&gt;预测问题&lt;/h3&gt;
+&lt;p&gt;预测问题常用的算法是Viterbi算法，它是通过动态规划求解出一条最优路径。&lt;/p&gt;
 
 
 </description>
@@ -12106,229 +12202,6 @@ $$&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</guid>
-      <description>&lt;h2 id=&#34;贝叶斯分类器&#34;&gt;贝叶斯分类器&lt;/h2&gt;
-&lt;p&gt;贝叶斯分类器（Bayes classifier）基于“能够根据标签$y$预测特征$\x$”的思想，在训练环节，它学习$p(\x|y)$和$p(y)$；在预测环节，它给出$\arg \max_y p(y|\x) = \arg \max_y p(\x|y) p(y)$。可以看出，贝叶斯分类器的两个关键部分便是“似然”和“先验”，其预测环节采用了最大后验估计的思想，从这个角度或许能够理解为什么它叫做“贝叶斯”分类器。&lt;/p&gt;
-&lt;h3 id=&#34;朴素贝叶斯分类器&#34;&gt;朴素贝叶斯分类器&lt;/h3&gt;
-&lt;p&gt;贝叶斯分类器在训练环节学习$p(\x|y)$和$p(y)$，$p(y)$可以直接由频率估计得来，而$p(\x|y)$这个条件概率则不太好求，尤其当$\x$为多元随机变量时，其各个成分之间的关系难以捕捉。&lt;/p&gt;
-&lt;p&gt;为简化问题，朴素贝叶斯分类器（naive Bayes classifier）做出这样的假设：$\x$的各个成分在$Y=y$给定的情况下，是相互独立的，此时有$p(\x|y) = p(x_1|y) \dots p(x_n|y)$。进一步，为了求解各个成分在$Y=y$给定时的条件概率分布，我们还可以对条件概率的分布形式作出假设，比如假设$p(x_i|y)$服从伯努利分布、多项分布、高斯分布（分别对应伯努利朴素贝叶斯分类器&amp;lt;Bernoulli naive Bayes classifier&amp;gt;、多项分布朴素贝叶斯分类器&amp;lt;multinomial naive Bayes classifier&amp;gt;、高斯分布朴素贝叶斯&amp;lt;Gaussian naive Bayes classifier&amp;gt;）等等。&lt;/p&gt;
-&lt;h2 id=&#34;贝叶斯最优分类器&#34;&gt;贝叶斯最优分类器&lt;/h2&gt;
-&lt;p&gt;给定贝叶斯分类器$f \in \mathcal{H}$，给定样本$(\x,y)$，0-1损失函数$l$定义为，
-$$
-\newcommand{\I}{\mathbb{I}} l(f(\x), y) = \I[f(\x) \ne y] = 1 - \I[f(\x) = y]
-$$
-我们的目标是最小化$l(f) \triangleq \E_{\x,y} l(f(\x), y)$：
-$$
-\begin{aligned}
-&amp;amp;l(f) = \sum_{\x} \sum_{y} p(\x,y) l(f(\x), y) \
-&amp;amp;= \sum_x p(\x) [\sum_y p(y|\x) l(f(\x), y)] \
-&amp;amp;= \E_\x [\sum_y p(y|\x) l(f(\x), y)]
-\end{aligned}
-$$
-用$f^\star$表示贝叶斯最优分类器（Bayes optimal classifier），则$f^\star = \arg \min_{f \in \mathcal{H}} \E_\x [\sum_y p(y|\x) l(f(\x), y)]$；故对于每一个样本$\x$，都应该有：
-$$
-\begin{aligned}
-&amp;amp;f^\star(\x) = \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) l(f(\x), y)] \
-&amp;amp;= \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) (1 - \I[f(\x) = y])] \
-&amp;amp;= \arg \min_{f \in \mathcal{H}} [\sum_y p(y|\x) - \sum_y p(y|\x) \I[f(\x) = y]] \
-&amp;amp;= \arg \min_{f \in \mathcal{H}} [1 - \sum_y p(y|\x) \I[f(\x) = y]] \
-&amp;amp;= \arg \min_{f \in \mathcal{H}} [- \sum_y p(y|\x) \I[f(\x) = y]] \
-&amp;amp;= \arg \max_{f \in \mathcal{H}} [\sum_y p(y|\x) \I[f(\x) = y]] \
-&amp;amp;= \arg \max_{y \in \mathcal{Y}} p(y|\x)
-\end{aligned}
-$$&lt;/p&gt;
-&lt;p&gt;以$Y$仅有两种取值举例：
-$$
-\begin{aligned}
-f^\star(x) &amp;amp;= \arg \max_{f \in \mathcal{H}} [p(y_1|\x) \I[f(\x) = y_1] + p(y_2|\x) \I[f(\x) = y_2] ] \
-&amp;amp;= \arg \max_{y \in \mathcal{Y}} p(y|\x)
-\end{aligned}
-$$
-以上结论在$\x$为连续型随机变量或者$y$为连续型随机变量时也成立。&lt;/p&gt;
-&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://artint.info/html1e/ArtInt_181.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Artificial Intelligence - foundations of computational agents &amp;ndash; 7.3.3 Bayesian Classifiers (artint.info)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/567299/what-does-it-mean-for-the-bayes-classifier-to-be-optimal&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;machine learning - What does it mean for the Bayes Classifier to be optimal? - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</guid>
-      <description>&lt;p&gt;z&amp;mdash;
-title: 隐马尔可夫模型
-linktitle: 隐马尔可夫模型
-type: book
-lastmod: &amp;lsquo;2023-05-22T09:43:15&amp;rsquo;&lt;/p&gt;
-&lt;h1 id=&#34;prevnext-pager-order-if-docs_section_pager-enabled-in-paramstoml&#34;&gt;Prev/next pager order (if &lt;code&gt;docs_section_pager&lt;/code&gt; enabled in &lt;code&gt;params.toml&lt;/code&gt;)&lt;/h1&gt;
-&lt;h2 id=&#34;markup-pandoc&#34;&gt;weight: 40
-markup: pandoc&lt;/h2&gt;
-&lt;h2 id=&#34;隐马尔可夫模型&#34;&gt;隐马尔可夫模型&lt;/h2&gt;
-&lt;p&gt;隐马尔可夫模型（Hidden Markov Model）的对象是序列类型的数据，其基本假设为：该序列的观测值实际上是来自于完全关于当前时序下的状态（state，也可叫作隐变量&amp;lt;latent variable&amp;gt;）取值的一个条件概率分布，而状态取值亦会随着时序发生变化，且其状态变化遵从马尔可夫过程。&lt;/p&gt;
-&lt;p&gt;令$Y_1, \dots, Y_T$表示$T$个时序下的观测值，$X_1, \dots, X_T$表示$T$个时序下的状态取值，对于任意$i = 1, \dots, T$，有$Y_i \sim p(\cdot | X_i)$；一般来说，隐马尔科夫模型中假设状态取值和观测取值都是离散的，假设共有$N$种状态取值$x_1, \dots, x_N$和$M$种观测取值$y_1, \dots, y_M$，令状态转移矩阵（transition matrix）为$N \times N$的方阵$A$，令观测概率矩阵（emission matrix）为$N \times M$的矩阵$B$；令$\pi$为初始状态概率向量。&lt;/p&gt;
-&lt;p&gt;隐马尔可夫模型即是由$\pi, A, B$三者决定，所以其可以用三元组表示：
-$$
-\lambda = (\pi, A, B)
-$$&lt;/p&gt;
-&lt;p&gt;隐马尔可夫模型有三类基本问题：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;概率问题。给定模型$\lambda = (\pi, A, B)$和观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，计算模型$\lambda$产生观测序列$\Y$的概率。&lt;/li&gt;
-&lt;li&gt;学习问题。给定观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，估计模型参数$\lambda = (\pi, A, B)$。&lt;/li&gt;
-&lt;li&gt;预测问题（也叫解码&amp;lt;decoding&amp;gt;问题）。给定模型$\lambda = (\pi, A, B)$和观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，求使得条件概率$P(\X | \Y)$最大的状态序列$\X$。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;概率问题&#34;&gt;概率问题&lt;/h3&gt;
-&lt;h4 id=&#34;暴力解法&#34;&gt;暴力解法&lt;/h4&gt;
-&lt;p&gt;在预测问题中，最直接的想法便是首先枚举出所有的状态序列，然后根据状态序列计算观测序列的概率。某个状态序列$\X = (x_{i_1}, \dots, x_{i_T})$出现的概率为
-$$
-P(\X) = \pi_{i_1} a_{i_1, i_2} a_{i_2, i_3} \dots a_{i_{T-1}, i_T}
-$$
-给定这个状态序列$\X$的情况下，观测序列$\Y$出现的概率为
-$$
-P(\Y | \X) = b_{i_1, o_1} b_{i_2, o_2} \dots b_{i_T, o_T}
-$$
-两者同时出现的联合概率为
-$$
-P(\X, \Y) = P(\X) \times P(\Y | \X) = \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
-$$
-然后对上式关于所有可能的状态序列求和，得到
-$$
-P(\Y) = \sum_\X P(\X, \Y) = \sum_{i_1, i_2, \dots, i_T} \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T}
-$$
-该式共有$N^T$项，每一项有$O(T)$次相乘，故整体复杂度为$O(T N^T)$，难以接受。&lt;/p&gt;
-&lt;h4 id=&#34;前向算法&#34;&gt;前向算法&lt;/h4&gt;
-&lt;p&gt;首先引入前向概率的概念。给定隐马尔可夫模型$\lambda$及观测序列$\Y = (y_{o_1}, \dots, y_{o_T})$，定义到时刻$t$的观测序列为给定的$(y_{o_1}, \dots, y_{o_t})$且此时状态为$x_{i}$的概率为前向概率，记作
-$$
-\alpha_t(i) = P(Y_1 = y_{o_1}, \dots, Y_T = y_{o_t}, X_T = x_i; \lambda)
-$$
-初始情况下，即$t=1$时，有
-$$
-\alpha_1(i) = \pi_i a_{i, o_1}
-$$
-对$t = 2, \dots, T$，有
-$$
-\alpha_t(i) = \left[ \sum_{j=1}^N \alpha_{t-1}(j) a_{j, i} \right] b_{i, o_t}
-$$
-最终，
-$$
-P(\Y) = \sum_{i=1}^N \alpha_T(i)
-$$
-前向算法主要利用了状态变化的序列结构，记录了状态变化的中间过程，从而节省了计算时间。整个算法最耗时的步骤为递推这一步，$\alpha_t(i)$对应的加和表达式包含了$O(N)$个项，而对于每一个时刻$t$，有$N$个这样的加和表达式，故$T$个时刻整体耗时为$O(N^2 T)$。&lt;/p&gt;
-&lt;h3 id=&#34;学习问题&#34;&gt;学习问题&lt;/h3&gt;
-&lt;h4 id=&#34;有监督学习&#34;&gt;有监督学习&lt;/h4&gt;
-&lt;p&gt;有监督学习是较好处理的一种问题，在这种情况下，$\X, \Y$都已知，需要我们估计模型参数$\pi, A, B$。&lt;/p&gt;
-&lt;p&gt;设样本中状态由$i$转移到$j$的频数为$A_{i, j}$，则$a_{i, j}$的估计为
-$$
-\hat a_{i, j} = \frac{A_{i, j}} {\sum_{k=1}^N A_{i, k}}
-$$
-设样本中状态为$i$且观测为$j$的频数是$B_{i, j}$，则$b_{i, j}$的估计为
-$$
-\hat b_{i, j} = \frac{B_{i, j}} {\sum_{k=1}^N B_{i, k}}
-$$
-至于初始状态向量$\pi$，若样本中由多条时序链，$\pi$亦可由相应频次估计而来。&lt;/p&gt;
-&lt;h4 id=&#34;无监督学习&#34;&gt;无监督学习&lt;/h4&gt;
-&lt;p&gt;多数情况下，状态——或者说隐变量$\X$——是没有办法观测到的，而这时就可以采用&lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/expectation-maximization/&#34;&gt;EM算法&lt;/a&gt;，通过优化似然函数的下界，找出最好的模型参数。EM算法在隐马尔科夫模型中具体实现由Baum和Welch提出，故实际求解算法被称作Baum-Welch算法。&lt;/p&gt;
-&lt;p&gt;此问题的似然函数以及对数似然函数分别为：
-$$
-\begin{aligned}
-P(\Y; \lambda) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda) \
-\log P(\Y; \lambda) &amp;amp;= \log \sum_{\X} P(\X, \Y; \lambda)
-\end{aligned}
-$$
-根据EM算法，
-$$
-\begin{aligned}
-&amp;amp;\log P(\Y; \lambda) = \log \E_{\X \sim P(\cdot | \Y; \lambda^t)} P(\X, \Y; \lambda) \
-&amp;amp;\ge \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda) \triangleq Q(\lambda^t, \lambda) \
-\end{aligned}
-$$&lt;/p&gt;
-&lt;p&gt;而下一轮迭代中，新的估计$\lambda^{t+1}$为：
-$$
-\lambda^{t+1} = \arg \max_\lambda Q(\lambda^t, \lambda)
-$$&lt;/p&gt;
-&lt;p&gt;又由于
-$$
-\begin{aligned}
-&amp;amp;Q(\lambda^t, \lambda) = \E_{\X \sim P(\cdot | \Y; \lambda^t)} \log P(\X, \Y; \lambda) \
-&amp;amp;= \sum_\X P(\X | \Y; \lambda^t) \log P(\X, \Y; \lambda) \
-&amp;amp;= \sum_\X \frac{P(\X, \Y; \lambda^t)}{P(\Y; \lambda^t)} \log P(\X, \Y; \lambda) \
-&amp;amp;= \frac{\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)}{P(\Y; \lambda^t)} \
-\end{aligned}
-$$
-其中的$\frac{1}{P(\Y; \lambda^t)}$与$\lambda$无关，所以
-$$
-\lambda^{t+1} = \arg \max_\lambda \sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda)
-$$&lt;/p&gt;
-&lt;p&gt;注意在接下来的讨论中，我们会令$\X = (x_{i_1}, \dots, x_{i_T})$，但为了整体简洁，我们不会在每一个$\X$出现的地方将此式展开。对上式做进一步展开，
-$$
-\begin{aligned}
-&amp;amp;\sum_\X P(\X, \Y; \lambda^t) \log P(\X, \Y; \lambda) = \sum_\X P(\X, \Y; \lambda^t) \log \pi_{i_1} a_{i_1, i_2} b_{i_1, o_1} \dots a_{i_{T-1}, i_T} b_{i_T, o_T} \
-&amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1} a_{i_t, i_{t+1}} + \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log b_{i_t, o_t}
-\end{aligned}
-$$&lt;/p&gt;
-&lt;p&gt;我们可以对其中的三项分别最大化，以达到整体最大化。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;注意到$\pi$满足约束条件$\sum_{j=1}^N \pi_j = 1$，写出其拉格朗日函数：
-$$
-\begin{aligned}
-L_\pi (\pi, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \log \pi_{i_1} + \gamma (\sum_{j=1}^N \pi_j - 1) \
-&amp;amp;= \sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) \log \pi_{j} + \gamma (\sum_{j=1}^N \pi_j - 1)
-\end{aligned}
-$$
-对上式关于$\pi$求导并令其为$0$，得到对于任意$j = 1, \dots, N$，
-$$
-\begin{align}
-\frac{P(\Y, i_1 = j; \lambda^t)}{\pi_j} + \gamma &amp;amp;= 0 \
-P(\Y, i_1 = j; \lambda^t) + \pi_j \gamma &amp;amp;= 0 \label{pi-eq}
-\end{align}
-$$
-对上式关于$j$求和，得到
-$$
-\sum_{j=1}^N P(\Y, i_1 = j; \lambda^t) + \sum_{j=1}^N \pi_j \gamma = 0 \
-\gamma = -P(\Y; \lambda^t)
-$$
-重新代入$\eqref{pi-eq}$得到
-$$
-\pi_j = \frac{P(\Y, i_1=j; \lambda^t)}{P(\Y; \lambda^t)}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;注意到$A$满足约束条件$\forall j = 1, \dots, N, \sum_{k=1}^N a_{j, k} = 1$，写出其拉格朗日函数：
-$$
-\begin{aligned}
-L_A (A, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^{T-1} \log a_{i_t, i_{t+1}} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} - 1) \
-&amp;amp;= \sum_{j=1}^N \sum_{k=1}^N \sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k; \lambda^t) \log a_{j, k} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^N a_{j, k} - 1)
-\end{aligned}
-$$
-类似对$\pi$的求解，我们可以得到
-$$
-a_{j, k} = \frac{\sum_{t=1}^{T-1} P(\Y, i_1=j, i_2=k; \lambda^t)}{\sum_{t=1}^{T-1} P(\Y, i_1=j; \lambda^t)}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;注意到$B$满足约束条件$\forall j = 1, \dots, N, \sum_{k=1}^M b_{j, k} = 1$，写出其拉格朗日函数：
-$$
-\begin{aligned}
-L_B (B, \gamma) &amp;amp;= \sum_{\X} P(\X, \Y; \lambda^t) \sum_{t=1}^T \log b_{i_t, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1) \
-&amp;amp;= \sum_{j=1}^N \sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \log b_{j, o_t} + \sum_{j=1}^N \gamma_j (\sum_{k=1}^M b_{j, k} - 1)
-\end{aligned}
-$$
-类似对$\pi$的求解，我们可以得到
-$$
-b_{j, k} = \frac{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t) \mathbb{I}[o_t = y_k]}{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t)}
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;预测问题&#34;&gt;预测问题&lt;/h3&gt;
-&lt;p&gt;预测问题常用的算法是Viterbi算法，它是通过动态规划求解出一条最优路径。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/</guid>
@@ -12475,125 +12348,6 @@ $$
 f^{**}(t) = \inf_y \sup_x [f(t)] = f(t)
 $$
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Convex_conjugate&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wiki&lt;/a&gt; || &lt;a href=&#34;https://zhuanlan.zhihu.com/p/188702379&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;凸优化-凸共轭&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/introduction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/introduction/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point (Claude Shannon, 1948).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Similar to that stated above, the fundamental subject of machine learning is about with best effort recovering the original data using the so-called model or algorithm.&lt;/p&gt;
-&lt;p&gt;The recovery can be done by memoizing. In communication system, this is exactly what we want: we need to try our best to convey the message with the achievable highest fidelity. But it may be overwhelmingly costly when the volume of data becomes larger, such as in the case faced by machine learning. Thus, a better way would be to summarizing, i.e. using a function to reveal the correlation (here I don&amp;rsquo;t mean the mathematical term correlation) among data.&lt;/p&gt;
-&lt;p&gt;This book reviews the classic concepts and methods of the recovery process in communication system field. But it would also be interesting for machine learning folks, as the two fields meet the same capacity limit of the recovery.&lt;/p&gt;
-&lt;h2 id=&#34;a-system-view&#34;&gt;A System View&lt;/h2&gt;
-&lt;p&gt;Let&amp;rsquo;s make the life easier by introducing a few concepts. In communication, we have &lt;strong&gt;source&lt;/strong&gt; message to convey. After being passed to and encoded by the &lt;strong&gt;encoder&lt;/strong&gt;, the message travels along the &lt;strong&gt;channel&lt;/strong&gt; to be finally decoded by the &lt;strong&gt;decoder&lt;/strong&gt; and received by the receiver.&lt;/p&gt;
-&lt;p&gt;The encoding process includes transforming the data into digital form and introducing redundant information for the actual transmission. The redundancy is necessary to keep the underlying data from the &lt;strong&gt;noisy&lt;/strong&gt; channel, which may alter bits, or add/drop bits (these two cases are very rare though) to the bit flow transmitting on it.&lt;/p&gt;
-&lt;p&gt;Information theory is concerned with the theoretical limit and potential for such systems. The coding theory is concerned with designing such a coding theme as to reach the limit/potential.&lt;/p&gt;
-&lt;h2 id=&#34;error-correcting-codes&#34;&gt;Error-correcting Codes&lt;/h2&gt;
-&lt;p&gt;By the name of &amp;ldquo;error-correcting&amp;rdquo;, we mean that we want to be able to detect and correct errors; the retransmission is not an option.&lt;/p&gt;
-&lt;p&gt;The way we do this, as stated above, is to add redundancy. But that the redundancy needs to be cost-effective. The &lt;strong&gt;rate&lt;/strong&gt; is the ratio between the amount of source data and that of the transmitted data; the higher the better.&lt;/p&gt;
-&lt;p&gt;There are some examples of coding scheme in this genre:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;repetition code&lt;/li&gt;
-&lt;li&gt;block code
-&lt;ul&gt;
-&lt;li&gt;Hamming code&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;the-best-performance&#34;&gt;The Best Performance?&lt;/h2&gt;
-&lt;p&gt;There seems to be a tradeoff between the error probability (which we want to minimize) and the rate (which we want to maximize), which can be seen mathematically in the case of repetition code and Hamming code.&lt;/p&gt;
-&lt;p&gt;It seems that the error-rate curve, no matter for which kind of coding scheme, would pass the $(0, 0)$ point: in order to achieve a vanishingly small error probability, one would have to reduce the rate correspondingly to zero.&lt;/p&gt;
-&lt;p&gt;However, Shannon proved that this curve may intersect with the rate axis at some nonzero point! And this maximum rate at which the communication is possible with arbitrarily small error probability is called the &lt;strong&gt;capacity&lt;/strong&gt; of the channel. The capacity is only related to the noise level of this channel. For any noisy binary symmetric channel with noise level of $f$ (i.e., the probability that a bit is flipped), its capacity is
-$$
-C(f) = 1 - H_2(f) = 1 - \left[ f \log \frac{1}{f} + (1-f) \log \frac{1}{1-f} \right]
-$$&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/</guid>
-      <description>&lt;p&gt;Other than block code where symbols are encoded in chunks, symbol code will assign each symbol a unique codeword. Among the codeword schemes, we prefer those where no codeword is a prefix of any other codeword. These are called &lt;strong&gt;prefix code&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;The problem is how to give such scheme, or does it really exist?&lt;/p&gt;
-&lt;h2 id=&#34;kraft-mcmillan-inequality&#34;&gt;Kraft-McMillan Inequality&lt;/h2&gt;
-&lt;p&gt;Kraft-McMillan inequality reveals the relation&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Denote the length of each symbol code as $l_i$ and suppose there are $I$ symbols. If $\sum_{i=1}^I 2^{-l_i} \le 1$, then there exists a set of uniquely-decodable prefix coding with these lengths as their symbol codes&amp;rsquo; lengths.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: The proof is done by construction. The number of codes of length $l$ should be less than $2^{l}$, or else the inequality will be violated. Therefore $\forall l = 0,1,\dots$, we can loosely arrange all the codes of length $l$ to be unique (since there are $2^l$ many distinct bit strings of length $l$). Then the uniqueness condition is checked.&lt;/p&gt;
-&lt;p&gt;Denote the number of codes of length $l$ by $C_l$. For any two consecutive lengths $l$ and $(l+1)$, we have
-$$
-\begin{aligned}
-2^{-l} C_l + 2^{-(l+1)} C_{l+1} &amp;amp;\le\sum_{i=1}^I 2^{-l_i}\le 1 \
-C_{l+1} &amp;amp;\le 2^{l+1} - 2 C_l \
-C_{l+1} &amp;amp;\le 2(2^l - C_l) \
-\end{aligned}
-$$
-This means we can append these unused $(2^l - C_l)$ codes of length $l$ with $0$ and $1$ to suit the number of codes of length $l+1$. Construction completes.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Suppose we have a set of uniquely-decodable prefix coding. Denote the length of each symbol code as $l_i$ and there are $I$ symbols. Then,
-$$
-\sum_{i=1}^I 2^{-l_i} \le 1
-$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Proof&lt;/strong&gt;: Let $S = \sum_{i=1}^I 2^{-l_i} \le 1$, then,
-$$
-\begin{aligned}
-S^N &amp;amp;= (\sum_{i=1}^I 2^{-l_i})^N \
-&amp;amp;= \sum_{i_1=1}^I \dots \sum_{i_N=1}^I 2^{-(l_{i_1} + \dots + l_{i_N})}
-\end{aligned}
-$$
-The $(l_{i_1} + \dots + l_{i_N})$ term can be treated as the length of encoding of $a_{i_1} \dots a_{i_N}$ of arbitrary length $N$. Let $l_\min = \min_i l_i, l_\max = \max_i l_i$, the above can be re-written as
-$$
-S^N = \sum_{l = Nl_\min}^{Nl_\max} 2^{-l}C_l
-$$
-where $C_l$ represents the number of symbol codes of length $l$. Since the coding is uniquely-decodable, $C_l \le 2^l$. Therefore,
-$$
-S^N \le \sum_{l = Nl_\min}^{Nl_\max} 2^{-l} 2^l \le Nl_\max
-$$
-If $S &amp;gt; 1$, the above cannot hold for arbitrary $N$. Therefore $S \le 1$.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;source-coding-theorem-for-symbol-code&#34;&gt;Source Coding Theorem for Symbol Code&lt;/h2&gt;
-&lt;p&gt;For an ensemble $X$, there exists a prefix code $C$ with expected length satisfying
-$$
-H(X) \le L(C,X) &amp;lt; H(X) + 1
-$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt;: We define the implicit probabilities $q_i = 2^{-l_i} / z$ where $z = \sum_i 2^{-l_i}$. Then,
-$$
-\begin{aligned}
-L(C,X) &amp;amp;= \sum_i p_i l_i = -\sum_i [p_i \log (q_iz)] \
-&amp;amp;=\sum_i [p_i \log 1/q_i] - \log z \
-&amp;amp;\ge H(X)
-\end{aligned}
-$$
-The equality holds when $z = 1$ (the code is complete) and $q = p$ ($l_i = \log 1/p_i$).&lt;/p&gt;
-&lt;p&gt;From another perspective, suppose the coding is complete but not optimal,
-$$
-\begin{aligned}
-L(C,X) &amp;amp;= -\sum_i [p_i \log (q_iz)] = -\sum_i [p_i \log (q_i)] \
-&amp;amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i \log (q_i)] \
-&amp;amp;= H(X) + D_{KL}(p || q)
-\end{aligned}
-$$
-where the cost is the extra $D_{KL}(p || q)$ bits, which is brought by instead treating $q$ as the real distribution. $D_{KL(p||q)}$ is termed as relative entropy or the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
