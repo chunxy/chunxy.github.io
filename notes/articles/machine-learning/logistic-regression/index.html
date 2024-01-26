@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,8 +1342,14 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#two-class-logistic-regression">Two-class Logistic Regression</a></li>
-    <li><a href="#multi-class-logistic-regression">Multi-class Logistic Regression</a></li>
+    <li><a href="#two-class-logistic-regression">Two-class Logistic
+Regression</a>
+      <ul>
+        <li><a href="#some-history">Some History</a></li>
+      </ul>
+    </li>
+    <li><a href="#multi-class-logistic-regression">Multi-class Logistic
+Regression</a></li>
   </ul>
 </nav>
 
@@ -1400,27 +1434,49 @@
           <div class="article-style">
             
 
-<h2 id="two-class-logistic-regression">Two-class Logistic Regression</h2>
-<p>Logistic Regression is a binary linear classifier. Suppose the feature space is <span class="math inline">\(\R^N\)</span>, then it processes the feature vector <span class="math inline">\(x\)</span> with a linear function <span class="math inline">\(f(x) = w^Tx + b\)</span>, where <span class="math inline">\(w \in \R^N\)</span> and <span class="math inline">\(b \in \R\)</span>. It takes a probabilistic approach and maps <span class="math inline">\(f(x)\)</span> to a probability value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> by applying a sigmoid function <span class="math inline">\(\sigma(z) = \frac{1}{1 + e^{-z}}\)</span>. That is <span class="math display">\[
+<h2 id="two-class-logistic-regression">Two-class Logistic
+Regression</h2>
+<p>Logistic Regression is a binary linear classifier. Suppose the
+feature space is <span class="math inline">\(\R^N\)</span>, then it
+processes the feature vector <span class="math inline">\(x\)</span> with
+a linear function <span class="math inline">\(f(x) = w^Tx + b\)</span>,
+where <span class="math inline">\(w \in \R^N\)</span> and <span class="math inline">\(b \in \R\)</span>. It takes a probabilistic
+approach and maps <span class="math inline">\(f(x)\)</span> to a
+probability value between <span class="math inline">\(0\)</span> and
+<span class="math inline">\(1\)</span> by applying a sigmoid function
+<span class="math inline">\(\sigma(z) = \frac{1}{1 + e^{-z}}\)</span>.
+That is <span class="math display">\[
 \begin{aligned}
 p(y = +1|x) &amp;= \sigma(f(x)) \\
 p(y = -1|x) &amp;= 1 - \sigma(f(x)) = \sigma(-f(x)) \\
 \end{aligned}
-\]</span> Or equivalently, <span class="math inline">\(p(y|x) = \sigma(yf(x))\)</span>. Then, <span class="math inline">\(f_{LR}(x) = \arg \max\limits_{y \in \{-1, 1\}} \sigma(y(f(x)))\)</span>.</p>
-<p>Logistic Regression is a discriminative classifier because we are directly modelling <span class="math inline">\(p(y|x)\)</span>, with no intermediate step on <span class="math inline">\(p(x|y)\)</span>.</p>
-<p>Given dataset <span class="math inline">\(\mathcal{D} = {x^{(i)}, y^{(i)}, i=1, \dots, M}\)</span>, Logistic Regression is learning by maximizing the <strong>conditional</strong> log-likelihood of <span class="math inline">\(\mathcal{D}\)</span>. <span class="math display">\[
-l(w, b) = \log L(w, b) = \log \prod_{i=1}^Mp(y^{(i)}|x^{(i)};w,b) = \sum_{i=1}^M\log p(y^{(i)}|x^{(i)};w,b)
+\]</span> Or equivalently, <span class="math inline">\(p(y|x) =
+\sigma(yf(x))\)</span>. Then, <span class="math inline">\(f_{LR}(x) =
+\arg \max\limits_{y \in \{-1, 1\}} \sigma(y(f(x)))\)</span>.</p>
+<p>Logistic regression is a discriminative classifier because we are
+directly modelling <span class="math inline">\(p(y|x)\)</span>, with no
+intermediate step on <span class="math inline">\(p(x|y)\)</span>.</p>
+<p>Given dataset <span class="math inline">\(\mathcal{D} = \{ (x^{(i)},
+y^{(i)}): i=1, \dots, M \}\)</span>, logistic regression is learning by
+maximizing the <strong>conditional</strong> log-likelihood of <span class="math inline">\(\mathcal{D}\)</span>. <span class="math display">\[
+l(w, b) = \log L(w, b) = \log \prod_{i=1}^Mp(y^{(i)}|x^{(i)};w,b) =
+\sum_{i=1}^M\log p(y^{(i)}|x^{(i)};w,b)
 \]</span></p>
 $$
 <span class="math display">\[\begin{aligned}
 &amp;(w^\star, b^\star) = \arg \max\limits_{w, b}l(w, b) \\
 &amp;= \arg \max\limits_{w, b}\sum_{i=1}^M\log p(y^{(i)}|x^{(i)};w,b) \\
-&amp;= \arg \max\limits_{w, b}\sum_{i=1}^M\log \sigma(y^{(i)}(w^Tx^{(i)}+b)) \\
+&amp;= \arg \max\limits_{w, b}\sum_{i=1}^M\log
+\sigma(y^{(i)}(w^Tx^{(i)}+b)) \\
 
-&amp;= \arg \min\limits_{w, b}-\sum_{i=1}^M\log \sigma(y^{(i)}(w^Tx^{(i)}+b)) \\
+&amp;= \arg \min\limits_{w, b}-\sum_{i=1}^M\log
+\sigma(y^{(i)}(w^Tx^{(i)}+b)) \\
 \end{aligned}\]</span>
 <span class="math display">\[
-Let $J(w, b) = -\sum_{i=1}^M\log \sigma(y^{(i)}(w^Tx^{(i)}+b))$ be the target function. There is no closed-form solution to this optimization problem. Rather, it is to be solved by some iterative algorithm, e.g. gradient descent. For each iteration, parameters are updated by
+Let $J(w, b) = -\sum_{i=1}^M\log \sigma(y^{(i)}(w^Tx^{(i)}+b))$ be the
+target function. There is no closed-form solution to this optimization
+problem. Rather, it is to be solved by some iterative algorithm, e.g.
+gradient descent. For each iteration, parameters are updated by
 \]</span> <span class="math display">\[\begin{gather}
 w \leftarrow w - \eta\frac{\partial J}{\partial w} \\
 b \leftarrow b - \eta\frac{\partial J}{\partial b}
@@ -1428,28 +1484,70 @@ b \leftarrow b - \eta\frac{\partial J}{\partial b}
 Specifically,
 \]</span>
 <span class="math display">\[\begin{aligned}
-\frac{\partial J}{\partial w} &amp;= -\sum_{i=1}^M\frac{\partial\log \sigma(y^{(i)}f(x^{(i)}))}{\partial w} \\
-&amp;= -\sum_{i=1}^M \frac{\partial\log \sigma(y^{(i)}f(x^{(i)}))}{\partial \sigma(y^{(i)}f(x^{(i)}))} \frac{\partial \sigma(y^{(i)}f(x^{(i)}))}{\partial (y^{(i)}f(x^{(i)}))} \frac{\partial (y^{(i)}f(x^{(i)}))}{\partial w} \\
-&amp;= -\sum_{i=1}^M \frac{1}{\sigma(y^{(i)}f(x^{(i)}))} \sigma(y^{(i)}f(x^{(i)}))(1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)}x^{(i)} \\
+\frac{\partial J}{\partial w} &amp;= -\sum_{i=1}^M\frac{\partial\log
+\sigma(y^{(i)}f(x^{(i)}))}{\partial w} \\
+&amp;= -\sum_{i=1}^M \frac{\partial\log
+\sigma(y^{(i)}f(x^{(i)}))}{\partial \sigma(y^{(i)}f(x^{(i)}))}
+\frac{\partial \sigma(y^{(i)}f(x^{(i)}))}{\partial (y^{(i)}f(x^{(i)}))}
+\frac{\partial (y^{(i)}f(x^{(i)}))}{\partial w} \\
+&amp;= -\sum_{i=1}^M \frac{1}{\sigma(y^{(i)}f(x^{(i)}))}
+\sigma(y^{(i)}f(x^{(i)}))(1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)}x^{(i)}
+\\
 &amp;= -\sum_{i=1}^M (1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)}x^{(i)} \\
 \end{aligned}\]</span>
 <p>$$</p>
 <p><span class="math display">\[
 \begin{aligned}
-\frac{\partial J}{\partial b} &amp;= -\sum_{i=1}^M\frac{\partial\log \sigma(y^{(i)}f(x^{(i)}))}{\partial b} \\
-&amp;= -\sum_{i=1}^M \frac{\partial\log \sigma(y^{(i)}f(x^{(i)}))}{\partial \sigma(y^{(i)}f(x^{(i)}))} \frac{\partial \sigma(y^{(i)}f(x^{(i)}))}{\partial (y^{(i)}f(x^{(i)}))} \frac{\partial (y^{(i)}f(x^{(i)}))}{\partial b} \\
-&amp;= -\sum_{i=1}^M \frac{1}{\sigma(y^{(i)}f(x^{(i)}))} \sigma(y^{(i)}f(x^{(i)}))(1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)} \\
+\frac{\partial J}{\partial b} &amp;= -\sum_{i=1}^M\frac{\partial\log
+\sigma(y^{(i)}f(x^{(i)}))}{\partial b} \\
+&amp;= -\sum_{i=1}^M \frac{\partial\log
+\sigma(y^{(i)}f(x^{(i)}))}{\partial \sigma(y^{(i)}f(x^{(i)}))}
+\frac{\partial \sigma(y^{(i)}f(x^{(i)}))}{\partial (y^{(i)}f(x^{(i)}))}
+\frac{\partial (y^{(i)}f(x^{(i)}))}{\partial b} \\
+&amp;= -\sum_{i=1}^M \frac{1}{\sigma(y^{(i)}f(x^{(i)}))}
+\sigma(y^{(i)}f(x^{(i)}))(1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)} \\
 &amp;= -\sum_{i=1}^M (1 - \sigma(y^{(i)}f(x^{(i)}))) y^{(i)} \\
 \end{aligned}
 \]</span></p>
-<p>Note that the posterior obtained by binary <a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a> also has the form of <span class="math display">\[
+<p>Note that the posterior obtained by binary <a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a> also
+has the form of <span class="math display">\[
 p(y|x) = \frac{1}{1 + e^{-(w^Tx + b)}}
-\]</span> This is not to say LDA and LR are the same in binary case. LDA is a generative model which learns <span class="math inline">\(p(x|y)\)</span> and <span class="math inline">\(p(y)\)</span>, LR is a discriminative model which only learns <span class="math inline">\(p(y|x)\)</span>. One can discriminate with a generative model, but not reversely.</p>
-<h2 id="multi-class-logistic-regression">Multi-class Logistic Regression</h2>
-<p>One way to train use Logistic Regression in multi-class classification in to for each class <span class="math inline">\(i = {1, \dots, C}\)</span>, assign a weight vector <span class="math inline">\(w^{(i)}\)</span>, the probability is define by the softmax function: <span class="math display">\[
-p(y = c|x) =\frac{exp(w^{(c)}\cdot x + b^{(c)})}{\sum_{i=1}^Cexp(w^{(i)} \cdot x + b^{(i)})}
-\]</span> Then <span class="math inline">\(f_{LR_{multi-class}}(x) = \arg \max\limits_{y \in \{1,\dots,C\}}p(y|x)\)</span></p>
-<p>To prevent overfitting, a prior distribution is usually added to <span class="math inline">\(w\)</span>. Suppose each dimension of <span class="math inline">\(w\)</span> is independently sampled from a Gaussian distribution <span class="math inline">\(\mathcal N(0, \frac{C}{2})\)</span>, then, <span class="math display">\[
+\]</span> This is not to say LDA and LR are the same in binary case. LDA
+is a generative model which learns <span class="math inline">\(p(x|y)\)</span> and <span class="math inline">\(p(y)\)</span>, LR is a discriminative model which
+only learns <span class="math inline">\(p(y|x)\)</span>. One can
+discriminate with a generative model, but not reversely.</p>
+<h3 id="some-history">Some History</h3>
+<p>Historically, there has been efforts on adapting linear regression to
+the classification task where the output is a probability value between
+<span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, instead of between <span class="math inline">\(-\infty\)</span> and <span class="math inline">\(+\infty\)</span>. Many attempts have been given to
+mapping <span class="math inline">\((0, 1)\)</span> to <span class="math inline">\((-\infty, +\infty)\)</span> first and then apply
+linear regression on transformed values. An early work uses the quantile
+function of standard normal distribution. The model was named as
+“<strong>prob</strong>abilistic un<strong>it</strong>” (probit).
+However, this model is too computationally-expensive at that time. Later
+on a work that uses the quantile function of logistic distribution
+followed on, naming its model as “<strong>log</strong>istic
+un<strong>it</strong>” (logit). Essentially, the logit function is the
+log of the odds: <span class="math display">\[
+\mathrm{logit} (p) = \ln \frac{p}{1-p}
+\]</span> In machine learning, un-normalized scores for different
+classes are usually called logits too. It makes some sense since these
+unbounded values are to be mapped to <span class="math inline">\((0,
+1)\)</span>, which means they are logit-ted values.</p>
+<h2 id="multi-class-logistic-regression">Multi-class Logistic
+Regression</h2>
+<p>One way to train use Logistic Regression in multi-class
+classification in to for each class <span class="math inline">\(i = {1,
+\dots, C}\)</span>, assign a weight vector <span class="math inline">\(w^{(i)}\)</span>, the probability is define by the
+softmax function: <span class="math display">\[
+p(y = c|x) =\frac{\exp(w^{(c)}\cdot x + b^{(c)})}{\sum_{i=1}^C
+\exp(w^{(i)} \cdot x + b^{(i)})}
+\]</span> Then <span class="math inline">\(f_\text{Multiclass LR}(x) =
+\arg \max\limits_{y \in \{1,\dots,C\}}p(y|x)\)</span></p>
+<p>To prevent overfitting, a prior distribution is usually added to
+<span class="math inline">\(w\)</span>. Suppose each dimension of <span class="math inline">\(w\)</span> is independently sampled from a
+Gaussian distribution <span class="math inline">\(\mathcal N(0,
+\frac{C}{2})\)</span>, then, <span class="math display">\[
 p(w) \propto \exp(-\frac{1}{C}w^Tw)
 \]</span></p>
 
@@ -1542,7 +1640,7 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1592,7 +1690,7 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1679,7 +1777,7 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

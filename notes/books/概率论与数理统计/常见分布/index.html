@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1316,17 +1344,24 @@
   <ul>
     <li><a href="#离散型">离散型</a>
       <ul>
-        <li><a href="#二项分布binomial-distribution">二项分布（binomial distribution）</a></li>
-        <li><a href="#泊松分布poisson-distribution">泊松分布（Poisson distribution）</a></li>
-        <li><a href="#伯努利分布bernoulli-distribution">伯努利分布（Bernoulli distribution）</a></li>
-        <li><a href="#多项分布multinomial-distribution">多项分布（multinomial distribution）</a></li>
-        <li><a href="#分类分布categorical-distribution">分类分布（categorical distribution）</a></li>
+        <li><a href="#二项分布binomial-distribution">二项分布（binomial
+distribution）</a></li>
+        <li><a href="#泊松分布poisson-distribution">泊松分布（Poisson
+distribution）</a></li>
+        <li><a href="#伯努利分布bernoulli-distribution">伯努利分布（Bernoulli
+distribution）</a></li>
+        <li><a href="#多项分布multinomial-distribution">多项分布（multinomial
+distribution）</a></li>
+        <li><a href="#分类分布categorical-distribution">分类分布（categorical
+distribution）</a></li>
       </ul>
     </li>
     <li><a href="#连续型">连续型</a>
       <ul>
-        <li><a href="#指数分布exponential-distribution">指数分布（exponential distribution）</a></li>
-        <li><a href="#正态分布normal-distribution">正态分布（normal distribution）</a></li>
+        <li><a href="#指数分布exponential-distribution">指数分布（exponential
+distribution）</a></li>
+        <li><a href="#正态分布normal-distribution">正态分布（normal
+distribution）</a></li>
       </ul>
     </li>
   </ul>
@@ -1414,7 +1449,8 @@
             
 
 <h2 id="离散型">离散型</h2>
-<h3 id="二项分布binomial-distribution">二项分布（binomial distribution）</h3>
+<h3 id="二项分布binomial-distribution">二项分布（binomial
+distribution）</h3>
 <p>如果离散型随机变量<span class="math inline">\(X\)</span>服从二项分布，一般记作<span class="math inline">\(X \sim B(n, p)\)</span>。 <span class="math display">\[
 \begin{gathered}
 B(x;n,p) = {n \choose x} p^x (1-p)^{n-x}, x = 0,1,\dots \\
@@ -1422,36 +1458,61 @@ B(x;n,p) = {n \choose x} p^x (1-p)^{n-x}, x = 0,1,\dots \\
 \Var[X] = np(1-p)
 \end{gathered}
 \]</span></p>
-<p>二项分布可以帮助纠正一个生活中很常见的谬误，比如说身高高于两米的人占人类总体的<span class="math inline">\(1\%\)</span>，那么是否说明随机选取的100个人中一定至少有1个人高于两米呢？记<span class="math inline">\(X\)</span>为100个人中身高高于两米的人数，显然<span class="math inline">\(X \sim B(100, 0.01)\)</span>，经计算可得<span class="math inline">\(P(X=0) \approx 0.366\)</span>。其实也就意味着，100个人中，能至少看到1个身高高于两米的人的概率其实大约是<span class="math inline">\(1-0.366 = 63.4\%\)</span>。</p>
-<h3 id="泊松分布poisson-distribution">泊松分布（Poisson distribution）</h3>
-<p>泊松分布产生于<span class="math inline">\(X\)</span>用来表示在一定时间或空间内出现的事件个数的场景中。泊松分布有一些基本假设，设观察的这一单位时间或空间为<span class="math inline">\([0, 1)\)</span>，取一个很大的自然数<span class="math inline">\(n\)</span>，将<span class="math inline">\([0,1)\)</span>平分为<span class="math inline">\(n\)</span>段窗口：<span class="math inline">\(l_1 = [0, \frac{1}{n}), l_2 = [\frac{1}{n}, \frac{2}{n}), \dots, l_n = [\frac{n-1}{n}, 1)\)</span>，则：</p>
+<p>二项分布可以帮助纠正一个生活中很常见的谬误，比如说身高高于两米的人占人类总体的<span class="math inline">\(1\%\)</span>，那么是否说明随机选取的100个人中一定至少有1个人高于两米呢？记<span class="math inline">\(X\)</span>为100个人中身高高于两米的人数，显然<span class="math inline">\(X \sim B(100, 0.01)\)</span>，经计算可得<span class="math inline">\(P(X=0) \approx
+0.366\)</span>。其实也就意味着，100个人中，能至少看到1个身高高于两米的人的概率其实大约是<span class="math inline">\(1-0.366 = 63.4\%\)</span>。</p>
+<h3 id="泊松分布poisson-distribution">泊松分布（Poisson
+distribution）</h3>
+<p>泊松分布产生于<span class="math inline">\(X\)</span>用来表示在一定时间或空间内出现的事件个数的场景中。泊松分布有一些基本假设，设观察的这一单位时间或空间为<span class="math inline">\([0, 1)\)</span>，取一个很大的自然数<span class="math inline">\(n\)</span>，将<span class="math inline">\([0,1)\)</span>平分为<span class="math inline">\(n\)</span>段窗口：<span class="math inline">\(l_1
+= [0, \frac{1}{n}), l_2 = [\frac{1}{n}, \frac{2}{n}), \dots, l_n =
+[\frac{n-1}{n}, 1)\)</span>，则：</p>
 <ol type="1">
 <li>在每段<span class="math inline">\(l_i\)</span>内，恰发生一个事件的概率正比于这段的长度<span class="math inline">\(\frac{1}{n}\)</span>，即可取为<span class="math inline">\(\frac{\lambda}{n}\)</span>；又假定<span class="math inline">\(n\)</span>很大故<span class="math inline">\(\frac{1}{n}\)</span>很小时，不可能发生两次以上事件；</li>
-<li><span class="math inline">\(l_1, l_2, \dots, l_n\)</span>中是否发生时间是相互独立的；</li>
+<li><span class="math inline">\(l_1, l_2, \dots,
+l_n\)</span>中是否发生时间是相互独立的；</li>
 </ol>
-<p>这样的基本假设下，单位窗口内发生事件的总数记为随机变量<span class="math inline">\(X\)</span>。此时<span class="math inline">\(X\)</span>应当服从二项分布，而当<span class="math inline">\(n \to \infty\)</span>时，<span class="math inline">\(X\)</span>则服从泊松分布，故泊松分布也可以看作是某种形式的二项分布取极限而得到： <span class="math display">\[
-P(X = i; \lambda) = \lim_{n \to \infty} {n \choose i} (\frac{\lambda}{n})^i (1 - \frac{\lambda}{n})^{n-i}
-\]</span> 将<span class="math inline">\(\lim_{n \to \infty} {n \choose i} / n^i = 1 / i!\)</span>、<span class="math inline">\(\lim_{n \to \infty} (1 - \frac{\lambda}{n})^{n-i} = e^{-\lambda}\)</span>代入即可得到泊松分布的分布律。</p>
-<p>一般如果<span class="math inline">\(X \sim B(n,p)\)</span>且<span class="math inline">\(n\)</span>较大、<span class="math inline">\(p\)</span>较小、<span class="math inline">\(np = \lambda\)</span>不太大时，<span class="math inline">\(X\)</span>的分布接近于泊松分布<span class="math inline">\(P(\lambda)\)</span>。 <span class="math display">\[
+<p>这样的基本假设下，单位窗口内发生事件的总数记为随机变量<span class="math inline">\(X\)</span>。此时<span class="math inline">\(X\)</span>应当服从二项分布，而当<span class="math inline">\(n \to \infty\)</span>时，<span class="math inline">\(X\)</span>则服从泊松分布，故泊松分布也可以看作是某种形式的二项分布取极限而得到：
+<span class="math display">\[
+P(X = i; \lambda) = \lim_{n \to \infty} {n \choose i}
+(\frac{\lambda}{n})^i (1 - \frac{\lambda}{n})^{n-i}
+\]</span> 将<span class="math inline">\(\lim_{n \to \infty} {n \choose
+i} / n^i = 1 / i!\)</span>、<span class="math inline">\(\lim_{n \to
+\infty} (1 - \frac{\lambda}{n})^{n-i} =
+e^{-\lambda}\)</span>代入即可得到泊松分布的分布律。</p>
+<p>一般如果<span class="math inline">\(X \sim B(n,p)\)</span>且<span class="math inline">\(n\)</span>较大、<span class="math inline">\(p\)</span>较小、<span class="math inline">\(np =
+\lambda\)</span>不太大时，<span class="math inline">\(X\)</span>的分布接近于泊松分布<span class="math inline">\(P(\lambda)\)</span>。 <span class="math display">\[
 \begin{gathered}
 P(x;\lambda) = e^{-\lambda} \frac{\lambda^x}{x!}, x = 0,1,\dots \\
 \E[X] = \lambda \\
 \Var[X] = \lambda
 \end{gathered}
 \]</span></p>
-<h3 id="伯努利分布bernoulli-distribution">伯努利分布（Bernoulli distribution）</h3>
-<p>伯努利分布<span class="math inline">\(B(1, p)\)</span>实际上是二项分布中<span class="math inline">\(n = 1\)</span>的一个特例： <span class="math display">\[
+<h3 id="伯努利分布bernoulli-distribution">伯努利分布（Bernoulli
+distribution）</h3>
+<p>伯努利分布<span class="math inline">\(B(1,
+p)\)</span>实际上是二项分布中<span class="math inline">\(n =
+1\)</span>的一个特例： <span class="math display">\[
 \begin{gathered}
 B(1;1,p) = p, B(0;1,p) = 1 - p \\
 \E[X] = p \\
 \Var[X] = p(1 - p)
 \end{gathered}
 \]</span></p>
-<h3 id="多项分布multinomial-distribution">多项分布（multinomial distribution）</h3>
-<p>多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值的是多值的而不是二值的（binary）。假设有<span class="math inline">\(k\)</span>种结果，且这<span class="math inline">\(k\)</span>种结果互相对立、完备穷举（mutually exclusive and collectively exhaustive），此时它们的概率之和为<span class="math inline">\(1\)</span>，即<span class="math inline">\(p_1 + \dots + p_k = 1\)</span>，多项分布计算的则是这<span class="math inline">\(k\)</span>种结果分别发生<span class="math inline">\(n_1, \dots, n_k\)</span>次时的概率。令<span class="math inline">\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k], \vec n = [n_1, \dots, n_k]\)</span>，则： <span class="math display">\[
-P(\vec n; \vec p, N) = \frac{N!}{n_1! \dots n_k!} p_1^{n_1} \dots p_k^{n_k}
+<h3 id="多项分布multinomial-distribution">多项分布（multinomial
+distribution）</h3>
+<p>多项分布其实就是二项分布的推广，不像二项分布，多项分布的取值的是多值的而不是二值的（binary）。假设有<span class="math inline">\(k\)</span>种结果，且这<span class="math inline">\(k\)</span>种结果互相对立、完备穷举（mutually
+exclusive and collectively exhaustive），此时它们的概率之和为<span class="math inline">\(1\)</span>，即<span class="math inline">\(p_1 +
+\dots + p_k = 1\)</span>，多项分布计算的则是这<span class="math inline">\(k\)</span>种结果分别发生<span class="math inline">\(n_1, \dots, n_k\)</span>次时的概率。令<span class="math inline">\(N = n_1 + \dots + n_k, \vec p = [p_1, \dots, p_k],
+\vec n = [n_1, \dots, n_k]\)</span>，则： <span class="math display">\[
+P(\vec n; \vec p) = \frac{N!}{n_1! \dots n_k!} p_1^{n_1} \dots p_k^{n_k}
 \]</span></p>
-<h3 id="分类分布categorical-distribution">分类分布（categorical distribution）</h3>
+<p>多项分布可以拓展到连续情况，此时<span class="math inline">\(n_1,
+\dots, n_k \in \R_+\)</span>，而概率质量函数变为 <span class="math display">\[
+p(\vec n; \vec p) = \frac{\Gamma(N + 1)}{\Gamma(n_1 + 1) \dots
+\Gamma(n_k + 1)} p_1^{n_1} \dots p_k^{n_k}
+\]</span>
+连续情况下的多项分布也是<code>sklearn</code>中能将TFIDF特征应用到<code>MultinomialNB</code>的基本原理。</p>
+<h3 id="分类分布categorical-distribution">分类分布（categorical
+distribution）</h3>
 <p>类似伯努利分布是二项分布<span class="math inline">\(n=1\)</span>时的特例，分类分布则是多项分布<span class="math inline">\(N=1\)</span>时的特例： <span class="math display">\[
 \begin{gathered}
 P(\vec n; \vec p, 1) = \prod_{i=1}^k p_i ^{n_i} \\
@@ -1460,19 +1521,24 @@ P(\vec n; \vec p, 1) = \prod_{i=1}^k p_i ^{n_i} \\
 \end{gathered}
 \]</span></p>
 <h2 id="连续型">连续型</h2>
-<h3 id="指数分布exponential-distribution">指数分布（exponential distribution）</h3>
-<p>指数分布最常见的一个场景是寿命估计。设想一中大批生产的电器元件，其寿命<span class="math inline">\(X\)</span>是随机变量，在“无老化”的假定下——即“若元件在时刻<span class="math inline">\(x\)</span>尚正常工作，则其失效率总为某个与<span class="math inline">\(x\)</span>无关的常数<span class="math inline">\(\lambda &gt; 0\)</span>”，<span class="math inline">\(X\)</span>服从参数为<span class="math inline">\(\lambda\)</span>的指数分布。</p>
+<h3 id="指数分布exponential-distribution">指数分布（exponential
+distribution）</h3>
+<p>指数分布最常见的一个场景是寿命估计。设想一种大批生产的电器元件，其元件寿命<span class="math inline">\(X\)</span>是随机变量，在“无老化”的假定下——即“若元件在时刻<span class="math inline">\(x\)</span>尚正常工作，则其失效率总为某个与<span class="math inline">\(x\)</span>无关的常数<span class="math inline">\(\lambda &gt; 0\)</span>”，那么<span class="math inline">\(X\)</span>服从参数为<span class="math inline">\(\lambda\)</span>的指数分布。</p>
 <p>上述假设用概率语言描述则是 <span class="math display">\[
 \lim_{h \to 0} P(x \le X \le x+h | X &gt; x) / h = \lambda
 \]</span> 注意到 <span class="math display">\[
-P(x \le X \le x+h | X &gt; x) = \frac{P(\{ x \le X \le x+h \} \cap \{ X &gt; x \})}{P(X &gt; x)} = \frac{P(x &lt; X \le x+h)}{P(X &gt; x)}
+P(x \le X \le x+h | X &gt; x) = \frac{P(\{ x \le X \le x+h \} \cap \{ X
+&gt; x \})}{P(X &gt; x)} = \frac{P(x &lt; X \le x+h)}{P(X &gt; x)}
 \]</span> 所以 <span class="math display">\[
 \begin{aligned}
-\lim_{h \to 0} \frac{P(x &lt; X \le x+h)}{h P(x &lt; X))} &amp;= \lambda \\
+\lim_{h \to 0} \frac{P(x &lt; X \le x+h)}{h P(x &lt; X))} &amp;= \lambda
+\\
 \lim_{h \to 0} \frac{F(x + h) - F(x)}{h(1 - F(x))} &amp;= \lambda \\
-\frac{F&#39;(x)}{(1 - F(x))} &amp;= \lambda
+\frac{F&#39;(x)}{1 - F(x)} &amp;= \lambda
 \end{aligned}
-\]</span> 上述微分方程的通解为<span class="math inline">\(F(x) = 1 - Ce^{-\lambda x}\)</span>，而<span class="math inline">\(F(0) = 0\)</span>，故<span class="math inline">\(C = 1\)</span>。 <span class="math display">\[
+\]</span> 上述微分方程的通解为<span class="math inline">\(F(x) = 1 -
+Ce^{-\lambda x}\)</span>，而<span class="math inline">\(F(0) =
+0\)</span>，故<span class="math inline">\(C = 1\)</span>。 <span class="math display">\[
 \begin{gathered}
 p(x;\lambda) = \begin{cases}
 \lambda e^{-\lambda x}, &amp; x &gt; 0 \\
@@ -1482,13 +1548,20 @@ p(x;\lambda) = \begin{cases}
 \Var[X] = \lambda^{-2}
 \end{gathered}
 \]</span></p>
-<h3 id="正态分布normal-distribution">正态分布（normal distribution）</h3>
+<h3 id="正态分布normal-distribution">正态分布（normal
+distribution）</h3>
 <p>正态分布也叫作高斯分布（Gaussian distribution），一维情况下： <span class="math display">\[
-p(x; \mu, \sigma) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x - \mu)^2}{2 \sigma^2}}
+p(x; \mu, \sigma) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x -
+\mu)^2}{2 \sigma^2}}
 \]</span> 二维情况下： <span class="math display">\[
-p \Big( (x,y); \mu_X, \mu_Y, \sigma_X, \sigma_Y, \rho_{XY} \Big) = \frac{1}{2\pi \sqrt{(\sigma_X^2 \sigma_Y^2 - \rho_{XY}^2)}} e^{-\frac 1 {2(1 - \rho_{XY}^2)} \left(\frac{(x-\mu_X)^2} {\sigma_X^2} - \frac{2\rho_{XY}(x - \mu_X)(y - \mu_Y)} {\sigma_X \sigma_Y} + \frac{(y-\mu_Y)^2} {\sigma_Y^2} \right)}
+p \Big( (x,y); \mu_X, \mu_Y, \sigma_X, \sigma_Y, \sigma_{XY} \Big) =
+\frac{1}{2\pi \sqrt{(\sigma_X^2 \sigma_Y^2 - \sigma_{XY}^2)}}
+e^{-\frac 1 {2(1 - \sigma_{XY}^2)} \left(\frac{(x-\mu_X)^2} {\sigma_X^2}
+- \frac{2\sigma_{XY}(x - \mu_X)(y - \mu_Y)} {\sigma_X \sigma_Y} +
+\frac{(y-\mu_Y)^2} {\sigma_Y^2} \right)}
 \]</span> <span class="math inline">\(n\)</span>维情况下： <span class="math display">\[
-p(\x; \mu, \Sigma) = \frac{1}{\sqrt{|(2\pi) \Sigma|}} e^{-\frac{1}{2} (\x-\mu)^T \Sigma^{-1} (\x-\mu)}
+p(\x; \mu, \Sigma) = \frac{1}{\sqrt{|2\pi \Sigma|}} e^{-\frac{1}{2}
+(\x-\mu)^T \Sigma^{-1} (\x-\mu)}
 \]</span></p>
 
 
@@ -1580,7 +1653,7 @@ p(\x; \mu, \Sigma) = \frac{1}{\sqrt{|(2\pi) \Sigma|}} e^{-\frac{1}{2} (\x-\mu)^T
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1630,7 +1703,7 @@ p(\x; \mu, \Sigma) = \frac{1}{\sqrt{|(2\pi) \Sigma|}} e^{-\frac{1}{2} (\x-\mu)^T
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1717,7 +1790,7 @@ p(\x; \mu, \Sigma) = \frac{1}{\sqrt{|(2\pi) \Sigma|}} e^{-\frac{1}{2} (\x-\mu)^T
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

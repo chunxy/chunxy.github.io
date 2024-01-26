@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,8 +1342,8 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#hard-margin-svm">Hard Margin SVM</a></li>
-    <li><a href="#soft-margin-svm">Soft Margin SVM</a></li>
+    <li><a href="#hard-margin-svm">Hard-margin SVM</a></li>
+    <li><a href="#soft-margin-svm">Soft-margin SVM</a></li>
     <li><a href="#kernel-svm">Kernel SVM</a></li>
     <li><a href="#solving-svm">Solving SVM</a></li>
     <li><a href="#multi-class-svm">Multi-class SVM</a></li>
@@ -1403,103 +1431,161 @@
           <div class="article-style">
             
 
-<p>Support vector machine is used in binary classification task. It aims to find a <strong>linear hyperplane</strong> that separates the data with different labels with the maximum margin. By symmetry, there should be at least one margin point on both side of the decision boundary. These points are called <strong>support vectors</strong>.</p>
-<h3 id="hard-margin-svm">Hard Margin SVM</h3>
-<p>Suppose the data <span class="math inline">\(\mathcal D = \{(x^{(i)}, y^{(i)}), i=1, \dots, M\}\)</span>, and is linearly separable. The separation hyperplane will be in the form of <span class="math inline">\(w^Tx + b = 0\)</span>. Let <span class="math inline">\(y^{(i)} = 1\)</span> when <span class="math inline">\(x^{(i)}\)</span> is above the hyperplane (<span class="math inline">\(w^Tx^{(i)} + b &gt; 0\)</span>), <span class="math inline">\(y^{(i)} = -1\)</span> when <span class="math inline">\(x^{(i)}\)</span> is below the hyperplane (<span class="math inline">\(w^Tx^{(i)} + b &lt; 0\)</span>).</p>
-<p>The distance (margin) from a data point to the separation hyperplane will be <span class="math display">\[
-d^{(i)} = \frac{|w^Tx^{(i)} + b|}{||w||_2} = \frac{y^{(i)}(w^Tx^{(i)} + b)}{||w||_2}\\
-\]</span> <span class="math inline">\(d^{(i)}\)</span> is called the <strong>geometric distance</strong>, while <span class="math inline">\(|w^Tx^{(i)} + b|\)</span> is called the <strong>functional distance</strong>.</p>
+<p>Support vector machine is used in binary classification task. It aims
+to find a <strong>linear hyperplane</strong> that separates the data
+with different labels with the maximum margin. By symmetry, there should
+be at least one margin point on both side of the decision boundary.
+These points are called <strong>support vectors</strong>.</p>
+<h3 id="hard-margin-svm">Hard-margin SVM</h3>
+<p>Suppose the data <span class="math inline">\(\mathcal D = \{(x^{(i)},
+y^{(i)}), i=1, \dots, M\}\)</span>, and is linearly separable. The
+separation hyperplane will be in the form of <span class="math inline">\(w^Tx + b = 0\)</span>. Let <span class="math inline">\(y^{(i)} = 1\)</span> when <span class="math inline">\(x^{(i)}\)</span> is above the hyperplane (<span class="math inline">\(w^Tx^{(i)} + b &gt; 0\)</span>), <span class="math inline">\(y^{(i)} = -1\)</span> when <span class="math inline">\(x^{(i)}\)</span> is below the hyperplane (<span class="math inline">\(w^Tx^{(i)} + b &lt; 0\)</span>).</p>
+<p>The distance (margin) from a data point to the separation hyperplane
+will be <span class="math display">\[
+d^{(i)} = \frac{|w^Tx^{(i)} + b|}{||w||_2} = \frac{y^{(i)}(w^Tx^{(i)} +
+b)}{||w||_2}\\
+\]</span> <span class="math inline">\(d^{(i)}\)</span> is called the
+<strong>geometric distance</strong>, while <span class="math inline">\(|w^Tx^{(i)} + b|\)</span> is called the
+<strong>functional distance</strong>.</p>
 <p>The <strong>margin</strong> of the hyperplane <span class="math inline">\(w^Tx + b = 0\)</span> will be <span class="math display">\[
-d = \min\limits_{i \in \{1,\dots,M\}} d^{(i)} = \min\limits_{i \in \{1,\dots,M\}} \frac{y^{(i)}(w^Tx^{(i)}+b)}{||w||_2}
+d = \min\limits_{i \in \{1,\dots,M\}} d^{(i)} = \min\limits_{i \in
+\{1,\dots,M\}} \frac{y^{(i)}(w^Tx^{(i)}+b)}{||w||_2}
 \]</span> The maximum margin solution is found by solving <span class="math display">\[
-\max\limits_{w,b} \min\limits_{i \in \{1,\dots,M\}} \frac{y^{(i)}(w^Tx^{(i)}+b)}{||w||_2}
-\]</span> Suppose <span class="math inline">\((w^\prime, b^\prime)\)</span> is one solution to the above. Then <span class="math inline">\((\lambda w^\prime, \lambda b^\prime)\)</span> is also a solution, because <span class="math display">\[
-\frac{y^{(i)}((\lambda w^{\prime})^Tx^{(i)} + \lambda b^\prime)}{||\lambda w^\prime||_2} = \frac{\lambda y^{(i)}((w^{\prime})^Tx^{(i)} + b^\prime)}{\lambda ||w^\prime||_2} = \frac{y^{(i)}((w^{\prime})^Tx^{(i)} + b^\prime)}{||w^\prime||_2}
-\]</span> There is an extra degree of freedom in this problem. Therefore, we may impose <span class="math display">\[
+\max\limits_{w,b} \min\limits_{i \in \{1,\dots,M\}}
+\frac{y^{(i)}(w^Tx^{(i)}+b)}{||w||_2}
+\]</span> Suppose <span class="math inline">\((w^\prime,
+b^\prime)\)</span> is one solution to the above. Then <span class="math inline">\((\lambda w^\prime, \lambda b^\prime)\)</span> is
+also a solution, because <span class="math display">\[
+\frac{y^{(i)}((\lambda w^{\prime})^Tx^{(i)} + \lambda
+b^\prime)}{||\lambda w^\prime||_2} = \frac{\lambda
+y^{(i)}((w^{\prime})^Tx^{(i)} + b^\prime)}{\lambda ||w^\prime||_2} =
+\frac{y^{(i)}((w^{\prime})^Tx^{(i)} + b^\prime)}{||w^\prime||_2}
+\]</span> There is an extra degree of freedom in this problem.
+Therefore, we may impose <span class="math display">\[
 \min\limits_{i \in \{1,\dots,M\}} y^{(i)}(w^Tx^{(i)}+b) = 1
-\]</span> to consume this freedom. Consequently, the problem becomes <span class="math display">\[
+\]</span> to consume this freedom. Consequently, the problem becomes
+<span class="math display">\[
 \begin{gather}
 \max \frac{1}{||w||_2} \iff \min \frac{1}{2}||w||^2_2 \\
 s.t.\quad y^{(i)}(w^Tx^{(i)} + b) \ge 1, i = 1,\dots,M
 \end{gather}
 \]</span></p>
-<h3 id="soft-margin-svm">Soft Margin SVM</h3>
-<p>It may not happen that the real data are linearly-separable, or there may exist noisy samples that disrupt this linear separability. In such case, we may allow some samples to violate the margin. We define some slack variables <span class="math inline">\(\xi_i \ge 0\)</span>. <span class="math inline">\(\xi_i &gt; 0\)</span> means that the sample is inside the margin (or even this sample will be misclassified), <span class="math inline">\(\xi_i = 0\)</span> means that the sample is outside the margin.</p>
-<p>Of course, these slack variables should be as small as possible. Then the problem becomes <span class="math display">\[
+<h3 id="soft-margin-svm">Soft-margin SVM</h3>
+<p>It may not happen that the real data are linearly-separable, or there
+may exist noisy samples that disrupt this linear separability. In such
+case, we may allow some samples to violate the margin. We define some
+slack variables <span class="math inline">\(\xi_i \ge 0\)</span>. <span class="math inline">\(\xi_i &gt; 0\)</span> means that the sample is
+inside the margin (or even this sample will be misclassified), <span class="math inline">\(\xi_i = 0\)</span> means that the sample is
+outside the margin.</p>
+<p>Of course, these slack variables should be as small as possible. Then
+the problem becomes <span class="math display">\[
 \begin{gather}
 \min \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M\xi_i \\
-s.t.\quad y^{(i)}(w^Tx^{(i)} + b) \ge 1 - \xi_i, \xi_i \ge 0, i=1,\dots,M
+s.t.\quad y^{(i)}(w^Tx^{(i)} + b) \ge 1 - \xi_i, \xi_i \ge 0,
+i=1,\dots,M
 \end{gather}
-\]</span> <span class="math inline">\(C\)</span> is a penalty factor on violating the margin. To some extent, it avoid overfitting.</p>
-<p>To solve this, first convert the problem into the standard form: <span class="math display">\[
+\]</span> <span class="math inline">\(C\)</span> is a penalty factor on
+violating the margin. To some extent, it avoid overfitting.</p>
+<p>To solve this, first convert the problem into the standard form:
+<span class="math display">\[
 \begin{aligned}
 \min \frac{1}{2}||w||^2_2 &amp;+ C\sum_{i=1}^M\xi_i \\
 s.t.\quad 1 - \xi_i - y^{(i)}(w^Tx^{(i)} + b) &amp;\le 0, i=1,\dots,M \\
 -\xi_i &amp;\le 0, i=1,\dots,M
 \end{aligned}
-\]</span> This problem gives a strong duality. The solution will satisfy the KKT conditions. We first write down the Lagrangian: <span class="math display">\[
-L(w,b,\xi,\lambda,\mu) = \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M\xi_i + \sum_{i=1}^M\lambda_i(1 - \xi_i - y^{(i)}(w^Tx^{(i)} + b)) - \sum_{i=1}^M\mu_i\xi_i
+\]</span> This problem gives a strong duality. The solution will satisfy
+the KKT conditions. We first write down the Lagrangian: <span class="math display">\[
+L(w,b,\xi,\lambda,\mu) = \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M\xi_i +
+\sum_{i=1}^M\lambda_i(1 - \xi_i - y^{(i)}(w^Tx^{(i)} + b)) -
+\sum_{i=1}^M\mu_i\xi_i
 \]</span> Then we form the dual problem: <span class="math display">\[
-\max_{\lambda,\mu;\lambda_i,\mu_i \ge 0} \min_{w,b,\xi}L(w,b,\xi,\lambda,\mu)
-\]</span> Take derivative w.r.t. <span class="math inline">\(w\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(\xi\)</span> to give <span class="math display">\[
+\max_{\lambda,\mu;\lambda_i,\mu_i \ge 0}
+\min_{w,b,\xi}L(w,b,\xi,\lambda,\mu)
+\]</span> Take derivative w.r.t. <span class="math inline">\(w\)</span>,
+<span class="math inline">\(b\)</span>, and <span class="math inline">\(\xi\)</span> to give <span class="math display">\[
 \begin{gather}
-\frac{\partial L}{\partial w} = w - \sum_{i=1}^M\lambda_iy^{(i)}x^{(i)}, \frac{\partial^2 L}{\partial w\partial w} = I \succeq 0 \\
-\frac{\partial L}{\partial b} = -\sum_{i=1}^M\lambda_iy^{(i)}, \frac{\partial^2 L}{\partial b\partial b} = 0 \succeq 0 \\
-\frac{\partial L}{\partial \xi} = C - \lambda - \mu, \frac{\partial^2 L}{\partial \xi\partial \xi} = 0 \succeq 0
+\frac{\partial L}{\partial w} = w - \sum_{i=1}^M\lambda_iy^{(i)}x^{(i)},
+\frac{\partial^2 L}{\partial w\partial w} = I \succeq 0 \\
+\frac{\partial L}{\partial b} = -\sum_{i=1}^M\lambda_iy^{(i)},
+\frac{\partial^2 L}{\partial b\partial b} = 0 \succeq 0 \\
+\frac{\partial L}{\partial \xi} = C - \lambda - \mu, \frac{\partial^2
+L}{\partial \xi\partial \xi} = 0 \succeq 0
 \end{gather}
-\]</span> The Hessian matrices of <span class="math inline">\(L\)</span> w.r.t. <span class="math inline">\(w\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(\xi\)</span> are positive semi-definite. Therefore, <span class="math inline">\(\min\limits_{w,b,\xi}L(w,\xi,\lambda,\mu)\)</span> is obtained at its local minimum, i.e. where its first-order derivative meets <span class="math inline">\(0\)</span>: <span class="math display">\[
+\]</span> The Hessian matrices of <span class="math inline">\(L\)</span>
+w.r.t. <span class="math inline">\(w\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(\xi\)</span> are positive semi-definite.
+Therefore, <span class="math inline">\(\min\limits_{w,b,\xi}L(w,\xi,\lambda,\mu)\)</span>
+is obtained at its local minimum, i.e. where its first-order derivative
+meets <span class="math inline">\(0\)</span>: <span class="math display">\[
 w = \sum_{i=1}^M\lambda_iy^{(i)}x^{(i)} \\
 \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 \lambda + \mu = C
-\]</span> Substitute above back to <span class="math inline">\(L\)</span> to transform the dual problem into <span class="math display">\[
+\]</span> Substitute above back to <span class="math inline">\(L\)</span> to transform the dual problem into
+<span class="math display">\[
 \begin{gather}
-\max_{\lambda,\mu} \frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)} + C\sum_{i=1}^M\xi_i - \sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)} + \sum_{i=1}^M\lambda_i(1 - \xi_i - y^{(i)}b) + \sum_{i=1}^M(\lambda_i - C)\xi_i \\
+\max_{\lambda,\mu}
+\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot
+x^{(j)} + C\sum_{i=1}^M\xi_i -
+\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot
+x^{(j)} + \sum_{i=1}^M\lambda_i(1 - \xi_i - y^{(i)}b) +
+\sum_{i=1}^M(\lambda_i - C)\xi_i \\
 s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 \lambda_i,\mu_i \ge 0, i=1,\dots,M \\
 \Downarrow \\
-\max_{\lambda,\mu}D(\lambda,\mu) = -\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)} + \sum_{i=1}^M\lambda_i \\
+\max_{\lambda,\mu}D(\lambda,\mu) =
+-\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot
+x^{(j)} + \sum_{i=1}^M\lambda_i \\
 s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 0 &lt; \lambda_i &lt; C, i=1,\dots,M \\
 \end{gather}
-\]</span> Since we know the optimal solution exists, instead of taking derivative of <span class="math inline">\(D\)</span> w.r.t. <span class="math inline">\(\lambda\)</span> to solve it, we assume the solution to above problem is <span class="math inline">\(\lambda^\star\)</span>. Then, <span class="math display">\[
+\]</span> Since we know the optimal solution exists, instead of taking
+derivative of <span class="math inline">\(D\)</span> w.r.t. <span class="math inline">\(\lambda\)</span> to solve it, we assume the
+solution to above problem is <span class="math inline">\(\lambda^\star\)</span>. Then, <span class="math display">\[
 w^\star = \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)} \\
 \mu^\star = C - \lambda^\star
 \]</span> Complementary constraints will give <span class="math display">\[
-\lambda^\star_i(1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star)) = 0 \\
+\lambda^\star_i(1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} +
+b^\star)) = 0 \\
 \mu_i\xi_i = 0
-\]</span> There is at least one <span class="math inline">\(\lambda^\star_j &gt; 0\)</span> or else <span class="math inline">\(w^\star = \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)} = 0\)</span>, which means the primal constraints <span class="math display">\[
-1 - \xi_i - y^{(i)}((w^\star)^Tx^{(i)} + b^\star) =  1 - \xi_i - y^{(i)}b^\star\le 0
-\]</span> won’t hold no matter what value <span class="math inline">\(b^\star\)</span> takes. This specific <span class="math inline">\(\lambda^\star_j\)</span>’s slackness complementary will give</p>
+\]</span> There is at least one <span class="math inline">\(\lambda^\star_j &gt; 0\)</span> or else <span class="math inline">\(w^\star =
+\sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)} = 0\)</span>, which means the
+primal constraints <span class="math display">\[
+1 - \xi_i - y^{(i)}((w^\star)^Tx^{(i)} + b^\star) =  1 - \xi_i -
+y^{(i)}b^\star\le 0
+\]</span> won’t hold no matter what value <span class="math inline">\(b^\star\)</span> takes. This specific <span class="math inline">\(\lambda^\star_j\)</span>’s slackness complementary
+will give</p>
 <p><span class="math display">\[
 \begin{aligned}
 0 &amp;= (1 - \xi^\star_j - y^{(j)}((w^\star)^Tx^{(j)} + b^\star)) \\
 b^\star &amp;= \frac{1 - \xi^\star_j}{y^{(j)}} - (w^\star)^Tx^{(j)} \\
-&amp;= \frac{1 - \xi^\star_j}{y^{(j)}} - \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)}\cdot x^{(j)}
+&amp;= \frac{1 - \xi^\star_j}{y^{(j)}} -
+\sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)}\cdot x^{(j)}
 \end{aligned}
 \]</span></p>
-According to the value of <span class="math inline">\(\lambda^\star_i\)</span> (not know yet), added with primal constraints and the complementary constraints, <span class="math display">\[
+According to the value of <span class="math inline">\(\lambda^\star_i\)</span> (not know yet), added
+with primal constraints and the complementary constraints, <span class="math display">\[
 \begin{gather}
 1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 0 \\
 \xi_i \ge 0 \\
-\lambda^\star_i(1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star)) = 0 \\
+\lambda^\star_i(1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} +
+b^\star)) = 0 \\
 \mu^\star_i\xi^\star_i = 0 \\
 \lambda^\star_i + \mu^\star_i = C
 \end{gather}
 \]</span> we can make interpretations on the value of <span class="math inline">\(\lambda^\star_i\)</span>: $$
 <span class="math display">\[\begin{aligned}
-\lambda^\star_i = 0 &amp;\Rightarrow 
+\lambda^\star_i = 0 &amp;\Rightarrow
 \begin{cases}
 \mu^\star_i = C \Rightarrow \xi^\star_i = 0 \\
 1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 0
 \end{cases}
- \Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) \ge 1 \\
- 0 &lt; \lambda^\star_i &lt; C &amp;\Rightarrow
+\Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) \ge 1 \\
+0 &lt; \lambda^\star_i &lt; C &amp;\Rightarrow
 \begin{cases}
 \mu^\star_i &gt; 0 \Rightarrow \xi^\star_i = 0 \\
 1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) = 0
 \end{cases}
 \Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) = 1 \\
-\lambda^\star_i = C &amp;\Rightarrow 
+\lambda^\star_i = C &amp;\Rightarrow
 \begin{cases}
 \mu^\star_i = 0 \Rightarrow \xi^\star_i \ge 0 \\
 1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) = 0
@@ -1507,51 +1593,84 @@ According to the value of <span class="math inline">\(\lambda^\star_i\)</span> (
 \Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 1 \\
 
 \end{aligned}\]</span>
-<p>$$ They corresponds to cases where sample <span class="math inline">\(x^{(i)}\)</span> is outside margin, is on the margin, violates the margin, respectively.</p>
-<p>The key to the above derivation is <span class="math inline">\(\lambda^\star\)</span>, which is to be solved in Solving SVM section.</p>
+<p>$$ They corresponds to cases where sample <span class="math inline">\(x^{(i)}\)</span> is outside margin, is on the
+margin, violates the margin, respectively.</p>
+<p>The key to the above derivation is <span class="math inline">\(\lambda^\star\)</span>, which is to be solved in
+Solving SVM section.</p>
 <p>Soft Margin SVM is equivalent to <span class="math display">\[
-\min \frac{1}{C}||w||^2_2 + \sum_{i=1}^M\max(0, 1 - y^{(i)}(w^Tx^{(i)} + b))
-\]</span> where <span class="math inline">\(l_h(z) = \max(0, 1 - z)\)</span> is called Hinge loss.</p>
+\min \frac{1}{C}||w||^2_2 + \sum_{i=1}^M\max(0, 1 - y^{(i)}(w^Tx^{(i)} +
+b))
+\]</span> where <span class="math inline">\(l_h(z) = \max(0, 1 -
+z)\)</span> is called Hinge loss.</p>
 <h3 id="kernel-svm">Kernel SVM</h3>
-<p>The term <span class="math inline">\(x^{(i)} \cdot x^{(j)}\)</span> in <span class="math inline">\(D(\lambda,\mu)\)</span> is the inner product between two samples. We can make a table storing these inner products. This naturally introduces the kernel trick, which means we can manipulate the entry in this table by remapping the <span class="math inline">\((x^{(i)}, x^{(j)})\)</span> so that the entry represents the inner product of some higher-dimensional features. <span class="math display">\[
-\mathcal K(x^{(i)}, x^{(j)}) = \phi(x^{(i)}), \phi(x^{(j)})
-\]</span> This saves us from explicitly defining the mapping <span class="math inline">\(\phi\)</span> of <span class="math inline">\(x\)</span> to a higher-dimensional feature. This also saves the time of the computation of the inner products of these higher-dimensional features, than that of transform-then-inner-product method.</p>
-<p>SVM is a linear classifier, which means its decision boundary is a linear hyperplane in input feature space. By applying kernel trick, we implicitly map the input feature to a higher dimensional one. Therefore the decision boundary would become a linear hyperplane in this higher-dimensional space: <span class="math display">\[
+<p>The term <span class="math inline">\(x^{(i)} \cdot x^{(j)}\)</span>
+in <span class="math inline">\(D(\lambda,\mu)\)</span> is the inner
+product between two samples. We can make a table storing these inner
+products. This naturally introduces the kernel trick, which means we can
+manipulate the entry in this table by remapping the <span class="math inline">\((x^{(i)}, x^{(j)})\)</span> so that the entry
+represents the inner product of some higher-dimensional features. <span class="math display">\[
+\mathcal K(x^{(i)}, x^{(j)}) = \phi(x^{(i)}) \cdot \phi(x^{(j)})
+\]</span> This saves us from explicitly defining the mapping <span class="math inline">\(\phi\)</span> of <span class="math inline">\(x\)</span> to a higher-dimensional feature. This
+also saves the time of the computation of the inner products of these
+higher-dimensional features, than that of transform-then-inner-product
+method.</p>
+<p>SVM is a linear classifier, which means its decision boundary is a
+linear hyperplane in input feature space. By applying kernel trick, we
+implicitly map the input feature to a higher dimensional one. Therefore
+the decision boundary would become a linear hyperplane in this
+higher-dimensional space: <span class="math display">\[
 w_\phi\phi(x) + b_\phi = 0
-\]</span> And thus this hyperplane is not linear in original feature space.</p>
+\]</span> And thus this hyperplane is not linear in original feature
+space.</p>
 <h4 id="polynomial-kernel">Polynomial Kernel</h4>
 <ul>
-<li><p>Input feature <span class="math inline">\(x = [x_1,\dots,x_N] \in \R^N\)</span></p></li>
+<li><p>Input feature <span class="math inline">\(x = [x_1,\dots,x_N] \in
+\R^N\)</span></p></li>
 <li><p>Kernel between two features is a <span class="math inline">\(p\)</span>-th order polynomial: <span class="math display">\[
-\mathcal K(x, x^\prime) = (x^Tx^\prime)^p = (\sum_{i=1}^Nx_ix^\prime_i)^p
+\mathcal K(x, x^\prime) = (x^Tx^\prime)^p =
+(\sum_{i=1}^Nx_ix^\prime_i)^p
 \]</span></p></li>
-<li><p>For example, when <span class="math inline">\(p = 2\)</span>, <span class="math display">\[
-K(x,x^\prime) = (\sum_{i=1}^Nx_ix^\prime_i)^2 = (\sum_{i=1}^N\sum_{j=1}^Nx_ix_jx^\prime_ix^\prime_j)^2 = \phi(x)\phi(x^\prime)
-\]</span> The transformation applied on original input feature will be <span class="math display">\[
-\phi(x) = [x_1x_1,x_1x_2,\dots,x_1x_N,x_2x_1,\dots x_2x_N,\dots,x_Nx_1,\dots,x_Nx_N] \in \R^{N^2}
+<li><p>For example, when <span class="math inline">\(p = 2\)</span>,
+<span class="math display">\[
+K(x,x^\prime) = (\sum_{i=1}^Nx_ix^\prime_i)^2 =
+(\sum_{i=1}^N\sum_{j=1}^Nx_ix_jx^\prime_ix^\prime_j)^2 =
+\phi(x)\phi(x^\prime)
+\]</span> The transformation applied on original input feature will be
+<span class="math display">\[
+\phi(x) = [x_1x_1,x_1x_2,\dots,x_1x_N,x_2x_1,\dots
+x_2x_N,\dots,x_Nx_1,\dots,x_Nx_N] \in \R^{N^2}
 \]</span></p></li>
 </ul>
 <h4 id="radial-basis-function-kernel">Radial Basis Function Kernel</h4>
 <ul>
 <li><p>Kernel between two features is similar to a Gaussian <span class="math display">\[
 \mathcal K(x,x^\prime) = e^{-\gamma||x - x^\prime||^2_2}
-\]</span> where <span class="math inline">\(\gamma\)</span> is a hyper-parameter to be determined.</p></li>
-<li><p>This kernel is the case where it is hard to define the transformation <span class="math inline">\(\phi\)</span> explicitly.</p></li>
+\]</span> where <span class="math inline">\(\gamma\)</span> is a
+hyper-parameter to be determined.</p></li>
+<li><p>This kernel is the case where it is hard to define the
+transformation <span class="math inline">\(\phi\)</span>
+explicitly.</p></li>
 </ul>
 <h3 id="solving-svm">Solving SVM</h3>
-<p><span class="math inline">\(\lambda^\star\)</span> is the key to the final solution and by far it is still remained unsolved: <span class="math display">\[
+<p><span class="math inline">\(\lambda^\star\)</span> is the key to the
+final solution and by far it is still remained unsolved: <span class="math display">\[
 \begin{gather}
-\max_{\lambda,\mu}D(\lambda,\mu) = -\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot x^{(j)} + \sum_{i=1}^M\lambda_i \\
+\max_{\lambda,\mu}D(\lambda,\mu) =
+-\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot
+x^{(j)} + \sum_{i=1}^M\lambda_i \\
 s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 0 &lt; \lambda_i &lt; C, i=1,\dots,M \\
 \end{gather}
 \]</span> We can attack it by sequential minimal optimization.</p>
 <h3 id="multi-class-svm">Multi-class SVM</h3>
 <ul>
-<li><p>1 v.s. 1</p>
-<p>Train 1-vs-1 SVM for all pairs of classes. Then decide by majority voting.</p></li>
-<li><p>1 v.s. rest</p>
-<p>Train 1-vs-rest SVM for all classes (<span class="math inline">\(y = 1\)</span> when <span class="math inline">\(x\)</span> belongs to the “1”). Choose the class with the largest geometric margin.</p></li>
+<li><p>1 vs. 1</p>
+<p>Train 1-vs-1 SVM for all pairs of classes. Then decide by majority
+voting.</p></li>
+<li><p>1 vs. rest</p>
+<p>Train 1-vs-rest SVM for all classes (<span class="math inline">\(y =
+1\)</span> when <span class="math inline">\(x\)</span> belongs to the
+“1”). Choose the class with the largest geometric margin.</p></li>
 </ul>
 
 
@@ -1643,7 +1762,7 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1693,7 +1812,7 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1780,7 +1899,7 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

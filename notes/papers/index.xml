@@ -21,36 +21,61 @@
 
 &lt;h2 id=&#34;three-perspectives-on-nce&#34;&gt;Three Perspectives on NCE&lt;/h2&gt;
 &lt;h3 id=&#34;non-parametric-estimation&#34;&gt;Non-parametric estimation&lt;/h3&gt;
-&lt;p&gt;The traditional log-likelihood function will be &lt;span class=&#34;math inline&#34;&gt;\(\ell = \sum_x \ln p_\theta(x)\)&lt;/span&gt;. In NCE, we learn &lt;span class=&#34;math display&#34;&gt;\[
-p_\theta(1|x) = \sigma(G(x;\theta) - \gamma) = \frac{1}{1 + e^{-G(x;\theta) + \gamma}}
+&lt;p&gt;The traditional log-likelihood function will be &lt;span class=&#34;math inline&#34;&gt;\(\ell = \sum_x \ln p_\theta(x)\)&lt;/span&gt;. In NCE, we
+learn &lt;span class=&#34;math display&#34;&gt;\[
+p_\theta(1|x) = \sigma(G(x;\theta) - \gamma) = \frac{1}{1 +
+e^{-G(x;\theta) + \gamma}}
 \]&lt;/span&gt; And corresponding loss function becomes &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\mathcal {L} &amp;amp;= -\E_{x \sim \tilde p(x)} \ln p_\theta(1|x) - \E_{x \sim q(x)} \ln p_\theta(0|x) \\
-&amp;amp;= -\int \tilde p(x) \ln p_\theta(1|x) dx - \int q(x) \ln p_\theta(0|x) dx \\
-&amp;amp;= - \int [\tilde p(x) + q(x)] [\frac{\tilde p(x)}{\tilde p(x) + q(x)} \ln p_\theta(1|x) + \frac{q(x)}{\tilde p(x) + q(x)} \ln p_\theta(0|x)]dx
+\mathcal {L} &amp;amp;= -\E_{x \sim \tilde p(x)} \ln p_\theta(1|x) - \E_{x
+\sim q(x)} \ln p_\theta(0|x) \\
+&amp;amp;= -\int \tilde p(x) \ln p_\theta(1|x) dx - \int q(x) \ln
+p_\theta(0|x) dx \\
+&amp;amp;= - \int [\tilde p(x) + q(x)] [\frac{\tilde p(x)}{\tilde p(x) +
+q(x)} \ln p_\theta(1|x) + \frac{q(x)}{\tilde p(x) + q(x)} \ln
+p_\theta(0|x)]dx
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(P(y|x) = \begin{cases}\frac{\tilde p(x)}{\tilde p(x) + q(x)}, y=1 \\\frac{q(x)}{\tilde p(x) + q(x)},y=0\end{cases}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\label{loss} \begin{aligned} 
-\arg \min_{\theta, \gamma} \mathcal{L} &amp;amp;= \arg \min_{\theta, \gamma} -\int [\tilde p(x) + q(x)][\frac{\tilde p(x)}{\tilde p(x) + q(x)} \ln p_\theta(1|x) + \int \frac{q(x)}{\tilde p(x) + q(x)} \ln p_\theta(0|x)]dx \\
-&amp;amp;= \arg \min_{\theta, \gamma} -\int [\tilde p(x) + q(x)][P(1|x) \ln p_\theta(1|x) + P(0|x)\ln p_\theta(0|x)]dx \\
-&amp;amp;= \arg \min_{\theta, \gamma} \int [\tilde p(x) + q(x)][P(1|x) \ln \frac{1}{p_\theta(1|x)} + P(0|x)\ln \frac{1}{p_\theta(0|x)}]dx \\
-&amp;amp;= \arg \min_{\theta, \gamma} \int [\tilde p(x) + q(x)] H[P(y|x)||p_\theta(y|x)]dx
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(P(y|x) = \begin{cases}\frac{\tilde
+p(x)}{\tilde p(x) + q(x)}, y=1 \\\frac{q(x)}{\tilde p(x) +
+q(x)},y=0\end{cases}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\label{loss} \begin{aligned}
+\arg \min_{\theta, \gamma} \mathcal{L} &amp;amp;= \arg \min_{\theta, \gamma}
+-\int [\tilde p(x) + q(x)][\frac{\tilde p(x)}{\tilde p(x) + q(x)} \ln
+p_\theta(1|x) + \int \frac{q(x)}{\tilde p(x) + q(x)} \ln
+p_\theta(0|x)]dx \\
+&amp;amp;= \arg \min_{\theta, \gamma} -\int [\tilde p(x) + q(x)][P(1|x) \ln
+p_\theta(1|x) + P(0|x)\ln p_\theta(0|x)]dx \\
+&amp;amp;= \arg \min_{\theta, \gamma} \int [\tilde p(x) + q(x)][P(1|x) \ln
+\frac{1}{p_\theta(1|x)} + P(0|x)\ln \frac{1}{p_\theta(0|x)}]dx \\
+&amp;amp;= \arg \min_{\theta, \gamma} \int [\tilde p(x) + q(x)]
+H[P(y|x)||p_\theta(y|x)]dx
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Since cross entropy &lt;span class=&#34;math inline&#34;&gt;\(H(p||q) \ge H(p)\)&lt;/span&gt; and the minimum is reached only when &lt;span class=&#34;math inline&#34;&gt;\(p = q\)&lt;/span&gt;, the global minimum for equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{loss}\)&lt;/span&gt; is reached when &lt;span class=&#34;math inline&#34;&gt;\(p_\theta(y|x) = P(y|x)\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Since cross entropy &lt;span class=&#34;math inline&#34;&gt;\(H(p||q) \ge
+H(p)\)&lt;/span&gt; and the minimum is reached only when &lt;span class=&#34;math inline&#34;&gt;\(p = q\)&lt;/span&gt;, the global minimum for equation
+&lt;span class=&#34;math inline&#34;&gt;\(\eqref{loss}\)&lt;/span&gt; is reached when &lt;span class=&#34;math inline&#34;&gt;\(p_\theta(y|x) = P(y|x)\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-p_\theta(1|x) = \frac{1}{1 + e^{-G(x;\theta) + \gamma}} &amp;amp;= \frac{\tilde p(x)}{\tilde p(x) + q(x)} = P(1|x) \\
+p_\theta(1|x) = \frac{1}{1 + e^{-G(x;\theta) + \gamma}} &amp;amp;=
+\frac{\tilde p(x)}{\tilde p(x) + q(x)} = P(1|x) \\
 \frac{q(x)}{\tilde p(x)} &amp;amp;= e^{-G(x;\theta) + \gamma} \\
 \tilde p(x) &amp;amp;= \frac{q(x) e^{G(x;\theta)}}{e^\gamma}
 \end{aligned}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\gamma\)&lt;/span&gt; are learnt so that &lt;span class=&#34;math inline&#34;&gt;\(q(x) e^{G(x;\theta) - \gamma}\)&lt;/span&gt; fit the real distribution. It becomes more intuitive when &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is a uniform distribution and &lt;span class=&#34;math inline&#34;&gt;\(q(x)\)&lt;/span&gt; is a constant &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(e^\gamma\)&lt;/span&gt; will be the learnt normalizing factor.&lt;/p&gt;
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\gamma\)&lt;/span&gt; are learnt so that &lt;span class=&#34;math inline&#34;&gt;\(q(x) e^{G(x;\theta) - \gamma}\)&lt;/span&gt; fit the
+real distribution. It becomes more intuitive when &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is a uniform distribution and &lt;span class=&#34;math inline&#34;&gt;\(q(x)\)&lt;/span&gt; is a constant &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(e^\gamma\)&lt;/span&gt; will be the learnt normalizing
+factor.&lt;/p&gt;
 &lt;p&gt;https://kexue.fm/archives/5617/comment-page-1&lt;/p&gt;
-&lt;h3 id=&#34;maximum-likelihood-estimation-the-original-papers-view&#34;&gt;Maximum likelihood estimation (the original paper’s view)&lt;/h3&gt;
-&lt;p&gt;The model is defined as &lt;span class=&#34;math inline&#34;&gt;\(\ln p_\theta(x) = \ln p^0_\alpha(x) + c\)&lt;/span&gt;. The MLE will maximize the objective function &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h3 id=&#34;maximum-likelihood-estimation-the-original-papers-view&#34;&gt;Maximum
+likelihood estimation (the original paper’s view)&lt;/h3&gt;
+&lt;p&gt;The model is defined as &lt;span class=&#34;math inline&#34;&gt;\(\ln p_\theta(x) =
+\ln p^0_\alpha(x) + c\)&lt;/span&gt;. The MLE will maximize the objective
+function &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-J_T(\theta) &amp;amp;= \frac{1}{T_d} [\sum_{i=1}^{T_d \\} \ln h(x_i;\theta) + \sum_{i=1}^{T_n} \ln (1 - h(y_i;\theta)) \text{, ($x_i$&amp;#39;s are samples, $y_i$&amp;#39;s are noises, $T_n = \nu T_d$)} \\
-&amp;amp;\stackrel{P}\to J(\theta) \triangleq \E_{x \sim \tilde p} \ln h(x;\theta) + \nu \E_{x \sim q} \ln (1 - h(x;\theta)) \\
+J_T(\theta) &amp;amp;= \frac{1}{T_d} [\sum_{i=1}^{T_d \\} \ln h(x_i;\theta)
++ \sum_{i=1}^{T_n} \ln (1 - h(y_i;\theta)) \text{, ($x_i$&amp;#39;s are
+samples, $y_i$&amp;#39;s are noises, $T_n = \nu T_d$)} \\
+&amp;amp;\stackrel{P}\to J(\theta) \triangleq \E_{x \sim \tilde p} \ln
+h(x;\theta) + \nu \E_{x \sim q} \ln (1 - h(x;\theta)) \\
 \end{aligned}
 \]&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -58,39 +83,68 @@ r_\nu(u) = \frac{1}{1 + \nu e^{-u}} \\
 G(x; \theta) = \ln p_\theta(x) - \ln q(x) \\
 h(x;\theta) = r_\nu(G(x;\theta)) = \frac{1}{1 + \nu e^{-G(x;\theta)}} \\
 \end{gather}
-\]&lt;/span&gt; Denote by &lt;span class=&#34;math inline&#34;&gt;\(\tilde J\)&lt;/span&gt; the objective function &lt;span class=&#34;math inline&#34;&gt;\(J\)&lt;/span&gt; seen as a function of &lt;span class=&#34;math inline&#34;&gt;\(f(.) = \ln p_\theta(.)\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\tilde J(f) = \E_{x \sim \tilde p} \ln r_\nu(f(x) - \ln q(x)) + \nu \E_{x \sim q} \ln (1 - r_\nu[f(x) - q(x)])
-\]&lt;/span&gt; For &lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\phi(x)\)&lt;/span&gt; a perturbation of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
-\tilde J(f + \epsilon \phi) = \E_{x \sim \tilde p} \ln r_\nu(f(x) + \epsilon \phi(x) - \ln q(x)) + \nu \E_{x \sim q} \ln (1 - r_\nu[f(x) + \epsilon \phi - q(x)])
+\]&lt;/span&gt; Denote by &lt;span class=&#34;math inline&#34;&gt;\(\tilde J\)&lt;/span&gt; the
+objective function &lt;span class=&#34;math inline&#34;&gt;\(J\)&lt;/span&gt; seen as a
+function of &lt;span class=&#34;math inline&#34;&gt;\(f(.) = \ln p_\theta(.)\)&lt;/span&gt;,
+&lt;span class=&#34;math display&#34;&gt;\[
+\tilde J(f) = \E_{x \sim \tilde p} \ln r_\nu(f(x) - \ln q(x)) + \nu
+\E_{x \sim q} \ln (1 - r_\nu[f(x) - q(x)])
+\]&lt;/span&gt; For &lt;span class=&#34;math inline&#34;&gt;\(\epsilon &amp;gt; 0\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(\phi(x)\)&lt;/span&gt; a perturbation of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\tilde J(f + \epsilon \phi) = \E_{x \sim \tilde p} \ln r_\nu(f(x) +
+\epsilon \phi(x) - \ln q(x)) + \nu \E_{x \sim q} \ln (1 - r_\nu[f(x) +
+\epsilon \phi - q(x)])
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;By Taylor’s expansion,&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\ln r_\nu(u + \epsilon u_1 + \epsilon^2 u_2) &amp;amp;\approx \ln r_\nu (u) + r_{\frac{1}{\nu}}(-u)(\epsilon u_1 + \epsilon^2 u_2) - \frac{r_\nu (u)r_\frac{1}{\nu}(-u)}{2}(\epsilon u_1 + \epsilon^2 u_2)^2 + \Omicron \big((\epsilon u_1 + \epsilon^2 u_2)^3 \big) \\
-&amp;amp;= \ln r_\nu (u) + \epsilon u_1r_{\frac{1}{\nu}}(-u) + \epsilon^2(u_2r_{\frac{1}{\nu}}(-u) - \frac{1}{2}u_1^2 r_{\frac{1}{\nu}}(-u)r_\nu (u)) + \Omicron \big(\epsilon^3 \big) \\
+\ln r_\nu(u + \epsilon u_1 + \epsilon^2 u_2) &amp;amp;\approx \ln r_\nu (u)
++ r_{\frac{1}{\nu}}(-u)(\epsilon u_1 + \epsilon^2 u_2) - \frac{r_\nu
+(u)r_\frac{1}{\nu}(-u)}{2}(\epsilon u_1 + \epsilon^2 u_2)^2 + \Omicron
+\big((\epsilon u_1 + \epsilon^2 u_2)^3 \big) \\
+&amp;amp;= \ln r_\nu (u) + \epsilon u_1r_{\frac{1}{\nu}}(-u) +
+\epsilon^2(u_2r_{\frac{1}{\nu}}(-u) - \frac{1}{2}u_1^2
+r_{\frac{1}{\nu}}(-u)r_\nu (u)) + \Omicron \big(\epsilon^3 \big) \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\ln \big(1 - r_v(u + \epsilon u_1 + \epsilon^2 u_2) \big) &amp;amp;\approx \ln \big(1 - r_v(u) \big) - r_v(u)(\epsilon u_1 + \epsilon^2 u_2) - \frac{r_{\frac{1}{\nu}}(-u) r_\nu(u)}{2} (\epsilon u_1 + \epsilon^2 u_2)^2 + \Omicron \big((\epsilon u_1 + \epsilon^2 u_2)^3 \big) \\
-&amp;amp;= \ln(1 - r_v(u)) - \epsilon u_1 r_v(u) - \epsilon^2 \big( u_2 r_v(u) + \frac{1}{2} u_1^2 r_{\frac{1}{\nu}}(-u) r_\nu(u) \big) + \Omicron(\epsilon^3)
+\ln \big(1 - r_v(u + \epsilon u_1 + \epsilon^2 u_2) \big) &amp;amp;\approx
+\ln \big(1 - r_v(u) \big) - r_v(u)(\epsilon u_1 + \epsilon^2 u_2) -
+\frac{r_{\frac{1}{\nu}}(-u) r_\nu(u)}{2} (\epsilon u_1 + \epsilon^2
+u_2)^2 + \Omicron \big((\epsilon u_1 + \epsilon^2 u_2)^3 \big) \\
+&amp;amp;= \ln(1 - r_v(u)) - \epsilon u_1 r_v(u) - \epsilon^2 \big( u_2
+r_v(u) + \frac{1}{2} u_1^2 r_{\frac{1}{\nu}}(-u) r_\nu(u) \big) +
+\Omicron(\epsilon^3)
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Substitute &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(u_1\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\phi(x)\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(u_2\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\tilde J(f + \epsilon \phi) \approx &amp;amp;\E_{x \sim \tilde p} \ln r_\nu \big(f(x) + \epsilon \phi(x) - \ln q(x) \big) + \nu \E_{x \sim q} \ln (1 - r_\nu[f(x) + \epsilon \phi - q(x)]) \\
-= &amp;amp;\E_{x \sim \tilde p} \{\ln r_\nu \big(f(x) - \ln q(x) \big) + \epsilon \phi(x) r_{\frac{1}{\nu}} \big(\ln q(x) - f(x) \big) \} \\ 
-&amp;amp;+\nu \E_{x \sim q} \{ \ln \big(1 - r_\nu[f(x) -\ln q(x)] \big) - \epsilon \phi(x) r_\nu \big( f(x) - \ln q(x) \big) \} + \Omicron(\epsilon^2) \\
-= &amp;amp;\tilde J(f) + \epsilon \int \phi(x) \big(r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) - \nu r_\nu[f(x) - \ln q(x)] q(x) \big) + \Omicron(\epsilon^2)
+\tilde J(f + \epsilon \phi) \approx &amp;amp;\E_{x \sim \tilde p} \ln r_\nu
+\big(f(x) + \epsilon \phi(x) - \ln q(x) \big) + \nu \E_{x \sim q} \ln (1
+- r_\nu[f(x) + \epsilon \phi - q(x)]) \\
+= &amp;amp;\E_{x \sim \tilde p} \{\ln r_\nu \big(f(x) - \ln q(x) \big) +
+\epsilon \phi(x) r_{\frac{1}{\nu}} \big(\ln q(x) - f(x) \big) \} \\
+&amp;amp;+\nu \E_{x \sim q} \{ \ln \big(1 - r_\nu[f(x) -\ln q(x)] \big) -
+\epsilon \phi(x) r_\nu \big( f(x) - \ln q(x) \big) \} +
+\Omicron(\epsilon^2) \\
+= &amp;amp;\tilde J(f) + \epsilon \int \phi(x) \big(r_\frac{1}{\nu} [\ln
+q(x) - f(x)] \tilde p(x) - \nu r_\nu[f(x) - \ln q(x)] q(x) \big) +
+\Omicron(\epsilon^2)
 \end{aligned}
 \]&lt;/span&gt; The above equation attains the local maximum at &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; only if the term of order &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. In this case, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) - \ln q(x)] q(x) \\
-\frac{\nu \tilde p(x)}{\nu + e^{f(x) - \ln q(x)}} &amp;amp;= \frac{\nu q(x)}{1 + \nu e^{\ln q(x) - f(x)}} \\
-\frac{\tilde p(x)q(x)}{\nu q(x) + p_\theta(x)} &amp;amp;= \frac{q(x) p_\theta(x)}{p_\theta(x) + \nu q(x)} \\
+r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) -
+\ln q(x)] q(x) \\
+\frac{\nu \tilde p(x)}{\nu + e^{f(x) - \ln q(x)}} &amp;amp;= \frac{\nu
+q(x)}{1 + \nu e^{\ln q(x) - f(x)}} \\
+\frac{\tilde p(x)q(x)}{\nu q(x) + p_\theta(x)} &amp;amp;= \frac{q(x)
+p_\theta(x)}{p_\theta(x) + \nu q(x)} \\
 \end{aligned}
 \]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\(q(x)\)&lt;/span&gt; is nonzero, &lt;span class=&#34;math display&#34;&gt;\[
-\frac{\tilde p(x)}{\nu q(x) + p_\theta(x)} = \frac{p_\theta(x)}{p_\theta(x) + \nu q(x)} \iff p_\theta(x) = \tilde p(x)\\
+\frac{\tilde p(x)}{\nu q(x) + p_\theta(x)} =
+\frac{p_\theta(x)}{p_\theta(x) + \nu q(x)} \iff p_\theta(x) = \tilde
+p(x)\\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;gradient-descent&#34;&gt;Gradient descent&lt;/h3&gt;
 &lt;p&gt;https://leimao.github.io/article/Noise-Contrastive-Estimation/&lt;/p&gt;
@@ -111,44 +165,108 @@ r_\frac{1}{\nu} [\ln q(x) - f(x)] \tilde p(x) &amp;amp;= \nu r_\nu[f(x) - \ln q(
       <description>
 
 &lt;h2 id=&#34;rationale&#34;&gt;Rationale&lt;/h2&gt;
-&lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the original data. The original data can either be the data before the encoding, or the future data after various steps.&lt;/p&gt;
-&lt;p&gt;CPC learns the representation by minimizing the following loss function: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;CPC was initially proposed in autoregressive models. It enhances the
+autoencoder by lifting the lower bound of mutual information between the
+encoded representation and the original data. The original data can
+either be the data before the encoding, or the future data after various
+steps.&lt;/p&gt;
+&lt;p&gt;CPC learns the representation by minimizing the following loss
+function: &lt;span class=&#34;math display&#34;&gt;\[
 \newcommand{\c}{\mathrm{c}} \label{loss}
-\mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)&lt;/span&gt; is a tuple of random variables and &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; is the distribution from which &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is drawn. &lt;span class=&#34;math inline&#34;&gt;\((\x:\c)_{1:N+1}\)&lt;/span&gt; are drawn from the joint distribution &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(\x,\c)\)&lt;/span&gt;. All &lt;span class=&#34;math inline&#34;&gt;\(\c_i\)&lt;/span&gt;’s but one randomly-chosen &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; are trimmed from the original samples. &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; is known but it is unknown which sample it is associated with. &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; denotes the index of this unique sample we are trying to predict. In essence, &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; is parameterizing the representation &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;. The formal score function &lt;span class=&#34;math inline&#34;&gt;\(f_\theta\)&lt;/span&gt; is simply chosen to be a deterministic cosine similarity between &lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\x_{1:N+1}\)&lt;/span&gt; consists of one positive sample &lt;span class=&#34;math inline&#34;&gt;\(\x^*\)&lt;/span&gt; that is matched with &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; and more other independent negative (noise) samples &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt;’s that are not matched with &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the fixed ratio of the number of negative samples to the number of positive samples. Let &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*)\)&lt;/span&gt; represent the probability that &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt; is the positive sample given &lt;span class=&#34;math inline&#34;&gt;\(\x_1, \dots x_{N+1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)}
+{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} =
+-\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log
+\frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(t = (\x_1, \dots, \x_{N+1}, \c^*;
+\ell)\)&lt;/span&gt; is a tuple of random variables and &lt;span class=&#34;math inline&#34;&gt;\(\Phi\)&lt;/span&gt; is the distribution from which &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is drawn. &lt;span class=&#34;math inline&#34;&gt;\((\x:\c)_{1:N+1}\)&lt;/span&gt; are drawn from the joint
+distribution &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(\x,\c)\)&lt;/span&gt;. All
+&lt;span class=&#34;math inline&#34;&gt;\(\c_i\)&lt;/span&gt;’s but one randomly-chosen
+&lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; are trimmed from the original
+samples. &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; is known but it is
+unknown which sample it is associated with. &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; denotes the index of this unique
+sample we are trying to predict. In essence, &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; is parameterizing the
+representation &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;. The formal score
+function &lt;span class=&#34;math inline&#34;&gt;\(f_\theta\)&lt;/span&gt; is simply chosen
+to be a deterministic cosine similarity between &lt;span class=&#34;math inline&#34;&gt;\(\x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\x_{1:N+1}\)&lt;/span&gt; consists of one
+positive sample &lt;span class=&#34;math inline&#34;&gt;\(\x^*\)&lt;/span&gt; that is
+matched with &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt; and more other
+independent negative (noise) samples &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt;’s that are not matched with &lt;span class=&#34;math inline&#34;&gt;\(\c\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; is the fixed ratio of the number of
+negative samples to the number of positive samples. Let &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i|\x_{1:N+1},\c^*)\)&lt;/span&gt; represent the
+probability that &lt;span class=&#34;math inline&#34;&gt;\(\x_i\)&lt;/span&gt; is the
+positive sample given &lt;span class=&#34;math inline&#34;&gt;\(\x_1, \dots
+x_{N+1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\c^*\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
+P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\ell=i,
+\x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Substitute &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i,\x_{1:N+1},\c^*) = P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Substitute &lt;span class=&#34;math inline&#34;&gt;\(P(\ell=i,\x_{1:N+1},\c^*) =
+P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)}{\sum_{j=1}^{N+1} [P(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} P(\x_k)]} \\
-&amp;amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
-&amp;amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
+P(\ell=i|\x_{1:N+1},\c^*) &amp;amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne
+i}^{N+1} P(\x_j)}{\sum_{j=1}^{N+1} [P(\x_j,\c^*) \prod_{k=1,k \ne
+j}^{N+1} P(\x_k)]} \\
+&amp;amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde
+p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne
+j}^{N+1} \tilde p_X(\x_j)]} \\
+&amp;amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} }
+{\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
 \end{aligned}
-\]&lt;/span&gt; The loss function &lt;span class=&#34;math inline&#34;&gt;\(\eqref{loss}\)&lt;/span&gt; is in fact the expectation (the outer &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of the categorical cross entropy (the inner &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of identifying the sample as positive or negative. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The loss function &lt;span class=&#34;math inline&#34;&gt;\(\eqref{loss}\)&lt;/span&gt; is in fact the expectation
+(the outer &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of the categorical
+cross entropy (the inner &lt;span class=&#34;math inline&#34;&gt;\(\E\)&lt;/span&gt;) of
+identifying the sample as positive or negative. The minimum of loss
+function is thus reached when the two categorical distributions are
+identical. That is, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
-P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
-f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
+P_\theta(l = i|x_{1:N+1},\c^*) =
+\frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
+= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1}
+\frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} =
+P(\ell=i|\x_{1:N+1},\c^*) \\
+f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime,
+\c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde
+p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
 f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&#34;bounding-the-mutual-information&#34;&gt;Bounding the Mutual Information&lt;/h2&gt;
-&lt;p&gt;CPC helps estimate the lower bound of the mutual information between the encoded representation and the original data when optimizing the InfoNCE loss: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h2 id=&#34;bounding-the-mutual-information&#34;&gt;Bounding the Mutual
+Information&lt;/h2&gt;
+&lt;p&gt;CPC helps estimate the lower bound of the mutual information between
+the encoded representation and the original data when optimizing the
+InfoNCE loss: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-&amp;amp;\mathcal L_N^{\text{opt}} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} {\sum_{\x&amp;#39; \in X} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} \\
-&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)} + \sum_{\x&amp;#39; \in X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}} {\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} \\
-&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} \sum_{\x&amp;#39; \in X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)} \big) \\
-&amp;amp;\approx \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \E_{\tilde p_X(\x&amp;#39;)} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)} \big) \\
-&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
-&amp;amp;\ge \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
-&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} [\log \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)}] + \log (N - 1) \\
+&amp;amp;\mathcal L_N^{\text{opt}} = -\E_{p(\x_{1:N+1},\c^*)}
+\E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde
+p_X(\x_l)}} {\sum_{\x&amp;#39; \in X} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde
+p_X(\x&amp;#39;)}} \\
+&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log
+\frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)} + \sum_{\x&amp;#39; \in
+X, \x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}}
+{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} \\
+&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 +
+\frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} \sum_{\x&amp;#39; \in X,
+\x&amp;#39; \ne x_l} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde p_X(\x&amp;#39;)}
+\big) \\
+&amp;amp;\approx \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log
+\big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1)
+\E_{\tilde p_X(\x&amp;#39;)} \frac{\tilde p(\x&amp;#39;, \c^*)}{\tilde
+p_X(\x&amp;#39;)} \big) \\
+&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 +
+\frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
+&amp;amp;\ge \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big(
+\frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
+&amp;amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} [\log
+\frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)}] + \log (N - 1) \\
 &amp;amp;= -I(\x;\c^*) + \log (N - 1)
 \end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge
+\log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt; || &lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt; || &lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt;
+|| &lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt; || &lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo
+of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -162,28 +280,35 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
       <description>
 
 &lt;h2 id=&#34;i_textba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;The very basic bound on the Mutual Information is based on the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/overview/#KL-divergence Entropy and Conditional Entropy&#34;&gt;non-negativity&lt;/a&gt; of KL-divergence. &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The very basic bound on the Mutual Information is based on the &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/overview/#KL-divergence Entropy and Conditional Entropy&#34;&gt;non-negativity&lt;/a&gt; of KL-divergence.
+&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) = &amp;amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
 = &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)p(x|y)}{p(x)q(x|y)} \\
 = &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)}{p(x)} + \\
-&amp;amp;\underbrace{\E_{p(x,y)} \log \frac{p(x|y)}{q(x|y)}}_{\E_{p(y)} D_{KL}(p(x|y) || q(x|y)} \\
+&amp;amp;\underbrace{\E_{p(x,y)} \log \frac{p(x|y)}{q(x|y)}}_{\E_{p(y)}
+D_{KL}(p(x|y) || q(x|y)} \\
 \ge &amp;amp;\E_{p(x,y)} \log \frac{q(x|y)}{p(x)} \\
 = &amp;amp;\E_{p(x,y)} \log q(x|y) + H(X) \triangleq I_\text{BA}
 \end{aligned}
 \]&lt;/span&gt; This bound is not usually tractable since &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; and thus &lt;span class=&#34;math inline&#34;&gt;\(H(X)\)&lt;/span&gt; has no closed-form expression.&lt;/p&gt;
-&lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) = p(x|y)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) =
+p(x|y)\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;i_textuba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; is replaced with an unnormalized model, that is &lt;span class=&#34;math display&#34;&gt;\[
-q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)}, \text{where } Z(y) = \E_{p(x)} e^{f(x,y)}
+&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; is replaced with an
+unnormalized model, that is &lt;span class=&#34;math display&#34;&gt;\[
+q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)}, \text{where } Z(y) = \E_{p(x)}
+e^{f(x,y)}
 \]&lt;/span&gt; Substituting this back to the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{BA}\)&lt;/span&gt; will give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) &amp;amp;\ge \E_{p(x,y)} \log \frac{p(x) e^{f(x,y)}}{p(x) Z(y)} \\
 &amp;amp;= \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \triangleq I_\text{UBA}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Note that by scaling &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;, the &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; term is canceled.&lt;/p&gt;
-&lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)} = p(x|y)\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Note that by scaling &lt;span class=&#34;math inline&#34;&gt;\(q(x|y)\)&lt;/span&gt; with
+&lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt;, the &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; term is canceled.&lt;/p&gt;
+&lt;p&gt;This bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(q(x|y) =
+\frac{p(x)}{Z(y)} e^{f(x,y)} = p(x|y)\)&lt;/span&gt;. That is &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 e^{f(x,y)} &amp;amp;= \frac{p(x, y)}{p(x)p(y)} Z(y) \\
 e^{f(x,y)} &amp;amp;= \frac{Z(y)}{p(y)} p(y|x) \\
@@ -194,10 +319,13 @@ f(x,y) &amp;amp;= \ln p(y|x) + \underbrace{\ln \frac{Z(y)}{p(y)}}_{c(y)}
 &lt;p&gt;By further applying Jensen’s inequality to the &lt;span class=&#34;math inline&#34;&gt;\(\E_{p(y)} Z(y)\)&lt;/span&gt; term in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt;, we get &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
-&amp;amp;\ge \E_{p(x,y)} f(x,y) - \log\E_{p(y)} [Z(y)] \triangleq I_\text{DV}
+&amp;amp;\ge \E_{p(x,y)} f(x,y) - \log\E_{p(y)} [Z(y)] \triangleq
+I_\text{DV}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;The original &lt;span class=&#34;math inline&#34;&gt;\(I_\text{DV}\)&lt;/span&gt; bound is in effect derived from &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/#Variational Lower-bound&#34;&gt;the variational lower bound of KL-divergence&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The original &lt;span class=&#34;math inline&#34;&gt;\(I_\text{DV}\)&lt;/span&gt; bound
+is in effect derived from &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/#Variational Lower-bound&#34;&gt;the
+variational lower bound of KL-divergence&lt;/a&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I&amp;amp;(X;Y) = D_\text{KL}(p_{(x,y)} || p(x) \otimes p(y)) \\
 &amp;amp;\ge \E_{p(x,y)} f(x,y) - \log [\E_{p(x) \otimes p(y)} f(x,y)] \\
@@ -206,30 +334,41 @@ I&amp;amp;(X;Y) = D_\text{KL}(p_{(x,y)} || p(x) \otimes p(y)) \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;i_texttuba&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\log\)&lt;/span&gt; function also has the following property: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\log\)&lt;/span&gt; function also has the
+following property: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 \forall x,a&amp;gt;0,\log(x) &amp;amp;\le \frac{x}{a} + \log(a) - 1 &amp;amp;\iff \\
 a + a\log(x) &amp;amp;\le x + a\log(a) &amp;amp;\iff \\
 a\log(x) - x &amp;amp;\le a\log(a) - a \\
 \end{aligned}
-\]&lt;/span&gt; Therefore, we can insert the inequality &lt;span class=&#34;math inline&#34;&gt;\(\log Z(y) \le \frac{Z(y)}{a(y)} + \log a(y) - 1\)&lt;/span&gt; into the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; to get &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Therefore, we can insert the inequality &lt;span class=&#34;math inline&#34;&gt;\(\log Z(y) \le \frac{Z(y)}{a(y)} + \log a(y) -
+1\)&lt;/span&gt; into the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; to
+get &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
-&amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) - 1 \big)] \triangleq I_\text{TUBA}
+&amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) -
+1 \big)] \triangleq I_\text{TUBA}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;This bound is tight when&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
-&lt;li&gt;the tight condition of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; holds: &lt;span class=&#34;math inline&#34;&gt;\(f(x,y) = \log p(y|x) + \underbrace{\log \frac{Z(y)}{p(y)}}_{c(y)}\)&lt;/span&gt;, and&lt;/li&gt;
+&lt;li&gt;the tight condition of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; holds: &lt;span class=&#34;math inline&#34;&gt;\(f(x,y) = \log p(y|x) + \underbrace{\log
+\frac{Z(y)}{p(y)}}_{c(y)}\)&lt;/span&gt;, and&lt;/li&gt;
 &lt;li&gt;the tight condition of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt; holds: &lt;span class=&#34;math inline&#34;&gt;\(a(y) = Z(y)\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;i_textnwj&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;&lt;/h2&gt;
 &lt;p&gt;By setting &lt;span class=&#34;math inline&#34;&gt;\(a(y) = e\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;, we get &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) - 1 \big)] \\
-&amp;amp;\ge \E_{p(x,y)} f(x,y) - e^{-1}\E_{p(y)} Z(y)\triangleq I_\text{NWJ}
+I(X;Y) &amp;amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log
+a(y) - 1 \big)] \\
+&amp;amp;\ge \E_{p(x,y)} f(x,y) - e^{-1}\E_{p(y)} Z(y)\triangleq
+I_\text{NWJ}
 \end{aligned}
-\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt; is a special case of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;, its bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(Z(y)\)&lt;/span&gt; self-normalizes to &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;. In this case &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt; is a
+special case of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{TUBA}\)&lt;/span&gt;, its
+bound is tight when &lt;span class=&#34;math inline&#34;&gt;\(Z(y)\)&lt;/span&gt;
+self-normalizes to &lt;span class=&#34;math inline&#34;&gt;\(e\)&lt;/span&gt;. In this case
+&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 f(x,y) &amp;amp;= \log p(y|x) + \log \frac{e}{p(y)} \\
 &amp;amp;= 1 + \log \frac{p(y|x)}{p(y)} \\
@@ -237,60 +376,108 @@ f(x,y) &amp;amp;= \log p(y|x) + \log \frac{e}{p(y)} \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;i_textnce&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt;&lt;/h2&gt;
-&lt;p&gt;Our goal is to estimate the &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y)\)&lt;/span&gt; given one sample from &lt;span class=&#34;math inline&#34;&gt;\(p(x_1)p(y|x_1)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(K-1\)&lt;/span&gt; additional independent samples &lt;span class=&#34;math inline&#34;&gt;\(x_{2:K} \sim p^{K-1}(x_{2:K})\)&lt;/span&gt;. For any random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; that is independent from &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Our goal is to estimate the &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y)\)&lt;/span&gt; given one sample from &lt;span class=&#34;math inline&#34;&gt;\(p(x_1)p(y|x_1)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(K-1\)&lt;/span&gt; additional independent samples &lt;span class=&#34;math inline&#34;&gt;\(x_{2:K} \sim p^{K-1}(x_{2:K})\)&lt;/span&gt;. For any
+random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; that is
+independent from &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I(X_1,Z;Y) &amp;amp;= \E_{p(x_1,z,y)} \frac{p(x_1,z,y)}{p(x_1,z) p(y)} \\
 &amp;amp;= \E_{p(x_1,z,y)} \frac{p(x_1,y) p(z)}{p(x_1) p(z) p(y)} \\
 &amp;amp;= I(X_1;Y)
 \end{aligned}
-\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y) = I(X_1,X_{2:K};Y)\)&lt;/span&gt;. Bounding &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y)\)&lt;/span&gt; becomes bounding &lt;span class=&#34;math inline&#34;&gt;\(I(X_1,X_{2:K};Y)\)&lt;/span&gt;, which can be estimated using any of the preceding methods.&lt;/p&gt;
-&lt;p&gt;Set the critic to &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 + \overbrace{\log \frac{e^{g(x,y)}} {a(y;x_{1:K})}}^{h(x_{1:K},y)}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the sample among &lt;span class=&#34;math inline&#34;&gt;\(x_{1:K}\)&lt;/span&gt; that is paired with &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;. Usually &lt;span class=&#34;math inline&#34;&gt;\((x,y)_{1:K}\)&lt;/span&gt; are sampled from the same marginal distribution of &lt;span class=&#34;math inline&#34;&gt;\(\tilde p(x,y)\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is then uniformly drawn among &lt;span class=&#34;math inline&#34;&gt;\(y_{1:K}\)&lt;/span&gt;. Substitute these to the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
-\label{infonce} \begin{aligned} 
-I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K},y)} f(x_{1:K},y) - e^{-1}\E_{p(y)} Z(y) \\
-&amp;amp;= \E_{p(x_{1:K},y)} [1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [\E_{p(x_{1:K})} e^{1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}}] \\
-&amp;amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [e\E_{p(x_{1:K})} \frac{e^{g(x,y)}}{a(y,x_{1:K})}] \\
-&amp;amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - \E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} \\
+\]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y) =
+I(X_1,X_{2:K};Y)\)&lt;/span&gt;. Bounding &lt;span class=&#34;math inline&#34;&gt;\(I(X_1;Y)\)&lt;/span&gt; becomes bounding &lt;span class=&#34;math inline&#34;&gt;\(I(X_1,X_{2:K};Y)\)&lt;/span&gt;, which can be estimated
+using any of the preceding methods.&lt;/p&gt;
+&lt;p&gt;Set the critic to &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 +
+\overbrace{\log \frac{e^{g(x,y)}}
+{a(y;x_{1:K})}}^{h(x_{1:K},y)}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is the sample among &lt;span class=&#34;math inline&#34;&gt;\(x_{1:K}\)&lt;/span&gt; that is paired with &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;. Usually &lt;span class=&#34;math inline&#34;&gt;\((x,y)_{1:K}\)&lt;/span&gt; are sampled from the same
+marginal distribution of &lt;span class=&#34;math inline&#34;&gt;\(\tilde
+p(x,y)\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; is then
+uniformly drawn among &lt;span class=&#34;math inline&#34;&gt;\(y_{1:K}\)&lt;/span&gt;.
+Substitute these to the &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\label{infonce} \begin{aligned}
+I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K},y)} f(x_{1:K},y) - e^{-1}\E_{p(y)}
+Z(y) \\
+&amp;amp;= \E_{p(x_{1:K},y)} [1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] -
+e^{-1} \E_{p(y)} [\E_{p(x_{1:K})} e^{1 + \log
+\frac{e^{g(x,y)}}{a(y,x_{1:K})}}] \\
+&amp;amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log
+\frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [e\E_{p(x_{1:K})}
+\frac{e^{g(x,y)}}{a(y,x_{1:K})}] \\
+&amp;amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log
+\frac{e^{g(x,y)}}{a(y,x_{1:K})}] - \E_{p(x_{1:K})p(y)}
+\frac{e^{g(x,y)}}{a(y,x_{1:K})} \\
 \end{aligned}
-\]&lt;/span&gt; Further set &lt;span class=&#34;math inline&#34;&gt;\(a(y;x_{1:K}) = \frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)}\)&lt;/span&gt;. Substitute this into the last term in equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{infonce}\)&lt;/span&gt; will give &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Further set &lt;span class=&#34;math inline&#34;&gt;\(a(y;x_{1:K}) =
+\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)}\)&lt;/span&gt;. Substitute this into
+the last term in equation &lt;span class=&#34;math inline&#34;&gt;\(\eqref{infonce}\)&lt;/span&gt; will give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} &amp;amp;= \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}}{\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} } \\
-&amp;amp;\stackrel{P}{\to} \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}} {\E_{p(x_{1:K})} e^{g(x,y)} } \\
+\E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} &amp;amp;= \E_{p(y)}
+\frac{\E_{p(x_{1:K})} e^{g(x,y)}}{\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)}
+} \\
+&amp;amp;\stackrel{P}{\to} \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}}
+{\E_{p(x_{1:K})} e^{g(x,y)} } \\
 &amp;amp;= 1
 \end{aligned}
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} }] \\
-&amp;amp;\approx \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)} }] \triangleq I_\text{NCE}
+I(X_{1:K};Y) &amp;amp;\ge \E_{p(x_{1:K})p(y|x_{1:K})} [\log
+\frac{e^{g(x,y)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} }] \\
+&amp;amp;\approx \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log
+\frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)} }]
+\triangleq I_\text{NCE}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;On the other hand, &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt; is tightly bounded by &lt;span class=&#34;math inline&#34;&gt;\(\log K\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;On the other hand, &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt;
+is tightly bounded by &lt;span class=&#34;math inline&#34;&gt;\(\log K\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-I_\text{NCE} &amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
-&amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K (\log \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} )] + \log K \\
-&amp;amp;\le \E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} ]} + \log K \\
-&amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\sum_{i=1}^K e^{g(x_i, y_j)}} {e^{g(x_j,y_j)}} ]} + \log K
+I_\text{NCE} &amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log
+\frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
+&amp;amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K (\log
+\frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} )] + \log K \\
+&amp;amp;\le \E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K
+\frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} ]} + \log K \\
+&amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K
+\frac{\sum_{i=1}^K e^{g(x_i, y_j)}} {e^{g(x_j,y_j)}} ]} + \log K
 \end{aligned}
-\]&lt;/span&gt; The equality is reached when &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 + {h(x_{1:K},y)} = 1 + \log \frac{p(x|y)}{p(x)}\)&lt;/span&gt; as in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;. In this case, it can be derived that &lt;span class=&#34;math inline&#34;&gt;\(g(x,y) = g^\star(x,y) = \frac{p(y|x)}{p(y)}\)&lt;/span&gt;. And then, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The equality is reached when &lt;span class=&#34;math inline&#34;&gt;\(f(x_{1:K},y) = 1 + {h(x_{1:K},y)} = 1 + \log
+\frac{p(x|y)}{p(x)}\)&lt;/span&gt; as in &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NWJ}\)&lt;/span&gt;. In this case, it can be
+derived that &lt;span class=&#34;math inline&#34;&gt;\(g(x,y) = g^\star(x,y) =
+\frac{p(y|x)}{p(y)}\)&lt;/span&gt;. And then, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-I_\text{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
-&amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K (1 + \frac{p(y_j)}{p(y_j|x_j)} \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}) ]} + \log K \\
-&amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(1 + \frac{p(y_j)}{p(y_j|x_j)} (K-1) \E_{p(y)} \frac{p(y|x_i)}{p(y)} \big) ]} + \log K \\
-&amp;amp;= -\E_{p(x_{1:K})} \log {[1 + \frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
-&amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
-&amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{p(y_j)}{p(y_j|x_j)} ]} - \log(K-1) + \log K \\
+I_\text{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K
+\frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K
+\frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
+&amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K (1 +
+\frac{p(y_j)}{p(y_j|x_j)} \sum_{i=1,i \ne j}^K
+\frac{p(y_j|x_i)}{p(y_j)}) ]} + \log K \\
+&amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(1 +
+\frac{p(y_j)}{p(y_j|x_j)} (K-1) \E_{p(y)} \frac{p(y|x_i)}{p(y)} \big) ]}
++ \log K \\
+&amp;amp;= -\E_{p(x_{1:K})} \log {[1 + \frac{1}{K} \sum_{j=1}^K \big(
+\frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
+&amp;amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(
+\frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
+&amp;amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K
+\frac{p(y_j)}{p(y_j|x_j)} ]} - \log(K-1) + \log K \\
 &amp;amp;= I(X_1;Y) - \log(K-1) + \log K
 \end{aligned}
-\]&lt;/span&gt; This derivation is much looser than &lt;a href=&#34;https://chunxy.github.io/notes/papers/contrastive-predictive-coding/#Bounding the Mutual Information&#34;&gt;that in the InfoNCE’s original paper&lt;/a&gt;.&lt;/p&gt;
+\]&lt;/span&gt; This derivation is much looser than &lt;a href=&#34;https://chunxy.github.io/notes/papers/contrastive-predictive-coding/#Bounding the Mutual Information&#34;&gt;that in the InfoNCE’s original
+paper&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;with-i_textuba&#34;&gt;With &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt;&lt;/h3&gt;
-&lt;p&gt;There is another approach to the derivation of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt;, that stems from an estimate of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; (which I won’t call empirical estimate) and that may be more intuitive: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;There is another approach to the derivation of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{NCE}\)&lt;/span&gt;, that stems from an estimate
+of &lt;span class=&#34;math inline&#34;&gt;\(I_\text{UBA}\)&lt;/span&gt; (which I won’t call
+empirical estimate) and that may be more intuitive: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 &amp;amp;I(X;Y) \ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
 &amp;amp;= \E_{p^N(x,y)} f(x_1,y_1) - \E_{p^N(x,y)} \log Z(y_1) \\
 &amp;amp;= \E_{p^N(x,y)} \log e^{f(x_1,y_1)} \\
 &amp;amp;\quad\;- \E_{p^N(x,y)} \log \E_{p(x&amp;#39;)} e^{f(x&amp;#39;,y_1)} \\
-&amp;amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}}{\E_{p(x&amp;#39;)} e^{f(x&amp;#39;,y)}} \\
-&amp;amp;\simeq \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\frac{1}{N} \sum_i e^{f(x_i,y_1)}} \\
-&amp;amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\sum_i e^{f(x_i,y_1)}} + \log N \\
+&amp;amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}}{\E_{p(x&amp;#39;)}
+e^{f(x&amp;#39;,y)}} \\
+&amp;amp;\simeq \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\frac{1}{N} \sum_i
+e^{f(x_i,y_1)}} \\
+&amp;amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\sum_i e^{f(x_i,y_1)}}
++ \log N \\
 &amp;amp;\triangleq I_\text{NCE} \le \log N
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
@@ -306,67 +493,131 @@ I_\text{NCE} &amp;amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac
       <guid>https://chunxy.github.io/notes/papers/flatnce/</guid>
       <description>
 
-&lt;p&gt;FlatNCE provides a way to compute the gradient of InfoNCE without introducing the rounding error when subtracting between two similar numbers.&lt;/p&gt;
-&lt;p&gt;Specifically, let &lt;span class=&#34;math inline&#34;&gt;\(g^\ominus_{ij}\)&lt;/span&gt; is the affinity score between reference sample &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt; and negative (noise) sample &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;_j\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(g^\oplus_{ii}\)&lt;/span&gt; is the affinity score between positive sample and itself/its transformation &lt;span class=&#34;math inline&#34;&gt;\(y_j\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is the batch index. Denote by &lt;span class=&#34;math inline&#34;&gt;\(\hat l_\text{InfoNCE}\)&lt;/span&gt; the batch estimate of the loss from InfoNCE: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;FlatNCE provides a way to compute the gradient of InfoNCE without
+introducing the rounding error when subtracting between two similar
+numbers.&lt;/p&gt;
+&lt;p&gt;Specifically, let &lt;span class=&#34;math inline&#34;&gt;\(g^\ominus_{ij}\)&lt;/span&gt;
+is the affinity score between reference sample &lt;span class=&#34;math inline&#34;&gt;\(x_i\)&lt;/span&gt; and negative (noise) sample &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;_j\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(g^\oplus_{ii}\)&lt;/span&gt; is the affinity score
+between positive sample and itself/its transformation &lt;span class=&#34;math inline&#34;&gt;\(y_j\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is the batch index. Denote by &lt;span class=&#34;math inline&#34;&gt;\(\hat l_\text{InfoNCE}\)&lt;/span&gt; the batch estimate
+of the loss from InfoNCE: &lt;span class=&#34;math display&#34;&gt;\[
 \newcommand{detach}{\mathop{\text{detach}}}
 \newcommand{logsumexp}{\mathop{\text{logsumexp}}}
 \begin{gather}
-\hat l_\text{InfoNCE} = \logsumexp_j g^\ominus_{ij} - g^\oplus_{ii} = \log (\sum_{j \ne i} \exp g^\ominus_{ij} ) -g^\oplus_{ii} \\
+\hat l_\text{InfoNCE} = \logsumexp_j g^\ominus_{ij} - g^\oplus_{ii} =
+\log (\sum_{j \ne i} \exp g^\ominus_{ij} ) -g^\oplus_{ii} \\
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Usually, the above is calculated as &lt;span class=&#34;math display&#34;&gt;\[
-\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} } \exp(g^\ominus_{ij} - \max_k g^\ominus_{ik}) ] + \max_k g^\ominus_{ik} - g^\oplus_{ii}
-\]&lt;/span&gt; When the learning saturates, &lt;span class=&#34;math inline&#34;&gt;\(\hat l_\text{InfoNCE}\)&lt;/span&gt; goes to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which means &lt;span class=&#34;math inline&#34;&gt;\(\max_k g^\ominus_{ik}\)&lt;/span&gt; becomes &lt;span class=&#34;math inline&#34;&gt;\(g^\oplus_{ii}\)&lt;/span&gt; and thus &lt;span class=&#34;math display&#34;&gt;\[
-\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} } \exp(g^\ominus_{ij} - g^\oplus_{ii}) ] + \underbrace{g^\oplus_{ii} - g^\oplus_{ii} }_{\text{error-prone}}
-\]&lt;/span&gt; A rounding error will very likely happen when &lt;a href=&#34;https://en.wikipedia.org/wiki/Loss_of_significance&#34;&gt;subtracting two near numbers&lt;/a&gt;. Such error will accumulate and fail the InfoNCE. As said, FlatNCE provides a way to circumvent this rounding error.&lt;/p&gt;
+\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} }
+\exp(g^\ominus_{ij} - \max_k g^\ominus_{ik}) ] + \max_k g^\ominus_{ik} -
+g^\oplus_{ii}
+\]&lt;/span&gt; When the learning saturates, &lt;span class=&#34;math inline&#34;&gt;\(\hat
+l_\text{InfoNCE}\)&lt;/span&gt; goes to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;, which means &lt;span class=&#34;math inline&#34;&gt;\(\max_k g^\ominus_{ik}\)&lt;/span&gt; becomes &lt;span class=&#34;math inline&#34;&gt;\(g^\oplus_{ii}\)&lt;/span&gt; and thus &lt;span class=&#34;math display&#34;&gt;\[
+\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} }
+\exp(g^\ominus_{ij} - g^\oplus_{ii}) ] + \underbrace{g^\oplus_{ii} -
+g^\oplus_{ii} }_{\text{error-prone}}
+\]&lt;/span&gt; A rounding error will very likely happen when &lt;a href=&#34;https://en.wikipedia.org/wiki/Loss_of_significance&#34;&gt;subtracting
+two near numbers&lt;/a&gt;. Such error will accumulate and fail the InfoNCE.
+As said, FlatNCE provides a way to circumvent this rounding error.&lt;/p&gt;
 &lt;h2 id=&#34;gradient-perspective&#34;&gt;Gradient Perspective&lt;/h2&gt;
-&lt;p&gt;Denote by &lt;span class=&#34;math inline&#34;&gt;\(\hat l_\text{FlatNCE}\)&lt;/span&gt; the batch estimate of the negative loss from FlatNCE: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Denote by &lt;span class=&#34;math inline&#34;&gt;\(\hat l_\text{FlatNCE}\)&lt;/span&gt;
+the batch estimate of the negative loss from FlatNCE: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\hat l_\text{FlatNCE} &amp;amp;= \exp [ \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) - \detach \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) ] \\
-&amp;amp;= \frac{\exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) } {\detach [ \exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) ] } \\
-&amp;amp;= \frac{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ]} {\detach \{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] \} } \\
-&amp;amp;= \frac{\sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ]} {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] \} }
+\hat l_\text{FlatNCE} &amp;amp;= \exp [ \logsumexp_{j \ne i} (
+g^\ominus_{ij} - g^\oplus_{ii} ) - \detach \logsumexp_{j \ne i} (
+g^\ominus_{ij} - g^\oplus_{ii} ) ] \\
+&amp;amp;= \frac{\exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii}
+) } {\detach [ \exp \logsumexp_{j \ne i} ( g^\ominus_{ij} -
+g^\oplus_{ii} ) ] } \\
+&amp;amp;= \frac{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) -
+g_\theta (x_i, y_i) ]} {\detach \{\exp \log \sum_{j \ne i} \exp [
+g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] \} } \\
+&amp;amp;= \frac{\sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta
+(x_i, y_i) ]} {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j)
+- g_\theta (x_i, y_i) ] \} }
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;By putting the positive sample into the contrasting samples, &lt;span class=&#34;math display&#34;&gt;\[
-\hat l_\text{FlatNCE}^\oplus =  \frac{1 + \sum_j \exp \big( g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) \big)} {1 + \text{detach}[\sum_j \exp \big( g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) \big)]}
-\]&lt;/span&gt; where the &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; comes from adding the positive sample &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; to the set of negative samples (let’s denote this “negative” sample by &lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;_0\)&lt;/span&gt;). It can be easily found that&lt;/p&gt;
+\hat l_\text{FlatNCE}^\oplus =  \frac{1 + \sum_j \exp \big(
+g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) \big)} {1 +
+\text{detach}[\sum_j \exp \big( g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i,
+y_i) \big)]}
+\]&lt;/span&gt; where the &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; comes from
+adding the positive sample &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; to
+the set of negative samples (let’s denote this “negative” sample by
+&lt;span class=&#34;math inline&#34;&gt;\(y&amp;#39;_0\)&lt;/span&gt;). It can be easily found
+that&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\nabla_\theta \hat l_\text{FlatNCE}^\oplus (g_\theta) = \nabla_\theta \hat l_\text{InfoNCE} (g_\theta)
+\nabla_\theta \hat l_\text{FlatNCE}^\oplus (g_\theta) = \nabla_\theta
+\hat l_\text{InfoNCE} (g_\theta)
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;We may further find that the gradient of FlatNCE is an importance-weighted estimator of the form &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;We may further find that the gradient of FlatNCE is an
+importance-weighted estimator of the form &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\nabla_\theta \hat l^\oplus_\text{FlatNCE} &amp;amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] [\nabla_\theta g_\theta(x_i, y&amp;#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} } {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] \} } \\
-&amp;amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&amp;#39;_j) ] [\nabla_\theta g_\theta(x_i, y&amp;#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) ] } \\
-&amp;amp;= \sum_{k \ne i} \left\{ \underbrace {\frac{ \exp [ g_\theta(x_i, y&amp;#39;_k) ] } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) ] } }_{w_k} \nabla_\theta g_\theta(x_i, y&amp;#39;_k) \right\} - \nabla_\theta g_\theta(x_i, y_i) \\
+\nabla_\theta \hat l^\oplus_\text{FlatNCE} &amp;amp;= \frac{\sum_{j \ne i}
+\{ \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta (x_i, y_i) ] [\nabla_\theta
+g_\theta(x_i, y&amp;#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} }
+{\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) - g_\theta
+(x_i, y_i) ] \} } \\
+&amp;amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&amp;#39;_j) ]
+[\nabla_\theta g_\theta(x_i, y&amp;#39;_j) - \nabla_\theta g_\theta(x_i,
+y_i)] \} } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) ] } \\
+&amp;amp;= \sum_{k \ne i} \left\{ \underbrace {\frac{ \exp [ g_\theta(x_i,
+y&amp;#39;_k) ] } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&amp;#39;_j) ] }
+}_{w_k} \nabla_\theta g_\theta(x_i, y&amp;#39;_k) \right\} - \nabla_\theta
+g_\theta(x_i, y_i) \\
 \end{aligned}
-\]&lt;/span&gt; As the learning progresses, &lt;span class=&#34;math inline&#34;&gt;\(w_k\)&lt;/span&gt;’s other than &lt;span class=&#34;math inline&#34;&gt;\(w_0\)&lt;/span&gt; will go to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(w_0\)&lt;/span&gt; will go to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, which will cause the gradient to vanish.&lt;/p&gt;
+\]&lt;/span&gt; As the learning progresses, &lt;span class=&#34;math inline&#34;&gt;\(w_k\)&lt;/span&gt;’s other than &lt;span class=&#34;math inline&#34;&gt;\(w_0\)&lt;/span&gt; will go to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(w_0\)&lt;/span&gt; will go to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;, which will cause the gradient to
+vanish.&lt;/p&gt;
 &lt;h2 id=&#34;lower-bound-perspective&#34;&gt;Lower-bound Perspective&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(-\hat l_\text{InfoNCE}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(-\hat l_\text{FlatNCE}\)&lt;/span&gt; are part of the lower bounds to the mutual information in two methods. Given &lt;span class=&#34;math inline&#34;&gt;\(y_0\)&lt;/span&gt; the positive sample and &lt;span class=&#34;math inline&#34;&gt;\(y_{j&amp;gt;0}\)&lt;/span&gt; are the negative samples,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(-\hat l_\text{InfoNCE}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(-\hat l_\text{FlatNCE}\)&lt;/span&gt; are part of the
+lower bounds to the mutual information in two methods. Given &lt;span class=&#34;math inline&#34;&gt;\(y_0\)&lt;/span&gt; the positive sample and &lt;span class=&#34;math inline&#34;&gt;\(y_{j&amp;gt;0}\)&lt;/span&gt; are the negative samples,&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\label{lemma3.3} \begin{aligned} 
--\hat l^{K, \theta}_\text{InfoNCE} &amp;amp;= -\log \{ \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] \} \\
-&amp;amp;= \sup_v (v \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] - (-1 - \log (-v)) \\
+\label{lemma3.3} \begin{aligned}
+-\hat l^{K, \theta}_\text{InfoNCE} &amp;amp;= -\log \{ \frac 1 K \sum_{j
+&amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] \} \\
+&amp;amp;= \sup_v (v \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0)] - (-1 - \log (-v)) \\
 &amp;amp;\Downarrow_{v = -e^{-u}} \\
-&amp;amp;\ge  -e^{-u} \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] - (-1 - \log (e^{-u}) \\
-&amp;amp;= 1 - u - \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0) - u]
+&amp;amp;\ge  -e^{-u} \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0)] - (-1 - \log (e^{-u}) \\
+&amp;amp;= 1 - u - \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0) - u]
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Consider &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; as the primal critic and &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; as the dual critic. Since arbitrary choice of &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; lower-bounds the mutual information, we can either jointly optimize &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; or more preferably, train in an iterative fashion. Given &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, set &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; to&lt;/p&gt;
+&lt;p&gt;Consider &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; as the primal
+critic and &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; as the dual critic.
+Since arbitrary choice of &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; lower-bounds the mutual
+information, we can either jointly optimize &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt; or more preferably, train in an
+iterative fashion. Given &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;,
+set &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; to&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\hat u(g_\theta) = \log ({\frac 1 K \sum_j \exp[g_\theta(x,y_j) - g_\theta(x, y)]})
-\]&lt;/span&gt; Then we fix &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and only update &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;. Because &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; is fixed, the only gradient comes from &lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt;. Plugin &lt;span class=&#34;math inline&#34;&gt;\(\hat u\)&lt;/span&gt; to the right-hand side of &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lemma3.3}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
+\hat u(g_\theta) = \log ({\frac 1 K \sum_j \exp[g_\theta(x,y_j) -
+g_\theta(x, y)]})
+\]&lt;/span&gt; Then we fix &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; and only
+update &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;. Because &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; is fixed, the only gradient comes from
+&lt;span class=&#34;math inline&#34;&gt;\(g_\theta\)&lt;/span&gt;. Plugin &lt;span class=&#34;math inline&#34;&gt;\(\hat u\)&lt;/span&gt; to the right-hand side of &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lemma3.3}\)&lt;/span&gt; to give &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
-&amp;amp;1 - u - \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0) - u] \\
-&amp;amp;= 1 - \log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}) \notag \\
-&amp;amp;\quad - \frac 1 K \frac{\sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)}{{\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}} \\
-&amp;amp;= -\log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}) \label{obj} \\
+&amp;amp;1 - u - \frac 1 K \sum_{j &amp;gt; 0} \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0) - u] \\
+&amp;amp;= 1 - \log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0, y_0)]}) \notag \\
+&amp;amp;\quad - \frac 1 K \frac{\sum_j \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0)}{{\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0, y_0)]}} \\
+&amp;amp;= -\log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0,
+y_0)]}) \label{obj} \\
 &amp;amp;= -\hat l^K_\text{InfoNCE}
 \end{align}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;which tightly lower-bounds the &lt;span class=&#34;math inline&#34;&gt;\(-\hat l^K_\text{InfoNCE}\)&lt;/span&gt;. However we update &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(\theta&amp;#39;\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lemma3.3}\)&lt;/span&gt; will always hold. The objective of the whole FlatNCE is to enlarge &lt;span class=&#34;math inline&#34;&gt;\(\eqref{obj}\)&lt;/span&gt; after substituting &lt;span class=&#34;math inline&#34;&gt;\(u = \hat u(g_\theta&amp;#39;)\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(-\hat l^{K, \theta&amp;#39;}_\text{InfoNCE}\)&lt;/span&gt; can float up.&lt;/p&gt;
+&lt;p&gt;which tightly lower-bounds the &lt;span class=&#34;math inline&#34;&gt;\(-\hat
+l^K_\text{InfoNCE}\)&lt;/span&gt;. However we update &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(\theta&amp;#39;\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\eqref{lemma3.3}\)&lt;/span&gt; will always hold. The
+objective of the whole FlatNCE is to enlarge &lt;span class=&#34;math inline&#34;&gt;\(\eqref{obj}\)&lt;/span&gt; after substituting &lt;span class=&#34;math inline&#34;&gt;\(u = \hat u(g_\theta&amp;#39;)\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(-\hat l^{K, \theta&amp;#39;}_\text{InfoNCE}\)&lt;/span&gt;
+can float up.&lt;/p&gt;
 &lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://kexue.fm/archives/8586&#34;&gt;FlatNCE：小批次对比学习效果差的原因竟是浮点误差？ - 科学空间|Scientific Spaces (kexue.fm)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://kexue.fm/archives/8586&#34;&gt;FlatNCE：小批次对比学习效果差的原因竟是浮点误差？
+- 科学空间|Scientific Spaces (kexue.fm)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>

@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1419,33 +1447,43 @@
 
 <h2 id="定义">定义</h2>
 <h3 id="感性认知">感性认知</h3>
-<p>根据泰勒级数我们可以得知，两个函数<span class="math inline">\(f(x),g(x)\)</span>，如果它们各阶导数相等的越多，它们就越相似，换言之 <span class="math display">\[
+<p>根据泰勒级数我们可以得知，两个函数<span class="math inline">\(f(x),g(x)\)</span>，如果它们各阶导数相等的越多，它们就越相似，换言之
+<span class="math display">\[
 \text{各阶导数都相同} \Rightarrow f(x) = g(x)
 \]</span> 可以说，函数的各阶导数即是它们的特征。</p>
-<p>对于随机变量来说，这样的“特征”也存在。随机变量的特征即是它的各阶矩，即 <span class="math display">\[
+<p>对于随机变量来说，这样的“特征”也存在。随机变量的特征即是它的各阶矩，即
+<span class="math display">\[
 \text{各阶矩都相同} \Rightarrow \text{随机变量对应的分布相同}
 \]</span> 对于随机变量<span class="math inline">\(X\)</span>，其特征函数定义为 <span class="math display">\[
 \varphi(t) = \E[e^{itX}]
 \]</span> <span class="math inline">\(e^{itX}\)</span>的泰勒级数为 <span class="math display">\[
-e^{itX} = 1 + \frac{itX}{1!} - \frac{t^2X^2}{2!} + \dots + \frac{(itX)^n}{n!}
+e^{itX} = 1 + \frac{itX}{1!} - \frac{t^2X^2}{2!} + \dots +
+\frac{(itX)^n}{n!}
 \]</span> 代入特征函数可得 <span class="math display">\[
 \begin{aligned}
-\varphi(t) &amp;= \E[1 + \frac{itX}{1!} - \frac{t^2X^2}{2!} + \dots + \frac{(itX)^n}{n!}] \\
-&amp;= \E[1] + \E[\frac{itX}{1!}] - \E[\frac{t^2X^2}{2!}] + \dots + \E[\frac{(itX)^n}{n!}] \\
-&amp;= 1 + \frac{it \overbrace{\E[X]}^\text{一阶矩} }{1!} - \frac{t^2 \overbrace{\E[X^2]}^\text{二阶矩} }{2!} + \dots + \frac{(it)^n \overbrace{\E[X^n]}^\text{n阶矩} }{n!} \\
+\varphi(t) &amp;= \E[1 + \frac{itX}{1!} - \frac{t^2X^2}{2!} + \dots +
+\frac{(itX)^n}{n!}] \\
+&amp;= \E[1] + \E[\frac{itX}{1!}] - \E[\frac{t^2X^2}{2!}] + \dots +
+\E[\frac{(itX)^n}{n!}] \\
+&amp;= 1 + \frac{it \overbrace{\E[X]}^\text{一阶矩} }{1!} - \frac{t^2
+\overbrace{\E[X^2]}^\text{二阶矩} }{2!} + \dots + \frac{(it)^n
+\overbrace{\E[矩} }{n!} \\
 \end{aligned}
-\]</span> 可见特征函数包含了随机变量的所有矩，亦即随机变量的所有“特征”，所以可以说特征函数是随机变量的另一种描述方式。</p>
+\]</span>
+可见特征函数包含了随机变量的所有矩，亦即随机变量的所有“特征”，所以可以说特征函数是随机变量的另一种描述方式。</p>
 <h3 id="理性认知">理性认知</h3>
 <p><span class="math display">\[
 \varphi(t) = \E[e^{itX}] = \int_{-\infty}^{+\infty} e^{itx} p(x)\; dx
 \]</span></p>
-<p>而对<span class="math inline">\(p(x)\)</span>进行逆傅里叶变换可得 <span class="math display">\[
+<p>而对<span class="math inline">\(p(x)\)</span>进行逆傅里叶变换可得
+<span class="math display">\[
 F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
 \]</span> 可见二者互为共轭关系： <span class="math display">\[
 \varphi(t) = \overline{F(t)}
 \]</span></p>
 <h2 id="应用">应用</h2>
-<p>通过求<span class="math inline">\(t = 0\)</span>时的各阶导数，可以快速求得各阶矩： <span class="math display">\[
+<p>通过求<span class="math inline">\(t =
+0\)</span>时的各阶导数，可以快速求得各阶矩： <span class="math display">\[
 \varphi^{(k)}(0) = i^k \E[X^k]
 \]</span></p>
 <h2 id="参考">参考</h2>
@@ -1534,7 +1572,7 @@ F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1584,7 +1622,7 @@ F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1671,7 +1709,7 @@ F(t) = \int_{-\infty}^{+\infty} p(x) e^{-itx} dx
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

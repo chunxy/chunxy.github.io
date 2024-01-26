@@ -717,6 +717,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -773,7 +777,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -917,6 +929,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1120,7 +1136,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1317,8 +1345,10 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#l-smoothness"><span class="math inline">\(L\)</span>-smoothness</a></li>
-    <li><a href="#convergence-with-convexity">Convergence with Convexity</a></li>
-    <li><a href="#convergence-with-strong-convexity">Convergence with Strong Convexity</a></li>
+    <li><a href="#convergence-with-convexity">Convergence with
+Convexity</a></li>
+    <li><a href="#convergence-with-strong-convexity">Convergence with Strong
+Convexity</a></li>
     <li><a href="#non-convex-case">Non-convex Case</a></li>
   </ul>
 </nav>
@@ -1404,10 +1434,17 @@
           <div class="article-style">
             
 
-<p>If a convex function <span class="math inline">\(f\)</span> is differentiable and satisfies certain “regularity conditions”, we can get a nice guarantee that <span class="math inline">\(f\)</span> will converge by gradient descent.</p>
+<p>If a convex function <span class="math inline">\(f\)</span> is
+differentiable and satisfies certain “regularity conditions”, we can get
+a nice guarantee that <span class="math inline">\(f\)</span> will
+converge by gradient descent.</p>
 <h3 id="l-smoothness"><span class="math inline">\(L\)</span>-smoothness</h3>
-<p>Qualitatively, smoothness means that the gradient of <span class="math inline">\(f\)</span> changes in a controlled, bounded manner. Quantitatively, smoothness assumes that <span class="math inline">\(f\)</span> has a Lipschitz gradient. That means there exists an <span class="math inline">\(L &gt; 0\)</span> such that <span class="math display">\[
-||\nabla f(x) - \nabla f(y)||_2 \le L||x - y||_2, \forall x,y \in \mathrm{dom}(f)
+<p>Qualitatively, smoothness means that the gradient of <span class="math inline">\(f\)</span> changes in a controlled, bounded
+manner. Quantitatively, smoothness assumes that <span class="math inline">\(f\)</span> has a Lipschitz gradient. That means
+there exists an <span class="math inline">\(L &gt; 0\)</span> such that
+<span class="math display">\[
+||\nabla f(x) - \nabla f(y)||_2 \le L||x - y||_2, \forall x,y \in
+\mathrm{dom}(f)
 \]</span> We will say that such function is <span class="math inline">\(L\)</span>-smooth or strongly smooth. <span class="math inline">\(L\)</span>-smoothness is equivalent to <span class="math display">\[
 f(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2
 \]</span></p>
@@ -1415,33 +1452,49 @@ f(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2
 <li><input type="checkbox" disabled=""/>
 Proof</li>
 </ul>
-<p>Further, <span class="math inline">\(L\)</span>-smoothness is equivalent to <span class="math inline">\(\frac{L}{2}||x||^2_2 - f(x)\)</span> being convex.</p>
+<p>Further, <span class="math inline">\(L\)</span>-smoothness is
+equivalent to <span class="math inline">\(\frac{L}{2}||x||^2_2 -
+f(x)\)</span> being convex.</p>
 <p>With the smoothness, or the Lipschitz gradient, we can bound <span class="math inline">\(f(y)\)</span> from above.</p>
-<p>We will assume <span class="math inline">\(L\)</span>-smoothness in all cases below. Meanwhile, the local minima (in convex case, the global minima) is denoted as <span class="math inline">\(x^\star\)</span>.</p>
+<p>We will assume <span class="math inline">\(L\)</span>-smoothness in
+all cases below. Meanwhile, the local minima (in convex case, the global
+minima) is denoted as <span class="math inline">\(x^\star\)</span>.</p>
 <h3 id="convergence-with-convexity">Convergence with Convexity</h3>
-<p>With convexity, we can bound <span class="math inline">\(f(y)\)</span> from below with linear approximation: <span class="math display">\[
+<p>With convexity, we can bound <span class="math inline">\(f(y)\)</span> from below with linear
+approximation: <span class="math display">\[
 f(y) \ge f(x) + (y - x)^T \nabla f(x)
 \]</span></p>
 <h4 id="convergence-rate">Convergence Rate</h4>
 <h5 id="fixed-step-size">Fixed Step Size</h5>
-<p>Now consider a <span class="math inline">\(L\)</span>-smooth function <span class="math inline">\(f\)</span>. We adopt a fixed step size <span class="math inline">\(\alpha = \frac{1}{L}\)</span> so that the update in each iteration will be <span class="math display">\[
+<p>Now consider a <span class="math inline">\(L\)</span>-smooth function
+<span class="math inline">\(f\)</span>. We adopt a fixed step size <span class="math inline">\(\alpha = \frac{1}{L}\)</span> so that the update
+in each iteration will be <span class="math display">\[
 x_{k+1} = x_k - \frac{1}{L}\nabla f(x)
 \]</span> By the definition of <span class="math inline">\(L\)</span>-smoothness, <span class="math display">\[
-\label{diff} \begin{aligned} 
- f(x_{k+1}) &amp;\le f(x_k) + (-\frac{1}{L}\nabla f(x_k))^T \nabla f(x_k) + \frac{L}{2}||-\frac{1}{L}\nabla f(x_k)||^2_2 \\
-&amp;= f(x_k) - \frac{1}{2L}||\nabla f(x_k)||^2_2 
+\begin{equation} \label{diff}
+\begin{aligned}
+f(x_{k+1}) &amp;\le f(x_k) + (-\frac{1}{L}\nabla f(x_k))^T \nabla f(x_k)
++ \frac{L}{2}||-\frac{1}{L}\nabla f(x_k)||^2_2 \\
+&amp;= f(x_k) - \frac{1}{2L}||\nabla f(x_k)||^2_2
 \end{aligned}
-\]</span> <span class="math inline">\(f(x_{k+1}) \le f(x_k)\)</span> holds in each iteration.</p>
+\end{equation}
+\]</span> <span class="math inline">\(f(x_{k+1}) \le f(x_k)\)</span>
+holds in each iteration.</p>
 <p>By the convexity of <span class="math inline">\(f\)</span>, <span class="math display">\[
 \begin{gather}
 f(x^\star) \ge f(x_k) + (x^\star - x_k)^T \nabla f(x_k) \\
-\label{convexity} f(x_k) \le f(x^\star) + (x_k - x^\star)^T \nabla f(x_k)
+\label{convexity} f(x_k) \le f(x^\star) + (x_k - x^\star)^T \nabla
+f(x_k)
 \end{gather}
-\]</span> Substituting the result back to the right-hand side of equation <span class="math inline">\(\eqref{diff}\)</span>, <span class="math display">\[
+\]</span> Substituting the result back to the right-hand side of
+equation <span class="math inline">\(\eqref{diff}\)</span>, <span class="math display">\[
 \begin{aligned}
-f(x_{k+1}) &amp;\le f(x^\star) + (x_k - x^\star)^T \nabla f(x_k) - \frac{1}{2M}||\nabla f(x_k)||^2_2 \\
-f(x_{k+1}) - f(x^\star) &amp;&lt; (x_k - x^\star)^T L(x_k - x_{k+1}) - \frac{1}{2M}||L(x_k - x_{k+1})||^2_2 \\
-f(x_{k+1}) - f(x^\star) &amp;&lt; \frac{L}{2}(2(x_k - x^\star)^T(x_k - x_{k+1}) - ||(x_k - x_{k+1})||^2_2) \\
+f(x_{k+1}) &amp;\le f(x^\star) + (x_k - x^\star)^T \nabla f(x_k) -
+\frac{1}{2M}||\nabla f(x_k)||^2_2 \\
+f(x_{k+1}) - f(x^\star) &amp;&lt; (x_k - x^\star)^T L(x_k - x_{k+1}) -
+\frac{1}{2M}||L(x_k - x_{k+1})||^2_2 \\
+f(x_{k+1}) - f(x^\star) &amp;&lt; \frac{L}{2}(2(x_k - x^\star)^T(x_k -
+x_{k+1}) - ||(x_k - x_{k+1})||^2_2) \\
 \end{aligned}
 \]</span> By using the fact that <span class="math display">\[
 \begin{aligned}
@@ -1449,129 +1502,203 @@ f(x_{k+1}) - f(x^\star) &amp;&lt; \frac{L}{2}(2(x_k - x^\star)^T(x_k - x_{k+1}) 
 2a^Tb - ||b||^2_2 = ||a||^2_2 - ||a - b||^2_2
 \end{aligned}
 \]</span> We have <span class="math display">\[
-\label{closer} f(x_{k+1}) - f(x^\star) \le \frac{L}{2}(||x_k - x^\star||^2_2 - ||x_{k+1} - x^\star||^2_2)
+\label{closer} f(x_{k+1}) - f(x^\star) \le \frac{L}{2}(||x_k -
+x^\star||^2_2 - ||x_{k+1} - x^\star||^2_2)
 \]</span></p>
-<p>This indicates that <span class="math inline">\(x_{k+1}\)</span> is closer to the global minima <span class="math inline">\(x^\star\)</span> than <span class="math inline">\(x_k\)</span>. In addition, <span class="math display">\[
+<p>This indicates that <span class="math inline">\(x_{k+1}\)</span> is
+closer to the global minima <span class="math inline">\(x^\star\)</span>
+than <span class="math inline">\(x_k\)</span>. In addition, <span class="math display">\[
 \begin{aligned}
-\sum_{i=0}^k [f(x_{i+1}) - f(x^\star)] &amp;\le \sum_{i=0}^k \frac{L}{2}(||x_i - x^\star||^2_2 - ||x_{i+1} - x^\star||^2_2) \\
+\sum_{i=0}^k [f(x_{i+1}) - f(x^\star)] &amp;\le \sum_{i=0}^k
+\frac{L}{2}(||x_i - x^\star||^2_2 - ||x_{i+1} - x^\star||^2_2) \\
 &amp;= \frac{L}{2}(||x_0 - x^\star||^2_2 - ||x_{k+1} - x^\star||^2_2) \\
 &amp;\le \frac{L}{2}||x_0 - x^\star||^2_2
 \end{aligned}
 \]</span></p>
-<p>Because <span class="math inline">\(f(x_{i+1}) \le f(x_i), \forall i=0,\dots,k\)</span>, <span class="math inline">\(f(x_{k+1}) \le f(x_i), \forall i=0,\dots,k\)</span>, then <span class="math display">\[
+<p>Because <span class="math inline">\(f(x_{i+1}) \le f(x_i), \forall
+i=0,\dots,k\)</span>, <span class="math inline">\(f(x_{k+1}) \le f(x_i),
+\forall i=0,\dots,k\)</span>, then <span class="math display">\[
 \begin{aligned}
 k(f(x_{k+1}) - f(x^\star)) \le \frac{L}{2}||x_0 - x^\star||^2_2 \\
 f(x_{k+1}) - f(x^\star) \le \frac{L}{2k}||x_0 - x^\star||^2_2
 \end{aligned}
 \]</span></p>
 <h5 id="variant-step-size">Variant Step Size</h5>
-<p>In real application scenario, it may be difficult to know <span class="math inline">\(L\)</span> exactly. However, as long as we choose <span class="math inline">\(\alpha_k \le \frac{1}{L}\)</span> in each iteration, the convergence and the rate still holds. <span class="math display">\[
+<p>In real application scenario, it may be difficult to know <span class="math inline">\(L\)</span> exactly. However, as long as we choose
+<span class="math inline">\(\alpha_k \le \frac{1}{L}\)</span> in each
+iteration, the convergence and the rate still holds. <span class="math display">\[
 \begin{aligned}
-f(x_{k+1}) &amp;\le f(x_k) + (-\alpha_k \nabla f(x_k))^T \nabla f(x_k) + \frac{L}{2}||-\alpha_k \nabla f(x_k)||^2_2 \\
-&amp;= f(x_k) - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2 \\
-f(x_{k+1}) &amp;\le f(x_k) - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2 \\
+f(x_{k+1}) &amp;\le f(x_k) + (-\alpha_k \nabla f(x_k))^T \nabla f(x_k) +
+\frac{L}{2}||-\alpha_k \nabla f(x_k)||^2_2 \\
+&amp;= f(x_k) - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2
+\\
+f(x_{k+1}) &amp;\le f(x_k) - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla
+f(x_k)||^2_2 \\
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-f(x_{k+1}) - f(x^\star) &amp;\le f(x_k) - f(x^\star) - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2 \\
+f(x_{k+1}) - f(x^\star) &amp;\le f(x_k) - f(x^\star) - (\alpha_k -
+\frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2 \\
 \end{aligned}
 \]</span></p>
-<p>Let <span class="math inline">\(\eta_{k+1} = f(x_{k+1}) - f(x^\star) \ge 0\)</span>, the above becomes <span class="math inline">\(\eta_{k+1} \le \eta_{k} - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla f(x_k)||^2_2\)</span>. From equation <span class="math inline">\(\eqref{convexity}\)</span>, <span class="math display">\[
+<p>Let <span class="math inline">\(\eta_{k+1} = f(x_{k+1}) - f(x^\star)
+\ge 0\)</span>, the above becomes <span class="math inline">\(\eta_{k+1}
+\le \eta_{k} - (\alpha_k - \frac{L}{2} \alpha_k^2)||\nabla
+f(x_k)||^2_2\)</span>. From equation <span class="math inline">\(\eqref{convexity}\)</span>, <span class="math display">\[
 \begin{gather}
-\eta_k = f(x_k) - f(x^\star) \le (x_k - x^\star)^T \nabla f(x_k) \le ||x_k - x^\star||_2||\nabla f(x_k)||_2 \\
+\eta_k = f(x_k) - f(x^\star) \le (x_k - x^\star)^T \nabla f(x_k) \le
+||x_k - x^\star||_2||\nabla f(x_k)||_2 \\
 0 \le \frac{\eta_k}{||x_k - x^\star||_2} \le ||\nabla f(x_k)||_2 \\
 -||\nabla f(x_k)||^2_2 \le -\frac{\eta^2_k}{||x_k - x^\star||^2_2} \\
 \end{gather}
 \]</span> Substituting it back to give <span class="math display">\[
-\eta_{k+1} \le \eta_k - \frac{(\alpha_k - \frac{L}{2}\alpha^2_k) \eta^2_k}{||x_k - x^\star||^2_2}
+\eta_{k+1} \le \eta_k - \frac{(\alpha_k - \frac{L}{2}\alpha^2_k)
+\eta^2_k}{||x_k - x^\star||^2_2}
 \]</span> From equation <span class="math inline">\(\eqref{closer}\)</span> we already have <span class="math display">\[
-||x_{k+1} - x^\star||^2_2 \le ||x_k - x^\star||^2_2 \le \dots \le ||x_0 - x^\star||^2_2
+||x_{k+1} - x^\star||^2_2 \le ||x_k - x^\star||^2_2 \le \dots \le ||x_0
+- x^\star||^2_2
 \]</span> Thus, <span class="math display">\[
 \begin{aligned}
-\eta_{k+1} &amp;\le \eta_k - \frac{(\alpha_k - \frac{L}{2}\alpha^2_k) \eta^2_k}{||x_0 - x^\star||^2_2} \\
-\frac{1}{\eta_k} &amp;\le \frac{1}{\eta_{k+1}} - \frac{(\alpha_k - \frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \cdot \frac{\eta_k}{\eta_{k+1}} \\
-\frac{1}{\eta_{k+1}} - \frac{1}{\eta_k} &amp;\ge \frac{(\alpha_k - \frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \cdot \frac{\eta_k}{\eta_{k+1}} \\
-\frac{1}{\eta_{k+1}} - \frac{1}{\eta_k} &amp;\ge \frac{(\alpha_k - \frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \text{, by } \eta_k \ge \eta_{k+1} \\
+\eta_{k+1} &amp;\le \eta_k - \frac{(\alpha_k - \frac{L}{2}\alpha^2_k)
+\eta^2_k}{||x_0 - x^\star||^2_2} \\
+\frac{1}{\eta_k} &amp;\le \frac{1}{\eta_{k+1}} - \frac{(\alpha_k -
+\frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \cdot
+\frac{\eta_k}{\eta_{k+1}} \\
+\frac{1}{\eta_{k+1}} - \frac{1}{\eta_k} &amp;\ge \frac{(\alpha_k -
+\frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \cdot
+\frac{\eta_k}{\eta_{k+1}} \\
+\frac{1}{\eta_{k+1}} - \frac{1}{\eta_k} &amp;\ge \frac{(\alpha_k -
+\frac{L}{2}\alpha^2_k)}{||x_0 - x^\star||^2_2} \text{, by } \eta_k \ge
+\eta_{k+1} \\
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-\sum_{i=0}^k (\frac{1}{\eta_{i+1}} - \frac{1}{\eta_i}) &amp;\ge \sum_{i=0}^k \frac{(\alpha_i - \frac{L}{2}\alpha^2_i)}{||x_0 - x^\star||^2_2} \\
-\frac{1}{\eta_{k+1}} - \frac{1}{\eta_0} &amp;\ge \frac{\sum_{i=0}^k (\alpha_i - \frac{L}{2}\alpha^2_i)}{||x_0 - x^\star||^2_2} \\
-\frac{1}{\eta_{k+1}} &amp;\ge \frac{\sum_{i=0}^k (\alpha_i - \frac{L}{2}\alpha^2_i)}{||x_0 - x^\star||^2_2} \\
-f(x_{k+1} - f(x^\star)) &amp;\le \frac{||x_0 - x^\star||^2_2}{\sum_{i=0}^k (\alpha_i - \frac{L}{2}\alpha^2_i)}
+\sum_{i=0}^k (\frac{1}{\eta_{i+1}} - \frac{1}{\eta_i}) &amp;\ge
+\sum_{i=0}^k \frac{(\alpha_i - \frac{L}{2}\alpha^2_i)}{||x_0 -
+x^\star||^2_2} \\
+\frac{1}{\eta_{k+1}} - \frac{1}{\eta_0} &amp;\ge \frac{\sum_{i=0}^k
+(\alpha_i - \frac{L}{2}\alpha^2_i)}{||x_0 - x^\star||^2_2} \\
+\frac{1}{\eta_{k+1}} &amp;\ge \frac{\sum_{i=0}^k (\alpha_i -
+\frac{L}{2}\alpha^2_i)}{||x_0 - x^\star||^2_2} \\
+f(x_{k+1} - f(x^\star)) &amp;\le \frac{||x_0 -
+x^\star||^2_2}{\sum_{i=0}^k (\alpha_i - \frac{L}{2}\alpha^2_i)}
 \end{aligned}
 \]</span></p>
-<p>If <span class="math inline">\(\sum_{i=1}^k \alpha_i = \infty\)</span> and <span class="math inline">\(\sum_{i=1}^k \alpha^2_i &lt; \infty\)</span>, the Variant Step Size can be shown to converge. Particularly when <span class="math inline">\(\alpha_k = \frac{1}{k}\)</span>, we have <span class="math display">\[
-f(x_{k+1} - f(x^\star)) \le \Theta(\frac{1}{\log k})||x_0 - x^\star||^2_2
+<p>If <span class="math inline">\(\sum_{i=1}^k \alpha_i =
+\infty\)</span> and <span class="math inline">\(\sum_{i=1}^k \alpha^2_i
+&lt; \infty\)</span>, the Variant Step Size can be shown to converge.
+Particularly when <span class="math inline">\(\alpha_k =
+\frac{1}{k}\)</span>, we have <span class="math display">\[
+f(x_{k+1} - f(x^\star)) \le \Theta(\frac{1}{\log k})||x_0 -
+x^\star||^2_2
 \]</span></p>
-<h3 id="convergence-with-strong-convexity">Convergence with Strong Convexity</h3>
+<h3 id="convergence-with-strong-convexity">Convergence with Strong
+Convexity</h3>
 <h4 id="strong-convexity">Strong Convexity</h4>
-<p>A function <span class="math inline">\(f\)</span> is strongly convex if there exists a <span class="math inline">\(l &gt; 0\)</span> such that <span class="math display">\[
-f(y) \ge f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2, \forall x,y \in \mathrm{dom}(f)
-\]</span> Further, strong convexity is equivalent to <span class="math inline">\(f(x) - \frac{l}{2}||x||^2_2\)</span> being convex.</p>
-<p>With strong convexity, we can bound <span class="math inline">\(f(y)\)</span> from below with a convex quadratic approximation.</p>
+<p>A function <span class="math inline">\(f\)</span> is strongly convex
+if there exists a <span class="math inline">\(l &gt; 0\)</span> such
+that <span class="math display">\[
+f(y) \ge f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2,
+\forall x,y \in \mathrm{dom}(f)
+\]</span> Further, strong convexity is equivalent to <span class="math inline">\(f(x) - \frac{l}{2}||x||^2_2\)</span> being
+convex.</p>
+<p>With strong convexity, we can bound <span class="math inline">\(f(y)\)</span> from below with a convex quadratic
+approximation.</p>
 <h4 id="convergence-rate-1">Convergence Rate</h4>
 <h5 id="fixed-step-size-1">Fixed Step Size</h5>
 <p>We have assumed that <span class="math inline">\(f\)</span> is <span class="math inline">\(L\)</span>-smooth above. That is <span class="math display">\[
-\label{sm} f(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2, \forall x,y \in \mathrm{dom}(f)
+\begin{equation}
+\label{sm} f(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y -
+x||^2_2, \forall x,y \in \mathrm{dom}(f)
+\end{equation}
 \]</span> In this section we further assume that <span class="math inline">\(f\)</span> is <span class="math inline">\(L\)</span>-smooth as well as strong convex: <span class="math display">\[
-\label{sc} f(y) \ge f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2, \forall x,y \in \mathrm{dom}(f)
-\]</span> Let <span class="math inline">\(F(y) = f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2\)</span>. Take derivative of <span class="math inline">\(F\)</span> w.r.t. <span class="math inline">\(y\)</span> and make it zero to give <span class="math display">\[
+\begin{equation}
+\label{sc} f(y) \ge f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y -
+x||^2_2, \forall x,y \in \mathrm{dom}(f)
+\end{equation}
+\]</span> Let <span class="math inline">\(F(y) = f(x) + (y - x)^T \nabla
+f(x) + \frac{l}{2}||y - x||^2_2\)</span>. Take derivative of <span class="math inline">\(F\)</span> w.r.t. <span class="math inline">\(y\)</span> and make it zero to give <span class="math display">\[
 \begin{aligned}
 \nabla f(x) + l(y - x) = 0 \\
 y_0 - x = -\frac{\nabla f(x)}{l}
 \end{aligned}
-\]</span> Because the second derivative of <span class="math inline">\(F(y)\)</span> is <span class="math inline">\(l \succeq 0\)</span>, <span class="math inline">\(F(y)\)</span> reaches global minimum at the local minima <span class="math inline">\(y_0\)</span>. Substitute <span class="math inline">\(y_0\)</span> back to <span class="math inline">\(F(y)\)</span> to give <span class="math display">\[
+\]</span> Because the second derivative of <span class="math inline">\(F(y)\)</span> is <span class="math inline">\(l
+\succeq 0\)</span>, <span class="math inline">\(F(y)\)</span> reaches
+global minimum at the local minima <span class="math inline">\(y_0\)</span>. Substitute <span class="math inline">\(y_0\)</span> back to <span class="math inline">\(F(y)\)</span> to give <span class="math display">\[
 f(y) \ge F(y) \ge F(y_0) = f(x) - \frac{1}{2l}||\nabla f(x)||^2_2
-\]</span> This holds when <span class="math inline">\(y = x^\star\)</span>. That is, <span class="math display">\[
-f(x^\star) \ge f(x) - \frac{1}{2l}||\nabla f(x)||^2_2 \\
-||\nabla f(x)||^2_2 \ge 2l(f(x) - f(x^\star))
-\]</span> The above inequality is referred to as Polyak-Lojasiewicz Inequality. By combining it with <span class="math inline">\(\eqref{diff}\)</span>, where we implicitly assume a fixed step-size <span class="math inline">\(\alpha = \frac{1}{L}\)</span>, we have <span class="math display">\[
+\]</span> This holds when <span class="math inline">\(y =
+x^\star\)</span>. That is, <span class="math display">\[
+\begin{aligned}
+f(x^\star) &amp;\ge f(x) - \frac{1}{2l}||\nabla f(x)||^2_2 \\
+||\nabla f(x)||^2_2 &amp;\ge 2l(f(x) - f(x^\star))
+\end{aligned}
+\]</span> The above inequality is referred to as Polyak-Lojasiewicz
+inequality. By combining it with <span class="math inline">\(\eqref{diff}\)</span>, where we implicitly assume
+a fixed step-size <span class="math inline">\(\alpha =
+\frac{1}{L}\)</span>, we have <span class="math display">\[
 \begin{aligned}
 f(x_{k+1}) &amp;\le f(x_k) - \frac{1}{2L}||\nabla f(x_k)||^2_2 \\
-f(x_{k+1}) - f(x^\star) &amp;\le f(x_k) - f(x^\star) + \frac{1}{2L}(-||\nabla f(x_k)||^2_2) \\ 
-f(x_{k+1}) - f(x^\star) &amp;\le f(x_k) - f(x^\star) + \frac{1}{2L}(-2l(f(x) - f(x^\star))) \\
+f(x_{k+1}) - f(x^\star) &amp;\le f(x_k) - f(x^\star) +
+\frac{1}{2L}(-||\nabla f(x_k)||^2_2) \\
+f(x_{k+1}) - f(x^\star) &amp;\le f(x_k) - f(x^\star) +
+\frac{1}{2L}(-2l(f(x) - f(x^\star))) \\
 &amp;= (1 - \frac{l}{L}) (f(x_k) - f(x^\star))
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-f(x_{k+1}) - f(x^\star) &amp;\le (1 - \frac{l}{L}) (f(x_k) - f(x^\star)) \\
+f(x_{k+1}) - f(x^\star) &amp;\le (1 - \frac{l}{L}) (f(x_k) - f(x^\star))
+\\
 &amp;\le (1 - \frac{l}{L})(1 - \frac{l}{L}) (f(x_{k-1}) - f(x^\star)) \\
 &amp;\le \dots \\
 &amp;\le (1 - \frac{l}{L})^{k+1} (f(x_0) - f(x^\star))
 \end{aligned}
 \]</span></p>
-<p>From equation <span class="math inline">\(\eqref{sm}\)</span> and equation <span class="math inline">\(\eqref{sc}\)</span>, <span class="math display">\[
+<p>From equation <span class="math inline">\(\eqref{sm}\)</span> and
+equation <span class="math inline">\(\eqref{sc}\)</span>, <span class="math display">\[
 \begin{aligned}
-f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2 \le f&amp;(y) \le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2 \\
+f(x) + (y - x)^T \nabla f(x) + \frac{l}{2}||y - x||^2_2 \le f&amp;(y)
+\le f(x) + (y - x)^T \nabla f(x) + \frac{L}{2}||y - x||^2_2 \\
 l &amp;\le L \\
 \end{aligned}
 \]</span> Usually it would be the case that <span class="math inline">\(l &lt; L\)</span>, thus <span class="math inline">\(0 &lt; 1 - \frac{l}{L} &lt; 1\)</span>.</p>
 <h3 id="non-convex-case">Non-convex Case</h3>
-<p>Without convexity condition, we can still exploit the property of <span class="math inline">\(L\)</span>-smoothness. Sum up on both sides of equation <span class="math inline">\(\eqref{diff}\)</span> from <span class="math inline">\(k = 0\)</span>, we have <span class="math display">\[
-\begin{aligned} 
-\sum_{i=0}^k f(x_{k+1}) &amp;\le \sum_{i=0}^k f(x_k) - \frac{1}{2L}||\nabla f(x_k)||^2_2 \\
-\sum_{i=0}^k f(x_{k+1}) - f(x_k) &amp;\le -\frac{1}{2L} \sum_{i=0}^k ||\nabla f(x_k)||^2_2 \\
-f(x_{k+1}) &amp;\le f(x_0) - \frac{1}{2L}\sum_{i=0}^k ||\nabla f(x_k)||^2_2
-\end{aligned}
-\]</span> Because <span class="math inline">\(x^\star\)</span> is a local minima, <span class="math display">\[
+<p>Without convexity condition, we can still exploit the property of
+<span class="math inline">\(L\)</span>-smoothness. Sum up on both sides
+of equation <span class="math inline">\(\eqref{diff}\)</span> from <span class="math inline">\(k = 0\)</span>, we have <span class="math display">\[
 \begin{aligned}
-f(x^\star) \le f(x_{k+1}) &amp;\le f(x_0) - \frac{1}{2L}\sum_{i=0}^k ||\nabla f(x_k)||^2_2 \\
-f(x^\star) - f(x_0) &amp;\le - \frac{1}{2L}\sum_{i=0}^k ||\nabla f(x_k)||^2_2 \\
+\sum_{i=0}^k f(x_{k+1}) &amp;\le \sum_{i=0}^k f(x_k) -
+\frac{1}{2L}||\nabla f(x_k)||^2_2 \\
+\sum_{i=0}^k f(x_{k+1}) - f(x_k) &amp;\le -\frac{1}{2L} \sum_{i=0}^k
+||\nabla f(x_k)||^2_2 \\
+f(x_{k+1}) &amp;\le f(x_0) - \frac{1}{2L}\sum_{i=0}^k ||\nabla
+f(x_k)||^2_2
+\end{aligned}
+\]</span> Because <span class="math inline">\(x^\star\)</span> is a
+local minima, <span class="math display">\[
+\begin{aligned}
+f(x^\star) \le f(x_{k+1}) &amp;\le f(x_0) - \frac{1}{2L}\sum_{i=0}^k
+||\nabla f(x_k)||^2_2 \\
+f(x^\star) - f(x_0) &amp;\le - \frac{1}{2L}\sum_{i=0}^k ||\nabla
+f(x_k)||^2_2 \\
 \sum_{i=0}^k ||\nabla f(x_k)||^2_2 &amp;\le 2L(f(x_0) - f(x^\star)) \\
 \end{aligned}
-\]</span> In this case, the error is measured by the first derivative. Suppose <span class="math inline">\(\tilde x = \arg \min_i ||\nabla f(x_i)||^2_2\)</span>, where the first derivative of <span class="math inline">\(f\)</span> is the closest to <span class="math inline">\(0\)</span>, <span class="math display">\[
+\]</span> In this case, the error is measured by the first derivative.
+Suppose <span class="math inline">\(\tilde x = \arg \min_i ||\nabla
+f(x_i)||^2_2\)</span>, where the first derivative of <span class="math inline">\(f\)</span> is the closest to <span class="math inline">\(0\)</span>, <span class="math display">\[
 \begin{aligned}
 k||\nabla f(\tilde x)||^2_2 &amp;\le 2L(f(x_0) - f(x^\star)) \\
 ||\nabla f(\tilde x)||^2_2 &amp;\le \frac{2L(f(x_0) - f(x^\star))}{k} \\
 \end{aligned}
 \]</span></p>
-<p><a href="/uploads/Convergence%20of%20Gradient%20Descent.pdf" target="_blank">Convergence of Gradient Descent.pdf</a></p>
-<p><a href="https://rkganti.wordpress.com/2015/08/21/convergence-rate-of-gradient-descent-algorithm/">Convergence rate of gradient descent algorithm | bps/Hz (wordpress.com)</a></p>
-<p><a href="https://xingyuzhou.org/blog/notes/strong-convexity">Strong convexity · Xingyu Zhou’s blog</a></p>
+<p><a href="/uploads/Convergence%20of%20Gradient%20Descent.pdf" target="_blank">Convergence
+of Gradient Descent.pdf</a></p>
+<p><a href="https://rkganti.wordpress.com/2015/08/21/convergence-rate-of-gradient-descent-algorithm/">Convergence
+rate of gradient descent algorithm | bps/Hz (wordpress.com)</a></p>
+<p><a href="https://xingyuzhou.org/blog/notes/strong-convexity">Strong
+convexity · Xingyu Zhou’s blog</a></p>
 
 
 
@@ -1662,7 +1789,7 @@ k||\nabla f(\tilde x)||^2_2 &amp;\le 2L(f(x_0) - f(x^\star)) \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1712,7 +1839,7 @@ k||\nabla f(\tilde x)||^2_2 &amp;\le 2L(f(x_0) - f(x^\star)) \\
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1799,7 +1926,7 @@ k||\nabla f(\tilde x)||^2_2 &amp;\le 2L(f(x_0) - f(x^\star)) \\
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

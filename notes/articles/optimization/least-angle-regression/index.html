@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1401,43 +1429,86 @@
           <div class="article-style">
             
 
-<h3 id="forward-selection">Forward Selection</h3>
-<p>In cases where we are to solve <span class="math inline">\(W\)</span> so that <span class="math inline">\(Y = XW\)</span>, where <span class="math inline">\(Y \in \R^M, X \in \R^{M \times N}, W \in \R^N\)</span>, we can do it in an iterative and greedy way.</p>
+<h2 id="forward-selection">Forward Selection</h2>
+<p>In cases where we are to solve <span class="math inline">\(W\)</span>
+so that <span class="math inline">\(Y = XW\)</span>, where <span class="math inline">\(Y \in \R^M, X \in \R^{M \times N}, W \in
+\R^N\)</span>, we can do it in an iterative and greedy way.</p>
 <ol type="1">
-<li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}\)</span> initially.</p></li>
-<li><p>Select among <span class="math inline">\(C\)</span> a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. Then for each <span class="math inline">\(\mathrm x^{(i)}\)</span> from left to right, do the following:</p></li>
+<li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)},
+\mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}\)</span> initially.</p></li>
+<li><p>Select among <span class="math inline">\(C\)</span> a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine
+distance to <span class="math inline">\(Y_{res}\)</span>. Then for each
+<span class="math inline">\(\mathrm x^{(i)}\)</span> from left to right,
+do the following:</p></li>
 </ol>
 <p><span class="math display">\[
-\hat Y = \frac{\mathrm x^{(k)} \cdot Y}{||\mathrm x ^{(k)}||_2} \mathrm x ^{(k)} \\
+\begin{gathered}
+\hat Y = \frac{Y \cdot \mathrm x^{(k)}}{||\mathrm x ^{(k)}||_2} \mathrm
+x ^{(k)} \\
 Y_{res} = Y_{res} - \hat Y
+\end{gathered}
 \]</span></p>
 <ol start="3" type="1">
-<li>Remove <span class="math inline">\(\mathrm x^{(k)}\)</span> from <span class="math inline">\(C\)</span>. Go to step 2 until <span class="math inline">\(Y_{res}\)</span> reaches <span class="math inline">\(0\)</span> or we have used all columns in <span class="math inline">\(C\)</span>.</li>
+<li>Remove <span class="math inline">\(\mathrm x^{(k)}\)</span> from
+<span class="math inline">\(C\)</span>. Go to step 2 until <span class="math inline">\(Y_{res}\)</span> reaches <span class="math inline">\(0\)</span> or we have used all columns in <span class="math inline">\(C\)</span>.</li>
 </ol>
-<p>Apparently this algorithm is efficient. However, it does not guarantee an exact solution, even when <span class="math inline">\(Y\)</span> lies in the column space of <span class="math inline">\(X\)</span>.</p>
-<h3 id="forward-stagewise">Forward Stagewise</h3>
-<p>Like forward selection, forward stagewise selects a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. Unlike Forward Selection, Forward Selection does not subtract the whole projection from <span class="math inline">\(Y_{res}\)</span>. Instead, it proceeds along <span class="math inline">\(\mathrm x^{(k)}\)</span> with a small step.</p>
+<p>Apparently this algorithm is efficient. However, it does not
+guarantee an exact solution, even when <span class="math inline">\(Y\)</span> lies in the column space of <span class="math inline">\(X\)</span>.</p>
+<h2 id="forward-stagewise">Forward Stagewise</h2>
+<p>Like forward selection, forward stagewise selects a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine
+distance to <span class="math inline">\(Y_{res}\)</span>. Unlike Forward
+Selection, Forward Selection does not subtract the whole projection from
+<span class="math inline">\(Y_{res}\)</span>. Instead, it proceeds along
+<span class="math inline">\(\mathrm x^{(k)}\)</span> with a small
+step.</p>
 <ol type="1">
-<li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\},\eta\text{ is a small constant}\)</span> initially.</p></li>
-<li><p>Select among <span class="math inline">\(C\)</span> a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. Then for each <span class="math inline">\(\mathrm x^{(i)}\)</span> from left to right, do the following:</p></li>
+<li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)},
+\mathrm x^{(2)}, \dots, \mathrm x^{(N)}\},\eta\text{ is a small
+constant}\)</span> initially.</p></li>
+<li><p>Select among <span class="math inline">\(C\)</span> a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine
+distance to <span class="math inline">\(Y_{res}\)</span>. Then for each
+<span class="math inline">\(\mathrm x^{(i)}\)</span> from left to right,
+do the following:</p></li>
 </ol>
 <p><span class="math display">\[
-\hat Y = \eta \frac{\mathrm x^{(k)} \cdot Y}{||\mathrm x ^{(k)}||_2} \mathrm x ^{(k)} \\
+\begin{gathered}
+\hat Y = \eta \frac{Y \cdot \mathrm x^{(k)}}{||\mathrm x ^{(k)}||_2}
+\mathrm x ^{(k)} \\
 Y_{res} = Y_{res} - \hat Y
+\end{gathered}
 \]</span></p>
 <ol start="3" type="1">
-<li><del>Remove <span class="math inline">\(\mathrm x^{(k)}\)</span> from <span class="math inline">\(C\)</span>.</del> Go to step 2 until <span class="math inline">\(Y_{res}\)</span> is sufficiently small.</li>
+<li><del>Remove <span class="math inline">\(\mathrm x^{(k)}\)</span>
+from <span class="math inline">\(C\)</span>.</del> Go to step 2 until
+<span class="math inline">\(Y_{res}\)</span> is sufficiently small.</li>
 </ol>
-<p>Apparently forward stagewise gives an exact solution when <span class="math inline">\(\eta\)</span> is small enough. But it is more time-consuming.</p>
-<h3 id="least-angle-regression">Least Angle Regression</h3>
-<p>LARS a is compromise of forward selection and forward stagewise. Likewise, LARS selects a <span class="math inline">\(\mathrm x^{(k)}\)</span> such that <span class="math inline">\(\mathrm x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. LARS proceeds stagewise like forward stagewise, however with its own methodology to determine the step size.</p>
+<p>Apparently forward stagewise gives an exact solution when <span class="math inline">\(\eta\)</span> is small enough. But it is more
+time-consuming.</p>
+<h2 id="least-angle-regression">Least Angle Regression</h2>
+<p>LARS a is a compromise between forward selection and forward
+stagewise. Likewise, LARS selects a <span class="math inline">\(\mathrm
+x^{(k)}\)</span> such that <span class="math inline">\(\mathrm
+x^{(k)}\)</span> has the largest cosine distance to <span class="math inline">\(Y_{res}\)</span>. LARS proceeds stagewise like
+forward stagewise, however with its own methodology to determine the
+step size.</p>
 <ol type="1">
-<li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)}, \mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}, \mathrm d = \arg\max_{\mathrm x \in C}\frac{Y \cdot \mathrm x }{||\mathrm x||_2}\)</span> initially.</p></li>
+<li><p><span class="math inline">\(Y_{res} = Y, C = \{\mathrm x^{(1)},
+\mathrm x^{(2)}, \dots, \mathrm x^{(N)}\}, d = \arg\max_{\mathrm x \in
+C}\frac{Y \cdot \mathrm x }{||\mathrm x||_2}\)</span>
+initially.</p></li>
 <li><p>Then do the following: <span class="math display">\[
-\hat Y = \eta \frac{\mathrm d \cdot Y}{||\mathrm d||_2} \mathrm d \\
+\begin{gathered}
+\hat Y = \eta \frac{Y \cdot d}{||d||_2} d \\
 Y_{res} = Y_{res} - \hat Y
-\]</span> <span class="math inline">\(\eta\)</span> is determined such that there is some <span class="math inline">\(\mathrm x^{(k)} \in C\)</span> onto which the projection of <span class="math inline">\((Y - \hat Y)\)</span> is the same as that onto <span class="math inline">\(\mathrm d\)</span>. Or in other words, <span class="math inline">\((Y - \hat Y)\)</span> lies on the bisector hyper-plane between <span class="math inline">\(\mathrm x^{(k)}\)</span> and <span class="math inline">\(\mathrm d\)</span>. Let <span class="math inline">\(\mathrm d\)</span> be along this bisector.</p></li>
-<li><p>Go to step 2 until <span class="math inline">\(Y_{res}\)</span> is sufficiently small.</p></li>
+\end{gathered}
+\]</span> <span class="math inline">\(\eta\)</span> is determined such
+that there is some <span class="math inline">\(\mathrm x^{(k)} \in
+C\)</span> onto which the projection of <span class="math inline">\((Y -
+\hat Y)\)</span> is the same as that onto <span class="math inline">\(d\)</span>. Or in other words, <span class="math inline">\((Y - \hat Y)\)</span> lies on the bisector
+hyper-plane between <span class="math inline">\(\mathrm x^{(k)}\)</span>
+and <span class="math inline">\(d\)</span>. Let <span class="math inline">\(d\)</span> be along this bisector.</p></li>
+<li><p>Go to step 2 until <span class="math inline">\(Y_{res}\)</span>
+is sufficiently small.</p></li>
 </ol>
 
 
@@ -1529,7 +1600,7 @@ Y_{res} = Y_{res} - \hat Y
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1579,7 +1650,7 @@ Y_{res} = Y_{res} - \hat Y
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1666,7 +1737,7 @@ Y_{res} = Y_{res} - \hat Y
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

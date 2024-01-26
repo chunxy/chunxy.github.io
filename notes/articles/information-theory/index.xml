@@ -19,21 +19,47 @@
       <guid>https://chunxy.github.io/notes/articles/information-theory/entropy/</guid>
       <description>
 
-&lt;p&gt;The entropy of discrete distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (probability mass function) is defined as &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The entropy of discrete distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; (probability mass function) is defined
+as &lt;span class=&#34;math display&#34;&gt;\[
 H(p) = -\mathrm{E}_{x \sim p}\log p(x)
-\]&lt;/span&gt; The entropy of continuous distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; (probability density function) is usually similarly defined as &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The entropy reaches its maximum when the underlying
+distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is a uniform
+distribution. The maximum value is &lt;span class=&#34;math inline&#34;&gt;\(\log
+k\)&lt;/span&gt; if the support is finite and has &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; many distinct values. This can be
+derived with the Jenson’s inequality and understood via the level of
+chao of a distribution. From an analysis point of view, the entropy is
+defined on a &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;-tuple whose domain
+is compact so that the maxima must exist; we can always find a larger
+entropy if any two of &lt;span class=&#34;math inline&#34;&gt;\(p_1,
+\dots,p_k\)&lt;/span&gt; are not equal.&lt;/p&gt;
+&lt;p&gt;The entropy of continuous distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; (probability density function) is
+usually similarly defined as &lt;span class=&#34;math display&#34;&gt;\[
 H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x
-\]&lt;/span&gt; This is actually the &lt;strong&gt;differential entropy&lt;/strong&gt; introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of entropy, the random variable had better be discrete, despite the wide usage of differential entropy.&lt;/p&gt;
+\]&lt;/span&gt; This is actually the &lt;strong&gt;differential entropy&lt;/strong&gt;
+introduced by Shannon. In fact, it is not a good continuous analog of
+discrete entropy and it was not rigorously derived. For example, this
+formula can be negative. Therefore, in the case of entropy, the random
+variable had better be discrete, despite the wide usage of differential
+entropy.&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt; &lt;span class=&#34;math inline&#34;&gt;\(p(x) = \frac{e^{-\frac 1 2 (x-\mu)^T \Sigma^{-1}(x-\mu)}}{\sqrt{|2\pi\Sigma|}}\)&lt;/span&gt; can be derived as follows: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;The entropy of a &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional
+&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt; &lt;span class=&#34;math inline&#34;&gt;\(p(x) = \frac{e^{-\frac 1 2 (x-\mu)^T
+\Sigma^{-1}(x-\mu)}}{\sqrt{|2\pi\Sigma|}}\)&lt;/span&gt; can be derived as
+follows: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
-&amp;amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2 \log |2\pi\Sigma| \\
-&amp;amp;= \frac 1 2 \int p(x) x^T \Sigma^{-1} x \d x + \frac 1 2 \int p(x) \mu^T \Sigma^{-1} \mu \d x \\
-&amp;amp;\quad - \frac 1 2 \int p(x) \mu^T \Sigma^{-1} x \d x - \frac 1 2 \int p(x) x^T \Sigma^{-1} \mu \d x \\
+H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2
+(x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
+&amp;amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2
+\log |2\pi\Sigma| \\
+&amp;amp;= \frac 1 2 \int p(x) x^T \Sigma^{-1} x \d x + \frac 1 2 \int p(x)
+\mu^T \Sigma^{-1} \mu \d x \\
+&amp;amp;\quad - \frac 1 2 \int p(x) \mu^T \Sigma^{-1} x \d x - \frac 1 2
+\int p(x) x^T \Sigma^{-1} \mu \d x \\
 &amp;amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
-&amp;amp;= [\frac 1 2 \tr(\Sigma^{-1} \Sigma) + \frac 1 2 \mu^T \Sigma^{-1} \mu] + \frac 1 2 \mu^T \Sigma^{-1} \mu \\
-&amp;amp;\quad - \frac 1 2 \mu^T \Sigma^{-1} \mu - \frac 1 2 \mu^T \Sigma^{-1} \mu \\
+&amp;amp;= [\frac 1 2 \tr(\Sigma^{-1} \Sigma) + \frac 1 2 \mu^T \Sigma^{-1}
+\mu] + \frac 1 2 \mu^T \Sigma^{-1} \mu \\
+&amp;amp;\quad - \frac 1 2 \mu^T \Sigma^{-1} \mu - \frac 1 2 \mu^T
+\Sigma^{-1} \mu \\
 &amp;amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
 &amp;amp;= \frac 1 2 n + \frac 1 2 \log |2\pi\Sigma|
 \end{aligned}
@@ -49,8 +75,12 @@ H(p) &amp;amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\
       <pubDate>Wed, 13 Apr 2022 15:03:21 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/</guid>
       <description>
-&lt;p&gt;The &lt;strong&gt;conditional entropy&lt;/strong&gt; measures the the amount of information needed to describe the outcome of a random variable &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; given that the value of another random variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is known. The entropy of &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; conditioned on &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
-H(Y|X) = -\sum_{(x,y) \in X:Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
+&lt;p&gt;The &lt;strong&gt;conditional entropy&lt;/strong&gt; measures the the amount of
+information needed to describe the outcome of a random variable &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; given that the value of another random
+variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is known. The entropy of
+&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; conditioned on &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
+H(Y|X) = -\sum_{(x,y) \in \mathcal{X} \times \mathcal{Y}} p_{(X,Y)}(x,y)
+\log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
 \]&lt;/span&gt;&lt;/p&gt;
 
 
@@ -63,7 +93,10 @@ H(Y|X) = -\sum_{(x,y) \in X:Y} p_{(X,Y)}(x,y) \log \frac{p_{(X,Y)}(x,y)}{p_X(x)}
       <pubDate>Mon, 25 Apr 2022 16:39:46 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/information-theory/cross-entropy/</guid>
       <description>
-&lt;p&gt;The &lt;strong&gt;cross entropy&lt;/strong&gt; between two distributions over the same underlying set of events measures the average number of bits to identify the event drawn from the set if a coding scheme is used for the set is optimized for probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, instead of the true distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;cross entropy&lt;/strong&gt; between two distributions over the
+same underlying set of events measures the average number of bits to
+identify the event drawn from the set if a coding scheme is used for the
+set is optimized for probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, instead of the true distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;The Cross Entropy of distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; relative to a distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; is defined as &lt;span class=&#34;math display&#34;&gt;\[
 H(p||q) = -\mathrm{E}_{x \sim p} \log q(x)
 \]&lt;/span&gt;&lt;/p&gt;
@@ -79,7 +112,10 @@ H(p||q) = -\mathrm{E}_{x \sim p} \log q(x)
       <guid>https://chunxy.github.io/notes/articles/information-theory/mutual-information/</guid>
       <description>
 
-&lt;p&gt;Mutual information of &lt;strong&gt;two random variables&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Mutual information of &lt;strong&gt;two random variables&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is a measure of the mutual independence
+between them. It quantifies the amount of information obtained about one
+random variable by observing the other random variable. It is defined as
+&lt;span class=&#34;math display&#34;&gt;\[
 I(X;Y) = \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
 \]&lt;/span&gt; By its definition, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -89,9 +125,16 @@ I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;To better illustrate the formula of mutual information between two &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/&#34;&gt;Gaussian-distributed&lt;/a&gt; random variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. We can concatenate them to form, say an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, which is also Gaussian-distributed. Then the mutual information between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; can be computed as: &lt;span class=&#34;math display&#34;&gt;\[
-I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
-\]&lt;/span&gt; The key to the derivation is that mutual information is the KL-divergence between the joint distribution and the product of the marginal distributions.&lt;/p&gt;
+&lt;p&gt;To better illustrate the formula of mutual information between two &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/&#34;&gt;Gaussian-distributed&lt;/a&gt; random
+variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;. We can concatenate them to form, say
+an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional random variable
+&lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, which is also
+Gaussian-distributed. Then the mutual information between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; can be computed as: &lt;span class=&#34;math display&#34;&gt;\[
+I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det
+\Sigma_Z}
+\]&lt;/span&gt; The key to the derivation is that mutual information is the
+KL-divergence between the joint distribution and the product of the
+marginal distributions.&lt;/p&gt;
 &lt;p&gt;The joint can be described as &lt;span class=&#34;math display&#34;&gt;\[
 p_{X:Y} = N(\underbrace{\mu_X:\mu_Y}_\mu,
 \underbrace{
@@ -109,69 +152,111 @@ p_{X} \times p_{Y} = N(\mu_x:\mu_y,
 0 &amp;amp; \Sigma_{yy} \\
 \end{bmatrix}
 )
-\]&lt;/span&gt; The probability density function of an &lt;span class=&#34;math inline&#34;&gt;\(n&amp;#39;\)&lt;/span&gt;-dimensional Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(p(x&amp;#39;) = \frac{1}{\sqrt{|2\pi \Sigma&amp;#39;|}}e^{-\frac{1}{2}(x&amp;#39;-\mu&amp;#39;)^T\Sigma&amp;#39;^{-1}(x&amp;#39;-\mu&amp;#39;)}\)&lt;/span&gt;. The entropy of this Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 2 n&amp;#39; + \frac 1 2 \log |2\pi\Sigma&amp;#39;|\)&lt;/span&gt;. In view of above, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; The probability density function of an &lt;span class=&#34;math inline&#34;&gt;\(n&amp;#39;\)&lt;/span&gt;-dimensional Gaussian distribution
+is &lt;span class=&#34;math inline&#34;&gt;\(p(x&amp;#39;) = \frac{1}{\sqrt{|2\pi
+\Sigma&amp;#39;|}}e^{-\frac{1}{2}(x&amp;#39;-\mu&amp;#39;)^T\Sigma&amp;#39;^{-1}(x&amp;#39;-\mu&amp;#39;)}\)&lt;/span&gt;.
+The entropy of this Gaussian distribution is &lt;span class=&#34;math inline&#34;&gt;\(\frac 1 2 n&amp;#39; + \frac 1 2 \log
+|2\pi\Sigma&amp;#39;|\)&lt;/span&gt;. In view of above, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 I&amp;amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
-= \int p_{X:Y}(\underbrace{x:y}_z) \log \frac{p_{X:Y}(x:y)} {p_X(x) p_{Y}(y)} \d z \\
+= \int p_{X:Y}(\underbrace{x:y}_z) \log \frac{p_{X:Y}(x:y)} {p_X(x)
+p_{Y}(y)} \d z \\
 &amp;amp;= \int p_{X:Y}(\underbrace{x:y}_z) \log p_{X:Y}(x:y) \d z -
     \int p_{X:Y}(\underbrace{x:y}_z) \log p_X(x) \d z \\
-&amp;amp;\quad\quad\quad -\int p_{X:Y}(\underbrace{x:y}_z) \log p_Y(y) \d z \\
+&amp;amp;\quad\quad\quad -\int p_{X:Y}(\underbrace{x:y}_z) \log p_Y(y) \d z
+\\
 &amp;amp;= \int p_{Z}(z) \log p_{Z}(z) \d z -
-    \int p_{X}(x) \log p_X(x) \d x - 
+    \int p_{X}(x) \log p_X(x) \d x -
     \int p_{Y}(y) \log p_Y(y) \d y \\
 &amp;amp;= -(\log \sqrt{\det(2\pi \Sigma)} + \frac n 2) +
     (\log \sqrt{\det(2\pi \Sigma_{X}}) + \frac {n_X} 2) \\
-&amp;amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y} 2) \\    
+&amp;amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y}
+2) \\    
 &amp;amp;= \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h4 id=&#34;kronecker-gaussian&#34;&gt;Kronecker Gaussian&lt;/h4&gt;
-&lt;p&gt;Consider the multivariate Gaussian distribution random vector &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt; of the same length &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;. Suppose they are both independent internally and they have the component-wise correlation &lt;span class=&#34;math inline&#34;&gt;\(corr(X_i, Y_j) = \delta_{ij} \rho\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\rho \in (-1, 1)\)&lt;/span&gt; (open to ensure the covariance matrix is invertible), &lt;span class=&#34;math inline&#34;&gt;\(1 \le i, j \le k\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\delta_{ij}\)&lt;/span&gt; is the Kronecker’s delta: &lt;span class=&#34;math display&#34;&gt;\[
-\delta_{ij} = 
+&lt;p&gt;Consider the multivariate Gaussian distribution random vector &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt; of the same length &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;. Suppose they are both independent
+internally and they have the component-wise correlation &lt;span class=&#34;math inline&#34;&gt;\(corr(X_i, Y_j) = \delta_{ij} \rho\)&lt;/span&gt;, where
+&lt;span class=&#34;math inline&#34;&gt;\(\rho \in (-1, 1)\)&lt;/span&gt; (open to ensure
+the covariance matrix is invertible), &lt;span class=&#34;math inline&#34;&gt;\(1 \le
+i, j \le k\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\delta_{ij}\)&lt;/span&gt; is
+the Kronecker’s delta: &lt;span class=&#34;math display&#34;&gt;\[
+\delta_{ij} =
 \begin{cases}
 0, &amp;amp; i \ne j \\
 1, &amp;amp; i = j
 \end{cases}
-\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(Z_k\)&lt;/span&gt; be the vector concatenated by &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt;. It is easy to draw its covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_{Z_k}\)&lt;/span&gt; like &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(Z_k\)&lt;/span&gt; be the vector
+concatenated by &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt;. It is easy to draw its covariance
+matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma_{Z_k}\)&lt;/span&gt; like &lt;span class=&#34;math display&#34;&gt;\[
 \begin{pmatrix}
-1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
-0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
-\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
-0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho
+\\
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1
+\\
 \end{pmatrix}
 \]&lt;/span&gt; The mutual information between the &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt; can be calculated as &lt;span class=&#34;math display&#34;&gt;\[
-I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det \Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
-\]&lt;/span&gt; The problem remains as how to compute &lt;span class=&#34;math inline&#34;&gt;\(\det \Sigma_{Z_{k}}\)&lt;/span&gt;. After applying the Laplacian expansion along the first column, it remains to deal with the determinants of following two matrices (dashed lines rule out the row/column to be deleted): &lt;span class=&#34;math display&#34;&gt;\[
+I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det
+\Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
+\]&lt;/span&gt; The problem remains as how to compute &lt;span class=&#34;math inline&#34;&gt;\(\det \Sigma_{Z_{k}}\)&lt;/span&gt;. After applying the
+Laplacian expansion along the first column, it remains to deal with the
+determinants of following two matrices (dashed lines rule out the
+row/column to be deleted): &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 A_k = \underbrace{
 \left( \begin{array}{c:ccccccc}
-1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
 \hdashline
-0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
-\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
-0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho
+\\
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1
+\\
 \end{array} \right)
 }_\text{$2k$ columns},
 B_k = \underbrace{
 \left( \begin{array}{c:ccccccc}
-1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
-0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho
+\\
 \hdashline
-\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
 \hdashline
-0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1
+\\
 \end{array} \right)
 }_\text{$2k$ columns}, \\
 \det Z_k =
@@ -187,17 +272,25 @@ B_k = \underbrace{
 \det A_k =
 \underbrace{
 \left| \begin{array}{c:ccc:c:ccc}
-1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
 \hdashline
-0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho
+\\
 \hdashline
-\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
 \hdashline
-0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1
+\\
 \end{array} \right|
 }_\text{$2k$ columns}
 = \det Z_{k-1}
@@ -205,28 +298,43 @@ B_k = \underbrace{
 \det B_k = (-1)^k \rho
 \underbrace{
 \left| \begin{array}{c:ccc:c:ccc}
-1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; \rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
 \hdashline
-0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho \\
+0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; \rho &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho
+\\
 \hdashline
-\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 \\
+\rho &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 1 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0
+\\
 \hdashline
-0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0 \\
-\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
-0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1 \\
+0 &amp;amp; \rho  &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 &amp;amp; \cdots &amp;amp; 0
+\\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots
+&amp;amp; \ddots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \rho  &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 1
+\\
 \end{array} \right|
-}_\text{$2k$ columns} 
+}_\text{$2k$ columns}
 = (-1)^k \rho \det Z_{k-1}
-\]&lt;/span&gt; In all, &lt;span class=&#34;math inline&#34;&gt;\(\det Z_k = \det Z_{k-1} - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}\)&lt;/span&gt;. Because &lt;span class=&#34;math inline&#34;&gt;\(\det Z_1 = 1 - \rho^2\)&lt;/span&gt;, we finally have &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; In all, &lt;span class=&#34;math inline&#34;&gt;\(\det Z_k = \det Z_{k-1} -
+(-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}\)&lt;/span&gt;. Because
+&lt;span class=&#34;math inline&#34;&gt;\(\det Z_1 = 1 - \rho^2\)&lt;/span&gt;, we finally
+have &lt;span class=&#34;math display&#34;&gt;\[
 \det Z_k = (1 - \rho^2)^k
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math display&#34;&gt;\[
-I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
+I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 -
+\rho^2)
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr&#34;&gt;Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.math.nyu.edu/~kleeman/infolect7.pdf&#34;&gt;Information Theory and Predictability Lecture 7: Gaussian Case&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr&#34;&gt;Mutual
+information between subsets of variables in the multivariate normal
+distribution - Cross Validated (stackexchange.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.math.nyu.edu/~kleeman/infolect7.pdf&#34;&gt;Information
+Theory and Predictability Lecture 7: Gaussian Case&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -240,16 +348,25 @@ I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
       <description>
 
 &lt;h2 id=&#34;kl-divergence&#34;&gt;KL-divergence&lt;/h2&gt;
-&lt;p&gt;KL-divergence, denoted as &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p\|q)\)&lt;/span&gt;, is statistical distance, measuring how the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is different from the reference probability distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, both defined on &lt;span class=&#34;math inline&#34;&gt;\(X \in \mathcal{X}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;In information theory, it measures the &lt;strong&gt;relative entropy&lt;/strong&gt; from &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, which is the average number of extra bits required to represent a message with &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;KL-divergence, denoted as &lt;span class=&#34;math inline&#34;&gt;\(D_{KL}(p\|q)\)&lt;/span&gt;, is statistical distance,
+measuring how the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is different from the reference
+probability distribution &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, both
+defined on &lt;span class=&#34;math inline&#34;&gt;\(X \in \mathcal{X}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In information theory, it measures the &lt;strong&gt;relative
+entropy&lt;/strong&gt; from &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;, which is the average number of extra
+bits required to represent a message with &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;In discrete form, &lt;span class=&#34;math display&#34;&gt;\[
-D_\text{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log \frac{q(x)}{p(x)} = \sum_{x \in \mathcal{X}} p(x)\log \frac{p(x)}{q(x)}
+D_\text{KL}(p \| q) = -\sum_{x \in \mathcal{X}} p(x)\log
+\frac{q(x)}{p(x)} = \sum_{x \in \mathcal{X}} p(x)\log \frac{p(x)}{q(x)}
 \]&lt;/span&gt; In continuous form, &lt;span class=&#34;math display&#34;&gt;\[
-D_\text{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log \frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}dx
+D_\text{KL}(p \| q) = -\int_{x \in \mathcal{X}} p(x) \log
+\frac{q(x)}{p(x)}dx = \int_{x \in \mathcal{X}} p(x) \log
+\frac{p(x)}{q(x)}dx
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;variational-lower-bound&#34;&gt;Variational Lower-bound&lt;/h3&gt;
 &lt;p&gt;One property of KL-divergence is &lt;span class=&#34;math display&#34;&gt;\[
-D_\text{KL}(p || q) = \sup_{T: \Omega \to \R} \E_{p} [T] - \log (\E_q[e^T])
+D_\text{KL}(p || q) = \sup_{T: \Omega \to \R} \E_{p} [T] - \log
+(\E_q[e^T])
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;The proof is as follows. Given a distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; and a function &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;, construct the Gibbs distribution &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; such that &lt;span class=&#34;math inline&#34;&gt;\(g(x) = \frac{q(x)e^{T(x)}}{Z}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(Z = \E_{q(x)} e^{T(x)}\)&lt;/span&gt;. Then &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
@@ -262,39 +379,55 @@ D_\text{KL}(p || q) = \sup_{T: \Omega \to \R} \E_{p} [T] - \log (\E_q[e^T])
 \]&lt;/span&gt; Finally KL-divergence minus above gives &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 &amp;amp;D_\text{KL}(p || q) - (\E_{p(x)} T(x) - \log Z) \\
-&amp;amp;= \E_{p(x)} \log \frac{p(x)} {q(x)} - \E_{p(x)} \log \frac{g(x)} {q(x)} \\
-&amp;amp;= \E_{p(x)} \log \frac{p(x)} {g(x)} \triangleq D_\text{KL}(p || g) \ge 0
+&amp;amp;= \E_{p(x)} \log \frac{p(x)} {q(x)} - \E_{p(x)} \log \frac{g(x)}
+{q(x)} \\
+&amp;amp;= \E_{p(x)} \log \frac{p(x)} {g(x)} \triangleq D_\text{KL}(p || g)
+\ge 0
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-case&#34;&gt;Gaussian Case&lt;/h3&gt;
-&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt;. Then the KL-divergence between them can be formulated as: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Suppose &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are random variables, both of some
+&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional &lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/&#34;&gt;Gaussian distribution&lt;/a&gt;. Then the
+KL-divergence between them can be formulated as: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-D_\text{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x = \int p_X(x) \log [
-    \sqrt \frac{|\Sigma_X|}{|\Sigma_Y|} 
+D_\text{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)}
+\d x = \int p_X(x) \log [
+    \sqrt \frac{|\Sigma_X|}{|\Sigma_Y|}
     \frac {
         e^{-\frac 1 2 (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X)}
     } {
         e^{-\frac 1 2 (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y)}
     }
-] 
+]
 \d x \\
-&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
+&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} -
 \frac 1 2 \int p_X(x) [
-    (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) + 
+    (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) +
     (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y)
 ]
 \d x \\
-&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - 
+&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} -
 \frac 1 2 \int p_X(x) (x-\mu_X)^T \Sigma_X^{-1} (x-\mu_X) \d x \\
-&amp;amp;\quad -\frac 1 2 \int p_X(x) (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y) \d x \\
-&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \int p_X(x) x^T \Sigma_X^{-1} x \d x + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
-&amp;amp;\quad - \frac 1 2 \int p_X(x) x^T \Sigma_Y^{-1} x \d x + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y \d x \\
-&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \tr(\Sigma_X^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_X^{-1} \mu_X + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
-&amp;amp;\quad - \frac 1 2 \tr(\Sigma_Y^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_Y^{-1} \mu_X + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y     \\
-&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + \mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu_X \Sigma_Y^{-1} \mu_X] \\
-&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y)] \\
-&amp;amp;\quad + \frac 1 2 [\mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu^T_X \Sigma_Y^{-1} \mu_X + \mu_X^T \Sigma_Y^{-1} \mu_Y - \mu_Y^T \Sigma_Y^{-1} \mu_X] \\
-&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1} \Sigma_Y) + (\mu_Y^T - \mu_X^T) \Sigma_Y^{-1} (\mu_Y - \mu_X)] \\
+&amp;amp;\quad -\frac 1 2 \int p_X(x) (x-\mu_Y)^T \Sigma_Y^{-1} (x-\mu_Y) \d
+x \\
+&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2 \int p_X(x)
+x^T \Sigma_X^{-1} x \d x + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
+&amp;amp;\quad - \frac 1 2 \int p_X(x) x^T \Sigma_Y^{-1} x \d x + \frac 1 2
+\mu_Y^T \Sigma_Y^{-1} \mu_Y \d x \\
+&amp;amp;= \frac 1 2 \log \frac{\Sigma_X}{\Sigma_Y} - \frac 1 2
+\tr(\Sigma_X^{-1} \Sigma_X) - \frac 1 2 \mu_X \Sigma_X^{-1} \mu_X +
+\frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
+&amp;amp;\quad - \frac 1 2 \tr(\Sigma_Y^{-1} \Sigma_X) - \frac 1 2 \mu_X
+\Sigma_Y^{-1} \mu_X + \frac 1 2 \mu_Y^T \Sigma_Y^{-1} \mu_Y     \\
+&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1}
+\Sigma_Y) + \mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu_X \Sigma_Y^{-1} \mu_X] \\
+&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1}
+\Sigma_Y)] \\
+&amp;amp;\quad + \frac 1 2 [\mu_Y^T \Sigma_Y^{-1} \mu_Y - \mu^T_X
+\Sigma_Y^{-1} \mu_X + \mu_X^T \Sigma_Y^{-1} \mu_Y - \mu_Y^T
+\Sigma_Y^{-1} \mu_X] \\
+&amp;amp;= \frac 1 2 [\log \frac{\Sigma_X}{\Sigma_Y} - n - \tr(\Sigma_X^{-1}
+\Sigma_Y) + (\mu_Y^T - \mu_X^T) \Sigma_Y^{-1} (\mu_Y - \mu_X)] \\
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 
@@ -309,26 +442,38 @@ D_\text{KL}(p_X || p_Y) &amp;amp;= \int p_X(x) \log \frac{p_X(x)} {p_Y(x)} \d x 
       <guid>https://chunxy.github.io/notes/articles/information-theory/f-divergence/</guid>
       <description>
 
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence can be treated as the generalization of the KL-divergence. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence can be treated as
+the generalization of the KL-divergence. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
 D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; has to satisfy that &lt;span class=&#34;math inline&#34;&gt;\(f(1) = 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is a convex function. The reason for these two constraints is that we hope &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; has to satisfy
+that &lt;span class=&#34;math inline&#34;&gt;\(f(1) = 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is a convex function. The reason for
+these two constraints is that we hope &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 D_f (p||q) = 0 \text{ when $p=q$} \\
 \forall p, q, D_f (p||q) \ge 0
 \end{gather}
-\]&lt;/span&gt; When &lt;span class=&#34;math inline&#34;&gt;\(f(x) = x\log x\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence becomes KL-divergence.&lt;/p&gt;
+\]&lt;/span&gt; When &lt;span class=&#34;math inline&#34;&gt;\(f(x) = x\log x\)&lt;/span&gt;,
+&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence becomes
+KL-divergence.&lt;/p&gt;
 &lt;h2 id=&#34;variational-f-divergence&#34;&gt;Variational &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence&lt;/h2&gt;
-&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; have no closed-form expression, it is difficult to compute the &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence. Therefore in practice &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence is computed with a variational expression: &lt;span class=&#34;math display&#34;&gt;\[
-D_f (p||q) = \sup_{T:\mathcal X \to \R} \{ \E_p[f(x)] + \E_q[f^* \circ T(x)] \}
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f^*\)&lt;/span&gt; is the convex conjugate of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;. The derivation is as follows: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; have no closed-form expression, it is
+difficult to compute the &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence. Therefore in practice &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence is computed with a
+variational expression: &lt;span class=&#34;math display&#34;&gt;\[
+D_f (p||q) = \sup_{T:\mathcal X \to \R} \{ \E_p[f(x)] + \E_q[f^* \circ
+T(x)] \}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f^*\)&lt;/span&gt; is the convex
+conjugate of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;. The derivation is
+as follows: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 &amp;amp;D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \\
 &amp;amp;= \int f^{**}(\frac{p(x)}{q(x)}) q(x)\ \d x \\
 &amp;amp;= \int \sup_t [\frac{p(x)}{q(x)} t - f^*(t)] q(x)\ \d x \\
 &amp;amp;= \int \sup_t[p(x) t - f^*(t) q(x)]\ \d x \\
 &amp;amp;\Downarrow_{T(x) = \arg \sup_t[p(x) t - f^*(t) q(x)]} \\
-&amp;amp;= \sup_{T:\mathcal X \to \R} \int [p(x) T(x) - f^*(T(x)) q(x)]\ \d x \\
-&amp;amp;= \sup_{T:\mathcal X \to \R} \{ \E_p[f(x)] + \E_q[f^* \circ T(x)] \}
+&amp;amp;= \sup_{T:\mathcal X \to \R} \int [p(x) T(x) - f^*(T(x)) q(x)]\ \d
+x \\
+&amp;amp;= \sup_{T:\mathcal X \to \R} \{ \E_p[f(x)] + \E_q[f^* \circ T(x)]
+\}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 
@@ -344,41 +489,82 @@ D_f (p||q) = \sup_{T:\mathcal X \to \R} \{ \E_p[f(x)] + \E_q[f^* \circ T(x)] \}
       <description>
 
 &lt;h2 id=&#34;jenson-shannon-divergence&#34;&gt;Jenson-Shannon Divergence&lt;/h2&gt;
-&lt;p&gt;In probability theory and statistics, &lt;strong&gt;Jenson-Shannon divergence&lt;/strong&gt; is another method of measuring the distance between two distributions. It is based on &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt; with some notable differences. KL-divergence does not make a good measure of distance between distributions, since in the first place it is &lt;em&gt;not symmetric&lt;/em&gt;. Another disadvantage of KL-divergence is that it is &lt;em&gt;not bounded from above&lt;/em&gt;. Jenson-Shannon divergence, on the other hand, overcomes these two problems of KL-divergence.&lt;/p&gt;
-&lt;p&gt;Given two distributions &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; defined on the same sample space, Jenson-Shannon divergence is defined as &lt;span class=&#34;math display&#34;&gt;\[
-\newcommand{\JSD}{\mathop{\text{JSD}}} 
-\JSD(p;q) \coloneq \frac{1}{2} (D_\text{KL}(p || m) + D_\text{KL}(q || m)), \text{where $m = \frac{p+q}{2}$}
-\]&lt;/span&gt; Since the JSD is the addition of two KL-divergences, it is non-negative by the non-negativity of KL-divergence and it reaches &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(p=q\)&lt;/span&gt;. On the other hand, &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;In probability theory and statistics, &lt;strong&gt;Jenson-Shannon
+divergence&lt;/strong&gt; is another method of measuring the distance between
+two distributions. It is based on &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt; with some notable
+differences. KL-divergence does not make a good measure of distance
+between distributions, since in the first place it is &lt;em&gt;not
+symmetric&lt;/em&gt;. Another disadvantage of KL-divergence is that it is
+&lt;em&gt;not bounded from above&lt;/em&gt;. Jenson-Shannon divergence, on the other
+hand, overcomes these two problems of KL-divergence.&lt;/p&gt;
+&lt;p&gt;Given two distributions &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; defined on the same sample space,
+Jenson-Shannon divergence is defined as &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\JSD}{\mathop{\text{JSD}}}
+\JSD(p;q) \coloneq \frac{1}{2} (D_\text{KL}(p || m) + D_\text{KL}(q ||
+m)), \text{where $m = \frac{p+q}{2}$}
+\]&lt;/span&gt; Since the JSD is the addition of two KL-divergences, it is
+non-negative by the non-negativity of KL-divergence and it reaches &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(p=q\)&lt;/span&gt;. On the other hand, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\JSD(p;q) &amp;amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{p(x)}{(p(x)+q(x))/2} + \E_{x \sim q} \log \frac{q(x)}{(p(x)+q(x))/2} \big) \\
-&amp;amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{2}{( 1 + e^{\ln \frac{q(x)}{p(x)}} )} + \E_{x \sim q} \log \frac{2}{( 1 + e^{\ln \frac{p(x)}{q(x)}} )} \big) \\
+\JSD(p;q) &amp;amp;= \frac{1}{2} \big( \E_{x \sim p} \log
+\frac{p(x)}{(p(x)+q(x))/2} + \E_{x \sim q} \log
+\frac{q(x)}{(p(x)+q(x))/2} \big) \\
+&amp;amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{2}{( 1 + e^{\ln
+\frac{q(x)}{p(x)}} )} + \E_{x \sim q} \log \frac{2}{( 1 + e^{\ln
+\frac{p(x)}{q(x)}} )} \big) \\
 \end{aligned}
-\]&lt;/span&gt; Due to the concavity of &lt;span class=&#34;math inline&#34;&gt;\(f(x) = \log \frac{2}{1 + e^x}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Due to the concavity of &lt;span class=&#34;math inline&#34;&gt;\(f(x) =
+\log \frac{2}{1 + e^x}\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-\JSD(p;q) &amp;amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{2}{( 1 + e^{\ln \frac{q(x)}{p(x)}} )} + \E_{x \sim q} \log \frac{2}{( 1 + e^{\ln \frac{p(x)}{q(x)}} )} \big) \\
-&amp;amp;\le \frac{1}{2} \big( \log \frac{2}{( 1 + e^{\E_{x \sim p} \ln \frac{q(x)}{p(x)}} )} + \log \frac{2}{( 1 + e^{\E_{x \sim q} \ln \frac{p(x)}{q(x)}} )} \big) \\
-&amp;amp;\le \frac{1}{2} \big( 2 \log \frac{2}{( 1 + e^{( \E_{x \sim p} \ln \frac{q(x)}{p(x)} + \E_{x \sim q} \ln \frac{p(x)}{q(x)} ) / 2} )} \big) \\
-&amp;amp;= \log \frac{2}{( 1 + e^{-\frac{1}{2} ( D_\text{KL}(p||q) + D_\text{KL}(q||p) )} )}
+\JSD(p;q) &amp;amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{2}{( 1 +
+e^{\ln \frac{q(x)}{p(x)}} )} + \E_{x \sim q} \log \frac{2}{( 1 + e^{\ln
+\frac{p(x)}{q(x)}} )} \big) \\
+&amp;amp;\le \frac{1}{2} \big( \log \frac{2}{( 1 + e^{\E_{x \sim p} \ln
+\frac{q(x)}{p(x)}} )} + \log \frac{2}{( 1 + e^{\E_{x \sim q} \ln
+\frac{p(x)}{q(x)}} )} \big) \\
+&amp;amp;\le \frac{1}{2} \big( 2 \log \frac{2}{( 1 + e^{( \E_{x \sim p} \ln
+\frac{q(x)}{p(x)} + \E_{x \sim q} \ln \frac{p(x)}{q(x)} ) / 2} )} \big)
+\\
+&amp;amp;= \log \frac{2}{( 1 + e^{-\frac{1}{2} ( D_\text{KL}(p||q) +
+D_\text{KL}(q||p) )} )}
 \end{aligned}
-\]&lt;/span&gt; This upper bound is attributed to Crooks. Since the KL-divergence can go to positive infinity, we can conclude that &lt;span class=&#34;math inline&#34;&gt;\(\JSD(p;q)\)&lt;/span&gt; is upper-bounded by &lt;span class=&#34;math inline&#34;&gt;\(\log 2\)&lt;/span&gt;. The &lt;span class=&#34;math inline&#34;&gt;\(\newcommand{\J}{\mathop{\text{J}}} \J(p;q) \coloneq \frac{1}{2} ( D_\text{KL}(p||q) + D_\text{KL}(q||p) )\)&lt;/span&gt; term is also known as &lt;strong&gt;Jeffreys divergence&lt;/strong&gt; (the coefficient &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{2}\)&lt;/span&gt; may be ignored in some other place). Even more accurately, the upper bound can be rewritten as (&lt;a href=&#34;https://chunxy.github.io/uploads/Inequalities%20between%20the%20Jenson-Shannon%20and%20Jeffreys%20divergences.pdf&#34; target=&#34;_blank&#34;&gt;in this note&lt;/a&gt;)&lt;/p&gt;
+\]&lt;/span&gt; This upper bound is attributed to Crooks. Since the
+KL-divergence can go to positive infinity, we can conclude that &lt;span class=&#34;math inline&#34;&gt;\(\JSD(p;q)\)&lt;/span&gt; is upper-bounded by &lt;span class=&#34;math inline&#34;&gt;\(\log 2\)&lt;/span&gt;. The &lt;span class=&#34;math inline&#34;&gt;\(\newcommand{\J}{\mathop{\text{J}}} \J(p;q)
+\coloneq \frac{1}{2} ( D_\text{KL}(p||q) + D_\text{KL}(q||p) )\)&lt;/span&gt;
+term is also known as &lt;strong&gt;Jeffreys divergence&lt;/strong&gt; (the
+coefficient &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{2}\)&lt;/span&gt; may be
+ignored in some other place). Even more accurately, the upper bound can
+be rewritten as
+(&lt;a href=&#34;https://chunxy.github.io/uploads/Inequalities%20between%20the%20Jenson-Shannon%20and%20Jeffreys%20divergences.pdf&#34; target=&#34;_blank&#34;&gt;in
+this note&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
-\JSD(p;q) \le \min (\frac{1}{4} \J(p;q), \log \frac{2}{1 + e^{-\J(p;q)}})
-\]&lt;/span&gt; A lower bound in terms of Jeffreys divergence can be derived as (&lt;a href=&#34;https://chunxy.github.io/uploads/A%20Note%20on%20Bound%20for%20Jensen-Shannon%20Divergence%20by%20Jeffreys.pdf&#34; target=&#34;_blank&#34;&gt;in this note&lt;/a&gt;)&lt;/p&gt;
+\JSD(p;q) \le \min (\frac{1}{4} \J(p;q), \log \frac{2}{1 +
+e^{-\J(p;q)}})
+\]&lt;/span&gt; A lower bound in terms of Jeffreys divergence can be derived
+as
+(&lt;a href=&#34;https://chunxy.github.io/uploads/A%20Note%20on%20Bound%20for%20Jensen-Shannon%20Divergence%20by%20Jeffreys.pdf&#34; target=&#34;_blank&#34;&gt;in
+this note&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \JSD(p;q) \ge \frac{1}{4} \ln(1 + 2\J(p;q))
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Remarkably, the square root of JSD between two distributions satisfies the &lt;a href=&#34;https://en.wikipedia.org/wiki/Metric_(mathematics)#Definition&#34;&gt;metric axioms&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Remarkably, the square root of JSD between two distributions
+satisfies the &lt;a href=&#34;https://en.wikipedia.org/wiki/Metric_(mathematics)#Definition&#34;&gt;metric
+axioms&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;relation-with-entropy&#34;&gt;Relation with Entropy&lt;/h3&gt;
 &lt;p&gt;By definition, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-&amp;amp;\JSD(p;q) = \frac{1}{2} (D_\text{KL}(p || \frac{p+q}{2}) + D_\text{KL}(q || \frac{p+q}{2})) \\
-&amp;amp;= \frac{1}{2} [H(p||\frac{p+q}{2}) - H(p) + H(q||\frac{p+q}{2}) - H(q)] \\
-&amp;amp;= 
+&amp;amp;\JSD(p;q) = \frac{1}{2} (D_\text{KL}(p || \frac{p+q}{2}) +
+D_\text{KL}(q || \frac{p+q}{2})) \\
+&amp;amp;= \frac{1}{2} [H(p||\frac{p+q}{2}) - H(p) + H(q||\frac{p+q}{2}) -
+H(q)] \\
+&amp;amp;=
 \begin{aligned}[t]
-&amp;amp;-\frac{1}{2} [\E_{x \sim p} \log \frac{p+q}{2}(x) + \E_{x \sim q} \log \frac{p+q}{2}(x)] \\
+&amp;amp;-\frac{1}{2} [\E_{x \sim p} \log \frac{p+q}{2}(x) + \E_{x \sim q}
+\log \frac{p+q}{2}(x)] \\
 &amp;amp;- \frac{1}{2} [H(p) + H(q)] \\
 \end{aligned} \\
-&amp;amp;= -\E_{x \sim \frac{p+q}{2}} \frac{p+q}{2}(x) - \frac{1}{2} [H(p) + H(q)] \\
+&amp;amp;= -\E_{x \sim \frac{p+q}{2}} \frac{p+q}{2}(x) - \frac{1}{2} [H(p) +
+H(q)] \\
 &amp;amp;= H(\frac{p+q}{2}) - \frac{1}{2} [H(p) + H(q)]
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
@@ -394,27 +580,38 @@ D_f (p||q) = \sup_{T:\mathcal X \to \R} \{ \E_p[f(x)] + \E_q[f^* \circ T(x)] \}
       <guid>https://chunxy.github.io/notes/articles/information-theory/overview/</guid>
       <description>
 
-&lt;h2 id=&#34;distribution-or-random-variable&#34;&gt;Distribution or Random Variable?&lt;/h2&gt;
-&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;Cross Entropy&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt; describe the relationship between &lt;strong&gt;two distributions&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/&#34;&gt;Conditional Entropy&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/mutual-information/&#34;&gt;Mutual Information&lt;/a&gt; describe the relationship between &lt;strong&gt;two random variables&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case.&lt;/p&gt;
-&lt;h2 id=&#34;kl-divergence-entropy-and-cross-entropy&#34;&gt;KL-divergence, Entropy and Cross Entropy&lt;/h2&gt;
+&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;Cross Entropy&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt; describe the
+relationship between &lt;strong&gt;two distributions&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/&#34;&gt;conditional entropy&lt;/a&gt; and
+&lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/mutual-information/&#34;&gt;mutual information&lt;/a&gt;, as well as
+&lt;u&gt;joint entropy&lt;/u&gt;, describe the relationship between &lt;strong&gt;two
+random variables&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Since the notion of entropy is the basis of all other concepts in
+this section and the entropy is more well-defined on discrete random
+variable, they are more meaningful to be applied in discrete case,
+though they are usually trivially extended to continuous case.&lt;/p&gt;
+&lt;h2 id=&#34;kl-divergence-entropy-and-cross-entropy&#34;&gt;KL-divergence, Entropy
+and Cross Entropy&lt;/h2&gt;
 &lt;p&gt;By definition, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
-D_{KL}(p||q) &amp;amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)} \\
-&amp;amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log {p(x)}) \\
+D_\text{KL}(p||q) &amp;amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)}
+\\
+&amp;amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log
+{p(x)}) \\
 &amp;amp;= H(p||q) - H(p)
 \end{align}
 \]&lt;/span&gt; By the convexity of &lt;span class=&#34;math inline&#34;&gt;\(-\log\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
-D_{KL}(p||q) &amp;amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}] \\
+D_\text{KL}(p||q) &amp;amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}]
+\\
 &amp;amp;\ge -\log(\mathrm{E}_{x \sim p} \frac{q(x)}{p(x)}) \\
 &amp;amp;= 0
 \end{align}
 \]&lt;/span&gt; That is &lt;span class=&#34;math display&#34;&gt;\[
 H(p||q) \ge H(p)
 \]&lt;/span&gt; The equality holds if and only if &lt;span class=&#34;math inline&#34;&gt;\(p = q\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;kl-divergence-and-mutual-information&#34;&gt;KL-divergence and Mutual Information&lt;/h2&gt;
+&lt;h2 id=&#34;kl-divergence-and-mutual-information&#34;&gt;KL-divergence and Mutual
+Information&lt;/h2&gt;
 &lt;p&gt;Given that &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; have the same dimension, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 &amp;amp;I(X;Y) = \sum_{x,y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)} \\
@@ -423,6 +620,18 @@ H(p||q) \ge H(p)
 &amp;amp;= \sum_{x} p(x) D_{KL}[p(y|x), p(y)] \\
 &amp;amp;= \E_{x} D_{KL}[p(y|x), p(y)] \\
 &amp;amp;= \E_{y} D_{KL}[p(x|y), p(x)] \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;joint-entropy-and-conditional-entropy&#34;&gt;Joint Entropy and
+Conditional Entropy&lt;/h2&gt;
+&lt;p&gt;Joint entropy is just entropy, but with the random variable usually
+broken into two separate components. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;H(X, Y) = \sum_{x,y} p(x,y) \log p(x,y) \\
+&amp;amp;= \sum_{x,y} p(x,y) \log p(y|x) p(x) \\
+&amp;amp;= \sum_{x,y} p(x,y) \log p(y|x) \\
+&amp;amp;\quad + \sum_{x,y} p(x,y) \log p(x) \\
+&amp;amp;= H(Y|X) + H(X)
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
 

@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,8 +1342,10 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#convex-and-differentiable-function">Convex and Differentiable Function</a></li>
-    <li><a href="#convex-but-non-differentiable-function">Convex but Non-differentiable Function</a></li>
+    <li><a href="#convex-and-differentiable-function">Convex and
+Differentiable Function</a></li>
+    <li><a href="#convex-but-non-differentiable-function">Convex but
+Non-differentiable Function</a></li>
   </ul>
 </nav>
 
@@ -1400,9 +1430,13 @@
           <div class="article-style">
             
 
-<h3 id="convex-and-differentiable-function">Convex and Differentiable Function</h3>
-<p>Given a convex, differentiable <span class="math inline">\(f: \R^n \mapsto \R\)</span>, if we are at a point <span class="math inline">\(x\)</span> such that <span class="math inline">\(f(x)\)</span> is minimized along each coordinate axis, have we found a global minima? That is, does <span class="math display">\[
-\forall d, i,f(x + d \cdot e_i) \ge f(x) \Rightarrow f(x) = \min_zf(z), \text{ where $e_i$ is the $i$-th standard basis ?}
+<h3 id="convex-and-differentiable-function">Convex and Differentiable
+Function</h3>
+<p>Given a convex, differentiable <span class="math inline">\(f: \R^n
+\mapsto \R\)</span>, if we are at a point <span class="math inline">\(x\)</span> such that <span class="math inline">\(f(x)\)</span> is minimized along each coordinate
+axis, have we found a global minima? That is, does <span class="math display">\[
+\forall d, i,f(x + d \cdot e_i) \ge f(x) \Rightarrow f(x) = \min_zf(z),
+\text{ where $e_i$ is the $i$-th standard basis ?}
 \]</span> The answer is yes. This is because <span class="math display">\[
 \nabla f(x) = \left[
 \begin{array} \\
@@ -1413,28 +1447,46 @@
 \right]
 = 0
 \]</span></p>
-<h3 id="convex-but-non-differentiable-function">Convex but Non-differentiable Function</h3>
-<p>If <span class="math inline">\(f\)</span> is only convex but not differentiable, the above will not necessarily hold. However, if <span class="math display">\[
+<h3 id="convex-but-non-differentiable-function">Convex but
+Non-differentiable Function</h3>
+<p>If <span class="math inline">\(f\)</span> is only convex but not
+differentiable, the above will not necessarily hold. However, if <span class="math inline">\(f\)</span> can be decomposed such that <span class="math display">\[
 f(x) = g(x) + \sum_{i=1}^nh_i(x_i)
-\]</span> where <span class="math inline">\(g(x)\)</span> is convex and differentiable, and each <span class="math inline">\(h_i(x_i)\)</span> is convex but possibly non-differentiable, the global minima still holds. For any <span class="math inline">\(y\)</span>, <span class="math display">\[
+\]</span> where <span class="math inline">\(g(x)\)</span> is convex and
+differentiable, and each <span class="math inline">\(h_i(x_i)\)</span>
+is convex but possibly non-differentiable, the global minima still
+holds. For any <span class="math inline">\(y\)</span>, <span class="math display">\[
 \begin{aligned}
-f(y) - f(x) &amp;= g(y) - g(x) + \sum_{i=1}^nh_i(y_i) - \sum_{i=1}^nh_i(x_i) \\
+f(y) - f(x) &amp;= g(y) - g(x) + \sum_{i=1}^nh_i(y_i) -
+\sum_{i=1}^nh_i(x_i) \\
 &amp;\ge \nabla g(x)^T(y - x) + \sum_{i=1}^n[h_i(y_i) - h_i(x_i)] \\
 &amp;= \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)]
 \end{aligned}
-\]</span> Because <span class="math inline">\(f(x)\)</span> obtains minimum along each axes, for any <span class="math inline">\(d\)</span> and <span class="math inline">\(k\)</span>, <span class="math display">\[
+\]</span> Because <span class="math inline">\(f(x)\)</span> obtains
+minimum along each axes, for any <span class="math inline">\(d\)</span>
+and <span class="math inline">\(k\)</span>, <span class="math display">\[
 \begin{aligned}
 f(x + d \cdot e_k) &amp;\ge f(x) \\
-g(x + d \cdot e_k) + \sum_{i=1,i\ne k}^nh_i(x_i) + h_k(x_k + d) &amp;\ge g(x) + \sum_{i=1}^nh_i(x_i) \\
+g(x + d \cdot e_k) + \sum_{i=1,i\ne k}^nh_i(x_i) + h_k(x_k + d) &amp;\ge
+g(x) + \sum_{i=1}^nh_i(x_i) \\
 g_k(x_k + d) - g_k(x_k) + h_k(x_k + d) - h_k(x_k) &amp;\ge 0 \\
 \end{aligned}
-\]</span> By <a href="/notes/articles/optimization/subgradient/#Properties">the linearity of subgradient</a>, <span class="math inline">\(0 \in \partial(g_k + h_k) = \nabla_k g + \partial h_k \Rightarrow -\nabla_k g \in \partial h_k\)</span>. That is <span class="math display">\[
+\]</span> By <a href="/notes/articles/optimization/subgradient/#Properties">the linearity of
+subgradient</a>, <span class="math inline">\(0 \in \partial(g_k + h_k) =
+\nabla_k g + \partial h_k \Rightarrow -\nabla_k g \in \partial
+h_k\)</span>. That is <span class="math display">\[
 h_k(y_k) - h_k(x_k) \ge -\nabla_k g(x)(y_k - x_k)
 \]</span> Then, <span class="math display">\[
-f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
+f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) -
+h_i(x_i)] \ge 0
 \]</span></p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD <a href="/uploads/Coordinate%20Descent.pdf" target="_blank">Coordinate Descent.pdf</a> ======= ## External Materials &gt;&gt;&gt;&gt;&gt;&gt;&gt; notes</p>
-<p><a href="Coordinate%20Descent.pdf">Coordinate Descent.pdf</a> || <a href="https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/">Coordinate Descent in One Line, or Three if Accelerated | A Butterfly Valley (wordpress.com)</a></p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<a href="/uploads/Coordinate%20Descent.pdf" target="_blank">Coordinate
+Descent.pdf</a> ======= ## External Materials
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; notes</p>
+<p><a href="Coordinate%20Descent.pdf">Coordinate Descent.pdf</a> || <a href="https://zeyuan.wordpress.com/2016/06/13/coordinate-descent/">Coordinate
+Descent in One Line, or Three if Accelerated | A Butterfly Valley
+(wordpress.com)</a></p>
 
 
 
@@ -1525,7 +1577,7 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1575,7 +1627,7 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1662,7 +1714,7 @@ f(y) - f(x) = \sum_{i=1}^n[\nabla_i g(x)(y_i - x_i) + h_i(y_i) - h_i(x_i)] \ge 0
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

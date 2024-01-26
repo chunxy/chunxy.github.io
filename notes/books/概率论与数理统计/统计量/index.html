@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="定义 设\((X_1,\dots,X_n)\)为取自总体的一组" />
+  <meta name="description" content="定义：设\((X_1,\dots,X_n)\)为取自总体的一" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/" />
   <meta property="og:title" content="统计量 | Chunxy&#39; Website" />
-  <meta property="og:description" content="定义 设\((X_1,\dots,X_n)\)为取自总体的一组" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="定义：设\((X_1,\dots,X_n)\)为取自总体的一" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1400,78 +1428,120 @@
           <div class="article-style">
             
 
-<ul>
-<li><p>定义</p>
-<p>设<span class="math inline">\((X_1,\dots,X_n)\)</span>为取自总体的一组样本，若函数<span class="math inline">\(g(X_1,\dots,X_n)\)</span>不直接包含总体分布中的任何参数，则称<span class="math inline">\(g(X_1,\dots,X_n)\)</span>为<strong>统计量</strong>。</p></li>
-</ul>
+<blockquote>
+<p>定义：设<span class="math inline">\((X_1,\dots,X_n)\)</span>为取自总体的一组样本，若函数<span class="math inline">\(g(X_1,\dots,X_n)\)</span>不包含总体分布中的任何参数，则称<span class="math inline">\(g(X_1,\dots,X_n)\)</span>为<strong>统计量</strong>。</p>
+</blockquote>
 <h2 id="样本均值和样本方差">样本均值和样本方差</h2>
 <p><span class="math display">\[
 \begin{gather}
 \text{样本均值：}\bar X = \frac{1}{n} \sum_{i=1}^n X_i \\
-\text{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 = \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)
+\text{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 =
+\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)
 \end{gather}
 \]</span></p>
-<p>令<span class="math inline">\(A_k = \frac{1}{n} \sum_{i=1}^n X_i^k\)</span>为<strong>样本的<span class="math inline">\(k\)</span>阶原点矩</strong>，<span class="math inline">\(M_k = \frac{1}{n} \sum_{i=1}^n (X_i - \bar X)^k\)</span>为<strong>样本的<span class="math inline">\(k\)</span>阶中心矩</strong>，当<span class="math inline">\(k=2\)</span>时，<span class="math inline">\(S_n^2 \triangleq M_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2\)</span>。</p>
-<p>由于统计量是随机变量的函数，故统计量也是随机变量。设总体<span class="math inline">\(X\)</span>的期望<span class="math inline">\(\E(X) = \mu\)</span>，方差<span class="math inline">\(\Var(X) = \sigma^2\)</span>，关于统计量有如下定理： <span class="math display">\[
+<p>令<span class="math inline">\(m_k = \frac{1}{n} \sum_{i=1}^n
+X_i^k\)</span>为<strong>样本的<span class="math inline">\(k\)</span>阶原点矩</strong>，<span class="math inline">\(a_k = \frac{1}{n} \sum_{i=1}^n (X_i - \bar
+X)^k\)</span>为<strong>样本的<span class="math inline">\(k\)</span>阶中心矩</strong>，这些也都是统计量。特别地，当<span class="math inline">\(k=2\)</span>时，我们令<span class="math inline">\(S_n^2 \triangleq a_2 = \frac{1}{n} \sum_{i=1}^n
+X_i^2 - \bar X^2\)</span>。</p>
+<p>由于统计量是随机变量的函数，故统计量也是随机变量。设总体<span class="math inline">\(X\)</span>的期望<span class="math inline">\(\E(X)
+= \mu\)</span>，方差<span class="math inline">\(\Var(X) =
+\sigma^2\)</span>，关于统计量有如下定理： <span class="math display">\[
 \begin{gather}
 &amp; \E(\bar X) = \mu, \Var(\bar X) = \frac{\sigma^2}{n} \\
 \notag \\
 &amp; \E(S^2) = \sigma^2, \E(S_n^2) = \frac{n-1}{n} \sigma^2 \\
 \notag \\
-&amp; \bar X \stackrel{P}{\to} \mu, S^2 \stackrel{P}{\to} \sigma^2, S_n^2 \stackrel{P}{\to} \sigma^2
+&amp; \bar X \stackrel{P}{\to} \mu, S^2 \stackrel{P}{\to} \sigma^2,
+S_n^2 \stackrel{P}{\to} \sigma^2
 \end{gather}
 \]</span> 有关证明如下： <span class="math display">\[
 \begin{gather}
-\E(\bar X) = \E (\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n} \sum_{i=1}^n \E(X_i) = \mu \\
-\Var(\bar X) = \Var(\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n^2} \sum_{i=1}^n D(X_i) = \frac{\sigma^2}{n}
+\E(\bar X) = \E (\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n}
+\sum_{i=1}^n \E(X_i) = \mu \\
+\Var(\bar X) = \Var(\frac{1}{n} \sum_{i=1}^n X_i) = \frac{1}{n^2}
+\sum_{i=1}^n \Var(X_i) = \frac{\sigma^2}{n}
 \end{gather}
 \]</span></p>
 <p><span class="math display">\[
 \begin{gather}
 \begin{aligned}[t]
 \E(S^2) &amp;= \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
-&amp;= \frac{1}{n-1} \big( \sum_{i=1}^n \E (X_i^2 ) - n \E(\bar X^2) \big) \\
-&amp;\Downarrow_ {\E(X_i^2) = \Var(X_i) + \E^2(X_i) = \sigma^2 + \mu^2, \E(\bar X^2) = \Var(\bar X) + \E^2(\bar X) = \frac{\sigma^2}{n} + \mu^2} \\
-&amp;= \frac{1}{n-1} \big( \sum_{i=1}^n (\sigma^2 + \mu^2) - n (\frac{\sigma^2}{n} + \mu^2) \big) \\
+&amp;= \frac{1}{n-1} \big( \sum_{i=1}^n \E (X_i^2 ) - n \E(\bar X^2)
+\big) \\
+&amp;\Downarrow_ {\E(X_i^2) = \Var(X_i) + \E^2(X_i) = \sigma^2 + \mu^2,
+\E(\bar X^2) = \Var(\bar X) + \E^2(\bar X) = \frac{\sigma^2}{n} + \mu^2}
+\\
+&amp;= \frac{1}{n-1} \big( \sum_{i=1}^n (\sigma^2 + \mu^2) - n
+(\frac{\sigma^2}{n} + \mu^2) \big) \\
 &amp;= \sigma^2
 \end{aligned}
 \begin{aligned}[t]
-\E(S_n^2) &amp;= \E [\frac{n-1}{n} \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
-&amp;= \frac{n-1}{n} \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)] \\
+\E(S_n^2) &amp;= \E [\frac{n-1}{n} \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n
+\bar X^2)] \\
+&amp;= \frac{n-1}{n} \E [\frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar
+X^2)] \\
 &amp;= \frac{n-1}{n} \sigma^2
 \end{aligned}
 \end{gather}
 \]</span></p>
-<p>归根结底，样本方差使用<span class="math inline">\(\frac{1}{n-1}\)</span>而不是<span class="math inline">\(\frac{1}{n}\)</span>的原因是，其使用的“均值”为<span class="math inline">\(\bar X\)</span>而不是<span class="math inline">\(\mu\)</span>，这导致了一个自由度的缺失。而假设<span class="math inline">\(\mu\)</span>已知，我们定义一个新的统计量<span class="math inline">\(S&#39;^2 = \frac{1}{n} \sum_{i=1}^N (X_i - \mu)^2 = \frac{1}{n} (n \mu^2 - 2n\mu \bar X + \sum_{i=1}^n X_i^2)\)</span>，我们会发现<span class="math inline">\(\E(S&#39;^2) = \sigma^2\)</span>： <span class="math display">\[
+<p>归根结底，样本方差使用<span class="math inline">\(\frac{1}{n-1}\)</span>而不是<span class="math inline">\(\frac{1}{n}\)</span>的原因是，其使用的“均值”为<span class="math inline">\(\bar X\)</span>而不是<span class="math inline">\(\mu\)</span>，这导致了一个自由度的缺失。而假设<span class="math inline">\(\mu\)</span>已知，我们定义一个新的统计量<span class="math inline">\(S&#39;^2 = \frac{1}{n} \sum_{i=1}^N (X_i - \mu)^2
+= \frac{1}{n} (n \mu^2 - 2n\mu \bar X + \sum_{i=1}^n
+X_i^2)\)</span>，我们会发现<span class="math inline">\(\E(S&#39;^2) =
+\sigma^2\)</span>： <span class="math display">\[
 \begin{aligned}
-&amp;\E(S&#39;^2) = \frac{1}{n} \E(n \mu^2 - 2n\mu \bar X + \sum_{i=1}^n X_i^2) \\
-&amp;= \frac{1}{n} (n \mu^2 - 2n\mu \E(\bar X) + \sum_{i=1}^n \E (X_i^2)) \\
-&amp;= \frac{1}{n} (n \mu^2 - 2n\mu^2 + \sum_{i=1}^n (\sigma^2 + \mu^2)) \\
+&amp;\E(S&#39;^2) = \frac{1}{n} \E(n \mu^2 - 2n\mu \bar X + \sum_{i=1}^n
+X_i^2) \\
+&amp;= \frac{1}{n} (n \mu^2 - 2n\mu \E(\bar X) + \sum_{i=1}^n \E
+(X_i^2)) \\
+&amp;= \frac{1}{n} (n \mu^2 - 2n\mu^2 + \sum_{i=1}^n (\sigma^2 + \mu^2))
+\\
 &amp;= \sigma^2
 \end{aligned}
 \]</span> 至于三个统计量的依概率收敛证明，根据<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律">相互独立同分布大数定律</a>，有 <span class="math display">\[
 \begin{gather}
 \bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \mu \\
-\frac{1}{n} \sum_{i=1}^n X_i^2 \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E (X_i^2) = \sigma^2 + \mu^2
+\frac{1}{n} \sum_{i=1}^n X_i^2 \stackrel{P}{\to} \frac{1}{n}
+\sum_{i=1}^n \E (X_i^2) = \sigma^2 + \mu^2
 \end{gather}
 \]</span></p>
-<p>对于任意<span class="math inline">\(\epsilon, \delta &gt; 0\)</span>，存在<span class="math inline">\(N_1, N_2 &gt; 0\)</span>，使得当<span class="math inline">\(n &gt; \max(N_1, N_2)\)</span>时，始终有 <span class="math display">\[
+<p>对于任意<span class="math inline">\(\epsilon, \delta &gt;
+0\)</span>，存在<span class="math inline">\(N_1, N_2 &gt;
+0\)</span>，使得当<span class="math inline">\(n &gt; \max(N_1,
+N_2)\)</span>时，始终有 <span class="math display">\[
 \begin{gather}
-0 &lt; P(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 + \mu^2)| \ge \epsilon / 2) &lt; \delta / 2 \\
+0 &lt; P(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 + \mu^2)| \ge
+\epsilon / 2) &lt; \delta / 2 \\
 0 &lt; P(|\mu^2 - \bar X^2| \ge \epsilon / 2) &lt; \delta / 2 \\
 \end{gather}
-\]</span> 记事件<span class="math inline">\(A\)</span>为<span class="math inline">\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 + \mu^2)| \ge \epsilon / 2\)</span>、事件<span class="math inline">\(B\)</span>为<span class="math inline">\(|\bar X^2 - \mu^2| \ge \epsilon / 2\)</span>、事件<span class="math inline">\(C\)</span>为<span class="math inline">\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2 - \sigma^2| \ge \epsilon / 2\)</span>。由于<span class="math inline">\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 + \mu^2)| + |\mu^2 - \bar X^2| \ge |\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2 - \sigma^2|\)</span>，则事件<span class="math inline">\(C\)</span>发生时，事件<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>至少发生其中之一，即事件<span class="math inline">\(C\)</span>是事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>并集的子集。故</p>
+\]</span> 记事件<span class="math inline">\(A\)</span>为<span class="math inline">\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 +
+\mu^2)| \ge \epsilon / 2\)</span>、事件<span class="math inline">\(B\)</span>为<span class="math inline">\(|\bar X^2
+- \mu^2| \ge \epsilon / 2\)</span>、事件<span class="math inline">\(C\)</span>为<span class="math inline">\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2 -
+\sigma^2| \ge \epsilon / 2\)</span>。由于<span class="math inline">\(|\frac{1}{n} \sum_{i=1}^n X_i^2 - (\sigma^2 +
+\mu^2)| + |\mu^2 - \bar X^2| \ge |\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar
+X^2 - \sigma^2|\)</span>，则事件<span class="math inline">\(C\)</span>发生时，事件<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>至少发生其中之一，即事件<span class="math inline">\(C\)</span>是事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>并集的子集。故</p>
 <p><span class="math display">\[
-0 &lt; P(\text{事件$C$}) \le P(\text{事件$A$ 或 事件$B$}) \le P(\text{事件$A$}) + P(\text{事件$B$}) &lt; \delta
-\]</span> 即<span class="math inline">\(0 &lt; P(|\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2 \ - \sigma^2| \ge \epsilon) &lt; \delta\)</span>。又由于对于任意<span class="math inline">\(\epsilon, \delta &gt; 0\)</span>该结论都成立，故 <span class="math display">\[
+0 &lt; P(\text{事件$C$}) \le P(\text{事件$A$ 或 事件$B$}) \le
+P(\text{事件$A$}) + P(\text{事件$B$}) &lt; \delta
+\]</span> 即<span class="math inline">\(0 &lt; P(|\frac{1}{n}
+\sum_{i=1}^n X_i^2 - \bar X^2 \ - \sigma^2| \ge \epsilon) &lt;
+\delta\)</span>。又由于对于任意<span class="math inline">\(\epsilon,
+\delta &gt; 0\)</span>该结论都成立，故 <span class="math display">\[
 \begin{gathered}
-\lim_{n \to \infty} P(|\underbrace{\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar X^2}_{S_n^2} - \sigma^2| \ge \epsilon) = 0 \iff \\
+\lim_{n \to \infty} P(|\underbrace{\frac{1}{n} \sum_{i=1}^n X_i^2 - \bar
+X^2}_{S_n^2} - \sigma^2| \ge \epsilon) = 0 \iff \\
 S_n^2 \stackrel{P}{\to} \sigma^2
 \end{gathered}
-\]</span> 运用类似的<span class="math inline">\(\epsilon, \delta\)</span>语言，我们可以证明<span class="math inline">\(S^2 = \frac{n}{n-1} S_n^2 \stackrel{P}{\to} \sigma^2\)</span>。</p>
+\]</span> 运用类似的<span class="math inline">\(\epsilon,
+\delta\)</span>语言，我们可以证明<span class="math inline">\(S^2 =
+\frac{n}{n-1} S_n^2 \stackrel{P}{\to} \sigma^2\)</span>。</p>
 <h2 id="次序统计量">次序统计量</h2>
-<p>令<span class="math inline">\((X_{(1)}, \dots, X_{(n)})\)</span>为样本<span class="math inline">\((X_1, \dots, X_n)\)</span>排序后的结果，则<span class="math inline">\(X_{(1)} = \min (X_1, \dots, X_n), X_{(n)} = \max (X_1, \dots, X_n)\)</span>亦是统计量。</p>
-<p>记<span class="math inline">\(X_{(1)}, X_{(n)}\)</span>的概率密度函数分别为<span class="math inline">\(p_{X_{(1)}}, p_{X_{(n)}}\)</span>，则 <span class="math display">\[
+<p>令<span class="math inline">\((X_{(1)}, \dots,
+X_{(n)})\)</span>为样本<span class="math inline">\((X_1, \dots,
+X_n)\)</span>排序后的结果，则<span class="math inline">\(X_{(1)} = \min
+(X_1, \dots, X_n), X_{(n)} = \max (X_1, \dots,
+X_n)\)</span>亦是统计量。</p>
+<p>记<span class="math inline">\(X_{(1)},
+X_{(n)}\)</span>的概率密度函数分别为<span class="math inline">\(p_{X_{(1)}}, p_{X_{(n)}}\)</span>，则 <span class="math display">\[
 \begin{gather}
 p_{X_{(1)}}(u) = n \big( 1 - P_X(u) \big)^{n-1} p_X(u) \\
 p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
@@ -1567,7 +1637,7 @@ p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1617,7 +1687,7 @@ p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1704,7 +1774,7 @@ p_{X_{(n)}}(u) = n \big( P_X(u) \big)^{n-1} p_X(u)
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

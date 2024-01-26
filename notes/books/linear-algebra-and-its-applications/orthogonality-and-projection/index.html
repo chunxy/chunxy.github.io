@@ -60,8 +60,8 @@
   
     
   
-  <meta name="description" content="If \(\{u_1, u_2, ..., u_k\}\) are orthogonal to each other, then they are independent with each other.
-Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(\R^n\)." />
+  <meta name="description" content="Orthogonality and Independence If \(\{u_1, u_2, ..., u_k\}\) are orthogonal to each other, then they are independent with each other.
+Orthonormality An \(m \times n\) matrix \(U\) has orthonormal columns if and only if \(U^TU = I\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/" />
@@ -322,8 +322,8 @@ Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/" />
   <meta property="og:title" content="Orthogonality and Projection | Chunxy&#39; Website" />
-  <meta property="og:description" content="If \(\{u_1, u_2, ..., u_k\}\) are orthogonal to each other, then they are independent with each other.
-Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(\R^n\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Orthogonality and Independence If \(\{u_1, u_2, ..., u_k\}\) are orthogonal to each other, then they are independent with each other.
+Orthonormality An \(m \times n\) matrix \(U\) has orthonormal columns if and only if \(U^TU = I\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -717,6 +717,10 @@ Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -773,7 +777,15 @@ Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -917,6 +929,10 @@ Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1120,7 +1136,19 @@ Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,7 +1342,26 @@ Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#orthogonality-and-independence">Orthogonality and
+Independence</a></li>
+    <li><a href="#orthonormality">Orthonormality</a></li>
+    <li><a href="#projection">Projection</a>
+      <ul>
+        <li><a href="#projection-onto-orthogonal-basis">Projection onto
+Orthogonal Basis</a></li>
+        <li><a href="#projection-onto-vector">Projection onto Vector</a></li>
+        <li><a href="#projection-onto-subspace">Projection onto
+Subspace</a></li>
+        <li><a href="#projection-onto-column-space">Projection onto Column
+Space</a></li>
+        <li><a href="#general-projection-matrix">General Projection
+Matrix</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
       
     </div>
@@ -1396,42 +1443,169 @@ Let \(\{u_1, u_2, ..., u_k\}\) be an orthogonal basis for a subspace \(W\) of \(
 
           <div class="article-style">
             
-<p>If <span class="math inline">\(\{u_1, u_2, ..., u_k\}\)</span> are orthogonal to each other, then they are independent with each other.</p>
-<p>Let <span class="math inline">\(\{u_1, u_2, ..., u_k\}\)</span> be an orthogonal basis for a subspace <span class="math inline">\(W\)</span> of <span class="math inline">\(\R^n\)</span>. Then for each <span class="math inline">\(y\)</span> in <span class="math inline">\(W\)</span>, the weights in the linear combination <span class="math display">\[
+
+<h2 id="orthogonality-and-independence">Orthogonality and
+Independence</h2>
+<p>If <span class="math inline">\(\{u_1, u_2, ..., u_k\}\)</span> are
+orthogonal to each other, then they are independent with each other.</p>
+<h2 id="orthonormality">Orthonormality</h2>
+<p>An <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(U\)</span> has orthonormal columns if and only if
+<span class="math inline">\(U^TU = I\)</span>.</p>
+<p>An <strong>orthogonal matrix</strong> is a square invertible matrix
+<span class="math inline">\(U\)</span> such that <span class="math inline">\(U^{-1} = U^T\)</span>. By its definition, it has
+orthonormal columns and orthonormal rows.</p>
+<h2 id="projection">Projection</h2>
+<h3 id="projection-onto-orthogonal-basis">Projection onto Orthogonal
+Basis</h3>
+<p>Let <span class="math inline">\(\{u_1, u_2, ..., u_k\}\)</span> be an
+orthogonal basis for a subspace <span class="math inline">\(W\)</span>
+of <span class="math inline">\(\R^n\)</span>. Then for each <span class="math inline">\(y\)</span> in <span class="math inline">\(W\)</span>, the weights in the linear combination
+<span class="math display">\[
 y = c_1u_1 + c_2u_2 + ... + c_ku_k
 \]</span> are given by <span class="math display">\[
-c_i = \frac{y \cdot u_i}{u_i \cdot u_i}
+c_i = \frac{y \cdot u_i}{u_i \cdot u_i} \label{coef}
 \]</span></p>
-<p>Given a nonzero vector <span class="math inline">\(u\)</span> in <span class="math inline">\(\R^n\)</span> and another vector <span class="math inline">\(y\)</span> in <span class="math inline">\(\R^n\)</span>, we wish to decompose <span class="math inline">\(y\)</span> such that <span class="math display">\[
+<h3 id="projection-onto-vector">Projection onto Vector</h3>
+<p>Given a nonzero vector <span class="math inline">\(u\)</span> in
+<span class="math inline">\(\R^n\)</span> and another vector <span class="math inline">\(y\)</span> in <span class="math inline">\(\R^n\)</span>, we wish to decompose <span class="math inline">\(y\)</span> such that <span class="math display">\[
 y = \hat y + z
-\]</span> where <span class="math inline">\(\hat y = \alpha u\)</span> for some scalar <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(z\)</span> is some vector orthogonal to <span class="math inline">\(u\)</span>. <span class="math display">\[
+\]</span> where <span class="math inline">\(\hat y = \alpha u\)</span>
+for some scalar <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(z\)</span> is some vector orthogonal to <span class="math inline">\(u\)</span>. <span class="math display">\[
 \begin{aligned}
 z &amp;= y - \hat y \\
 z \cdot u &amp;= (y - \alpha u) \cdot u \\
 y \cdot u - \alpha u \cdot u &amp;= 0 \\
 \alpha &amp;= \frac{y \cdot u}{u \cdot u}
 \end{aligned}
-\]</span> <span class="math inline">\(\hat y = \frac{y \cdot u}{u \cdot u}u\)</span> is called the orthogonal projection of <span class="math inline">\(y\)</span> onto <span class="math inline">\(u\)</span>, <span class="math inline">\(z = y - \hat y\)</span> is called the component of <span class="math inline">\(y\)</span> orthogonal to <span class="math inline">\(u\)</span>.</p>
-<p>The projection of <span class="math inline">\(y\)</span> onto <span class="math inline">\(cu\)</span> for any scalar <span class="math inline">\(c\)</span> is the same as that onto <span class="math inline">\(u\)</span>. Therefore <span class="math inline">\(\hat y\)</span> is the projection onto the subspace <span class="math inline">\(L\)</span> spanned by <span class="math inline">\(u\)</span>. In this sense, <span class="math inline">\(\hat y\)</span> is also denoted as <span class="math inline">\(\mathop{proj}_Ly\)</span>.</p>
-<p>Let <span class="math inline">\(W\)</span> be a subspace of <span class="math inline">\(\R^n\)</span>, then each <span class="math inline">\(y\)</span> in <span class="math inline">\(\R^n\)</span> can be uniquely written in the form: <span class="math display">\[
+\]</span> <span class="math inline">\(\hat y = \frac{y \cdot u}{u \cdot
+u}u\)</span> is called the orthogonal projection of <span class="math inline">\(y\)</span> onto <span class="math inline">\(u\)</span>, <span class="math inline">\(z = y -
+\hat y\)</span> is called the component of <span class="math inline">\(y\)</span> orthogonal to <span class="math inline">\(u\)</span>.</p>
+<p>The projection of <span class="math inline">\(y\)</span> onto <span class="math inline">\(cu\)</span> for any scalar <span class="math inline">\(c\)</span> is the same as that onto <span class="math inline">\(u\)</span>. Therefore <span class="math inline">\(\hat y\)</span> is the projection onto the
+subspace <span class="math inline">\(L\)</span> spanned by <span class="math inline">\(u\)</span>. In this sense, <span class="math inline">\(\hat y\)</span> is also denoted as <span class="math inline">\(\Pi_L(y)\)</span>.</p>
+<h3 id="projection-onto-subspace">Projection onto Subspace</h3>
+<p>Let <span class="math inline">\(W\)</span> be a linear subspace of
+<span class="math inline">\(\R^n\)</span>, then each <span class="math inline">\(y\)</span> in <span class="math inline">\(\R^n\)</span> can be uniquely written in the form:
+<span class="math display">\[
 y = \hat y + z
-\]</span> where <span class="math inline">\(\hat y\)</span> is in <span class="math inline">\(W\)</span> and <span class="math inline">\(z\)</span> is in <span class="math inline">\(W^\perp\)</span>. <span class="math inline">\(\hat y\)</span> is called the orthogonal projection of <span class="math inline">\(y\)</span> onto <span class="math inline">\(W\)</span>, denoted as <span class="math inline">\(\mathop{proj}_Wy\)</span>.</p>
-<p>This projection can be found by finding an arbitrary orthogonal basis of <span class="math inline">\(W\)</span> and then computing weights using equation (2).</p>
-<p><span class="math inline">\(\hat y\)</span> is also the closest point in <span class="math inline">\(W\)</span> to <span class="math inline">\(y\)</span>, in the sense that: <span class="math display">\[
-||y - \hat y|| &lt; ||y - v||, \forall v \in W \text{ and } v \ne \hat y
-\]</span> In this case, <span class="math inline">\(\hat y\)</span> is called the best approximation to <span class="math inline">\(y\)</span> by elements of <span class="math inline">\(W\)</span>.</p>
-<p>Above can be seen by <span class="math display">\[
+\]</span> where <span class="math inline">\(\hat y\)</span> is in <span class="math inline">\(W\)</span> and <span class="math inline">\(z\)</span> is in <span class="math inline">\(W^\perp\)</span>. <span class="math inline">\(\hat
+y\)</span> is called the orthogonal projection of <span class="math inline">\(y\)</span> onto <span class="math inline">\(W\)</span>, denoted as <span class="math inline">\(\Pi_W(y)\)</span>.</p>
+<p><span class="math inline">\(\hat y\)</span> is also called the best
+approximation to <span class="math inline">\(y\)</span> in <span class="math inline">\(W\)</span>, in the sense that: <span class="math display">\[
+||y - \hat y||_2 \le ||y - v||_2, \forall v \in W
+\]</span> It can be shown by <span class="math display">\[
 y - v = (y - \hat y) + (\hat y - v)
 \]</span> which gives <span class="math display">\[
 \begin{aligned}
-&amp;||y - v||^2 = ||(y - \hat y) + (\hat y - v)|| \\
-&amp;= ||(y - \hat y)||^2 + ||(\hat y - v)||^2 + 2(y - \hat y) \cdot (\hat y - v) \\
-&amp;= ||(y - \hat y)||^2 + ||(\hat y - v)||^2 \text{($y - \hat y$ is in $W^\perp$, $\hat y - v$ is in $W$)} \\
-&amp;&gt; ||(y - \hat y)||^2
+&amp;||y - v||_2^2 = ||(y - \hat y) + (\hat y - v)||_2^2 \\
+&amp;= ||y - \hat y||_2^2 + ||\hat y - v||_2^2 + 2(y - \hat y)^T (\hat y
+- v) \\
+&amp;\Downarrow_{y - \hat y \in W^\perp, \hat y - v \in W} \\
+&amp;= ||y - \hat y||_2^2 + ||\hat y - v||_2^2 \\
+&amp;&gt; ||y - \hat y||_2^2
 \end{aligned}
 \]</span></p>
-<p>An <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(U\)</span> has orthonormal columns if and only if <span class="math inline">\(U^TU = I\)</span>.</p>
-<p>An orthogonal matrix is a square invertible matrix <span class="math inline">\(U\)</span> such that <span class="math inline">\(U^{-1} = U^T\)</span>. By its definition, it has orthonormal columns and orthonormal rows.</p>
+<h3 id="projection-onto-column-space">Projection onto Column Space</h3>
+<p>When <span class="math inline">\(A \in \R^{n \times m}\)</span> is a
+matrix, for any <span class="math inline">\(y \in \R^n\)</span> we may
+still want to find its projection onto the column space (also a linear
+subspace) spanned by <span class="math inline">\(A\)</span>. As
+mentioned above, <span class="math inline">\(y\)</span> can be
+decomposed into <span class="math inline">\(\hat y\)</span> and <span class="math inline">\(z\)</span> such that <span class="math inline">\(\hat y \in \Col A\)</span> and <span class="math inline">\(z \in (\Col A)^\perp = \Nul A^T\)</span>.
+Therefore, <span class="math display">\[
+\begin{gather}
+y = \hat y + z \label{decomp} \\
+A^T z = 0 \label{perp} \\
+\exists x \in \R^n, A x = \hat y \label{proj}
+\end{gather}
+\]</span> Substitute <span class="math inline">\(\hat y\)</span> in
+<span class="math inline">\(\eqref{proj}\)</span> to <span class="math inline">\(\eqref{decomp}\)</span>, and then substitute <span class="math inline">\(z\)</span> in <span class="math inline">\(\eqref{decomp}\)</span> to <span class="math inline">\(\eqref{perp}\)</span> to give <span class="math display">\[
+\begin{aligned}
+A^T (y - A x) &amp;= 0 \\
+A^T A x &amp;= A^T y \\
+\end{aligned}
+\]</span> Note that <span class="math inline">\(\rank {A^T A} = \rank
+A\)</span>. If either <span class="math inline">\(A\)</span>’s columns
+are independent or <span class="math inline">\(A\)</span> is of full
+rank, we can solve the above equation as <span class="math display">\[
+x = (A^T A)^{-1} A^T y
+\]</span> Thus, <span class="math display">\[
+\hat y = A x = A (A^T A)^{-1} A^T y
+\]</span> For any <span class="math inline">\(y \in \R^n\)</span>, its
+projection onto <span class="math inline">\(\Col A\)</span> can be found
+by left-multiplying <span class="math inline">\(A\)</span>’s
+<strong>projection matrix</strong> <span class="math inline">\(P
+\triangleq A (A^T A)^{-1} A^T\)</span>. And we can verify that <span class="math inline">\(z \in \Nul A^T\)</span>: <span class="math display">\[
+A^T z = A^T (y - \hat y) = A^T (y - A (A^T A)^{-1} A^T y) = A^T y - A^T
+y = 0
+\]</span> There are some interesting properties with this projection
+matrix <span class="math inline">\(P\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(P\)</span> is symmetric;</p></li>
+<li><p><span class="math inline">\(P\)</span> is
+<strong>idempotent</strong> in that <span class="math inline">\(P^2 =
+P\)</span>;</p></li>
+<li><p><span class="math inline">\(\Col P = \Col A\)</span>.</p>
+<blockquote>
+<p>For every vector <span class="math inline">\(x \in \Col A\)</span>,
+by the definition of projection matrix, we have <span class="math display">\[
+P x = x
+\]</span> which means <span class="math inline">\(x \in \Col P\)</span>
+and thus <span class="math inline">\(\Col A \subseteq \Col
+P\)</span>.</p>
+<p>For every vector <span class="math inline">\(y \in \Col P\)</span>,
+there exists a vector <span class="math inline">\(z\)</span> such that
+<span class="math display">\[
+P z = y
+\]</span> By the definition of projection matrix, we know that <span class="math inline">\((P z) \in \Col A\)</span> and thus <span class="math inline">\(\Col P \subseteq \Col A\)</span>.</p>
+<p>Therefore, <span class="math inline">\(\Col P = \Col A\)</span>.
+Interestingly and as a direct result, we have <span class="math display">\[
+A^T P = A^T
+\]</span></p>
+</blockquote></li>
+</ul>
+<h3 id="general-projection-matrix">General Projection Matrix</h3>
+<p>The projection matrix derived above for a column space is actually an
+<strong>orthogonal projection matrix</strong>. The residual <span class="math inline">\(z\)</span> of the original vector <span class="math inline">\(y\)</span> after projection is perpendicular to
+<span class="math inline">\(\Col A\)</span> and thus to <span class="math inline">\(\hat y\)</span>.</p>
+<p>In a more general case, the residual is not necessarily perpendicular
+to <span class="math inline">\(\hat y\)</span>. Note that <span class="math inline">\(\hat y\)</span> is also the closest point in <span class="math inline">\(\Col A\)</span> to <span class="math inline">\(y\)</span>. This instead is the definitive
+property of a <strong>projection</strong>, suitable for any set of
+vectors like linear subspace or non-convex set.</p>
+<p>We can similarly develop the notion of a general projection matrix.
+If an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(P\)</span> satisfies that <span class="math inline">\(P^2 = P\)</span>, then it is a <strong>projection
+matrix</strong>.</p>
+<p>Note that we develop the concept of orthogonal projection matrix from
+the orthogonal projection onto a linear subspace. But for a general
+projection matrix, we only require that <span class="math inline">\(P^2
+= P\)</span>. We don’t associate general projection matrix with general
+projection, because for a vector <span class="math inline">\(y\)</span>,
+<span class="math inline">\(P y\)</span> may not be the projection of
+<span class="math inline">\(y\)</span> onto the projection space <span class="math inline">\(\{ P x: x \in \R^n \}\)</span>.</p>
+<blockquote>
+<p>Example: Let <span class="math display">\[
+P = \begin{pmatrix}
+0 &amp; 1 \\
+0 &amp; 1
+\end{pmatrix}
+\]</span> <span class="math inline">\(P\)</span> is a projection matrix
+and it transforms all 2-D vectors <span class="math inline">\(y = [y_1,
+y_2]^T\)</span> to <span class="math inline">\(\hat y = [y_2,
+y_2]^T\)</span>. The projection space formed by <span class="math inline">\(P\)</span> is <span class="math inline">\(\mathcal{P} = \{ x \in \R^2: x_1 = x_2
+\}\)</span>. Clearly, neither <span class="math inline">\(\hat
+y\)</span> is the closest point to <span class="math inline">\(y\)</span> in <span class="math inline">\(\mathcal{P}\)</span>, nor the residual <span class="math inline">\(y - \hat y\)</span> is perpendicular to <span class="math inline">\(y\)</span>.</p>
+</blockquote>
+<p>There are some properties with a general projection matrix <span class="math inline">\(P\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(P\)</span> is an orthogonal
+projection matrix if and only if it is symmetric;</p></li>
+<li><p><span class="math inline">\(P\)</span> is an orthogonal
+projection matrix if and only if its singular values are either <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span>;</p>
+<p>Refer to <a href="https://math.stackexchange.com/questions/1109755/a-projection-p-is-orthogonal-if-and-only-if-its-spectral-norm-is-1">this</a>
+or <a href="https://math.stackexchange.com/questions/4407294/singular-values-of-projection-matrix">this</a>
+for proof.</p></li>
+<li><p><span class="math inline">\(P\)</span> is invertible only if it
+is the identity matrix.</p></li>
+</ul>
 
 
 
@@ -1522,7 +1696,7 @@ y - v = (y - \hat y) + (\hat y - v)
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1572,7 +1746,7 @@ y - v = (y - \hat y) + (\hat y - v)
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1659,7 +1833,7 @@ y - v = (y - \hat y) + (\hat y - v)
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1415,32 +1443,50 @@
 
 <h2 id="事件的运算">事件的运算</h2>
 <h3 id="事件的包含和相等">事件的包含和相等</h3>
-<p>同一试验下的两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，如果<span class="math inline">\(A\)</span>发生时B也发生，则称<span class="math inline">\(B\)</span>包含<span class="math inline">\(A\)</span>，记作<span class="math inline">\(A \subseteq B\)</span>。如果<span class="math inline">\(A,B\)</span>互相包含，则二者相等。</p>
+<p>同一试验下的两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，如果<span class="math inline">\(A\)</span>发生时B也发生，则称<span class="math inline">\(B\)</span>包含<span class="math inline">\(A\)</span>，记作<span class="math inline">\(A
+\subseteq B\)</span>。如果<span class="math inline">\(A,B\)</span>互相包含，则二者相等。</p>
 <h3 id="事件的互斥和对立">事件的互斥和对立</h3>
-<p>若两事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>不能再同一试验中同时发生，则称它们是互斥的。互斥事件的一个特例是对立事件，对于事件<span class="math inline">\(A\)</span>，其对立事件<span class="math inline">\(\bar A\)</span>为<span class="math inline">\(\{ \text{$A$不发生} \}\)</span>。</p>
+<p>若两事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>不能再同一试验中同时发生，则称它们是互斥的。互斥事件的一个特例是对立事件，对于事件<span class="math inline">\(A\)</span>，其对立事件<span class="math inline">\(\bar A\)</span>为<span class="math inline">\(\{
+\text{$A$不发生} \}\)</span>。</p>
 <h3 id="事件的和并与加法定理">事件的和（并）与加法定理</h3>
-<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，定义新事件<span class="math inline">\(C\)</span>为<span class="math inline">\(C = \{ \text{$A$发生，或$B$发生} \}\)</span>，则称事件<span class="math inline">\(C\)</span>为事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>的和，记作<span class="math inline">\(C = A + B\)</span>。</p>
+<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，定义新事件<span class="math inline">\(C\)</span>为<span class="math inline">\(C = \{
+\text{$A$发生，或$B$发生} \}\)</span>，则称事件<span class="math inline">\(C\)</span>为事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>的和，记作<span class="math inline">\(C
+= A + B\)</span>。</p>
 <p>概率论中的<strong>加法定理</strong>描述的则是：若干互斥事件之和的概率，等于各事件的概率之和。</p>
 <h4 id="全概率公式">全概率公式</h4>
-<p>设<span class="math inline">\(B_1, B_2, \cdots\)</span>为有限或无限个事件，它们两两互斥且在每次实验中至少发生一个（mutually exclusive and collectively exhaustive），即 <span class="math display">\[
+<p>设<span class="math inline">\(B_1, B_2,
+\cdots\)</span>为有限或无限个事件，它们两两互斥且在每次实验中至少发生一个（mutually
+exclusive and collectively exhaustive），即 <span class="math display">\[
 \begin{gather}
 B_i B_j = \emptyset (i \ne j) \\
 B_1 + B_2 + \cdots = \Omega \\
 P(B_1 + B_2 + \cdots) = P(\Omega) = 1
 \end{gather}
-\]</span> 根据事件运算的性质，<span class="math inline">\(A = A \Omega = A B_1 + A B_2 + \cdots\)</span>，由于<span class="math inline">\(B_1, B_2, \cdots\)</span>两两互斥，则显然<span class="math inline">\(A B_1, A B_2, \cdots\)</span>也两两互斥，故依据加法定理，有 <span class="math display">\[
+\]</span> 根据事件运算的性质，<span class="math inline">\(A = A \Omega =
+A B_1 + A B_2 + \cdots\)</span>，由于<span class="math inline">\(B_1,
+B_2, \cdots\)</span>两两互斥，则显然<span class="math inline">\(A B_1, A
+B_2, \cdots\)</span>也两两互斥，故依据加法定理，有 <span class="math display">\[
 P(A) = \sum_i P(A B_i) = P(A B_1) + P(A B_2) + \cdots
 \]</span> 再根据条件概率公式，有 <span class="math display">\[
-P(A) = \sum_i P(B_i) P(A | B_i) = P(B_1) P(A|B_1) + P(B_2) P(A|B_2) + \cdots
+P(A) = \sum_i P(B_i) P(A | B_i) = P(B_1) P(A|B_1) + P(B_2) P(A|B_2) +
+\cdots
 \]</span></p>
 <p>这便是全概率公式。</p>
 <h3 id="事件的积交">事件的积（交）</h3>
-<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，定义新事件<span class="math inline">\(C\)</span>为<span class="math inline">\(C = \{ \text{$A$，$B$都发生} \}\)</span>，则称事件<span class="math inline">\(C\)</span>为事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>的积，记作<span class="math inline">\(C = A B\)</span>。</p>
+<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，定义新事件<span class="math inline">\(C\)</span>为<span class="math inline">\(C = \{
+\text{$A$，$B$都发生} \}\)</span>，则称事件<span class="math inline">\(C\)</span>为事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>的积，记作<span class="math inline">\(C
+= A B\)</span>。</p>
 <h3 id="事件的差">事件的差</h3>
-<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，定义新事件<span class="math inline">\(C\)</span>为<span class="math inline">\(C = \{ \text{$A$发生，$B$不发生} \}\)</span>，则称事件<span class="math inline">\(C\)</span>为事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>的差，记作<span class="math inline">\(C = A - B\)</span>。</p>
+<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，定义新事件<span class="math inline">\(C\)</span>为<span class="math inline">\(C = \{
+\text{$A$发生，$B$不发生} \}\)</span>，则称事件<span class="math inline">\(C\)</span>为事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>的差，记作<span class="math inline">\(C
+= A - B\)</span>。</p>
 <p>我们对事件引入了和、积、差、对立运算。显然，这些运算符在数字运算中成立的运算规律，不一定对事件运算成立，比如说<span class="math inline">\(A + A = A\)</span>而非<span class="math inline">\(2 A\)</span>（无意义），<span class="math inline">\(A A = A\)</span>而非<span class="math inline">\(A^2\)</span>（无意义），<span class="math inline">\((A - B) + B = A + B\)</span>而不是<span class="math inline">\(A\)</span>。</p>
 <p>基于这些基本运算，我们也可以表示出更多的事件，比如：</p>
 <table>
+<colgroup>
+<col style="width: 72%"/>
+<col style="width: 27%"/>
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">表达式</th>
@@ -1453,41 +1499,54 @@ P(A) = \sum_i P(B_i) P(A | B_i) = P(B_1) P(A|B_1) + P(B_2) P(A|B_2) + \cdots
 <td style="text-align: center;">三者同时发生</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">\(A B \bar C + A B \bar C + \bar A B C\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(A B \bar C +
+A B \bar C + \bar A B C\)</span></td>
 <td style="text-align: center;">三者有且仅有两件发生</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(A \bar B \bar C + \bar A B \bar C + \bar A \bar B C\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(A \bar B
+\bar C + \bar A B \bar C + \bar A \bar B C\)</span></td>
 <td style="text-align: center;">三者有且仅有一件发生</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><span class="math inline">\(A + B + C\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(A + B +
+C\)</span></td>
 <td style="text-align: center;">三者至少其中之一发生</td>
 </tr>
 </tbody>
 </table>
 <h2 id="条件概率与独立性">条件概率与独立性</h2>
-<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，且<span class="math inline">\(P(B) \ne 0\)</span>，记<span class="math inline">\(P(A|B)\)</span>为“在给定<span class="math inline">\(B\)</span>发生的条件下<span class="math inline">\(A\)</span>的条件概率”，则 <span class="math display">\[
+<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，且<span class="math inline">\(P(B) \ne
+0\)</span>，记<span class="math inline">\(P(A|B)\)</span>为“在给定<span class="math inline">\(B\)</span>发生的条件下<span class="math inline">\(A\)</span>的条件概率”，则 <span class="math display">\[
 P(A|B) = \frac{P(AB)}{P(B)}
 \]</span> 在计数测度之下，这个式子很好证明。记<span class="math inline">\(M_A\)</span>为使得事件<span class="math inline">\(A\)</span>发生的基本事件个数，记<span class="math inline">\(M_B\)</span>为使得事件<span class="math inline">\(B\)</span>发生的基本事件个数，记<span class="math inline">\(M_{AB}\)</span>为使得事件<span class="math inline">\(A\)</span>和事件<span class="math inline">\(B\)</span>同时发生的基本事件个数，记<span class="math inline">\(M\)</span>为所有基本事件个数，则 <span class="math display">\[
-P(A|B) = \frac{M_{AB}}{M_B} = \frac{M_{AB}/M}{M_B/M} = \frac{P(AB)}{P(B)}
+P(A|B) = \frac{M_{AB}}{M_B} = \frac{M_{AB}/M}{M_B/M} =
+\frac{P(AB)}{P(B)}
 \]</span></p>
 <h3 id="两个事件的独立">两个事件的独立</h3>
-<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，<span class="math inline">\(P(A)\)</span>和<span class="math inline">\(P(A|B)\)</span>可能是有差异的，这个差异便反映了二者之间的关联。而如果<span class="math inline">\(P(A) = P(A|B)\)</span>，则称这两事件独立。根据条件概率的定义，两事件<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>独立时，有 <span class="math display">\[
+<p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，<span class="math inline">\(P(A)\)</span>和<span class="math inline">\(P(A|B)\)</span>可能是有差异的，这个差异便反映了二者之间的关联。而如果<span class="math inline">\(P(A) =
+P(A|B)\)</span>，则称这两事件独立。根据条件概率的定义，两事件<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>独立时，有 <span class="math display">\[
 P(AB) = P(A) P(B)
-\]</span> 我们往往是根据事件属性，而非根据以上公式，来确定事件的独立性。比如说在连续抛两次硬币的试验中，这两次试验的结果之间确实不应该有什么关联，我们自然而然地认为它们之间是相互独立的（<strong>相互独立同分布</strong>）。</p>
+\]</span>
+我们往往是根据事件属性，而非根据以上公式，来确定事件的独立性。比如说在连续抛两次硬币的试验中，这两次试验的结果之间确实不应该有什么关联，我们自然而然地认为它们之间是相互独立的（<strong>相互独立同分布</strong>）。</p>
 <p>有时我们会觉得所有的独立事件可能都来自于这样的多次相互独立同分布试验，但其实独立事件也可以来自一次试验，比如说从52张扑克牌中随机抽取一张，记事件<span class="math inline">\(A\)</span>为抽中红桃花色、事件<span class="math inline">\(B\)</span>为抽中数字6，则可以验证，这两个事件也是相互独立的。</p>
 <h3 id="相互独立与乘法定理">相互独立与乘法定理</h3>
-<p>设<span class="math inline">\(A_1, A_2, \cdots\)</span>为有限或无限个事件，如果从其中任意取出有限个<span class="math inline">\(A_{i_1}, A_{i_2}, \cdots, A_{i_m}\)</span>，都有 <span class="math display">\[
-P(A_{i_1} A_{i_2} \cdots A_{i_m}) = P(A_{i_1}) P(A_{i_2}) \cdots P(A_{i_m})
-\]</span> 则称事件<span class="math inline">\(A_1, A_2, \cdots\)</span>相互独立。概率论中的<strong>乘法定理</strong>描述的是：多个事件相互独立时，它们同时发生的概率，等于各自概率的乘积。</p>
-<p>需要注意的是，多个事件之间两两独立并不意味着它们相互独立，比如在掷两次硬币的实验中，定义以下事件： <span class="math display">\[
+<p>设<span class="math inline">\(A_1, A_2,
+\cdots\)</span>为有限或无限个事件，如果从其中任意取出有限个<span class="math inline">\(A_{i_1}, A_{i_2}, \cdots, A_{i_m}\)</span>，都有
+<span class="math display">\[
+P(A_{i_1} A_{i_2} \cdots A_{i_m}) = P(A_{i_1}) P(A_{i_2}) \cdots
+P(A_{i_m})
+\]</span> 则称事件<span class="math inline">\(A_1, A_2,
+\cdots\)</span>相互独立。概率论中的<strong>乘法定理</strong>描述的是：多个事件相互独立时，它们同时发生的概率，等于各自概率的乘积。</p>
+<p>需要注意的是，多个事件之间两两独立并不意味着它们相互独立，比如在掷两次硬币的实验中，定义以下事件：
+<span class="math display">\[
 \begin{gathered}
 A：第一次为正， P(A) = 1/2 \\
 B：第二次为反， P(B) = 1/2 \\
 C：两次结果相同， P(C) = 1/2
 \end{gathered}
-\]</span> 则可以轻易验证三者两两独立，但是<span class="math inline">\(P(ABC) = 0 \ne 1/8 = P(A) P(B) P(C)\)</span>。这三者的关系有如下图中的三个环：两两之间本可以相互分开（独立），但三者同在，便互相捆绑住了。</p>
+\]</span> 则可以轻易验证三者两两独立，但是<span class="math inline">\(P(ABC) = 0 \ne 1/8 = P(A) P(B)
+P(C)\)</span>。这三者的关系有如下图中的三个环：两两之间本可以相互分开（独立），但三者同在，便互相捆绑住了。</p>
 <p><img src="./borromean-rings-illusion.png" style="max-width: 30%;"/></p>
 
 
@@ -1579,7 +1638,7 @@ C：两次结果相同， P(C) = 1/2
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1629,7 +1688,7 @@ C：两次结果相同， P(C) = 1/2
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1716,7 +1775,7 @@ C：两次结果相同， P(C) = 1/2
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

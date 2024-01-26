@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1315,7 +1343,8 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#rationale">Rationale</a></li>
-    <li><a href="#bounding-the-mutual-information">Bounding the Mutual Information</a></li>
+    <li><a href="#bounding-the-mutual-information">Bounding the Mutual
+Information</a></li>
     <li><a href="#external-materials">External Materials</a></li>
   </ul>
 </nav>
@@ -1391,44 +1420,108 @@
             
 
 <h2 id="rationale">Rationale</h2>
-<p>CPC was initially proposed in autoregressive models. It enhances the autoencoder by lifting the lower bound of mutual information between the encoded representation and the original data. The original data can either be the data before the encoding, or the future data after various steps.</p>
-<p>CPC learns the representation by minimizing the following loss function: <span class="math display">\[
+<p>CPC was initially proposed in autoregressive models. It enhances the
+autoencoder by lifting the lower bound of mutual information between the
+encoded representation and the original data. The original data can
+either be the data before the encoding, or the future data after various
+steps.</p>
+<p>CPC learns the representation by minimizing the following loss
+function: <span class="math display">\[
 \newcommand{\c}{\mathrm{c}} \label{loss}
-\mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
-\]</span> <span class="math inline">\(t = (\x_1, \dots, \x_{N+1}, \c^*; \ell)\)</span> is a tuple of random variables and <span class="math inline">\(\Phi\)</span> is the distribution from which <span class="math inline">\(t\)</span> is drawn. <span class="math inline">\((\x:\c)_{1:N+1}\)</span> are drawn from the joint distribution <span class="math inline">\(\tilde p(\x,\c)\)</span>. All <span class="math inline">\(\c_i\)</span>’s but one randomly-chosen <span class="math inline">\(\c^*\)</span> are trimmed from the original samples. <span class="math inline">\(\c^*\)</span> is known but it is unknown which sample it is associated with. <span class="math inline">\(\ell\)</span> denotes the index of this unique sample we are trying to predict. In essence, <span class="math inline">\(\theta\)</span> is parameterizing the representation <span class="math inline">\(\c\)</span>. The formal score function <span class="math inline">\(f_\theta\)</span> is simply chosen to be a deterministic cosine similarity between <span class="math inline">\(\x\)</span> and <span class="math inline">\(\c\)</span>.</p>
-<p><span class="math inline">\(\x_{1:N+1}\)</span> consists of one positive sample <span class="math inline">\(\x^*\)</span> that is matched with <span class="math inline">\(\c^*\)</span> and more other independent negative (noise) samples <span class="math inline">\(\x_i\)</span>’s that are not matched with <span class="math inline">\(\c\)</span>. <span class="math inline">\(N\)</span> is the fixed ratio of the number of negative samples to the number of positive samples. Let <span class="math inline">\(P(\ell=i|\x_{1:N+1},\c^*)\)</span> represent the probability that <span class="math inline">\(\x_i\)</span> is the positive sample given <span class="math inline">\(\x_1, \dots x_{N+1}\)</span> and <span class="math inline">\(\c^*\)</span>. <span class="math display">\[
+\mathcal L_N = -\E_{t \sim \Phi} \log \frac{f_\theta(\x_l,\c)}
+{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} =
+-\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log
+\frac{f_\theta(\x_l,\c)} {\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
+\]</span> <span class="math inline">\(t = (\x_1, \dots, \x_{N+1}, \c^*;
+\ell)\)</span> is a tuple of random variables and <span class="math inline">\(\Phi\)</span> is the distribution from which <span class="math inline">\(t\)</span> is drawn. <span class="math inline">\((\x:\c)_{1:N+1}\)</span> are drawn from the joint
+distribution <span class="math inline">\(\tilde p(\x,\c)\)</span>. All
+<span class="math inline">\(\c_i\)</span>’s but one randomly-chosen
+<span class="math inline">\(\c^*\)</span> are trimmed from the original
+samples. <span class="math inline">\(\c^*\)</span> is known but it is
+unknown which sample it is associated with. <span class="math inline">\(\ell\)</span> denotes the index of this unique
+sample we are trying to predict. In essence, <span class="math inline">\(\theta\)</span> is parameterizing the
+representation <span class="math inline">\(\c\)</span>. The formal score
+function <span class="math inline">\(f_\theta\)</span> is simply chosen
+to be a deterministic cosine similarity between <span class="math inline">\(\x\)</span> and <span class="math inline">\(\c\)</span>.</p>
+<p><span class="math inline">\(\x_{1:N+1}\)</span> consists of one
+positive sample <span class="math inline">\(\x^*\)</span> that is
+matched with <span class="math inline">\(\c^*\)</span> and more other
+independent negative (noise) samples <span class="math inline">\(\x_i\)</span>’s that are not matched with <span class="math inline">\(\c\)</span>. <span class="math inline">\(N\)</span> is the fixed ratio of the number of
+negative samples to the number of positive samples. Let <span class="math inline">\(P(\ell=i|\x_{1:N+1},\c^*)\)</span> represent the
+probability that <span class="math inline">\(\x_i\)</span> is the
+positive sample given <span class="math inline">\(\x_1, \dots
+x_{N+1}\)</span> and <span class="math inline">\(\c^*\)</span>. <span class="math display">\[
 \begin{aligned}
-P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\ell=i, \x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
+P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\ell=i,
+\x_{1:N+1},\c^*)}{\sum_{j=1}^{N+1} P(\ell=j, \x_{1:N+1},\c^*)} \\
 \end{aligned}
 \]</span></p>
-<p>Substitute <span class="math inline">\(P(\ell=i,\x_{1:N+1},\c^*) = P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)</span> to give <span class="math display">\[
+<p>Substitute <span class="math inline">\(P(\ell=i,\x_{1:N+1},\c^*) =
+P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)\)</span> to give <span class="math display">\[
 \begin{aligned}
-P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} P(\x_j)}{\sum_{j=1}^{N+1} [P(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} P(\x_k)]} \\
-&amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne j}^{N+1} \tilde p_X(\x_j)]} \\
-&amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
+P(\ell=i|\x_{1:N+1},\c^*) &amp;= \frac{P(\x_i,\c^*) \prod_{j=1,j \ne
+i}^{N+1} P(\x_j)}{\sum_{j=1}^{N+1} [P(\x_j,\c^*) \prod_{k=1,k \ne
+j}^{N+1} P(\x_k)]} \\
+&amp;= \frac{\tilde p(\x_i,\c^*) \prod_{j=1,j \ne i}^{N+1} \tilde
+p_X(\x_j)} {\sum_{j=1}^{N+1} [\tilde p(\x_j,\c^*) \prod_{k=1,k \ne
+j}^{N+1} \tilde p_X(\x_j)]} \\
+&amp;= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} }
+{\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} \\
 \end{aligned}
-\]</span> The loss function <span class="math inline">\(\eqref{loss}\)</span> is in fact the expectation (the outer <span class="math inline">\(\E\)</span>) of the categorical cross entropy (the inner <span class="math inline">\(\E\)</span>) of identifying the sample as positive or negative. The minimum of loss function is thus reached when the two categorical distributions are identical. That is, <span class="math display">\[
+\]</span> The loss function <span class="math inline">\(\eqref{loss}\)</span> is in fact the expectation
+(the outer <span class="math inline">\(\E\)</span>) of the categorical
+cross entropy (the inner <span class="math inline">\(\E\)</span>) of
+identifying the sample as positive or negative. The minimum of loss
+function is thus reached when the two categorical distributions are
+identical. That is, <span class="math display">\[
 \begin{gather}
-P_\theta(l = i|x_{1:N+1},\c^*) = \frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)} = \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1} \frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} = P(\ell=i|\x_{1:N+1},\c^*) \\
-f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
+P_\theta(l = i|x_{1:N+1},\c^*) =
+\frac{f_\theta(\x_i,\c)}{\sum_{\x^\prime \in X}f_\theta(\x^\prime, \c)}
+= \frac{\frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} } {\sum_{j=1}^{N+1}
+\frac{\tilde p(\x_j,\c^*)}{\tilde p_X(\x_j)}} =
+P(\ell=i|\x_{1:N+1},\c^*) \\
+f_\theta(\x_i,\c) = \frac{\sum_{\x^\prime \in X}f_\theta(\x^\prime,
+\c)}{\sum_{\x^\prime \in X} \frac{\tilde p(\x^\prime|\c)}{\tilde
+p_X(\x^\prime)}} \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)} \\
 f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 \end{gather}
 \]</span></p>
-<h2 id="bounding-the-mutual-information">Bounding the Mutual Information</h2>
-<p>CPC helps estimate the lower bound of the mutual information between the encoded representation and the original data when optimizing the InfoNCE loss: <span class="math display">\[
+<h2 id="bounding-the-mutual-information">Bounding the Mutual
+Information</h2>
+<p>CPC helps estimate the lower bound of the mutual information between
+the encoded representation and the original data when optimizing the
+InfoNCE loss: <span class="math display">\[
 \begin{aligned}
-&amp;\mathcal L_N^{\text{opt}} = -\E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} {\sum_{\x&#39; \in X} \frac{\tilde p(\x&#39;, \c^*)}{\tilde p_X(\x&#39;)}} \\
-&amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)} + \sum_{\x&#39; \in X, \x&#39; \ne x_l} \frac{\tilde p(\x&#39;, \c^*)}{\tilde p_X(\x&#39;)}} {\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} \\
-&amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} \sum_{\x&#39; \in X, \x&#39; \ne x_l} \frac{\tilde p(\x&#39;, \c^*)}{\tilde p_X(\x&#39;)} \big) \\
-&amp;\approx \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \E_{\tilde p_X(\x&#39;)} \frac{\tilde p(\x&#39;, \c^*)}{\tilde p_X(\x&#39;)} \big) \\
-&amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
-&amp;\ge \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
-&amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} [\log \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)}] + \log (N - 1) \\
+&amp;\mathcal L_N^{\text{opt}} = -\E_{p(\x_{1:N+1},\c^*)}
+\E_{p(l|\x_{1:N+1}, \c^*)} \log \frac{\frac{\tilde p(\x_l, \c^*)}{\tilde
+p_X(\x_l)}} {\sum_{\x&#39; \in X} \frac{\tilde p(\x&#39;, \c^*)}{\tilde
+p_X(\x&#39;)}} \\
+&amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log
+\frac{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)} + \sum_{\x&#39; \in
+X, \x&#39; \ne x_l} \frac{\tilde p(\x&#39;, \c^*)}{\tilde p_X(\x&#39;)}}
+{\frac{\tilde p(\x_l, \c^*)}{\tilde p_X(\x_l)}} \\
+&amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 +
+\frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} \sum_{\x&#39; \in X,
+\x&#39; \ne x_l} \frac{\tilde p(\x&#39;, \c^*)}{\tilde p_X(\x&#39;)}
+\big) \\
+&amp;\approx \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log
+\big( 1 + \frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1)
+\E_{\tilde p_X(\x&#39;)} \frac{\tilde p(\x&#39;, \c^*)}{\tilde
+p_X(\x&#39;)} \big) \\
+&amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big( 1 +
+\frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
+&amp;\ge \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} \log \big(
+\frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)} (N - 1) \big) \\
+&amp;= \E_{p(\x_{1:N+1},\c^*)} \E_{p(l|\x_{1:N+1}, \c^*)} [\log
+\frac{\tilde p_X(\x_l)} {\tilde p(\x_l, \c^*)}] + \log (N - 1) \\
 &amp;= -I(\x;\c^*) + \log (N - 1)
 \end{aligned}
-\]</span> Therefore, <span class="math inline">\(I(\x;\c^\star) \ge \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)</span>.</p>
+\]</span> Therefore, <span class="math inline">\(I(\x;\c^\star) \ge
+\log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)</span>.</p>
 <h2 id="external-materials">External Materials</h2>
-<p><a href="https://anilkeshwani.github.io/CPC/">Paper Review</a> || <a href="https://www.youtube.com/watch?v=zNKMHj1eLa0">CPC Formulation</a> || <a href="https://jxmo.io/posts/nce">NCE and InfoNCE</a> || <a href="https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k">Demo of Bounding Mutual Information</a></p>
+<p><a href="https://anilkeshwani.github.io/CPC/">Paper Review</a> || <a href="https://www.youtube.com/watch?v=zNKMHj1eLa0">CPC Formulation</a>
+|| <a href="https://jxmo.io/posts/nce">NCE and InfoNCE</a> || <a href="https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k">Demo
+of Bounding Mutual Information</a></p>
 
 
 
@@ -1519,7 +1612,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1569,7 +1662,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1656,7 +1749,7 @@ f_\theta(\x_i,\c) \propto \frac{\tilde p(\x_i,\c^*)}{\tilde p_X(\x_i)}
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

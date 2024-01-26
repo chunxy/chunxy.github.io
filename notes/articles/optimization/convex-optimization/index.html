@@ -717,6 +717,10 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -773,7 +777,15 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -917,6 +929,10 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1120,7 +1136,19 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1317,9 +1345,7 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
       <nav id="TableOfContents">
   <ul>
     <li><a href="#definitions">Definitions</a></li>
-    <li><a href="#theorem">Theorem</a></li>
-    <li><a href="#proof">Proof</a></li>
-    <li><a href="#standard-form-of-the-convex-optimization-problem">Standard Form of the Convex Optimization Problem</a></li>
+    <li><a href="#standard-form">Standard Form</a></li>
   </ul>
 </nav>
 
@@ -1407,36 +1433,61 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
 <h3 id="definitions">Definitions</h3>
 <ul>
 <li><p>Convex Set</p>
-<p>A set <span class="math inline">\(\mathcal X\)</span> is called a convex set if <span class="math inline">\(x^{(1)}, x^{(2)} \in \mathcal X\)</span>, then <span class="math inline">\(\forall \alpha \in [0,1], \alpha x^{(1)} + (1 - \alpha)x^{(2)} \in \mathcal X\)</span>.</p></li>
+<p>A set <span class="math inline">\(\mathcal X\)</span> is called a
+convex set if <span class="math inline">\(x^{(1)}, x^{(2)} \in \mathcal
+X\)</span>, then <span class="math inline">\(\forall \alpha \in [0,1],
+\alpha x^{(1)} + (1 - \alpha)x^{(2)} \in \mathcal X\)</span>.</p></li>
 <li><p>Convex Function</p>
-<p>A function <span class="math inline">\(f: \R^N \mapsto \R\)</span> is convex if <span class="math inline">\(dom(f)\)</span> is a convex set and <span class="math display">\[
-f(\alpha x^{(1)} + (1 - \alpha)x^{(2)}) \le \alpha f(x^{(1)}) + (1 - \alpha)f(x^{(2)}), \forall x^{(1)}, x^{(2)} \in dom(f), \alpha \in [0,1]
+<p>A function <span class="math inline">\(f: \R^N \mapsto \R\)</span> is
+convex if <span class="math inline">\(dom(f)\)</span> is a convex set
+and <span class="math display">\[
+f(\alpha x^{(1)} + (1 - \alpha)x^{(2)}) \le \alpha f(x^{(1)}) + (1 -
+\alpha)f(x^{(2)}), \forall x^{(1)}, x^{(2)} \in dom(f), \alpha \in [0,1]
 \]</span> <span class="math inline">\(f\)</span> is concave if <span class="math inline">\(-f\)</span> is convex.</p></li>
 </ul>
-<p>Differentiable function <span class="math inline">\(f\)</span> with a convex domain is convex if and only if <span class="math display">\[
+<p>Differentiable function <span class="math inline">\(f\)</span> with a
+convex domain is convex if and only if <span class="math display">\[
 f(y) \ge f(x) + \nabla^T f(x)(y - x), \forall x, y \in dom(f)
-\]</span> <span class="math inline">\(f\)</span> is twice differentiable if <span class="math inline">\(\nabla^2f(x)_{ij} = \frac{\partial^2f(x)}{\partial x_ix_j}\)</span> exists at each <span class="math inline">\(x \in dom(f)\)</span>. <span class="math inline">\(f\)</span> is convex if and only if</p>
+\]</span> <span class="math inline">\(f\)</span> is twice differentiable
+if <span class="math inline">\(\nabla^2f(x)_{ij} =
+\frac{\partial^2f(x)}{\partial x_ix_j}\)</span> exists at each <span class="math inline">\(x \in dom(f)\)</span>. <span class="math inline">\(f\)</span> is convex if and only if</p>
 <p><span class="math display">\[
 \nabla^2f(x) \succeq 0
 \]</span></p>
-<h3 id="theorem">Theorem</h3>
-<p>Any local minima of a convex function <span class="math inline">\(f: \R^N \mapsto R\)</span> is also a global minima.</p>
-<h3 id="proof">Proof</h3>
-<p>Suppose <span class="math inline">\(y\)</span> is a local minima. Then there exists a number <span class="math inline">\(r &gt; 0\)</span> such that <span class="math inline">\(\forall x \in dom(f) \land ||x-y||_2 \le r \Rightarrow f(x) \ge f(y)\)</span>. Suppose instead there exists a global minima <span class="math inline">\(z\)</span>. Then it must hold that <span class="math display">\[
+<blockquote>
+<p>Theorem: Any local minima of a convex function <span class="math inline">\(f: \R^N \mapsto \R\)</span> is also a global
+minima.</p>
+<p>Proof:</p>
+<p>Suppose <span class="math inline">\(y\)</span> is a local minima.
+Then there exists a number <span class="math inline">\(r &gt; 0\)</span>
+such that <span class="math inline">\(\forall x \in dom(f) \land
+||x-y||_2 \le r \Rightarrow f(x) \ge f(y)\)</span>. Suppose instead
+there exists a global minima <span class="math inline">\(z\)</span>.
+Then it must hold that <span class="math display">\[
 \begin{gather}
 ||y-z||_2 &gt; r \\
 0 &lt; \frac{r}{||y-z||_2} &lt; 1
 \end{gather}
-\]</span> There exists some <span class="math inline">\(0 &lt; \epsilon &lt; r\)</span> such that <span class="math inline">\(0 &lt; \theta = 1 - \frac{r - \epsilon}{||y-z||_2} &lt; 1\)</span>. Then the distance from <span class="math inline">\(y\)</span> to point <span class="math inline">\((\theta y + (1 - \theta)z)\)</span> is <span class="math display">\[
-||y - (\theta y + (1 - \theta)z)||_2 = (1 - \theta)||y-z||_2 = \frac{r - \epsilon}{||y-z||_2}||y-z||_2 &lt; r
+\]</span> There exists some <span class="math inline">\(0 &lt; \epsilon
+&lt; r\)</span> such that <span class="math inline">\(0 &lt; \theta = 1
+- \frac{r - \epsilon}{||y-z||_2} &lt; 1\)</span>. Then the distance from
+<span class="math inline">\(y\)</span> to point <span class="math inline">\((\theta y + (1 - \theta)z)\)</span> is <span class="math display">\[
+||y - (\theta y + (1 - \theta)z)||_2 = (1 - \theta)||y-z||_2 = \frac{r -
+\epsilon}{||y-z||_2}||y-z||_2 &lt; r
 \]</span> That is to say <span class="math display">\[
 f(\theta y + (1 - \theta)z) \ge f(y)
-\]</span> However, since <span class="math inline">\(f\)</span> is convex and <span class="math inline">\(0 &lt; \theta &lt; 1\)</span>, <span class="math display">\[
+\]</span> However, since <span class="math inline">\(f\)</span> is
+convex and <span class="math inline">\(0 &lt; \theta &lt; 1\)</span>,
+<span class="math display">\[
 f(\theta y + (1 - \theta)z) \le \theta f(y) + (1 - \theta)f(z)
-\]</span> Since <span class="math inline">\(z\)</span> is the global minima, <span class="math display">\[
-f(\theta y + (1 - \theta)z) \le \theta f(y) + (1 - \theta)f(z) &lt; \theta f(y) + (1 - \theta)f(y) = f(y)
-\]</span> which contradicts that <span class="math inline">\(f(\theta y + (1 - \theta)z) \ge f(y)\)</span> derived. In other words, <span class="math inline">\(y\)</span> is a global minima.</p>
-<h3 id="standard-form-of-the-convex-optimization-problem">Standard Form of the Convex Optimization Problem</h3>
+\]</span> Since <span class="math inline">\(z\)</span> is the global
+minima, <span class="math display">\[
+f(\theta y + (1 - \theta)z) \le \theta f(y) + (1 - \theta)f(z) &lt;
+\theta f(y) + (1 - \theta)f(y) = f(y)
+\]</span> which contradicts that <span class="math inline">\(f(\theta y
++ (1 - \theta)z) \ge f(y)\)</span> derived. In other words, <span class="math inline">\(y\)</span> is a global minima.</p>
+</blockquote>
+<h3 id="standard-form">Standard Form</h3>
 <p>Standard form of the optimization problem is <span class="math display">\[
 \begin{aligned}
 &amp;\min f_0(x) \\
@@ -1541,7 +1592,7 @@ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1591,7 +1642,7 @@ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1678,7 +1729,7 @@ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

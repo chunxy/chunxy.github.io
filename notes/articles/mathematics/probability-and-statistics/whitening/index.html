@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1411,23 +1439,41 @@
             
 
 <h2 id="whitening">Whitening</h2>
-<p>Data whitening is the process of converting a random vector <span class="math inline">\(X\)</span> with only first-order correlation into a new random vector <span class="math inline">\(Z\)</span> such that the covariance matrix of <span class="math inline">\(Z\)</span> is an identity matrix.</p>
-<p>To do so, we shall first apply the <a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/#Orthonormally Diagonalizable">spectral decomposition</a> to <span class="math inline">\(X\)</span>’s covariance matrix <span class="math inline">\(\Sigma_X\)</span>: <span class="math display">\[
+<p>Data whitening is the process of converting a random vector <span class="math inline">\(X\)</span> with only first-order correlation into
+a new random vector <span class="math inline">\(Z\)</span> such that the
+covariance matrix of <span class="math inline">\(Z\)</span> is an
+identity matrix. Data whitening usually has two steps: the decorrelation
+step and the standardization step.</p>
+<p>To do it, we shall first apply the <a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/#Orthogonally Diagonalizable">orthogonal diagonalization</a> to <span class="math inline">\(X\)</span>’s covariance matrix <span class="math inline">\(\Sigma_X\)</span>: <span class="math display">\[
 \Sigma_X \Phi = \Phi \Lambda
-\]</span> where <span class="math inline">\(\Phi\)</span> contains the normalized eigenvectors, <span class="math inline">\(\Lambda\)</span> is diagonal and contains the eigenvalues. Now let <span class="math inline">\(Y = \Phi X\)</span>, we can verify that <span class="math display">\[
+\]</span> where <span class="math inline">\(\Phi\)</span> contains the
+normalized eigenvectors and <span class="math inline">\(\Phi^{-1} =
+\Phi^T\)</span>, <span class="math inline">\(\Lambda\)</span> is
+diagonal and contains the eigenvalues. Now let <span class="math inline">\(Y = \Phi^T X\)</span>, we can verify that <span class="math display">\[
 \begin{aligned}
 \Sigma_Y &amp;= \E \{ \Phi^T (\x - \mu_X) [\Phi^T (\x - \mu_X)]^T \} \\
 &amp;= \E [\Phi^T (\x - \mu_X) (\x - \mu_X)^T \Phi] \\
 &amp;= \Phi^T \E [(\x - \mu_X) (\x - \mu_X)^T] \Phi \\
 &amp;= \Phi^T \Sigma_X \Phi = \Phi^T \Phi \Lambda = \Lambda
 \end{aligned}
-\]</span> which is diagonal. To further make an identity matrix, we apply <span class="math inline">\(Z = \Lambda^{-1/2} Y = \Lambda^{-1/2} \Phi^T X\)</span> to give <span class="math display">\[
+\]</span> <span class="math inline">\(\Sigma_Y\)</span> is diagonal and
+we finish the decorrelation step. To further make it an identity matrix
+(the standardization step), we apply <span class="math inline">\(Z =
+\Lambda^{-1/2} Y = \Lambda^{-1/2} \Phi^T X\)</span> to give <span class="math display">\[
 \begin{aligned}
-\Sigma_Z &amp;= \E \{\Lambda^{-1/2} \Phi^T (\x - \mu_X) [\Lambda^{-1/2} \Phi^T (\x - \mu_X)]^T \} \\
-&amp;= \E [\Lambda^{-1/2} \Phi^T (\x - \mu_X)  (\x - \mu_X)^T \Phi \Lambda^{-1/2}] \\
+\Sigma_Z &amp;= \E \{\Lambda^{-1/2} \Phi^T (\x - \mu_X) [\Lambda^{-1/2}
+\Phi^T (\x - \mu_X)]^T \} \\
+&amp;= \E [\Lambda^{-1/2} \Phi^T (\x - \mu_X)  (\x - \mu_X)^T \Phi
+\Lambda^{-1/2}] \\
 &amp;= \Lambda^{-1/2} \Phi^T \Sigma_X \Phi \Lambda^{-1/2} = I
 \end{aligned}
-\]</span> The inverse of data whitening can be used to derive density function of first-order correlated random variables, e.g. for <a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/#First-order correlated $n$-dimensional">Gaussian case</a>. Data whitening looks a lot like <a href="/notes/articles/machine-learning/principal-component-analysis/">PCA</a>: they both compute the eigen pairs; they both project the original data onto the basis formed by eigenvectors. But unlike PCA, data whitening uses all the eigenvectors as the basis instead of <span class="math inline">\(K\)</span> most prominent ones. Therefore, data whitening does not reduce the data’s dimensionality as PCA does.</p>
+\]</span> The inverse of data whitening can be used to derive density
+function of first-order correlated random variables, e.g. for <a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/#First-order correlated $n$-dimensional">Gaussian case</a>. Data whitening looks
+a lot like <a href="/notes/articles/machine-learning/principal-component-analysis/">PCA</a>: they both
+compute the eigen pairs; they both project the original data onto the
+basis formed by eigenvectors; they both can be solved with <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">SVD</a>. But unlike PCA, data whitening
+uses all the eigenvectors as the basis instead of <span class="math inline">\(K\)</span> most prominent ones. Therefore, data
+whitening does not reduce the data’s dimensionality as PCA does.</p>
 
 
 
@@ -1518,7 +1564,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1568,7 +1614,7 @@
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1655,7 +1701,7 @@
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

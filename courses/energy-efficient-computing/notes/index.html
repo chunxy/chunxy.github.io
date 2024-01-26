@@ -1,0 +1,1683 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Implementation Trick1 GEMM General Matrix Multiplication describes the implementation tricks that speeds up computation in neural network. Matrix multiplication is a classical, fundamental and established field in both math and computer science." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/energy-efficient-computing/notes/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/energy-efficient-computing/notes/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/energy-efficient-computing/notes/" />
+  <meta property="og:title" content="Chunxy&#39; Website" />
+  <meta property="og:description" content="Implementation Trick1 GEMM General Matrix Multiplication describes the implementation tricks that speeds up computation in neural network. Matrix multiplication is a classical, fundamental and established field in both math and computer science." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="7a63bd6c7668795983e5878c1541acda" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+      
+      
+      <div class="article-container py-1" style="background: initial">
+        
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+      </div>
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h1 id="implementation-trickcomm-lower-bound">Implementation Trick<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h1>
+<h2 id="gemm">GEMM</h2>
+<p><strong>Ge</strong>neral <strong>M</strong>atrix <strong>M</strong>ultiplication describes the implementation tricks that speeds up computation in neural network. Matrix multiplication is a classical, fundamental and established field in both math and computer science. And this is the reason why much effort and interest have been put into how to further speed up it and how to convert other kinds of operations into it.</p>
+<h3 id="im2col">Im2Col</h3>
+<h4 id="single-feature-map-and-kernel">Single Feature Map and Kernel</h4>
+<p>A normal convolution operation will slide a <strong>window</strong> of the same size as <strong>kernel</strong> ($F: k_h \times k_w$) through the <strong>feature map</strong> ($I: i_h \times i_w$) in a row-major order (for simplicity, we will take that stride is $1$ and padding is $0$). This causes problem because numbers in a single convolution operation will span multiple columns, due to which the spatial locality cannot be exploited.</p>
+<p>Since the convolution operation is in essence doing the &ldquo;sum of products&rdquo;, we may just as well treat the convolution as dot product between two vectors.</p>
+<img src="./Images/im2col.png" style="zoom:50%;" />
+<p>To realize it, we can squeeze the kernel into a $k_h k_w \times 1$ column vector and each window on the feature map to a $1 \times k_h k_w$ row vector (in memory, a column vector <code>v[N][1]</code> is no difference from a row vector <code>v[1][N]</code>). Then we stack these row vectors vertically in the order as their original window would appear in the convolution. This newly synthesized matrix $L$ is usually called <strong>lowered matrix</strong>.</p>
+<p>As for implementation, we don&rsquo;t do this &ldquo;window by window&rdquo;, because usually the feature map has a large width, which still introduce the same issue of not exploiting the spatial locality when accessing across rows. For each position in the feature map, we can identify all the positions that it will appear in the lowered matrix in one off. Since kernel size is usually small, accessing this lowered matrix across rows causes less cache misses than that in the input.</p>
+<p>Treating $L$ as $l_h \times l_w \times k_h \times k_w$, we fill up its entries in following way:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">i_h</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="n">i_w</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">k_w</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">k_h</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// For simplicity, set s_w = s_h = 1, padding = 0.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">l_h</span> <span class="o">=</span> <span class="n">i_h</span> <span class="o">-</span> <span class="n">k_h</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l_w</span> <span class="o">=</span> <span class="n">i_w</span> <span class="o">-</span> <span class="n">k_w</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">im2lower</span><span class="p">(</span><span class="kt">double</span> <span class="n">I</span><span class="p">[</span><span class="n">i_h</span><span class="p">][</span><span class="n">i_w</span><span class="p">],</span> <span class="kt">double</span> <span class="n">L</span><span class="p">[</span><span class="n">l_h</span><span class="p">][</span><span class="n">l_w</span><span class="p">][</span><span class="n">k_h</span><span class="p">][</span><span class="n">k_w</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="n">i_h</span><span class="p">;</span> <span class="n">h</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">i_w</span><span class="p">;</span> <span class="n">w</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="n">k_h</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="n">k_w</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">h</span> <span class="o">+</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">l_h</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="p">(</span><span class="n">w</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">w</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">l_w</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">L</span><span class="p">[</span><span class="n">h</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="n">w</span> <span class="o">+</span> <span class="n">j</span><span class="p">][</span><span class="o">-</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span><span class="p">[</span><span class="n">h</span><span class="p">][</span><span class="n">w</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="normal-input-and-filter">Normal Input and Filter</h4>
+<p>By far we only consider the case of a single convolution. More often that not, the real-world convolution is done in batch with multiple channels, meaning that the input $I$ is of shape $i_n \times i_c \times i_w \times i_w$ and filter $F$ is of shape $f_c \times i_c \times k_h \times k_w$. Each of $f_c$ output channels is obtained as the sum of the one-on-one convolution between each of the $i_c$ kernels and each of the $i_c$ channels (which is in accordance with PyTorch&rsquo;s <code>Conv2d</code>).</p>
+<p>Now we consider the case where there are multiple channels. We simplify a bit by still setting $i_n = 1$. As a result, the input $I$ is of shape $i_c \times i_h \times i_w$ and filter $F$ still remains $f_c \times i_c \times k_h \times k_w$. Suppose each feature map contains $d = o_h \times o_w$ unique kernel windows. Then each transformed channel should be of shape $d \times k_h k_w$ (the order of symbols in shortened multiplication matters too; in this case, $k_h k_w$ indicates we squeeze by row); each transformed kernel should be of shape $k_h k_w \times 1$.</p>
+<p>The input contains $i_c$ such transformed $d \times k_h k_w$ channels. Instead of doing matrix multiplication $i_c$ times, we can concatenate these $i_c$ matrices horizontally to give a single $d \times (i_c k_h k_w)$ lowered matrix $L$.</p>
+<p>The filter contains $f_c \times i_c$ such transformed $k_h k_w \times 1$ kernels. For each output channel, we can concatenate corresponding $i_c$ kernels vertically to facilitate the one-on-one convolution, which gives a single $(i_c k_h k_w) \times f_c$ transformed filter $F&rsquo;$.</p>
+<p>Now $I \circledast F$ becomes $L \times F&rsquo;$. The output shape is $d \times f_c$. Each input image becomes a $d \times 1$ column vector finally, which is exactly what &ldquo;Im2Col&rdquo; means. This $d \times 1$ vector can be transposed and then reshaped into $o_h \times o_w$ to recover the convolution result (no actual transformation has to be done, just to interpret it this way). Then by applying the Im2Col trick repeatedly, we can chain up and handle consecutive convolutional layers.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">i_h</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">i_w</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">i_c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">k_h</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">k_w</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">f_c</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// For simplicity, set s_w = s_h = 1, padding = 0.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">l_h</span> <span class="o">=</span> <span class="n">i_h</span> <span class="o">-</span> <span class="n">k_h</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l_w</span> <span class="o">=</span> <span class="n">i_w</span> <span class="o">-</span> <span class="n">k_w</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">im2lower</span><span class="p">(</span><span class="kt">double</span> <span class="n">I</span><span class="p">[</span><span class="n">i_c</span><span class="p">][</span><span class="n">i_h</span><span class="p">][</span><span class="n">i_w</span><span class="p">],</span> <span class="kt">double</span> <span class="n">L</span><span class="p">[</span><span class="n">l_h</span><span class="p">][</span><span class="n">l_w</span><span class="p">][</span><span class="n">i_c</span><span class="p">][</span><span class="n">k_h</span><span class="p">][</span><span class="n">k_w</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">i_c</span><span class="p">;</span> <span class="n">c</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="n">i_h</span><span class="p">;</span> <span class="n">h</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">i_w</span><span class="p">;</span> <span class="n">w</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="n">k_h</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="n">k_w</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">h</span> <span class="o">+</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">l_h</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">w</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">w</span> <span class="o">+</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">l_w</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">L</span><span class="p">[</span><span class="n">h</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="n">w</span> <span class="o">+</span> <span class="n">j</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="o">-</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">h</span><span class="p">][</span><span class="n">w</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">ker2col</span><span class="p">(</span><span class="kt">double</span> <span class="n">F</span><span class="p">[</span><span class="n">f_c</span><span class="p">][</span><span class="n">i_c</span><span class="p">][</span><span class="n">k_h</span><span class="p">][</span><span class="n">k_w</span><span class="p">],</span> <span class="kt">double</span> <span class="n">K</span><span class="p">[</span><span class="n">i_c</span><span class="p">][</span><span class="n">k_h</span><span class="p">][</span><span class="n">k_w</span><span class="p">][</span><span class="n">f_c</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">i_c</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="n">k_h</span><span class="p">;</span> <span class="n">h</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">k_w</span><span class="p">;</span> <span class="n">w</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">f</span> <span class="o">&lt;</span> <span class="n">f_c</span><span class="p">;</span> <span class="n">f</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">h</span><span class="p">][</span><span class="n">w</span><span class="p">][</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">f</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">h</span><span class="p">][</span><span class="n">w</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="mecmec">MEC<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h3>
+<p>Im2Col costs much extra space because most entries in the feature map appears $k^2$ times in the transformed lowered matrix. The <strong>m</strong>emory-<strong>e</strong>fficient <strong>c</strong>omputation method improves on this by putting the entries of (say vertically) adjacent windows in one row so that entries can be reused. By doing so, the transformed kernel row vector will slide through each row of obtained matrix to compute convolution result.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./Images/mec-basic.svg" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Again in single feature map and kernel case, the filter $F: k_h \times k_w$ is squeezed to a $k_h k_w \times 1$ column vector. The input $I: i_h \times i_w$ is converted to the lowered matrix $L: l_h \times l_w$ where
+$$
+l_h = o_w \triangleq (i_w - k_w) / s_w + 1 \
+l_w = i_h k_w, \text{assuming that $k_w \ge s_w$}\
+$$
+Note that a $k_w$-width bar in $I$ (like $A$) expands to a row in $L$, and finally a row in $O$. Treating $L$ as $o_w \times i_h \times k_w$, we fill up its entries in following way:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">i_h</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">i_w</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">k_w</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">s_w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">o_w</span> <span class="o">=</span> <span class="p">(</span><span class="n">i_w</span> <span class="o">-</span> <span class="n">k_w</span><span class="p">)</span> <span class="o">/</span> <span class="n">s_w</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// const int l_h = o_w, l_w = i_h * k_w;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">mec</span><span class="p">(</span><span class="kt">double</span> <span class="n">I</span><span class="p">[</span><span class="n">i_h</span><span class="p">][</span><span class="n">i_w</span><span class="p">],</span> <span class="kt">double</span> <span class="n">L</span><span class="p">[</span><span class="n">o_w</span><span class="p">][</span><span class="n">i_h</span><span class="p">][</span><span class="n">k_w</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">o_w</span><span class="p">;</span> <span class="n">w</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="n">i_h</span><span class="p">;</span> <span class="n">h</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k_w</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// I can be transposed first for better spatial locality.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">L</span><span class="p">[</span><span class="n">w</span><span class="p">][</span><span class="n">h</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">I</span><span class="p">[</span><span class="n">h</span><span class="p">][</span><span class="n">s_w</span> <span class="o">*</span> <span class="n">w</span> <span class="o">+</span> <span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="memory-layout">Memory Layout</h4>
+<p>Memory layout is not a standalone method to speed up matrix computation, but that it cornerstones most implementation tricks. Different methods may assume different memory layouts.</p>
+<p>In convention, the input is of shape $\mathrm{N \times C \times H \times W}$, which is the assumed layout of Im2Col. However, the preferred layout for convolution is usually $\mathrm{N \times H \times W \times C}$.</p>
+<p>The justification is that, we usually would parallelize by accessing a window of pixels across all the channels. Though the window spans multiple columns in both cases, $\mathrm{N \times C \times H \times W}$ would separate these $C$ windows apart but $\mathrm{N \times H \times W \times C}$ would otherwise bring all the $c$ channel values of a pixel in a row, in which case the spatial locality can be exploited.</p>
+<p>$\mathrm{N \times H \times W \times C}$ is the assumed layout by MEC. That is, $I$ is of shape $i_n \times i_h \times i_w \times i_c$ and $F$ is of shape $k_h \times k_w \times i_c \times f_c$. Given $i_n \times i_c$ number of $o_w \times i_h k_w$ matrices, $L$ is obtained by interleaving horizontally across channels, and stacked vertically across images. As a result, $L$ is of shape $i_n o_w \times i_h k_w i_c$. Accordingly, $F$ is squeezed to $F&rsquo;: k_h k_w i_c \times f_c$.</p>
+<p>The example below shows a $3 \times 7 \times 7 \times 1$ input and $3 \times 3 \times 1 \times 1$ filter.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./Images/mec-batch.svg" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Given the transformed $L$ and $F&rsquo;$, there are two methods for the remaining dot product (convolution). One is to do $L[0 : i_n o_w, s_w i_h k_w h : s_w i_h k_w h + k_h k_w c] \times F&rsquo;$ for $h = 0, \dots, o_h$, resulting in a $\mathrm{H \times N \times W \times C}$ layout (note that each bar in $L$ expands to a row in $O$), illustrated at the upper right in the above figure. If we want to chain up convolutional layers, we need to convert this layout to $\mathrm{N \times H \times W \times C}$.</p>
+<p>Another is to do $L[o_w n : o_w (n+1), s_w i_h k_w h : s_w i_h k_w h + k_h k_w c]$ for $h = 0, \dots, o_h, n = 0,\dots,i_n$, resulting in a $\mathrm{N \times H \times W \times C}$ layout, illustrated at the lower right in the above figure (the tensor is not properly drawn though; it should have been of shape $3 \times 5 \times 5$).</p>
+<h2 id="direct-convmmdirect-convdirect-mm-1direct-mm-2direct-mm-3">Direct Conv/MM<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></h2>
+<p>GEMM usually requires extra time and space to do transformation. In-place convolution/matrix multiplication also have room for improvement.</p>
+<h3 id="loop-reordering">Loop Reordering</h3>
+<p>Nested loop is very common in computation. If the effective statements only appear in the innermost loop, the nesting level of loop indices can be usually be changed without causing side effect.</p>
+<p>One reason to shuffle the loop indices is to better exploit the spatial locality. Another is to exploit the temporal locality, or called input reuse. As an example,</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// before reordering
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">matmul</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">memset</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">C</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// after reordering
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">matmul_ikj</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">memset</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">C</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Before reordering, when innermost loop traverses over <code>k</code>, there will be one output reuse (<code>C[i][j]</code>), one cache hit (<code>A[i][k]</code>) and one cache miss (<code>B[k][j]</code>. After reordering, when innermost loop traverses over <code>j</code>, there will be one input reuse (<code>A[i][k]</code>) and one cache hit (<code>B[k][j]</code>).</p>
+<h3 id="loop-unrolling">Loop Unrolling</h3>
+<p>At the end of a loop, there is usually a branch checking to determine whether to exit the loop or not. Loop unrolling tries to reduce the number of branch checking in loop (see <a href="https://www.wikiwand.com/en/Duff%27s_device" target="_blank" rel="noopener">Duff&rsquo;s device</a>). If the number of loops is known in advance, as is usually the case in a <code>for</code> loop, the number of branch checking can be reduced by repeating the loop statements several times:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* count &gt; 0 and count % 8 == 0 assumed */</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// before unrolling
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">send</span><span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">register</span> <span class="kt">short</span> <span class="o">*</span><span class="n">to</span><span class="p">,</span> <span class="o">*</span><span class="n">from</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">register</span> <span class="n">count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="o">--</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// after unrolling
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">send</span><span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="n">from</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">register</span> <span class="kt">short</span> <span class="o">*</span><span class="n">to</span><span class="p">,</span> <span class="o">*</span><span class="n">from</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">register</span> <span class="n">count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">register</span> <span class="n">n</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="mi">8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="n">to</span> <span class="o">=</span> <span class="o">*</span><span class="n">from</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="o">--</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Manual loop unrolling makes little sense nowadays since modern CPU can smartly predict the correct branch and modern compiler can automatically optimize the loop code.</p>
+<h3 id="write-caching">Write Caching</h3>
+<h3 id="tilingtiled-mmtiled-mm-multithreaded">Tiling<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup><sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></h3>
+<p>Tiling utilizes the matrix multiplication property that
+$$
+\begin{gather*}
+A =
+\begin{pmatrix}
+A_{11} &amp; A_{12} \
+A_{21} &amp; A_{22}
+\end{pmatrix},
+B =
+\begin{pmatrix}
+B_{11} &amp; B_{12} \
+B_{21} &amp; B_{22}
+\end{pmatrix} \ \
+A B = 
+\begin{pmatrix}
+A_{11} B_{11} + A_{12} B_{21} &amp; A_{11} B_{12} + A_{12} B_{22} \
+A_{21} B_{11} + A_{22} B_{21} &amp; A_{21} B_{12} + A_{22} B_{22} \
+\end{pmatrix}
+\end{gather*}
+$$</p>
+<p>Tiling divides the matrix into blocks that can better fit in the cache line, so that the temporal locality can be exploited.</p>
+<h3 id="vectorization-simdvectorization">Vectorization (SIMD)<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></h3>
+<h3 id="array-packing">Array Packing</h3>
+<h2 id="dataflow-optimization">Dataflow Optimization</h2>
+<h3 id="systolic-arraysystolic-array">Systolic Array<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></h3>
+<p>Systolic array is dataflow trick implemented in hardware level to speed up compute-bound task. It is an analog to the heart beat: in systolic array setting, memory is the heart, which bumps data (blood) to (usually a regular array of) processing elements (cells) and then recycle (processing result).</p>
+<p>A whole bandwidth of data would certainly entail a bunch of PEs to digest. These PEs can have local memory and execution kernel, which means they can be any kind of computing devices. PEs also connect to each for passing data. All that&rsquo;s left to do is to properly orchestrate the data flow.</p>
+<p>The crux is that, instead of bumping one piece of data to a single processing element (PE), bringing the memory bandwidth to the utmost utilization would be more efficient. Other than that, once data is brought out from memory, it and its intermediate result can be used effectively at each PE it passes through.</p>
+<h2 id="elimination-of-multiplicationmnnfaster-mm">Elimination of Multiplication<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup><sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></h2>
+<p>Multiplication is way more time-consuming than addition. Therefore generally, we are willing to trade off with more additions for less multiplications. The two algorithms below can reduce the number of multiplications in matrix computation.</p>
+<h3 id="strassens-algorithmstrassen-implstrassen-analysis">Strassen&rsquo;s Algorithm<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup><sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></h3>
+<h1 id="endbmatrix">Firstly we look at the <strong>Strassen&rsquo;s algorithm</strong> of matrix computation. Suppose we do the matrix multiplication on two square matrices $M$ and $N$ following the idea of blockwise multiplication. We split the two matrices into
+$$
+M = \begin{bmatrix}
+A &amp; B \
+C &amp; D
+\end{bmatrix},
+N = \begin{bmatrix}
+E &amp; F \
+G &amp; H
+\end{bmatrix}
+$$
+Then we calculate the intermediate matrices
+$$
+\begin{align*}
+S_1 &amp;= (B-D)(G+H) \
+S_2 &amp;= (A+D)(E+H) \
+S_3 &amp;= (A-C)(E+F) \
+S_4 &amp;= (A+B)H \
+S_5 &amp;= A(F-H) \
+S_6 &amp;= D(G-E) \
+S_7 &amp;= (C+D)E \
+\end{align*}
+$$
+And the final result will be
+$$
+\begin{bmatrix}
+A &amp; B \
+C &amp; D
+\end{bmatrix}
+\begin{bmatrix}
+E &amp; F \
+G &amp; H
+\end{bmatrix}</h1>
+<p>\begin{bmatrix}
+S_1 + S_2 - S_4 + S_6 &amp; S_4 + S_5 \
+S_6 + S_7 &amp; S_2 - S_3 + S_5 - S_7
+\end{bmatrix}
+$$
+The derivation of matrix multiplication with Strassen&rsquo;s algorithm can be formulated as
+$$
+T(n) = 
+\begin{cases}
+\Theta(1), &amp; \text{if $n=1$;} \
+7 \Theta(\frac{n}{2}) + \Theta(n^2), &amp; \text{if $n&gt;1$.}
+\end{cases}
+$$
+The master theorem provides an asymptotic analysis for divide-and-conquer recurrence like this. Let $T(n)$ be a monotonically increasing function that satisfies
+$$
+T(n) = a T(\frac{n}{b}) + f(n) \
+T(1) = c
+$$
+where $a \ge 1, b \ge 2, c &gt; 0$. If $f(n) \in \Theta(n^d)$ where $d \ge 0$, then
+$$
+T(n) = \begin{cases}
+\Theta(n^d) &amp; \text{if $a &lt; b^d$} \
+\Theta(n^d \log n) &amp; \text{if $a = b^d$} \
+\Theta(n^{\log_b a}) &amp; \text{if $a &gt; b^d$} \
+\end{cases}
+$$</p>
+<p>The time complexity of Strassen&rsquo;s algorithm is $\Theta(n^{\log_2 7}) \approx \Theta(n^{2.8074})$. There are 7 multiplications and 18 additions (recall that subtraction is addition in computer arithmetics) in Strassen&rsquo;s algorithm. In usual blockwise matrix multiplication, these numbers are 8 and 4. These extra 14 additions in Strassen&rsquo;s algorithm may drag down its performance when input size is small. Other than that, the memory access pattern of Strassen&rsquo;s algorithm is quite chaotic. There are many temp matrices of different shapes generated during the execution. Besides, floating-point errors will accumulate in Strassen&rsquo;s large number of additions. These factors may constitute the reason why Stassen algorithm is not widely adopted.</p>
+<h3 id="winograd-algorithmwinograd">Winograd Algorithm<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></h3>
+<p>In 1-D convolution, let $m$ be the length of the output vector and $r$ be the length of kernel. The baseline implementation would require $mr$ multiplications. But it is argued that the minimum number of required multiplications is $m + r - 1$ (denoted as $F(m,r)$ the corresponding algorithm).</p>
+<p>Similarly in 2-D convolution, let $m \times n$ be the output dimension and $r \times s$ be the kernel dimension. The baseline implementation would require $m n r s$ multiplications. But the minimum number of required multiplications is $(m + r - 1)(n + s - 1)$ (denoted as $F(m \times n, r \times s)$ the corresponding algorithm).</p>
+<h1 id="endbmatrix-1">The Winograd paper documents the following algorithm for $F(2,3)$:
+$$
+F(2,3) =
+\begin{bmatrix}
+d_0 &amp; d_1 &amp; d_2 \
+d_1 &amp; d_2 &amp; d_3
+\end{bmatrix}
+\begin{bmatrix}
+g_0 \
+g_1 \
+g_2
+\end{bmatrix}</h1>
+<p>\begin{bmatrix}
+m_1 + m_2 + m_3 \
+m_2 - m_3 - m_4
+\end{bmatrix}
+$$
+where
+$$
+m_1 = (d_0 - d_2) g_0, m_2 = (d_1 + d_2) \frac{g_0 + g_1 + g_2}{2} \
+m_4 = (d_1 - d_3) g_2, m_3 = (d_2 - d_1) \frac{g_0 - g_1 + g_2}{2}
+$$
+Actually, this can be written in matrix form as
+$$
+Y =A^T [(G g) \odot (B^T d)]
+$$
+where
+$$
+B^T =
+\begin{bmatrix}
+1 &amp; 0 &amp; -1 &amp; 0 \
+0 &amp; 1 &amp; 1 &amp; 0 \
+0 &amp; -1 &amp; 1 &amp; 0 \
+0 &amp; 1 &amp; 0 &amp; -1
+\end{bmatrix},
+G =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \
+\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} \
+\frac{1}{2} &amp; -\frac{1}{2} &amp; \frac{1}{2} \
+0 &amp; 0 &amp; 1
+\end{bmatrix} \
+A^T =
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; 0 \
+0 &amp; 1 &amp; -1 &amp; -1
+\end{bmatrix}\
+g =
+\begin{bmatrix}
+g_0 &amp; g_1 &amp; g_2
+\end{bmatrix}^T \
+d =
+\begin{bmatrix}
+d_0 &amp; d_1 &amp; d_2 &amp; d_3
+\end{bmatrix}^T
+$$
+$F(m \times m, r \times r)$ can be built upon $F(m, r)$. For example, $F(2 \times 2, 3 \times 3)$ is
+$$
+Y&rsquo; = A^T \left[ [G g G^T] \odot [B^T d B] \right] A
+$$
+$F(m \times n, r \times s)$ can be built upon $F(m, r)$ and $F(n, s)$.</p>
+<p>Winograd algorithm is great. One problem is that the $A,B,G$ matrix are too specific. For input/kernel of different sizes, $A,B,G$ will be greatly different. For a convolutional neural network that involves inputs/kernels of varying sizes, Winograd algorithm is not suitable for acceleration on special-purpose hardware, which is usually dedicated to a fixed type of computation.</p>
+<h2 id="sparse-computationsparse">Sparse Computation[^sparse]</h2>
+<p>Structured sparsity can reduce computation when there is zero in the multiplicands. But this involves zero-check for each element of the filter, which might ruin the CPU pipeline however. To avoid zero-check in a sparse matrix, we may as well store the positions of all the nonzero elements. During computation, only involved nonzero elements will be multiplied and accumulated to obtain the final result.</p>
+<h3 id="sparse-matrix-multiplication">Sparse Matrix Multiplication</h3>
+<p>For a sparse matrix, we either store it in <strong>compressed sparse row</strong> (CSR) or <strong>compressed sparse column</strong> (CSC) (or other formats<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>). That is, for every row/column, we maintain a linked list whose nodes store the nonzero value and its offset in this row/column.</p>
+<p>The compression is done after training. The choice of CSR or CSC in matrix multiplication seems arbitrary, so long as one matrix is CSR and the other is CSC. But in practice, convolution is done row-by-row. We need to access the feature map across rows more often than across columns. Thus, feature map is stored in CSR and the filter is stored in CSC.</p>
+<h3 id="sparse-sparse-convolution">Sparse-sparse Convolution</h3>
+<p>Sometimes not only the filter, but also the feature map is sparse, e.g. in point cloud case. We may as well apply the Im2Col and then apply the sparse matrix multiplication. But better still, we hope to directly apply the sparse convolution<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup><sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup> on the original feature map.</p>
+<p>But does sparse-sparse convolution always work? It depends. The crux is that we don&rsquo;t just carry out a single sparse-sparse convolution. Modern models consist of multiple layers. We hope the output of each layer is sparse so that sparse-sparse convolution can be chained up. If the output of any intermediate layer is not sparse enough, the whole process becomes pointless.</p>
+<h2 id="tensor-virtual-machine">Tensor Virtual Machine</h2>
+<p>Current neural network frameworks translate models into a computation graph in ONNX format, which in turn is translated into hardware instructions by the compilers from different manufacturers (e.g. TensorRT for NVIDIA GPU, MNN for ARM Cortex-A CPU, OpenVINO for Intel CPU).</p>
+<h2 id="cuda">CUDA</h2>
+<p>Ideally, the computation can be parallelized for greater speedup. CUDA provides such API for parallel computation on GPU. One key concept of CUDA is its granularity of execution: grid -&gt; block -&gt; thread (from coarsest to finest).</p>
+<h1 id="model-trick">Model Trick</h1>
+<p>Other than implementation tricks, the matrix computation can be sped up by multiplication with zero. Block of zeros usually allows us to jump a series of block computation when using the implementation tricks mentioned before. Other than that, it saves space due to the sparse matrix storage model (a kind of <strong>model compression</strong>).</p>
+<p>It would be great if there are multiple blocks of zeros in the matrix. Better still, these zeros won&rsquo;t undermine the model results much.</p>
+<h2 id="sparsification">Sparsification</h2>
+<p>Sparsification tries to zero parameters in block during training. It does so by adding special regularization term to the loss function. Typical sparsity analysis assumes the linear-regression-like problem. Denote the original loss as $\ell_w(X, Y)$ where $\ell$ is the MSE loss function, $X$ is the data, $Y$ is the target ($Y$ may be a feature map or label vector) and $w$ is the model parameters (interpreted as a vector). Then, the problem is formulated as
+$$
+\min_{w} \ell_w(X, Y) \triangleq ||Y - X w||<em>F
+$$
+We may force an extra $l_p$ norm term on $w$:
+$$
+\hat \ell_w(X, Y) \triangleq \ell_w(X, Y) + \lambda ||w||<em>p
+$$
+Note that
+$$
+||w||<em>0 = \sum</em>{i} \mathbb{1}[w_i \ne 0] \
+||w||<em>1 = \sum</em>{i} |w_i| \
+||w||<em>2 = \sqrt{\sum</em>{i} x_i^2} \
+||w||</em>\infty = \max</em>{i} |x_i|
+$$
+$l_0$ norm is a direct attempt to penalize nonzero parameters. However, $\lambda ||w||_0$ is not continuous at points when there is a zero entry in $w$; when $\forall i, w_i \ne 0$, $\lambda ||w||_0$ does not contribute gradient at all. There is no analytical way to determine $w_i$ should be zero or not. The only course open is to manually set each $w_i$ to zero. But this method is prohibitive in terms of the complexity: there are $2^{|w|}$ combinations to try (there are <a href="https://www.wikiwand.com/en/Matching_pursuit" target="_blank" rel="noopener">orthogonal matching pursuit</a> &lt;??&gt; and <a href="https://www.jmlr.org/papers/volume19/17-194/17-194.pdf" target="_blank" rel="noopener">other methods</a> that try to approximate it though). Thus, the $l_0$ norm is ruled out for consideration.</p>
+<p>Then $l_1$ norm pops up. $l_1$ norm is good since there is an analytical solution to its gradient w.r.t. $w$. (why does $l_1$ norm add sparsity?)</p>
+<h3 id="structured-sparsity">Structured Sparsity</h3>
+<p>Better zero parameters is that zero parameters appear block-wise. Block-wise zero entries are the essence of sparsity. However, the Lasso term does not guarantee zero entries appear in block. To amend it, <strong>group Lasso</strong> trick is invented and the regularized loss becomes
+$$
+\hat \ell_w(X, Y) = \ell_w(X, Y) + \sum_j \lambda_j ||\beta_j||_1
+$$
+where $\beta_j$ is the $l_2$ norm of $j$-th group of parameters that usually spatially near.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./Images/structured-sparsity.svg" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Structured sparsity precedes random sparsity, because random sparsity does not secure a regular memory access pattern, so that there will be a poor cache locality. The figure above illustrates from irregular structured sparsity to regular structured sparsity<sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup>. Obviously, regular structured sparsity is preferred so long as it won&rsquo;t undermine the model performance much.</p>
+<h3 id="nonlinearity-approximationnonlinear-approx">Nonlinearity Approximation<sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup></h3>
+<p>As mentioned, typical sparsification analyzes the linear regression problem, which has two components: 1) the model as a linear function; 2) the MSE loss function. The MSE loss function does well, not among the best though, in most tasks. But mere linear model won&rsquo;t do generally.</p>
+<p>Most nonlinearity in nonlinear model comes from the element-wise function mapping on the tensor obtained by linear transformation of input, e.g. the response on feature map obtained by convolution (in this case, $X,w,X w$ will be the transformed input, kernel and convolution result respectively, as shown in <a href="#GEMM">GEMM</a> section). Our focus is still on sparsity of the linear component in the nonlineear model.</p>
+<p>The objective becomes
+$$
+\min_w ||Y - f(X w)||_F
+$$
+where $f$ is a nonlineear function like $\mathrm{ReLU}$.</p>
+<h2 id="pruning">Pruning</h2>
+<p>Pruning is a kind of post-processing trick, which happens after training, to make parameters more &ldquo;zero&rdquo;.</p>
+<h3 id="channel-pruning">Channel Pruning</h3>
+<p>Channel pruning boils down to the following optimization problem:
+$$
+\begin{aligned}
+\min_{\beta, W} \quad &amp; \left\Vert Y - \sum_{i} \beta_i X_i W_i \right\Vert_F^2 \
+\text{s.t.} \quad &amp; ||\beta||_0 \le c&rsquo;
+\end{aligned}
+$$</p>
+<p>Note here that $X_i$ is not the feature map at $i$-th channel, but instead the sampled window of kernel size ($k_h \times k_h$) on $i$-th feature map. It is known that this problem is NP-hard because of the $l_0$ norm term in the constraint. In practice, it can be relaxed to (why and really?)
+$$
+\begin{aligned}
+\min_{\beta, W} \quad &amp; \left\Vert Y - \sum_{i} \beta_i X_i W_i \right\Vert_F^2 \
+\text{s.t.} \quad &amp; ||\beta||_1 \le c&rsquo;&rsquo; \and \forall i, ||W_i||_F = 1
+\end{aligned}
+$$
+Note that kernels $W$ is also included for optimization. This is because after pruning, kernels may still be fine-tuned a bit to preserve the accuracy.</p>
+<p>The above formula can be optimized in an alternative fashion: i.e. $W$ is fixed and $\beta$ is to be optimized; then $\beta$ is fixed and $W$ is to be optimized. We also add a regularization term for each $W_i$. This is because optimizing $W$ is materially a linear regression task, which easily has infinitely many solution due to the dimension of $X_i$ unless there is an extra constraint.</p>
+<h3 id="low-rank-decomposition">Low-rank Decomposition</h3>
+<p>Take the matrix multiplication as an example to appreciate the idea of low-rank decomposition:
+$$
+X \times W \Rightarrow X \times U \times V
+$$
+We may decompose $W: m \times n$ into $U: m \times r$ and $N: r \times n$ where hopefully $r &lt; n,m$ (note that when $r = \rank W$, there exists $U$ and $V$ that can fully recover $W$). In this way, storage cost can be saved and computation can be sped up.</p>
+<p>Note that our objective is not to reconstruct the matrix $W$ (called <strong>matrix approximation</strong>) with some other lower-rank matrices. Or else simply the singular value decomposition would do the job. Instead, we are to reconstruct the model output (called <strong>matrix regression</strong>). Therefore, the problem is formulated as
+$$
+\begin{aligned}
+\min_{W, A, B} \quad &amp; ||Y -  X W||_F \
+\text{s.t.} \quad &amp; W = U V \
+&amp; \rank U, \rank V \le r
+\end{aligned}
+$$</p>
+<h4 id="combination-with-other-methods">Combination with Other Methods</h4>
+<p>Low-rank decomposition can be combined with sparsity and nonlinearity approximation to give the following ultimate pruning problem:
+$$
+\begin{aligned}
+\min_{W, A, B} \quad &amp; ||Y -  f(X W)||_F \
+\text{s.t.} \quad &amp; W = A + B \
+&amp; ||A||_0 \le S \
+&amp; \rank B \le L \
+\end{aligned}
+$$</p>
+<p>where $|| \cdot ||_0$ is the number of nonzero entries in the matrix.</p>
+<p>The sparsity comes from $A$ and low-rank decomposition comes from $B$. The above problem is NP-hard due to the constraints on $A$ and $B$. We can relax these constraints to other forms:
+$$
+\begin{aligned}
+\min_{W, A, B} \quad &amp; ||Y -  f(X W)||<em>F \
+\text{s.t.} \quad &amp; W = A + B \
+&amp; ||A||</em>{21} \le S  \
+&amp; ||B||<em>* \le L \
+\end{aligned}
+$$
+where $|| \cdot ||</em>{21}$ takes the $l_1$ norm of the $l_2$ norms taken on each column of the matrix; and $|| \cdot ||_*$ is the nuclear norm that equals to the sum of singular values.</p>
+<p>To solve it, alternating direction method of multipliers (ADMM) can be adopted. The augmented Lagrangian function is (??)
+$$
+L(W,A,B,\Lambda) = ||Y -  f(X W)||<em>F + \lambda_1 ||A||</em>{21} + \lambda_2 ||B||_* + \Lambda \odot (W - A - B) + \frac{\rho}{2}||W - A - B||_F^2
+$$</p>
+<h4 id="tensor-decomposition">Tensor Decomposition</h4>
+<p>Tucker decomp, CP decomp, Tucker-2 (or TT) decomp</p>
+<h2 id="quantizationquant-pytorch">Quantization<sup id="fnref:21"><a href="#fn:21" class="footnote-ref" role="doc-noteref">21</a></sup></h2>
+<p>Model parameters are natively floating-point numbers. During training, model parameters usually won&rsquo;t be too large and won&rsquo;t exceed the range of <code>int8</code>.  One way to make the model smaller and run faster is to map model parameters to integers of smaller size (say from <code>fp32</code> to <code>int16</code>).</p>
+<p>Other than the efficiency perspective, if the original values span a very narrow range (say from -10 to 10), by mapping them to a wider range of integers, better precision may even be obtained. This is mainly due to that most floating-point number arithmetic suffer from precision loss. Particularly, when two floating-point numbers of significant difference adds or subtracts, a great loss in precision can occur (called <strong>catastrophic cancellation</strong>).</p>
+<p>After integer arithmetic, we can map these integer values back again. The process involved is called <strong>quantization/dequantization</strong>. For a number $r$, its quantization is $Q(r) = \text{Int}(r/k) - b$ where $k$ is the scale and $b$ is the bias. To dequantize, $\hat r = k(Q(r) + b)$.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./Images/quant_sym.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./Images/quant_asym.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>The first question to consider <strong>symmetric quantization or asymmetric quantization</strong> (the figure above). That is, should the zero in the original domain mapped to zero or $-b$ (because $\text{Int}(0/k)-b = -b$). In essence, this is a question of choice of bias. Preferring to computation efficiency, we hope bias is zero. To show it, consider the dequantization process of the matrix product:
+$$
+A = k_A \times A_Q + b_A \
+B = k_B \times B_Q + b_B \
+A B = k_A k_B A_Q B_Q + k_A b_B A_Q ＋ k_B b_A B_Q + b_A b_B
+$$
+It would have been cleaner if $b_A, b_B$ are zero. However, if the activations in the network are mostly non-negative, like in the case where ReLU is used, symmetric quantization would waste half of the quantization range.</p>
+<p>The second question is to consider using the <strong>restricted range or the full range</strong> of the target integer type. Take <code>int8</code> for an example, should we map numbers to $[-127, 127]$ or $[-128, 127]$? When symmetric quantization is used, the answer is the restricted range. The reason is that, the quantization of two numbers of the same magnitude but different signs, should be of the same magnitude but different signs too. But had the full range been used, supposing the floating-point range was $[-2.2, 2.2]$, $2.2$ and $-2.2$ would have been quantized into $2.2 \times \frac{127}{2.2} = 127$ and $-2.2 \times \frac{128}{2.2} = -128$ respectively. The problem is that the scaling factors for positive number and negative number are different due to the asymmetric range, in which case a small bias would be introduced and leads to precision loss.</p>
+<p>The third question is the timing of quantization. Should the quantization happen during training (<strong>quantization-aware training</strong>) or after training (<strong>post-training quantization</strong>)? Accompanying this question is what the best scale should be.</p>
+<ul>
+<li>
+<p>Post-training (static) quantization (PTQ)</p>
+<img src="./Images/ptq.svg" style="zoom: 25%;" />
+<p>In PTQ, model are trained before quantized. After training, a small subset of training data (called <strong>calibration data</strong>) is used to determine the scale (magnitude) and the clipping range (quantization bit number). Notice that model parameters are fixed in this process.</p>
+</li>
+<li>
+<p>Quantization-aware training (QAT)</p>
+<img src="./Images/qat.svg" style="zoom:25%;" />
+<p>In QAT, model parameters are quantized and then trained. QAT brings a great save in computation during training. But this yields another question: should the quantization happen during forward pass or during back propagation?</p>
+<p>Quantization is used in forward pass but not in back propagation. The reason not to update gradient in quantized domain is that, numbers in quantized domain are integers but gradient is fractional. Another reason not to back-propagate in quantized domain is that, the gradient might be so large as to disturb the convergence of model, compared with that in dequantized domain.</p>
+<p>The error is measured between the dequantized output and the target output. Model parameters will update in dequantized format and will be re-quantized for next round of training. There are arguments on both sides for this approach. One good aspect is that it takes the quantization error into consideration. But this causes the gradient mismatch because the gradient of the parameters are computed with quantized values but updated in dequantized format. In worst case, this may cause the model to diverge.</p>
+<p>This training method reconciles with the idea of stochastic neuron, where back propagation is done by <strong>straight-through estimator</strong> (STE)<sup id="fnref:22"><a href="#fn:22" class="footnote-ref" role="doc-noteref">22</a></sup>. There is another method based on STE and called <strong>parameterized clipping activation</strong> (PACT)<sup id="fnref:23"><a href="#fn:23" class="footnote-ref" role="doc-noteref">23</a></sup>. The meat of PACT is a learnable ReLU function:
+$$
+y = \mathrm{PACT}(x, \alpha) = 0.5 (|x| - |x-\alpha| + \alpha) =
+\begin{cases}
+0, &amp; x \le 0 \
+x, &amp; 0 &lt; x &lt; \alpha \
+\alpha, &amp; x \ge \alpha
+\end{cases}
+$$
+Back-propagation is done w.r.t. the dequantized value $y_{dq} \triangleq \lfloor y \cdot \frac{2^k - 1}{\alpha} \rfloor \frac{\alpha}{2^k - 1}$. $\frac{\partial y_{dq}}{\partial y}$ is set to $\frac{\text{range before quant.}}{\text{range of quant. domain}}$ as would be in STE. $\alpha$ is learnable so that clipping range can be dynamically adjusted:
+$$
+\frac{\partial y}{\partial \alpha} =
+\begin{cases}
+0, &amp; x &lt; \alpha \
+1, &amp; x \ge \alpha
+\end{cases}
+$$</p>
+</li>
+</ul>
+<p>The fourth question is the granularity of quantization. There are usually three kinds of choices, namely channel-wise, layer-wise and group-wise quantization.</p>
+<h3 id="bnntnnbnn">BNN/TNN<sup id="fnref:24"><a href="#fn:24" class="footnote-ref" role="doc-noteref">24</a></sup></h3>
+<p>Binarized and ternary neural network bring quantization to an extreme. The reason to particularly split them out under <a href="#quantization">quantization</a> is that, their multiplication and addition logic are quite different. They use 1 bit and 2 bits for clipping: BNN maps values to -1 and 1; TNN maps values to -1, 0 and 1. Then the multiplication and addition only involve Boolean operations, which will be much faster. Other than that, the training process of BNN/TNN resembles that of quantization.</p>
+<p>The motivation behind is that model parameters are usually within $[-1, 1]$. So why not try just using -1, 0 and 1? Given a weight matrix $W$ (squeezed into an $\R^n$ vector), there is an analytical solution to the best scaling factor $k$ and the quantized value $B$ (squeezed into an $\R^n$ vector) for BNN:</p>
+<p>$$
+\begin{aligned}
+B^* &amp;= \arg \min_{B} | W - kB |<em>2 = \arg \min</em>{B} | W - kB |<em>2^2 \
+&amp;= \arg \min</em>{B} W^T W - 2 k W^T B + k^2 B^T B \
+\end{aligned}
+$$
+Since $W$ is known and $B \in { -1, 1 }^n$, $W^T W$ is a constant $c$ and $B^T B$ is $n$. Thus,
+$$
+\begin{gathered}
+B^* = \arg \min_{B} k^2 n + c - 2 k W^T B = \mathrm{sign}(W) \
+k = \frac{W^T B^*}{n}
+\end{gathered}
+$$</p>
+<h2 id="knowledge-distillation">Knowledge Distillation</h2>
+<p>Knowledge distillation is a model compression method in which a smaller model is trained to mimic the pre-trained larger model. The larger and the smaller model are referred to as &ldquo;teacher&rdquo; and &ldquo;student&rdquo; respectively.</p>
+<p>There are three kinds of distillation methods:</p>
+<ol>
+<li>
+<p>Response-based knowledge</p>
+<p>This is perhaps the easiest one to think of: given the same input, the output (usually a categorical distribution) should be the same.</p>
+<p>In this case, the distillation loss is set to be the cross entropy between the distributions output by the teacher and the student. Minimizing the cross entropy between the output distributions equivalently minimizes the their KL-divergence, given that teacher&rsquo;s distribution is fixed.</p>
+<p>On the other hand, the student model can further be rectified by the ground-truth loss.</p>
+</li>
+<li>
+<p>Feature-based knowledge</p>
+</li>
+<li>
+<p>Relation-based knowledge</p>
+</li>
+</ol>
+<h2 id="network-architecture-search">Network Architecture Search</h2>
+<p>There are mainly two indexes for a network: one is the <strong>latency</strong> and the other is <strong>accuracy</strong>. In NAS, latency is cheaper to check upon than accuracy, since the training is more time-consuming than a single pass of input.</p>
+<p>NAS is mostly based on heuristics. During training, we can save time by</p>
+<ul>
+<li>early stop</li>
+<li>warm restart (parameter reuse)</li>
+<li>use the arrogate target like FLOPs (which is usually proportional to latency)</li>
+</ul>
+<p>As for searching in the solution space, we can do with</p>
+<ul>
+<li>grid search</li>
+<li>random sampling</li>
+<li>reinforcement learning</li>
+<li>evolutional algorithm</li>
+<li>Bayesian optimization like Gaussian process</li>
+</ul>
+<h1 id="useful-links">Useful Links</h1>
+<p>Related courses:</p>
+<ul>
+<li><a href="https://sites.cs.ucsb.edu/~tyang/class/240a17/" target="_blank" rel="noopener">CS240A - Applied Parallel Computing (ucsb.edu)</a></li>
+<li><a href="https://hanlab.mit.edu/courses/2023-fall-65940" target="_blank" rel="noopener">MIT 6.5940 Fall 2023 TinyML and Efficient Deep Learning Computing</a></li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://arxiv.org/abs/1911.05662" target="_blank" rel="noopener">https://arxiv.org/abs/1911.05662</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://arxiv.org/abs/1706.06873" target="_blank" rel="noopener">https://arxiv.org/abs/1706.06873</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://ieeexplore.ieee.org/document/10144741" target="_blank" rel="noopener">https://ieeexplore.ieee.org/document/10144741</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://tvm.apache.org/docs/how_to/optimize_operators/opt_gemm.html" target="_blank" rel="noopener">https://tvm.apache.org/docs/how_to/optimize_operators/opt_gemm.html</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://ieeexplore.ieee.org/document/6877334" target="_blank" rel="noopener">https://ieeexplore.ieee.org/document/6877334</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://spatial-lang.org/dotprod" target="_blank" rel="noopener">https://spatial-lang.org/dotprod</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="http://csapp.cs.cmu.edu/3e/waside/waside-blocking.pdf" target="_blank" rel="noopener">http://csapp.cs.cmu.edu/3e/waside/waside-blocking.pdf</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://penny-xu.github.io/blog/tiled-matrix-multiplication" target="_blank" rel="noopener">https://penny-xu.github.io/blog/tiled-matrix-multiplication</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p><a href="https://docs.juliahub.com/LoopVectorization/4TogI/0.9.8/examples/matrix_multiplication/" target="_blank" rel="noopener">https://docs.juliahub.com/LoopVectorization/4TogI/0.9.8/examples/matrix_multiplication/</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p><a href="https://www.youtube.com/watch?v=8zbh4gWGa7I&amp;t=424s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=8zbh4gWGa7I&t=424s</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p><a href="https://arxiv.org/abs/2002.12418" target="_blank" rel="noopener">https://arxiv.org/abs/2002.12418</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p><a href="https://www.youtube.com/watch?v=DruwS2_cVys" target="_blank" rel="noopener">https://www.youtube.com/watch?v=DruwS2_cVys</a>&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p><a href="https://martin-thoma.com/strassen-algorithm-in-python-java-cpp/" target="_blank" rel="noopener">https://martin-thoma.com/strassen-algorithm-in-python-java-cpp/</a>&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p><a href="https://www.diva-portal.org/smash/get/diva2:1219121/FULLTEXT01.pdf" target="_blank" rel="noopener">https://www.diva-portal.org/smash/get/diva2:1219121/FULLTEXT01.pdf</a>&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p><a href="https://arxiv.org/abs/1509.09308" target="_blank" rel="noopener">https://arxiv.org/abs/1509.09308</a>&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p><a href="https://ceca.pku.edu.cn/docs/20191126112405101722.pdf" target="_blank" rel="noopener">https://ceca.pku.edu.cn/docs/20191126112405101722.pdf</a>&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p><a href="https://towardsdatascience.com/how-does-sparse-convolution-work-3257a0a8fd1" target="_blank" rel="noopener">How does sparse convolution work? | by Zhiliang Zhou | Towards Data Science</a>&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p><a href="https://rancheng.github.io/Sparse-Convolution-Explained/" target="_blank" rel="noopener">Sparse Convolution explained with code – Ran Cheng – Robotics, Vision, Learning.</a>&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p><a href="https://arxiv.org/pdf/1705.08922.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1705.08922.pdf</a>&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:20">
+<p><a href="https://arxiv.org/abs/1411.4229" target="_blank" rel="noopener">https://arxiv.org/abs/1411.4229</a>&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:21">
+<p><a href="https://pytorch.org/blog/quantization-in-practice/" target="_blank" rel="noopener">https://pytorch.org/blog/quantization-in-practice/</a>&#160;<a href="#fnref:21" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:22">
+<p><a href="https://arxiv.org/abs/1308.3432" target="_blank" rel="noopener">https://arxiv.org/abs/1308.3432</a>&#160;<a href="#fnref:22" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:23">
+<p><a href="https://arxiv.org/abs/1805.06085" target="_blank" rel="noopener">https://arxiv.org/abs/1805.06085</a>&#160;<a href="#fnref:23" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:24">
+<p><a href="https://arxiv.org/abs/1603.05279" target="_blank" rel="noopener">https://arxiv.org/abs/1603.05279</a>&#160;<a href="#fnref:24" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/courses/energy-efficient-computing/notes/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/courses/energy-efficient-computing/notes/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/courses/energy-efficient-computing/notes/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/courses/energy-efficient-computing/notes/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%20https://chunxy.github.io/courses/energy-efficient-computing/notes/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/courses/energy-efficient-computing/notes/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

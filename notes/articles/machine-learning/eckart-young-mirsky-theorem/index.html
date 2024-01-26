@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1394,7 +1422,13 @@
 
           <div class="article-style">
             
-<p>Given an <span class="math inline">\(M \times N\)</span> matrix <span class="math inline">\(X\)</span> of rank <span class="math inline">\(R \le \min\{M,N\}\)</span> and its SVD <span class="math inline">\(X = U\Sigma V^T\)</span>, where <span class="math inline">\(\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_R)\)</span>, among all the <span class="math inline">\(M \times N\)</span> matrices of rank <span class="math inline">\(K \le R\)</span>, the best approximation to <span class="math inline">\(X\)</span> is <span class="math inline">\(Y^\star = U\Sigma_K V^T\)</span>, where <span class="math inline">\(\Sigma_K = diag(\sigma_1, \sigma_2, ..., \sigma_K)\)</span>, when distance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <a href="/notes/articles/mathematics/linear-algebra/metrics/frobenius-normalization/">Frobenius norm</a>: <span class="math display">\[
+<p>Given an <span class="math inline">\(M \times N\)</span> matrix <span class="math inline">\(X\)</span> of rank <span class="math inline">\(R
+\le \min\{M,N\}\)</span> and its SVD <span class="math inline">\(X =
+U\Sigma V^T\)</span>, where <span class="math inline">\(\Sigma =
+diag(\sigma_1, \sigma_2, ..., \sigma_R)\)</span>, among all the <span class="math inline">\(M \times N\)</span> matrices of rank <span class="math inline">\(K \le R\)</span>, the best approximation to <span class="math inline">\(X\)</span> is <span class="math inline">\(Y^\star
+= U\Sigma_K V^T\)</span>, where <span class="math inline">\(\Sigma_K =
+diag(\sigma_1, \sigma_2, ..., \sigma_K)\)</span>, when distance between
+<span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <a href="/notes/articles/mathematics/linear-algebra/metrics/frobenius-normalization/">Frobenius norm</a>: <span class="math display">\[
 ||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
 \]</span> Firstly we prove that, if <span class="math inline">\(U\)</span> is orthogonal, then <span class="math inline">\(||UA||_F = ||AU||_F = ||A||_F\)</span>: <span class="math display">\[
 \begin{aligned}
@@ -1404,7 +1438,8 @@
 &amp;= ||A||_F^2
 \end{aligned}
 \]</span> The same can be derived for <span class="math inline">\(||AU||_F\)</span>.</p>
-<p>For any <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(Y\)</span> of rank <span class="math inline">\(K \le R\)</span>,</p>
+<p>For any <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(Y\)</span> of rank <span class="math inline">\(K
+\le R\)</span>,</p>
 <p><span class="math display">\[
 \begin{aligned}
 ||X - Y||_F^2 &amp;= ||U\Sigma V^T - Y||_F^2 \\
@@ -1415,7 +1450,8 @@
 \begin{aligned}
 ||X - Y||_F^2 &amp;= ||\Sigma - Z||_F^2 \\
 &amp;= \sum_{ij}(\Sigma_{ij} - Z_{ij})^2 \\
-&amp;= \sum_{i=1}^R(\sigma_{i} - Z_{ii})^2 + \sum_{i&gt;R}^{\min\{M,N\}}Z_{ii}^2 + \sum_{i \ne j}Z_{ij}^2 \\
+&amp;= \sum_{i=1}^R(\sigma_{i} - Z_{ii})^2 +
+\sum_{i&gt;R}^{\min\{M,N\}}Z_{ii}^2 + \sum_{i \ne j}Z_{ij}^2 \\
 \end{aligned}
 \]</span> The minimum is achieved if <span class="math display">\[
 \begin{gather}
@@ -1516,7 +1552,7 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1566,7 +1602,7 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1653,7 +1689,7 @@ Z_{ij} = 0, i = 1,2, .... M, j=1, 2, \dots, N, i \ne j
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

@@ -1,0 +1,1528 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Though some problems can be relaxed to accommodate the linear programming form, applications of LP are still limited due to its linear constraints. To extend, a natural idea is to gradually allow for other kinds of non-linear constraints." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/" />
+  <meta property="og:title" content="Chunxy&#39; Website" />
+  <meta property="og:description" content="Though some problems can be relaxed to accommodate the linear programming form, applications of LP are still limited due to its linear constraints. To extend, a natural idea is to gradually allow for other kinds of non-linear constraints." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="4d0759e282b38c952274d74cda3e8aee" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+      
+      
+      <div class="article-container py-1" style="background: initial">
+        
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+      </div>
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>Though some problems can be relaxed to accommodate the linear programming form, applications of LP are still limited due to its linear constraints. To extend, a natural idea is to gradually allow for other kinds of non-linear constraints. But that would go too far away from the established theories for linear programming.</p>
+<p>In this post, we study the conic linear programming, which is a phased open-up to non-linear problems.</p>
+<h2 id="concept-preparation">Concept Preparation</h2>
+<h3 id="good-order-and-proper-cone">&ldquo;Good&rdquo; Order and &ldquo;Proper&rdquo; Cone</h3>
+<p>Before exploring other non-linear problems, we first study the properties of a &ldquo;good&rdquo; order $\succeq$. between vectors. We expect it to have the following basic three properties of a <strong>partial-order</strong>:</p>
+<ul>
+<li>
+<p><strong>Reflexivity</strong>: $\forall u \in \R^n, u \succeq u$;</p>
+</li>
+<li>
+<p><strong>Anti-symmetry</strong>
+$$
+\forall u,v \in \R^n, u \succeq v, v \succeq u \to u = v
+$$</p>
+</li>
+<li>
+<p><strong>Transitivity</strong>
+$$
+\forall u,v,w \in \R^n, u \succeq v, v \succeq w \to u \succeq w
+$$</p>
+</li>
+</ul>
+<p>Other than them, we expect $\succeq$ to further possess the following two arithmetic properties:</p>
+<ul>
+<li>
+<p><strong>Homogeneity</strong>
+$$
+\forall u,v \in \R^n, u \succeq v, \alpha \succeq 0, \alpha u \succeq \alpha v
+$$</p>
+</li>
+<li>
+<p><strong>Additivity</strong>
+$$
+\forall u,v,w,z \in \R^n, u \succeq v, w \succeq z \to u + w \succeq v + z
+$$</p>
+</li>
+</ul>
+<p>We say the $\succeq$ order is &ldquo;good&rdquo; if it satisfies the above five properties. The above five is from the algebraic perspective. To illustrate it geometrically, consider the set $K \triangleq { x \in \R^n: x \ge 0 }$. We say $K$ is a <strong>&ldquo;proper&rdquo; cone</strong> in that it is</p>
+<ul>
+<li>
+<p><strong>non-empty</strong> and <strong>closed under addition</strong>
+$$
+\forall u, v \in K, u + v \in K
+$$</p>
+</li>
+<li>
+<p><strong>conic</strong>
+$$
+\forall u \in K, \alpha &gt; 0 \to \alpha u \in K \
+$$</p>
+</li>
+<li>
+<p><strong>pointed</strong>
+$$
+u, -u \in K \to u = 0
+$$</p>
+</li>
+</ul>
+<p>We further claim that a proper cone is <strong>convex</strong> and contains the zero vector (verify it).</p>
+<blockquote>
+<p>Remark: The pointedness plus closeness (not closeness under addition) implies that there is no complete line in this cone, which equivalently means there is no non-trivial subspace (i.e., except ${ 0 }$ and the universe) inside this cone. To show it, let $K$ be a closed pointed cone, suppose on the contrary there exists $u, v \in K$ such that for every $\alpha \in \R$, we have $u + \alpha(v - u) \in K$. For $t &gt; 1$, consider the sequence ${w_+^t}<em>{t=1}^{\infty}$ and ${w</em>-^t}<em>{t=1}^{\infty}$ where
+$$
+w</em>+^t = \frac{u + t(v-u)}{|u + t(v-u)|<em>2}, w</em>-^t = \frac{u - t(v-u)}{|u - t(v-u)|<em>2}
+$$
+Now $w</em>+^t, w_-^t \in K$ for all $t \ge 1$. But $w_+^t \to w \triangleq \frac{v-u}{|v-u|<em>2}$ and $w</em>-^t \to -w$ . Since $K$ is closed, we have $w, -w \in K$. However, since $w$ has unit norm and is not zero vector, it follows that $K$ is not pointed, which is a contradiction.</p>
+</blockquote>
+<blockquote>
+<p>Remark: At times, people also refer to this as the <strong>salient</strong> property of a cone. A <u>proper cone</u> is variously defined on a subset of these properties (closeness, closeness under addition, pointed, salient, and essentially, conic) depending on the context.</p>
+</blockquote>
+<p>In fact, the algebraic properties and the geometric properties can derive each other. A good order and a proper cone have a one-to-one relationship. Now we ask, in an arbitrary $n$-d universe (or a finite-dimensional Euclidean space), is $\ge$ the only good order, or equivalently, is $\R_+^n$ the only proper cone? The answer is no.</p>
+<h3 id="examples-of-proper-cone">Examples of Proper Cone</h3>
+<ol>
+<li>
+<p>Lorentz cone / second-order cone / ice cream cone
+$$
+\mathcal{Q}^{n+1} \triangleq { (t, x) \in \R \times \R^n: t \ge ||x||_2 }
+$$
+$\mathcal{Q}^{n+1}$ is a closed proper cone. Then what is the good order associated with this proper cone?</p>
+</li>
+<li>
+<p>Semi-definite cone
+$$
+\mathcal{S}<em>+^n \triangleq { X \in \mathcal{S}^n: u^T X u \ge 0, \forall u \in \R^n }
+$$
+$\mathcal{S}</em>+^n$ is a closed proper cone. Then what is the good order associated with this proper cone?</p>
+</li>
+<li>
+<p>Zero cone: ${ 0 }$</p>
+</li>
+<li>
+<p>New cones from old ones by Cartesian product</p>
+<p>Let $K_1, \dots, K_m$ be closed proper cones (with non-empty interior). Then
+$$
+K \triangleq K_1 \times \dots \times K_m = { (x_1, \dots, x_m): x_i \in K_i, \forall i=1,\dots,m }
+$$
+is a closed proper cone with non-empty interior (with non-empty interior).</p>
+<blockquote>
+<p>Remark: $\R_+^n, \mathcal{Q}^{n+1}, \mathcal{S}<em>+^n$ have non-empty interior:
+$$
+\intr(\R</em>+^n) = \R_{++}^n \
+\intr(\mathcal{Q}^{n+1}) = { (t, x) \in \R \times \R^n: t &gt; ||x||<em>2 } \
+\intr(\mathcal{S}</em>+^n) = \mathcal{S}_{++}^n \
+$$</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="conic-linear-programming">Conic Linear Programming</h2>
+<h3 id="formulation">Formulation</h3>
+<p>Recall that linear programming is</p>
+<p>$$
+\begin{align*}
+\min &amp; \quad c^T x \
+\text{s.t.} &amp; \quad b - A x \ge 0
+\end{align*}
+$$
+Now replacing $\ge$ with the good order $\succeq$ gives the conic linear programming.
+$$
+\begin{align*}
+\tag{CLP}
+\min &amp; \quad c^T x \
+\text{s.t.} &amp; \quad b - A x \succeq 0
+\end{align*}
+$$
+The next question is, can we recover Farkas&rsquo; lemma and strong duality in this setting? The answer is yes. And the good aspect of the good order is that we can recover the conclusions in linear programming verbatim. Next we generalize the LP problem and show the same result applies.</p>
+<p>Let $E$ be a finite-dimensional Euclidean space (e.g. $\R^n, \mathcal{S}^n$) and $\langle \cdot, \cdot \rangle$ be the inner product on $E$ (e.g., on $\R^n$, $\langle x, y \rangle = x^T y$; on $\mathcal{S}^n$, $\langle X, Y \rangle = \tr(X^T Y)$). Let $K \subseteq E$ be a <strong>closed proper cone</strong>. Then we can have a good order $\succeq$ on $E$. Consider the <strong>standard form of CLP</strong> as well as the primal problem:
+$$
+\begin{equation}
+\tag{P} \label{primal}
+\begin{aligned}
+v_p^* = \inf \quad &amp; \langle c, x \rangle \
+\text{s.t.} \quad &amp; \langle a_i, x \rangle = b_i, \forall i=1,\dots,m \
+&amp; x \in K \subseteq E
+\end{aligned}
+\end{equation}
+$$
+What is its dual? We mimic the procedure when we build the lower bound for LP. Let $y \in \R^m$. By <u>the linearity of inner product</u>,
+$$
+\langle b, y \rangle = b^T y = 
+\sum_{i=1}^m \langle a_i, x \rangle y_i =
+\sum_{i=1}^m \langle y_i a_i, x \rangle =
+\langle \sum_{i=1}^m y_i a_i, x \rangle
+$$
+If we impose $c \succeq \sum_{i=1}^m y_i a_i$ like $c \ge A^T y$, can we draw $\langle c - \sum_{i=1}^m y_i a_i, x \rangle \ge 0$ like $x^T(c - A^T y) \ge 0$? The answer is that, this constraint is not enough in general. To reinforce the constraint, construct the set
+$$
+K^* = { w \in E: \langle w, x \rangle \ge 0, \forall x \in K }
+$$</p>
+<p>We can draw some properties for $K^*$:</p>
+<ul>
+<li>
+<p>$K^<em>$ is non-empty because $0 \in K^</em>$.</p>
+</li>
+<li>
+<p>$K^<em>$ is always closed and convex (no matter what $K$ is, because $K^</em>$ is the intersection of hyperplanes which are closed and convex).</p>
+</li>
+<li>
+<p>$K^*$ is conic.</p>
+</li>
+<li>
+<p>If $K$ is a closed proper cone with non-empty interior, then so is $K^<em>$. That is, $K$ and $K^</em>$ are heterogenous on the premise that $K$ is a closed proper cone.</p>
+</li>
+<li>
+<p>We have (verify it)
+$$
+(\R_+^n)^* = \R_+^n, (\mathcal{Q}^{n+1})^* = \mathcal{Q}^{n+1}, (\mathcal{S}<em>+^n)^* = \mathcal{S}</em>+^n
+$$</p>
+</li>
+</ul>
+<p>In fact, $K^<em>$ is called the <strong>dual cone</strong>. We impose that $c - \sum_{i=1}^m y_i a_i \in K^</em>$. Then, the dual problem can be written as
+$$
+\begin{equation}
+\tag{D} \label{dual}
+\begin{aligned}
+v_d^* = \sup \quad &amp; b^T y \
+\text{s.t.} \quad &amp; c - \sum_{i=1}^m y_i a_i \in K^* \
+&amp; y \in \R^m
+\end{aligned}
+\end{equation}
+$$</p>
+<p>The constraint of CLP&rsquo;s dual in essence describes that <u>an affine map of the variable $y$ belongs to a cone</u>. This is a good indicator on whether we are dealing with a CLP.</p>
+<h4 id="second-order-cone-programming">Second-order Cone Programming</h4>
+<h1 id="endbmatrix">Consider the second-order cone programming:
+$$
+\begin{equation}
+\tag{SOCP}
+\begin{aligned}
+\sup \quad &amp; b^T y \
+\text{s.t.} \quad &amp; c - \sum_{i=1}^m y_i a_i \in \mathcal{Q}^{n+1} \
+&amp; y \in \R^m
+\end{aligned}
+\end{equation}
+$$
+Let $a_i = [u_i, \underbrace{a_{i,1}, \dots, a_{i, n}}<em>{\bar a_i^T}]^T$ and $c = [v, \underbrace{c_1, \dots, c_n}</em>{d^T}]^T$. The dual constraint becomes
+$$
+\begin{gathered}
+c - \sum_{i=1}^m y_i a_i =
+\begin{bmatrix}
+v \
+d
+\end{bmatrix} -
+\sum_{i=1}^m y_i
+\begin{bmatrix}
+u_i \
+\bar a_i
+\end{bmatrix}</h1>
+<p>\begin{bmatrix}
+v - u^T y \
+d - A^T y
+\end{bmatrix} \succeq 0, \
+\text{where }
+\begin{aligned}[t]
+A &amp;= [\bar a_1, \dots, \bar a_n]^T, \
+u &amp;= [u_1, \dots, u_n]^T, \
+\end{aligned}
+\end{gathered}
+$$
+That is
+$$
+v - u^T y \ge |d - A^T y|<em>2
+$$
+The left-hand and the right-hand side of the above are both an affine function in $y$. The above is equivalent to
+$$
+\begin{bmatrix}
+(v - u^T y) I_n &amp; d - A^T y \
+(d - A^T y)^T &amp; v - u^T y 
+\end{bmatrix}
+\in \mathcal{S}</em>+^{n+1}
+$$
+To show it, firstly the case when $v - u^T y = 0$ trivially holds. On the other hand, when $v - u^T y &gt; 0$, we have
+$$
+\begin{aligned}
+(v - u^T y)^2 &amp;\ge (d - A^T y)^T (d - A^T y) \
+\underbrace{(v - u^T y)}<em>{C} &amp;\ge \underbrace{(d - A^T y)^T}</em>{B^T} \underbrace{\frac{I_n}{v - u^T y}}<em>{A^{-1}} \underbrace{(d - A^T y)}</em>{B}
+\end{aligned}
+$$
+Consider the <em>Schur complement</em>:
+$$
+\begin{bmatrix}
+A &amp; B \
+B^T &amp; C
+\end{bmatrix}
+\in \mathcal{S}<em>+^{m+n}
+\iff
+\begin{gathered}
+A \in \mathcal{S}</em>+^m, C \in \mathcal{S}<em>+^n, \
+A - B C^{-1} B^T \in \mathcal{S}</em>+^m \text{ or } C - B^T A^{-1} B \in \mathcal{S}<em>+^n
+\end{gathered}
+$$
+We have,
+$$
+\begin{bmatrix}
+(v - u^T y) I_n &amp; d - A^T y \
+(d - A^T y)^T &amp; v - u^T y 
+\end{bmatrix}
+\in \mathcal{S}</em>+^{n+1}
+$$
+The converse similarly follows from <em>Schur complement</em>. Based on this result, we further claim that an SOCP is equivalent to an semi-definite programming (SDP). But it is never necessary to solve SOCP by converting it to SDP, which only increases the complexity.</p>
+<h4 id="semi-definite-programming">Semi-definite Programming</h4>
+<p>$$
+\begin{equation}
+\tag{SDP}
+\begin{aligned}
+\sup \quad &amp; b^T y \
+\text{s.t.} \quad &amp; c - \sum_{i=1}^m y_i a_i \in \mathcal{S}_+^n \
+&amp; y \in \R^m
+\end{aligned}
+\end{equation}
+$$</p>
+<p>In terms of inclusion (and thus difficulty), LP =&gt; QCQP =&gt; SOCP =&gt; SDP =&gt; CLP.</p>
+<h3 id="weak-duality">Weak Duality</h3>
+<p>Our previous derivation of $\eqref{primal}$ and $\eqref{dual}$ implies the weak duality of CLP.</p>
+<blockquote>
+<p>Theorem: <strong>weak duality of CLP</strong>. Let $\bar x$ be feasible for $\eqref{primal}$ and $\bar y$ be feasible for $\eqref{dual}$. Then, $\langle c, \bar x \rangle \ge b^T \bar y$.</p>
+<p>Proof:
+$$
+\begin{gathered}
+c - \sum_{i=1}^m y_i a_i \in K^* \Rightarrow \langle c - \sum_{i=1}^m y_i a_i, x \rangle \ge 0 \
+\Downarrow \
+\begin{aligned}
+\langle c, x \rangle &amp;\ge \langle \sum_{i=1}^m y_i a_i, x \rangle \
+&amp;= \sum_{i=1}^m \langle a_i, x \rangle y_i  \
+&amp;= b^T y
+\end{aligned}
+\end{gathered}
+$$</p>
+</blockquote>
+<p>We next investigate another method to convert between the primal and dual in CLP. For a standard CLP problem, we have
+$$
+\begin{gathered}
+\begin{aligned}
+\inf \quad &amp; \langle c, x \rangle \
+\text{s.t.} \quad &amp; \langle a_i, x \rangle = b_i, \forall i=1,\dots,m \
+&amp; x \in K \subseteq E
+\end{aligned} \quad
+\substack{\langle a_i, x \rangle = b \iff b - \langle a_i, x \rangle \in { 0 } \ \equiv} \quad
+\begin{aligned}
+-\sup \quad &amp; -\langle c, x \rangle \
+\text{s.t.} \quad &amp; \begin{bmatrix}
+b \
+0
+\end{bmatrix} -
+\begin{bmatrix}
+A \
+-I
+\end{bmatrix} x
+\in { 0 } \times K
+\end{aligned}
+\end{gathered}
+$$
+whose dual is
+$$
+\begin{equation*}
+\begin{aligned}
+-\inf \quad &amp; [b^T, 0] [y^T, \tilde y^T]^T \
+\text{s.t.} \quad &amp;
+\begin{bmatrix}
+A^T &amp; -I
+\end{bmatrix}
+\begin{bmatrix}
+y \
+\tilde y
+\end{bmatrix} = -c \
+&amp;
+\begin{bmatrix}
+y \
+\tilde y
+\end{bmatrix} \in ({ 0 } \times K)^*
+\end{aligned}
+\end{equation*}
+$$
+Note that $({ 0 } \times K)^* = { 0 }^* \times K^* = \R \times K^*$. And interestingly, from above, we observe that the equality constraint is in essence a cone constraint.</p>
+<h3 id="farkas-lemma">Farkas&rsquo; Lemma</h3>
+<p>Recall the Farkas&rsquo; lemma for linear systems. Exactly one of the following two systems is solvable:
+$$
+\begin{gather*}
+Ax = b, x \ge 0 \
+A^T y \le 0, b^T y &gt; 0
+\end{gather*}
+$$
+Farkas&rsquo; lemma secures a strong duality for LP. We would like to do the same to CLP. First we mimic the two systems in CLP:
+$$
+\begin{gather*}
+\langle a_i, x \rangle = b_i, \forall i=1,\dots,m; x \in K \tag{I} \
+-\sum_{i=1}^m y_i a_i \in K^<em>; b^T y &gt; 0 \tag{II}
+\end{gather</em>}
+$$
+Is it true that exactly one of the above two systems is solvable? We first claim that they can&rsquo;t be solvable at the same time. Suppose on the contrary they both hold. By $\mathrm{(II)}$, we have
+$$
+\begin{aligned}
+b^T y =\sum_{i=1}^m \langle a_i, x \rangle y_i =\langle \sum_{i=1}^m  y_i a_i, x \rangle &amp;&gt; 0 \
+\end{aligned}
+$$
+But that $-\sum_{i=1}^m y_i a_i \in K^*$ implies $\langle \sum_{i=1}^m  y_i a_i, x \rangle = -\langle -\sum_{i=1}^m  y_i a_i, x \rangle \le 0$, which is a contradiction. On the other hand, for CLP, it is possible that neither $\mathrm{(I)}$ nor $\mathrm{(II)}$ is solvable.</p>
+<blockquote>
+<p>Example: Let $E = \mathcal{S}^2, K = \mathcal{S}<em>+^2$. Let
+$$
+A_1 = \begin{bmatrix}
+1 &amp; 0 \
+0 &amp; 0
+\end{bmatrix},
+A_2 = \begin{bmatrix}
+0 &amp; 1 \
+1 &amp; 0
+\end{bmatrix},
+b = \begin{bmatrix}
+0 \
+2
+\end{bmatrix}
+$$
+Then
+$$
+\begin{gathered}
+\begin{cases}
+\langle A_1, X \rangle = 0 \
+\langle A_2, X \rangle = 2 \
+X \in \mathcal{S}</em>+^2
+\end{cases}
+\iff
+\begin{cases}
+X_{11} = 0 \
+2 X_{12} = 2 \
+X \in \mathcal{S}<em>+^2
+\end{cases}
+\iff
+\begin{bmatrix}
+0 &amp; 1 \
+1 &amp; X</em>{22}
+\end{bmatrix} \in \mathcal{S}_+^2
+\text{, which is unsolvable} \</p>
+<p>\begin{cases}
+-(y_1 A_1 + y_2 A_2) \in \mathcal{S}<em>+^2 \
+2 y_2 &gt; 0
+\end{cases}
+\iff
+\begin{cases}
+\begin{bmatrix}
+-y_1 &amp; -y_2 \
+-y_2 &amp; 0 \
+\end{bmatrix} \in \mathcal{S}</em>+^2 \
+y_2 &gt; 0
+\end{cases}
+\text{, which is unsolvable}
+\end{gathered}
+$$</p>
+</blockquote>
+<p>The question is what goes wrong? Recall in the proof of the original Farkas&rsquo; lemma, we apply the separation theorem to the setting
+$$
+b \notin { Ax: x \in \R_+^n }
+$$
+The right-hand set is always closed. However, for an arbitrary closed proper cone $K$, the set
+$$
+{ (\langle a_1, x \rangle, \dots, \langle a_m, x \rangle): x \in K }
+$$
+is not always closed. Without closeness, we can&rsquo;t properly apply the <em>point-set separation theorem</em>. For the same reason, the optimum may not be attained in CLP.</p>
+<blockquote>
+<p>Example: Continue with the $A_1, A_2, b$ in the previous example. Consider the set
+$$
+S = { (\langle A_1, X \rangle, \langle A_2, X \rangle): X \in \mathcal{S}<em>+^2 }
+$$
+$(\langle A_1, X \rangle, \langle A_2, X \rangle) = (X</em>{11}, 2 X_{12})$ basically describes the trajectory of $X$ as $X$ varies in $\mathcal{S}<em>+^2$.
+$$
+X = \begin{bmatrix}
+X</em>{11} &amp; X_{12} \
+X_{12} &amp; X_{22}
+\end{bmatrix}
+$$
+If $X_{11} = 0$, the only way to make $X$ PSD is to make $X_{12} = 0$; if $X_{11} &gt; 0$, $X_{12}$ can be arbitrary because we can take $X_{22}$ sufficiently large such that $X_{11} X_{22} \ge X_{12}^2$. Therefore,
+$$
+S = { (0, 0) } \cup { (x, y): x &gt; 0, y \in \R }
+$$</p>
+</blockquote>
+<p>If only we can guarantee the closeness of transformation of a proper cone!</p>
+<blockquote>
+<p>Theorem: <strong>conic Farkas&rsquo; lemma</strong>. Suppose there exists a $\bar y \in \R^m$ satisfying
+$$
+-\sum_{i=1}^m \bar y_i a_i \in \intr(K^*) \tag{Slater condition}
+$$
+Then exactly one of the $\mathrm{(I)}$ and $\mathrm{(II)}$ is solvable.</p>
+<p>The spirit of the Slater condition (and many its variants) is that &ldquo;some vector is in the interior of some set&rdquo;. For this case, it guarantees the closeness of $K^*$.</p>
+</blockquote>
+<h3 id="strong-duality">Strong Duality</h3>
+<p>Recall the LP strong duality theorem: suppose that the primal is feasible and is bounded below (alternatively the dual is feasible and is bounded above); then, $v_p^* = v_d^*$ and both the primal and the dual have optimal solutions. The question is what about <strong>the duality gap and the attainment</strong> of CLP?</p>
+<blockquote>
+<p>Example: <strong>nonzero duality gap</strong>. Consider the SDP:
+$$
+\begin{aligned}
+v_p^* = \inf \quad &amp; y_1\
+\text{s.t.} \quad &amp;
+\begin{bmatrix}
+0 &amp; y_1 &amp; 0 \
+y_1 &amp; y_2 &amp; 0 \
+0 &amp; 0 &amp; 1+y_1
+\end{bmatrix} \in \mathcal{S}<em>3^+
+\end{aligned}
+$$
+$y_1 = 0, y_2 = 0$ is the only solution to it. Thus, $v_p^* = 0$. It can be rewritten as
+$$
+\begin{aligned}
+v_p^* = - \sup \quad &amp; \underbrace{[-1, 0]}</em>{b^T} [y_1, y_2]^T \
+\text{s.t.} \quad &amp;
+\underbrace{
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 \
+0 &amp; 0 &amp; 0 \
+0 &amp; 0 &amp; 1 \
+\end{bmatrix}
+}<em>{C} -
+y_1 
+\underbrace{
+\begin{bmatrix} 
+0 &amp; -1 &amp; 0 \
+-1 &amp; 0 &amp; 0 \
+0 &amp; 0 &amp; -1
+\end{bmatrix}
+}</em>{A_1} -
+y_2 
+\underbrace{
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 \
+0 &amp; 0 &amp; 0 \
+0 &amp; 0 &amp; -1 \
+\end{bmatrix}
+}_{A_2}</p>
+<p>\in \mathcal{S}<em>3^+
+\end{aligned}
+$$
+Its dual is
+$$
+\begin{aligned}
+v_d^* = -\inf \quad &amp; X</em>{33} \
+\text{s.t.} \quad &amp; -2 X_{12} - X_{33} = -1 \
+&amp; -X_{22} = 0 \
+&amp; X \in \mathcal{S}<em>+^3
+\end{aligned}
+$$
+The dual is feasible and $X</em>{33}$ can only be $1$. Thus, $v_d^* = -1$.</p>
+<p>Note that the duality gap is nonzero.</p>
+</blockquote>
+<blockquote>
+<p>Example: <strong>non-attainment</strong>. Consider the SOCP:
+$$
+\begin{aligned}
+v_p^* = \sup \quad &amp; -y_1 \
+\text{s.t.} \quad &amp; (y_1 + y_2, 1, y_1 - y_2) \in \mathcal{Q}^3
+\end{aligned}
+$$
+The constraint is
+$$
+y_1 + y_2 \ge \sqrt{1 + (y_1 - y_2)^2} \iff 4 y_1 y_2 \ge 1
+$$
+This implies that $y_1, y_2 &gt; 0$. Obviously, $v_p^* = 0$ but cannot be attained. It can be rewritten as
+$$
+\begin{aligned}
+v_p^* = \sup \quad &amp; [-1, 0] [y_1, y_2]^T \
+\text{s.t. }\quad &amp;
+\begin{bmatrix}
+0 \
+1 \
+0
+\end{bmatrix} - 
+y_1 \begin{bmatrix}
+-1 \
+0 \
+-1
+\end{bmatrix} -
+y_2 \begin{bmatrix}
+-1 \
+0 \
+1
+\end{bmatrix}
+\in \mathcal{Q}^3
+\end{aligned}
+$$
+Its dual is
+$$
+\begin{aligned}
+v_d^* = \inf \quad &amp; z_2 \
+\text{s.t.} \quad &amp; -z_1 - z_3 = -1 \
+&amp; -z_1 + z_3 = 0 \
+&amp; (z_1, z_2, z_3) \in \mathcal{Q}^3
+\end{aligned}
+$$
+The only solution is $(1/2, 0, 1/2)$ and the $v_d^* = 0$ is attained at this point.</p>
+</blockquote>
+<p>Despite the above, can we draw anything about the duality gap and the attainment of CLP?</p>
+<blockquote>
+<p>Theorem: <strong>strong duality of CLP</strong>. Suppose $\eqref{primal}$ is bounded and satisfies Slater&rsquo;s condition, i.e. there exists a feasible $\bar x$ such that $\bar x \in \intr(K)$. Then, $v_p^* = v_d^<em>$ and there exists an $y^</em>$ that is optimal to $\eqref{dual}$.</p>
+<p>On the other hand, suppose $\eqref{dual}$ is bounded and satisfies Slater&rsquo;s condition, i.e. there exists a feasible $\bar y$ such that $c - \sum_{i=1}^m \bar y_i a_i \in \intr(K^<em>)$. Then, $v_p^</em> = v_d^<em>$ and there exists an $x^</em>$ that is optimal to $\eqref{primal}$.</p>
+<p>With Slater&rsquo;s condition on one side, we can guarantee the zero duality gap and the attainment only on the other side. The CLP strong duality is much &ldquo;weaker&rdquo; than the LP strong duality. Refer to the <u>non-attainment</u> example.</p>
+<p>Pay attention what CLP strong duality does not say as well. Even though the Slater&rsquo;s condition is not satisfied, zero duality gap and attainment can hold. Refer to the <u>nonzero duality gap</u> example.</p>
+</blockquote>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%20https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

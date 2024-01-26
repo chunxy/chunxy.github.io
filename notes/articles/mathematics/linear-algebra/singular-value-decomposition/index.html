@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1317,8 +1345,9 @@
     <li><a href="#theorem">Theorem</a></li>
     <li><a href="#proof">Proof</a></li>
     <li><a href="#note">Note</a></li>
-    <li><a href="#eckart-young-mirsky-theorem">Eckart-Young-Mirsky Theorem</a></li>
-    <li><a href="#svd-and-eigen-decomposition">SVD and Eigen Decomposition</a></li>
+    <li><a href="#eckart-young-mirsky-theorem">Eckart-Young-Mirsky
+Theorem</a></li>
+    <li><a href="#svd-and-diagonalization">SVD and Diagonalization</a></li>
     <li><a href="#external-materials">External materials</a></li>
   </ul>
 </nav>
@@ -1429,81 +1458,110 @@ r = \rank A
 <h3 id="proof">Proof</h3>
 <p>This is shown by construction.</p>
 <ol type="1">
-<li><p>constructing <span class="math inline">\(V\)</span> and <span class="math inline">\(\Sigma\)</span></p>
-<p><span class="math inline">\(A^T A\)</span> is an <span class="math inline">\(n \times n\)</span> real symmetric matrix, so it can be diagonalized by an orthonormal matrix. Let <span class="math inline">\(V\)</span> be this matrix: <span class="math display">\[
-V^{-1} (A^T A) V = \Lambda \text{, where $\Lambda$ is the diagonal matrix consisting of $A^TA$&#39;s eigenvalues}
-\]</span> Because <span class="math inline">\(V\)</span> consists of orthonormal basis, we have <span class="math inline">\(V^T V = I\)</span>. Therefore, <span class="math display">\[
+<li><p>Construction of <span class="math inline">\(V\)</span> and <span class="math inline">\(\Sigma\)</span></p>
+<p><span class="math inline">\(A^T A\)</span> is an <span class="math inline">\(n \times n\)</span> real symmetric matrix, so it
+can be diagonalized by an orthogonal matrix. Let <span class="math inline">\(V\)</span> be this matrix and <span class="math inline">\(\Lambda\)</span> be the corresponding diagonal
+matrix consisting of <span class="math inline">\(A^TA\)</span>’s
+eigenvalues: <span class="math display">\[
+V^{-1} (A^T A) V = \Lambda
+\]</span> Let <span class="math inline">\(\Lambda\)</span> and <span class="math inline">\(V\)</span> be arranged such that corresponding
+eigenvalues of <span class="math inline">\(V\)</span> are decreasing.
+Because <span class="math inline">\(V\)</span> consists of orthonormal
+basis, we have <span class="math inline">\(V^T V = I\)</span>.
+Therefore, <span class="math display">\[
 V^T (A^T A) V = \Lambda
-\]</span> Let <span class="math inline">\(V\)</span>’s columns be arranged such that their corresponding eigenvalues are decreasing. Because <span class="math inline">\(\rank(A) = r\)</span>, <span class="math inline">\(\rank(A^T A) = r\)</span>. And because <span class="math inline">\(A^T A\)</span> is in the form of a covariance matrix, it has <span class="math inline">\(n\)</span> non-negative eigenvalues and <span class="math inline">\(r\)</span> is the number of its positive eigenvalues. Let <span class="math inline">\(\sigma_i = \sqrt{\lambda_i}, i = 1, 2, ..., n\)</span> (which are defined as <span class="math inline">\(A\)</span>’s the <strong>singular values</strong>).</p>
+\]</span> Because <span class="math inline">\(\rank(A) = r\)</span>,
+<span class="math inline">\(\rank(A^T A) = r\)</span>. And because <span class="math inline">\(A^T A\)</span> is positive semi-definite, it has
+<span class="math inline">\(n\)</span> non-negative real eigenvalues,
+<span class="math inline">\(r\)</span> of which are positive. Let <span class="math inline">\(\sigma_i = \sqrt{\lambda_i}, i = 1, 2, ...,
+n\)</span> (which are defined as <span class="math inline">\(A\)</span>’s the <strong>singular
+values</strong>).</p>
 <p><span class="math display">\[
 \begin{gather}
-\lambda_1, \lambda_2, ..., \lambda_r \ge 0, \lambda_r, \lambda_{r+1}, ..., \lambda_{n} = 0 \\
-\sigma_1, \sigma_2, ..., \sigma_r \ge 0, \sigma_r, \sigma_{r+1}, ..., \sigma_{n} = 0
+\lambda_1, \lambda_2, ..., \lambda_r &gt; 0, \lambda_r, \lambda_{r+1},
+..., \lambda_{n} = 0 \\
+\sigma_1, \sigma_2, ..., \sigma_r &gt; 0, \sigma_r, \sigma_{r+1}, ...,
+\sigma_{n} = 0
 \end{gather}
-\]</span> Let <span class="math inline">\(V_1 = [\v_1, \v_2, ..., \v_r], V_2 = [\v_{r+1}, \v_{r+2}, ..., \v_n], V = [V_1, V_2]\)</span>. Also let</p>
+\]</span> Let <span class="math inline">\(V_1 = [v_1, v_2, ..., v_r],
+V_2 = [v_{r+1}, v_{r+2}, ..., v_n], V = [V_1, V_2]\)</span>. Also
+let</p>
 <p><span class="math display">\[
-\Sigma_1 = 
+\Sigma_1 =
 \begin{bmatrix}
 \sigma_1 \\
 &amp; \sigma_2 \\
 &amp; &amp; \ddots \\
 &amp; &amp; &amp; \sigma_r
 \end{bmatrix}
-\]</span> Complement <span class="math inline">\(\Sigma_1\)</span> with <span class="math inline">\(0\)</span> to get the <span class="math inline">\(m \times n\)</span> matrix: <span class="math display">\[
+\]</span> Complement <span class="math inline">\(\Sigma_1\)</span> with
+<span class="math inline">\(0\)</span> to get the <span class="math inline">\(m \times n\)</span> matrix: <span class="math display">\[
 \Sigma =
 \begin{bmatrix}
 \Sigma_1 &amp; 0 \\
 0 &amp; 0 \\
 \end{bmatrix}
-\]</span> Since <span class="math inline">\(\rank(A^T A) = r\)</span>, <span class="math inline">\(\Nul(A^T A)\)</span> is of dimension <span class="math inline">\(n-r\)</span>. Because <span class="math inline">\(V_2\)</span> comprises of <span class="math inline">\(A^TA\)</span>’s eigenvectors whose eigenvalues are <span class="math inline">\(0\)</span>, <span class="math inline">\(V_2\)</span> has <span class="math inline">\(n - r\)</span> independent columns and <span class="math inline">\(A^T A V_2 = 0\)</span>. Therefore, <span class="math inline">\(V_2\)</span> spans <span class="math inline">\(\Nul(A^TA)\)</span> and thus <span class="math inline">\(\Nul(A)\)</span>. <span class="math display">\[
+\]</span> Since <span class="math inline">\(\rank(A^T A) = r\)</span>,
+<span class="math inline">\(\Nul(A^T A)\)</span> is of dimension <span class="math inline">\(n-r\)</span>. Because <span class="math inline">\(V_2\)</span> comprises of <span class="math inline">\(A^TA\)</span>’s eigenvectors whose eigenvalues are
+<span class="math inline">\(0\)</span>, <span class="math inline">\(V_2\)</span> has <span class="math inline">\(n -
+r\)</span> independent columns and <span class="math inline">\(A^T A V_2
+= 0\)</span>. Therefore, <span class="math inline">\(V_2\)</span> spans
+<span class="math inline">\(\Nul(A^TA)\)</span> and thus <span class="math inline">\(\Nul(A)\)</span>. <span class="math display">\[
 \begin{gather}
 I = VV^T = [V_1, V_2][V_1, V_2]^T = V_1 V_1^T + V_2 V_2^T \\
 A = A I = A V_1 V_1^T + A V_2 V_2^T = A V_1 V_1^T
 \end{gather}
 \]</span></p></li>
-<li><p>constructing <span class="math inline">\(U\)</span></p>
+<li><p>Construction of <span class="math inline">\(U\)</span></p>
 <p>Let <span class="math display">\[
 \begin{gather}
-\u_i \coloneq \frac{1}{\sigma_i} A \v_i, i = 1, 2, ..., r \\
-U_1 \coloneq [\u_1, \u_2, ..., \u_r]
+u_i \coloneq \frac{1}{\sigma_i} A v_i, i = 1, 2, ..., r \\
+U_1 \coloneq [u_1, u_2, ..., u_r]
 \end{gather}
-\]</span> Thus <span class="math inline">\(AV_1 = U_1\Sigma_1\)</span>. Also, <span class="math inline">\(U_1\)</span>’s columns are orthonormal: <span class="math display">\[
+\]</span> Thus <span class="math inline">\(AV_1 = U_1\Sigma_1\)</span>.
+Also, <span class="math inline">\(U_1\)</span>’s columns are
+orthonormal: <span class="math display">\[
 \begin{aligned}
-\u_i^T \u_j &amp;= (\frac{1}{\sigma_i} A \v_i)^T (\frac{1}{\sigma_j} A \v_j) \\
-&amp;= \frac{1}{\sigma_i\sigma_j} \v_i^T A^T A \v_j \\
-&amp;= \frac{1}{\sigma_i\sigma_j} \v_i^T \lambda_j \v_j \\
-&amp;= \frac{\sigma_j}{\sigma_i} \v_i^T \v_j \\
-&amp;= 
+u_i^T u_j &amp;= (\frac{1}{\sigma_i} A v_i)^T (\frac{1}{\sigma_j} A v_j)
+\\
+&amp;= \frac{1}{\sigma_i\sigma_j} v_i^T A^T A v_j \\
+&amp;= \frac{1}{\sigma_i\sigma_j} v_i^T \lambda_j v_j \\
+&amp;= \frac{\sigma_j}{\sigma_i} v_i^T v_j \\
+&amp;=
 \begin{cases}
 0 &amp; i \ne j \\
 1 &amp; i = j
 \end{cases}
 \end{aligned}
 \]</span></p>
-<p>Since <span class="math inline">\(u_i\)</span>’s are within <span class="math inline">\(\Col(A)\)</span> and are orthonormal as shown, plus that <span class="math inline">\(\rank(A) = r\)</span>, <span class="math inline">\(u_i\)</span>’s span the <span class="math inline">\(\Col(A)\)</span>.</p>
-<p>Let <span class="math inline">\(\Col(A)^\perp\)</span> be <span class="math inline">\(\Col(A)\)</span>’s complement, we have <span class="math inline">\(\Col(A)^\perp = \Nul(A^T)\)</span>. Let <span class="math inline">\(\{ \u_{r+1}, \u_{r+2}, \dots, \u_{m} \}\)</span> be an orthonormal basis of <span class="math inline">\(\Nul(A^T)\)</span> such that they are orthogonal to <span class="math inline">\(U_1\)</span>’s column vectors. We construct <span class="math inline">\(U\)</span> by:</p>
+<p>Since <span class="math inline">\(u_i\)</span>’s are within <span class="math inline">\(\Col(A)\)</span> and are orthonormal as shown,
+plus that <span class="math inline">\(\rank(A) = r\)</span>, <span class="math inline">\(u_i\)</span>’s span the <span class="math inline">\(\Col(A)\)</span>.</p>
+<p>Let <span class="math inline">\(\Col(A)^\perp\)</span> be <span class="math inline">\(\Col(A)\)</span>’s complement, we have <span class="math inline">\(\Col(A)^\perp = \Nul(A^T)\)</span>. Let <span class="math inline">\(\{ u_{r+1}, u_{r+2}, \dots, u_{m} \}\)</span> be
+an orthonormal basis of <span class="math inline">\(\Nul(A^T)\)</span>
+such that they are orthogonal to <span class="math inline">\(U_1\)</span>’s column vectors. We construct <span class="math inline">\(U\)</span> by:</p>
 <p><span class="math display">\[
 \begin{gather}
-U_2 \coloneq [\u_{r+1}, \u_{r+2}, ..., \u_{m}] \\
+U_2 \coloneq [u_{r+1}, u_{r+2}, ..., u_{m}] \\
 U \coloneq [U_1, U_2]
 \end{gather}
 \]</span></p></li>
-<li><p>proving that <span class="math inline">\(U \Sigma V^T = A\)</span> <span class="math display">\[
+<li><p>Proof of <span class="math inline">\(U \Sigma V^T = A\)</span>
+<span class="math display">\[
 \begin{aligned}
-U \Sigma V^T &amp;= [U_1, U_2] 
+U \Sigma V^T &amp;= [U_1, U_2]
 \begin{bmatrix}
 \Sigma_1 &amp; 0 \\
 0 &amp; 0 \\
 \end{bmatrix}
 \begin{bmatrix}
 V_1^T \\
-V_2^T \\ 
+V_2^T \\
 \end{bmatrix}
 \\
 &amp;= [U_1 \Sigma_1, 0]
 \begin{bmatrix}
 V_1^T \\
-V_2^T \\ 
+V_2^T \\
 \end{bmatrix}
 \\
 &amp;= U_1 \Sigma_1 V_1^T \\
@@ -1513,24 +1571,53 @@ V_2^T \\
 \]</span></p></li>
 </ol>
 <h3 id="note">Note</h3>
-<p>Note that SVD is essentially the addition of <span class="math inline">\(r\)</span> rank-<span class="math inline">\(1\)</span> matrix: <span class="math display">\[
-U \Sigma V^T = \sum_{i=1}^r \sigma_i \u_i \v_i^T
-\]</span> There is another view on <span class="math inline">\(U\)</span>: <span class="math display">\[
-A A^T U = [A A^T U_1, A A^T U_2]
-\]</span> Breaking it into two parts, <span class="math inline">\(\forall i = 1, 2, ..., r\)</span>, <span class="math display">\[
+<p>Note that SVD reveals that <span class="math inline">\(A\)</span> is
+essentially the addition of <span class="math inline">\(r\)</span>
+rank-<span class="math inline">\(1\)</span> matrix: <span class="math display">\[
+U \Sigma V^T = \sum_{i=1}^r \sigma_i u_i v_i^T
+\]</span> We have shown the construction process of <span class="math inline">\(A\)</span> as <span class="math inline">\(U \Sigma
+V^T\)</span> in the above proof, i.e. the existence of such
+decomposition, with which we can investigate into <span class="math inline">\(U\)</span>, <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(V\)</span>. Notice that <span class="math display">\[
 \begin{aligned}
-&amp;A A^T u_i = A A^T \frac{1}{\sigma_i} A \v_i \\
-&amp;= \frac{1}{\sigma_i} A (A^T A) \v_i \\
-&amp;= \frac{1}{\sigma_i} A \lambda_i \v_i \\
-&amp;= \lambda_i(\frac{1}{\sigma_i} A \v_i) \\
-&amp;= \lambda_i \u_i
+A A^T &amp;= U \Sigma V^T V \Sigma U^T \\
+A A^T &amp;= U \Sigma^2 U^T \\
+A A^T U &amp;= U \Sigma^2 U^T U \\
+A A^T U &amp;= U \Sigma^2
 \end{aligned}
-\]</span> <span class="math inline">\(U_1\)</span> is <span class="math inline">\(AA^T\)</span>’s concatenated eigenvectors, ordered by the magnitude of eigenvalues. <span class="math inline">\(U_2\)</span> is <span class="math inline">\(AA^T\)</span>’s concatenated eigenvectors with eigenvalues being <span class="math inline">\(0\)</span>: <span class="math display">\[
-A A^T U_2 = 0 = 0 U_2
-\]</span> In all, <span class="math inline">\(U\)</span> is the concatenated orthonormal eigenvectors of <span class="math inline">\(A A^T\)</span>. It doesn’t matter how <span class="math inline">\(U_2\)</span> is permuted.</p>
+\]</span> Since <span class="math inline">\(\Sigma\)</span> is a
+diagonal matrix, we can conclude that <span class="math inline">\(U\)</span> contains the eigenvectors of <span class="math inline">\(A A^T\)</span>. <span class="math inline">\(\Sigma^2\)</span> contains the eigenvalues of
+<span class="math inline">\(A A^T\)</span> as its diagonal entries.
+Similarly <span class="math display">\[
+\begin{aligned}
+A^T A &amp;= V \Sigma U^T U \Sigma V^T \\
+A^T A &amp;= V \Sigma^2 V^T \\
+A^T A V &amp;= V \Sigma^2 V^T V \\
+A^T A V &amp;= V \Sigma^2
+\end{aligned}
+\]</span> <span class="math inline">\(V\)</span> contains the
+eigenvectors of <span class="math inline">\(A^T A\)</span>. <span class="math inline">\(\Sigma^2\)</span> contains the eigenvalues of
+<span class="math inline">\(A^T A\)</span> as its diagonal entries.</p>
+<p>It is easy to verify that <span class="math inline">\(A A^T\)</span>
+and <span class="math inline">\(A^T A\)</span> actually have the same
+eigenvalues. And if <span class="math inline">\(v\)</span> is an
+eigenvector of <span class="math inline">\(A^T A\)</span>, <span class="math inline">\(A v\)</span> is an eigenvector of <span class="math inline">\(A A^T\)</span> with the same eigenvalue. The
+columns of <span class="math inline">\(U\)</span> are called the
+<strong>left-singular vectors</strong> of <span class="math inline">\(A\)</span> and the columns of <span class="math inline">\(V\)</span> are called the <strong>right-singular
+vectors</strong> of <span class="math inline">\(A\)</span>.</p>
+<p>The time complexity of SVD is <span class="math inline">\(O(\min\{
+m^2 n, n^2 m \})\)</span>, depending on whether <span class="math inline">\(A A^T\)</span> or <span class="math inline">\(A^T
+A\)</span> is used to solve <span class="math inline">\(\Sigma^2\)</span>.</p>
 <h2 id="eckart-young-mirsky-theorem">Eckart-Young-Mirsky Theorem</h2>
-<p>Given an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(X\)</span> of rank <span class="math inline">\(r \le \min(m,n)\)</span> and its SVD <span class="math inline">\(X = U \Sigma V^T\)</span>, where <span class="math inline">\(\Sigma = \diag(\sigma_1, \sigma_2, ..., \sigma_r)\)</span>, among all the <span class="math inline">\(m \times n\)</span> matrices of rank <span class="math inline">\(k \le r\)</span>, the best approximation to <span class="math inline">\(X\)</span> is <span class="math inline">\(Y^\star = U \Sigma_k V^T\)</span>, where <span class="math inline">\(\Sigma_k = \diag(\sigma_1, \sigma_2, ..., \sigma_k)\)</span>, when distance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <a href="/notes/articles/mathematics/linear-algebra/metrics/frobenius-normalization/">Frobenius norm</a>: <span class="math display">\[
+<p>Given an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(X\)</span> of rank <span class="math inline">\(r
+\le \min(m,n)\)</span> and its SVD <span class="math inline">\(X = U
+\Sigma V^T\)</span>, where <span class="math inline">\(\Sigma =
+\diag(\sigma_1, \sigma_2, ..., \sigma_r)\)</span>, among all the <span class="math inline">\(m \times n\)</span> matrices of rank <span class="math inline">\(k \le r\)</span>, the best approximation to <span class="math inline">\(X\)</span> is <span class="math inline">\(Y^\star
+= U \Sigma_k V^T\)</span>, where <span class="math inline">\(\Sigma_k =
+\diag(\sigma_1, \sigma_2, ..., \sigma_k)\)</span>, when distance between
+<span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <a href="/notes/articles/mathematics/linear-algebra/metrics/frobenius-normalization/">Frobenius norm</a>: <span class="math display">\[
 ||X - Y||_F = \sqrt{\sum_{ij}(X - Y)_{ij}^2}
+\]</span> Notice that in this case, <span class="math display">\[
+Y^\star = \sum_{i=1}^k \sigma_k u_k v_k^T
 \]</span> Firstly we prove that, if <span class="math inline">\(U\)</span> is orthogonal, then <span class="math inline">\(||U A||_F = ||A U||_F = ||A||_F\)</span>: <span class="math display">\[
 \begin{aligned}
 ||UA||_F^2 &amp;= \tr((U A)^T U A) \\
@@ -1538,17 +1625,22 @@ A A^T U_2 = 0 = 0 U_2
 &amp;= \tr(A^T A) \\
 &amp;= ||A||_F^2
 \end{aligned}
-\]</span> The same can be derived for <span class="math inline">\(||A U||_F\)</span>. Then for any <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(Y\)</span> of rank <span class="math inline">\(k \le r\)</span>,</p>
+\]</span> The same can be derived for <span class="math inline">\(||A
+U||_F\)</span>. Then for any <span class="math inline">\(m \times
+n\)</span> matrix <span class="math inline">\(Y\)</span> of rank <span class="math inline">\(k \le r\)</span>,</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp;||X - Y||_F^2 = ||U \Sigma V^T - Y||_F^2 \\
 &amp;= ||U^T U \Sigma V^T V - U^T Y V||_F^2 \\
 &amp;= ||\Sigma - U^T Y V||_F^2 \\
 \end{aligned}
-\]</span> Let <span class="math inline">\(Z = U^T Y V\)</span>, which is also of rank <span class="math inline">\(k\)</span>. <span class="math display">\[
+\]</span> Let <span class="math inline">\(Z = U^T Y V\)</span>, which is
+also of rank <span class="math inline">\(k\)</span>. <span class="math display">\[
 \begin{aligned}
-&amp;||X - Y||_F^2 = ||\Sigma - Z||_F^2 = \sum_{ij}(\Sigma_{ij} - Z_{ij})^2 \\
-&amp;= \sum_{i=1}^r (\sigma_{i} - Z_{ii})^2 + \sum_{i&gt;r}^{\min(m,n)} Z_{ii}^2 + \sum_{i \ne j} Z_{ij}^2 \\
+&amp;||X - Y||_F^2 = ||\Sigma - Z||_F^2 = \sum_{ij}(\Sigma_{ij} -
+Z_{ij})^2 \\
+&amp;= \sum_{i=1}^r (\sigma_{i} - Z_{ii})^2 + \sum_{i&gt;r}^{\min(m,n)}
+Z_{ii}^2 + \sum_{i \ne j} Z_{ij}^2 \\
 \end{aligned}
 \]</span> The minimum is achieved if <span class="math display">\[
 \begin{gather}
@@ -1560,12 +1652,21 @@ Z_{ij} = 0, 1 \le i \le M, 1 \le j \le N, i \ne j
 \end{gather}
 \]</span> Such <span class="math inline">\(Z\)</span> exists when <span class="math inline">\(Y = U \Sigma_k V^T\)</span>. Q.E.D.</p>
 <p>Note that Eckart-Young-Mirsky theorem also holds for <a href="/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/">spectral norm</a>.</p>
-<h2 id="svd-and-eigen-decomposition">SVD and Eigen Decomposition</h2>
-<p>It is easy to mix up SVD with <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization">eigen decomposition</a>. Notably, eigen decomposition factorizes square matrix while SVD factorizes any matrix. Also, not all square matrices can be applied with eigen decomposition but all matrices can be applied with SVD. Finally, SVD can be interpreted as rotation-scaling-rotation because <span class="math inline">\(U\)</span> and <span class="math inline">\(V^T\)</span> are orthonormal. But in eigen decomposition, <span class="math inline">\(P\)</span> and <span class="math inline">\(P^{-1}\)</span> are not necessarily orthonormal, unless in the case of real symmetric matrix.</p>
+<h2 id="svd-and-diagonalization">SVD and Diagonalization</h2>
+<p>It is easy to mix up SVD with <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization">diagonalization</a>. Notably,
+diagonalization factorizes square matrix while SVD factorizes any
+matrix. Also, not all square matrices can be diagonalized but all
+matrices can be applied with SVD. Finally, SVD can be interpreted as
+rotation-scaling-rotation because <span class="math inline">\(U\)</span>
+and <span class="math inline">\(V^T\)</span> are orthogonal. But in
+diagonalization, <span class="math inline">\(P\)</span> and <span class="math inline">\(P^{-1}\)</span> are not necessarily orthogonal,
+unless in the case of real symmetric matrix.</p>
 <h2 id="external-materials">External materials</h2>
 <p><a href="https://www.cnblogs.com/pinard/p/6251584.html">奇异值分解(SVD)原理与在降维中的应用</a></p>
-<p><a href="https://www.zhihu.com/question/22237507">奇异值的物理意义是什么？ - 知乎 (zhihu.com)</a></p>
-<p><a href="/uploads/Singular%20Value%20Decomposition.pdf" target="_blank">Singular Value Decomposition.pdf</a></p>
+<p><a href="https://www.zhihu.com/question/22237507">奇异值的物理意义是什么？
+- 知乎 (zhihu.com)</a></p>
+<p><a href="/uploads/Singular%20Value%20Decomposition.pdf" target="_blank">Singular
+Value Decomposition.pdf</a></p>
 
 
 
@@ -1656,7 +1757,7 @@ Z_{ij} = 0, 1 \le i \le M, 1 \le j \le N, i \ne j
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1706,7 +1807,7 @@ Z_{ij} = 0, 1 \le i \le M, 1 \le j \le N, i \ne j
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1793,7 +1894,7 @@ Z_{ij} = 0, 1 \le i \le M, 1 \le j \le N, i \ne j
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

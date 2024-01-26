@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1411,32 +1439,52 @@
             
 
 <h2 id="stirlings-approximation">Stirling’s Approximation</h2>
-<p>Stirling’s approximation, which states that <span class="math inline">\(\Gamma(n+1) \sim \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n\)</span> as <span class="math inline">\(n \to \infty\)</span>, is useful when estimating the order of <span class="math inline">\(n!\)</span>. Notably, it is quite accurate even when <span class="math inline">\(n\)</span> is small.</p>
-<p>The authentic proof entails Gamma function and Laplace’s method. However in integer case, Stirling’s approximation can be approached with Poisson distribution. Start from a Poisson distribution with mean <span class="math inline">\(\lambda\)</span>: <span class="math display">\[
+<p>Stirling’s approximation, which states that <span class="math inline">\(\Gamma(n+1) \sim \sqrt{2 \pi n} \left( \frac{n}{e}
+\right)^n\)</span> as <span class="math inline">\(n \to \infty\)</span>,
+is useful when estimating the order of <span class="math inline">\(n!\)</span>. Notably, it is quite accurate even
+when <span class="math inline">\(n\)</span> is small.</p>
+<p>The authentic proof entails Gamma function and Laplace’s method.
+However in integer case, Stirling’s approximation can be approached with
+Poisson distribution. Start from a Poisson distribution with mean <span class="math inline">\(\lambda\)</span>: <span class="math display">\[
 P(r ; \lambda) = e^{-\lambda} \frac{\lambda^r}{r!}
-\]</span> When <span class="math inline">\(X \sim P(\lambda_1)\)</span>, <span class="math inline">\(Y \sim P(\lambda_2)\)</span>, and suppose <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, <span class="math inline">\(X + Y \sim P(\lambda_1 + \lambda_2)\)</span>.</p>
+\]</span> When <span class="math inline">\(X \sim P(\lambda_1)\)</span>,
+<span class="math inline">\(Y \sim P(\lambda_2)\)</span>, and suppose
+<span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, <span class="math inline">\(X + Y \sim P(\lambda_1 + \lambda_2)\)</span>.</p>
 <ul>
 <li>Proof <span class="math display">\[
 \begin{aligned}
 &amp; \Pr(X + Y = r) = \sum_{k=0}^r \Pr(X = k) \Pr(Y = r-k) \\
-&amp;= \sum_{k=0}^r e^{-\lambda_1} \frac{\lambda_1^k}{k!} e^{-\lambda_2} \frac{\lambda_2^{r-k}}{(r-k)!} \\
-&amp;= \frac{e^{-(\lambda_1 + \lambda_2)}}{r!} \sum_{k=0}^r \frac{r!}{k! (r-k)!} \lambda_1^k \lambda_2^{r-k} \\
-&amp;= e^{-(\lambda_1 + \lambda_2)} \frac{(\lambda_1 + \lambda_2)^r}{r!} \\
+&amp;= \sum_{k=0}^r e^{-\lambda_1} \frac{\lambda_1^k}{k!} e^{-\lambda_2}
+\frac{\lambda_2^{r-k}}{(r-k)!} \\
+&amp;= \frac{e^{-(\lambda_1 + \lambda_2)}}{r!} \sum_{k=0}^r \frac{r!}{k!
+(r-k)!} \lambda_1^k \lambda_2^{r-k} \\
+&amp;= e^{-(\lambda_1 + \lambda_2)} \frac{(\lambda_1 + \lambda_2)^r}{r!}
+\\
 &amp;= P(r; \lambda_1 + \lambda_2)
 \end{aligned}
 \]</span></li>
 </ul>
-<p>Therefore, a random variable <span class="math inline">\(X \sim P(\lambda)\)</span> (with integer <span class="math inline">\(\lambda\)</span>) can be treated as the addition of <span class="math inline">\(\lambda\)</span> independent <span class="math inline">\(Y_i \sim P(1)\)</span>. By the central limit theorem, for a large <span class="math inline">\(\lambda\)</span>, <span class="math display">\[
-\mathbb \Pr(\frac{\underbrace{\sum_i Y_i}_X - \lambda}{\sqrt{\lambda}} \le x) \simeq \Phi(x)
-\]</span> Or put it another way, the mass of the Poisson distribution <span class="math inline">\(X\)</span> follows is well approximated by the density of the Gaussian distribution with mean <span class="math inline">\(\lambda\)</span> and variance <span class="math inline">\(\lambda\)</span>: <span class="math display">\[
+<p>Therefore, a random variable <span class="math inline">\(X \sim
+P(\lambda)\)</span> (with integer <span class="math inline">\(\lambda\)</span>) can be treated as the addition
+of <span class="math inline">\(\lambda\)</span> independent <span class="math inline">\(Y_i \sim P(1)\)</span>. By the central limit
+theorem, for a large <span class="math inline">\(\lambda\)</span>, <span class="math display">\[
+\mathbb \Pr(\frac{\underbrace{\sum_i Y_i}_X - \lambda}{\sqrt{\lambda}}
+\le x) \simeq \Phi(x)
+\]</span> Or put it another way, the mass of the Poisson distribution
+<span class="math inline">\(X\)</span> follows is well approximated by
+the density of the Gaussian distribution with mean <span class="math inline">\(\lambda\)</span> and variance <span class="math inline">\(\lambda\)</span>: <span class="math display">\[
 \begin{aligned}
 P(x;\lambda) &amp;\simeq N(x; \lambda, \lambda) \\
-e^{-r} \frac{\lambda^r}{r!} &amp;\approx \frac{1}{\sqrt{2\pi \lambda}} e^{-\frac{(r - \lambda)^2}{2\lambda}}
+e^{-r} \frac{\lambda^r}{r!} &amp;\approx \frac{1}{\sqrt{2\pi \lambda}}
+e^{-\frac{(r - \lambda)^2}{2\lambda}}
 \end{aligned}
-\]</span> Plug <span class="math inline">\(r = \lambda\)</span> into this formula and rearrange it to have <span class="math display">\[
+\]</span> Plug <span class="math inline">\(r = \lambda\)</span> into
+this formula and rearrange it to have <span class="math display">\[
 \begin{aligned}
-e^{-\lambda} \frac{\lambda^\lambda}{\lambda!} &amp;\approx \frac{1}{\sqrt{2\pi \lambda}} \\
-\lambda! &amp;\approx \sqrt{2\pi \lambda} \left( \frac{\lambda}{e} \right)^\lambda 
+e^{-\lambda} \frac{\lambda^\lambda}{\lambda!} &amp;\approx
+\frac{1}{\sqrt{2\pi \lambda}} \\
+\lambda! &amp;\approx \sqrt{2\pi \lambda} \left( \frac{\lambda}{e}
+\right)^\lambda
 \end{aligned}
 \]</span></p>
 
@@ -1523,7 +1571,7 @@ e^{-\lambda} \frac{\lambda^\lambda}{\lambda!} &amp;\approx \frac{1}{\sqrt{2\pi \
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1573,7 +1621,7 @@ e^{-\lambda} \frac{\lambda^\lambda}{\lambda!} &amp;\approx \frac{1}{\sqrt{2\pi \
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1660,7 +1708,7 @@ e^{-\lambda} \frac{\lambda^\lambda}{\lambda!} &amp;\approx \frac{1}{\sqrt{2\pi \
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

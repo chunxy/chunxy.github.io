@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." />
+  <meta name="description" content="Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in \R^{N \times 1}\), independent component analysis finds the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/" />
   <meta property="og:title" content="Independent Component Analysis | Chunxy&#39; Website" />
-  <meta property="og:description" content="Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\), find the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Assumption and Derivation Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis \(i\)) \(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in \R^{N \times 1}\), independent component analysis finds the \(N \times N\) mixing matrix \(A\) such that \(X = AS\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1316,7 +1344,8 @@
   <ul>
     <li><a href="#assumption-and-derivation">Assumption and Derivation</a>
       <ul>
-        <li><a href="#non-gaussian-and-pca">Non-Gaussian and <span>PCA</span></a></li>
+        <li><a href="#non-gaussian-and-pca">Non-Gaussian and
+<span>PCA</span></a></li>
       </ul>
     </li>
     <li><a href="#external-materials">External Materials</a></li>
@@ -1405,25 +1434,43 @@
             
 
 <h2 id="assumption-and-derivation">Assumption and Derivation</h2>
-<p>Suppose observations are the linear combination of signals. Also suppose that the number of signal sources is equal to the number of linearly mixed channel. Given observations (along the time axis <span class="math inline">\(i\)</span>) <span class="math inline">\(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in R^{N \times 1}\)</span>, find the <span class="math inline">\(N \times N\)</span> mixing matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(X = AS\)</span>. Columns of <span class="math inline">\(A\)</span> are the propagation weights from a signal source to observers. Therefore they are considered independent (and are thus called independent components).</p>
-<p><span class="math inline">\(A\)</span> is called mixing matrix and <span class="math inline">\(W = A^{-1}\)</span> is called unmixing matrix because <span class="math inline">\(S = WX\)</span>.</p>
-<p>Suppose <span class="math inline">\(A = U\Sigma V^T\)</span> by <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">SVD</a>. Assume observations are pre-centered:</p>
+<p>Suppose observations are the linear combination of signals. Also
+suppose that the number of signal sources is equal to the number of
+linearly mixed channel. Given observations (along the time axis <span class="math inline">\(i\)</span>) <span class="math inline">\(\mathcal{D} = \{x^{(i)}\}_{i=1}^M, x^{(i)} \in
+\R^{N \times 1}\)</span>, independent component analysis finds the <span class="math inline">\(N \times N\)</span> mixing matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(X
+= AS\)</span>. Columns of <span class="math inline">\(A\)</span> are the
+propagation weights from a signal source to observers. Therefore, they
+are considered independent (and are thus called independent
+components).</p>
+<p><span class="math inline">\(A\)</span> is called mixing matrix and
+<span class="math inline">\(W = A^{-1}\)</span> is called unmixing
+matrix because <span class="math inline">\(S = WX\)</span>.</p>
+<p>Suppose <span class="math inline">\(A = U\Sigma V^T\)</span> by <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">SVD</a>. Assume observations are
+pre-centered:</p>
 <p><span class="math display">\[
 \sum_{i=1}^Mx^{(i)} = 0
-\]</span> Assume that signals are independent and the variance of each signal is <span class="math inline">\(1\)</span> (taking the advantage of scale/sign ambiguity): <span class="math display">\[
+\]</span> Assume that signals are independent and the variance of each
+signal is <span class="math inline">\(1\)</span> (taking the advantage
+of scale/sign ambiguity): <span class="math display">\[
 \frac{1}{M}\sum_{i=1}^Ms^{(i)}(s^{(i)})^T = I
-\]</span> Then the covariance of <span class="math inline">\(X\)</span> can be calculated as <span class="math display">\[
+\]</span> Then the covariance of <span class="math inline">\(X\)</span>
+can be calculated as <span class="math display">\[
 \begin{aligned}
 C &amp;= \frac{1}{M}x^{(i)}(x^{(i)})^T \\
 &amp;= \frac{1}{M}As^{(i)}(As^{(i)})^T \\
 &amp;= \frac{1}{M}U\Sigma V^Ts^{(i)}(U\Sigma V^Ts^{(i)})^T \\
 &amp;= \frac{1}{M}U\Sigma V^Ts^{(i)}(s^{(i)})^TV\Sigma^T U^T \\
 &amp;= U\Sigma V^TIV\Sigma^T U^T \\
-&amp;= U\Sigma^2U^T \text{ (by property of SVD, note that $\Sigma$ is $n \times n$ diagonal)} \\
+&amp;= U\Sigma^2U^T \text{ (by property of SVD, note that $\Sigma$ is $n
+\times n$ diagonal)} \\
 \end{aligned}
 \]</span></p>
-<p>If our assumptions are correct, then the <span class="math inline">\(U\)</span> is the concatenated eigenvectors of the matrix <span class="math inline">\(CC^T\)</span>. <span class="math inline">\(\Sigma^2\)</span> is the diagonal matrix consisting of corresponding eigenvalues of the matrix <span class="math inline">\(C^TC\)</span>. Since <span class="math inline">\(C\)</span> is symmetric, <span class="math inline">\(CC^T = C^TC = C^2\)</span>.</p>
-<p>In other words, <span class="math inline">\(U\)</span> and <span class="math inline">\(\Sigma\)</span> can be solved by eigen decomposition. Define <span class="math inline">\(\hat x^{(i)} = \Sigma^{-1}U^Tx^{(i)}\)</span>: <span class="math display">\[
+<p>If our assumptions are correct, then the <span class="math inline">\(U\)</span> is the concatenated eigenvectors of the
+matrix <span class="math inline">\(CC^T\)</span>. <span class="math inline">\(\Sigma^2\)</span> is the diagonal matrix
+consisting of corresponding eigenvalues of the matrix <span class="math inline">\(C^TC\)</span>. Since <span class="math inline">\(C\)</span> is symmetric, <span class="math inline">\(CC^T = C^TC = C^2\)</span>.</p>
+<p>In other words, <span class="math inline">\(U\)</span> and <span class="math inline">\(\Sigma\)</span> can be solved by eigen
+decomposition. Define <span class="math inline">\(\hat x^{(i)} =
+\Sigma^{-1}U^Tx^{(i)}\)</span>: <span class="math display">\[
 \begin{aligned}
 \hat C &amp;= \frac{1}{M}\hat x^{(i)}(\hat x^{(i)})^T \\
 &amp;= \frac{1}{M}\Sigma^{-1}U^Tx^{(i)}(\Sigma^{-1}U^Tx^{(i)})^T \\
@@ -1436,12 +1483,19 @@ C &amp;= \frac{1}{M}x^{(i)}(x^{(i)})^T \\
 <p><span class="math display">\[
 S = WX = A^{-1}X = V\Sigma^{-1}U^TX = V\hat X
 \]</span></p>
-<p>The remaining job is to find the <span class="math inline">\(V\)</span>. We resort to multi-information, a generalization of mutual-information from Information Theory to judge how close a distribution is to statistical independence for multiple variables. <span class="math display">\[
-I(s) = \sum_{s \in \mathcal{S}}p(s)log\frac{p(s)}{\prod_jp(s_j)}
-\]</span> It is a non-negative quantity that reaches the minimum if and only if all variables are statistically independent.</p>
-<p>The multi-information can be written as a function of entropy, which is defined as <span class="math display">\[
-H(s) = -\sum_{s \in \mathcal{S}}p(s)logp(s)
-\]</span> The multi-information can be written as the difference between the sum of entropies of marginal distribution and the entropy of joint distribution <span class="math display">\[
+<p>The remaining job is to find the <span class="math inline">\(V\)</span>. We resort to multi-information, a
+generalization of mutual-information from Information Theory to judge
+how close a distribution is to statistical independence for multiple
+variables. <span class="math display">\[
+I(s) = \sum_{s \in \mathcal{S}}p(s) \log \frac{p(s)}{\prod_jp(s_j)}
+\]</span> It is a non-negative quantity that reaches the minimum if and
+only if all variables are statistically independent.</p>
+<p>The multi-information can be written as a function of entropy, which
+is defined as <span class="math display">\[
+H(s) = -\sum_{s \in \mathcal{S}}p(s) \log p(s)
+\]</span> The multi-information can be written as the difference between
+the sum of entropies of marginal distribution and the entropy of joint
+distribution <span class="math display">\[
 \begin{aligned}
 I(s) &amp;= \sum_jH(s_j) - H(s) \\
 &amp;= \sum_jH((V\hat x)_j) - H(V\hat x) \\
@@ -1449,18 +1503,46 @@ I(s) &amp;= \sum_jH(s_j) - H(s) \\
 &amp;= \sum_jH((V\hat x)_j) - (H(\hat x) + log1) \\
 &amp;= \sum_jH((V\hat x)_j) - H(\hat x) \\
 \end{aligned}
-\]</span> Because we are assuming signal are independent from each other, <span class="math display">\[
+\]</span> Because we are assuming signal are independent from each
+other, <span class="math display">\[
 \begin{aligned}
 V^\star &amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 &amp;= \arg \min_V\sum_jH((V\hat x)_j)
 \end{aligned}
-\]</span> Calculating entropy and then taking derivative is no easy task and therefore ICA algorithms focus on approximations or equivalences to the above equation. For example, it can be approximated by finding the rotation that maximizes the expected log-likelihood of the observed data by assuming that the source distributions are known.</p>
+\]</span> Calculating entropy and then taking derivative is no easy task
+and therefore ICA algorithms focus on approximations or equivalences to
+the above equation. For example, it can be approximated by finding the
+rotation that maximizes the expected log-likelihood of the observed data
+by assuming that the source distributions are known.</p>
 <h3 id="non-gaussian-and-pca">Non-Gaussian and <a href="/notes/articles/machine-learning/principal-component-analysis/">PCA</a></h3>
-<p>The key assumption of ICA is that signals are non-Gaussian. We are trying to recover the <span class="math inline">\(S\)</span> (by finding <span class="math inline">\(W\)</span>) to be as non-Gaussian as possible. <span class="math inline">\(\hat X\)</span> consists of independent components because its covariance matrix <span class="math inline">\(\hat C\)</span> is shown to be an identity matrix (and thus diagonal). <span class="math inline">\(S\)</span> is reconstructed by the linear combination of independent components. Thus it will be the most non-Gaussian when each variable is formed by exactly one component of <span class="math inline">\(\hat X\)</span> by Central Limit Theorem, i.e. <span class="math inline">\(S\)</span>’s components are independent.</p>
-<p>Consider the case when <span class="math inline">\(S\)</span> consists of <span class="math inline">\(N\)</span> independent Gaussian, which invalidate the above analysis. If we forcibly calculate <span class="math inline">\(V^\star\)</span>, due to the property of multi-variate Gaussian that its iso-density maps are spherical, then any <span class="math inline">\(N \times N\)</span> rotation matrix will be a solution to Equation (9), including the left singular matrix of <span class="math inline">\(X\)</span>, i.e. the concatenated eigenvectors of <span class="math inline">\(XX^T\)</span>, which is exactly the projection basis obtained in PCA. If any <span class="math inline">\(N \times N\)</span> rotation matrix can be a solution, there are infinite many solutions to <span class="math inline">\(A\)</span>, and thus ICA will just fail.</p>
-<p>The conclusion drawn above is based on the ideal case, i.e. many enough observations. Even in the real case where signals are Gaussian, we may get a unique solution to <span class="math inline">\(V^\star\)</span>.</p>
+<p>The key assumption of ICA is that signals are non-Gaussian. We are
+trying to recover the <span class="math inline">\(S\)</span> (by finding
+<span class="math inline">\(W\)</span>) to be as non-Gaussian as
+possible. <span class="math inline">\(\hat X\)</span> consists of
+independent components because its covariance matrix <span class="math inline">\(\hat C\)</span> is shown to be an identity matrix
+(and thus diagonal). <span class="math inline">\(S\)</span> is
+reconstructed by the linear combination of independent components. Thus
+it will be the most non-Gaussian when each variable is formed by exactly
+one component of <span class="math inline">\(\hat X\)</span> by Central
+Limit Theorem, i.e. <span class="math inline">\(S\)</span>’s components
+are independent.</p>
+<p>Consider the case when <span class="math inline">\(S\)</span>
+consists of <span class="math inline">\(N\)</span> independent Gaussian,
+which invalidate the above analysis. If we forcibly calculate <span class="math inline">\(V^\star\)</span>, due to the property of
+multi-variate Gaussian that its iso-density maps are spherical, then any
+<span class="math inline">\(N \times N\)</span> rotation matrix will be
+a solution to Equation (9), including the left singular matrix of <span class="math inline">\(X\)</span>, i.e. the concatenated eigenvectors of
+<span class="math inline">\(XX^T\)</span>, which is exactly the
+projection basis obtained in PCA. If any <span class="math inline">\(N
+\times N\)</span> rotation matrix can be a solution, there are infinite
+many solutions to <span class="math inline">\(A\)</span>, and thus ICA
+will just fail.</p>
+<p>The conclusion drawn above is based on the ideal case, i.e. many
+enough observations. Even in the real case where signals are Gaussian,
+we may get a unique solution to <span class="math inline">\(V^\star\)</span>.</p>
 <h2 id="external-materials">External Materials</h2>
-<p><a href="http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html">ICA</a></p>
+<p><a href="http://cis.legacy.ics.tkk.fi/aapo/papers/IJCNN99_tutorialweb/IJCNN99_tutorial3.html">Independent
+Component Analysis: A Tutorial (tkk.fi)</a></p>
 
 
 
@@ -1551,7 +1633,7 @@ V^\star &amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1601,7 +1683,7 @@ V^\star &amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1688,7 +1770,7 @@ V^\star &amp;= \arg \min_V\sum_jH((V\hat x)_j) - H(\hat x) \\
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

@@ -19,27 +19,51 @@
       <guid>https://chunxy.github.io/blogs/generating-covariance-matrix/</guid>
       <description>
 
-&lt;p&gt;Covariance matrix of a random vector can usually be deduced from the distribution’s property, or estimated from samples. But how to generate an arbitrary covariance matrix? How should we populate the entries in a square matrix so that it makes a legitimate covariance matrix?&lt;/p&gt;
+&lt;p&gt;Covariance matrix of a random vector can usually be deduced from the
+distribution’s property, or estimated from samples. But how to generate
+an arbitrary covariance matrix? How should we populate the entries in a
+square matrix so that it makes a legitimate covariance matrix?&lt;/p&gt;
 &lt;h2 id=&#34;first-method&#34;&gt;First Method&lt;/h2&gt;
-&lt;p&gt;In general, we construct the target covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt; by giving its eigenvalues and its orthonormal eigenvectors (&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/#Orthogonal Eigenvectors&#34;&gt;any real symmetric matrix, including the covariance matrix of course, can be constructed in this way&lt;/a&gt;). A diagonal matrix of eigenvalues (denoted as &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;) are easy to synthesize. It remains that how to synthesize a square matrix that has orthonormal column vectors.&lt;/p&gt;
-&lt;p&gt;Let the dimension of the target covariance matrix be &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;. Given an arbitrary square matrix &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; of dimension &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, we can decompose &lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;, which is a real symmetric matrix, into &lt;span class=&#34;math inline&#34;&gt;\(U \Lambda U^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the orthonormal matrix consisting of &lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt; is the diagonal matrix populated with &lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;’s eigenvalues, due to the property of real symmetric matrix.&lt;/p&gt;
+&lt;p&gt;In general, we construct the target covariance matrix &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt; by giving its eigenvalues and its
+orthonormal eigenvectors (&lt;a href=&#34;https://chunxy.github.io/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/#Orthogonal Eigenvectors&#34;&gt;any real
+symmetric matrix, including the covariance matrix of course, can be
+constructed in this way&lt;/a&gt;). A diagonal matrix of eigenvalues (denoted
+as &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt;) are easy to synthesize. It
+remains that how to synthesize a square matrix that has orthonormal
+column vectors.&lt;/p&gt;
+&lt;p&gt;Let the dimension of the target covariance matrix be &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;. Given an arbitrary square matrix &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; of dimension &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, we can decompose &lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;, which is a real symmetric matrix,
+into &lt;span class=&#34;math inline&#34;&gt;\(U \Lambda U^T\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; is the orthonormal matrix consisting of
+&lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;’s eigenvectors and &lt;span class=&#34;math inline&#34;&gt;\(\Lambda\)&lt;/span&gt; is the diagonal matrix populated
+with &lt;span class=&#34;math inline&#34;&gt;\(M M^T\)&lt;/span&gt;’s eigenvalues, due to
+the property of real symmetric matrix.&lt;/p&gt;
 &lt;p&gt;Then we define &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
 (M M^T)^{1/2} &amp;amp;\coloneqq U \Lambda^{1/2} U^T \\
 (M M^T)^{-1/2} &amp;amp;\coloneqq U \Lambda^{-1/2} U^T \\
 \end{align}
-\]&lt;/span&gt; We take &lt;span class=&#34;math inline&#34;&gt;\(E = (M M^T)^{-1/2} M\)&lt;/span&gt;. Now &lt;span class=&#34;math inline&#34;&gt;\(E\)&lt;/span&gt; will contain the orthonormal column vectors as expected. To verify, &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; We take &lt;span class=&#34;math inline&#34;&gt;\(E = (M M^T)^{-1/2}
+M\)&lt;/span&gt;. Now &lt;span class=&#34;math inline&#34;&gt;\(E\)&lt;/span&gt; will contain the
+orthonormal column vectors as expected. To verify, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-&amp;amp;E E^T = \left[ (M M^T)^{-1/2} M \right] \left[ M^T ((M M^T)^{-1/2})^T \right] \\
-&amp;amp;= \left[ (M M^T)^{-1/2} \right] \left[ M M^T \right] \left[ ((M M^T)^{-1/2})^T \right] \\
-&amp;amp;= \left[ U \Lambda^{-1/2} U^T \right] \left[ U \Lambda U^T \right] \left[ U \Lambda^{-1/2} U^T \right] \\
-&amp;amp;= U \Lambda^{-1/2} \underbrace{\left[ U^T U \right]}_{I} \Lambda \underbrace{\left[ U^T U \right]}_{I} \Lambda^{-1/2} U^T \\
+&amp;amp;E E^T = \left[ (M M^T)^{-1/2} M \right] \left[ M^T ((M
+M^T)^{-1/2})^T \right] \\
+&amp;amp;= \left[ (M M^T)^{-1/2} \right] \left[ M M^T \right] \left[ ((M
+M^T)^{-1/2})^T \right] \\
+&amp;amp;= \left[ U \Lambda^{-1/2} U^T \right] \left[ U \Lambda U^T \right]
+\left[ U \Lambda^{-1/2} U^T \right] \\
+&amp;amp;= U \Lambda^{-1/2} \underbrace{\left[ U^T U \right]}_{I} \Lambda
+\underbrace{\left[ U^T U \right]}_{I} \Lambda^{-1/2} U^T \\
 &amp;amp;= U \Lambda^{-1/2} \Lambda \Lambda^{-1/2} U^T = U U^T = I
 \end{aligned}
-\]&lt;/span&gt; Thus, the targeting covariance matrix can be constructed as &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = E D E^T\)&lt;/span&gt;.&lt;/p&gt;
+\]&lt;/span&gt; Thus, the targeting covariance matrix can be constructed as
+&lt;span class=&#34;math inline&#34;&gt;\(\Sigma = E D E^T\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;second-method&#34;&gt;Second Method&lt;/h2&gt;
-&lt;p&gt;The easiest way to generate a legitimate covariance matrix would be to arbitrarily synthesize a square matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; of dimension &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, and take &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = A A^T\)&lt;/span&gt; (see &lt;a href=&#34;https://stats.stackexchange.com/questions/215497/how-to-create-an-arbitrary-covariance-matrix&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;By doing so, we can obtain a covariance matrix very fast. But you lose the control over it. Since &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; is totally arbitrary, you can tell little about &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’ s eigenvalues, eigenvectors, etc.&lt;/p&gt;
+&lt;p&gt;The easiest way to generate a legitimate covariance matrix would be
+to arbitrarily synthesize a square matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; of dimension &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, and take &lt;span class=&#34;math inline&#34;&gt;\(\Sigma = A A^T\)&lt;/span&gt; (see &lt;a href=&#34;https://stats.stackexchange.com/questions/215497/how-to-create-an-arbitrary-covariance-matrix&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;By doing so, we can obtain a covariance matrix very fast. But you
+lose the control over it. Since &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;
+is totally arbitrary, you can tell little about &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’ s eigenvalues, eigenvectors,
+etc.&lt;/p&gt;
 
 
 </description>
@@ -50,7 +74,9 @@
       <link>https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</link>
       <pubDate>Thu, 23 Jun 2022 15:03:21 +0000</pubDate>
       <guid>https://chunxy.github.io/blogs/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</guid>
-      <description>&lt;p&gt;本文为&lt;a href=&#34;https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/&#34;&gt;Elliptic Curve Cryptography&lt;/a&gt;系列文章的翻译，原文深入浅出，非常值得一读。这篇译文刨去了背景知识，相当于是一篇纯纯的学习笔记了。不过由于我本人完全是一个密码学门外汉，专业水平有限，不足之处多多包涵。&lt;/p&gt;
+      <description>&lt;p&gt;本文为&lt;a href=&#34;https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/&#34;&gt;Elliptic
+Curve
+Cryptography&lt;/a&gt;系列文章的翻译，原文深入浅出，非常值得一读。这篇译文刨去了背景知识，相当于是一篇纯纯的学习笔记了。不过由于我本人完全是一个密码学门外汉，专业水平有限，不足之处多多包涵。&lt;/p&gt;
 &lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
   &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
   &lt;nav id=&#34;TableOfContents&#34;&gt;
@@ -61,7 +87,8 @@
         &lt;li&gt;&lt;a href=&#34;#椭圆曲线&#34;&gt;椭圆曲线&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#群group&#34;&gt;群（Group）&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#椭圆曲线上的群&#34;&gt;椭圆曲线上的群&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&#34;#标量积scalar-multiplication&#34;&gt;标量积（Scalar Multiplication）&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#标量积scalar-multiplication&#34;&gt;标量积（Scalar
+Multiplication）&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#对数运算logarithm&#34;&gt;对数运算（Logarithm）&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
@@ -71,13 +98,16 @@
         &lt;li&gt;&lt;a href=&#34;#有限域上的椭圆曲线&#34;&gt;有限域上的椭圆曲线&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#再看群&#34;&gt;再看群&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#标量积与子群&#34;&gt;标量积与子群&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&#34;#离散对数运算discrete-logarithm&#34;&gt;离散对数运算（Discrete Logarithm）&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#离散对数运算discrete-logarithm&#34;&gt;离散对数运算（Discrete
+Logarithm）&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#椭圆曲线加密算法&#34;&gt;椭圆曲线加密算法&lt;/a&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;a href=&#34;#elliptic-curve-diffie-hellman&#34;&gt;Elliptic Curve Diffie-Hellman&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&#34;#elliptic-curve-digital-signature-algorithm&#34;&gt;Elliptic Curve Digital Signature Algorithm&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#elliptic-curve-diffie-hellman&#34;&gt;Elliptic Curve
+Diffie-Hellman&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#elliptic-curve-digital-signature-algorithm&#34;&gt;Elliptic Curve
+Digital Signature Algorithm&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#再看离散对数运算&#34;&gt;再看离散对数运算&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#ecc与rsa&#34;&gt;ECC与RSA&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
@@ -89,27 +119,39 @@
 &lt;h2 id=&#34;加密算法分支&#34;&gt;加密算法分支&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;基于椭圆曲线&lt;/p&gt;
-&lt;p&gt;基于椭圆曲线的加密算法包括ECC（Elliptic Curve Cryptography）、ECDH和ECDSA。ECDH与ECDSA是基于ECC发展而来。&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;基于椭圆曲线的加密算法包括ECC（Elliptic Curve
+Cryptography）、ECDH和ECDSA。ECDH与ECDSA是基于ECC发展而来。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;基于模余运算&lt;/p&gt;
 &lt;p&gt;基于模余运算的加密算法包括RSA、DSA、DH以及其他衍生算法。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;椭圆曲线与群&#34;&gt;椭圆曲线与群&lt;/h2&gt;
 &lt;h3 id=&#34;椭圆曲线&#34;&gt;椭圆曲线&lt;/h3&gt;
-&lt;p&gt;一条椭圆曲线就是一组满足&lt;span class=&#34;math inline&#34;&gt;\(y^2 = x^3 + ax + b\)&lt;/span&gt;且&lt;span class=&#34;math inline&#34;&gt;\(4a^3 + 27b^2 \ne 0\)&lt;/span&gt;的二维平面点集。&lt;span class=&#34;math inline&#34;&gt;\(4a^3 + 27b^2 \ne 0\)&lt;/span&gt;的条件是为了保证曲线不存在&lt;strong&gt;奇点（singularity）&lt;/strong&gt;；&lt;span class=&#34;math inline&#34;&gt;\(y^2 = x^3 + ax + b\)&lt;/span&gt;又被称作椭圆曲线的&lt;strong&gt;Weierstrass normal form&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;除了这条曲线上的点，我们还需要一个无穷远处的点，我们用&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;这个特殊的符号来表示这个点，所以椭圆曲线更准确的表达式为 &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;一条椭圆曲线就是一组满足&lt;span class=&#34;math inline&#34;&gt;\(y^2 = x^3 + ax +
+b\)&lt;/span&gt;且&lt;span class=&#34;math inline&#34;&gt;\(4a^3 + 27b^2 \ne
+0\)&lt;/span&gt;的二维平面点集。&lt;span class=&#34;math inline&#34;&gt;\(4a^3 + 27b^2 \ne
+0\)&lt;/span&gt;的条件是为了保证曲线不存在&lt;strong&gt;奇点（singularity）&lt;/strong&gt;；&lt;span class=&#34;math inline&#34;&gt;\(y^2 = x^3 + ax +
+b\)&lt;/span&gt;又被称作椭圆曲线的&lt;strong&gt;Weierstrass normal
+form&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;除了这条曲线上的点，我们还需要一个无穷远处的点，我们用&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;这个特殊的符号来表示这个点，所以椭圆曲线更准确的表达式为
+&lt;span class=&#34;math display&#34;&gt;\[
 \{(x,y) \in \R^2 | y^2 = x^3 + ax + b, 4a^3 + 27b^2 \ne 0\} \cup \{0\}
 \]&lt;/span&gt; 椭圆曲线的一条显而易见的性质是，它是关于&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;轴对称的。&lt;/p&gt;
 &lt;h3 id=&#34;群group&#34;&gt;群（Group）&lt;/h3&gt;
 &lt;p&gt;一个集合&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;加上一个二元运算&lt;span class=&#34;math inline&#34;&gt;\(\oplus\)&lt;/span&gt;，若满足以下条件，就构成了数学上的一个&lt;strong&gt;群&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;封闭性（closure）：&lt;span class=&#34;math inline&#34;&gt;\(a \in G, b \in G \to a \oplus b \in G\)&lt;/span&gt;；&lt;/li&gt;
-&lt;li&gt;结合律（associativity）：&lt;span class=&#34;math inline&#34;&gt;\((a + b) + c = a + (b + c)\)&lt;/span&gt;；&lt;/li&gt;
-&lt;li&gt;存在一个单位元（identity element）&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(a + 0 = 0 + a = a\)&lt;/span&gt;，即单位元与任何元素进行运算，不改变该元素的值；&lt;/li&gt;
+&lt;li&gt;封闭性（closure）：&lt;span class=&#34;math inline&#34;&gt;\(a \in G, b \in G \to
+a \oplus b \in G\)&lt;/span&gt;；&lt;/li&gt;
+&lt;li&gt;结合律（associativity）：&lt;span class=&#34;math inline&#34;&gt;\((a + b) + c = a
++ (b + c)\)&lt;/span&gt;；&lt;/li&gt;
+&lt;li&gt;存在一个单位元（identity element）&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(a + 0
+= 0 + a =
+a\)&lt;/span&gt;，即单位元与任何元素进行运算，不改变该元素的值；&lt;/li&gt;
 &lt;li&gt;每个数都存在一个逆元（inverse）。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;若该群进一步满足&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;交换律（commutativity）：&lt;span class=&#34;math inline&#34;&gt;\(a + b = b + a\)&lt;/span&gt;。&lt;/li&gt;
+&lt;li&gt;交换律（commutativity）：&lt;span class=&#34;math inline&#34;&gt;\(a + b = b +
+a\)&lt;/span&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;则称该群为&lt;strong&gt;阿贝尔群（Abelian group）&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;椭圆曲线上的群&#34;&gt;椭圆曲线上的群&lt;/h3&gt;
@@ -118,8 +160,12 @@
 &lt;li&gt;&lt;p&gt;定义无穷远处的&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;为单位元；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;定义逆元为该点关于&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;轴另一侧的对称点；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;定义二元运算&lt;span class=&#34;math inline&#34;&gt;\(\oplus\)&lt;/span&gt;如下：&lt;/p&gt;
-&lt;p&gt;若一条直线与椭圆曲线的三个交点分别为&lt;span class=&#34;math inline&#34;&gt;\(P,Q,R\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(P \oplus Q \oplus R = 0\)&lt;/span&gt;，我们称这三个点是&lt;strong&gt;对齐的（aligned）&lt;/strong&gt;。在此处我们没有规定三个点之间的顺序，即三个点之间可以任意交换位置，也就是说我们的定义的二元运算是满足交换律的，我们定义的群是一个阿贝尔群。&lt;/p&gt;
-&lt;p&gt;给定两个非零、非对称的点&lt;span class=&#34;math inline&#34;&gt;\(P = (x_P, y_p), Q = (x_q, y_Q)\)&lt;/span&gt;，我们可以很轻松地找到&lt;span class=&#34;math inline&#34;&gt;\(R = P \oplus Q\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;若一条直线与椭圆曲线的三个交点分别为&lt;span class=&#34;math inline&#34;&gt;\(P,Q,R\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(P
+\oplus Q \oplus R =
+0\)&lt;/span&gt;，我们称这三个点是&lt;strong&gt;对齐的（aligned）&lt;/strong&gt;。在此处我们没有规定三个点之间的顺序，即三个点之间可以任意交换位置，也就是说我们的定义的二元运算是满足交换律的，我们定义的群是一个阿贝尔群。&lt;/p&gt;
+&lt;p&gt;给定两个非零、非对称的点&lt;span class=&#34;math inline&#34;&gt;\(P = (x_P, y_p), Q
+= (x_q, y_Q)\)&lt;/span&gt;，我们可以很轻松地找到&lt;span class=&#34;math inline&#34;&gt;\(R
+= P \oplus Q\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
 x_R &amp;amp;= m^2 - x_P - x_Q \\
 y_R &amp;amp;= y_P + m(x_R - x_P) \\
@@ -132,33 +178,45 @@ m = \begin{cases}
 \end{cases}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;标量积scalar-multiplication&#34;&gt;标量积（Scalar Multiplication）&lt;/h3&gt;
-&lt;p&gt;给定之前的二元加法运算，我们可以定义出相应的群中元素与标量之间的乘法运算： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;h3 id=&#34;标量积scalar-multiplication&#34;&gt;标量积（Scalar
+Multiplication）&lt;/h3&gt;
+&lt;p&gt;给定之前的二元加法运算，我们可以定义出相应的群中元素与标量之间的乘法运算：
+&lt;span class=&#34;math display&#34;&gt;\[
 n P  = \underbrace{P + \dots + P}_{n \text{ times}}
-\]&lt;/span&gt; 这样的乘法运算可以在&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\log n)\)&lt;/span&gt;时间内完成。&lt;/p&gt;
+\]&lt;/span&gt; 这样的乘法运算可以在&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\log
+n)\)&lt;/span&gt;时间内完成。&lt;/p&gt;
 &lt;h3 id=&#34;对数运算logarithm&#34;&gt;对数运算（Logarithm）&lt;/h3&gt;
 &lt;p&gt;给定&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;，我们可以很高效地完成标量积运算&lt;span class=&#34;math inline&#34;&gt;\(Q = nP\)&lt;/span&gt;；但如果给定&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;，我们如何计算出对数运算（虽然这里是除法，但是为了和密码学中的标记保持一致，这里使用了对数）&lt;span class=&#34;math inline&#34;&gt;\(n = Q \div P\)&lt;/span&gt;呢？&lt;/p&gt;
 &lt;h2 id=&#34;椭圆曲线与有限域&#34;&gt;椭圆曲线与有限域&lt;/h2&gt;
 &lt;h3 id=&#34;有限域finite-field&#34;&gt;有限域（Finite Field）&lt;/h3&gt;
-&lt;p&gt;有限域首先是一系列元素的集合，比如说由整数模余某个质数&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;得到的集合（通常表示为&lt;span class=&#34;math inline&#34;&gt;\(\Z/p\)&lt;/span&gt;或&lt;span class=&#34;math inline&#34;&gt;\(\newcommand{F}{\mathbb F} \F_p\)&lt;/span&gt;）；有限域还定义了两种二元运算：加法和乘法，且这两种运算应该满足如下条件：&lt;/p&gt;
+&lt;p&gt;有限域首先是一系列元素的集合，比如说由整数模余某个质数&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;得到的集合（通常表示为&lt;span class=&#34;math inline&#34;&gt;\(\Z/p\)&lt;/span&gt;或&lt;span class=&#34;math inline&#34;&gt;\(\newcommand{F}{\mathbb F}
+\F_p\)&lt;/span&gt;）；有限域还定义了两种二元运算：加法和乘法，且这两种运算应该满足如下条件：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;在有限域上都是封闭的、满足结合律以及交换律的；&lt;/li&gt;
 &lt;li&gt;存在单位元；&lt;/li&gt;
 &lt;li&gt;每个元素都存在相应的逆元。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;除此之外，乘法运算还应该满足分配律（distributive）：&lt;span class=&#34;math inline&#34;&gt;\(x \cdot (y + z) = x \cdot y + x \cdot z\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;除此之外，乘法运算还应该满足分配律（distributive）：&lt;span class=&#34;math inline&#34;&gt;\(x \cdot (y + z) = x \cdot y + x \cdot
+z\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\F_p\)&lt;/span&gt;包含了从&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;到&lt;span class=&#34;math inline&#34;&gt;\(p-1\)&lt;/span&gt;的所有整数，而加法、乘法操作之后要追加模余（除数为&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;）操作。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;若&lt;span class=&#34;math inline&#34;&gt;\(a + b = 0 \pmod p\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;互为&lt;strong&gt;加法逆元（additive inverse）&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(a=-b, b=-a\)&lt;/span&gt;；&lt;/li&gt;
-&lt;li&gt;若&lt;span class=&#34;math inline&#34;&gt;\(ab = 1 \pmod o\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;互为&lt;strong&gt;乘法逆元（multiplicative inverse）&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(a=b^{-1},b=a^{-1}\)&lt;/span&gt;；&lt;span class=&#34;math inline&#34;&gt;\(xy^{-1}\)&lt;/span&gt;有时也表示为&lt;span class=&#34;math inline&#34;&gt;\(x/y\)&lt;/span&gt;；&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的乘法逆元可以通过Extended Euclidean Algorithm，其时间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\log n)\)&lt;/span&gt;。&lt;/li&gt;
+&lt;li&gt;若&lt;span class=&#34;math inline&#34;&gt;\(a + b = 0 \pmod p\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;互为&lt;strong&gt;加法逆元（additive
+inverse）&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(a=-b,
+b=-a\)&lt;/span&gt;；&lt;/li&gt;
+&lt;li&gt;若&lt;span class=&#34;math inline&#34;&gt;\(ab = 1 \pmod o\)&lt;/span&gt;，则&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;互为&lt;strong&gt;乘法逆元（multiplicative
+inverse）&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(a=b^{-1},b=a^{-1}\)&lt;/span&gt;；&lt;span class=&#34;math inline&#34;&gt;\(xy^{-1}\)&lt;/span&gt;有时也表示为&lt;span class=&#34;math inline&#34;&gt;\(x/y\)&lt;/span&gt;；&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的乘法逆元可以通过Extended Euclidean
+Algorithm，其时间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\log
+n)\)&lt;/span&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;可以证明，&lt;span class=&#34;math inline&#34;&gt;\(\F_p\)&lt;/span&gt;也是一个阿贝尔群。&lt;/p&gt;
 &lt;h3 id=&#34;有限域上的椭圆曲线&#34;&gt;有限域上的椭圆曲线&lt;/h3&gt;
 &lt;p&gt;椭圆曲线本身的定义为： &lt;span class=&#34;math display&#34;&gt;\[
 \{(x,y) \in \R^2 | y^2 = x^3 + ax + b, 4a^3 + 27b^2 \ne 0\} \cup \{0\}
 \]&lt;/span&gt; 加上有限域的限制之后，变为 &lt;span class=&#34;math display&#34;&gt;\[
-\{(x,y) \in \F^2 | y^2 = x^3 + ax + b \pmod p, 4a^3 + 27b^2 \ne 0 \pmod p, a, b \in \F_p \} \cup \{0\}
-\]&lt;/span&gt; 由于有限域的限制，此时所有的点全部出现第一象限。该图像关于&lt;span class=&#34;math inline&#34;&gt;\(y = p / 2\)&lt;/span&gt;对称，因为若&lt;span class=&#34;math inline&#34;&gt;\(y_1 + y_2 = p\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
+\{(x,y) \in \F^2 | y^2 = x^3 + ax + b \pmod p, 4a^3 + 27b^2 \ne 0 \pmod
+p, a, b \in \F_p \} \cup \{0\}
+\]&lt;/span&gt;
+由于有限域的限制，此时所有的点全部出现第一象限。该图像关于&lt;span class=&#34;math inline&#34;&gt;\(y = p / 2\)&lt;/span&gt;对称，因为若&lt;span class=&#34;math inline&#34;&gt;\(y_1 + y_2 = p\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 y_1^2 &amp;amp;= (p - y_2)^2 \\
 &amp;amp;= p^2 - 2py_2 + y_2^2 \\
@@ -167,12 +225,18 @@ y_1^2 &amp;amp;= (p - y_2)^2 \\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;再看群&#34;&gt;再看群&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;对于一个点&lt;span class=&#34;math inline&#34;&gt;\(Q = (x_Q, y_Q)\)&lt;/span&gt;，其逆元&lt;span class=&#34;math inline&#34;&gt;\(-Q\)&lt;/span&gt;定义为&lt;span class=&#34;math inline&#34;&gt;\(-Q = (x_Q, -y_Q \mod p)\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;我们这样定义有限域上椭圆曲线上的点之间的二元运算&lt;span class=&#34;math inline&#34;&gt;\(\oplus\)&lt;/span&gt;，同之前一样，三个对齐的点（aligned points）&lt;span class=&#34;math inline&#34;&gt;\(P,Q,R\)&lt;/span&gt;满足 &lt;span class=&#34;math display&#34;&gt;\[
+&lt;li&gt;&lt;p&gt;对于一个点&lt;span class=&#34;math inline&#34;&gt;\(Q = (x_Q,
+y_Q)\)&lt;/span&gt;，其逆元&lt;span class=&#34;math inline&#34;&gt;\(-Q\)&lt;/span&gt;定义为&lt;span class=&#34;math inline&#34;&gt;\(-Q = (x_Q, -y_Q \mod p)\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我们这样定义有限域上椭圆曲线上的点之间的二元运算&lt;span class=&#34;math inline&#34;&gt;\(\oplus\)&lt;/span&gt;，同之前一样，三个对齐的点（aligned
+points）&lt;span class=&#34;math inline&#34;&gt;\(P,Q,R\)&lt;/span&gt;满足 &lt;span class=&#34;math display&#34;&gt;\[
 P \oplus Q \oplus R = 0
-\]&lt;/span&gt; 只不过这里“对齐”的含义与之前有所不同，之前的对齐指的是几何上的共线，即三个点满足&lt;span class=&#34;math inline&#34;&gt;\(ax + by + c = 0\)&lt;/span&gt;；而这里的对齐指的是： &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt;
+只不过这里“对齐”的含义与之前有所不同，之前的对齐指的是几何上的共线，即三个点满足&lt;span class=&#34;math inline&#34;&gt;\(ax + by + c = 0\)&lt;/span&gt;；而这里的对齐指的是：
+&lt;span class=&#34;math display&#34;&gt;\[
 ax + by + c = 0 \pmod p
-\]&lt;/span&gt; 有趣的是，计算加法的公式和之前没有发生太大变化（&lt;a href=&#34;https://arxiv.org/pdf/1710.00214&#34;&gt;证明&lt;/a&gt;）。给定两个非零、非对称的点&lt;span class=&#34;math inline&#34;&gt;\(P = (x_P, y_p), Q = (x_q, y_Q)\)&lt;/span&gt;，我们可以很轻松地找到&lt;span class=&#34;math inline&#34;&gt;\(R = P \oplus Q\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; 有趣的是，计算加法的公式和之前没有发生太大变化（&lt;a href=&#34;https://arxiv.org/pdf/1710.00214&#34;&gt;证明&lt;/a&gt;）。给定两个非零、非对称的点&lt;span class=&#34;math inline&#34;&gt;\(P = (x_P, y_p), Q = (x_q,
+y_Q)\)&lt;/span&gt;，我们可以很轻松地找到&lt;span class=&#34;math inline&#34;&gt;\(R = P
+\oplus Q\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
 x_R &amp;amp;= (m^2 - x_P - x_Q) \mod p \\
 y_R &amp;amp;= (y_P + m(x_R - x_P)) \mod p \\
@@ -187,26 +251,35 @@ m =
 \end{cases}
 \]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;群中元素的个数叫做群的&lt;strong&gt;秩（order）&lt;/strong&gt;，可以通过&lt;a href=&#34;https://en.wikipedia.org/wiki/Schoof%27s_algorithm&#34;&gt;Schoof’s algorithm&lt;/a&gt;计算求得。&lt;/p&gt;
+&lt;p&gt;群中元素的个数叫做群的&lt;strong&gt;秩（order）&lt;/strong&gt;，可以通过&lt;a href=&#34;https://en.wikipedia.org/wiki/Schoof%27s_algorithm&#34;&gt;Schoof’s
+algorithm&lt;/a&gt;计算求得。&lt;/p&gt;
 &lt;h3 id=&#34;标量积与子群&#34;&gt;标量积与子群&lt;/h3&gt;
 &lt;p&gt;标量积依旧遵循之前的定义，给定正整数&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;和群中的点&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
 nP = \underbrace{P + \dots + P}_{n \text{ times}}
-\]&lt;/span&gt; 标量积其实就是对某个点&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;不断做加法，其中一个有趣的性质是，&lt;span class=&#34;math inline&#34;&gt;\(0P, 1P, 2P, \dots\)&lt;/span&gt;的结果会以某个最小正周期周期&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;循环（&lt;a href=&#34;https://en.wikipedia.org/wiki/Subgroup#Basic_properties_of_subgroups&#34;&gt;证明&lt;/a&gt;）。这也就意味着，群中对加法&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;的倍数是关于加法封闭的（closed under addition），它们又构成了一个循环子群（cyclic subgroup），&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;又称作这个循环子群的&lt;strong&gt;基点（base point/generator）&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;是这个&lt;strong&gt;循环子群的秩（subgroup order）&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;根据&lt;a href=&#34;https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)&#34;&gt;Lagrange’s theorem&lt;/a&gt;，子群的秩是其父群的秩的约数。&lt;/p&gt;
+\]&lt;/span&gt; 标量积其实就是对某个点&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;不断做加法，其中一个有趣的性质是，&lt;span class=&#34;math inline&#34;&gt;\(0P, 1P, 2P,
+\dots\)&lt;/span&gt;的结果会以某个最小正周期周期&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;循环（&lt;a href=&#34;https://en.wikipedia.org/wiki/Subgroup#Basic_properties_of_subgroups&#34;&gt;证明&lt;/a&gt;）。这也就意味着，群中对加法&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;的倍数是关于加法封闭的（closed under
+addition），它们又构成了一个循环子群（cyclic subgroup），&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;又称作这个循环子群的&lt;strong&gt;基点（base
+point/generator）&lt;/strong&gt;，&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;是这个&lt;strong&gt;循环子群的秩（subgroup
+order）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;根据&lt;a href=&#34;https://en.wikipedia.org/wiki/Lagrange%27s_theorem_(group_theory)&#34;&gt;Lagrange’s
+theorem&lt;/a&gt;，子群的秩是其父群的秩的约数。&lt;/p&gt;
 &lt;h4 id=&#34;寻找基点&#34;&gt;寻找基点&lt;/h4&gt;
-&lt;p&gt;在ECC算法中，我们一般会先计算父群的秩&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;，找出它一个比较大的约数&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;，让&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;作为子群的秩，&lt;span class=&#34;math inline&#34;&gt;\(h = N / n\)&lt;/span&gt;称作这个子群的余因子（cofactor），再根据这个子群的秩去找这个子群的基点。一般来说，&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;会从&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;的质因子中选取，基本算法如下：&lt;/p&gt;
+&lt;p&gt;在ECC算法中，我们一般会先计算父群的秩&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;，找出它一个比较大的约数&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;，让&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;作为子群的秩，&lt;span class=&#34;math inline&#34;&gt;\(h = N /
+n\)&lt;/span&gt;称作这个子群的余因子（cofactor），再根据这个子群的秩去找这个子群的基点。一般来说，&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;会从&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;的质因子中选取，基本算法如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;计算父群的秩&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;的质因子&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;，从大到小排列进行试验：&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
-&lt;li&gt;&lt;p&gt;计算余因子&lt;span class=&#34;math inline&#34;&gt;\(h = N / n\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;计算余因子&lt;span class=&#34;math inline&#34;&gt;\(h = N /
+n\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;随机选择椭圆曲线上的一点&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(G = hP\)&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;如果&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;，则重新选择&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;进行试验；否则这意味着&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;就是秩为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的子群的基点。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;需要注意的是，ECC算法能够运行的前提是，&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;必须是&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;的质因子。&lt;/p&gt;
-&lt;h3 id=&#34;离散对数运算discrete-logarithm&#34;&gt;离散对数运算（Discrete Logarithm）&lt;/h3&gt;
+&lt;h3 id=&#34;离散对数运算discrete-logarithm&#34;&gt;离散对数运算（Discrete
+Logarithm）&lt;/h3&gt;
 &lt;p&gt;现在我们解答之前提出的对数运算问题，给定&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;，目前没有算法能够在多项式时间之内求解满足&lt;span class=&#34;math inline&#34;&gt;\(Q = kP\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;。这个问题有点类似于给定整数&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;，如何求解满足&lt;span class=&#34;math inline&#34;&gt;\(b = a^k \pmod p\)&lt;/span&gt;的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;？这两个问题目前都没有算法能在多项式时间之内求解，这也是ECC算法安全的根本。&lt;/p&gt;
 &lt;h2 id=&#34;椭圆曲线加密算法&#34;&gt;椭圆曲线加密算法&lt;/h2&gt;
 &lt;p&gt;寻找到之前秩为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;、基点为&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;的子群后，我们就可以生成私钥和公钥了：&lt;/p&gt;
@@ -215,28 +288,37 @@ nP = \underbrace{P + \dots + P}_{n \text{ times}}
 &lt;li&gt;公钥是点&lt;span class=&#34;math inline&#34;&gt;\(H = dG\)&lt;/span&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;下面介绍两个基于ECC的公钥加密算法。&lt;/p&gt;
-&lt;h3 id=&#34;elliptic-curve-diffie-hellman&#34;&gt;Elliptic Curve Diffie-Hellman&lt;/h3&gt;
+&lt;h3 id=&#34;elliptic-curve-diffie-hellman&#34;&gt;Elliptic Curve
+Diffie-Hellman&lt;/h3&gt;
 &lt;p&gt;ECDH是DH算法在椭圆曲线中的变体，它实际上是一种密钥交换算法，而不是加密算法。它的大致流程如下：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Alice和Bob各自随机生成私钥和公钥：&lt;span class=&#34;math inline&#34;&gt;\(H_A = d_A G, H_B = d_B G\)&lt;/span&gt;，注意，Alice和Bob使用了相同的基点；&lt;/li&gt;
+&lt;li&gt;Alice和Bob各自随机生成私钥和公钥：&lt;span class=&#34;math inline&#34;&gt;\(H_A =
+d_A G, H_B = d_B G\)&lt;/span&gt;，注意，Alice和Bob使用了相同的基点；&lt;/li&gt;
 &lt;li&gt;Alice和Bob在非安全信道上交换各自的公钥，即使中间人拦截到了&lt;span class=&#34;math inline&#34;&gt;\(H_A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(H_B\)&lt;/span&gt;，如果他不能求解出对数运算问题，他也不会知道Alice和Bob的私钥；&lt;/li&gt;
-&lt;li&gt;Alice计算&lt;span class=&#34;math inline&#34;&gt;\(S = d_A H_B\)&lt;/span&gt;，Bob计算&lt;span class=&#34;math inline&#34;&gt;\(S = d_B H_A\)&lt;/span&gt;，根据子群对加法的封闭性，二者应该得到相同的结果；&lt;/li&gt;
+&lt;li&gt;Alice计算&lt;span class=&#34;math inline&#34;&gt;\(S = d_A
+H_B\)&lt;/span&gt;，Bob计算&lt;span class=&#34;math inline&#34;&gt;\(S = d_B
+H_A\)&lt;/span&gt;，根据子群对加法的封闭性，二者应该得到相同的结果；&lt;/li&gt;
 &lt;li&gt;中间人即使知道&lt;span class=&#34;math inline&#34;&gt;\(H_A\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(H_B\)&lt;/span&gt;，也无法得到密钥&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;，Alice和Bob便可以通过密钥&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;加密内容。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;elliptic-curve-digital-signature-algorithm&#34;&gt;Elliptic Curve Digital Signature Algorithm&lt;/h3&gt;
+&lt;h3 id=&#34;elliptic-curve-digital-signature-algorithm&#34;&gt;Elliptic Curve
+Digital Signature Algorithm&lt;/h3&gt;
 &lt;p&gt;ECDSA是一种公钥加密算法，可以用于数字签名。ECDSA的作用对象是消息的哈希值，而不是消息本身，所以在使用ECDSA时，也要选取一个安全的哈希函数。消息的哈希值在签名过程中会被截断，使得该剩余哈希值的比特位数等于&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的比特位数，我们用&lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;来表示剩余哈希值所代表的整数。ECDSA的大致流程如下：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Alice从&lt;span class=&#34;math inline&#34;&gt;\(\{1, \dots, n\}\)&lt;/span&gt;中随机抽取数字&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;；&lt;/li&gt;
+&lt;li&gt;Alice从&lt;span class=&#34;math inline&#34;&gt;\(\{1, \dots,
+n\}\)&lt;/span&gt;中随机抽取数字&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;；&lt;/li&gt;
 &lt;li&gt;Alice计算&lt;span class=&#34;math inline&#34;&gt;\(P = kG\)&lt;/span&gt;；&lt;/li&gt;
-&lt;li&gt;Alice计算&lt;span class=&#34;math inline&#34;&gt;\(r = x_P \mod n\)&lt;/span&gt;，如果&lt;span class=&#34;math inline&#34;&gt;\(r=0\)&lt;/span&gt;，则重新选取&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;；&lt;/li&gt;
-&lt;li&gt;Alice计算&lt;span class=&#34;math inline&#34;&gt;\(s = k^{-1} (z + rd_A) \mod n\)&lt;/span&gt;，其中&lt;span class=&#34;math inline&#34;&gt;\(d_A\)&lt;/span&gt;是Alice的私钥，&lt;span class=&#34;math inline&#34;&gt;\(k^{-1}\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;关于&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的乘法逆元（我们前面选取&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;为质因子的目的就在于，保证这里的&lt;span class=&#34;math inline&#34;&gt;\(k^{-1}\)&lt;/span&gt;一定存在），如果&lt;span class=&#34;math inline&#34;&gt;\(s=0\)&lt;/span&gt;，则重新选取&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;。&lt;/li&gt;
+&lt;li&gt;Alice计算&lt;span class=&#34;math inline&#34;&gt;\(r = x_P \mod
+n\)&lt;/span&gt;，如果&lt;span class=&#34;math inline&#34;&gt;\(r=0\)&lt;/span&gt;，则重新选取&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;；&lt;/li&gt;
+&lt;li&gt;Alice计算&lt;span class=&#34;math inline&#34;&gt;\(s = k^{-1} (z + rd_A) \mod
+n\)&lt;/span&gt;，其中&lt;span class=&#34;math inline&#34;&gt;\(d_A\)&lt;/span&gt;是Alice的私钥，&lt;span class=&#34;math inline&#34;&gt;\(k^{-1}\)&lt;/span&gt;是&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;关于&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;的乘法逆元（我们前面选取&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;为质因子的目的就在于，保证这里的&lt;span class=&#34;math inline&#34;&gt;\(k^{-1}\)&lt;/span&gt;一定存在），如果&lt;span class=&#34;math inline&#34;&gt;\(s=0\)&lt;/span&gt;，则重新选取&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;元组&lt;span class=&#34;math inline&#34;&gt;\((r,s)\)&lt;/span&gt;就是Alice对应的签名。Bob拿到这样的签名之后，作以下验证：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(u_1 = s^{-1}z \mod n\)&lt;/span&gt;；&lt;/li&gt;
 &lt;li&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(u_2 = s^{-1}r \mod n\)&lt;/span&gt;；&lt;/li&gt;
 &lt;li&gt;计算点&lt;span class=&#34;math inline&#34;&gt;\(P = u_1G + u_2H_A\)&lt;/span&gt;；&lt;/li&gt;
-&lt;li&gt;仅当&lt;span class=&#34;math inline&#34;&gt;\(r = x_P \mod n\)&lt;/span&gt;时，Bob可以验证这确实是Alice的签名。&lt;/li&gt;
+&lt;li&gt;仅当&lt;span class=&#34;math inline&#34;&gt;\(r = x_P \mod
+n\)&lt;/span&gt;时，Bob可以验证这确实是Alice的签名。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;验证过程的正确性证明如下， &lt;span class=&#34;math display&#34;&gt;\[
 \label{P} \begin{aligned}
@@ -245,17 +327,21 @@ P &amp;amp;= u_1 G + u_2 H_A \\
 &amp;amp;= (s^{-1} z + s^{-1} r d_A) G \\
 &amp;amp;= s^{-1}(z + r d_A) G
 \end{aligned}
-\]&lt;/span&gt; 之前我们定义&lt;span class=&#34;math inline&#34;&gt;\(s = k^{-1} (z + r d_A) \mod n\)&lt;/span&gt;，将两边同乘&lt;span class=&#34;math inline&#34;&gt;\(ks^{-1}\)&lt;/span&gt;，我们可以得到&lt;span class=&#34;math inline&#34;&gt;\(k = s^{-1}(z + r d_A) \mod n\)&lt;/span&gt;，将此式代入&lt;span class=&#34;math inline&#34;&gt;\(\eqref{P}\)&lt;/span&gt;可以得到 &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; 之前我们定义&lt;span class=&#34;math inline&#34;&gt;\(s = k^{-1} (z + r d_A)
+\mod n\)&lt;/span&gt;，将两边同乘&lt;span class=&#34;math inline&#34;&gt;\(ks^{-1}\)&lt;/span&gt;，我们可以得到&lt;span class=&#34;math inline&#34;&gt;\(k = s^{-1}(z + r d_A) \mod
+n\)&lt;/span&gt;，将此式代入&lt;span class=&#34;math inline&#34;&gt;\(\eqref{P}\)&lt;/span&gt;可以得到 &lt;span class=&#34;math display&#34;&gt;\[
 P = kG
 \]&lt;/span&gt; 这也就是Alice签名过程中得到的&lt;span class=&#34;math inline&#34;&gt;\(P\)&lt;/span&gt;，证毕。&lt;/p&gt;
 &lt;h4 id=&#34;k的选取&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;的选取&lt;/h4&gt;
-&lt;p&gt;在使用ECDSA时，我们必须注意不能使用相同的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;加密多份消息，也不能暴露我们选取&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;的方式（比如说随机数生成方式），否则就会有很大的私钥泄露风险。比如说我们用同一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;加密两份消息，Bob就可以通过这两次签名过程得到&lt;span class=&#34;math inline&#34;&gt;\((r, s_1), (r, s_2)\)&lt;/span&gt;，如果Bob还有额外途径获取两次消息的哈希&lt;span class=&#34;math inline&#34;&gt;\(z_1, z_2\)&lt;/span&gt;，那么： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;在使用ECDSA时，我们必须注意不能使用相同的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;加密多份消息，也不能暴露我们选取&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;的方式（比如说随机数生成方式），否则就会有很大的私钥泄露风险。比如说我们用同一个&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;加密两份消息，Bob就可以通过这两次签名过程得到&lt;span class=&#34;math inline&#34;&gt;\((r, s_1), (r,
+s_2)\)&lt;/span&gt;，如果Bob还有额外途径获取两次消息的哈希&lt;span class=&#34;math inline&#34;&gt;\(z_1, z_2\)&lt;/span&gt;，那么： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 s_1 = k^{-1}(z_1 + r d_A), s_2 = k^{-1}(z_2 + r d_A) \to \\
 (s_1 - s_2) = k^{-1}(z_1 - z_2) \mod n \to \\
 k = (z_1 - z_2)(s_1 - s_2)^{-1}
 \end{gather}
-\]&lt;/span&gt; 再根据&lt;span class=&#34;math inline&#34;&gt;\(s_1 = k^{-1}(z_1 + r d_A) \mod n\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; 再根据&lt;span class=&#34;math inline&#34;&gt;\(s_1 = k^{-1}(z_1 + r d_A)
+\mod n\)&lt;/span&gt;， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 d_A &amp;amp;= r^{-1}(s_1k - z_1) \mod n \\
 &amp;amp;= r^{-1}(s_1(z_1 - z_2)(s_1 - s_2)^{-1} - z_1) \mod n
@@ -264,36 +350,51 @@ d_A &amp;amp;= r^{-1}(s_1k - z_1) \mod n \\
 &lt;h3 id=&#34;再看离散对数运算&#34;&gt;再看离散对数运算&lt;/h3&gt;
 &lt;p&gt;给定秩为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;、基点为&lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;的椭圆曲线子群，以及该子群上的两点&lt;span class=&#34;math inline&#34;&gt;\(P,Q\)&lt;/span&gt;，离散对数运算求解的是满足&lt;span class=&#34;math inline&#34;&gt;\(Q = xP\)&lt;/span&gt;的整数&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;。我们接下来了解两个求解离散对数运算的算法。&lt;/p&gt;
 &lt;h4 id=&#34;baby-step-giant-step&#34;&gt;Baby-step-giant-step&lt;/h4&gt;
-&lt;p&gt;首先任意一个整数&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，都可以写成&lt;span class=&#34;math inline&#34;&gt;\(x = am + b\)&lt;/span&gt;，由&lt;span class=&#34;math inline&#34;&gt;\(a,m,b\)&lt;/span&gt;这三个满足关系的任意整数表示，那么，我们就可以考虑这样解决离散对数运算问题： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;首先任意一个整数&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，都可以写成&lt;span class=&#34;math inline&#34;&gt;\(x = am + b\)&lt;/span&gt;，由&lt;span class=&#34;math inline&#34;&gt;\(a,m,b\)&lt;/span&gt;这三个满足关系的任意整数表示，那么，我们就可以考虑这样解决离散对数运算问题：
+&lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 Q &amp;amp;= xP \\
 Q &amp;amp;= (am + b)P \\
 Q - amP &amp;amp;= bP
 \end{aligned}
-\]&lt;/span&gt; Baby-step-giant-step算法采取了从两边夹逼的方式解决问题，过程如下：&lt;/p&gt;
+\]&lt;/span&gt;
+Baby-step-giant-step算法采取了从两边夹逼的方式解决问题，过程如下：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(m = \lceil \sqrt n \rceil\)&lt;/span&gt;；&lt;/li&gt;
-&lt;li&gt;对所有&lt;span class=&#34;math inline&#34;&gt;\(\{0, \dots, m\}\)&lt;/span&gt;中的数字&lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;，计算&lt;span class=&#34;math inline&#34;&gt;\(bP\)&lt;/span&gt;，并将&lt;span class=&#34;math inline&#34;&gt;\(bP\)&lt;/span&gt;存储到哈希表中；&lt;/li&gt;
-&lt;li&gt;对所有&lt;span class=&#34;math inline&#34;&gt;\(\{0, \dots, m\}\)&lt;/span&gt;中的数字&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;，
+&lt;li&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(m = \lceil \sqrt n
+\rceil\)&lt;/span&gt;；&lt;/li&gt;
+&lt;li&gt;对所有&lt;span class=&#34;math inline&#34;&gt;\(\{0, \dots,
+m\}\)&lt;/span&gt;中的数字&lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;，计算&lt;span class=&#34;math inline&#34;&gt;\(bP\)&lt;/span&gt;，并将&lt;span class=&#34;math inline&#34;&gt;\(bP\)&lt;/span&gt;存储到哈希表中；&lt;/li&gt;
+&lt;li&gt;对所有&lt;span class=&#34;math inline&#34;&gt;\(\{0, \dots,
+m\}\)&lt;/span&gt;中的数字&lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt;，
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(amP\)&lt;/span&gt;；&lt;/li&gt;
 &lt;li&gt;计算&lt;span class=&#34;math inline&#34;&gt;\(Q - amP\)&lt;/span&gt;；&lt;/li&gt;
-&lt;li&gt;检查哈希表中是否存在某个&lt;span class=&#34;math inline&#34;&gt;\(bP\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(Q - amP = bP\)&lt;/span&gt;，如果存在，就意味着我们找到了一个解。&lt;/li&gt;
+&lt;li&gt;检查哈希表中是否存在某个&lt;span class=&#34;math inline&#34;&gt;\(bP\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(Q -
+amP = bP\)&lt;/span&gt;，如果存在，就意味着我们找到了一个解。&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(bP\)&lt;/span&gt;的计算对应着baby-step，&lt;span class=&#34;math inline&#34;&gt;\(amP\)&lt;/span&gt;的计算对应着giant-step，该算法的合理性在于：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a=0\)&lt;/span&gt;时，我们检查&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;是否和&lt;span class=&#34;math inline&#34;&gt;\(0, P, \dots, mP\)&lt;/span&gt;相等；&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a=1\)&lt;/span&gt;时，我们检查&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;是否和&lt;span class=&#34;math inline&#34;&gt;\(mP, P + mp, \dots, mP + mP\)&lt;/span&gt;相等；&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a=2\)&lt;/span&gt;时，我们检查&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;是否和&lt;span class=&#34;math inline&#34;&gt;\(2mP, P + 2mp, \dots, mP + 2mP\)&lt;/span&gt;相等；&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a=0\)&lt;/span&gt;时，我们检查&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;是否和&lt;span class=&#34;math inline&#34;&gt;\(0, P,
+\dots, mP\)&lt;/span&gt;相等；&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a=1\)&lt;/span&gt;时，我们检查&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;是否和&lt;span class=&#34;math inline&#34;&gt;\(mP, P
++ mp, \dots, mP + mP\)&lt;/span&gt;相等；&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a=2\)&lt;/span&gt;时，我们检查&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;是否和&lt;span class=&#34;math inline&#34;&gt;\(2mP, P
++ 2mp, \dots, mP + 2mP\)&lt;/span&gt;相等；&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\dots\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a=m-1\)&lt;/span&gt;时，我们检查&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;是否和&lt;span class=&#34;math inline&#34;&gt;\((m-1)mP, P + (m-1)mp, \dots, mP + (m-1)mP\)&lt;/span&gt;相等；&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(a=m-1\)&lt;/span&gt;时，我们检查&lt;span class=&#34;math inline&#34;&gt;\(Q\)&lt;/span&gt;是否和&lt;span class=&#34;math inline&#34;&gt;\((m-1)mP, P + (m-1)mp, \dots, mP +
+(m-1)mP\)&lt;/span&gt;相等；&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;总之，我们检查了&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;到&lt;span class=&#34;math inline&#34;&gt;\(m^2P=nP\)&lt;/span&gt;之间的所有点，也就是所有可能的点。而检查的过程我们并不需要做实际的加法运算，只需要检查哈希表中有没有对应的差值。在baby-step中，我们需要做&lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;次加法，在giant-step中，由于哈希表查询速度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(1)\)&lt;/span&gt;，并且至多需要做&lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;次加减法，所以整体上该算法的时间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\sqrt n)\)&lt;/span&gt;，而哈希表带来的空间复杂度也是&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\sqrt n)\)&lt;/span&gt;。尽管看上去这个多项式时间的算法还不错，但是由于一般&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;非常大，这个算法实际需要的时间成本以及存储成本远远超出当前计算机的水平。&lt;/p&gt;
+&lt;p&gt;总之，我们检查了&lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;到&lt;span class=&#34;math inline&#34;&gt;\(m^2P=nP\)&lt;/span&gt;之间的所有点，也就是所有可能的点。而检查的过程我们并不需要做实际的加法运算，只需要检查哈希表中有没有对应的差值。在baby-step中，我们需要做&lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;次加法，在giant-step中，由于哈希表查询速度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(1)\)&lt;/span&gt;，并且至多需要做&lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;次加减法，所以整体上该算法的时间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\sqrt
+n)\)&lt;/span&gt;，而哈希表带来的空间复杂度也是&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\sqrt
+n)\)&lt;/span&gt;。尽管看上去这个多项式时间的算法还不错，但是由于一般&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;非常大，这个算法实际需要的时间成本以及存储成本远远超出当前计算机的水平。&lt;/p&gt;
 &lt;h4 id=&#34;pollards-rho&#34;&gt;Pollard’s &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;Pollard’s &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;算法的时间复杂度也是&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\sqrt n)\)&lt;/span&gt;，但是它的空间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(1)\)&lt;/span&gt;。和Baby-step-giant-step算法一样，我们实际解决的问题与原问题稍微有所不同，在Pollard’s &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;算法中，给定&lt;span class=&#34;math inline&#34;&gt;\(P,Q\)&lt;/span&gt;，我们想要找到整数&lt;span class=&#34;math inline&#34;&gt;\(a,b,A,B\)&lt;/span&gt;，使得 &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;Pollard’s &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;算法的时间复杂度也是&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\sqrt
+n)\)&lt;/span&gt;，但是它的空间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(1)\)&lt;/span&gt;。和Baby-step-giant-step算法一样，我们实际解决的问题与原问题稍微有所不同，在Pollard’s
+&lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;算法中，给定&lt;span class=&#34;math inline&#34;&gt;\(P,Q\)&lt;/span&gt;，我们想要找到整数&lt;span class=&#34;math inline&#34;&gt;\(a,b,A,B\)&lt;/span&gt;，使得 &lt;span class=&#34;math display&#34;&gt;\[
 aP + bQ = AP + BQ
-\]&lt;/span&gt; 找到这四个整数之后，我们代入&lt;span class=&#34;math inline&#34;&gt;\(Q = xP\)&lt;/span&gt;来求解&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; 找到这四个整数之后，我们代入&lt;span class=&#34;math inline&#34;&gt;\(Q =
+xP\)&lt;/span&gt;来求解&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 aP + bxP &amp;amp;= AP + BxP \\
 (a-A)P &amp;amp;= (b-B)xP \\
@@ -301,13 +402,20 @@ aP + bxP &amp;amp;= AP + BxP \\
 (a-A) &amp;amp;= (b-B)x \pmod n \\
 x &amp;amp;= (a-A)(b-B)^{-1} \mod n
 \end{aligned}
-\]&lt;/span&gt; Pollard’s &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;算法思路是这样的：我们生成一系列伪随机点&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;，其中&lt;span class=&#34;math inline&#34;&gt;\(X_i = a_iP + b_iQ\)&lt;/span&gt;。这样的序列可以由一个伪随机函数&lt;span class=&#34;math inline&#34;&gt;\(f(X_i) = (a_{i+1}, b_{i+1})\)&lt;/span&gt;生成，也就是说下一点是由当前点决定的，而&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;内部如何工作并不重要。通过这样的&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;产生序列，我们的序列迟早会出现一个回环，也就是说&lt;span class=&#34;math inline&#34;&gt;\(X_j = X_i\)&lt;/span&gt;，而这时我们也就能够找到相应的&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;。出现回环的原因也很好理解：我们点的个数是有限的，问题其实在于如何找到回环入口。&lt;/p&gt;
+\]&lt;/span&gt; Pollard’s &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;算法思路是这样的：我们生成一系列伪随机点&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, \dots\)&lt;/span&gt;，其中&lt;span class=&#34;math inline&#34;&gt;\(X_i = a_iP +
+b_iQ\)&lt;/span&gt;。这样的序列可以由一个伪随机函数&lt;span class=&#34;math inline&#34;&gt;\(f(X_i) = (a_{i+1},
+b_{i+1})\)&lt;/span&gt;生成，也就是说下一点是由当前点决定的，而&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;内部如何工作并不重要。通过这样的&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;产生序列，我们的序列迟早会出现一个回环，也就是说&lt;span class=&#34;math inline&#34;&gt;\(X_j =
+X_i\)&lt;/span&gt;，而这时我们也就能够找到相应的&lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;。出现回环的原因也很好理解：我们点的个数是有限的，问题其实在于如何找到回环入口。&lt;/p&gt;
 &lt;h5 id=&#34;龟兔赛跑&#34;&gt;龟兔赛跑&lt;/h5&gt;
 &lt;p&gt;Pollard’s &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;算法中的回环入口查找，其实类似单向链表中的回环入口查找：在链表开头设置一快一慢两个指针，我们让快指针每次前进两步，慢指针每次前进一步；二者相遇时，从相遇点和起点再设置两个新的慢指针，这两个新的慢指针相遇之处即为环的入口。&lt;/p&gt;
 &lt;h4 id=&#34;量子计算shors-algorithm&#34;&gt;量子计算：Shor’s Algorithm&lt;/h4&gt;
-&lt;p&gt;理论上，Shor’s Algorithm的时间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron((\log n)^3)\)&lt;/span&gt;，空间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\log n)\)&lt;/span&gt;，但是目前的量子计算机还不能进行像Shor’s Algorithm这样复杂的运算。&lt;/p&gt;
+&lt;p&gt;理论上，Shor’s Algorithm的时间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron((\log n)^3)\)&lt;/span&gt;，空间复杂度为&lt;span class=&#34;math inline&#34;&gt;\(\Omicron(\log
+n)\)&lt;/span&gt;，但是目前的量子计算机还不能进行像Shor’s
+Algorithm这样复杂的运算。&lt;/p&gt;
 &lt;h3 id=&#34;ecc与rsa&#34;&gt;ECC与RSA&lt;/h3&gt;
-&lt;p&gt;RSA的密钥长度在数量级上大于ECC的密钥长度，这不仅意味着更多的内存占用，还意味着更慢的计算速度。这其中的原因在于，RSA算法的离散对数运算是快于ECC算法的离散对数运算（参考&lt;a href=&#34;https://en.wikipedia.org/wiki/General_number_field_sieve&#34;&gt;General number field sieve&lt;/a&gt;），这也就意味着RSA算法不得不采用更长的密钥来加大破解难度。更少的内存占用，更快的计算速度，这就是在已经有了成熟的RSA算法的情况下，ECC仍被提出的原因。&lt;/p&gt;</description>
+&lt;p&gt;RSA的密钥长度在数量级上大于ECC的密钥长度，这不仅意味着更多的内存占用，还意味着更慢的计算速度。这其中的原因在于，RSA算法的离散对数运算是快于ECC算法的离散对数运算（参考&lt;a href=&#34;https://en.wikipedia.org/wiki/General_number_field_sieve&#34;&gt;General
+number field
+sieve&lt;/a&gt;），这也就意味着RSA算法不得不采用更长的密钥来加大破解难度。更少的内存占用，更快的计算速度，这就是在已经有了成熟的RSA算法的情况下，ECC仍被提出的原因。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -345,18 +453,26 @@ x &amp;amp;= (a-A)(b-B)^{-1} \mod n
 
 &lt;p&gt;&lt;img src=&#34;sssp.png&#34;/&gt;&lt;/p&gt;
 &lt;h2 id=&#34;问题描述及定义&#34;&gt;问题描述及定义&lt;/h2&gt;
-&lt;p&gt;单源最短路径问题，旨在求解&lt;strong&gt;带权有向图&lt;/strong&gt;（weighted directed graph）中&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;，从某个&lt;strong&gt;点&lt;/strong&gt;（vertex）出发，到图中任意一&lt;strong&gt;点&lt;/strong&gt;的最短距离，某些情况下，还需要找出这一条最短距离的&lt;strong&gt;路径&lt;/strong&gt;，称之为&lt;strong&gt;最短路径&lt;/strong&gt;，若无特殊指明且不致歧义，以下最短路径问题均指代单源最短路径问题。&lt;/p&gt;
-&lt;p&gt;更严格一些，设&lt;span class=&#34;math inline&#34;&gt;\(G(V, E)\)&lt;/span&gt;表示带权有向图，&lt;span class=&#34;math inline&#34;&gt;\(w : E \to \mathbb{R}\)&lt;/span&gt;表示&lt;strong&gt;权重&lt;/strong&gt;，&lt;strong&gt;路径&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(p = \left &amp;lt;v_0, v_1, ... v_k\right &amp;gt;\)&lt;/span&gt;的&lt;strong&gt;距离&lt;/strong&gt;定义为： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;单源最短路径问题，旨在求解&lt;strong&gt;带权有向图&lt;/strong&gt;（weighted
+directed graph）中&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;，从某个&lt;strong&gt;点&lt;/strong&gt;（vertex）出发，到图中任意一&lt;strong&gt;点&lt;/strong&gt;的最短距离，某些情况下，还需要找出这一条最短距离的&lt;strong&gt;路径&lt;/strong&gt;，称之为&lt;strong&gt;最短路径&lt;/strong&gt;，若无特殊指明且不致歧义，以下最短路径问题均指代单源最短路径问题。&lt;/p&gt;
+&lt;p&gt;更严格一些，设&lt;span class=&#34;math inline&#34;&gt;\(G(V,
+E)\)&lt;/span&gt;表示带权有向图，&lt;span class=&#34;math inline&#34;&gt;\(w : E \to
+\mathbb{R}\)&lt;/span&gt;表示&lt;strong&gt;权重&lt;/strong&gt;，&lt;strong&gt;路径&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(p = \left &amp;lt;v_0, v_1, ... v_k\right
+&amp;gt;\)&lt;/span&gt;的&lt;strong&gt;距离&lt;/strong&gt;定义为： &lt;span class=&#34;math display&#34;&gt;\[
 W(p) = \sum\limits_{i = 1}^k w(v_{k-1}, v_k)
 \]&lt;/span&gt; 其中， &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather*}
 \forall i \in [0, k], v_i \in V \\
 \forall i \in [1, k], (v_{i-1}, v_i) \in E
 \end{gather*}
-\]&lt;/span&gt; 我们从某一点&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;（叫作&lt;strong&gt;起点&lt;/strong&gt;，或者源点）出发，记其到图中任意一&lt;strong&gt;点&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的最短路径距离为&lt;span class=&#34;math inline&#34;&gt;\(\delta(v)\)&lt;/span&gt;，&lt;strong&gt;单源最短路径&lt;/strong&gt;求解的就是任意一条从&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;到&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的路径&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(W(p) = \delta(v)\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;为了方便，我们为每一个点&lt;span class=&#34;math inline&#34;&gt;\(v \in V\)&lt;/span&gt;设立一个中间变量&lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;，用&lt;span class=&#34;math inline&#34;&gt;\(v.d\)&lt;/span&gt;来表示求解过程中的最短距离的&lt;strong&gt;可行上界&lt;/strong&gt;，也就是说始终有&lt;span class=&#34;math inline&#34;&gt;\(\delta(v) \leq v.d\)&lt;/span&gt;，算法初始化时，&lt;span class=&#34;math inline&#34;&gt;\(v.d = +\infty\)&lt;/span&gt;，算法运行过程中，我们通过寻找路径使&lt;span class=&#34;math inline&#34;&gt;\(v.d\)&lt;/span&gt;这个上界不断减小，直到&lt;span class=&#34;math inline&#34;&gt;\(v.d = \delta(v)\)&lt;/span&gt;。&lt;/p&gt;
+\]&lt;/span&gt; 我们从某一点&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;（叫作&lt;strong&gt;起点&lt;/strong&gt;，或者源点）出发，记其到图中任意一&lt;strong&gt;点&lt;/strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的最短路径距离为&lt;span class=&#34;math inline&#34;&gt;\(\delta(v)\)&lt;/span&gt;，&lt;strong&gt;单源最短路径&lt;/strong&gt;求解的就是任意一条从&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;到&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的路径&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(W(p) =
+\delta(v)\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;为了方便，我们为每一个点&lt;span class=&#34;math inline&#34;&gt;\(v \in
+V\)&lt;/span&gt;设立一个中间变量&lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;，用&lt;span class=&#34;math inline&#34;&gt;\(v.d\)&lt;/span&gt;来表示求解过程中的最短距离的&lt;strong&gt;可行上界&lt;/strong&gt;，也就是说始终有&lt;span class=&#34;math inline&#34;&gt;\(\delta(v) \leq v.d\)&lt;/span&gt;，算法初始化时，&lt;span class=&#34;math inline&#34;&gt;\(v.d =
++\infty\)&lt;/span&gt;，算法运行过程中，我们通过寻找路径使&lt;span class=&#34;math inline&#34;&gt;\(v.d\)&lt;/span&gt;这个上界不断减小，直到&lt;span class=&#34;math inline&#34;&gt;\(v.d = \delta(v)\)&lt;/span&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;解决思路&#34;&gt;解决思路&lt;/h2&gt;
-&lt;p&gt;最短路径问题（包括多源最短路径问题）都隐含着一个最优子结构（optimal substructure），即：&lt;/p&gt;
+&lt;p&gt;最短路径问题（包括多源最短路径问题）都隐含着一个最优子结构（optimal
+substructure），即：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如果&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;是一条连接两个点的最短路径，那么&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;的任意一条&lt;strong&gt;子路径&lt;/strong&gt;，一定也是连接其两个端点的最短路径。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -366,26 +482,34 @@ W(p) = \sum\limits_{i = 1}^k w(v_{k-1}, v_k)
 &lt;p&gt;负权边指的是图中某些边的权重为负。虽然负权边不会对最短路径的最优子结构性质产生任何影响，但是后面我们会看到，负权边会导致Dijkstra算法失效。&lt;/p&gt;
 &lt;h3 id=&#34;负权环路&#34;&gt;负权环路&lt;/h3&gt;
 &lt;p&gt;负权环路指的是图中某些边构成一条&lt;strong&gt;环路&lt;/strong&gt;（loop），并且这条环路上的所有边的权重相加结果为负。&lt;/p&gt;
-&lt;p&gt;一旦从起点可以到达这个环路上的点，那么最短路径问题就变得没有意义了：我们可以不断重复地走这条环路，然后 “拐出” 环路，到达目标点，使得到达目标点的路径的权重变得任意小（arbitrarily short），所以也就不存在什么 “最短路径” 了。&lt;/p&gt;
+&lt;p&gt;一旦从起点可以到达这个环路上的点，那么最短路径问题就变得没有意义了：我们可以不断重复地走这条环路，然后
+“拐出”
+环路，到达目标点，使得到达目标点的路径的权重变得任意小（arbitrarily
+short），所以也就不存在什么 “最短路径” 了。&lt;/p&gt;
 &lt;p&gt;一个成熟的算法应当能够检测出图中是否有可以由&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;到达的负权环路，如果没有，则算法照常进行；如果有，应予以通报。&lt;/p&gt;
 &lt;h3 id=&#34;非负权环路&#34;&gt;非负权环路&lt;/h3&gt;
 &lt;p&gt;非负权环路指的是图中某些边构成一条&lt;strong&gt;环路&lt;/strong&gt;，并且这条环路上的所有边的权重相加的结果大于等于0。&lt;/p&gt;
 &lt;p&gt;负权环路会使最短路径问题没有意义，那么非负权环路呢？或者说，最短路径是否包含非负权环路呢？&lt;/p&gt;
-&lt;p&gt;答案是否，如果一条最短路径包含了非负权环路，我们大可将这段环路从路径中 “拿掉”，得到的路径和原路径可以达到同样的终点，并且新路径的权重不大于原路径的权重。&lt;/p&gt;
+&lt;p&gt;答案是否，如果一条最短路径包含了非负权环路，我们大可将这段环路从路径中
+“拿掉”，得到的路径和原路径可以达到同样的终点，并且新路径的权重不大于原路径的权重。&lt;/p&gt;
 &lt;h3 id=&#34;放缩操作&#34;&gt;放缩操作&lt;/h3&gt;
 &lt;p&gt;放缩操作的对象是边，对于边&lt;span class=&#34;math inline&#34;&gt;\((u,v)\)&lt;/span&gt;，放缩操作将检测能否优化点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的上界：&lt;/p&gt;
 &lt;pre class=&#34;pseudocode&#34;&gt;&lt;code&gt;RELAX(u, v, w):
 if v.d &amp;gt; u.d + w(u, v):
     v.d = u.d + w(u, v)
     v.predecessor = u&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;即如果路径&lt;span class=&#34;math inline&#34;&gt;\(s \sim u \to v\)&lt;/span&gt;的长度小于当前&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的上界，我们便可以借此优化&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的上界，并同时通过将的&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;前继设为&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;来记录这一次优化。&lt;/p&gt;
+&lt;p&gt;即如果路径&lt;span class=&#34;math inline&#34;&gt;\(s \sim u \to
+v\)&lt;/span&gt;的长度小于当前&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的上界，我们便可以借此优化&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的上界，并同时通过将的&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;前继设为&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;来记录这一次优化。&lt;/p&gt;
 &lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
 &lt;h3 id=&#34;bellman-ford算法&#34;&gt;Bellman-Ford算法&lt;/h3&gt;
-&lt;p&gt;Bellman-Ford算法是最短路径问题中最为robust的一种了，能处理负权边、能检测负权环路、不要求当前图为有向无环图（directed acyclic graph）。Bellman-Ford算法基本框架如下：&lt;/p&gt;
+&lt;p&gt;Bellman-Ford算法是最短路径问题中最为robust的一种了，能处理负权边、能检测负权环路、不要求当前图为有向无环图（directed
+acyclic graph）。Bellman-Ford算法基本框架如下：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;原图中存在可由起点抵达的负权环路，返回 false，用以告知存在负权环路，最短路径问题无意义&lt;/li&gt;
-&lt;li&gt;原图中不存在可由起点抵达的负权环路，返回 true，用以告知最短路径问题已解决，并将结果蕴含在相应的数据结构中&lt;/li&gt;
+&lt;li&gt;原图中存在可由起点抵达的负权环路，返回
+false，用以告知存在负权环路，最短路径问题无意义&lt;/li&gt;
+&lt;li&gt;原图中不存在可由起点抵达的负权环路，返回
+true，用以告知最短路径问题已解决，并将结果蕴含在相应的数据结构中&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;pre class=&#34;pseudocode&#34;&gt;&lt;code&gt;// 算法主体
@@ -404,19 +528,34 @@ return true&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;我们不妨先假设原图中不存在负权环路，先思考Bellman-Ford在解决最短路径问题时的正确性。&lt;/p&gt;
 &lt;p&gt;根据以上的讨论，任意一点的最短路径中不存在环，故任意一点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径最多由&lt;span class=&#34;math inline&#34;&gt;\(|V|-1\)&lt;/span&gt;条边，&lt;span class=&#34;math inline&#34;&gt;\(|V|\)&lt;/span&gt;个点构成。设： &lt;span class=&#34;math display&#34;&gt;\[
 p=\left &amp;lt;v_0,v_1, ... v_k\right &amp;gt;，其中v_0 = s，v_k = t
-\]&lt;/span&gt; 在寻找&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径时，任一&lt;span class=&#34;math inline&#34;&gt;\(v \in \{u | (u,t) \in E, u.d = \delta(s, u)\}\)&lt;/span&gt;（即此时&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的最短路径已找到，且点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;有一条连向点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的边） ，都是&lt;span class=&#34;math inline&#34;&gt;\(v_{k-1}\)&lt;/span&gt;（也就是&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;在其最短路径中的前继）的一个候选，我们需要证明的是，&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的实际前继能够在Bellman-Ford算法运行之下被发现，从而被真正地选为&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的前继。&lt;/p&gt;
+\]&lt;/span&gt; 在寻找&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径时，任一&lt;span class=&#34;math inline&#34;&gt;\(v \in \{u | (u,t) \in E, u.d = \delta(s,
+u)\}\)&lt;/span&gt;（即此时&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的最短路径已找到，且点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;有一条连向点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的边） ，都是&lt;span class=&#34;math inline&#34;&gt;\(v_{k-1}\)&lt;/span&gt;（也就是&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;在其最短路径中的前继）的一个候选，我们需要证明的是，&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的实际前继能够在Bellman-Ford算法运行之下被发现，从而被真正地选为&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的前继。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;bellman.png&#34;/&gt;&lt;/p&gt;
-&lt;p&gt;根据前面的讨论，路径&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;的前缀&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1\right &amp;gt;, \left &amp;lt; v_0, v_1, v_2\right &amp;gt;...\)&lt;/span&gt;分别是&lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ...\)&lt;/span&gt;的最短路径，在外侧第一轮for-loop后，边&lt;span class=&#34;math inline&#34;&gt;\((v_0, v_1)\)&lt;/span&gt;一定会被放缩，而由于&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1\right&amp;gt;\)&lt;/span&gt;实际是最短路径，故放缩之后，&lt;span class=&#34;math inline&#34;&gt;\(v_1.d = \delta(v_1)\)&lt;/span&gt;且将不再变化（因为这已经是最小）；在外侧第二轮for-loop后，边&lt;span class=&#34;math inline&#34;&gt;\((v_1, v_2)\)&lt;/span&gt;一定会被放缩，而由于&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1, v_2\right&amp;gt;\)&lt;/span&gt;实际是最短路径，故放缩之后，&lt;span class=&#34;math inline&#34;&gt;\(v_2.d = \delta(v_2)\)&lt;/span&gt;且将不再变化（因为这已经是最小）&lt;span class=&#34;math inline&#34;&gt;\(\dots\)&lt;/span&gt;如此放缩&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;轮后，我们便寻找到了&lt;span class=&#34;math inline&#34;&gt;\(v_1, ... v_k\)&lt;/span&gt;一众节点的最短路径以及其最短路径的前继。&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;根据前面的讨论，路径&lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;的前缀&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1\right &amp;gt;, \left &amp;lt; v_0,
+v_1, v_2\right &amp;gt;...\)&lt;/span&gt;分别是&lt;span class=&#34;math inline&#34;&gt;\(v_1,
+v_2, ...\)&lt;/span&gt;的最短路径，在外侧第一轮for-loop后，边&lt;span class=&#34;math inline&#34;&gt;\((v_0, v_1)\)&lt;/span&gt;一定会被放缩，而由于&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0,
+v_1\right&amp;gt;\)&lt;/span&gt;实际是最短路径，故放缩之后，&lt;span class=&#34;math inline&#34;&gt;\(v_1.d =
+\delta(v_1)\)&lt;/span&gt;且将不再变化（因为这已经是最小）；在外侧第二轮for-loop后，边&lt;span class=&#34;math inline&#34;&gt;\((v_1, v_2)\)&lt;/span&gt;一定会被放缩，而由于&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1,
+v_2\right&amp;gt;\)&lt;/span&gt;实际是最短路径，故放缩之后，&lt;span class=&#34;math inline&#34;&gt;\(v_2.d =
+\delta(v_2)\)&lt;/span&gt;且将不再变化（因为这已经是最小）&lt;span class=&#34;math inline&#34;&gt;\(\dots\)&lt;/span&gt;如此放缩&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;轮后，我们便寻找到了&lt;span class=&#34;math inline&#34;&gt;\(v_1, ...
+v_k\)&lt;/span&gt;一众节点的最短路径以及其最短路径的前继。&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;负权回路检测&lt;/p&gt;
 &lt;p&gt;至于负权回路检测部分的正确性，则不得不引入一些公式，但其实并不复杂。&lt;/p&gt;
-&lt;p&gt;假设原图存在可由到达的负权回路&lt;span class=&#34;math inline&#34;&gt;\(c = \left &amp;lt;v_0, v_1, ... v_k\right &amp;gt;, v_0 = v_k\)&lt;/span&gt;，其中，&lt;span class=&#34;math inline&#34;&gt;\(W(c) = \sum_{i=0}^{k-1}w(v_i, v_{i+1}) &amp;lt; 0\)&lt;/span&gt;。运用反证法，即假设最终不存在点&lt;span class=&#34;math inline&#34;&gt;\(u,v\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(v.d &amp;gt; u.d + w(u, v)\)&lt;/span&gt;，则有： &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;假设原图存在可由到达的负权回路&lt;span class=&#34;math inline&#34;&gt;\(c = \left
+&amp;lt;v_0, v_1, ... v_k\right &amp;gt;, v_0 = v_k\)&lt;/span&gt;，其中，&lt;span class=&#34;math inline&#34;&gt;\(W(c) = \sum_{i=0}^{k-1}w(v_i, v_{i+1}) &amp;lt;
+0\)&lt;/span&gt;。运用反证法，即假设最终不存在点&lt;span class=&#34;math inline&#34;&gt;\(u,v\)&lt;/span&gt;，使得&lt;span class=&#34;math inline&#34;&gt;\(v.d
+&amp;gt; u.d + w(u, v)\)&lt;/span&gt;，则有： &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-v_i.d &amp;amp;\leq v_{i-1}.d + w(v_{i-1}, v_i), \forall i \in [1, k] \Rightarrow  \\
-\sum_{i=1}^k v_i.d &amp;amp;\leq \sum_{i=1}^k (v_{i-1}.d + w(v_{i-1},v_i)) \\
-v_k.d + \sum_{i=1}^{k-1} v_i.d &amp;amp;\leq v_0.d + \sum_{i=1}^{k-1} v_{i}.d + \sum_{i=1}^k w(v_{i-1},v_i) \\
+v_i.d &amp;amp;\leq v_{i-1}.d + w(v_{i-1}, v_i), \forall i \in [1, k]
+\Rightarrow  \\
+\sum_{i=1}^k v_i.d &amp;amp;\leq \sum_{i=1}^k (v_{i-1}.d + w(v_{i-1},v_i))
+\\
+v_k.d + \sum_{i=1}^{k-1} v_i.d &amp;amp;\leq v_0.d + \sum_{i=1}^{k-1}
+v_{i}.d + \sum_{i=1}^k w(v_{i-1},v_i) \\
 0 &amp;amp;\leq \sum_{i=1}^k w(v_{i-1},v_i) = W(c)
 \end{aligned}
-\]&lt;/span&gt; 与&lt;span class=&#34;math inline&#34;&gt;\(W(c) &amp;lt; 0\)&lt;/span&gt;矛盾，故得证。&lt;/p&gt;&lt;/li&gt;
+\]&lt;/span&gt; 与&lt;span class=&#34;math inline&#34;&gt;\(W(c) &amp;lt;
+0\)&lt;/span&gt;矛盾，故得证。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;dijkstra算法&#34;&gt;Dijkstra算法&lt;/h3&gt;
 &lt;p&gt;Dijkstra算法相对于Bellman-Ford算法来说，可以在时间复杂度上有所优化，但是能够处理的情形也就少了一些：Dijkstra算法不能处理负权边（所以更不用提负权环路了）。Dijkstra算法基本框架如下：&lt;/p&gt;
@@ -436,13 +575,17 @@ while Q is not empty
 &lt;p&gt;当然，难点在于如何根据&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;找出能够确定最短路径的点。寻找到一个点的最短路径的必要条件是：在对到达这个点的最短路径中的前继节点进行放缩操作时，该前继节点的最短路径已经确定，而点集&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;，正是一个最短路径已经确定的点的集合。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;dijkstra.png&#34;/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\forall u \in S\)&lt;/span&gt;且&lt;span class=&#34;math inline&#34;&gt;\((u, t) \in E\)&lt;/span&gt;，对&lt;span class=&#34;math inline&#34;&gt;\((u, t)\)&lt;/span&gt;进行放缩后得到的值&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;，都是&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;的一个备选，&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中每加入一个点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;（非&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的点），若边&lt;span class=&#34;math inline&#34;&gt;\((v,t)\)&lt;/span&gt;存在，对该边进行放缩后，&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;的备选（也就是放缩后的&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;）就会多一个，而&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;自然是这些备选中最小的那个。而当&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径确定后，便可以将&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;加入到点集&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中，&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;不断扩展，直至最终包含整个点集&lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;，也就是所有点的最短路径都被找到。&lt;/p&gt;
-&lt;p&gt;之前提到过，Dijkstra算法不能处理负权边的情况，但上述 Dijkstra算法的讨论中似乎也没有涉及到负权边，为什么它就不能处理了呢？并且，我们只知道放缩后&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;的是&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;的备选，那么对&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;的放缩要进行到什么时候，才能确认&lt;span class=&#34;math inline&#34;&gt;\(t.d=\delta(t)\)&lt;/span&gt;呢？Dijkstra算法告诉我们，&lt;span class=&#34;math inline&#34;&gt;\(\forall u \in V - S\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(t.d \leq u.d\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(\delta(t) = t.d\)&lt;/span&gt;，也就是当&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的上界小于所有待确认点&lt;span class=&#34;math inline&#34;&gt;\((V-S)\)&lt;/span&gt;的上界时，我们就能确定&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径，也就能够将点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;加入到&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中。&lt;/p&gt;
-&lt;p&gt;为什么？如果没有负权边，我们可以会发现，&lt;span class=&#34;math inline&#34;&gt;\(\forall u \in V - S\)&lt;/span&gt;，其上界&lt;span class=&#34;math inline&#34;&gt;\(u.d\)&lt;/span&gt;总是由放缩操作得到的，所以在算法运行过程中，它必然是单调递减的，而且它代表了一条具体的到达&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;的路径。但为什么&lt;span class=&#34;math inline&#34;&gt;\(V - S\)&lt;/span&gt;中的所有点的上界的最小值，却能够成为某个特定点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径呢？&lt;/p&gt;
+&lt;p&gt;之前提到过，Dijkstra算法不能处理负权边的情况，但上述
+Dijkstra算法的讨论中似乎也没有涉及到负权边，为什么它就不能处理了呢？并且，我们只知道放缩后&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;的是&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;的备选，那么对&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;的放缩要进行到什么时候，才能确认&lt;span class=&#34;math inline&#34;&gt;\(t.d=\delta(t)\)&lt;/span&gt;呢？Dijkstra算法告诉我们，&lt;span class=&#34;math inline&#34;&gt;\(\forall u \in V - S\)&lt;/span&gt;，有&lt;span class=&#34;math inline&#34;&gt;\(t.d \leq u.d\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(\delta(t) = t.d\)&lt;/span&gt;，也就是当&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的上界小于所有待确认点&lt;span class=&#34;math inline&#34;&gt;\((V-S)\)&lt;/span&gt;的上界时，我们就能确定&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径，也就能够将点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;加入到&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中。&lt;/p&gt;
+&lt;p&gt;为什么？如果没有负权边，我们可以会发现，&lt;span class=&#34;math inline&#34;&gt;\(\forall u \in V - S\)&lt;/span&gt;，其上界&lt;span class=&#34;math inline&#34;&gt;\(u.d\)&lt;/span&gt;总是由放缩操作得到的，所以在算法运行过程中，它必然是单调递减的，而且它代表了一条具体的到达&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;的路径。但为什么&lt;span class=&#34;math inline&#34;&gt;\(V -
+S\)&lt;/span&gt;中的所有点的上界的最小值，却能够成为某个特定点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径呢？&lt;/p&gt;
 &lt;p&gt;我们来看看&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的上界成为最小上界的之前之后都发生了什么，换言之，在此之前，或者在此之后，&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;有没有可能更小？之前是不会更小了，因为我们说过，&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;是单调递减的；那么之后呢？如果在&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的上界成为&lt;span class=&#34;math inline&#34;&gt;\((V-S)\)&lt;/span&gt;中的最小上界、从而被加入&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;之后，我们在新的某一轮中选取另外一个点&lt;span class=&#34;math inline&#34;&gt;\(u \in V - S\)&lt;/span&gt;，作为此轮加入&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;的点，在随后的操作中&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;会不会因为某个由&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;出发的放缩操作继续减小呢？&lt;/p&gt;
-&lt;p&gt;不会的，对于某个新加入的点&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\delta(u)\)&lt;/span&gt;必然不小于任何一个&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中的点的最短距离。运用数学归纳法，假设某一时刻&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;按加入顺序排列为&lt;span class=&#34;math inline&#34;&gt;\(\{ u_0, \dots, u_k \}\)&lt;/span&gt;，且有&lt;span class=&#34;math inline&#34;&gt;\(u_0.d \le \dots \le u_k.d\)&lt;/span&gt;。若&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;是由&lt;span class=&#34;math inline&#34;&gt;\(u_k\)&lt;/span&gt;“引荐”进来（也就是说进行了&lt;span class=&#34;math inline&#34;&gt;\(RELAX(u_k, u, w)\)&lt;/span&gt;操作）的，则必有&lt;span class=&#34;math inline&#34;&gt;\(u.d = u_k.d + w(u_k, u) \ge u_k.d\)&lt;/span&gt;；而若&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;是由非&lt;span class=&#34;math inline&#34;&gt;\(u_k\)&lt;/span&gt;的某个&lt;span class=&#34;math inline&#34;&gt;\(u_i\)&lt;/span&gt;引荐而来，则也必然应该有&lt;span class=&#34;math inline&#34;&gt;\(u.d \ge u_k.d\)&lt;/span&gt;，运用反证法：如果&lt;span class=&#34;math inline&#34;&gt;\(u.d &amp;lt; u_k.d\)&lt;/span&gt;，则在我们的算法中，&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;至少应该在选择&lt;span class=&#34;math inline&#34;&gt;\(u_k\)&lt;/span&gt;加入的一轮中，因优于&lt;span class=&#34;math inline&#34;&gt;\(u_k\)&lt;/span&gt;被加入，和&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;的当前情况矛盾，从而得证。&lt;/p&gt;
+&lt;p&gt;不会的，对于某个新加入的点&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(\delta(u)\)&lt;/span&gt;必然不小于任何一个&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;中的点的最短距离。运用数学归纳法，假设某一时刻&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;按加入顺序排列为&lt;span class=&#34;math inline&#34;&gt;\(\{ u_0, \dots, u_k \}\)&lt;/span&gt;，且有&lt;span class=&#34;math inline&#34;&gt;\(u_0.d \le \dots \le u_k.d\)&lt;/span&gt;。若&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;是由&lt;span class=&#34;math inline&#34;&gt;\(u_k\)&lt;/span&gt;“引荐”进来（也就是说进行了&lt;span class=&#34;math inline&#34;&gt;\(RELAX(u_k, u, w)\)&lt;/span&gt;操作）的，则必有&lt;span class=&#34;math inline&#34;&gt;\(u.d = u_k.d + w(u_k, u) \ge
+u_k.d\)&lt;/span&gt;；而若&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;是由非&lt;span class=&#34;math inline&#34;&gt;\(u_k\)&lt;/span&gt;的某个&lt;span class=&#34;math inline&#34;&gt;\(u_i\)&lt;/span&gt;引荐而来，则也必然应该有&lt;span class=&#34;math inline&#34;&gt;\(u.d \ge u_k.d\)&lt;/span&gt;，运用反证法：如果&lt;span class=&#34;math inline&#34;&gt;\(u.d &amp;lt; u_k.d\)&lt;/span&gt;，则在我们的算法中，&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;至少应该在选择&lt;span class=&#34;math inline&#34;&gt;\(u_k\)&lt;/span&gt;加入的一轮中，因优于&lt;span class=&#34;math inline&#34;&gt;\(u_k\)&lt;/span&gt;被加入，和&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;的当前情况矛盾，从而得证。&lt;/p&gt;
 &lt;p&gt;而如果有负权边，则不能保证在后续加入的点的最短距离单调递增，故不能用以上论证来证明Dijkstra算法的正确性了。何况，这种情况下，强行使用Dijkstra算法，很轻易地就能举出反例来证明结果的错误，比如对下图以&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;为起点应用Dijkstra算法，就会得到错误结果：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;counterexample.png&#34;/&gt;&lt;/p&gt;
-&lt;p&gt;当然我们也得证明，每一轮加入新点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(t.d = \delta(t)\)&lt;/span&gt;，因为此时虽然&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;达到整个算法流程中的最小，但这个最小值尚未被证明等于&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;。但正如前面所说：&lt;/p&gt;
+&lt;p&gt;当然我们也得证明，每一轮加入新点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(t.d =
+\delta(t)\)&lt;/span&gt;，因为此时虽然&lt;span class=&#34;math inline&#34;&gt;\(t.d\)&lt;/span&gt;达到整个算法流程中的最小，但这个最小值尚未被证明等于&lt;span class=&#34;math inline&#34;&gt;\(\delta(t)\)&lt;/span&gt;。但正如前面所说：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;寻找到一个点的最短路径的必要条件是：在对到达这个点的最短路径中的前继节点进行放缩操作时，该前继节点的最短路径已经确定，而点集&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;，正是一个最短路径已经确定的点的集合。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -450,11 +593,28 @@ while Q is not empty
 &lt;h3 id=&#34;有向无环图中的最短路径&#34;&gt;有向无环图中的最短路径&lt;/h3&gt;
 &lt;p&gt;有向无环图，从定义上就排除了负权环路存在的可能，故所有点的最短路径必然存在，问题就在于如何寻找到这些最短路径。&lt;/p&gt;
 &lt;p&gt;我们当不能对其直接应用Dijkstra算法，因为有向无环图并不排除负权边存在的可能——那就直接用Bellman-Ford算法咯？&lt;/p&gt;
-&lt;p&gt;也不尽然。有向无环图显然只是Bellman-Ford算法能够处理的情况中的一小部分，并且这一小部分具有一些特殊的性质：无环。设任意一点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径为&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1, ... v_k\right &amp;gt;\)&lt;/span&gt;，其中&lt;span class=&#34;math inline&#34;&gt;\(v_0 = s，v_k = t\)&lt;/span&gt;，既然不存在环路，从起点&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;出发，只要沿着边走，一步一步放缩，必然是先放缩边&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1\right &amp;gt;\)&lt;/span&gt;并由此得到&lt;span class=&#34;math inline&#34;&gt;\(v_1.d = \delta(v_1)\)&lt;/span&gt;；然后放缩边&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_1, v_2\right &amp;gt;\)&lt;/span&gt;并由此得到&lt;span class=&#34;math inline&#34;&gt;\(v_2.d = \delta(v_2)\)&lt;/span&gt;……如此放缩&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;轮后，我们便按顺序寻找到了&lt;span class=&#34;math inline&#34;&gt;\(v_1, ... v_k\)&lt;/span&gt;一众节点的最短路径以及其最短路径的前继。&lt;/p&gt;
-&lt;p&gt;“沿着边走” 有一个专业名词，叫做按&lt;strong&gt;拓扑顺序&lt;/strong&gt;遍历。事实上，我们放缩过边&lt;span class=&#34;math inline&#34;&gt;\((v_{i-1}, v_i)\)&lt;/span&gt;之后，并不一定要马上放缩边&lt;span class=&#34;math inline&#34;&gt;\((v_i, v_{i+1})\)&lt;/span&gt;，只要我们能够保证&lt;span class=&#34;math inline&#34;&gt;\((v_i, v_{i+1})\)&lt;/span&gt;一定在&lt;span class=&#34;math inline&#34;&gt;\((v_{i-1}, v_i)\)&lt;/span&gt;之后放缩即可，至于中间是否穿插其他边的放缩操作，都无所谓。而拓扑顺序正是满足上述性质的一组顺序，为了得到一组拓扑顺序，我们需要对原图进行&lt;strong&gt;拓扑排序&lt;/strong&gt;，然后按照得到的拓扑顺序进行放缩。&lt;/p&gt;
+&lt;p&gt;也不尽然。有向无环图显然只是Bellman-Ford算法能够处理的情况中的一小部分，并且这一小部分具有一些特殊的性质：无环。设任意一点&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;的最短路径为&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1, ... v_k\right
+&amp;gt;\)&lt;/span&gt;，其中&lt;span class=&#34;math inline&#34;&gt;\(v_0 = s，v_k =
+t\)&lt;/span&gt;，既然不存在环路，从起点&lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;出发，只要沿着边走，一步一步放缩，必然是先放缩边&lt;span class=&#34;math inline&#34;&gt;\(\left &amp;lt;v_0, v_1\right
+&amp;gt;\)&lt;/span&gt;并由此得到&lt;span class=&#34;math inline&#34;&gt;\(v_1.d =
+\delta(v_1)\)&lt;/span&gt;；然后放缩边&lt;span class=&#34;math inline&#34;&gt;\(\left
+&amp;lt;v_1, v_2\right &amp;gt;\)&lt;/span&gt;并由此得到&lt;span class=&#34;math inline&#34;&gt;\(v_2.d = \delta(v_2)\)&lt;/span&gt;……如此放缩&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;轮后，我们便按顺序寻找到了&lt;span class=&#34;math inline&#34;&gt;\(v_1, ...
+v_k\)&lt;/span&gt;一众节点的最短路径以及其最短路径的前继。&lt;/p&gt;
+&lt;p&gt;“沿着边走”
+有一个专业名词，叫做按&lt;strong&gt;拓扑顺序&lt;/strong&gt;遍历。事实上，我们放缩过边&lt;span class=&#34;math inline&#34;&gt;\((v_{i-1},
+v_i)\)&lt;/span&gt;之后，并不一定要马上放缩边&lt;span class=&#34;math inline&#34;&gt;\((v_i,
+v_{i+1})\)&lt;/span&gt;，只要我们能够保证&lt;span class=&#34;math inline&#34;&gt;\((v_i,
+v_{i+1})\)&lt;/span&gt;一定在&lt;span class=&#34;math inline&#34;&gt;\((v_{i-1},
+v_i)\)&lt;/span&gt;之后放缩即可，至于中间是否穿插其他边的放缩操作，都无所谓。而拓扑顺序正是满足上述性质的一组顺序，为了得到一组拓扑顺序，我们需要对原图进行&lt;strong&gt;拓扑排序&lt;/strong&gt;，然后按照得到的拓扑顺序进行放缩。&lt;/p&gt;
 &lt;p&gt;如何进行拓扑排序呢？实际很简单，首先对原图进行&lt;strong&gt;深度优先遍历&lt;/strong&gt;（还有一种基于&lt;strong&gt;入度&lt;/strong&gt;的拓扑排序，此处不表），将完成遍历的点依次插入队列的首部，便可得到按照拓扑顺序排列的一个队列，拓扑顺序的实际意义是，如果边&lt;span class=&#34;math inline&#34;&gt;\((u,v)\)&lt;/span&gt;存在，那么对点&lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;的访问必须先于对点&lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;的访问。我们每次从队列中取出一个点，并对从其出发的所有边进行放缩操作即可。虽说拓扑顺序是对点的一个排序，但从该点出发的边和这个点是关联的，所以，先访问点，也就相当于先访问从这个点出发的边了，我们先&lt;span class=&#34;math inline&#34;&gt;\(v_{i}\)&lt;/span&gt;访问，也就必然先于&lt;span class=&#34;math inline&#34;&gt;\((v_i,v_{i+1})\)&lt;/span&gt;放缩&lt;span class=&#34;math inline&#34;&gt;\((v_{i-1},v_i)\)&lt;/span&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;对比&#34;&gt;对比&lt;/h3&gt;
 &lt;table&gt;
+&lt;colgroup&gt;
+&lt;col style=&#34;width: 9%&#34;/&gt;
+&lt;col style=&#34;width: 26%&#34;/&gt;
+&lt;col style=&#34;width: 34%&#34;/&gt;
+&lt;col style=&#34;width: 29%&#34;/&gt;
+&lt;/colgroup&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
 &lt;th&gt;条目&lt;/th&gt;
@@ -478,7 +638,7 @@ while Q is not empty
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;section class=&#34;footnotes footnotes-end-of-document&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr/&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn1&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;无向图可以很便捷的转换为带权有向图。&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;

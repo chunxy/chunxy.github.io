@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class="active"><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1315,11 +1343,15 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#notations-and-concepts">Notations and Concepts</a></li>
-    <li><a href="#shannons-source-coding-theorem">Shannon’s source coding theorem</a></li>
-    <li><a href="#source-coding-theorem-for-symbol-codes">Source coding theorem for symbol codes</a>
+    <li><a href="#shannons-source-coding-theorem">Shannon’s source coding
+theorem</a></li>
+    <li><a href="#source-coding-theorem-for-symbol-codes">Source coding
+theorem for symbol codes</a>
       <ul>
-        <li><a href="#kraft-mcmillan-inequality">Kraft-McMillan inequality</a></li>
-        <li><a href="#the-source-coding-theorem">The source coding theorem</a></li>
+        <li><a href="#kraft-mcmillan-inequality">Kraft-McMillan
+inequality</a></li>
+        <li><a href="#the-source-coding-theorem">The source coding
+theorem</a></li>
       </ul>
     </li>
   </ul>
@@ -1407,7 +1439,11 @@
             
 
 <h2 id="notations-and-concepts">Notations and Concepts</h2>
-<p>An <strong>ensemble <span class="math inline">\(X\)</span></strong> is a triple <span class="math inline">\((X, \newcommand{A}{\mathcal A} \newcommand{P}{\mathcal P} \A_X, \P_X)\)</span>, where <span class="math inline">\(x\)</span> is the outcome of a random variable, which takes on values from <span class="math inline">\(\A_X = \{a_1, a_1, \dots \}\)</span>, that has probability <span class="math inline">\(\P_X = \{p_1, p_2, \dots \}\)</span>.</p>
+<p>An <strong>ensemble <span class="math inline">\(X\)</span></strong>
+is a triple <span class="math inline">\((X, \newcommand{A}{\mathcal A}
+\newcommand{P}{\mathcal P} \A_X, \P_X)\)</span>, where <span class="math inline">\(x\)</span> is the outcome of a random variable,
+which takes on values from <span class="math inline">\(\A_X = \{a_1,
+a_1, \dots \}\)</span>, that has probability <span class="math inline">\(\P_X = \{p_1, p_2, \dots \}\)</span>.</p>
 <p><strong>The raw bit content</strong> of <span class="math inline">\(X\)</span> is <span class="math display">\[
 H_0(X) = \log |\mathcal A_X|
 \]</span> <strong>The smallest <span class="math inline">\(\delta\)</span>-sufficient subset</strong> <span class="math inline">\(S_\delta\)</span> is the smallest subset of <span class="math inline">\(\mathcal A_X\)</span> satisfying <span class="math display">\[
@@ -1415,93 +1451,185 @@ P(X \in S_\delta) \ge 1 - \delta
 \]</span> <strong>The essential bit content</strong> of <span class="math inline">\(X\)</span> is <span class="math display">\[
 H_\delta(X) = \log |S_\delta|
 \]</span></p>
-<h2 id="shannons-source-coding-theorem">Shannon’s source coding theorem</h2>
+<h2 id="shannons-source-coding-theorem">Shannon’s source coding
+theorem</h2>
 <blockquote>
-<p>Let <span class="math inline">\(X\)</span> be an ensemble with entropy <span class="math inline">\(H(X) = H\)</span> bits, and <span class="math inline">\(X^N\)</span> be the ensemble composed of <span class="math inline">\(N\)</span> i.i.d. such random variables. Given <span class="math inline">\(\epsilon &gt; 0\)</span> and <span class="math inline">\(0 &lt; \delta &lt; 1\)</span>, there exists a positive integer <span class="math inline">\(N_0\)</span> such that for <span class="math inline">\(N &gt; N_0\)</span>, <span class="math display">\[
+<p>Let <span class="math inline">\(X\)</span> be an ensemble with
+entropy <span class="math inline">\(H(X) = H\)</span> bits, and <span class="math inline">\(X^N\)</span> be the ensemble composed of <span class="math inline">\(N\)</span> i.i.d. such random variables. Given
+<span class="math inline">\(\epsilon &gt; 0\)</span> and <span class="math inline">\(0 &lt; \delta &lt; 1\)</span>, there exists a
+positive integer <span class="math inline">\(N_0\)</span> such that for
+<span class="math inline">\(N &gt; N_0\)</span>, <span class="math display">\[
 |\frac{1}{N} H_\delta (X^N) - H| &lt; \epsilon
 \]</span></p>
 </blockquote>
 <p>Or put it in a verbal way,</p>
 <blockquote>
-<p><span class="math inline">\(N\)</span> i.i.d. random variables each with entropy <span class="math inline">\(H(X) = H\)</span> can be compressed into more than <span class="math inline">\(NH\)</span> bits with negligible information loss as <span class="math inline">\(N \to \infty\)</span>; conversely if they are compressed fewer than <span class="math inline">\(NH\)</span> bits, it is virtually certain that there is information loss.</p>
+<p><span class="math inline">\(N\)</span> i.i.d. random variables each
+with entropy <span class="math inline">\(H(X) = H\)</span> can be
+compressed into more than <span class="math inline">\(NH\)</span> bits
+with negligible information loss as <span class="math inline">\(N \to
+\infty\)</span>; conversely if they are compressed fewer than <span class="math inline">\(NH\)</span> bits, it is virtually certain that
+there is information loss.</p>
 </blockquote>
 <ul>
-<li><p><strong>Proof</strong>: The random variable <span class="math inline">\(\frac 1 N \log \frac 1 {P(Y)}\)</span> is defined for the ensemble <span class="math inline">\(Y = X^N\)</span> which composes of <span class="math inline">\(N\)</span> i.i.d. <span class="math inline">\(X_1 \dots X_N\)</span>. <span class="math inline">\(\frac 1 N \log \frac 1 {P(Y)}\)</span> can be re-written as the average of <span class="math inline">\(N\)</span> information contents <span class="math inline">\(h_i = \log \frac 1 {P(X_i)}\)</span>: <span class="math display">\[
-\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log \frac{1}{P(X_N)})
-\]</span> Each of these information contents is in turn a random variable with mean <span class="math inline">\(\bar h_i = H(X) = H\)</span> and variance <span class="math inline">\(\sigma_{h_i}^2 = \sigma^2\)</span>. The <strong>typical set</strong> with parameters <span class="math inline">\(N\)</span> and <span class="math inline">\(\beta\)</span> is defined as <span class="math display">\[
-T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac{1}{P(y)} - H]^2 &lt; \beta^2 \}
-\]</span> By the <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律">Weak Law of Large Numbers</a>, <span class="math inline">\(P((\frac 1 N \log \frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2 N}\)</span>, and thus <span class="math display">\[
+<li><p><strong>Proof</strong>: The random variable <span class="math inline">\(\frac 1 N \log \frac 1 {P(Y)}\)</span> is defined
+for the ensemble <span class="math inline">\(Y = X^N\)</span> which
+composes of <span class="math inline">\(N\)</span> i.i.d. <span class="math inline">\(X_1 \dots X_N\)</span>. <span class="math inline">\(\frac 1 N \log \frac 1 {P(Y)}\)</span> can be
+re-written as the average of <span class="math inline">\(N\)</span>
+information contents <span class="math inline">\(h_i = \log \frac 1
+{P(X_i)}\)</span>: <span class="math display">\[
+\frac 1 N \log \frac 1 {P(Y)} = \frac 1 N \log \frac 1 {P(X_1) \dots
+P(X_N)} = \frac 1 N (\log \frac{1}{P(X_1)} + \dots + \log
+\frac{1}{P(X_N)})
+\]</span> Each of these information contents is in turn a random
+variable with mean <span class="math inline">\(\bar h_i = H(X) =
+H\)</span> and variance <span class="math inline">\(\sigma_{h_i}^2 =
+\sigma^2\)</span>. The <strong>typical set</strong> with parameters
+<span class="math inline">\(N\)</span> and <span class="math inline">\(\beta\)</span> is defined as <span class="math display">\[
+T_{N \beta} = \{y \in \mathcal A_X^N: [\frac 1 N \log \frac{1}{P(y)} -
+H]^2 &lt; \beta^2 \}
+\]</span> By the <a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#相互独立同分布大数定律">Weak Law of Large
+Numbers</a>, <span class="math inline">\(P((\frac 1 N \log
+\frac{1}{P(y)} - H)^2 \ge \beta^2) = \frac{\sigma^2}{\beta^2
+N}\)</span>, and thus <span class="math display">\[
 P(y \in T_{N \beta}) \ge 1 - \frac{\sigma^2}{\beta^2 N}
-\]</span> As <span class="math inline">\(N\)</span> increases, the probability that <span class="math inline">\(y\)</span> falls in <span class="math inline">\(T_{N \beta}\)</span> draws near to <span class="math inline">\(1\)</span>. We need to relate this to the theorem that for any given <span class="math inline">\(\epsilon, \delta\)</span>, there is a sufficiently-large <span class="math inline">\(N\)</span> such that <span class="math inline">\(H_\delta(X^N) \simeq NH\)</span>.</p>
+\]</span> As <span class="math inline">\(N\)</span> increases, the
+probability that <span class="math inline">\(y\)</span> falls in <span class="math inline">\(T_{N \beta}\)</span> draws near to <span class="math inline">\(1\)</span>. We need to relate this to the theorem
+that for any given <span class="math inline">\(\epsilon,
+\delta\)</span>, there is a sufficiently-large <span class="math inline">\(N\)</span> such that <span class="math inline">\(H_\delta(X^N) \simeq NH\)</span>.</p>
 <ol type="1">
-<li><p><span class="math inline">\(H_\delta(X^N) &lt; N(H + \epsilon)\)</span></p>
-<p>The set <span class="math inline">\(T_{N \beta}\)</span> is not the best sufficient subset for compression. Therefore, <span class="math inline">\(\log |T_{N \beta}|\)</span> upper-bounds the <span class="math inline">\(H_\delta(X^N)\)</span>. On the other hand, for all <span class="math inline">\(y \in T_{N \beta}\)</span>, <span class="math inline">\(2^{-N(H - \beta)} &lt; P(y) &lt; 2^{-N(H + \beta)}\)</span>, <span class="math display">\[
+<li><p><span class="math inline">\(H_\delta(X^N) &lt; N(H +
+\epsilon)\)</span></p>
+<p>The set <span class="math inline">\(T_{N \beta}\)</span> is not the
+best sufficient subset for compression. Therefore, <span class="math inline">\(\log |T_{N \beta}|\)</span> upper-bounds the <span class="math inline">\(H_\delta(X^N)\)</span>. On the other hand, for all
+<span class="math inline">\(y \in T_{N \beta}\)</span>, <span class="math inline">\(2^{-N(H - \beta)} &lt; P(y) &lt; 2^{-N(H +
+\beta)}\)</span>, <span class="math display">\[
 \begin{align*}
 |T_{N \beta}| 2^{-N(H + \beta)} &amp;&lt; 1 \\
 |T_{N \beta}| &amp;&lt; 2^{N(H + \beta)} \\
 \end{align*}
-\]</span> If we set <span class="math inline">\(\beta = \epsilon\)</span> and <span class="math inline">\(N = N_0\)</span> in a way such that <span class="math inline">\(\frac{\sigma^2}{\epsilon^2 N_0} \le \delta\)</span> and thus <span class="math inline">\(P(y \in T_{N_0 \epsilon}) \ge 1 - \delta\)</span>, <span class="math inline">\(T_{N_0 \epsilon}\)</span> is a <span class="math inline">\(\delta\)</span>-sufficient subset. Then, <span class="math inline">\(H_\delta(X^N) \le \log |T_{N_0 \epsilon}| \le N_0(H + \epsilon)\)</span> holds for any <span class="math inline">\(N \ge N_0\)</span>.</p></li>
-<li><p><span class="math inline">\(H_\delta(X^N) &gt; N(H - \epsilon)\)</span></p>
-<p>This part is reached by contradiction. Suppose instead there exists a <span class="math inline">\(\delta&#39;\)</span> such that there exists a sufficiently large <span class="math inline">\(N_0\)</span> which results in <span class="math inline">\(H_\delta(X^{N_0}) \le N_0(H - \epsilon)\)</span> for arbitrary <span class="math inline">\(\beta\)</span>. When <span class="math inline">\(\beta = \epsilon/2\)</span>, we have <span class="math display">\[
+\]</span> If we set <span class="math inline">\(\beta =
+\epsilon\)</span> and <span class="math inline">\(N = N_0\)</span> in a
+way such that <span class="math inline">\(\frac{\sigma^2}{\epsilon^2
+N_0} \le \delta\)</span> and thus <span class="math inline">\(P(y \in
+T_{N_0 \epsilon}) \ge 1 - \delta\)</span>, <span class="math inline">\(T_{N_0 \epsilon}\)</span> is a <span class="math inline">\(\delta\)</span>-sufficient subset. Then, <span class="math inline">\(H_\delta(X^N) \le \log |T_{N_0 \epsilon}| \le
+N_0(H + \epsilon)\)</span> holds for any <span class="math inline">\(N
+\ge N_0\)</span>.</p></li>
+<li><p><span class="math inline">\(H_\delta(X^N) &gt; N(H -
+\epsilon)\)</span></p>
+<p>This part is reached by contradiction. Suppose instead there exists a
+<span class="math inline">\(\delta&#39;\)</span> such that there exists
+a sufficiently large <span class="math inline">\(N_0\)</span> which
+results in <span class="math inline">\(H_\delta(X^{N_0}) \le N_0(H -
+\epsilon)\)</span> for arbitrary <span class="math inline">\(\beta\)</span>. When <span class="math inline">\(\beta = \epsilon/2\)</span>, we have <span class="math display">\[
 H_\delta(X^N) \le N_0(H - 2\beta)
-\]</span> Denote the associated subset by <span class="math inline">\(S&#39;\)</span>. We are to disprove <span class="math inline">\(S&#39;\)</span> with <span class="math inline">\(|S&#39;| \le 2^{N(H - 2\beta)}\)</span> can achieve <span class="math inline">\(P(y \in S&#39;) \ge 1 - \delta\)</span>. <span class="math display">\[
-P(y \in S&#39;) = P(y \in S&#39; \cap T_{N \beta}) + P(y \in S&#39; \cap \overline{T_{N \beta}})
-\]</span> <span class="math inline">\(|S&#39; \cap T_{N \beta}| \le |S&#39;| \le 2^{N(H - 2\beta)}\)</span>. The maximum value of the first term is obtained when <span class="math inline">\(S&#39; \cap T_{N \beta}\)</span> contains <span class="math inline">\(2^{N(H - 2\beta)}\)</span> outcomes all with probability <span class="math inline">\(2^{-N(H - \beta)}\)</span>. <span class="math inline">\(S&#39; \cap \overline{T_{N \beta}} \subseteq \overline{T_{N \beta}}\)</span>, <span class="math inline">\(P(y \in S&#39; \cap \overline{T_{N \beta}}) \le P(y \in \overline{T_{N \beta}}) &lt; \frac{\sigma^2}{\beta^2 N}\)</span>. Therefore, <span class="math display">\[
-P(y \in S&#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} + \frac{\sigma^2}{\beta^2 N} = 2^{-N \beta} + \frac{\sigma^2}{\beta^2 N}
-\]</span> For arbitrary <span class="math inline">\(\delta\)</span> and a sufficiently-large <span class="math inline">\(N_0\)</span>, we can have <span class="math inline">\(P(y \in S&#39;) \le 1 - \delta\)</span> instead of <span class="math inline">\(P(y \in S&#39;) \ge 1 - \delta\)</span>. We shall conclude that <span class="math inline">\(S&#39;\)</span> with <span class="math inline">\(|S&#39;| \le 2^{N(H - 2\beta)}\)</span> cannot achieve <span class="math inline">\(P(y \in S&#39;) \ge 1 - \delta\)</span> and thus <span class="math inline">\(H_\delta(X^N) &gt; N(H - \epsilon)\)</span>.</p></li>
+\]</span> Denote the associated subset by <span class="math inline">\(S&#39;\)</span>. We are to disprove <span class="math inline">\(S&#39;\)</span> with <span class="math inline">\(|S&#39;| \le 2^{N(H - 2\beta)}\)</span> can
+achieve <span class="math inline">\(P(y \in S&#39;) \ge 1 -
+\delta\)</span>. <span class="math display">\[
+P(y \in S&#39;) = P(y \in S&#39; \cap T_{N \beta}) + P(y \in S&#39; \cap
+\overline{T_{N \beta}})
+\]</span> <span class="math inline">\(|S&#39; \cap T_{N \beta}| \le
+|S&#39;| \le 2^{N(H - 2\beta)}\)</span>. The maximum value of the first
+term is obtained when <span class="math inline">\(S&#39; \cap T_{N
+\beta}\)</span> contains <span class="math inline">\(2^{N(H -
+2\beta)}\)</span> outcomes all with probability <span class="math inline">\(2^{-N(H - \beta)}\)</span>. <span class="math inline">\(S&#39; \cap \overline{T_{N \beta}} \subseteq
+\overline{T_{N \beta}}\)</span>, <span class="math inline">\(P(y \in
+S&#39; \cap \overline{T_{N \beta}}) \le P(y \in \overline{T_{N \beta}})
+&lt; \frac{\sigma^2}{\beta^2 N}\)</span>. Therefore, <span class="math display">\[
+P(y \in S&#39;) \le 2^{N(H - 2\beta)} 2^{-N(H - \beta)} +
+\frac{\sigma^2}{\beta^2 N} = 2^{-N \beta} + \frac{\sigma^2}{\beta^2 N}
+\]</span> For arbitrary <span class="math inline">\(\delta\)</span> and
+a sufficiently-large <span class="math inline">\(N_0\)</span>, we can
+have <span class="math inline">\(P(y \in S&#39;) \le 1 - \delta\)</span>
+instead of <span class="math inline">\(P(y \in S&#39;) \ge 1 -
+\delta\)</span>. We shall conclude that <span class="math inline">\(S&#39;\)</span> with <span class="math inline">\(|S&#39;| \le 2^{N(H - 2\beta)}\)</span> cannot
+achieve <span class="math inline">\(P(y \in S&#39;) \ge 1 -
+\delta\)</span> and thus <span class="math inline">\(H_\delta(X^N) &gt;
+N(H - \epsilon)\)</span>.</p></li>
 </ol></li>
 </ul>
-<h2 id="source-coding-theorem-for-symbol-codes">Source coding theorem for symbol codes</h2>
+<h2 id="source-coding-theorem-for-symbol-codes">Source coding theorem
+for symbol codes</h2>
 <h3 id="kraft-mcmillan-inequality">Kraft-McMillan inequality</h3>
 <ol type="1">
 <li><p>Denote the length of each symbol code as <span class="math inline">\(l_i\)</span> and there are <span class="math inline">\(I\)</span> symbols. If <span class="math display">\[
 \sum_{i=1}^I 2^{-l_i} \le 1
-\]</span> there exists a set of uniquely-decodable prefix coding with these lengths as their symbol codes’ lengths.</p>
+\]</span> there exists a set of uniquely-decodable prefix coding with
+these lengths as their symbol codes’ lengths.</p>
 <ul>
-<li><p><strong>Proof</strong>: The proof is done by construction. The number of codes of length <span class="math inline">\(l\)</span> should be less than <span class="math inline">\(2^{l+1}\)</span>, or else the above condition will be violated. Therefore we can loosely arrange all the codes of length <span class="math inline">\(l\)</span> to be unique. Then the uniqueness condition is checked.</p>
-<p>Denote the number of codes of length <span class="math inline">\(l\)</span> by <span class="math inline">\(C_l\)</span>. For any two consecutive lengths <span class="math inline">\(l\)</span> and <span class="math inline">\(l+1\)</span>, we have <span class="math display">\[
+<li><p><strong>Proof</strong>: The proof is done by construction. The
+number of codes of length <span class="math inline">\(l\)</span> should
+be less than <span class="math inline">\(2^{l+1}\)</span>, or else the
+above condition will be violated. Therefore we can loosely arrange all
+the codes of length <span class="math inline">\(l\)</span> to be unique.
+Then the uniqueness condition is checked.</p>
+<p>Denote the number of codes of length <span class="math inline">\(l\)</span> by <span class="math inline">\(C_l\)</span>. For any two consecutive lengths
+<span class="math inline">\(l\)</span> and <span class="math inline">\(l+1\)</span>, we have <span class="math display">\[
 \begin{aligned}
 2^{-l} C_l + 2^{-(l+1)} C_{l+1} &amp;\le 1 \\
 C_{l+1} &amp;\le 2^{l+1} - 2 C_l \\
 C_{l+1} &amp;\le 2(2^l - C_l) \\
 \end{aligned}
-\]</span> This means we can append these unused <span class="math inline">\(2^l - C_l\)</span> codes of length <span class="math inline">\(l\)</span> with <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> to meet the number of codes of length <span class="math inline">\(l+1\)</span>. Construction completes.</p></li>
+\]</span> This means we can append these unused <span class="math inline">\(2^l - C_l\)</span> codes of length <span class="math inline">\(l\)</span> with <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> to meet the number of codes of length
+<span class="math inline">\(l+1\)</span>. Construction
+completes.</p></li>
 </ul></li>
-<li><p>Suppose we have a set of uniquely-decodable prefix coding. Denote the length of each symbol code as <span class="math inline">\(l_i\)</span> and there are <span class="math inline">\(I\)</span> symbols. Then, <span class="math display">\[
+<li><p>Suppose we have a set of uniquely-decodable prefix coding. Denote
+the length of each symbol code as <span class="math inline">\(l_i\)</span> and there are <span class="math inline">\(I\)</span> symbols. Then, <span class="math display">\[
 \sum_{i=1}^I 2^{-l_i} \le 1
 \]</span></p>
 <ul>
-<li><strong>Proof</strong>: Let <span class="math inline">\(S = \sum_{i=1}^I 2^{-l_i} \le 1\)</span>, then, <span class="math display">\[
+<li><strong>Proof</strong>: Let <span class="math inline">\(S =
+\sum_{i=1}^I 2^{-l_i} \le 1\)</span>, then, <span class="math display">\[
 \begin{aligned}
   S^N &amp;= (\sum_{i=1}^I 2^{-l_i})^N \\
-  &amp;= \sum_{i_1=1}^I \dots \sum_{i_N=1}^I 2^{-(l_{i_1} + \dots + l_{i_N})}
+  &amp;= \sum_{i_1=1}^I \dots \sum_{i_N=1}^I 2^{-(l_{i_1} + \dots +
+l_{i_N})}
   \end{aligned}
-\]</span> The <span class="math inline">\((l_{i_1} + \dots + l_{i_N})\)</span> term can be treated as the length of encoding of <span class="math inline">\(a_{i_1} \dots a_{i_N}\)</span> of arbitrary length <span class="math inline">\(N\)</span>. Let <span class="math inline">\(l_\min = \min_i l_i, l_\max = \max_i l_i\)</span>, the above can be re-written as <span class="math display">\[
+\]</span> The <span class="math inline">\((l_{i_1} + \dots +
+l_{i_N})\)</span> term can be treated as the length of encoding of <span class="math inline">\(a_{i_1} \dots a_{i_N}\)</span> of arbitrary length
+<span class="math inline">\(N\)</span>. Let <span class="math inline">\(l_\min = \min_i l_i, l_\max = \max_i l_i\)</span>,
+the above can be re-written as <span class="math display">\[
   S^N = \sum_{l = Nl_\min}^{Nl_\max} 2^{-l}C_l
-\]</span> where <span class="math inline">\(C_l\)</span> represents the number of symbol codes of length <span class="math inline">\(l\)</span>. Since the coding is uniquely-decodable, <span class="math inline">\(C_l \le 2^l\)</span>. Therefore, <span class="math display">\[
+\]</span> where <span class="math inline">\(C_l\)</span> represents the
+number of symbol codes of length <span class="math inline">\(l\)</span>.
+Since the coding is uniquely-decodable, <span class="math inline">\(C_l
+\le 2^l\)</span>. Therefore, <span class="math display">\[
 S^N \le \sum_{l = Nl_\min}^{Nl_\max} 2^{-l} 2^l \le Nl_\max
-\]</span> If <span class="math inline">\(S &gt; 1\)</span>, the above cannot hold for arbitrary <span class="math inline">\(N\)</span>. Therefore <span class="math inline">\(S \le 1\)</span>.</li>
+\]</span> If <span class="math inline">\(S &gt; 1\)</span>, the above
+cannot hold for arbitrary <span class="math inline">\(N\)</span>.
+Therefore <span class="math inline">\(S \le 1\)</span>.</li>
 </ul></li>
 </ol>
 <h3 id="the-source-coding-theorem">The source coding theorem</h3>
-<p>For an ensemble <span class="math inline">\(X\)</span>, there exists a prefix code <span class="math inline">\(C\)</span> with expected length satisfying <span class="math display">\[
+<p>For an ensemble <span class="math inline">\(X\)</span>, there exists
+a prefix code <span class="math inline">\(C\)</span> with expected
+length satisfying <span class="math display">\[
 H(X) \le L(C,X) &lt; H(X) + 1
 \]</span></p>
 <ul>
-<li><p><strong>Proof</strong>: We define the implicit probabilities <span class="math inline">\(q_i = 2^{-l_i} / z\)</span> where <span class="math inline">\(z = \sum_i 2^{-l_i}\)</span>. Then, <span class="math display">\[
+<li><p><strong>Proof</strong>: We define the implicit probabilities
+<span class="math inline">\(q_i = 2^{-l_i} / z\)</span> where <span class="math inline">\(z = \sum_i 2^{-l_i}\)</span>. Then, <span class="math display">\[
 \begin{aligned}
 L(C,X) = \sum_i p_i l_i &amp;= -\sum_i [p_i \log (q_iz)] \\
 &amp;=\sum_i [p_i \log 1/q_i] - \log z \\
 &amp;\ge H(X)
 \end{aligned}
-\]</span> The equality holds when <span class="math inline">\(z = 1\)</span> (the code is complete) and <span class="math inline">\(q = p\)</span> (<span class="math inline">\(l_i = \log 1/p_i\)</span>).</p>
-<p>From another perspective, suppose the coding is complete but not optimal, <span class="math display">\[
+\]</span> The equality holds when <span class="math inline">\(z =
+1\)</span> (the code is complete) and <span class="math inline">\(q =
+p\)</span> (<span class="math inline">\(l_i = \log 1/p_i\)</span>).</p>
+<p>From another perspective, suppose the coding is complete but not
+optimal, <span class="math display">\[
 \begin{aligned}
 &amp;L(C,X) = -\sum_i [p_i \log (q_iz)] = -\sum_i [p_i \log (q_i)] \\
-&amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i \log (q_i)] \\
+&amp;= -\sum_i [p_i \log (p_i)] + \sum_i [p_i \log (p_i)] -\sum_i [p_i
+\log (q_i)] \\
 &amp;= H(X) + D_{KL}(p || q)
 \end{aligned}
-\]</span> where the cost is the extra <span class="math inline">\(D_{KL}(p || q)\)</span> bits, which is brought by instead treating <span class="math inline">\(q\)</span> as the real distribution. <span class="math inline">\(D_{KL(p||q)}\)</span> is termed as relative entropy or the <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a>.</p></li>
+\]</span> where the cost is the extra <span class="math inline">\(D_{KL}(p || q)\)</span> bits, which is brought by
+instead treating <span class="math inline">\(q\)</span> as the real
+distribution. <span class="math inline">\(D_{KL(p||q)}\)</span> is
+termed as relative entropy or the <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a>.</p></li>
 </ul>
 
 
@@ -1518,6 +1646,19 @@ L(C,X) = \sum_i p_i l_i &amp;= -\sum_i [p_i \log (q_iz)] \\
             
 <div class="post-nav">
   
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/" rel="next">Source Coding Theorem</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/" rel="prev"></a>
+  </div>
   
 </div>
 
@@ -1580,7 +1721,7 @@ L(C,X) = \sum_i p_i l_i &amp;= -\sum_i [p_i \log (q_iz)] \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1630,7 +1771,7 @@ L(C,X) = \sum_i p_i l_i &amp;= -\sum_i [p_i \log (q_iz)] \\
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1717,7 +1858,7 @@ L(C,X) = \sum_i p_i l_i &amp;= -\sum_i [p_i \log (q_iz)] \\
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

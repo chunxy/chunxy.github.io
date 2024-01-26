@@ -60,9 +60,8 @@
   
     
   
-  <meta name="description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case." />
+  <meta name="description" content="Both Cross Entropy and KL-divergence describe the relationship between two distributions.
+Both conditional entropy and mutual information, as well as joint entropy, describe the relationship between two random variables." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/overview/" />
@@ -323,9 +322,8 @@ Since the notion of entropy is the basis of all other concepts in this section a
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/overview/" />
   <meta property="og:title" content="Overview | Chunxy&#39; Website" />
-  <meta property="og:description" content="Distribution or Random Variable? Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both Conditional Entropy and Mutual Information describe the relationship between two random variables.
-Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Both Cross Entropy and KL-divergence describe the relationship between two distributions.
+Both conditional entropy and mutual information, as well as joint entropy, describe the relationship between two random variables." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -719,6 +717,10 @@ Since the notion of entropy is the basis of all other concepts in this section a
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -775,7 +777,15 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -919,6 +929,10 @@ Since the notion of entropy is the basis of all other concepts in this section a
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1122,7 +1136,19 @@ Since the notion of entropy is the basis of all other concepts in this section a
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1318,9 +1344,12 @@ Since the notion of entropy is the basis of all other concepts in this section a
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#distribution-or-random-variable">Distribution or Random Variable?</a></li>
-    <li><a href="#kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy and Cross Entropy</a></li>
-    <li><a href="#kl-divergence-and-mutual-information">KL-divergence and Mutual Information</a></li>
+    <li><a href="#kl-divergence-entropy-and-cross-entropy">KL-divergence,
+Entropy and Cross Entropy</a></li>
+    <li><a href="#kl-divergence-and-mutual-information">KL-divergence and
+Mutual Information</a></li>
+    <li><a href="#joint-entropy-and-conditional-entropy">Joint Entropy and
+Conditional Entropy</a></li>
   </ul>
 </nav>
 
@@ -1405,27 +1434,38 @@ Since the notion of entropy is the basis of all other concepts in this section a
           <div class="article-style">
             
 
-<h2 id="distribution-or-random-variable">Distribution or Random Variable?</h2>
-<p>Both <a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a> and <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> describe the relationship between <strong>two distributions</strong>.</p>
-<p>Both <a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a> and <a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a> describe the relationship between <strong>two random variables</strong>.</p>
-<p>Since the notion of entropy is the basis of all other concepts in this section and the entropy is more well-defined on discrete random variable, they are more meaningful to be applied in discrete case, though they are usually easily extended to continuous case.</p>
-<h2 id="kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy and Cross Entropy</h2>
+<p>Both <a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a> and <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> describe the
+relationship between <strong>two distributions</strong>.</p>
+<p>Both <a href="/notes/articles/information-theory/conditional-entropy/">conditional entropy</a> and
+<a href="/notes/articles/information-theory/mutual-information/">mutual information</a>, as well as
+<u>joint entropy</u>, describe the relationship between <strong>two
+random variables</strong>.</p>
+<p>Since the notion of entropy is the basis of all other concepts in
+this section and the entropy is more well-defined on discrete random
+variable, they are more meaningful to be applied in discrete case,
+though they are usually trivially extended to continuous case.</p>
+<h2 id="kl-divergence-entropy-and-cross-entropy">KL-divergence, Entropy
+and Cross Entropy</h2>
 <p>By definition, <span class="math display">\[
 \begin{align}
-D_{KL}(p||q) &amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)} \\
-&amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log {p(x)}) \\
+D_\text{KL}(p||q) &amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)}
+\\
+&amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log
+{p(x)}) \\
 &amp;= H(p||q) - H(p)
 \end{align}
 \]</span> By the convexity of <span class="math inline">\(-\log\)</span>, <span class="math display">\[
 \begin{align}
-D_{KL}(p||q) &amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}] \\
+D_\text{KL}(p||q) &amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}]
+\\
 &amp;\ge -\log(\mathrm{E}_{x \sim p} \frac{q(x)}{p(x)}) \\
 &amp;= 0
 \end{align}
 \]</span> That is <span class="math display">\[
 H(p||q) \ge H(p)
 \]</span> The equality holds if and only if <span class="math inline">\(p = q\)</span>.</p>
-<h2 id="kl-divergence-and-mutual-information">KL-divergence and Mutual Information</h2>
+<h2 id="kl-divergence-and-mutual-information">KL-divergence and Mutual
+Information</h2>
 <p>Given that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have the same dimension, <span class="math display">\[
 \begin{aligned}
 &amp;I(X;Y) = \sum_{x,y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)} \\
@@ -1434,6 +1474,18 @@ H(p||q) \ge H(p)
 &amp;= \sum_{x} p(x) D_{KL}[p(y|x), p(y)] \\
 &amp;= \E_{x} D_{KL}[p(y|x), p(y)] \\
 &amp;= \E_{y} D_{KL}[p(x|y), p(x)] \\
+\end{aligned}
+\]</span></p>
+<h2 id="joint-entropy-and-conditional-entropy">Joint Entropy and
+Conditional Entropy</h2>
+<p>Joint entropy is just entropy, but with the random variable usually
+broken into two separate components. <span class="math display">\[
+\begin{aligned}
+&amp;H(X, Y) = \sum_{x,y} p(x,y) \log p(x,y) \\
+&amp;= \sum_{x,y} p(x,y) \log p(y|x) p(x) \\
+&amp;= \sum_{x,y} p(x,y) \log p(y|x) \\
+&amp;\quad + \sum_{x,y} p(x,y) \log p(x) \\
+&amp;= H(Y|X) + H(X)
 \end{aligned}
 \]</span></p>
 
@@ -1520,7 +1572,7 @@ H(p||q) \ge H(p)
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1570,7 +1622,7 @@ H(p||q) \ge H(p)
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1657,7 +1709,7 @@ H(p||q) \ge H(p)
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

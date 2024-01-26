@@ -717,6 +717,10 @@ Real-valued Eigenvalues and Eigenvectors Its eigenvalues and thus eigenvectors a
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -773,7 +777,15 @@ Real-valued Eigenvalues and Eigenvectors Its eigenvalues and thus eigenvectors a
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -917,6 +929,10 @@ Real-valued Eigenvalues and Eigenvectors Its eigenvalues and thus eigenvectors a
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1120,7 +1136,19 @@ Real-valued Eigenvalues and Eigenvectors Its eigenvalues and thus eigenvectors a
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1318,13 +1346,13 @@ Real-valued Eigenvalues and Eigenvectors Its eigenvalues and thus eigenvectors a
   <ul>
     <li><a href="#real-symmetric-matrix">Real Symmetric Matrix</a>
       <ul>
-        <li><a href="#real-valued-eigenvalues-and-eigenvectors">Real-valued Eigenvalues and Eigenvectors</a></li>
-        <li><a href="#orthogonal-eigenvectors">Orthogonal Eigenvectors</a></li>
+        <li><a href="#real-valued-eigenvalues-and-eigenvectors">Real-valued
+Eigenvalues and Eigenvectors</a></li>
         <li><a href="#diagonalizable">Diagonalizable</a></li>
-        <li><a href="#eigenvalues-and-positive-definiteness">Eigenvalues and Positive Definiteness</a></li>
-        <li><a href="#covariance-matrix">Covariance Matrix</a></li>
+        <li><a href="#commutativity">Commutativity</a></li>
       </ul>
     </li>
+    <li><a href="#covariance-matrix">Covariance Matrix</a></li>
     <li><a href="#external-material">External Material</a></li>
   </ul>
 </nav>
@@ -1422,39 +1450,71 @@ Real-valued Eigenvalues and Eigenvectors Its eigenvalues and thus eigenvectors a
             
 
 <h2 id="real-symmetric-matrix">Real Symmetric Matrix</h2>
-<p>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n \times n\)</span> real-valued symmetric matrix. We have its properties as follows.</p>
-<h3 id="real-valued-eigenvalues-and-eigenvectors">Real-valued Eigenvalues and Eigenvectors</h3>
-<p>Its eigenvalues and thus eigenvectors are real-valued. Suppose by contradiction that <span class="math inline">\(A\)</span> has some imaginary eigenvalue <span class="math inline">\(\lambda\)</span> and the corresponding imaginary eigenvector <span class="math inline">\(x\)</span>. We have <span class="math display">\[
+<p>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n \times n\)</span> real-valued symmetric matrix.
+We have its properties as follows.</p>
+<h3 id="real-valued-eigenvalues-and-eigenvectors">Real-valued
+Eigenvalues and Eigenvectors</h3>
+<p>Its eigenvalues and thus eigenvectors are real-valued. Suppose by
+contradiction that <span class="math inline">\(A\)</span> has some
+imaginary eigenvalue <span class="math inline">\(\lambda\)</span> and
+the corresponding imaginary eigenvector <span class="math inline">\(x\)</span>. We have <span class="math display">\[
 \begin{aligned}
-Ax &amp;= \lambda x \\
-A(x_{real} + x_{img}) &amp;= (\lambda_{real} + \lambda_{img})(x_{real} + x_{img}) \\
-Ax_{real} + Ax_{img} &amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) + (\lambda_{real}x_{real} + \lambda_{img}x_{real}) \\
+A x &amp;= \lambda x \\
+A(x_\text{real} + x_\text{img}) &amp;= (\lambda_\text{real} +
+\lambda_\text{img})(x_\text{real} + x_\text{img}) \\
+A x_\text{real} + A x_\text{img} &amp;= (\lambda_\text{real}
+x_\text{real} + \lambda_\text{img} x_\text{img}) + (\lambda_\text{real}
+x_\text{real} + \lambda_\text{img} x_\text{real}) \\
 \end{aligned}
-\]</span> Denoting <span class="math inline">\(\lambda\)</span>’s and <span class="math inline">\(x\)</span>’s complex conjugate by <span class="math inline">\(\bar \lambda\)</span> and <span class="math inline">\(\bar x\)</span> respectively, we have <span class="math display">\[
+\]</span> Denoting <span class="math inline">\(\lambda\)</span>’s and
+<span class="math inline">\(x\)</span>’s complex conjugate by <span class="math inline">\(\bar \lambda\)</span> and <span class="math inline">\(\bar x\)</span> respectively, we have <span class="math display">\[
 \begin{gather}
 \left.
 \begin{aligned}
-&amp;A\bar x = Ax_{real} - Ax_{img} \\
-&amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) \\
-&amp;\quad- (\lambda_{real}x_{real} + \lambda_{img}x_{real}) \\
-&amp;= \bar \lambda \bar x 
+&amp;A\bar x = A x_\text{real} - A x_\text{img} \\
+&amp;= (\lambda_\text{real} x_\text{real} + \lambda_\text{img}
+x_\text{img}) \\
+&amp;\quad- (\lambda_\text{real} x_\text{real} + \lambda_\text{img}
+x_\text{real}) \\
+&amp;= \bar \lambda \bar x
 \end{aligned}
 \right\} \Rightarrow
 \begin{aligned}
 (A\bar x)^T &amp;= (\bar \lambda \bar x)^T \\
-\bar x^TA^T &amp;= \bar \lambda \bar x^T \\
-\bar x^TA &amp;= \bar \lambda \bar x^T
+\bar x^T A^T &amp;= \bar \lambda \bar x^T \\
+\bar x^T A &amp;= \bar \lambda \bar x^T
 \end{aligned}
 \end{gather}
-\]</span> Left-multiply <span class="math inline">\(\bar x^T\)</span> on both sides of <span class="math inline">\(Ax = \lambda x\)</span> to give: <span class="math display">\[
+\]</span> Left-multiply <span class="math inline">\(\bar x^T\)</span> on
+both sides of <span class="math inline">\(Ax = \lambda x\)</span> to
+give: <span class="math display">\[
 \bar x^TAx = \bar x^T \lambda x = \lambda \bar x^T x
-\]</span> Right-multiply <span class="math inline">\(x\)</span> on both side of <span class="math inline">\(\bar x^TA = \bar \lambda \bar x^T\)</span> to give: <span class="math display">\[
+\]</span> Right-multiply <span class="math inline">\(x\)</span> on both
+side of <span class="math inline">\(\bar x^TA = \bar \lambda \bar
+x^T\)</span> to give: <span class="math display">\[
 \bar x^TAx = \bar \lambda \bar x^T x
-\]</span> Therefore <span class="math inline">\(\bar \lambda \bar x^T x = \lambda \bar x^T x\)</span>. Since <span class="math inline">\(\bar x^Tx\)</span> is real-value, <span class="math inline">\(\bar \lambda = \lambda\)</span>. In other words, <span class="math inline">\(\lambda\)</span> is real-valued and thus so is <span class="math inline">\(x\)</span>.</p>
-<h3 id="orthogonal-eigenvectors">Orthogonal Eigenvectors</h3>
-<p>Its eigenvectors corresponding to different eigenvalues are orthogonal. Arbitrarily taking <span class="math inline">\(A\)</span>’ s two eigenvectors <span class="math inline">\(v_1, v_2\)</span> and their eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \lambda_1 \ne \lambda_2\)</span>, we have</p>
+\]</span> Therefore <span class="math inline">\(\bar \lambda \bar x^T x
+= \lambda \bar x^T x\)</span>. Since <span class="math inline">\(\bar
+x^Tx\)</span> is real-value, <span class="math inline">\(\bar \lambda =
+\lambda\)</span>. In other words, <span class="math inline">\(\lambda\)</span> is real-valued and thus so is
+<span class="math inline">\(x\)</span>.</p>
+<h4 id="sum-of-real-symmetric-matrices">Sum of Real Symmetric
+Matrices</h4>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two real symmetric matrices. Let
+<span class="math inline">\(\lambda^-, \lambda^+\)</span> be <span class="math inline">\(A\)</span>’s smallest and largest eigenvalue of
+<span class="math inline">\(A\)</span>, <span class="math inline">\(\mu^-, \mu^+\)</span> be <span class="math inline">\(B\)</span>’s smallest and largest eigenvalue.
+Denote <span class="math inline">\(\gamma^-, \gamma^+\)</span> as <span class="math inline">\(A+B\)</span>’s smallest and largest eigenvalue.
+Then it can be <a href="https://sharmaeklavya2.github.io/theoremdep/nodes/linear-algebra/eigenvectors/sum.html">derived</a>
+that <span class="math display">\[
+\lambda^- + \mu^- \le \gamma^- \le \gamma^+ \le \lambda^+ + \mu^+
+\]</span> ### Orthogonal Eigenvectors</p>
+<p>Its eigenvectors corresponding to different eigenvalues are
+orthogonal. Arbitrarily taking <span class="math inline">\(A\)</span>’ s
+two eigenvectors <span class="math inline">\(v_1, v_2\)</span> and their
+eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \lambda_1
+\ne \lambda_2\)</span>, we have</p>
 <p><span class="math display">\[
-\begin{align} 
+\begin{align}
 &amp;\begin{aligned}
 (Av_1)^Tv_2 &amp;= v_1^TA^Tv_2 \\
 &amp;= v_1^TAv_2 \\
@@ -1472,27 +1532,58 @@ Ax_{real} + Ax_{img} &amp;= (\lambda_{real}x_{real} + \lambda_{img}x_{img}) + (\
 (\lambda_1 - \lambda_2)v_1^Tv_2 &amp;= 0
 \end{aligned}
 \]</span></p>
-<p>Since <span class="math inline">\(\lambda_1 \ne \lambda_2\)</span>, we have <span class="math inline">\(v_1^Tv_2 = 0\)</span> and thus <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> are orthogonal.</p>
+<p>Since <span class="math inline">\(\lambda_1 \ne \lambda_2\)</span>,
+we have <span class="math inline">\(v_1^Tv_2 = 0\)</span> and thus <span class="math inline">\(v_1\)</span> and <span class="math inline">\(v_2\)</span> are orthogonal.</p>
 <h3 id="diagonalizable">Diagonalizable</h3>
-<p>It has <span class="math inline">\(n\)</span> independent eigenvectors and thus <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization">diagonalizable</a>. To show it, eigenvectors in different eigenspaces are orthogonal and thus linearly independent; and eigenvectors in the same eigenspace are also linearly independent because they form the basis of this eigenspace.</p>
+<p>It has <span class="math inline">\(n\)</span> independent
+eigenvectors and thus <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization">diagonalizable</a>. To show it,
+eigenvectors in different eigenspaces are orthogonal and thus linearly
+independent; and eigenvectors in the same eigenspace are also linearly
+independent because they form the basis of this eigenspace.</p>
 <h4 id="easily-invertible">“Easily Invertible”</h4>
-<p>Further on the diagonalizable property, suppose <span class="math inline">\(A = P\Lambda P^{-1}\)</span>. If <span class="math inline">\(A\)</span> is not invertible, by <a href="Eigenvectors%20and%20Eigenvalues.md#Eigenvalues:%20Rank,%20Trace%20and%20Determinant">the relation between the matrix rank and the eigenvalues</a>, some of <span class="math inline">\(\Lambda\)</span>’s entries on the diagonal are zero. By adding <span class="math inline">\(A\)</span> with <span class="math inline">\(\lambda I\)</span>, we have <span class="math display">\[
+<p>Further on the diagonalizable property, suppose <span class="math inline">\(A = P\Lambda P^{-1}\)</span>. If <span class="math inline">\(A\)</span> is not invertible, by <a href="Eigenvectors%20and%20Eigenvalues.md#Eigenvalues:%20Rank,%20Trace%20and%20Determinant">the
+relation between the matrix rank and the eigenvalues</a>, some of <span class="math inline">\(\Lambda\)</span>’s entries on the diagonal are
+zero. By adding <span class="math inline">\(A\)</span> with <span class="math inline">\(\lambda I\)</span>, we have <span class="math display">\[
 \begin{aligned}
 A^\prime &amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 &amp;= P(\Lambda + \lambda I)P^{-1}
 \end{aligned}
-\]</span> where <span class="math inline">\(\lambda I\)</span> complements all the zero entries on the diagonal of <span class="math inline">\(\Lambda\)</span>. Thus <span class="math inline">\(A^\prime\)</span> has <span class="math inline">\(n\)</span> nonzero eigenvalues and is invertible. A singular symmetric matrix <span class="math inline">\(A\)</span> becomes invertible by adding <span class="math inline">\(\lambda I\)</span>.</p>
-<h4 id="orthonormally-diagonalizable">Orthonormally Diagonalizable</h4>
-<p>Its diagonalization can be in the form of <span class="math inline">\(A = P\Lambda P^T\)</span>, where <span class="math inline">\(P^TP = I\)</span>, by properly selecting the orthonormal eigenvectors.</p>
-<p>Eigenvectors from different eigenspaces are already orthogonal. Eigenvectors from the same eigenspace are independent but not necessarily orthogonal. However, the linear combination of these homo-spatial independent eigenvectors is still an eigenvector. Thus we can apply the Gram-Schmidt process to these eigenvectors and obtain the orthogonal basis for this eigenspace.</p>
-<p>Finally, we pull together all the orthogonal eigenvectors, normalize them to unit vector, and get the orthonormal matrix <span class="math inline">\(P\)</span>.</p>
-<p>In fact, an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is orthogonally diagonalizable if and only if <span class="math inline">\(A\)</span> is a symmetric matrix. Such orthogonal diagonalization is also referred to as <strong>spectral decomposition</strong>.</p>
-<h3 id="eigenvalues-and-positive-definiteness">Eigenvalues and Positive Definiteness</h3>
-<p>A real symmetric matrix is positive (semi-)definite if and only if its eigenvalues are (non-)negative.</p>
-<h3 id="covariance-matrix">Covariance Matrix</h3>
-<p>Covariance matrix is a special kind of real symmetric matrix. It is positive semi-definite and thus its eigenvalues are non-negative.</p>
+\]</span> where <span class="math inline">\(\lambda I\)</span>
+complements all the zero entries on the diagonal of <span class="math inline">\(\Lambda\)</span>. Thus <span class="math inline">\(A^\prime\)</span> has <span class="math inline">\(n\)</span> nonzero eigenvalues and is invertible.
+A singular symmetric matrix <span class="math inline">\(A\)</span>
+becomes invertible by adding <span class="math inline">\(\lambda
+I\)</span>.</p>
+<h4 id="orthogonally-diagonalizable">Orthogonally Diagonalizable</h4>
+<p>Its diagonalization can be in the form of <span class="math inline">\(A = P\Lambda P^T\)</span>, where <span class="math inline">\(P^TP = I\)</span>, by properly selecting the
+orthonormal eigenvectors.</p>
+<p>Eigenvectors from different eigenspaces are already orthogonal.
+Eigenvectors from the same eigenspace are independent but not
+necessarily orthogonal. However, the linear combination of these
+homo-spatial independent eigenvectors is still an eigenvector. Thus we
+can apply the Gram-Schmidt process to these eigenvectors and obtain the
+orthogonal basis for this eigenspace.</p>
+<p>Finally, we pull together all the orthogonal eigenvectors, normalize
+them to unit vector, and get the orthonormal matrix <span class="math inline">\(P\)</span>.</p>
+<p>Orthogonal diagonalization is <a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/#Diagonalization">diagonalization</a>, as well as <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">SVD</a>. In fact, an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is orthogonally diagonalizable if and
+only if <span class="math inline">\(A\)</span> is a symmetric matrix.
+Such orthogonal diagonalization is also referred to as <strong>spectral
+decomposition</strong>.</p>
+<h3 id="commutativity">Commutativity</h3>
+<p>If the product of two symmetric matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is symmetric, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> commute, i.e. <span class="math inline">\(AB = BA\)</span>. This is simply because <span class="math display">\[
+\begin{aligned}
+A B &amp;= (A B)^T &amp;&amp;\iff \\
+A B &amp;= B^T A^T &amp;&amp;\iff \\
+A B &amp;= B A
+\end{aligned}
+\]</span></p>
+<h2 id="covariance-matrix">Covariance Matrix</h2>
+<p>Covariance matrix is a special kind of real symmetric matrix. It is
+in the form of <span class="math inline">\(A A^T\)</span>. It is
+positive semi-definite and thus its eigenvalues are non-negative.</p>
+<p>In fact, matrices of this form are positive semi-definite.</p>
 <h2 id="external-material">External Material</h2>
-<p><a href="https://www.zybuluo.com/fsfzp888/note/1112344">real-valued eigenvalues and orthogonal eigenvectors</a></p>
+<p><a href="https://www.zybuluo.com/fsfzp888/note/1112344">real-valued
+eigenvalues and orthogonal eigenvectors</a></p>
 
 
 
@@ -1583,7 +1674,7 @@ A^\prime &amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1633,7 +1724,7 @@ A^\prime &amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1720,7 +1811,7 @@ A^\prime &amp;= P\Lambda P^{-1} + \lambda PIP^{-1} \\
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

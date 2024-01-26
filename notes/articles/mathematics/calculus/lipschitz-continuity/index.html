@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="For a continuous mapping \(f\), it is \(K\)-Lipschitz continuous if there exists a number \(K\) such that \(\forall x,y \in dom(f)\) \[ ||f(x) - f(y)|| \le K||x - y|| \] If the gradient of \(f\) is \(K\)-Lipschitz continuous, we further say \(f\) is \(K\)-smooth." />
+  <meta name="description" content="For a continuous mapping \(f\), it is \(K\)-Lipschitz continuous if there exists a number \(K\) such that \(\forall x,y \in \dom(f)\) \[ ||f(x) - f(y)|| \le K||x - y|| \] If the gradient of \(f\) is \(K\)-Lipschitz continuous, we further say \(f\) is \(K\)-smooth." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/calculus/lipschitz-continuity/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/calculus/lipschitz-continuity/" />
   <meta property="og:title" content="Lipschitz Continuity | Chunxy&#39; Website" />
-  <meta property="og:description" content="For a continuous mapping \(f\), it is \(K\)-Lipschitz continuous if there exists a number \(K\) such that \(\forall x,y \in dom(f)\) \[ ||f(x) - f(y)|| \le K||x - y|| \] If the gradient of \(f\) is \(K\)-Lipschitz continuous, we further say \(f\) is \(K\)-smooth." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="For a continuous mapping \(f\), it is \(K\)-Lipschitz continuous if there exists a number \(K\) such that \(\forall x,y \in \dom(f)\) \[ ||f(x) - f(y)|| \le K||x - y|| \] If the gradient of \(f\) is \(K\)-Lipschitz continuous, we further say \(f\) is \(K\)-smooth." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1315,7 +1343,8 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#lipschitz-constant">Lipschitz Constant</a></li>
-    <li><a href="#composition-of-functions">Composition of Functions</a></li>
+    <li><a href="#composition-of-functions">Composition of
+Functions</a></li>
   </ul>
 </nav>
 
@@ -1411,31 +1440,56 @@
           <div class="article-style">
             
 
-<p>For a continuous mapping <span class="math inline">\(f\)</span>, it is <span class="math inline">\(K\)</span>-Lipschitz continuous if there exists a number <span class="math inline">\(K\)</span> such that <span class="math inline">\(\forall x,y \in dom(f)\)</span> <span class="math display">\[
+<p>For a continuous mapping <span class="math inline">\(f\)</span>, it
+is <span class="math inline">\(K\)</span>-Lipschitz continuous if there
+exists a number <span class="math inline">\(K\)</span> such that <span class="math inline">\(\forall x,y \in \dom(f)\)</span> <span class="math display">\[
 ||f(x) - f(y)|| \le K||x - y||
-\]</span> If the gradient of <span class="math inline">\(f\)</span> is <span class="math inline">\(K\)</span>-Lipschitz continuous, we further say <span class="math inline">\(f\)</span> is <span class="math inline">\(K\)</span>-smooth.</p>
+\]</span> If the gradient of <span class="math inline">\(f\)</span> is
+<span class="math inline">\(K\)</span>-Lipschitz continuous, we further
+say <span class="math inline">\(f\)</span> is <span class="math inline">\(K\)</span>-smooth.</p>
 <h3 id="lipschitz-constant">Lipschitz Constant</h3>
-<p>If <span class="math inline">\(K\)</span> is the minimum number to make the above condition hold, then <span class="math inline">\(K\)</span> is called the <strong>Lipschitz constant</strong>.</p>
-<p>The Lipschitz constant for a general differentiable function <span class="math inline">\(f\)</span> will be the maximum spectral norm of its gradient <span class="math inline">\(\nabla f\)</span> over its domain. <span class="math display">\[
-||f||_{Lip} = \sup_x \sigma[\nabla f(x)] = \sup_x \sup_{||v||=1} \nabla f(x) \cdot v
-\]</span> where <span class="math inline">\(\sigma[\nabla f(x)]\)</span> denotes the spectral norm of <span class="math inline">\(f\)</span>’s gradient at <span class="math inline">\(x\)</span>.</p>
+<p>If <span class="math inline">\(K\)</span> is the minimum number to
+make the above condition hold, then <span class="math inline">\(K\)</span> is called the <strong>Lipschitz
+constant</strong>.</p>
+<p>The Lipschitz constant for a general differentiable function <span class="math inline">\(f\)</span> will be the maximum spectral norm of
+its gradient <span class="math inline">\(\nabla f\)</span> over its
+domain. <span class="math display">\[
+||f||_{Lip} = \sup_x \sigma[\nabla f(x)] = \sup_x \sup_{||v||=1} \nabla
+f(x) \cdot v
+\]</span> where <span class="math inline">\(\sigma[\nabla f(x)]\)</span>
+denotes the spectral norm of <span class="math inline">\(f\)</span>’s
+gradient at <span class="math inline">\(x\)</span>.</p>
 <ul>
-<li>The Lipschitz constant for a matrix transformation will be the matrix’s <a href="/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/">spectral norm</a>.</li>
-<li>The Lipschitz constant for a <span class="math inline">\(\R \mapsto \R\)</span> function will be its largest <a href="/notes/articles/optimization/subgradient/#Properties">subgradient</a> over its domain</li>
+<li>The Lipschitz constant for a matrix transformation will be the
+matrix’s <a href="/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/">spectral norm</a>.</li>
+<li>The Lipschitz constant for a <span class="math inline">\(\R \mapsto
+\R\)</span> function will be its largest <a href="/notes/articles/optimization/subgradient/#Properties">subgradient</a> over its domain</li>
 </ul>
 <h3 id="composition-of-functions">Composition of Functions</h3>
-<p>Suppose two functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are Lipschitz continuous respectively. Then, <span class="math display">\[
+<p>Suppose two functions <span class="math inline">\(f\)</span> and
+<span class="math inline">\(g\)</span> are Lipschitz continuous
+respectively. Then, <span class="math display">\[
 \nabla (f \circ g)(x) = \nabla f [g(x)] \nabla g(x)
-\]</span> by the chain rule of derivatives. <span class="math inline">\(f \circ g\)</span>’s Lipschitz constant will be <span class="math display">\[
+\]</span> by the chain rule of derivatives. <span class="math inline">\(f \circ g\)</span>’s Lipschitz constant will be
+<span class="math display">\[
 \begin{aligned}
-\sigma(\nabla (f \circ g)(x)) &amp;= \sup_{||v|| = 1} ||\{\nabla f[g(x)] \nabla g(x)\} v|| \\
-&amp;=  \sup_{||v|| = 1} \{||\nabla g(x) v||\} \{||\nabla f[g(x)] \frac{\nabla g(x) v}{||\nabla g(x) v||}||\} \\
-&amp;\le  \sup_{||v|| = 1} \sigma[\nabla g(x)] \{||\nabla f[g(x)] \frac{\nabla g(x) v}{||\nabla g(x) v||}||\} \\
-&amp;= \sigma[\nabla g(x)] \sup_{||v|| = 1} \{||\nabla f[g(x)] \frac{\nabla g(x) v}{||\nabla g(x) v||}||\} \\
+\sigma(\nabla (f \circ g)(x)) &amp;= \sup_{||v|| = 1} ||\{\nabla f[g(x)]
+\nabla g(x)\} v|| \\
+&amp;=  \sup_{||v|| = 1} \{||\nabla g(x) v||\} \{||\nabla f[g(x)]
+\frac{\nabla g(x) v}{||\nabla g(x) v||}||\} \\
+&amp;\le  \sup_{||v|| = 1} \sigma[\nabla g(x)] \{||\nabla f[g(x)]
+\frac{\nabla g(x) v}{||\nabla g(x) v||}||\} \\
+&amp;= \sigma[\nabla g(x)] \sup_{||v|| = 1} \{||\nabla f[g(x)]
+\frac{\nabla g(x) v}{||\nabla g(x) v||}||\} \\
 &amp;= \sigma[\nabla g(x)] \cdot \sigma\{\nabla f[g(x)]\}
 \end{aligned}
-\]</span> In other words, <span class="math inline">\(||f \circ g||_{Lip} = ||f||_{Lip} \cdot ||g||_{Lip}\)</span></p>
-<p><a href="https://homes.cs.washington.edu/~marcotcr/blog/lipschitz/">Lipschitz Continuity, convexity, subgradients – Marco Tulio Ribeiro – (washington.edu)</a> <a href="https://xingyuzhou.org/blog/notes/Lipschitz-gradient">Lipschitz continuous gradient · Xingyu Zhou’s blog</a></p>
+\]</span> In other words, <span class="math inline">\(||f \circ
+g||_{Lip} = ||f||_{Lip} \cdot ||g||_{Lip}\)</span></p>
+<p><a href="https://homes.cs.washington.edu/~marcotcr/blog/lipschitz/">Lipschitz
+Continuity, convexity, subgradients – Marco Tulio Ribeiro –
+(washington.edu)</a></p>
+<p><a href="https://xingyuzhou.org/blog/notes/Lipschitz-gradient">Lipschitz
+continuous gradient · Xingyu Zhou’s blog</a></p>
 
 
 
@@ -1520,7 +1574,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1570,7 +1624,7 @@
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1657,7 +1711,7 @@
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

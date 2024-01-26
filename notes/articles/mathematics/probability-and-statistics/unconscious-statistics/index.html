@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,10 +1342,13 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#law-of-the-unconscious-statistician">Law of the Unconscious Statistician</a></li>
+    <li><a href="#law-of-the-unconscious-statistician">Law of the
+Unconscious Statistician</a></li>
     <li><a href="#marginal-expectation">Marginal Expectation</a></li>
-    <li><a href="#expectation-of-non-negative-random-variables">Expectation of Non-negative Random Variables</a></li>
-    <li><a href="#expectation-and-quantile-function">Expectation and Quantile Function</a></li>
+    <li><a href="#expectation-of-non-negative-random-variables">Expectation
+of Non-negative Random Variables</a></li>
+    <li><a href="#expectation-and-quantile-function">Expectation and
+Quantile Function</a></li>
   </ul>
 </nav>
 
@@ -1413,8 +1444,13 @@
           <div class="article-style">
             
 
-<h2 id="law-of-the-unconscious-statistician">Law of the Unconscious Statistician</h2>
-<p>In probability theory and statistics, the <strong>law of the unconscious statistician</strong> (LOTUS), is a theorem used to calculate the expected value of a function <span class="math inline">\(g(X)\)</span> of a random variable <span class="math inline">\(X\)</span> when one knows the probability distribution of <span class="math inline">\(X\)</span> but one does not know the distribution of <span class="math inline">\(g(X)\)</span>.</p>
+<h2 id="law-of-the-unconscious-statistician">Law of the Unconscious
+Statistician</h2>
+<p>In probability theory and statistics, the <strong>law of the
+unconscious statistician</strong> (LOTUS), is a theorem used to
+calculate the expected value of a function <span class="math inline">\(g(X)\)</span> of a random variable <span class="math inline">\(X\)</span> when one knows the probability
+distribution of <span class="math inline">\(X\)</span> but one does not
+know the distribution of <span class="math inline">\(g(X)\)</span>.</p>
 <p>If the probability mass function is known, <span class="math display">\[
 \E[g(X)] = \sum_x g(x) p(x)
 \]</span> If the probability density function is known, <span class="math display">\[
@@ -1424,28 +1460,43 @@
 \]</span></p>
 <p><a href="https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician">Wiki</a></p>
 <h2 id="marginal-expectation">Marginal Expectation</h2>
-<p>If the joint distribution of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is known, then the expectation of one component can be calculated as <span class="math display">\[
-\E[X] = \int_{-\infty}^{+\infty} x p_X(x)\; \d x = \int_{-\infty}^{+\infty} x \int_{-\infty}^{+\infty} p(x,y)\; \d y\; \d x = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} xp(x,y)\ \d y\ \d x
+<p>If the joint distribution of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is known, then the expectation of one
+component can be calculated as <span class="math display">\[
+\E[X] = \int_{-\infty}^{+\infty} x p_X(x)\; \d x =
+\int_{-\infty}^{+\infty} x \int_{-\infty}^{+\infty} p(x,y)\; \d y\; \d x
+= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} xp(x,y)\ \d y\ \d x
 \]</span> On the other hand, <span class="math display">\[
-\E [X] = \E_{y \sim p_Y} [\E_{x \sim p(X|Y=y)}]  = \int_{-\infty}^{+\infty} p(y) \bigg( \int_{-\infty}^{+\infty} x p(x|y)\ \d x \bigg) \d y
-\]</span> <a href="https://stats.stackexchange.com/questions/185729/expected-value-of-a-marginal-distribution-when-the-joint-distribution-is-given">StackExchange Discussion</a></p>
-<h2 id="expectation-of-non-negative-random-variables">Expectation of Non-negative Random Variables</h2>
-<p>If <span class="math inline">\(X\)</span> is a random variable whose value is non-negative, and <strong>its expectation exists</strong>, and</p>
+\E [X] = \E_{y \sim p_Y} [\E_{x \sim p(X|Y=y)}]  =
+\int_{-\infty}^{+\infty} p(y) \bigg( \int_{-\infty}^{+\infty} x p(x|y)\
+\d x \bigg) \d y
+\]</span> <a href="https://stats.stackexchange.com/questions/185729/expected-value-of-a-marginal-distribution-when-the-joint-distribution-is-given">StackExchange
+Discussion</a></p>
+<h2 id="expectation-of-non-negative-random-variables">Expectation of
+Non-negative Random Variables</h2>
+<p>If <span class="math inline">\(X\)</span> is a random variable whose
+value is non-negative, and <strong>its expectation exists</strong>,
+and</p>
 <ul>
 <li><p>when <span class="math inline">\(X\)</span> is continuous, <span class="math display">\[
 \begin{aligned}[b]
-\E (X) &amp;= \int_{0}^{+\infty} x p(x)\ \d x = \int_{0}^{+\infty} x\ \d \big( P(x) - 1 \big) \\
-&amp;= [x \big( P(x) - 1 \big)]\bigg|_{x=0}^{+\infty} - \int_0^{+\infty} \big( P(x) - 1 \big)\ \d x
+\E (X) &amp;= \int_{0}^{+\infty} x p(x)\ \d x = \int_{0}^{+\infty} x\ \d
+\big( P(x) - 1 \big) \\
+&amp;= [x \big( P(x) - 1 \big)]\bigg|_{x=0}^{+\infty} - \int_0^{+\infty}
+\big( P(x) - 1 \big)\ \d x
 \end{aligned}
-\]</span> Because the expectation exists, the above expression and especially the <span class="math inline">\([x \big( P(x) - 1 \big)]\bigg|_{x=0}^{+\infty}\)</span> term must converge: <span class="math display">\[
+\]</span> Because the expectation exists, the above expression and
+especially the <span class="math inline">\([x \big( P(x) - 1
+\big)]\bigg|_{x=0}^{+\infty}\)</span> term must converge: <span class="math display">\[
 \begin{gather}
 [x \big( P(x) - 1 \big)]\bigg|_{x=0} = 0 \\
-[P(x) - 1]\bigg|_{x \to +\infty} = 0 \Rightarrow [x \big( P(x) - 1 \big)]\bigg|_{x \to +\infty} = 0
+[P(x) - 1]\bigg|_{x \to +\infty} = 0 \Rightarrow [x \big( P(x) - 1
+\big)]\bigg|_{x \to +\infty} = 0
 \end{gather}
 \]</span> Therefore, <span class="math display">\[
 \E(X) = \int_{0}^{+\infty} \big (1 - P(x) \big)\ \d x
 \]</span></p></li>
-<li><p>when <span class="math inline">\(X\)</span> is discrete and <span class="math inline">\(X\)</span> only takes on integer values, supposing the max value of <span class="math inline">\(X\)</span> is <span class="math inline">\(N\)</span>, <span class="math display">\[
+<li><p>when <span class="math inline">\(X\)</span> is discrete and <span class="math inline">\(X\)</span> only takes on integer values, supposing
+the max value of <span class="math inline">\(X\)</span> is <span class="math inline">\(N\)</span>, <span class="math display">\[
 \begin{aligned}
 &amp;\E(X) = \sum_{k=0}^{N} [k P(X = k)] \\
 &amp;= \sum_{k=0}^{N} [(\sum_{j=0}^{k-1} 1) P(X = k)] \\
@@ -1455,11 +1506,18 @@
 \end{aligned}
 \]</span></p></li>
 </ul>
-<p><a href="https://stats.stackexchange.com/questions/305031/expectation-when-cumulative-distribution-function-is-given">StackExchange Discussion</a> || <a href="https://en.wikipedia.org/wiki/Summation_by_parts">Summation by Parts</a></p>
-<h2 id="expectation-and-quantile-function">Expectation and Quantile Function</h2>
-<p>Let <span class="math inline">\(f\)</span> be the PDF and <span class="math inline">\(F\)</span> be the CDF of a random variable <span class="math inline">\(X\)</span>. Let <span class="math inline">\(Q = F^{-1}\)</span> be the inverse of <span class="math inline">\(F\)</span>. <span class="math inline">\(Q\)</span> is called the <strong>quantile function</strong> of <span class="math inline">\(X\)</span>, and <span class="math display">\[
-\int_0^1 Q(p)\ \d p \stackrel{p=F(x)}{\Longrightarrow} = \int_{-\infty}^{+\infty} x f(x)\ \d x = \E(X) 
-\]</span> <a href="https://stats.stackexchange.com/a/18439">StackExchange Answer</a></p>
+<p><a href="https://stats.stackexchange.com/questions/305031/expectation-when-cumulative-distribution-function-is-given">StackExchange
+Discussion</a> || <a href="https://en.wikipedia.org/wiki/Summation_by_parts">Summation by
+Parts</a></p>
+<h2 id="expectation-and-quantile-function">Expectation and Quantile
+Function</h2>
+<p>Let <span class="math inline">\(f\)</span> be the PDF and <span class="math inline">\(F\)</span> be the CDF of a random variable <span class="math inline">\(X\)</span>. Let <span class="math inline">\(Q =
+F^{-1}\)</span> be the inverse of <span class="math inline">\(F\)</span>. <span class="math inline">\(Q\)</span>
+is called the <strong>quantile function</strong> of <span class="math inline">\(X\)</span>, and <span class="math display">\[
+\int_0^1 Q(p)\ \d p \stackrel{p=F(x)}{\Longrightarrow} =
+\int_{-\infty}^{+\infty} x f(x)\ \d x = \E(X)
+\]</span> <a href="https://stats.stackexchange.com/a/18439">StackExchange
+Answer</a></p>
 
 
 
@@ -1550,7 +1608,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1600,7 +1658,7 @@
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1687,7 +1745,7 @@
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

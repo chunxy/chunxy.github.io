@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Conditional Expectation Let \(X\) and \(Y\) be two discrete random variables. The conditional probability function of \(X\) given \(Y=y\) is \[ \Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)} \] Thus the conditional expectation of \(X\) given that \(Y=y\) is \[ \mu_{X|Y} = \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y) \] Clearly the conditional expectation \(\E(X|Y)\) is a function of \(Y\), or put it another way, a random variable depending on \(Y\), instead of \(X\)." />
+  <meta name="description" content="Conditional Expectation Let \(X\) and \(Y\) be two discrete random variables. The conditional probability function of \(X\) given \(Y=y\) is \[ \Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)} \] Thus the conditional expectation of \(X\) given that \(Y=y\) is \[ \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y) \] Clearly the conditional expectation \(\E(X|Y)\) is a function of \(Y\), or put it another way, a random variable depending on \(Y\), instead of \(X\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/" />
   <meta property="og:title" content="Law of Total Variance | Chunxy&#39; Website" />
-  <meta property="og:description" content="Conditional Expectation Let \(X\) and \(Y\) be two discrete random variables. The conditional probability function of \(X\) given \(Y=y\) is \[ \Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)} \] Thus the conditional expectation of \(X\) given that \(Y=y\) is \[ \mu_{X|Y} = \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y) \] Clearly the conditional expectation \(\E(X|Y)\) is a function of \(Y\), or put it another way, a random variable depending on \(Y\), instead of \(X\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Conditional Expectation Let \(X\) and \(Y\) be two discrete random variables. The conditional probability function of \(X\) given \(Y=y\) is \[ \Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)} \] Thus the conditional expectation of \(X\) given that \(Y=y\) is \[ \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y) \] Clearly the conditional expectation \(\E(X|Y)\) is a function of \(Y\), or put it another way, a random variable depending on \(Y\), instead of \(X\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1316,7 +1344,8 @@
   <ul>
     <li><a href="#conditional-expectation">Conditional Expectation</a></li>
     <li><a href="#conditional-variance">Conditional Variance</a></li>
-    <li><a href="#laws-of-total-expectation-and-variance">Laws of Total Expectation and Variance</a></li>
+    <li><a href="#laws-of-total-expectation-and-variance">Laws of Total
+Expectation and Variance</a></li>
   </ul>
 </nav>
 
@@ -1413,20 +1442,29 @@
             
 
 <h2 id="conditional-expectation">Conditional Expectation</h2>
-<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two discrete random variables. The <strong>conditional probability function of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span></strong> is <span class="math display">\[
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two discrete random variables. The
+<strong>conditional probability function of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span></strong> is <span class="math display">\[
 \Pr(X=x|Y=y) = \frac{\Pr(X=x, Y=y)}{P(Y=y)}
 \]</span> Thus the <strong>conditional expectation of <span class="math inline">\(X\)</span> given that <span class="math inline">\(Y=y\)</span></strong> is <span class="math display">\[
-\mu_{X|Y} = \E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y)
-\]</span> Clearly the <strong>conditional expectation</strong> <span class="math inline">\(\E(X|Y)\)</span> is a function of <span class="math inline">\(Y\)</span>, or put it another way, a random variable depending on <span class="math inline">\(Y\)</span>, instead of <span class="math inline">\(X\)</span>.</p>
+\E(X|Y=y) \coloneq \sum_x x \Pr(X=x|Y=y)
+\]</span> Clearly the <strong>conditional expectation</strong> <span class="math inline">\(\E(X|Y)\)</span> is a function of <span class="math inline">\(Y\)</span>, or put it another way, a random
+variable depending on <span class="math inline">\(Y\)</span>, instead of
+<span class="math inline">\(X\)</span>.</p>
 <h2 id="conditional-variance">Conditional Variance</h2>
-<p>Conditional variance can be similarly defined. <span class="math inline">\(\Var(X|Y=y)\)</span> is the conditional variance of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span> and <span class="math inline">\(\Var(X|Y)\)</span> is a random variable depending on <span class="math inline">\(Y\)</span>: <span class="math display">\[
-\Var(X|Y) \coloneq \E[(X - \mu_{X|Y})^2 | Y] = \E(X^2|Y) - \E^2(X|Y)
+<p>Conditional variance can be similarly defined. <span class="math inline">\(\Var(X|Y=y)\)</span> is the conditional variance
+of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span> and <span class="math inline">\(\Var(X|Y)\)</span> is a random variable depending
+on <span class="math inline">\(Y\)</span>: <span class="math display">\[
+\Var(X|Y) \coloneq \E[(X - \mu_{X|Y})^2 | Y] = \E(X^2|Y) - \E(X|Y)^2
 \]</span></p>
-<h2 id="laws-of-total-expectation-and-variance">Laws of Total Expectation and Variance</h2>
-<p>If all the expectations below exist, then for any random variable <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, we have <span class="math display">\[
-\E(X) = \E_Y(\E(X|Y)) \quad \textbf{Law of Total Expectation}
+<h2 id="laws-of-total-expectation-and-variance">Laws of Total
+Expectation and Variance</h2>
+<p>If all the expectations below exist, then for any random variable
+<span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, we have <span class="math display">\[
+\E(X) = \E_{y \sim p_Y} [\E(X|Y=y)] \quad \textbf{Law of Total
+Expectation}
 \]</span> and <span class="math display">\[
-\Var(X) = \E_Y(\Var(X|Y)) + \Var_Y(\E(X|Y)) \quad \textbf{Law of Total Variance}
+\Var(X) = \E_{y \sim p_Y} [\Var(X|Y=y)] + \Var_{y \sim p_Y} [\E(X|Y=y)]
+\quad \textbf{Law of Total Variance}
 \]</span></p>
 
 
@@ -1511,7 +1549,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1561,7 +1599,7 @@
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1648,7 +1686,7 @@
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

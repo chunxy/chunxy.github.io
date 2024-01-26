@@ -676,27 +676,51 @@
     <div class="article-style">
       
 
-<p>Covariance matrix of a random vector can usually be deduced from the distribution’s property, or estimated from samples. But how to generate an arbitrary covariance matrix? How should we populate the entries in a square matrix so that it makes a legitimate covariance matrix?</p>
+<p>Covariance matrix of a random vector can usually be deduced from the
+distribution’s property, or estimated from samples. But how to generate
+an arbitrary covariance matrix? How should we populate the entries in a
+square matrix so that it makes a legitimate covariance matrix?</p>
 <h2 id="first-method">First Method</h2>
-<p>In general, we construct the target covariance matrix <span class="math inline">\(\Sigma\)</span> by giving its eigenvalues and its orthonormal eigenvectors (<a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/#Orthogonal Eigenvectors">any real symmetric matrix, including the covariance matrix of course, can be constructed in this way</a>). A diagonal matrix of eigenvalues (denoted as <span class="math inline">\(D\)</span>) are easy to synthesize. It remains that how to synthesize a square matrix that has orthonormal column vectors.</p>
-<p>Let the dimension of the target covariance matrix be <span class="math inline">\(n\)</span>. Given an arbitrary square matrix <span class="math inline">\(M\)</span> of dimension <span class="math inline">\(n\)</span>, we can decompose <span class="math inline">\(M M^T\)</span>, which is a real symmetric matrix, into <span class="math inline">\(U \Lambda U^T\)</span>, where <span class="math inline">\(U\)</span> is the orthonormal matrix consisting of <span class="math inline">\(M M^T\)</span>’s eigenvectors and <span class="math inline">\(\Lambda\)</span> is the diagonal matrix populated with <span class="math inline">\(M M^T\)</span>’s eigenvalues, due to the property of real symmetric matrix.</p>
+<p>In general, we construct the target covariance matrix <span class="math inline">\(\Sigma\)</span> by giving its eigenvalues and its
+orthonormal eigenvectors (<a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/#Orthogonal Eigenvectors">any real
+symmetric matrix, including the covariance matrix of course, can be
+constructed in this way</a>). A diagonal matrix of eigenvalues (denoted
+as <span class="math inline">\(D\)</span>) are easy to synthesize. It
+remains that how to synthesize a square matrix that has orthonormal
+column vectors.</p>
+<p>Let the dimension of the target covariance matrix be <span class="math inline">\(n\)</span>. Given an arbitrary square matrix <span class="math inline">\(M\)</span> of dimension <span class="math inline">\(n\)</span>, we can decompose <span class="math inline">\(M M^T\)</span>, which is a real symmetric matrix,
+into <span class="math inline">\(U \Lambda U^T\)</span>, where <span class="math inline">\(U\)</span> is the orthonormal matrix consisting of
+<span class="math inline">\(M M^T\)</span>’s eigenvectors and <span class="math inline">\(\Lambda\)</span> is the diagonal matrix populated
+with <span class="math inline">\(M M^T\)</span>’s eigenvalues, due to
+the property of real symmetric matrix.</p>
 <p>Then we define <span class="math display">\[
 \begin{align}
 (M M^T)^{1/2} &amp;\coloneqq U \Lambda^{1/2} U^T \\
 (M M^T)^{-1/2} &amp;\coloneqq U \Lambda^{-1/2} U^T \\
 \end{align}
-\]</span> We take <span class="math inline">\(E = (M M^T)^{-1/2} M\)</span>. Now <span class="math inline">\(E\)</span> will contain the orthonormal column vectors as expected. To verify, <span class="math display">\[
+\]</span> We take <span class="math inline">\(E = (M M^T)^{-1/2}
+M\)</span>. Now <span class="math inline">\(E\)</span> will contain the
+orthonormal column vectors as expected. To verify, <span class="math display">\[
 \begin{aligned}
-&amp;E E^T = \left[ (M M^T)^{-1/2} M \right] \left[ M^T ((M M^T)^{-1/2})^T \right] \\
-&amp;= \left[ (M M^T)^{-1/2} \right] \left[ M M^T \right] \left[ ((M M^T)^{-1/2})^T \right] \\
-&amp;= \left[ U \Lambda^{-1/2} U^T \right] \left[ U \Lambda U^T \right] \left[ U \Lambda^{-1/2} U^T \right] \\
-&amp;= U \Lambda^{-1/2} \underbrace{\left[ U^T U \right]}_{I} \Lambda \underbrace{\left[ U^T U \right]}_{I} \Lambda^{-1/2} U^T \\
+&amp;E E^T = \left[ (M M^T)^{-1/2} M \right] \left[ M^T ((M
+M^T)^{-1/2})^T \right] \\
+&amp;= \left[ (M M^T)^{-1/2} \right] \left[ M M^T \right] \left[ ((M
+M^T)^{-1/2})^T \right] \\
+&amp;= \left[ U \Lambda^{-1/2} U^T \right] \left[ U \Lambda U^T \right]
+\left[ U \Lambda^{-1/2} U^T \right] \\
+&amp;= U \Lambda^{-1/2} \underbrace{\left[ U^T U \right]}_{I} \Lambda
+\underbrace{\left[ U^T U \right]}_{I} \Lambda^{-1/2} U^T \\
 &amp;= U \Lambda^{-1/2} \Lambda \Lambda^{-1/2} U^T = U U^T = I
 \end{aligned}
-\]</span> Thus, the targeting covariance matrix can be constructed as <span class="math inline">\(\Sigma = E D E^T\)</span>.</p>
+\]</span> Thus, the targeting covariance matrix can be constructed as
+<span class="math inline">\(\Sigma = E D E^T\)</span>.</p>
 <h2 id="second-method">Second Method</h2>
-<p>The easiest way to generate a legitimate covariance matrix would be to arbitrarily synthesize a square matrix <span class="math inline">\(A\)</span> of dimension <span class="math inline">\(n\)</span>, and take <span class="math inline">\(\Sigma = A A^T\)</span> (see <a href="https://stats.stackexchange.com/questions/215497/how-to-create-an-arbitrary-covariance-matrix">here</a>).</p>
-<p>By doing so, we can obtain a covariance matrix very fast. But you lose the control over it. Since <span class="math inline">\(A\)</span> is totally arbitrary, you can tell little about <span class="math inline">\(\Sigma\)</span>’ s eigenvalues, eigenvectors, etc.</p>
+<p>The easiest way to generate a legitimate covariance matrix would be
+to arbitrarily synthesize a square matrix <span class="math inline">\(A\)</span> of dimension <span class="math inline">\(n\)</span>, and take <span class="math inline">\(\Sigma = A A^T\)</span> (see <a href="https://stats.stackexchange.com/questions/215497/how-to-create-an-arbitrary-covariance-matrix">here</a>).</p>
+<p>By doing so, we can obtain a covariance matrix very fast. But you
+lose the control over it. Since <span class="math inline">\(A\)</span>
+is totally arbitrary, you can tell little about <span class="math inline">\(\Sigma\)</span>’ s eigenvalues, eigenvectors,
+etc.</p>
 
 
 
@@ -862,7 +886,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -904,7 +928,7 @@
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -987,7 +1011,7 @@
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

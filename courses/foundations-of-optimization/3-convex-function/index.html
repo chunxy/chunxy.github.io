@@ -1,0 +1,1211 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Convex Function  Definition: Let $f: \R^n \mapsto \R_&#43;$, where $\R_&#43; = \R \cup { &#43;\infty }$ (in convex discussion, usually only $&#43;\infty$ is included) be an extended real-valued function. Note that $f$ shouldn&rsquo;t trivially be $&#43;\infty$ everywhere." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/" />
+  <meta property="og:title" content="Chunxy&#39; Website" />
+  <meta property="og:description" content="Convex Function  Definition: Let $f: \R^n \mapsto \R_&#43;$, where $\R_&#43; = \R \cup { &#43;\infty }$ (in convex discussion, usually only $&#43;\infty$ is included) be an extended real-valued function. Note that $f$ shouldn&rsquo;t trivially be $&#43;\infty$ everywhere." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="635ed3e7bcda49b3d6c4d6b193e40f5a" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+      
+      
+      <div class="article-container py-1" style="background: initial">
+        
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+      </div>
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="convex-function">Convex Function</h2>
+<blockquote>
+<p>Definition: Let $f: \R^n \mapsto \R_+$, where $\R_+ = \R \cup { +\infty }$ (in convex discussion, usually only $+\infty$ is included) be an extended real-valued function. Note that $f$ shouldn&rsquo;t trivially be $+\infty$ everywhere. We say that $f$ is <strong>convex</strong> if $\forall x_1, x_2 \in \R^n, \alpha \in [0,1]$,
+$$
+f(\alpha x_1 + (1-\alpha) x_2) \le \alpha f(x_1) + (1-\alpha) f(x_2)
+$$
+Note that for $x \in \R$, $x &lt; +\infty, x + \infty = \infty + x = \infty, +\infty \le +\infty$.</p>
+</blockquote>
+<p>Interestingly, convex functions on <u>an open domain</u> are always continuous.</p>
+<blockquote>
+<p>Definition: The <strong>epigraph</strong> of a function $f: \R^n \mapsto \R$ is the set $\epi f \triangleq { (x, t) \in \R^n \times \R: f(x) \le t }$.</p>
+<p>Definition: The <strong>effective domain</strong> of $f$ is the set $\dom f \triangleq { x \in \R^n: f(x) &lt; \infty }$.</p>
+</blockquote>
+<p>Note that the real line does not contain $\infty$. Therefore, the effective domain of $f(x) = x$ is still $\R$.</p>
+<blockquote>
+<p>Definition: Let $S \subseteq \R^n$ be a set. The <strong>indicator</strong> of $S$ is the function
+$$
+\mathbb 1_S (x) = 
+\begin{cases}
+0, &amp; x \in S \
++\infty, &amp; \text{otherwise}
+\end{cases}
+$$</p>
+</blockquote>
+<p>Using the indicator, we have
+$$
+\underset{\text{constrained}}{\inf_{x \in S} f(x)} \iff \underset{\text{unconstrained}}{\inf_{x \in \R^n} f(x) + \mathbb 1_S(x)}
+$$
+That is, we convert a constrained problem to a unconstrained one.</p>
+<blockquote>
+<p>Proposition (verify it): Let $f: \R^n \mapsto \R_+$. Then, $f$ is convex (as a function) if and only if $\epi f$ is convex (as a set). Moreover, let $S \subseteq \R^n$ be a set. Then $S$ is convex (as a set) if and only if $\mathbb 1_S$ is convex (as a function).</p>
+</blockquote>
+<p>The proposition above associates the convexity of a function with that of its epigraph; and the convexity of a set with that of its indicator.</p>
+<blockquote>
+<p>Corollary: <strong>Jensen&rsquo;s inequality</strong>. Let $f: \R^n \mapsto \R_+$. Then $f$ is convex if and only if $f(\sum_{i=1}^m \alpha_i x_i) \le \sum_{i=1}^m \alpha_i f(x_i)$ for any $m \in \N^+$ and any $x_1, \dots, x_m \in \R^n$ and any $\alpha_1, \dots, \alpha_m \ge 0$ such that $\sum_{i=1}^m \alpha_i = 1$.</p>
+<p>Proof:</p>
+<ul>
+<li>
+<p>Sufficiency</p>
+<p>Sufficiency is easy to show by interpreting the definition of convex function.</p>
+</li>
+<li>
+<p>Necessity</p>
+<p>For $i=1,\dots,m$, we have
+$$
+\big( x_i, f(x_i) \big) \in \epi f
+$$
+Since $\epi f$ is convex,
+$$
+\sum_{i=1}^m \alpha_i \big( x_i, f(x_i) \big) =  \big( \sum_{i=1}^m \alpha_i x_i, \sum_{i=1}^m \alpha_i f(x_i) \big) \in \epi f
+$$
+which means
+$$
+f(\sum_{i=1}^m \alpha_i x_i) \le \sum_{i=1}^m \alpha_i f(x_i)
+$$</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="convexity-preserving-operations">Convexity-preserving Operations</h3>
+<ol>
+<li>
+<p><strong>Non-negative combination</strong></p>
+<p>Let $f_1, \dots, f_m$ be convex functions, $\alpha_1, \dots, \alpha_m \ge 0$ be non-negative scalars. Then,
+$$
+f \triangleq \sum_{i=1}^m \alpha_i f_i \text{ is convex.}
+$$</p>
+</li>
+<li>
+<p><strong>Pointwise supremum</strong></p>
+<p>Let $I$ be an index set (either finite or infinite) and ${ f_i: i \in I }$ be a collection of convex functions. Then
+$$
+f \triangleq \sup_{i \in I} f_i \text{ is convex.}
+$$
+To show it, let $x_1, x_2 \in \R^n$ and $\alpha \in [0, 1]$. Then,
+$$
+\begin{aligned}
+&amp;f(\alpha x_1 + (1-\alpha) x_2) = \sup_{i \in I} f_i(\alpha x_1 + (1-\alpha) x_2) \
+&amp;\le \sup_{i \in I} \big( \alpha f_i(x_1) + (1-\alpha) f_i(x_2) \big) \
+&amp;\le [\alpha \sup_{i \in I} f_i(x_1)] + [(1-\alpha) \sup_{i \in I} f_i(x_2)] \
+&amp;= \alpha f(x_1) + (1-\alpha) f(x_2)
+\end{aligned}
+$$</p>
+<p>Geometrically, pointwise supremum is intersecting the epigraphs of $f_i$&rsquo;s.</p>
+<blockquote>
+<p>Example: Consider the mapping $f: \R^{m \times n} \supseteq X \to ||X||$ where $||X||$ is the largest singular value of $X$. Show that $f$ is convex.</p>
+<p>By the <em>Courant-Fischer theorem</em>,
+$$
+\begin{aligned}
+||X|| &amp;= \max_{u \in \R^m, v \in \R^n} u^T X v \
+\text{s.t.} &amp;\quad ||u||<em>2 = 1, ||v||<em>2 = 1
+\end{aligned}
+$$
+Let $f</em>{u,v}(X) = u^T X v$ and $I = { (u,v) \in \R^m \times \R^n: ||u||<em>2 = 1, ||v||<em>2 = 1 }$. Then,
+$$
+f(X) = \max</em>{(u,v) \in I} f</em>{u,v}(X)
+$$
+Note that $f</em>{u,v}(X)$ is linear and thus convex in $X$. It follows directly from the pointwise supremum principle that $f$ is convex.</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Composition with increasing function</strong></p>
+<p>Let $g: \R^n \mapsto \R$ be convex, $h: \R \mapsto \R$ be convex. $h \circ g$ is not generally convex. To verify it, take
+$$
+h(x) = -x, g(x) = x^2
+$$
+But if $h$ is convex as well as increasing, then $h \circ g$ is convex.</p>
+</li>
+<li>
+<p><strong>Restriction on lines</strong></p>
+<p>Given a point $x_0 \in \R^n$ and a direction $h \in \R^n \setminus { 0 }$, we call the set
+$$
+{ x_0 + t h: t \in \R }
+$$
+a line through $x_0$ in the direction $h$. Let $f: \R^n \mapsto \R$ be a function. Define</p>
+<p>$$
+\tilde f_{x_0, h}(t) \triangleq f(x_0 + t h)
+$$
+as the <strong>restriction of $f$ on the line</strong> ${ x_0 + t h: t \in \R }$.</p>
+</li>
+</ol>
+<p>Then, $f$ is convex if and only if $\tilde f_{x_0, h}$ is convex for any $x_0 \in \R^n$ and any $h \in \R^n \setminus { 0 }$.</p>
+<h2 id="differentiable-convex-function">Differentiable Convex Function</h2>
+<blockquote>
+<p>Theorem: Let $f: \R^n \mapsto \R$ be differentiable, i.e. $\nabla f$ exists. Then, $f$ is convex if and only if for every $x, y \in \R^n$,
+$$
+f(x) \ge f(y) + (\nabla f(y))^T (x - y) \tag{gradient inequality}
+$$</p>
+</blockquote>
+<p>For a fixed $y$, the right-hand side of the gradient inequality is in essence an affine function of $x$. The graph of this affine function is
+$$
+t(x) = f(y) + (\nabla f(y))^T (x - y) \
+\Updownarrow \
+\underbrace{[(\nabla f(y))^T, -1]}<em>{s^T} \underbrace{\begin{bmatrix}
+x \
+t
+\end{bmatrix}}</em>{z} - \underbrace{[(\nabla f(y))^T y - f(y)]}_{c} = 0
+$$</p>
+<p>Interestingly, the normal vector $s$ always points downwards (due to the $-1$).</p>
+<blockquote>
+<p>Theorem: Let $f$ be twice continuously differentiable, i.e. $\nabla f, \nabla^2 f$ exist and $\nabla^2 f$ is continuous. Then, $f$ is convex if and only if
+$$
+\nabla^2 f(x) \succcurlyeq 0, \forall x \in \R^n
+$$</p>
+</blockquote>
+<blockquote>
+<p>Example: Let $f: \mathcal{S}<em>{++}^n \mapsto \R$ be given by $f(X) = -\ln \det (X)$ where $\mathcal{S}</em>{++}^n$ is the set of $n \times n$ positive definite matrix. Show that $f$ is convex.</p>
+<p>This problem usually emerges when calculating the capacity of channel in information theory. To show it, we construct $f$&rsquo;s restriction on all the lines. Let $X_0 \in \mathcal{S}<em>{++}^n$ and $H \in \mathcal{S}^n \setminus { 0 }$. Define
+$$
+g(t) \triangleq \tilde f(X_0 + t H) = -\ln \det(X_0 + t H)
+$$
+Since $X_0 \in \mathcal{S}</em>{++}^n$, we can write $X_0 = X_0^{1/2} X_0^{1/2}$ where $X_0^{1/2} \in \mathcal{S}_{++}^n$. Let $X_0^{-1/2} = (X_0^{1/2})^{-1}$. Then,
+$$
+\begin{align*}
+g(t) &amp;= -\ln \det(X_0^{1/2} (I + t X_0^{-1/2} H X_0^{-1/2}) X_0^{1/2}) \
+&amp;= -2 \ln \det(X_0^{1/2}) - \ln \det(I + t X_0^{-1/2} H X_0^{-1/2})
+\end{align*}
+$$
+Note that $X_0^{-1/2} H X_0^{-1/2}$ is real symmetric. Let $\lambda_1, \dots, \lambda_n$ be its eigenvalues. Then $(I + t X_0^{-1/2} H X_0^{-1/2})$&rsquo;s eigenvalues are $t \lambda_1 + 1, \dots, t \lambda_n + 1$.
+$$
+\begin{align*}
+g(t) &amp;= -2 \ln \det(X_0^{1/2}) - \ln \det(I + t X_0^{-1/2} H X_0^{-1/2}) \
+&amp;= -2 \ln \det(X_0^{1/2}) - \sum_i \ln(t\lambda_i + 1)
+\end{align*}
+$$
+Now it is easy to verify that $-\ln(t\lambda_i + 1)$&rsquo;s are convex, which concludes the proof.</p>
+</blockquote>
+<h2 id="differentiability-agnostic-convex-function">Differentiability-agnostic Convex Function</h2>
+<p>&ldquo;Differentiability-agnostic&rdquo; means that no premise on the differentiability of the convex function is assumed. In this section, we discuss several &ldquo;differentiability-agnostic&rdquo; topics.</p>
+<h3 id="subgradient">Subgradient</h3>
+<blockquote>
+<p>Definition: Let $f: \R^n \mapsto \R$ be a function. A vector $s \in \R^n$ is called a <strong>subgradient</strong> of $f$ at $x_0$ if
+$$
+f(x) \ge f(x_0) + s^T (x - x_0), \forall x \in \R^n
+$$
+The set
+$$
+\partial f(x_0) \triangleq { s \in \R^n: \text{$s$ is a subgradient of $f$ at $x_0$} }
+$$
+is called the <strong>sub-differential</strong> of $f$ at $x_0$. Sub-differential is always convex and closed.</p>
+</blockquote>
+<p>The idea of subgradient is quite inspired from the gradient inequality. The geometric interpretation of subgradient resembles that of gradient.</p>
+<blockquote>
+<p>Theorem: Let $f: \R^n \mapsto \R$ be convex. Then, $\partial f(x)$ is non-empty, convex and compact (non-emptiness is due to the continuity (which in turn is due to the openness of $\R^n$) and boundedness is due to convexity). Moreover,</p>
+<ol>
+<li>$f$ is differentiable at $x_0$ if and only if $\partial f(x_0) = { \nabla f(x_0) }$;</li>
+<li>$x_0$ is the global minima if and only if $0 \in \partial f(x_0)$;</li>
+</ol>
+</blockquote>
+<p>The topological properties that the sub-differential possesses imply that we can do projection on the sub-differential; besides we may apply Weierstrass theorem to solve some optimization problem w.r.t. the sub-differential (such as what is the minimal-norm subgradient).</p>
+<h3 id="conjugate-function">Conjugate Function</h3>
+<p>If two functions have the identical epigraphs, then these two functions are identical. That&rsquo;s the geometric view of a function.</p>
+<p>Let $f: \R^n \mapsto \R$ be convex. $\epi f$ is known to be convex. Suppose in addition that $\epi f$ is non-empty and closed. Recall that a non-empty, closed and convex set can be written as the intersection of lower halfspaces that contain it:
+$$
+\epi f = \bigcap_{H^-([s^T, y_0]^T,c) \supseteq \epi f} H^-([s^T, y_0]^T, c)
+$$</p>
+<p>where $s \in \R^n$ and $y_0 \in \R$. We argue that $y_0 \le 0$ because the last entry of some $z \in \epi f$ can be arbitrarily large. We further argue that $y_0 &lt; 0$ or else $f(x) = -\infty$ everywhere. Without loss of generality let $y_0 = -1$, since $H^-([s^T, y_0]^T,c) = H^-([-s^T/y_0, -1]^T,c)$.</p>
+<p>Notice that this lower half-space $H^-([s^T, -1]^T, c)$ is exactly the epigraph of the affine function
+$$
+h_{s, c}(x) = s^T x - c
+$$
+because for any $(x, y) \in \R^n \times \R$ that belongs to $H^-([s^T, -1]^T, c)$, we have
+$$
+\begin{aligned}
+s^T x - y &amp;\le c \
+y &amp;\ge s^T x - c
+\end{aligned}
+$$
+On the other hand, $\epi f \subseteq H^-([s^T, -1]^T, c) = \epi{h_{s, c}}$ indicates that $\forall x \in \R^n, f(x) \ge h_{s, c}(x)$. Consequently, $\epi f$ can be re-written as
+$$
+\begin{aligned}
+\epi f &amp;= \bigcap_{H^-([s^T, y_0]^T,c) \supseteq \epi f} H^-([s^T, -1]^T,c) \
+&amp;= \bigcap_{\epi{h_{s, c}} \supseteq \epi f} \epi{h_{s, c}} \
+&amp;= \bigcap_{f \ge h_{s, c}} \epi{h_{s, c}}
+\end{aligned}
+$$
+Therefore, $f$ can be written as the pointwise supremum of the affine functions who are less than $f$:
+$$
+f = \sup_{h \le f} h
+$$
+The normal vectors of those affine functions that are less than $f$ and that pass through $(x_0, f(x_0))$ essentially forms the sub-differential of $f$ at $x_0$.</p>
+<p>Consider the set
+$$
+\begin{aligned}
+S_f &amp;= { (y, t) \in \R^n \times \R: y^T x - t \le f(x), \forall x \in \R^n } \
+&amp;= { (y, t) \in \R^n \times \R: \sup_{x}(y^T x - f(x)) \le t } \
+&amp;\triangleq \epi{f^<em>}
+\end{aligned}
+$$
+where
+$$
+f^</em>(y) \triangleq \sup_{x}(y^T x - f(x))
+$$
+$f^*(y)$ is called the <strong>conjugate function</strong> of $f$.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%20https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

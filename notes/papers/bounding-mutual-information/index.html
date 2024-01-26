@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1398,28 +1426,35 @@
             
 
 <h2 id="i_textba"><span class="math inline">\(I_\text{BA}\)</span></h2>
-<p>The very basic bound on the Mutual Information is based on the <a href="/notes/articles/information-theory/overview/#KL-divergence Entropy and Conditional Entropy">non-negativity</a> of KL-divergence. <span class="math display">\[
+<p>The very basic bound on the Mutual Information is based on the <a href="/notes/articles/information-theory/overview/#KL-divergence Entropy and Conditional Entropy">non-negativity</a> of KL-divergence.
+<span class="math display">\[
 \begin{aligned}
 I(X;Y) = &amp;\E_{p(x,y)} \log \frac{p(x|y)}{p(x)} \\
 = &amp;\E_{p(x,y)} \log \frac{q(x|y)p(x|y)}{p(x)q(x|y)} \\
 = &amp;\E_{p(x,y)} \log \frac{q(x|y)}{p(x)} + \\
-&amp;\underbrace{\E_{p(x,y)} \log \frac{p(x|y)}{q(x|y)}}_{\E_{p(y)} D_{KL}(p(x|y) || q(x|y)} \\
+&amp;\underbrace{\E_{p(x,y)} \log \frac{p(x|y)}{q(x|y)}}_{\E_{p(y)}
+D_{KL}(p(x|y) || q(x|y)} \\
 \ge &amp;\E_{p(x,y)} \log \frac{q(x|y)}{p(x)} \\
 = &amp;\E_{p(x,y)} \log q(x|y) + H(X) \triangleq I_\text{BA}
 \end{aligned}
 \]</span> This bound is not usually tractable since <span class="math inline">\(p(x)\)</span> and thus <span class="math inline">\(H(X)\)</span> has no closed-form expression.</p>
-<p>This bound is tight when <span class="math inline">\(q(x|y) = p(x|y)\)</span>.</p>
+<p>This bound is tight when <span class="math inline">\(q(x|y) =
+p(x|y)\)</span>.</p>
 <h2 id="i_textuba"><span class="math inline">\(I_\text{UBA}\)</span></h2>
-<p>When <span class="math inline">\(q(x|y)\)</span> is replaced with an unnormalized model, that is <span class="math display">\[
-q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)}, \text{where } Z(y) = \E_{p(x)} e^{f(x,y)}
+<p>When <span class="math inline">\(q(x|y)\)</span> is replaced with an
+unnormalized model, that is <span class="math display">\[
+q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)}, \text{where } Z(y) = \E_{p(x)}
+e^{f(x,y)}
 \]</span> Substituting this back to the <span class="math inline">\(I_\text{BA}\)</span> will give <span class="math display">\[
 \begin{aligned}
 I(X;Y) &amp;\ge \E_{p(x,y)} \log \frac{p(x) e^{f(x,y)}}{p(x) Z(y)} \\
 &amp;= \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \triangleq I_\text{UBA}
 \end{aligned}
 \]</span></p>
-<p>Note that by scaling <span class="math inline">\(q(x|y)\)</span> with <span class="math inline">\(p(x)\)</span>, the <span class="math inline">\(p(x)\)</span> term is canceled.</p>
-<p>This bound is tight when <span class="math inline">\(q(x|y) = \frac{p(x)}{Z(y)} e^{f(x,y)} = p(x|y)\)</span>. That is <span class="math display">\[
+<p>Note that by scaling <span class="math inline">\(q(x|y)\)</span> with
+<span class="math inline">\(p(x)\)</span>, the <span class="math inline">\(p(x)\)</span> term is canceled.</p>
+<p>This bound is tight when <span class="math inline">\(q(x|y) =
+\frac{p(x)}{Z(y)} e^{f(x,y)} = p(x|y)\)</span>. That is <span class="math display">\[
 \begin{aligned}
 e^{f(x,y)} &amp;= \frac{p(x, y)}{p(x)p(y)} Z(y) \\
 e^{f(x,y)} &amp;= \frac{Z(y)}{p(y)} p(y|x) \\
@@ -1430,10 +1465,13 @@ f(x,y) &amp;= \ln p(y|x) + \underbrace{\ln \frac{Z(y)}{p(y)}}_{c(y)}
 <p>By further applying Jensen’s inequality to the <span class="math inline">\(\E_{p(y)} Z(y)\)</span> term in <span class="math inline">\(I_\text{UBA}\)</span>, we get <span class="math display">\[
 \begin{aligned}
 I(X;Y) &amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
-&amp;\ge \E_{p(x,y)} f(x,y) - \log\E_{p(y)} [Z(y)] \triangleq I_\text{DV}
+&amp;\ge \E_{p(x,y)} f(x,y) - \log\E_{p(y)} [Z(y)] \triangleq
+I_\text{DV}
 \end{aligned}
 \]</span></p>
-<p>The original <span class="math inline">\(I_\text{DV}\)</span> bound is in effect derived from <a href="/notes/articles/information-theory/kl-divergence/#Variational Lower-bound">the variational lower bound of KL-divergence</a>: <span class="math display">\[
+<p>The original <span class="math inline">\(I_\text{DV}\)</span> bound
+is in effect derived from <a href="/notes/articles/information-theory/kl-divergence/#Variational Lower-bound">the
+variational lower bound of KL-divergence</a>: <span class="math display">\[
 \begin{aligned}
 I&amp;(X;Y) = D_\text{KL}(p_{(x,y)} || p(x) \otimes p(y)) \\
 &amp;\ge \E_{p(x,y)} f(x,y) - \log [\E_{p(x) \otimes p(y)} f(x,y)] \\
@@ -1442,30 +1480,41 @@ I&amp;(X;Y) = D_\text{KL}(p_{(x,y)} || p(x) \otimes p(y)) \\
 \end{aligned}
 \]</span></p>
 <h2 id="i_texttuba"><span class="math inline">\(I_\text{TUBA}\)</span></h2>
-<p><span class="math inline">\(\log\)</span> function also has the following property: <span class="math display">\[
+<p><span class="math inline">\(\log\)</span> function also has the
+following property: <span class="math display">\[
 \begin{aligned}
 \forall x,a&gt;0,\log(x) &amp;\le \frac{x}{a} + \log(a) - 1 &amp;\iff \\
 a + a\log(x) &amp;\le x + a\log(a) &amp;\iff \\
 a\log(x) - x &amp;\le a\log(a) - a \\
 \end{aligned}
-\]</span> Therefore, we can insert the inequality <span class="math inline">\(\log Z(y) \le \frac{Z(y)}{a(y)} + \log a(y) - 1\)</span> into the <span class="math inline">\(I_\text{UBA}\)</span> to get <span class="math display">\[
+\]</span> Therefore, we can insert the inequality <span class="math inline">\(\log Z(y) \le \frac{Z(y)}{a(y)} + \log a(y) -
+1\)</span> into the <span class="math inline">\(I_\text{UBA}\)</span> to
+get <span class="math display">\[
 \begin{aligned}
 I(X;Y) &amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
-&amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) - 1 \big)] \triangleq I_\text{TUBA}
+&amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) -
+1 \big)] \triangleq I_\text{TUBA}
 \end{aligned}
 \]</span></p>
 <p>This bound is tight when</p>
 <ol type="1">
-<li>the tight condition of <span class="math inline">\(I_\text{UBA}\)</span> holds: <span class="math inline">\(f(x,y) = \log p(y|x) + \underbrace{\log \frac{Z(y)}{p(y)}}_{c(y)}\)</span>, and</li>
+<li>the tight condition of <span class="math inline">\(I_\text{UBA}\)</span> holds: <span class="math inline">\(f(x,y) = \log p(y|x) + \underbrace{\log
+\frac{Z(y)}{p(y)}}_{c(y)}\)</span>, and</li>
 <li>the tight condition of <span class="math inline">\(I_\text{TUBA}\)</span> holds: <span class="math inline">\(a(y) = Z(y)\)</span>.</li>
 </ol>
 <h2 id="i_textnwj"><span class="math inline">\(I_\text{NWJ}\)</span></h2>
 <p>By setting <span class="math inline">\(a(y) = e\)</span> in <span class="math inline">\(I_\text{TUBA}\)</span>, we get <span class="math display">\[
 \begin{aligned}
-I(X;Y) &amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log a(y) - 1 \big)] \\
-&amp;\ge \E_{p(x,y)} f(x,y) - e^{-1}\E_{p(y)} Z(y)\triangleq I_\text{NWJ}
+I(X;Y) &amp;\ge \E_{p(x,y)} f(x,y) - \E_{p(y)} [\frac{Z(y)}{a(y)} + \log
+a(y) - 1 \big)] \\
+&amp;\ge \E_{p(x,y)} f(x,y) - e^{-1}\E_{p(y)} Z(y)\triangleq
+I_\text{NWJ}
 \end{aligned}
-\]</span> Since <span class="math inline">\(I_\text{NWJ}\)</span> is a special case of <span class="math inline">\(I_\text{TUBA}\)</span>, its bound is tight when <span class="math inline">\(Z(y)\)</span> self-normalizes to <span class="math inline">\(e\)</span>. In this case <span class="math display">\[
+\]</span> Since <span class="math inline">\(I_\text{NWJ}\)</span> is a
+special case of <span class="math inline">\(I_\text{TUBA}\)</span>, its
+bound is tight when <span class="math inline">\(Z(y)\)</span>
+self-normalizes to <span class="math inline">\(e\)</span>. In this case
+<span class="math display">\[
 \begin{aligned}
 f(x,y) &amp;= \log p(y|x) + \log \frac{e}{p(y)} \\
 &amp;= 1 + \log \frac{p(y|x)}{p(y)} \\
@@ -1473,60 +1522,108 @@ f(x,y) &amp;= \log p(y|x) + \log \frac{e}{p(y)} \\
 \end{aligned}
 \]</span></p>
 <h2 id="i_textnce"><span class="math inline">\(I_\text{NCE}\)</span></h2>
-<p>Our goal is to estimate the <span class="math inline">\(I(X_1;Y)\)</span> given one sample from <span class="math inline">\(p(x_1)p(y|x_1)\)</span> and <span class="math inline">\(K-1\)</span> additional independent samples <span class="math inline">\(x_{2:K} \sim p^{K-1}(x_{2:K})\)</span>. For any random variable <span class="math inline">\(Z\)</span> that is independent from <span class="math inline">\(X_1\)</span> and <span class="math inline">\(Y\)</span>, <span class="math display">\[
+<p>Our goal is to estimate the <span class="math inline">\(I(X_1;Y)\)</span> given one sample from <span class="math inline">\(p(x_1)p(y|x_1)\)</span> and <span class="math inline">\(K-1\)</span> additional independent samples <span class="math inline">\(x_{2:K} \sim p^{K-1}(x_{2:K})\)</span>. For any
+random variable <span class="math inline">\(Z\)</span> that is
+independent from <span class="math inline">\(X_1\)</span> and <span class="math inline">\(Y\)</span>, <span class="math display">\[
 \begin{aligned}
 I(X_1,Z;Y) &amp;= \E_{p(x_1,z,y)} \frac{p(x_1,z,y)}{p(x_1,z) p(y)} \\
 &amp;= \E_{p(x_1,z,y)} \frac{p(x_1,y) p(z)}{p(x_1) p(z) p(y)} \\
 &amp;= I(X_1;Y)
 \end{aligned}
-\]</span> Therefore, <span class="math inline">\(I(X_1;Y) = I(X_1,X_{2:K};Y)\)</span>. Bounding <span class="math inline">\(I(X_1;Y)\)</span> becomes bounding <span class="math inline">\(I(X_1,X_{2:K};Y)\)</span>, which can be estimated using any of the preceding methods.</p>
-<p>Set the critic to <span class="math inline">\(f(x_{1:K},y) = 1 + \overbrace{\log \frac{e^{g(x,y)}} {a(y;x_{1:K})}}^{h(x_{1:K},y)}\)</span>, where <span class="math inline">\(x\)</span> is the sample among <span class="math inline">\(x_{1:K}\)</span> that is paired with <span class="math inline">\(y\)</span>. Usually <span class="math inline">\((x,y)_{1:K}\)</span> are sampled from the same marginal distribution of <span class="math inline">\(\tilde p(x,y)\)</span>. <span class="math inline">\(y\)</span> is then uniformly drawn among <span class="math inline">\(y_{1:K}\)</span>. Substitute these to the <span class="math inline">\(I_\text{NWJ}\)</span>, we have <span class="math display">\[
-\label{infonce} \begin{aligned} 
-I(X_{1:K};Y) &amp;\ge \E_{p(x_{1:K},y)} f(x_{1:K},y) - e^{-1}\E_{p(y)} Z(y) \\
-&amp;= \E_{p(x_{1:K},y)} [1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [\E_{p(x_{1:K})} e^{1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}}] \\
-&amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [e\E_{p(x_{1:K})} \frac{e^{g(x,y)}}{a(y,x_{1:K})}] \\
-&amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] - \E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} \\
+\]</span> Therefore, <span class="math inline">\(I(X_1;Y) =
+I(X_1,X_{2:K};Y)\)</span>. Bounding <span class="math inline">\(I(X_1;Y)\)</span> becomes bounding <span class="math inline">\(I(X_1,X_{2:K};Y)\)</span>, which can be estimated
+using any of the preceding methods.</p>
+<p>Set the critic to <span class="math inline">\(f(x_{1:K},y) = 1 +
+\overbrace{\log \frac{e^{g(x,y)}}
+{a(y;x_{1:K})}}^{h(x_{1:K},y)}\)</span>, where <span class="math inline">\(x\)</span> is the sample among <span class="math inline">\(x_{1:K}\)</span> that is paired with <span class="math inline">\(y\)</span>. Usually <span class="math inline">\((x,y)_{1:K}\)</span> are sampled from the same
+marginal distribution of <span class="math inline">\(\tilde
+p(x,y)\)</span>. <span class="math inline">\(y\)</span> is then
+uniformly drawn among <span class="math inline">\(y_{1:K}\)</span>.
+Substitute these to the <span class="math inline">\(I_\text{NWJ}\)</span>, we have <span class="math display">\[
+\label{infonce} \begin{aligned}
+I(X_{1:K};Y) &amp;\ge \E_{p(x_{1:K},y)} f(x_{1:K},y) - e^{-1}\E_{p(y)}
+Z(y) \\
+&amp;= \E_{p(x_{1:K},y)} [1 + \log \frac{e^{g(x,y)}}{a(y,x_{1:K})}] -
+e^{-1} \E_{p(y)} [\E_{p(x_{1:K})} e^{1 + \log
+\frac{e^{g(x,y)}}{a(y,x_{1:K})}}] \\
+&amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log
+\frac{e^{g(x,y)}}{a(y,x_{1:K})}] - e^{-1} \E_{p(y)} [e\E_{p(x_{1:K})}
+\frac{e^{g(x,y)}}{a(y,x_{1:K})}] \\
+&amp;= 1 + \E_{p(x_{1:K})p(y|x_{1:K})} [\log
+\frac{e^{g(x,y)}}{a(y,x_{1:K})}] - \E_{p(x_{1:K})p(y)}
+\frac{e^{g(x,y)}}{a(y,x_{1:K})} \\
 \end{aligned}
-\]</span> Further set <span class="math inline">\(a(y;x_{1:K}) = \frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)}\)</span>. Substitute this into the last term in equation <span class="math inline">\(\eqref{infonce}\)</span> will give <span class="math display">\[
+\]</span> Further set <span class="math inline">\(a(y;x_{1:K}) =
+\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)}\)</span>. Substitute this into
+the last term in equation <span class="math inline">\(\eqref{infonce}\)</span> will give <span class="math display">\[
 \begin{aligned}
-\E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} &amp;= \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}}{\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} } \\
-&amp;\stackrel{P}{\to} \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}} {\E_{p(x_{1:K})} e^{g(x,y)} } \\
+\E_{p(x_{1:K})p(y)} \frac{e^{g(x,y)}}{a(y,x_{1:K})} &amp;= \E_{p(y)}
+\frac{\E_{p(x_{1:K})} e^{g(x,y)}}{\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)}
+} \\
+&amp;\stackrel{P}{\to} \E_{p(y)} \frac{\E_{p(x_{1:K})} e^{g(x,y)}}
+{\E_{p(x_{1:K})} e^{g(x,y)} } \\
 &amp;= 1
 \end{aligned}
 \]</span> Therefore, <span class="math display">\[
 \begin{aligned}
-I(X_{1:K};Y) &amp;\ge \E_{p(x_{1:K})p(y|x_{1:K})} [\log \frac{e^{g(x,y)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} }] \\
-&amp;\approx \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)} }] \triangleq I_\text{NCE}
+I(X_{1:K};Y) &amp;\ge \E_{p(x_{1:K})p(y|x_{1:K})} [\log
+\frac{e^{g(x,y)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y)} }] \\
+&amp;\approx \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log
+\frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)} }]
+\triangleq I_\text{NCE}
 \end{aligned}
 \]</span></p>
-<p>On the other hand, <span class="math inline">\(I_\text{NCE}\)</span> is tightly bounded by <span class="math inline">\(\log K\)</span>: <span class="math display">\[
+<p>On the other hand, <span class="math inline">\(I_\text{NCE}\)</span>
+is tightly bounded by <span class="math inline">\(\log K\)</span>: <span class="math display">\[
 \begin{aligned}
-I_\text{NCE} &amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log \frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
-&amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K (\log \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} )] + \log K \\
-&amp;\le \E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} ]} + \log K \\
-&amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\sum_{i=1}^K e^{g(x_i, y_j)}} {e^{g(x_j,y_j)}} ]} + \log K
+I_\text{NCE} &amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K \log
+\frac{e^{g(x_j,y_j)}} {\frac{1}{K} \sum_{i=1}^K e^{g(x_i, y_j)}} ] \\
+&amp;= \E_{p(x_{1:K})} [\frac{1}{K} \sum_{j=1}^K (\log
+\frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} )] + \log K \\
+&amp;\le \E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K
+\frac{e^{g(x_j,y_j)}} {\sum_{i=1}^K e^{g(x_i, y_j)}} ]} + \log K \\
+&amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K
+\frac{\sum_{i=1}^K e^{g(x_i, y_j)}} {e^{g(x_j,y_j)}} ]} + \log K
 \end{aligned}
-\]</span> The equality is reached when <span class="math inline">\(f(x_{1:K},y) = 1 + {h(x_{1:K},y)} = 1 + \log \frac{p(x|y)}{p(x)}\)</span> as in <span class="math inline">\(I_\text{NWJ}\)</span>. In this case, it can be derived that <span class="math inline">\(g(x,y) = g^\star(x,y) = \frac{p(y|x)}{p(y)}\)</span>. And then, <span class="math display">\[
+\]</span> The equality is reached when <span class="math inline">\(f(x_{1:K},y) = 1 + {h(x_{1:K},y)} = 1 + \log
+\frac{p(x|y)}{p(x)}\)</span> as in <span class="math inline">\(I_\text{NWJ}\)</span>. In this case, it can be
+derived that <span class="math inline">\(g(x,y) = g^\star(x,y) =
+\frac{p(y|x)}{p(y)}\)</span>. And then, <span class="math display">\[
 \begin{aligned}
-I_\text{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
-&amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K (1 + \frac{p(y_j)}{p(y_j|x_j)} \sum_{i=1,i \ne j}^K \frac{p(y_j|x_i)}{p(y_j)}) ]} + \log K \\
-&amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(1 + \frac{p(y_j)}{p(y_j|x_j)} (K-1) \E_{p(y)} \frac{p(y|x_i)}{p(y)} \big) ]} + \log K \\
-&amp;= -\E_{p(x_{1:K})} \log {[1 + \frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
-&amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big( \frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
-&amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{p(y_j)}{p(y_j|x_j)} ]} - \log(K-1) + \log K \\
+I_\text{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K
+\frac{\frac{p(y_j|x_j)}{p(y_j)} + \sum_{i=1,i \ne j}^K
+\frac{p(y_j|x_i)}{p(y_j)}} {\frac{p(y_j|x_j)}{p(y_j)}} ]} + \log K \\
+&amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K (1 +
+\frac{p(y_j)}{p(y_j|x_j)} \sum_{i=1,i \ne j}^K
+\frac{p(y_j|x_i)}{p(y_j)}) ]} + \log K \\
+&amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(1 +
+\frac{p(y_j)}{p(y_j|x_j)} (K-1) \E_{p(y)} \frac{p(y|x_i)}{p(y)} \big) ]}
++ \log K \\
+&amp;= -\E_{p(x_{1:K})} \log {[1 + \frac{1}{K} \sum_{j=1}^K \big(
+\frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
+&amp;\approx -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \big(
+\frac{p(y_j)}{p(y_j|x_j)} (K-1) \big) ]} + \log K \\
+&amp;= -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K
+\frac{p(y_j)}{p(y_j|x_j)} ]} - \log(K-1) + \log K \\
 &amp;= I(X_1;Y) - \log(K-1) + \log K
 \end{aligned}
-\]</span> This derivation is much looser than <a href="/notes/papers/contrastive-predictive-coding/#Bounding the Mutual Information">that in the InfoNCE’s original paper</a>.</p>
+\]</span> This derivation is much looser than <a href="/notes/papers/contrastive-predictive-coding/#Bounding the Mutual Information">that in the InfoNCE’s original
+paper</a>.</p>
 <h3 id="with-i_textuba">With <span class="math inline">\(I_\text{UBA}\)</span></h3>
-<p>There is another approach to the derivation of <span class="math inline">\(I_\text{NCE}\)</span>, that stems from an estimate of <span class="math inline">\(I_\text{UBA}\)</span> (which I won’t call empirical estimate) and that may be more intuitive: <span class="math display">\[
+<p>There is another approach to the derivation of <span class="math inline">\(I_\text{NCE}\)</span>, that stems from an estimate
+of <span class="math inline">\(I_\text{UBA}\)</span> (which I won’t call
+empirical estimate) and that may be more intuitive: <span class="math display">\[
 \begin{aligned}
 &amp;I(X;Y) \ge \E_{p(x,y)} f(x,y) - \E_{p(y)} \log Z(y) \\
 &amp;= \E_{p^N(x,y)} f(x_1,y_1) - \E_{p^N(x,y)} \log Z(y_1) \\
 &amp;= \E_{p^N(x,y)} \log e^{f(x_1,y_1)} \\
 &amp;\quad\;- \E_{p^N(x,y)} \log \E_{p(x&#39;)} e^{f(x&#39;,y_1)} \\
-&amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}}{\E_{p(x&#39;)} e^{f(x&#39;,y)}} \\
-&amp;\simeq \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\frac{1}{N} \sum_i e^{f(x_i,y_1)}} \\
-&amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\sum_i e^{f(x_i,y_1)}} + \log N \\
+&amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}}{\E_{p(x&#39;)}
+e^{f(x&#39;,y)}} \\
+&amp;\simeq \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\frac{1}{N} \sum_i
+e^{f(x_i,y_1)}} \\
+&amp;= \E_{p^N(x,y)} \log \frac{e^{f(x_1,y_1)}} {\sum_i e^{f(x_i,y_1)}}
++ \log N \\
 &amp;\triangleq I_\text{NCE} \le \log N
 \end{aligned}
 \]</span></p>
@@ -1620,7 +1717,7 @@ I_\text{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fr
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1670,7 +1767,7 @@ I_\text{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fr
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1757,7 +1854,7 @@ I_\text{NCE} &amp;\le -\E_{p(x_{1:K})} \log {[\frac{1}{K} \sum_{j=1}^K \frac{\fr
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

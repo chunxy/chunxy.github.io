@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Eigenvectors and Eigenvalues Definition An eigenvector of a \(n \times n\) matrix \(A\) is a nonzero vector \(\rm x\) such that \(A\rm x = \lambda \rm x\) for some scalar \(\lambda\)." />
+  <meta name="description" content="Eigenvectors and Eigenvalues An eigenvector of a \(n \times n\) matrix \(A\) is a nonzero vector \(\rm x\) such that \(A\rm x = \lambda \rm x\) for some scalar \(\lambda\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/" />
   <meta property="og:title" content="Eigenvectors and Eigenvalues | Chunxy&#39; Website" />
-  <meta property="og:description" content="Eigenvectors and Eigenvalues Definition An eigenvector of a \(n \times n\) matrix \(A\) is a nonzero vector \(\rm x\) such that \(A\rm x = \lambda \rm x\) for some scalar \(\lambda\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Eigenvectors and Eigenvalues An eigenvector of a \(n \times n\) matrix \(A\) is a nonzero vector \(\rm x\) such that \(A\rm x = \lambda \rm x\) for some scalar \(\lambda\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,13 +1342,15 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#eigenvectors-and-eigenvalues">Eigenvectors and Eigenvalues</a>
+    <li><a href="#eigenvectors-and-eigenvalues">Eigenvectors and
+Eigenvalues</a>
       <ul>
-        <li><a href="#definition">Definition</a></li>
         <li><a href="#similarity">Similarity</a></li>
-        <li><a href="#independence-between-eigenvectors">Independence between Eigenvectors</a></li>
+        <li><a href="#independence-between-eigenvectors">Independence between
+Eigenvectors</a></li>
         <li><a href="#diagonalization">Diagonalization</a></li>
-        <li><a href="#eigenvalues-rank-trace-and-determinant">Eigenvalues: Rank, Trace and Determinant</a></li>
+        <li><a href="#eigenvalues-rank-trace-and-determinant">Eigenvalues: Rank,
+Trace and Determinant</a></li>
       </ul>
     </li>
     <li><a href="#external-materials">External Materials</a></li>
@@ -1420,12 +1450,27 @@
             
 
 <h2 id="eigenvectors-and-eigenvalues">Eigenvectors and Eigenvalues</h2>
-<h3 id="definition">Definition</h3>
-<p>An <strong>eigenvector</strong> of a <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is a <strong>nonzero</strong> vector <span class="math inline">\(\rm x\)</span> such that <span class="math inline">\(A\rm x = \lambda \rm x\)</span> for some scalar <span class="math inline">\(\lambda\)</span>. This scalar <span class="math inline">\(\lambda\)</span> is the corresponding <strong>eigenvalue</strong>. Note that by definition, <span class="math inline">\((\lambda, \vec 0)\)</span> is a pair of eigenvalue and eigenvector of any square matrix. However, <span class="math inline">\(\vec 0\)</span> is just too trivial an eigenvector that people exclude it from the eigen discussion.</p>
-<p>Note, though, <span class="math inline">\(0\)</span> can be an eigenvalue. Also note that if <span class="math inline">\((\lambda, v)\)</span> is a pair of eigen of matrix <span class="math inline">\(A\)</span>, then <span class="math inline">\((\lambda, kv)\)</span> is also a pair of eigen.</p>
+<p>An <strong>eigenvector</strong> of a <span class="math inline">\(n
+\times n\)</span> matrix <span class="math inline">\(A\)</span> is a
+<strong>nonzero</strong> vector <span class="math inline">\(\rm
+x\)</span> such that <span class="math inline">\(A\rm x = \lambda \rm
+x\)</span> for some scalar <span class="math inline">\(\lambda\)</span>.
+This scalar <span class="math inline">\(\lambda\)</span> is the
+corresponding <strong>eigenvalue</strong>. Note that by definition,
+<span class="math inline">\((\lambda, \vec 0)\)</span> is a pair of
+eigenvalue and eigenvector of any square matrix. However, <span class="math inline">\(\vec 0\)</span> is just too trivial an eigenvector
+that people exclude it from the eigen discussion.</p>
+<p>Note, though, <span class="math inline">\(0\)</span> can be an
+eigenvalue. Also note that if <span class="math inline">\((\lambda,
+v)\)</span> is a pair of eigen of matrix <span class="math inline">\(A\)</span>, then <span class="math inline">\((\lambda, kv)\)</span> is also a pair of
+eigen.</p>
 <h3 id="similarity">Similarity</h3>
-<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(n \times n\)</span> matrices, then <span class="math inline">\(A\)</span> is similar to <span class="math inline">\(B\)</span> if there is an invertible matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(PAP^{-1} = B\)</span>, or equivalently <span class="math inline">\(P^{-1}BP = A\)</span>.</p>
-<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then they have the same characteristic polynomial and hence then the same eigenvalues: <span class="math display">\[
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <span class="math inline">\(n
+\times n\)</span> matrices, then <span class="math inline">\(A\)</span>
+is similar to <span class="math inline">\(B\)</span> if there is an
+invertible matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(PAP^{-1} = B\)</span>, or equivalently <span class="math inline">\(P^{-1}BP = A\)</span>.</p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are similar, then they have the same
+characteristic polynomial and hence then the same eigenvalues: <span class="math display">\[
 B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 \]</span></p>
 <p><span class="math display">\[
@@ -1435,50 +1480,131 @@ B - \lambda I = PAP^{-1} - \lambda PP^{-1} = P(A - \lambda I)P^{-1} \\
 &amp;= \det(A - \lambda I)
 \end{aligned}
 \]</span></p>
-<h3 id="independence-between-eigenvectors">Independence between Eigenvectors</h3>
+<h3 id="independence-between-eigenvectors">Independence between
+Eigenvectors</h3>
 <ul>
 <li><p>Theorem</p>
-<p>Suppose <span class="math inline">\(v_1, v_2, ... , v_r\)</span> are the eigenvectors corresponding to the distinct eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, ..., \lambda_r\)</span> of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> (<span class="math inline">\(v_1, v_2, ... , v_r\)</span> are also called eigenvectors from different <strong>eigenspaces</strong>), then <span class="math inline">\(v_1, v_2, ..., v_r\)</span> are linearly independent.</p></li>
+<p>Suppose <span class="math inline">\(v_1, v_2, ... , v_r\)</span> are
+the eigenvectors corresponding to the distinct eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, ..., \lambda_r\)</span> of
+an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> (<span class="math inline">\(v_1, v_2,
+... , v_r\)</span> are also called eigenvectors from different
+<strong>eigenspaces</strong>), then <span class="math inline">\(v_1,
+v_2, ..., v_r\)</span> are linearly independent.</p></li>
 <li><p>Proof</p>
-<p>Suppose instead these vectors are dependent. Let <span class="math inline">\(p\)</span> be the least index such that <span class="math inline">\(v_{p+1}\)</span> is a linear combination of previous vectors. Then there exists scalars <span class="math inline">\(c_1, c_2, ..., c_p\)</span> such that <span class="math display">\[
-  c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1} \label{lincom} 
+<p>Suppose instead these vectors are dependent. Let <span class="math inline">\(p\)</span> be the least index such that <span class="math inline">\(v_{p+1}\)</span> is a linear combination of
+previous vectors. Then there exists scalars <span class="math inline">\(c_1, c_2, ..., c_p\)</span> such that <span class="math display">\[
+  \begin{equation}
+  c_1v_1 + c_2v_2 + \cdots + c_pv_p = v_{p+1} \label{lincom}
+  \end{equation}
   \]</span> Multiply both sides with <span class="math inline">\(A\)</span> to obtain <span class="math display">\[
-  c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p = \lambda_{p+1}v_{p+1} \label{eq1}
+  \begin{equation}
+  c_1\lambda_1v_1 + c_2\lambda_2v_2 + \cdots + c_p\lambda_pv_p =
+\lambda_{p+1}v_{p+1} \label{eq1}
+  \end{equation}
   \]</span> Multiply both sides of <span class="math inline">\(\eqref{lincom}\)</span> with <span class="math inline">\(\lambda_{p+1}\)</span> to give <span class="math display">\[
-  c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots + c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1} \label{eq2}
-  \]</span> Subtract <span class="math inline">\(\eqref{eq2}\)</span> from <span class="math inline">\(\eqref{eq1}\)</span> to give <span class="math display">\[
-  c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2 + \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0 \label{diff} 
-  \]</span> Since <span class="math inline">\(v_1, v_2, ..., v_p\)</span> are independent, the weights in <span class="math inline">\(\eqref{diff}\)</span> are all zeros. None of <span class="math inline">\((\lambda_i - \lambda_{p+1})\)</span> is zero, so <span class="math inline">\(c_i = 0\)</span> for all <span class="math inline">\(i = 1,...p\)</span>. Then <span class="math inline">\(\eqref{lincom}\)</span> says <span class="math inline">\(v_{p+1}\)</span> is <span class="math inline">\(0\)</span>, which is impossible.</p></li>
+  \begin{equation}
+  c_1\lambda_{p+1}v_1 + c_2\lambda_{p+1}v_2 + \cdots +
+c_p\lambda_{p+1}v_p = \lambda_{p+1}v_{p+1} \label{eq2}
+  \end{equation}
+  \]</span> Subtract <span class="math inline">\(\eqref{eq2}\)</span>
+from <span class="math inline">\(\eqref{eq1}\)</span> to give <span class="math display">\[
+  \begin{equation}
+  c_1(\lambda_1 - \lambda_{p+1})v_1 + c_2(\lambda_2 - \lambda_{p+1})v_2
++ \cdots + c_p(\lambda_p - \lambda_{p+1})v_p = 0 \label{diff}
+  \end{equation}
+  \]</span> Since <span class="math inline">\(v_1, v_2, ...,
+v_p\)</span> are independent, the weights in <span class="math inline">\(\eqref{diff}\)</span> are all zeros. None of <span class="math inline">\((\lambda_i - \lambda_{p+1})\)</span> is zero, so
+<span class="math inline">\(c_i = 0\)</span> for all <span class="math inline">\(i = 1,...p\)</span>. Then <span class="math inline">\(\eqref{lincom}\)</span> says <span class="math inline">\(v_{p+1}\)</span> is <span class="math inline">\(0\)</span>, which is impossible.</p></li>
 <li><p>Note</p>
-<p><span class="math inline">\(v_1\)</span>, as the eigenvector, is nonzero so that the conclusion can hold even for <span class="math inline">\(p=1\)</span>.</p></li>
+<p><span class="math inline">\(v_1\)</span>, as the eigenvector, is
+nonzero so that the conclusion can hold even for <span class="math inline">\(p=1\)</span>.</p></li>
 </ul>
 <h3 id="diagonalization">Diagonalization</h3>
 <ul>
 <li><p>Theorem</p>
-<p>An <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is diagonalizable if and only if <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors.</p></li>
+<p>An <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is diagonalizable if and only if <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> linearly independent
+eigenvectors.</p></li>
 <li><p>Proof</p>
 <ul>
 <li><p>Necessity</p>
-<p>Suppose <span class="math inline">\(A = PDP^{-1}\)</span>, then <span class="math inline">\(AP = PD\)</span>. Let <span class="math inline">\(\newcommand{\p}{\mathrm{p}} P = [\p_1, \p_2, ..., \p_n]\)</span>. Since <span class="math inline">\(D\)</span> is a diagonal matrix, <span class="math display">\[
-AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11} \p_1, D_{22} \p_2, ..., D_{nn} \p_n]
-\]</span> Because <span class="math inline">\(P\)</span> is invertible, <span class="math inline">\(\p_i\)</span>’s are linearly independent, which indicates that <span class="math inline">\(\mathrm p_i\)</span>’s are <span class="math inline">\(A\)</span>’s <span class="math inline">\(n\)</span> independent eigenvectors.</p>
-<p>From this, we could also see that if <span class="math inline">\(A\)</span> is diagonalizable, then <span class="math inline">\(P\)</span> must be the matrix concatenated with <span class="math inline">\(A\)</span>’s eigenvectors and <span class="math inline">\(D\)</span> must be the diagonal matrix filled with corresponding eigenvalues.</p></li>
+<p>Suppose <span class="math inline">\(A = PDP^{-1}\)</span>, then <span class="math inline">\(AP = PD\)</span>. Let <span class="math inline">\(\newcommand{\p}{\mathrm{p}} P = [\p_1, \p_2, ...,
+\p_n]\)</span>. Since <span class="math inline">\(D\)</span> is a
+diagonal matrix, <span class="math display">\[
+AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11} \p_1, D_{22} \p_2, ..., D_{nn}
+\p_n]
+\]</span> Because <span class="math inline">\(P\)</span> is invertible,
+<span class="math inline">\(\p_i\)</span>’s are linearly independent,
+which indicates that <span class="math inline">\(\mathrm p_i\)</span>’s
+are <span class="math inline">\(A\)</span>’s <span class="math inline">\(n\)</span> independent eigenvectors.</p>
+<p>From this, we could also see that if <span class="math inline">\(A\)</span> is diagonalizable, then <span class="math inline">\(P\)</span> must be the matrix concatenated with
+<span class="math inline">\(A\)</span>’s eigenvectors and <span class="math inline">\(D\)</span> must be the diagonal matrix filled with
+corresponding eigenvalues.</p></li>
 <li><p>Sufficiency</p>
 <p>Easy to show.</p></li>
 </ul></li>
 </ul>
-<p>As a counter-example, the matrix <span class="math inline">\(\begin{bmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{bmatrix}\)</span> is not diagonalizable.</p>
-<p>The diagonalization of a square matrix is also referred to as <strong>eigen decomposition</strong>.</p>
-<h3 id="eigenvalues-rank-trace-and-determinant">Eigenvalues: Rank, Trace and Determinant</h3>
-<p>Since the characteristic equation of an <span class="math inline">\(n \times n\)</span> matrix is a polynomial of degree <span class="math inline">\(n\)</span>, the equation always has exactly <span class="math inline">\(n\)</span> roots, counting multiplicities, including complex roots. There are some relations between eigenvalues and matrix’s rank, trace and determinant: <span class="math display">\[
+<p>Not all matrices are diagonalizable. For example, the matrix <span class="math inline">\(\begin{bmatrix} 1 &amp; 1 \\ 0 &amp; 1
+\end{bmatrix}\)</span> is not diagonalizable.</p>
+<p>The diagonalization of a square matrix is also referred to as
+<strong>eigen decomposition</strong>.</p>
+<h3 id="eigenvalues-rank-trace-and-determinant">Eigenvalues: Rank, Trace
+and Determinant</h3>
+<p>Since the characteristic equation of an <span class="math inline">\(n
+\times n\)</span> matrix is a polynomial of degree <span class="math inline">\(n\)</span>, the equation always has exactly <span class="math inline">\(n\)</span> roots, counting multiplicities,
+including complex roots. There are some relations between eigenvalues
+and matrix’s rank, trace and determinant: <span class="math display">\[
 \begin{gather}
-\rank = \text{the number of nonzero real eigenvalues, including multiplicities} \\
+\rank = \text{the number of nonzero real eigenvalues, including
+multiplicities} \\
 \tr = \text{sum of the eigenvalues} \\
 \det = \text{product of the eigenvalues}
 \end{gather}
-\]</span></p>
+\]</span> ## Power Iteration</p>
+<p>We may obtain the eigenvalues of an <span class="math inline">\(n
+\times n\)</span> diagonalizable matrix <span class="math inline">\(A\)</span>’s by solving <span class="math inline">\(\det (A - \lambda I) = 0\)</span>. Then the
+corresponding eigenvectors can be solved. The order of complexity of
+this method is cubic.</p>
+<p>But chances are that we don’t want all the eigenpairs, but instead
+only those with largest eigenvalues, like when we find the <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/#Eckart-Young-Mirsky Theorem">best rank-<span class="math inline">\(r\)</span> approximation using SVD</a>. It is an
+overkill to solve all eigenpairs. Luckily there is another lightweight
+iterative method that can help.</p>
+<p>Begin with an arbitrary vector <span class="math inline">\(x_0 = x
+\in \R^n\)</span>. The iteration rule is <span class="math display">\[
+x_{t+1} = \frac{A x_t}{||A x_t||}
+\]</span> Unroll <span class="math inline">\(x_{t+1}\)</span> to get
+<span class="math inline">\(x_t = \frac{A^t x}{||A^t x||}\)</span>.
+Because <span class="math inline">\(A\)</span> is diagonalizable, <span class="math inline">\(x\)</span> can be written as a linear combination
+of <span class="math inline">\(A\)</span>’s <span class="math inline">\(n\)</span> normalized independent eigenvectors:
+<span class="math display">\[
+x = \sum_{i=1}^n \alpha_i v_i
+\]</span> Let <span class="math inline">\(v_1, \dots, v_n\)</span> be
+arranged such that corresponding eigenvalues go from large to small.
+Then, <span class="math display">\[
+\begin{aligned}
+&amp;A^t x = A^t \sum_{i=1}^N \alpha_i v_i \\
+&amp;= \sum_{i=1}^N \alpha_i \lambda_i^t v_i \\
+&amp;= \alpha_1 \lambda_1^t \sum_{i=1}^N \frac{\alpha_i}{\alpha_1}
+(\frac{\lambda_i}{\lambda_1})^t v_i
+\end{aligned}
+\]</span> Under the assumption that <span class="math inline">\(\lambda_1\)</span> is strictly larger than other
+eigenvalues, <span class="math inline">\((\frac{\lambda_i}{\lambda_1})^t
+\to 0, A^t x \to \alpha_1 \lambda_1^t v_1\)</span>. Thus, <span class="math display">\[
+x_{t+1} = \frac{A^t x}{||A^t x||} \to v_1
+\]</span> To find the corresponding eigenvalue, observe that <span class="math display">\[
+x_{t+1}^T A x_{t+1} \to \lambda_1
+\]</span> This gives the eigenpair with the largest eigenvalue. To find
+the next one, repeat the above with <span class="math display">\[
+A&#39; = A - \lambda_1 v_1 v_1^T
+\]</span> The process above is called the deflation for the power
+method. Refer to <a href="Finding%20Eigenvalues.pdf">Finding
+Eigenvalues.pdf</a> for the proof of correctness. This might also be
+related to <a href="https://www.wikiwand.com/en/Min-max_theorem">Courant–Fischer
+theorem</a>.</p>
 <h2 id="external-materials">External Materials</h2>
-<p><a href="/uploads/Eigen%20Decomposition.pdf" target="_blank">Eigen Decomposition.pdf</a></p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<a href="/uploads/Eigen%20Decomposition.pdf" target="_blank">Eigen
+Decomposition.pdf</a> ======= <a href="Eigen%20Decomposition.pdf">Eigen
+Decomposition.pdf</a> &gt;&gt;&gt;&gt;&gt;&gt;&gt; notes</p>
 
 
 
@@ -1569,7 +1695,7 @@ AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11} \p_1, D_{22} \p_2, ..., D_{nn} \p_n]
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1619,7 +1745,7 @@ AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11} \p_1, D_{22} \p_2, ..., D_{nn} \p_n]
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1706,7 +1832,7 @@ AP = [A\p_1, A\p_2, ..., A\p_n] = [D_{11} \p_1, D_{22} \p_2, ..., D_{nn} \p_n]
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

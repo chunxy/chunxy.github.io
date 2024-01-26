@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1412,82 +1440,157 @@
             
 
 <h2 id="点估计">点估计</h2>
-<p>设总体<span class="math inline">\(X \sim p(x;\theta)\)</span>的分布形式已知，但其参数<span class="math inline">\(\theta\)</span>未知。设<span class="math inline">\(X_1, \dots, X_n\)</span>为总体的一个样本，若用一个统计量<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)</span>来估计<span class="math inline">\(\theta\)</span>，则称<span class="math inline">\(\hat \theta\)</span>为参数<span class="math inline">\(\theta\)</span>的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。</p>
+<p>设总体<span class="math inline">\(X \sim
+p(x;\theta)\)</span>的分布形式已知，但其参数<span class="math inline">\(\theta\)</span>未知。设<span class="math inline">\(X_1, \dots,
+X_n\)</span>为总体的一组样本，若用一个统计量<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots,
+X_n)\)</span>来估计<span class="math inline">\(\theta\)</span>，则称<span class="math inline">\(\hat \theta\)</span>为参数<span class="math inline">\(\theta\)</span>的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。</p>
 <h3 id="矩估计">矩估计</h3>
-<p>矩估计的思想就是就是替换思想，即用样本原点矩替换总体原点矩，设总体的<span class="math inline">\(k\)</span>阶原点矩<span class="math inline">\(\mu_k = \E(X^k)\)</span>，样本的<span class="math inline">\(k\)</span>阶原点矩为<span class="math inline">\(A_k = \frac 1 n \sum_{i=1}^n X_i^k\)</span>，如果未知参数<span class="math inline">\(\theta = \varphi(\mu_1, \dots, \mu_m)\)</span>，则其估计量<span class="math inline">\(\hat \theta = \varphi(A_1, \dots, A_m)\)</span>，这种估计总体未知参数的方法叫作矩估计法。</p>
-<p>矩估计往往不唯一，如设<span class="math inline">\(X \sim P(\lambda)\)</span>，则由于<span class="math inline">\(\E(X) = \lambda\)</span>，<span class="math inline">\(\hat \lambda\)</span>可写作<span class="math inline">\(\bar X\)</span>；又<span class="math inline">\(\Var(X) = \lambda\)</span>，<span class="math inline">\(\hat \lambda\)</span>可写作<span class="math inline">\(\frac 1 n \sum_{i=1}^n X_i^2 - \bar X^2\)</span>。此时往往采用较低阶的矩来估计未知参数。</p>
+<p>矩估计的思想就是就是替换思想，即用样本矩替换总体矩。设总体的<span class="math inline">\(k\)</span>阶原点矩（origin moment）<span class="math inline">\(\mu_k = \E[X^k]\)</span>，总体的<span class="math inline">\(k\)</span>中心矩（central moment）<span class="math inline">\(\alpha_k = \E[(X - \mu)^k]\)</span>；样本的<span class="math inline">\(k\)</span>阶原点矩为<span class="math inline">\(m_k = \frac 1 n \sum_{i=1}^n
+X_i^k\)</span>，样本的<span class="math inline">\(k\)</span>阶中心矩为<span class="math inline">\(a_k = \frac 1 n \sum_{i=1}^n (X_i - \bar
+X)^k\)</span>。</p>
+<p>仅以中心矩为例，如果未知参数<span class="math inline">\(\theta =
+\varphi(\mu_1, \dots, \mu_p)\)</span>，则其估计量<span class="math inline">\(\hat \theta = \varphi(m_1, \dots,
+m_p)\)</span>，这种估计总体未知参数的方法叫作矩估计法。矩估计往往不唯一，如设<span class="math inline">\(X \sim P(\lambda)\)</span>，则由于<span class="math inline">\(\E(X) = \lambda\)</span>，<span class="math inline">\(\hat \lambda\)</span>可写作<span class="math inline">\(\bar X\)</span>；又<span class="math inline">\(\Var(X) = \lambda\)</span>，<span class="math inline">\(\hat \lambda\)</span>可写作<span class="math inline">\(\frac 1 n \sum_{i=1}^n X_i^2 - \bar
+X^2\)</span>。此时往往采用较低阶的矩来估计未知参数。</p>
 <h3 id="最大似然估计">最大似然估计</h3>
-<p>设总体有分布律<span class="math inline">\(X \sim P(X=x;\theta)\)</span>或密度函数<span class="math inline">\(X \sim p(x;\theta)\)</span>，<span class="math inline">\(x_1, \dots, x_n\)</span>为取自总体的一组样本观测值，将样本的联合分布律或联合密度函数看作<span class="math inline">\(\theta\)</span>的函数： <span class="math display">\[
-L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) = \prod_{i=1}^n p(x_i;\theta)
-\]</span> <span class="math inline">\(L(\theta)\)</span>又称作<span class="math inline">\(\theta\)</span>的似然函数，似然函数满足关系式<span class="math inline">\(L(\hat \theta) = \max_{\theta} L(\theta)\)</span>的解<span class="math inline">\(\hat \theta\)</span>为<span class="math inline">\(\theta\)</span>的最大似然估计量。</p>
+<p>设总体有分布律<span class="math inline">\(X \sim
+P(X=x;\theta)\)</span>或密度函数<span class="math inline">\(X \sim
+p(x;\theta)\)</span>，<span class="math inline">\(x_1, \dots,
+x_n\)</span>为取自总体的一组样本观测值，将样本的联合分布律或联合密度函数看作<span class="math inline">\(\theta\)</span>的函数： <span class="math display">\[
+L(\theta) = \prod_{i=1}^n P(X=x_i;\theta)\ \text或 \ L(\theta) =
+\prod_{i=1}^n p(x_i;\theta)
+\]</span> <span class="math inline">\(L(\theta)\)</span>又称作<span class="math inline">\(\theta\)</span>的似然函数，似然函数满足关系式<span class="math inline">\(L(\hat \theta) = \max_{\theta}
+L(\theta)\)</span>的解<span class="math inline">\(\hat
+\theta\)</span>为<span class="math inline">\(\theta\)</span>的最大似然估计量。</p>
+<p>由于最大似然估计对样本使用较为充分，通常其方差较小。</p>
 <h3 id="优良性评判">优良性评判</h3>
-<h4 id="无偏性unbiased">无偏性（Unbiased）</h4>
-<p>设<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)</span>是<span class="math inline">\(\theta\)</span>的一个估计量，<span class="math inline">\(\theta\)</span>的取值空间为<span class="math inline">\(\Theta\)</span>，若对任意的<span class="math inline">\(\theta \in \Theta\)</span>，有 <span class="math display">\[
+<h4 id="无偏性unbiasedness">无偏性（unbiasedness）</h4>
+<p>设<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots,
+X_n)\)</span>是<span class="math inline">\(\theta\)</span>的一个估计量，<span class="math inline">\(\theta\)</span>的取值空间为<span class="math inline">\(\Theta\)</span>，若对任意的<span class="math inline">\(\theta \in \Theta\)</span>，有 <span class="math display">\[
 \E [\hat \theta(X_1, \dots, X_n)] = \theta
-\]</span> 则称<span class="math inline">\(\hat \theta\)</span>是<span class="math inline">\(\theta\)</span>的一个无偏估计（量），否则则称作有偏估计（量）。如果有 <span class="math display">\[
-\lim_{n \to \infty} \E [\hat \theta(X_1, \dots, X_n)] = \theta, \text{亦即} \hat \theta \stackrel{L_1}{\to} \theta
-\]</span> 则称<span class="math inline">\(\hat \theta\)</span>是<span class="math inline">\(\theta\)</span>的一个渐进无偏估计（量）。</p>
-<p>估计的无偏性是指，估计量相对于未知参数真值来说，取某些样本时估计值也许偏大，取另一些样本时估计量也许偏小，但多次取样本进行估计，平均来讲偏差为<span class="math inline">\(0\)</span>。如果估计量不具有无偏性，则无论取多少次样本，其平均值与真值也有偏差，亦即系统误差。</p>
-<h4 id="最小方差minimum-variance">最小方差（Minimum-variance）</h4>
-<p>设<span class="math inline">\(\hat \theta_1 = \hat \theta_2\)</span>是<span class="math inline">\(\theta\)</span>的两个估计量，<span class="math inline">\(\theta\)</span>的取值空间为<span class="math inline">\(\Theta\)</span>，若对任意的<span class="math inline">\(\theta \in \Theta\)</span>，有<span class="math inline">\(\Var(\hat \theta_1) \le \Var(\hat \theta_2)\)</span>，且至少有一个<span class="math inline">\(\theta \in \Theta\)</span>使得该不等式严格成立，则称<span class="math inline">\(\hat \theta_1\)</span>比<span class="math inline">\(\hat \theta_2\)</span>有效。</p>
-<h4 id="一致性consistent">一致性（Consistent）</h4>
-<p>设<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots, X_n)\)</span>是<span class="math inline">\(\theta\)</span>的一个估计量，若对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[
-\lim_{n \to \infty} P(|\hat \theta - \theta| \ge \epsilon) = 0, \text{亦即} \hat \theta \stackrel{P}{\to} \theta
-\]</span> 则称估计量<span class="math inline">\(\hat \theta\)</span>具有一致性。一致性是一个很基本的要求：随着样本数量增加，如果估计量不能够将偏差缩小到任意指定精度，那么这个估计通常是不好的。不满足一致性的估计量一般不予考虑。</p>
+\]</span> 则称<span class="math inline">\(\hat \theta\)</span>是<span class="math inline">\(\theta\)</span>的一个无偏估计（量），否则则称作有偏估计（量）。如果有
+<span class="math display">\[
+\lim_{n \to \infty} \E [\hat \theta(X_1, \dots, X_n)] = \theta
+\]</span> 则称<span class="math inline">\(\hat \theta\)</span>是<span class="math inline">\(\theta\)</span>的一个渐进无偏估计（量）。渐进无偏亦记作<span class="math inline">\(\hat \theta \stackrel{L_1}{\to}
+\theta\)</span>。</p>
+<p>估计的无偏性是指，估计量相对于未知参数真值来说，取某些样本时估计值也许偏大，取另一些样本时估计量也许偏小，但多次取样本进行估计，平均来讲偏差为<span class="math inline">\(0\)</span>。如果估计量不具有无偏性，则无论取多少次样本，其平均值与真值也有偏差，亦即<strong>系统误差</strong>。</p>
+<p>有趣的是，有一些估计虽然不满足无偏性，但满足一致性，所以我们依旧会采用这些估计。比如在估计正态总体的方差时，令<span class="math inline">\(S_n^2 \triangleq
+a_2\)</span>，则最大似然估计为<span class="math inline">\(S_n^2\)</span>，该估计不满足无偏性，但满足一致性；<span class="math inline">\(S_n^2/k\)</span>形式（<span class="math inline">\(k\)</span>为待定系数）的最小均方差估计为<span class="math inline">\(n S_n^2/(n+1)\)</span>（<a href="https://www.wikiwand.com/en/Mean_squared_error#Variance">参此</a>），也不满足无偏性，但满足一致性。</p>
+<h4 id="最小方差minimum-variance">最小方差（minimum-variance）</h4>
+<p>设<span class="math inline">\(\hat \theta_1 = \hat
+\theta_2\)</span>是<span class="math inline">\(\theta\)</span>的两个估计量，<span class="math inline">\(\theta\)</span>的取值空间为<span class="math inline">\(\Theta\)</span>，若对任意的<span class="math inline">\(\theta \in \Theta\)</span>，有<span class="math inline">\(\Var(\hat \theta_1) \le \Var(\hat
+\theta_2)\)</span>，且至少有一个<span class="math inline">\(\theta \in
+\Theta\)</span>使得该不等式严格成立，则称<span class="math inline">\(\hat \theta_1\)</span>比<span class="math inline">\(\hat \theta_2\)</span>有效。</p>
+<h4 id="一致性consistency">一致性（consistency）</h4>
+<p>设<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots,
+X_n)\)</span>是<span class="math inline">\(\theta\)</span>的一个估计量，若对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[
+\lim_{n \to \infty} P(|\hat \theta - \theta| &gt; \epsilon) = 0 \\
+\equiv \\
+\lim_{n \to \infty} P(|\hat \theta - \theta| \le \epsilon) = 1
+\]</span> 则称估计量<span class="math inline">\(\hat
+\theta\)</span>具有一致性，一致性描述的是一个估计量<a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/#依概率收敛（convergence in probability）">依概率收敛</a>到真实值的过程，一致性亦记作<span class="math inline">\(\hat \theta \stackrel{P}{\to}
+\theta\)</span>。</p>
+<p>一致性是一个很基本（“基本”不是指“一致性是其他两条性质的必要条件”）的要求：随着样本数量增加，如果估计量不能够将偏差缩小到任意指定精度，那么这个估计通常是不好的。不满足一致性的估计量一般不予考虑。</p>
 <h3 id="cramer-rao不等式">Cramer-Rao不等式</h3>
-<p>实际上，点估计量不仅仅可以估计未知参数<span class="math inline">\(\theta\)</span>本身（假设为一元情况），更可以估计未知参数的某个函数<span class="math inline">\(g(\theta)\)</span>，即给定总体的一个样本<span class="math inline">\(X_1, \dots, X_n\)</span>，用统计量<span class="math inline">\(\hat g = \hat g(X_1, \dots, X_n)\)</span>估计<span class="math inline">\(g(\theta)\)</span>。估计量最好的效果便是达到最小方差无偏（minimum-variance unbiased &lt;MVU&gt;）估计，Cramer-Rao不等式给出了点估计量<span class="math inline">\(\hat g\)</span>方差的一个下界。 <span class="math display">\[
+<p>实际上，点估计量不仅仅可以估计未知参数<span class="math inline">\(\theta\)</span>本身（假设为一元情况），更可以估计未知参数的某个函数<span class="math inline">\(g(\theta)\)</span>，即给定总体的一组样本<span class="math inline">\(X_1, \dots, X_n\)</span>，用统计量<span class="math inline">\(\hat g = \hat g(X_1, \dots, X_n)\)</span>估计<span class="math inline">\(g(\theta)\)</span>。估计量最好的效果便是达到最小方差无偏（minimum-variance
+unbiased &lt;MVU&gt;）估计，Cramer-Rao不等式给出了点估计量<span class="math inline">\(\hat g\)</span>方差的一个下界。 <span class="math display">\[
+\begin{equation}
 \label{cr} \Var(\hat g) \ge (g&#39;(\theta))^2 / (nI(\theta))
-\]</span> 其中，<span class="math inline">\(I(\theta) = \int [(\frac{\partial p(x;\theta)}{\partial \theta})^2 / p(x;\theta)] \d x\)</span>为Fisher Information。当<span class="math inline">\(g(\theta) = \theta\)</span>，即只估计未知参数本身时，有<span class="math inline">\(\Var(\hat g) \ge 1 / (nI(\theta))\)</span>。</p>
-<p><span class="math inline">\(\eqref{cr}\)</span>成立有一定的条件，其本身就暗含了<span class="math inline">\(\frac{\partial p(x;\theta)}{\partial \theta}\)</span>存在及<span class="math inline">\(g&#39;(\theta)\)</span>存在的<strong>条件</strong>。记 <span class="math display">\[
-S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln p(X_i;\theta)} {\partial \theta} = \sum_{i=1}^n [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)]
-\]</span> <span class="math inline">\(\int p(x;\theta)\ \d x = 1\)</span>，此式两边同时对<span class="math inline">\(\theta\)</span>求导，并<strong>假定</strong>此处求导可以移至积分号内部，可得到<span class="math inline">\(\int \frac{\partial p(x;\theta)}{\partial \theta} \d x = 0\)</span>。根据<a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/#Law of the Unconscious Statistician">LOTUS</a>， <span class="math display">\[
-\E [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] 
-= \int [\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta)] p(x;\theta)\ \d x
+\end{equation}
+\]</span> 其中，<span class="math inline">\(I(\theta) = \int
+[(\frac{\partial p(x;\theta)}{\partial \theta})^2 / p(x;\theta)] \d
+x\)</span>为Fisher Information。当<span class="math inline">\(g(\theta)
+= \theta\)</span>，即只估计未知参数本身时，有<span class="math inline">\(\Var(\hat g) \ge 1 / (nI(\theta))\)</span>。</p>
+<p><span class="math inline">\(\eqref{cr}\)</span>成立有一定的条件，其本身就暗含了<span class="math inline">\(\frac{\partial p(x;\theta)}{\partial
+\theta}\)</span>存在及<span class="math inline">\(g&#39;(\theta)\)</span>存在的<strong>条件</strong>。记
+<span class="math display">\[
+S = S(X_1, \dots, X_n, \theta) = \sum_{i=1}^n \frac{\partial \ln
+p(X_i;\theta)} {\partial \theta} = \sum_{i=1}^n [\frac{\partial
+p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)]
+\]</span> <span class="math inline">\(\int p(x;\theta)\ \d x =
+1\)</span>，此式两边同时对<span class="math inline">\(\theta\)</span>求导，并<strong>假定</strong>此处求导可以移至积分号内部，可得到<span class="math inline">\(\int \frac{\partial p(x;\theta)}{\partial \theta}
+\d x = 0\)</span>。根据<a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/#Law of the Unconscious Statistician">LOTUS</a>，
+<span class="math display">\[
+\E [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)]
+= \int [\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta)]
+p(x;\theta)\ \d x
 = \int \frac{\partial p(x;\theta)} {\partial \theta}\d x = 0
 \]</span></p>
-<p>由于<span class="math inline">\(X_1, \dots, X_n\)</span>的独立性， <span class="math display">\[
+<p>由于<span class="math inline">\(X_1, \dots, X_n\)</span>的独立性，
+<span class="math display">\[
 \begin{aligned}
-\Var(S) &amp;= \sum_{i=1}^n \Var [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] \\
-&amp;= \sum_{i=1}^n \{ \E [\big (\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta) \big)^2] - \E^2 [\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta)] \} \\
-&amp;= \sum_{i=1}^n \E [\big (\frac{\partial p(X_i;\theta)} {\partial \theta} / p(X_i;\theta) \big)^2] \\
-&amp;= n \int \big (\frac{\partial p(x;\theta)} {\partial \theta} / p(x;\theta) \big)^2 p(x;\theta)\ \d x \\
+\Var(S) &amp;= \sum_{i=1}^n \Var [\frac{\partial p(X_i;\theta)}
+{\partial \theta} / p(X_i;\theta)] \\
+&amp;= \sum_{i=1}^n \{ \E [\big (\frac{\partial p(X_i;\theta)} {\partial
+\theta} / p(X_i;\theta) \big)^2] - \E^2 [\frac{\partial p(X_i;\theta)}
+{\partial \theta} / p(X_i;\theta)] \} \\
+&amp;= \sum_{i=1}^n \E [\big (\frac{\partial p(X_i;\theta)} {\partial
+\theta} / p(X_i;\theta) \big)^2] \\
+&amp;= n \int \big (\frac{\partial p(x;\theta)} {\partial \theta} /
+p(x;\theta) \big)^2 p(x;\theta)\ \d x \\
 &amp;= n I(\theta)
 \end{aligned}
 \]</span></p>
 <p>根据协方差的性质， <span class="math display">\[
-\label{cov_prop} [\Cov(\hat g, S)]^2 \le \Var(\hat g) \Var(S) = \Var(\hat g) n I(\theta)
+\begin{equation}
+\label{cov_prop} [\Cov(\hat g, S)]^2 \le \Var(\hat g) \Var(S) =
+\Var(\hat g) n I(\theta)
+\end{equation}
 \]</span></p>
 <p>又<span class="math inline">\(\E(S) = 0\)</span>， <span class="math display">\[
 \begin{aligned}
-\Cov(\hat g, S) = \E (\hat g S) &amp;= \int \dots \int \hat g(x_1, \dots, x_n) \sum_{i=1}^n [\frac{\partial p(x_i;\theta)} {\partial \theta} / p(x_i;\theta)] \prod_{i=1}^n p(x_1;\theta)\ \d x_1 \dots \d x_n \\
-&amp;= \int \dots \int \hat g(x_1, \dots, x_n) \frac{\partial p(x_1;\theta) \dots p(x_n;\theta)} {\partial \theta}\ \d x_1 \dots \d x_n 
+\Cov(\hat g, S) = \E (\hat g S) &amp;= \int \dots \int \hat g(x_1,
+\dots, x_n) \sum_{i=1}^n [\frac{\partial p(x_i;\theta)} {\partial
+\theta} / p(x_i;\theta)] \prod_{i=1}^n p(x_1;\theta)\ \d x_1 \dots \d
+x_n \\
+&amp;= \int \dots \int \hat g(x_1, \dots, x_n) \frac{\partial
+p(x_1;\theta) \dots p(x_n;\theta)} {\partial \theta}\ \d x_1 \dots \d
+x_n
 \end{aligned}
 \]</span> <strong>假定</strong>此处对<span class="math inline">\(\theta\)</span>求导可以移至积分号外部， <span class="math display">\[
 \begin{aligned}
-\Cov(\hat g, S) 
-&amp;= \frac \partial{\partial \theta} \int \dots \int \hat g(x_1, \dots, x_n) p(x_1;\theta) \dots p(x_n;\theta)\ \d x_1 \dots \d x_n \\
+\Cov(\hat g, S)
+&amp;= \frac \partial{\partial \theta} \int \dots \int \hat g(x_1,
+\dots, x_n) p(x_1;\theta) \dots p(x_n;\theta)\ \d x_1 \dots \d x_n \\
 &amp;= \frac \partial{\partial \theta} g(\theta) = g&#39;(\theta)
 \end{aligned}
 \]</span> 将上式重新带入<span class="math inline">\(\eqref{cov_prop}\)</span>，从而得到<span class="math inline">\(\eqref{cr}\)</span>。</p>
 <h4 id="参考">参考</h4>
-<p><a href="https://www.zhihu.com/question/56411276/answer/204992057">对Cramer-Rao不等式的理解</a> || <a href="https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound">Wiki (see the multi-variate case)</a></p>
+<p><a href="https://www.zhihu.com/question/56411276/answer/204992057">对Cramer-Rao不等式的理解</a>
+|| <a href="https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound">Wiki
+(see the multi-variate case)</a></p>
 <h2 id="区间估计">区间估计</h2>
-<p>点估计得到是未知参数的某个特定值，然而实际上由于点估计的方差因素，我们不可能得到完全准确的估计值。如果我们能够给出一个区间，使得我们有较大把握参数的真实值落在这个区间范围内，则显得我们的估计更加有效、可信，这个区间也叫作<strong>置信区间</strong>（confidence interval）。</p>
-<p>设总体<span class="math inline">\(X \sim f(x;\theta)\)</span>的分布形式已知，但其参数<span class="math inline">\(\theta\)</span>未知。设<span class="math inline">\(X_1, \dots, X_n\)</span>为总体的一个样本，给定一个很小的数<span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>，若有统计量<span class="math inline">\(\theta_l = \theta_l (X_1, \dots, X_n) \le \theta_r(X_1, \dots, X_n) = \theta_r\)</span>，使得 <span class="math display">\[
+<p>点估计得到是未知参数的某个特定值，然而实际上由于点估计的方差因素，我们不可能得到完全准确的估计值。如果我们能够给出一个区间，使得我们有较大把握参数的真实值落在这个区间范围内，则显得我们的估计更加有效、可信，这个区间也叫作<strong>置信区间</strong>（confidence
+interval）。</p>
+<p>设总体<span class="math inline">\(X \sim
+f(x;\theta)\)</span>的分布形式已知，但其参数<span class="math inline">\(\theta\)</span>未知。设<span class="math inline">\(X_1, \dots,
+X_n\)</span>为总体的一组样本，给定一个很小的数<span class="math inline">\(0 &lt; \alpha &lt; 1\)</span>，若有统计量<span class="math inline">\(\theta_l = \theta_l (X_1, \dots, X_n) \le
+\theta_r(X_1, \dots, X_n) = \theta_r\)</span>，使得 <span class="math display">\[
 P(\theta_l \le \theta \le \theta_r) \ge 1 - \alpha
-\]</span> 我们称<span class="math inline">\(1 - \alpha\)</span>为<span class="math inline">\([\theta_l, \theta_r]\)</span>的<strong>置信水平</strong>（confidence level），<span class="math inline">\(\theta_l\)</span>为<strong>置信下限</strong>，<span class="math inline">\(\theta_r\)</span>为<strong>置信上限</strong>。一般来说置信水平不唯一，因为若<span class="math inline">\(1 - \alpha\)</span>是某个区间的置信水平，则对于任意<span class="math inline">\(\alpha &lt; \tilde \alpha &lt; 1\)</span>，<span class="math inline">\(1 - \tilde \alpha\)</span>亦是该区间的置信水平。故一般的“置信水平”是这一系列置信水平中的最大者。</p>
+\]</span> 我们称<span class="math inline">\(1 - \alpha\)</span>为<span class="math inline">\([\theta_l,
+\theta_r]\)</span>的<strong>置信水平</strong>（confidence level），<span class="math inline">\(\theta_l\)</span>为<strong>置信下限</strong>，<span class="math inline">\(\theta_r\)</span>为<strong>置信上限</strong>。一般来说置信水平不唯一，因为若<span class="math inline">\(1 -
+\alpha\)</span>是某个区间的置信水平，则对于任意<span class="math inline">\(\alpha &lt; \tilde \alpha &lt; 1\)</span>，<span class="math inline">\(1 - \tilde
+\alpha\)</span>亦是该区间的置信水平。故一般的“置信水平”是这一系列置信水平中的最大者。</p>
 <h3 id="枢轴变量法">枢轴变量法</h3>
 <p>区间估计一般采用枢轴变量法，枢轴变量法的一般步骤为：</p>
 <ol type="1">
 <li><p>构造<span class="math inline">\(\theta\)</span>的一个点估计<span class="math inline">\(\hat \theta\)</span>（如<span class="math inline">\(\bar X\)</span>）</p></li>
-<li><p>构造<span class="math inline">\(\theta\)</span>和<span class="math inline">\(\hat \theta\)</span>的一个函数<span class="math inline">\(G = G(\theta, \hat \theta)\)</span>（称作枢轴（pivot）函数），且</p>
+<li><p>构造<span class="math inline">\(\theta\)</span>和<span class="math inline">\(\hat \theta\)</span>的一个函数<span class="math inline">\(G = G(\theta, \hat
+\theta)\)</span>（称作枢轴（pivot）函数），且</p>
 <ul>
 <li><span class="math inline">\(G\)</span>的分布函数<span class="math inline">\(F\)</span>完全已知，且其分布与<span class="math inline">\(\theta\)</span>无关，</li>
-<li>对任何常数<span class="math inline">\(a &lt; b\)</span>，不等式<span class="math inline">\(a \le G(\theta, \hat \theta) \le b\)</span>能够改写成等价的<span class="math inline">\(A \le \theta \le B\)</span>，且<span class="math inline">\(A,B\)</span>仅与<span class="math inline">\(\hat \theta,a,b\)</span>有关，与<span class="math inline">\(\theta\)</span>无关。</li>
+<li>对任何常数<span class="math inline">\(a &lt; b\)</span>，不等式<span class="math inline">\(a \le G(\theta, \hat \theta) \le
+b\)</span>能够改写成等价的<span class="math inline">\(A \le \theta \le
+B\)</span>，且<span class="math inline">\(A,B\)</span>仅与<span class="math inline">\(\hat \theta,a,b\)</span>有关，与<span class="math inline">\(\theta\)</span>无关。</li>
 </ul></li>
-<li><p>取<span class="math inline">\(F\)</span>的上<span class="math inline">\(\alpha/2\)</span>分位点<span class="math inline">\(w_{\alpha/2}\)</span>（<span class="math inline">\(F(w_{\alpha / 2}) = 1 - \alpha/2\)</span>）及上<span class="math inline">\(1-\alpha/2\)</span>分位点<span class="math inline">\(w_{1-\alpha/2}\)</span>（<span class="math inline">\(F(w_{1 - \alpha / 2}) = \alpha / 2\)</span>），此时有<span class="math inline">\(F(w_{\alpha/2}) - F(w_{1 - \alpha / 2}) = 1 - \alpha\)</span>，即 <span class="math display">\[
-P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
-\]</span> <span class="math inline">\(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}\)</span>可改写为对应的<span class="math inline">\(A \le \theta \le B\)</span>的形式，且<span class="math inline">\(A, B\)</span>仅与估计量和两个分位点有关，<span class="math inline">\(A,B\)</span>就构成了<span class="math inline">\(\theta\)</span>的一个置信水平为<span class="math inline">\(1-\alpha\)</span>的置信区间。</p></li>
+<li><p>取<span class="math inline">\(F\)</span>的上<span class="math inline">\(\alpha/2\)</span>分位点<span class="math inline">\(w_{\alpha/2}\)</span>（<span class="math inline">\(F(w_{\alpha / 2}) = 1 -
+\alpha/2\)</span>）及上<span class="math inline">\(1-\alpha/2\)</span>分位点<span class="math inline">\(w_{1-\alpha/2}\)</span>（<span class="math inline">\(F(w_{1 - \alpha / 2}) = \alpha /
+2\)</span>），此时有<span class="math inline">\(F(w_{\alpha/2}) - F(w_{1
+- \alpha / 2}) = 1 - \alpha\)</span>，即 <span class="math display">\[
+P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 -
+\alpha
+\]</span> <span class="math inline">\(w_{1-\alpha/2} \le G(\theta, \hat
+\theta) \le w_{\alpha/2}\)</span>可改写为对应的<span class="math inline">\(A \le \theta \le B\)</span>的形式，且<span class="math inline">\(A, B\)</span>仅与估计量和两个分位点有关，<span class="math inline">\(A,B\)</span>就构成了<span class="math inline">\(\theta\)</span>的一个置信水平为<span class="math inline">\(1-\alpha\)</span>的置信区间。</p></li>
 </ol>
 <p>在构造枢轴函数时，一般会使用一些现有结论，比如<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#中心极限定理">中心极限定理</a>的近似、<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a>等等。</p>
 
@@ -1580,7 +1683,7 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1630,7 +1733,7 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1717,7 +1820,7 @@ P(w_{1-\alpha/2} \le G(\theta, \hat \theta) \le w_{\alpha/2}) = 1 - \alpha
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

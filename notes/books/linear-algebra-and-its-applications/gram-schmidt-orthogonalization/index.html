@@ -717,6 +717,10 @@ Given a basis \(\{ \x_1, \dots, \x_p \}\) for a nonzero subspace \(W\) of \(\R^n
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -773,7 +777,15 @@ Given a basis \(\{ \x_1, \dots, \x_p \}\) for a nonzero subspace \(W\) of \(\R^n
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -917,6 +929,10 @@ Given a basis \(\{ \x_1, \dots, \x_p \}\) for a nonzero subspace \(W\) of \(\R^n
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1120,7 +1136,19 @@ Given a basis \(\{ \x_1, \dots, \x_p \}\) for a nonzero subspace \(W\) of \(\R^n
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1316,7 +1344,8 @@ Given a basis \(\{ \x_1, \dots, \x_p \}\) for a nonzero subspace \(W\) of \(\R^n
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#gram-schmidt-orthogonalization">Gram-Schmidt Orthogonalization</a>
+    <li><a href="#gram-schmidt-orthogonalization">Gram-Schmidt
+Orthogonalization</a>
       <ul>
         <li><a href="#qr-factorization">QR Factorization</a></li>
       </ul>
@@ -1405,34 +1434,59 @@ Given a basis \(\{ \x_1, \dots, \x_p \}\) for a nonzero subspace \(W\) of \(\R^n
           <div class="article-style">
             
 
-<h2 id="gram-schmidt-orthogonalization">Gram-Schmidt Orthogonalization</h2>
-<p>The Gram-Schmidt process is a simple algorithm for producing orthogonal basis for any nonzero subspace of <span class="math inline">\(\R^n\)</span>.</p>
-<p>Given a basis <span class="math inline">\(\{ \x_1, \dots, \x_p \}\)</span> for a nonzero subspace <span class="math inline">\(W\)</span> of <span class="math inline">\(\R^n\)</span>, define</p>
+<h2 id="gram-schmidt-orthogonalization">Gram-Schmidt
+Orthogonalization</h2>
+<p>The Gram-Schmidt process is a simple algorithm for producing
+orthogonal basis for any nonzero subspace of <span class="math inline">\(\R^n\)</span>.</p>
+<p>Given a basis <span class="math inline">\(\{ \x_1, \dots, \x_p
+\}\)</span> for a nonzero subspace <span class="math inline">\(W\)</span> of <span class="math inline">\(\R^n\)</span>, define</p>
 <p><span class="math display">\[
 \begin{aligned} \newcommand{\v}{\mathrm{v}}
 \v_1 &amp;= \x_1 \\
 \v_2 &amp;= \x_2 - \frac{\x_2 \cdot \v_1}{\v_1 \cdot \v_1} \v_1 \\
-\v_3 &amp;= \x_3 - \frac{\x_3 \cdot \v_1}{\v_1 \cdot \v_1} \v_1 - \frac{\x_3 \cdot \v_2}{\v_2 \cdot \v_2} \v_2 \\
+\v_3 &amp;= \x_3 - \frac{\x_3 \cdot \v_1}{\v_1 \cdot \v_1} \v_1 -
+\frac{\x_3 \cdot \v_2}{\v_2 \cdot \v_2} \v_2 \\
 &amp;\vdots \\
-\v_p &amp;= \x_p - \frac{\x_p \cdot \v_1}{\v_1 \cdot \v_1} \v_1 - \frac{\x_p \cdot \v_{p-1}}{\v_{p-1} \cdot \v_{p-1}} \v_{p-1}
+\v_p &amp;= \x_p - \frac{\x_p \cdot \v_1}{\v_1 \cdot \v_1} \v_1 -
+\frac{\x_p \cdot \v_{p-1}}{\v_{p-1} \cdot \v_{p-1}} \v_{p-1}
 \end{aligned}
-\]</span> Then <span class="math inline">\(\{ \v_1, \dots, \v_p \}\)</span> is an orthogonal basis for <span class="math inline">\(W\)</span>. In addition, <span class="math display">\[
+\]</span> Then <span class="math inline">\(\{ \v_1, \dots, \v_p
+\}\)</span> is an orthogonal basis for <span class="math inline">\(W\)</span>. In addition, <span class="math display">\[
 \newcommand{\span}[1]{\mathrm{Span}\{#1\}}
-\span{\v_1, \dots,\v_k} = \span{\x_1, \dots, \x_k} \text{\quad for $1 \le k \le p$}
+\span{\v_1, \dots,\v_k} = \span{\x_1, \dots, \x_k} \text{\quad for $1
+\le k \le p$}
 \]</span></p>
 <h3 id="qr-factorization">QR Factorization</h3>
-<p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix with linearly independent columns, then <span class="math inline">\(A\)</span> can be factored as <span class="math inline">\(A = QR\)</span>, where <span class="math inline">\(Q\)</span> is an <span class="math inline">\(m \times n\)</span> matrix whose columns form an orthonormal basis for <span class="math inline">\(\mathop{\mathrm{Col}}A\)</span> and <span class="math inline">\(R\)</span> is an <span class="math inline">\(n \times n\)</span> upper triangular invertible matrix with positive entries on its diagonal.</p>
-<p>Such factorization can be realized by Gram-Schmidt orthogonalization. The columns of <span class="math inline">\(A\)</span>, say denoted as <span class="math inline">\(\x_1, \dots, \x_n\)</span>, form the basis of <span class="math inline">\(\Col A\)</span>. Apply the Gram-Schmidt process to construct an orthogonal basis <span class="math inline">\(\{ \v_1, \dots, \v_n \}\)</span> for <span class="math inline">\(\Col A\)</span> and let <span class="math display">\[
+<p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix with linearly
+independent columns, then <span class="math inline">\(A\)</span> can be
+factored as <span class="math inline">\(A = QR\)</span>, where <span class="math inline">\(Q\)</span> is an <span class="math inline">\(m
+\times n\)</span> matrix whose columns form an orthonormal basis for
+<span class="math inline">\(\mathop{\mathrm{Col}}A\)</span> and <span class="math inline">\(R\)</span> is an <span class="math inline">\(n
+\times n\)</span> upper triangular invertible matrix with positive
+entries on its diagonal.</p>
+<p>Such factorization can be realized by Gram-Schmidt orthogonalization.
+The columns of <span class="math inline">\(A\)</span>, say denoted as
+<span class="math inline">\(\x_1, \dots, \x_n\)</span>, form the basis
+of <span class="math inline">\(\Col A\)</span>. Apply the Gram-Schmidt
+process to construct an orthogonal basis <span class="math inline">\(\{
+\v_1, \dots, \v_n \}\)</span> for <span class="math inline">\(\Col
+A\)</span> and let <span class="math display">\[
 Q = [\v_1, \dots, \v_n]
-\]</span> For every <span class="math inline">\(k = 1, \dots, n\)</span>, <span class="math inline">\(\x_k\)</span> is in <span class="math inline">\(\span{\x_1, \dots, \x_k} = \span{\v_1, \dots, \v_k}\)</span>. So there are constants <span class="math inline">\(r_{1k}, \dots, r_{kk}\)</span> such that <span class="math display">\[
-\x_k = [\v_1, \dots, \v_k] 
+\]</span> For every <span class="math inline">\(k = 1, \dots,
+n\)</span>, <span class="math inline">\(\x_k\)</span> is in <span class="math inline">\(\span{\x_1, \dots, \x_k} = \span{\v_1, \dots,
+\v_k}\)</span>. So there are constants <span class="math inline">\(r_{1k}, \dots, r_{kk}\)</span> such that <span class="math display">\[
+\x_k = [\v_1, \dots, \v_k]
 \begin{bmatrix}
 r_{1k} \\
 \vdots \\
 r_{kk}
 \end{bmatrix}
-\]</span> <span class="math inline">\(r_{kk}\)</span> is nonzero or else <span class="math inline">\(\x_k\)</span> is in <span class="math inline">\(\span{\x_1, \dots, \x_{k-1}}\)</span>, which violates the linear independence condition of columns of <span class="math inline">\(A\)</span>. We can assume <span class="math inline">\(r_{kk} &gt; 0\)</span>; otherwise we can multiply both <span class="math inline">\(r_{kk}\)</span> and <span class="math inline">\(\v_k\)</span> by <span class="math inline">\(-1\)</span> without compromising previous conditions. Let <span class="math display">\[
-\newcommand{\r}{\mathrm{r}} \r_k = 
+\]</span> <span class="math inline">\(r_{kk}\)</span> is nonzero or else
+<span class="math inline">\(\x_k\)</span> is in <span class="math inline">\(\span{\x_1, \dots, \x_{k-1}}\)</span>, which
+violates the linear independence condition of columns of <span class="math inline">\(A\)</span>. We can assume <span class="math inline">\(r_{kk} &gt; 0\)</span>; otherwise we can multiply
+both <span class="math inline">\(r_{kk}\)</span> and <span class="math inline">\(\v_k\)</span> by <span class="math inline">\(-1\)</span> without compromising previous
+conditions. Let <span class="math display">\[
+\newcommand{\r}{\mathrm{r}} \r_k =
 \begin{bmatrix}
 r_{1k} \\
 \vdots \\
@@ -1441,9 +1495,12 @@ r_{kk} \\
 \vdots \\
 0
 \end{bmatrix}
-\]</span> We have <span class="math inline">\(\x_k = Q \r_k\)</span> for <span class="math inline">\(k = 1, \dots, n\)</span>. Then <span class="math display">\[
+\]</span> We have <span class="math inline">\(\x_k = Q \r_k\)</span> for
+<span class="math inline">\(k = 1, \dots, n\)</span>. Then <span class="math display">\[
 A = [\v_1, \dots, \v_n] [\r_1, \dots, \r_n] = Q R
-\]</span> The fact that <span class="math inline">\(R\)</span> is invertible follows easily the fact that <span class="math inline">\(Q\)</span>’s columns are linearly independent. Because <span class="math inline">\(k\)</span>-th element of <span class="math inline">\(k\)</span>-th column, i.e. <span class="math inline">\(r_{kk}\)</span>, is positive, <span class="math inline">\(R\)</span>’s diagonal entries are positive.</p>
+\]</span> The fact that <span class="math inline">\(R\)</span> is
+invertible follows easily the fact that <span class="math inline">\(Q\)</span>’s columns are linearly independent.
+Because <span class="math inline">\(k\)</span>-th element of <span class="math inline">\(k\)</span>-th column, i.e. <span class="math inline">\(r_{kk}\)</span>, is positive, <span class="math inline">\(R\)</span>’s diagonal entries are positive.</p>
 
 
 
@@ -1534,7 +1591,7 @@ A = [\v_1, \dots, \v_n] [\r_1, \dots, \r_n] = Q R
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1584,7 +1641,7 @@ A = [\v_1, \dots, \v_n] [\r_1, \dots, \r_n] = Q R
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1671,7 +1728,7 @@ A = [\v_1, \dots, \v_n] [\r_1, \dots, \r_n] = Q R
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

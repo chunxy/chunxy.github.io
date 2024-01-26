@@ -717,6 +717,10 @@ Polynomial Regression When \(x\) is a scalar, the feature mapping in \(p\)-th or
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -773,7 +777,15 @@ Polynomial Regression When \(x\) is a scalar, the feature mapping in \(p\)-th or
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -917,6 +929,10 @@ Polynomial Regression When \(x\) is a scalar, the feature mapping in \(p\)-th or
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1120,7 +1136,19 @@ Polynomial Regression When \(x\) is a scalar, the feature mapping in \(p\)-th or
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1317,7 +1345,8 @@ Polynomial Regression When \(x\) is a scalar, the feature mapping in \(p\)-th or
       <nav id="TableOfContents">
   <ul>
     <li><a href="#polynomial-regression">Polynomial Regression</a></li>
-    <li><a href="#kernel-trick-in-non-linear-regression">Kernel Trick in Non-linear Regression</a></li>
+    <li><a href="#kernel-trick-in-non-linear-regression">Kernel Trick in
+Non-linear Regression</a></li>
     <li><a href="#external-materials">External Materials</a></li>
   </ul>
 </nav>
@@ -1403,10 +1432,14 @@ Polynomial Regression When \(x\) is a scalar, the feature mapping in \(p\)-th or
           <div class="article-style">
             
 
-<p>The basic idea about non-linear regression is to perform the feature mapping <span class="math inline">\(\phi(x)\)</span>, followed by linear regression in the new feature space.</p>
+<p>The basic idea about non-linear regression is to perform the feature
+mapping <span class="math inline">\(\phi(x)\)</span>, followed by linear
+regression in the new feature space.</p>
 <h3 id="polynomial-regression">Polynomial Regression</h3>
-<p>When <span class="math inline">\(x\)</span> is a scalar, the feature mapping in <span class="math inline">\(p\)</span>-th order Polynomial Regression is <span class="math display">\[
-\phi(x) = 
+<p>When <span class="math inline">\(x\)</span> is a scalar, the feature
+mapping in <span class="math inline">\(p\)</span>-th order Polynomial
+Regression is <span class="math display">\[
+\phi(x) =
 \begin{bmatrix}
 1 \\
 x \\
@@ -1414,7 +1447,8 @@ x^2 \\
 \vdots \\
 x^p
 \end{bmatrix}
-\]</span> The regression function and the parameters are then like those in linear regression: <span class="math display">\[
+\]</span> The regression function and the parameters are then like those
+in linear regression: <span class="math display">\[
 f(x) = [w_0,w_1,w_2,\dots,w^p]\begin{bmatrix}
 1 \\
 x \\
@@ -1423,53 +1457,90 @@ x^2 \\
 x^p
 \end{bmatrix}
 = w^T\phi(x)
-\]</span> <span class="math inline">\(\phi(x)\)</span> captures all features in each degree from <span class="math inline">\(1\)</span> up to <span class="math inline">\(p\)</span>. In higher-dimensional input feature space, there are many more entries for feature mapping in each degree. Take a 2-D input for example.</p>
+\]</span> <span class="math inline">\(\phi(x)\)</span> captures all
+features in each degree from <span class="math inline">\(1\)</span> up
+to <span class="math inline">\(p\)</span>. In higher-dimensional input
+feature space, there are many more entries for feature mapping in each
+degree. Take a 2-D input for example.</p>
 <ul>
 <li>degree 1: <span class="math inline">\([x_1, x_2]^T\)</span></li>
-<li>degree 2: <span class="math inline">\([x_1^2, x_1x_2, x_2^2]^T\)</span></li>
-<li>degree 3: <span class="math inline">\([x_1^3, x_1^2x_2, x_1x_2^2, x_2^3]^T\)</span></li>
+<li>degree 2: <span class="math inline">\([x_1^2, x_1x_2,
+x_2^2]^T\)</span></li>
+<li>degree 3: <span class="math inline">\([x_1^3, x_1^2x_2, x_1x_2^2,
+x_2^3]^T\)</span></li>
 <li>…</li>
 </ul>
-<h3 id="kernel-trick-in-non-linear-regression">Kernel Trick in Non-linear Regression</h3>
-<p>Many Linear Regression algorithms learning algorithms depend on the calculation of inner products between feature vectors, either during training or in prediction, without directly depending on the feature vector. We can transform the feature vector by applying a feature mapping <span class="math inline">\(\phi\)</span> to do the Non-linear Regression task.</p>
-<p>However, it is not necessary to explicitly define the feature mapping <span class="math inline">\(\phi\)</span> when only the inner products are needed. Instead, we can define a function <span class="math inline">\(\mathcal K: \R^N \times \R^N \mapsto \R\)</span> that directly calculate the inner products of pseudo-transformed features: <span class="math display">\[
+<h3 id="kernel-trick-in-non-linear-regression">Kernel Trick in
+Non-linear Regression</h3>
+<p>Many Linear Regression algorithms learning algorithms depend on the
+calculation of inner products between feature vectors, either during
+training or in prediction, without directly depending on the feature
+vector. We can transform the feature vector by applying a feature
+mapping <span class="math inline">\(\phi\)</span> to do the Non-linear
+Regression task.</p>
+<p>However, it is not necessary to explicitly define the feature mapping
+<span class="math inline">\(\phi\)</span> when only the inner products
+are needed. Instead, we can define a function <span class="math inline">\(\mathcal K: \R^N \times \R^N \mapsto \R\)</span>
+that directly calculate the inner products of pseudo-transformed
+features: <span class="math display">\[
 \mathcal K(x,x^\prime) = \phi_{pseudo}(x)^T\phi_{pseudo}(x^\prime)
 \]</span> This will be more flexible and computationally-efficient.</p>
 <h4 id="kernel-ridge-regression">Kernel Ridge Regression</h4>
 <p>Recall Ridge Regression: <span class="math display">\[
-W^\star = \min_{W}\frac{1}{2}||Y - X^TW||^2_2 + \frac{\alpha}{2}||W||^2_2 \iff (XX^T + \alpha I_{N+1})W^\star = XY
-\]</span> If <span class="math inline">\((XX^T + \alpha I_{N+1})\)</span> is invertible, <span class="math inline">\(W^\star = (XX^T + \alpha I_{N+1})^{-1}XY\)</span>. By <a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">matrix identity</a> <span class="math display">\[
+W^\star = \min_{W}\frac{1}{2}||Y - X^TW||^2_2 +
+\frac{\alpha}{2}||W||^2_2 \iff (XX^T + \alpha I_{N+1})W^\star = XY
+\]</span> If <span class="math inline">\((XX^T + \alpha
+I_{N+1})\)</span> is invertible, <span class="math inline">\(W^\star =
+(XX^T + \alpha I_{N+1})^{-1}XY\)</span>. By <a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">matrix identity</a> <span class="math display">\[
 (P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}
-\]</span> we can obtain that <span class="math inline">\(W^\star = X(X^TX + \alpha I_M)^{-1}Y\)</span>. <span class="math inline">\(X \in \R^{(N+1)\times M}, (X^TX + \alpha I_M)^{-1}Y \in \R^{M}\)</span>. <span class="math inline">\(W^\star\)</span> can be rewritten as a linear combination of columns of <span class="math inline">\(X\)</span>, i.e. <span class="math inline">\(W^\star\)</span> lies in the span of input vectors: <span class="math display">\[
+\]</span> we can obtain that <span class="math inline">\(W^\star =
+X(X^TX + \alpha I_M)^{-1}Y\)</span>. <span class="math inline">\(X \in
+\R^{(N+1)\times M}, (X^TX + \alpha I_M)^{-1}Y \in \R^{M}\)</span>. <span class="math inline">\(W^\star\)</span> can be rewritten as a linear
+combination of columns of <span class="math inline">\(X\)</span>,
+i.e. <span class="math inline">\(W^\star\)</span> lies in the span of
+input vectors: <span class="math display">\[
 W^\star = \sum_{i=1}^M\lambda_ix^{(i)}
-\]</span> For a new data <span class="math inline">\(x^*\)</span>, we make prediction by <span class="math display">\[
+\]</span> For a new data <span class="math inline">\(x^*\)</span>, we
+make prediction by <span class="math display">\[
 y^* = (x^*)^TW = (x^*)^TX(X^TX + \alpha I_M)^{-1}Y
 \]</span> which totally depends on the inner products.</p>
 <h4 id="support-vector-regression">Support Vector Regression</h4>
-<p>Support Vector Regression learns a hyper-plane that incorporates within its margin as many points as possible. As a comparison, <a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a> learns a hyper-plane that excludes outside its margin as many points as possible. Its objective is <span class="math display">\[
+<p>Support Vector Regression learns a hyper-plane that incorporates
+within its margin as many points as possible. As a comparison, <a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a> learns a
+hyper-plane that excludes outside its margin as many points as possible.
+Its objective is <span class="math display">\[
 \begin{aligned}
-\min_{w,\xi,\xi^*} \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M(\xi_i + \xi^*_i) \\
+\min_{w,\xi,\xi^*} \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M(\xi_i + \xi^*_i)
+\\
 s.t.\quad y^{(i)} - w^Tx^{(i)} - b \le \epsilon + \xi_i, i=1,\dots,M \\
 y^{(i)} - w^Tx^{(i)} - b \ge \epsilon + \xi^*_i, i=1,\dots,M \\
 \xi_i, \xi^*_i \ge 0, i=1,\dots,M
 \end{aligned}
-\]</span> <span class="math inline">\(\epsilon\)</span> is a hyper-parameter to be determined. Transform the problem into the standard optimization form: <span class="math display">\[
+\]</span> <span class="math inline">\(\epsilon\)</span> is a
+hyper-parameter to be determined. Transform the problem into the
+standard optimization form: <span class="math display">\[
 \begin{aligned}
-\min_{w,\xi,\xi^*} \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M(\xi_i + \xi^*_i) \\
-s.t.\quad y^{(i)} - w^Tx^{(i)} - b - \epsilon - \xi_i \le 0, i=1,\dots,M \\
+\min_{w,\xi,\xi^*} \frac{1}{2}||w||^2_2 + C\sum_{i=1}^M(\xi_i + \xi^*_i)
+\\
+s.t.\quad y^{(i)} - w^Tx^{(i)} - b - \epsilon - \xi_i \le 0, i=1,\dots,M
+\\
 w^Tx^{(i)} + b - y^{(i)} + \epsilon + \xi^*_i \le 0, i=1,\dots,M \\
 -\xi_i, -\xi^*_i \ge 0, i=1,\dots,M
 \end{aligned}
 \]</span> The Lagrangian function will be <span class="math display">\[
 \begin{aligned}
-L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;\frac{1}{2}||w||^2_2 + C\sum_{i=1}^M(\xi_i + \xi^*_i) \\
-&amp;+ \sum_{i=1}^M\lambda_i(y^{(i)} - w^Tx^{(i)} - b - \epsilon - \xi_i) \\
-&amp;+ \sum_{i=1}^M\mu_i(w^Tx^{(i)} + b - y^{(i)} + \epsilon + \xi^*_i) \\
+L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;\frac{1}{2}||w||^2_2 +
+C\sum_{i=1}^M(\xi_i + \xi^*_i) \\
+&amp;+ \sum_{i=1}^M\lambda_i(y^{(i)} - w^Tx^{(i)} - b - \epsilon -
+\xi_i) \\
+&amp;+ \sum_{i=1}^M\mu_i(w^Tx^{(i)} + b - y^{(i)} + \epsilon + \xi^*_i)
+\\
 &amp;- \sum_{i=1}^M\nu_i\xi_i -\sum_{i=1}^M\nu^*_i\xi^*_i
 \end{aligned}
 \]</span></p>
 <h2 id="external-materials">External Materials</h2>
-<p><a href="/uploads/Support%20Vector%20Regression.pdf" target="_blank">Support Vector Regression.pdf</a></p>
+<p><a href="/uploads/Support%20Vector%20Regression.pdf" target="_blank">Support
+Vector Regression.pdf</a></p>
 
 
 
@@ -1560,7 +1631,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;\frac{1}{2}||w||^2_2 + C\sum_{i=1}^M
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1610,7 +1681,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;\frac{1}{2}||w||^2_2 + C\sum_{i=1}^M
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1697,7 +1768,7 @@ L(w,\xi,\xi^*,\lambda,\mu,\nu,\nu^*) = &amp;\frac{1}{2}||w||^2_2 + C\sum_{i=1}^M
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

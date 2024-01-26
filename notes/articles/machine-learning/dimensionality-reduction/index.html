@@ -717,6 +717,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -773,7 +777,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -917,6 +929,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1120,7 +1136,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1316,13 +1344,17 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#unsupervised-dimension-reduction">Unsupervised Dimension Reduction</a>
+    <li><a href="#unsupervised-dimension-reduction">Unsupervised Dimension
+Reduction</a>
       <ul>
-        <li><a href="#linear-dimensionality-reduction">Linear Dimensionality Reduction</a></li>
-        <li><a href="#non-linear-dimensionality-reduction">Non-linear Dimensionality Reduction</a></li>
+        <li><a href="#linear-dimensionality-reduction">Linear Dimensionality
+Reduction</a></li>
+        <li><a href="#non-linear-dimensionality-reduction">Non-linear
+Dimensionality Reduction</a></li>
       </ul>
     </li>
-    <li><a href="#supervised-dimensionality-reduction">Supervised Dimensionality Reduction</a></li>
+    <li><a href="#supervised-dimensionality-reduction">Supervised
+Dimensionality Reduction</a></li>
   </ul>
 </nav>
 
@@ -1407,54 +1439,83 @@
           <div class="article-style">
             
 
-<h2 id="unsupervised-dimension-reduction">Unsupervised Dimension Reduction</h2>
+<h2 id="unsupervised-dimension-reduction">Unsupervised Dimension
+Reduction</h2>
 <p>Dimensionality reduction</p>
 <ul>
 <li>reduces computational cost;</li>
-<li>de-noises by projecting onto lower-dimensional space and back to original space;</li>
-<li>makes results easier to understand by reducing the collinearity.</li>
+<li>de-noises by projecting onto lower-dimensional space and back to
+original space;</li>
+<li>makes results easier to understand by reducing the
+collinearity.</li>
 </ul>
 <p>Compared to feature selection,</p>
 <ul>
-<li>the goal of feature selection is to remove features that are not informative with respect to the class label. This obviously reduces the dimensionality of the feature space;</li>
-<li>dimension reduction can be used to find a meaningful lower-dim feature space even when there is information in each feature dimension so that none can be discarded;</li>
-<li>dimension reduction is unsupervised while feature selection is supervised.</li>
+<li>the goal of feature selection is to remove features that are not
+informative with respect to the class label. This obviously reduces the
+dimensionality of the feature space;</li>
+<li>dimensionality reduction can be used to find a meaningful lower-dim
+feature space even when there is information in each feature dimension
+so that none can be discarded;</li>
+<li>dimensionality reduction is unsupervised while feature selection is
+supervised.</li>
 </ul>
 <p>Compared to data compression,</p>
 <ul>
-<li>dimension reduction can be seen as a simplistic form of data compression. But they are not equivalent, as the goal of data compression is to reduce the entropy of the representation, which is not limited to the dimension reduction.</li>
+<li>dimensionality reduction can be seen as a simplistic form of data
+compression. But they are not equivalent, as the goal of data
+compression is to reduce the entropy of the representation, which is not
+limited to the dimensionality reduction.</li>
 </ul>
-<h3 id="linear-dimensionality-reduction">Linear Dimensionality Reduction</h3>
-<p>Linear dimensionality reduction projects data onto lower-dimensional space by representing the data with a new basis consisting of some major components. Mathematically, <span class="math display">\[
+<h3 id="linear-dimensionality-reduction">Linear Dimensionality
+Reduction</h3>
+<p>Linear dimensionality reduction projects data onto lower-dimensional
+space by representing the data with a new basis consisting of some major
+components. Mathematically, <span class="math display">\[
 \begin{gather}
-x^{(i)} = \sum_{k=1}^Kz^{(i)}_kb^{(k)}, \text{ where $z^{(i)} \in \R^K$ is the weight, $b^{(k)} \in \R^N$ is the basis vector.} \\
-X = BZ, \text{ where $X = [x^{(i)}, \dots, x^{(M)}], B = [b^{(1)}, \dots, b^{(K)}], Z = [z^{(1)}, \dots, z^{(M)}]$}
+x^{(i)} = \sum_{k=1}^Kz^{(i)}_kb^{(k)}, \text{ where $z^{(i)} \in \R^K$
+is the weight, $b^{(k)} \in \R^N$ is the basis vector.} \\
+X = BZ, \text{ where $X = [x^{(i)}, \dots, x^{(M)}], B = [b^{(1)},
+\dots, b^{(K)}], Z = [z^{(1)}, \dots, z^{(M)}]$}
 \end{gather}
-\]</span> The objective can be set to minimize the error when recovering from <span class="math inline">\(B, Z\)</span> to <span class="math inline">\(X\)</span>, i.e. <span class="math display">\[
+\]</span> The objective can be set to minimize the error when recovering
+from <span class="math inline">\(B, Z\)</span> to <span class="math inline">\(X\)</span>, i.e. <span class="math display">\[
 \min_{B,Z} = ||X - BZ||^2_F = \sum_{ij}(X - BZ)^2_{ij}
 \]</span></p>
 <h4 id="alternating-least-squares">Alternating Least Squares</h4>
-<p>By leveraging the idea of coordinate descent and OLS solution to linear regression, we can optimize <span class="math inline">\(B\)</span> and <span class="math inline">\(Z\)</span> alternatively, until convergence.</p>
-<p>Fix <span class="math inline">\(Z\)</span>, take derivative w.r.t. <span class="math inline">\(B\)</span> and make it zero to give <span class="math display">\[
+<p>By leveraging the idea of coordinate descent and OLS solution to
+linear regression, we can optimize <span class="math inline">\(B\)</span> and <span class="math inline">\(Z\)</span> alternatively, until convergence.</p>
+<p>Fix <span class="math inline">\(Z\)</span>, take derivative w.r.t.
+<span class="math inline">\(B\)</span> and make it zero to give <span class="math display">\[
 \begin{gather}
 2(X - BZ)(-Z^T) = 0 \\
 BZZ^T = XZ^T \\
 B = XZ^T(ZZ^T)^{-1}
 \end{gather}
-\]</span> Fix <span class="math inline">\(B\)</span>, take derivative w.r.t. <span class="math inline">\(Z^T\)</span> and make it zero to give <span class="math display">\[
+\]</span> Fix <span class="math inline">\(B\)</span>, take derivative
+w.r.t. <span class="math inline">\(Z^T\)</span> and make it zero to give
+<span class="math display">\[
 \begin{gather}
-\frac{\partial||X - BZ||^2_F}{\partial Z^T} = \frac{\partial||X^T - Z^TB^T||^2_F}{\partial Z^T} = 2(X^T - Z^TB^T)(-B) = 0 \\
+\frac{\partial||X - BZ||^2_F}{\partial Z^T} = \frac{\partial||X^T -
+Z^TB^T||^2_F}{\partial Z^T} = 2(X^T - Z^TB^T)(-B) = 0 \\
 2(X^T - Z^TB^T)(-B) = 0 \\
 Z^TB^TB = X^TB \\
 Z^T = X^TB(B^TB)^{-1} \\
 Z = (B^TB)^{-1}B^TX
 \end{gather}
-\]</span> Assume we have run the ALS to convergence and obtain the global optimal parameters <span class="math display">\[
-B^\star, Z^\star = \arg \min_{B,Z} = ||X - BZ||^2_F = \sum_{ij}(X - BZ)^2_{ij}
-\]</span> Let any invertible matrix <span class="math inline">\(R \in \R^{K \times K}\)</span>. We can construct a pair of <span class="math inline">\(\tilde B, \tilde Z\)</span> such that <span class="math inline">\(\tilde B = B^\star R, \tilde Z = R^{-1}Z^\star\)</span>. Then, <span class="math display">\[
-||X - \tilde B \tilde Z||^2_F = ||X - B^\star RR^{-1} Z^\star||^2_F = ||X - B^\star Z^\star||^2_F
-\]</span> Thus the global optima is not unique. We may force regularization on <span class="math inline">\(B, Z\)</span> and obtain the unique optima.</p>
-<h4 id="singular-value-decomposition"><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></h4>
+\]</span> Assume we have run the ALS to convergence and obtain the
+global optimal parameters <span class="math display">\[
+B^\star, Z^\star = \arg \min_{B,Z} = ||X - BZ||^2_F = \sum_{ij}(X -
+BZ)^2_{ij}
+\]</span> Let any invertible matrix <span class="math inline">\(R \in
+\R^{K \times K}\)</span>. We can construct a pair of <span class="math inline">\(\tilde B, \tilde Z\)</span> such that <span class="math inline">\(\tilde B = B^\star R, \tilde Z =
+R^{-1}Z^\star\)</span>. Then, <span class="math display">\[
+||X - \tilde B \tilde Z||^2_F = ||X - B^\star RR^{-1} Z^\star||^2_F =
+||X - B^\star Z^\star||^2_F
+\]</span> Thus the global optima is not unique. We may force
+regularization on <span class="math inline">\(B, Z\)</span> and obtain
+the unique optima.</p>
+<h4 id="principal-component-analysis"><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></h4>
 <p>Suppose the SVD for <span class="math inline">\(X\)</span> is <span class="math inline">\(X = U\Sigma V^T\)</span>, where <span class="math display">\[
 \begin{gather}
 \text{$U$ is $N \times N$, $\Sigma$ is diagonal, $V$ is $M \times M$} \\
@@ -1464,28 +1525,53 @@ VV^T = I \\
 \sigma_1 \ge \sigma_2 \ge ... \ge \sigma_p \ge 0 \\
 p = \min\{N,M\}
 \end{gather}
-\]</span> By only preserving the <span class="math inline">\(K \le \rank(\Sigma)\)</span> most prominent singular values, <span class="math inline">\(X\)</span> can be approximated as <span class="math inline">\(U_K\Sigma_KV^T_K\)</span>, where <span class="math display">\[
+\]</span> By only preserving the <span class="math inline">\(K \le
+\rank(\Sigma)\)</span> most prominent singular values, <span class="math inline">\(X\)</span> can be approximated as <span class="math inline">\(U_K\Sigma_KV^T_K\)</span>, where <span class="math display">\[
 \begin{gather}
 \text{$U_K \in \R^{N \times K}$ is first $K$ columns of $U$} \\
 \text{$V_K \in \R^{M \times K}$ is first $K$ columns of $V$} \\
-\Sigma_K \in \R^{K \times K} = diag(\sigma_1, \sigma_2, ..., \sigma_K) \\
+\Sigma_K \in \R^{K \times K} = diag(\sigma_1, \sigma_2, ..., \sigma_K)
+\\
 \end{gather}
-\]</span> <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/#Eckart-Young-Mirsky Theorem">Eckart-Young-Mirsky theorem</a> will tell that <span class="math inline">\(U_K\Sigma_KV^T_K\)</span> is the best approximation of <span class="math inline">\(X\)</span> among <span class="math inline">\(N \times M\)</span> of rank <span class="math inline">\(K\)</span> in terms of Frobenius norm.</p>
-<p>We may obtain the <span class="math inline">\(B^\star, Z^\star\)</span> by <span class="math display">\[
+\]</span> <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/#Eckart-Young-Mirsky Theorem">Eckart-Young-Mirsky
+theorem</a> will tell that <span class="math inline">\(U_K\Sigma_KV^T_K\)</span> is the best
+approximation of <span class="math inline">\(X\)</span> among <span class="math inline">\(N \times M\)</span> of rank <span class="math inline">\(K\)</span> in terms of Frobenius norm.</p>
+<p>We may obtain the <span class="math inline">\(B^\star,
+Z^\star\)</span> by <span class="math display">\[
 B^\star = U_K, Z^\star = \Sigma_K V^T_K
 \]</span></p>
-<p>If the data is centered in advance, <span class="math inline">\(B^\star\)</span> is essentially the principal component in PCA and <span class="math inline">\(Z^\star\)</span> is the transformed <span class="math inline">\(X\)</span> in the basis formed by <span class="math inline">\(B^\star\)</span>.</p>
+<p>If the data is centered in advance, <span class="math inline">\(B^\star\)</span> is essentially the principal
+component in PCA and <span class="math inline">\(Z^\star\)</span> is the
+transformed <span class="math inline">\(X\)</span> in the basis formed
+by <span class="math inline">\(B^\star\)</span>.</p>
 <h4 id="random-projection">Random Projection</h4>
-<p>The above methods all minimize the Frobenius norm during reconstruction. This objective may become time-consuming when input dimension becomes large. We may use some randomly-generated vectors as basis to do the projection. This greatly saves time, at the expense of losing accuracy. We can measure such projection by checking whether the structure of the data can be preserved, e.g. the distance between points.</p>
-<p>Johnson-Lindenstrauss Lemma tells that a random function <span class="math inline">\(f(x) = \frac{1}{\sqrt{K}}Ax\)</span>, where <span class="math inline">\(A\)</span> is a <span class="math inline">\(K \times N\)</span> matrix with i.i.d. entries sampled from a standard Gaussian, can preserve the distance between any two points within error <span class="math inline">\(\epsilon\)</span>: <span class="math display">\[
-(1 - \epsilon)||x^{(i)} - x^{(j)}||^2_2 \le ||f(x^{(i)}) - f(x^{j})||^2_2 \le (1 + \epsilon)||x^{(i)} - x^{(j)}||^2_2
+<p>The above methods all minimize the Frobenius norm during
+reconstruction. This objective may become time-consuming when input
+dimension becomes large. We may use some randomly-generated vectors as
+basis to do the projection. This greatly saves time, at the expense of
+losing accuracy. We can measure such projection by checking whether the
+structure of the data can be preserved, e.g. the distance between
+points.</p>
+<p>Johnson-Lindenstrauss Lemma tells that a random function <span class="math inline">\(f(x) = \frac{1}{\sqrt{K}}Ax\)</span>, where <span class="math inline">\(A\)</span> is a <span class="math inline">\(K
+\times N\)</span> matrix with i.i.d. entries sampled from a standard
+Gaussian, can preserve the distance between any two points within error
+<span class="math inline">\(\epsilon\)</span>: <span class="math display">\[
+(1 - \epsilon)||x^{(i)} - x^{(j)}||^2_2 \le ||f(x^{(i)}) -
+f(x^{j})||^2_2 \le (1 + \epsilon)||x^{(i)} - x^{(j)}||^2_2
 \]</span> with the probability at least <span class="math inline">\(\frac{1}{M}\)</span> as long as <span class="math display">\[
 K \ge \frac{8\log M}{\epsilon^2}
 \]</span> And usually this requirement is quite conservative.</p>
-<h3 id="non-linear-dimensionality-reduction">Non-linear Dimensionality Reduction</h3>
-<p>We can introduce the feature mapping to handle the non-linearity problem in Dimensionality Reduction. Similar to non-linear regression, we can introduce the kernel trick in this case, yielding the <a href="/notes/articles/machine-learning/principal-component-analysis/#Kernel PCA">Kernel PCA</a>.</p>
-<h2 id="supervised-dimensionality-reduction">Supervised Dimensionality Reduction</h2>
-<p>There is no guarantee that the unsupervised Dimension Reduction can throw insight into the classification problem. It may or may not help. Otherwise supervised Dimension Reduction such as <a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher’s Linear Discriminant</a> finds a lower-dimensional space so as to minimize the class overlap.</p>
+<h3 id="non-linear-dimensionality-reduction">Non-linear Dimensionality
+Reduction</h3>
+<p>We can introduce the feature mapping to handle the non-linearity
+problem in Dimensionality Reduction. Similar to non-linear regression,
+we can introduce the kernel trick in this case, yielding the <a href="/notes/articles/machine-learning/principal-component-analysis/#Kernel PCA">Kernel PCA</a>.</p>
+<h2 id="supervised-dimensionality-reduction">Supervised Dimensionality
+Reduction</h2>
+<p>There is no guarantee that the unsupervised Dimension Reduction can
+throw insight into the classification problem. It may or may not help.
+Otherwise supervised Dimension Reduction such as <a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher’s Linear Discriminant</a> finds
+a lower-dimensional space so as to minimize the class overlap.</p>
 
 
 
@@ -1576,7 +1662,7 @@ K \ge \frac{8\log M}{\epsilon^2}
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1626,7 +1712,7 @@ K \ge \frac{8\log M}{\epsilon^2}
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1713,7 +1799,7 @@ K \ge \frac{8\log M}{\epsilon^2}
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

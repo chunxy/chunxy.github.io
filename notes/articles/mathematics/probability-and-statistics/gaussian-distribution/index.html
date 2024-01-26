@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1317,8 +1345,10 @@
     <li><a href="#gaussian-distribution">Gaussian Distribution</a>
       <ul>
         <li><a href="#one-dimensional">One-dimensional</a></li>
-        <li><a href="#independent-standard-n-dimensional">Independent standard <span class="math inline">\(n\)</span>-dimensional</a></li>
-        <li><a href="#first-order-correlated-n-dimensional">First-order correlated <span class="math inline">\(n\)</span>-dimensional</a></li>
+        <li><a href="#independent-standard-n-dimensional">Independent standard
+<span class="math inline">\(n\)</span>-dimensional</a></li>
+        <li><a href="#first-order-correlated-n-dimensional">First-order
+correlated <span class="math inline">\(n\)</span>-dimensional</a></li>
       </ul>
     </li>
     <li><a href="#external-materials">External Materials</a></li>
@@ -1419,56 +1449,99 @@
 
 <h2 id="gaussian-distribution">Gaussian Distribution</h2>
 <h3 id="one-dimensional">One-dimensional</h3>
-<p>Suppose <span class="math inline">\(1\)</span>-d random variable <span class="math inline">\(x \sim N(\mu, \sigma^2)\)</span>, then its density function is <span class="math display">\[
-p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2}
+<p>Suppose <span class="math inline">\(1\)</span>-d random variable
+<span class="math inline">\(x \sim N(\mu, \sigma^2)\)</span>, then its
+density function is <span class="math display">\[
+p(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x -
+\mu}{\sigma})^2}
 \]</span></p>
 <p>To verify that it integrates to <span class="math inline">\(1\)</span>, <span class="math display">\[
 \begin{aligned}
-\int_{-\infty}^{+\infty} p(x) \d x &amp;= \sqrt{(\int_{-\infty}^{+\infty} p(x) \d x) \cdot (\int_{-\infty}^{+\infty} p(y) \d y)} \\
-&amp;= \sqrt {\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} p(x)p(y) \d x \d y} \\
+\int_{-\infty}^{+\infty} p(x) \d x &amp;=
+\sqrt{(\int_{-\infty}^{+\infty} p(x) \d x) \cdot
+(\int_{-\infty}^{+\infty} p(y) \d y)} \\
+&amp;= \sqrt {\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} p(x)p(y)
+\d x \d y} \\
 \end{aligned}
 \]</span></p>
-<p>Let <span class="math inline">\(I^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} p(x)p(y) \d x \d y\)</span>, <span class="math display">\[
+<p>Let <span class="math inline">\(I^2 =
+\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} p(x)p(y) \d x \d
+y\)</span>, <span class="math display">\[
 \begin{gather}
 \int_{-\infty}^{+\infty} p(x) \d x = \sqrt{I^2} \\
-I^2 = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2} (\frac{x - \mu}{\sigma})^2} \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2} (\frac{y - \mu}{\sigma})^2} \d x \d y
+I^2 = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}
+\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2} (\frac{x - \mu}{\sigma})^2}
+\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2} (\frac{y - \mu}{\sigma})^2}
+\d x \d y
 \end{gather}
-\]</span> Let <span class="math inline">\(u = \frac{x-\mu}{\sigma}, v = \frac{y-\mu}{\sigma}\)</span>, <span class="math display">\[
+\]</span> Let <span class="math inline">\(u = \frac{x-\mu}{\sigma}, v =
+\frac{y-\mu}{\sigma}\)</span>, <span class="math display">\[
 \begin{aligned}
-I^2 &amp;= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}u^2}\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}v^2} \d u \d v \\
-&amp;= \frac{1}{2\pi} \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} e^{-\frac{1}{2}(u^2 + v^2)} \d u \d v
+I^2 &amp;= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}
+\frac{1}{\sigma\sqrt{2\pi}}
+e^{-\frac{1}{2}u^2}\frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}v^2} \d u
+\d v \\
+&amp;= \frac{1}{2\pi} \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}
+e^{-\frac{1}{2}(u^2 + v^2)} \d u \d v
 \end{aligned}
-\]</span> Let <span class="math inline">\(u = r \sin \theta, v = r \cos \theta\)</span>, <span class="math display">\[
+\]</span> Let <span class="math inline">\(u = r \sin \theta, v = r \cos
+\theta\)</span>, <span class="math display">\[
 \begin{aligned}
-\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} e^{-\frac{1}{2}(u^2+v^2)} \d u \d v &amp;= 
-\int_{0}^{2\pi} \int_{0}^{+\infty} e^{-\frac{1}{2} (r^2 \sin^2\theta + r^2 \cos^2\theta)} r \d r \d\theta \\
-&amp;= \int_{0}^{2\pi} \int_{0}^{+\infty} -e^{-\frac{1}{2} r^2} \d(-\frac{1}{2} r^2) \d\theta \\
+\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}
+e^{-\frac{1}{2}(u^2+v^2)} \d u \d v &amp;=
+\int_{0}^{2\pi} \int_{0}^{+\infty} e^{-\frac{1}{2} (r^2 \sin^2\theta +
+r^2 \cos^2\theta)} r \d r \d\theta \\
+&amp;= \int_{0}^{2\pi} \int_{0}^{+\infty} -e^{-\frac{1}{2} r^2}
+\d(-\frac{1}{2} r^2) \d\theta \\
 &amp;= \int_{0}^{2\pi}-e^{t}\Big|_{t=0}^{t=-\infty}d\theta \\
 &amp;= \int_{0}^{2\pi}d\theta \\
 &amp;= 2\pi
 \end{aligned}
-\]</span> Therefore, <span class="math inline">\(I^2 = \frac{1}{2\pi}2\pi = 1\)</span>, <span class="math inline">\(\int_{-\infty}^{+\infty}p(x)dx = \sqrt{I^2} = 1\)</span></p>
+\]</span> Therefore, <span class="math inline">\(I^2 =
+\frac{1}{2\pi}2\pi = 1\)</span>, <span class="math inline">\(\int_{-\infty}^{+\infty}p(x)dx = \sqrt{I^2} =
+1\)</span></p>
 <h3 id="independent-standard-n-dimensional">Independent standard <span class="math inline">\(n\)</span>-dimensional</h3>
-<p>Let <span class="math inline">\(Z = [Z_1, Z_2, ..., Z_n]^T\)</span>, suppose <span class="math inline">\(Z_i, Z_j (i,j=1,...,n \and i \ne j)\)</span> are independent and <span class="math inline">\(Z_i (i=1,...,n)\)</span> observes standard Gaussian distribution, we can derive the joint distribution density function for random variable <span class="math inline">\(Z\)</span> to be <span class="math display">\[
+<p>Let <span class="math inline">\(Z = [Z_1, Z_2, ..., Z_n]^T\)</span>,
+suppose <span class="math inline">\(Z_i, Z_j (i,j=1,...,n \and i \ne
+j)\)</span> are independent and <span class="math inline">\(Z_i
+(i=1,...,n)\)</span> observes standard Gaussian distribution, we can
+derive the joint distribution density function for random variable <span class="math inline">\(Z\)</span> to be <span class="math display">\[
 \begin{aligned}
 \newcommand{z}{\mathrm{z}}
-p(\z) &amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2} z_i^2} \\
+p(\z) &amp;= p(z_1, z_2, ..., z_n) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}}
+e^{-\frac{1}{2} z_i^2} \\
 &amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2}\z^T\z} \\
 \end{aligned}
 \]</span></p>
-<h3 id="first-order-correlated-n-dimensional">First-order correlated <span class="math inline">\(n\)</span>-dimensional</h3>
-<p>We have given the joint distribution function of independent <span class="math inline">\(n\)</span>-dimensional standard Gaussian distribution. What if <span class="math inline">\(n\)</span> dimensions of <span class="math inline">\(Z\)</span> are not standard, are not independent with each other, but are correlated only in first order?</p>
-<p>We may begin with standard Gaussian random variables <span class="math inline">\(X = [X_1, \dots, X_n]\)</span>. Then we can shift <span class="math inline">\(X\)</span> by <span class="math inline">\(\mu\)</span> and linearly transform it with an invertible matrix <span class="math inline">\(B^{-1}\)</span>. <span class="math inline">\(Z\)</span> mentioned above will just be such a matrix as <span class="math inline">\(Z = B^{-1} (X - \mu)\)</span> and <span class="math display">\[
+<h3 id="first-order-correlated-n-dimensional">First-order correlated
+<span class="math inline">\(n\)</span>-dimensional</h3>
+<p>We have given the joint distribution function of independent <span class="math inline">\(n\)</span>-dimensional standard Gaussian
+distribution. What if <span class="math inline">\(n\)</span> dimensions
+of <span class="math inline">\(Z\)</span> are not standard, are not
+independent with each other, but are correlated only in first order?</p>
+<p>We may begin with standard Gaussian random variables <span class="math inline">\(X = [X_1, \dots, X_n]\)</span>. Then we can shift
+<span class="math inline">\(X\)</span> by <span class="math inline">\(\mu\)</span> and linearly transform it with an
+invertible matrix <span class="math inline">\(B^{-1}\)</span>. <span class="math inline">\(Z\)</span> mentioned above will just be such a
+matrix as <span class="math inline">\(Z = B^{-1} (X - \mu)\)</span> and
+<span class="math display">\[
 \begin{gather}
 X = B^{-1}(Z - \mu) \sim \mathcal{N}(0, I) \\
-p_X(\x) = \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} \x^T\x} 
+p_X(\x) = \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} \x^T\x}
 \end{gather}
 \]</span></p>
-<p>Suppose <span class="math inline">\(Z\)</span> is to take on values in <span class="math inline">\(\mathcal{Z}\)</span>, which is a subset of <span class="math inline">\(\R^{n}\)</span>, <span class="math display">\[
-\newcommand{z}{\mathrm{z}} P_Z(Z \in \mathcal{Z}) = \int_\mathcal{Z} p_Z(\z) \d \z
-\]</span> Since <span class="math inline">\(Z = f(X) = BX + \mu\)</span> and <span class="math inline">\(B\)</span> is invertible, the mapping <span class="math inline">\(X \to Z\)</span> is one-to-one, therefore the multivariate <a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian transformation</a> is <span class="math display">\[
+<p>Suppose <span class="math inline">\(Z\)</span> is to take on values
+in <span class="math inline">\(\mathcal{Z}\)</span>, which is a subset
+of <span class="math inline">\(\R^{n}\)</span>, <span class="math display">\[
+\newcommand{z}{\mathrm{z}} P_Z(Z \in \mathcal{Z}) = \int_\mathcal{Z}
+p_Z(\z) \d \z
+\]</span> Since <span class="math inline">\(Z = f(X) = BX + \mu\)</span>
+and <span class="math inline">\(B\)</span> is invertible, the mapping
+<span class="math inline">\(X \to Z\)</span> is one-to-one, therefore
+the multivariate <a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian
+transformation</a> is <span class="math display">\[
 J(X \to Z) = B^{-1} \\
-\]</span> with its determinant <span class="math inline">\(J = |J(X \to Z)| = |B^{-1}| = |B|^{-1}\)</span>. Note that <span class="math display">\[
+\]</span> with its determinant <span class="math inline">\(J = |J(X \to
+Z)| = |B^{-1}| = |B|^{-1}\)</span>. Note that <span class="math display">\[
 \begin{aligned}
 |J| &amp;= \sqrt{|B|^{-1}|B|^{-1}} \\
 &amp;= \sqrt{|B|^{-1}|B^T|^{-1}} \\
@@ -1478,18 +1551,24 @@ J(X \to Z) = B^{-1} \\
 \]</span> Therefore, <span class="math display">\[
 \begin{aligned}
 P_Z (Z \in \mathcal{Z}) &amp;= P_X (X \in f^{-1}(\mathcal{Z})) \\
-P_Z (Z \in \mathcal{Z}) &amp;= \int_{f^{-1}(\mathcal{Z})} p_X(\x) \d \x \\
+P_Z (Z \in \mathcal{Z}) &amp;= \int_{f^{-1}(\mathcal{Z})} p_X(\x) \d \x
+\\
 &amp;\Downarrow_{\x = f^{-1}(\z)} \\
-\int_\mathcal{Z} p_Z (\z) \d \z &amp;= \int_\mathcal{Z} p_X (f^{-1}(\z)) |J| \d \z \\
+\int_\mathcal{Z} p_Z (\z) \d \z &amp;= \int_\mathcal{Z} p_X (f^{-1}(\z))
+|J| \d \z \\
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp;p_Z (\z) = p_X (f^{-1}(\z))|J| = p_X (B^{-1} (\z - \mu) |J| \\
-&amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T(B^{-1})^T B^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T (B^T)^{-1} B^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T (BB^T)^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
-&amp;= \frac{1}{(2\pi)^{\frac{n}{2}}|BB^T|^\frac{1}{2}} e^{-\frac{1}{2} (\z-\mu)^T (BB^T)^{-1} (\z-\mu)} \\
+&amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2}
+(\z-\mu)^T(B^{-1})^T B^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
+&amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T
+(B^T)^{-1} B^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
+&amp;= \frac{1}{(2\pi)^{\frac{n}{2}}} e^{-\frac{1}{2} (\z-\mu)^T
+(BB^T)^{-1} (\z-\mu)} |BB^T|^{-\frac{1}{2}} \\
+&amp;= \frac{1}{(2\pi)^{\frac{n}{2}}|BB^T|^\frac{1}{2}} e^{-\frac{1}{2}
+(\z-\mu)^T (BB^T)^{-1} (\z-\mu)} \\
 \end{aligned}
 \]</span></p>
 <p>Also note that <span class="math display">\[
@@ -1502,10 +1581,13 @@ P_Z (Z \in \mathcal{Z}) &amp;= \int_{f^{-1}(\mathcal{Z})} p_X(\x) \d \x \\
 \end{aligned}
 \]</span></p>
 <p>Thus, <span class="math display">\[
-p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T \Sigma_Z^{-1} (\z-\mu)}
+p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T
+\Sigma_Z^{-1} (\z-\mu)}
 \]</span></p>
 <h2 id="external-materials">External Materials</h2>
-<p><a href="https://zhuanlan.zhihu.com/p/40225646">为什么高斯分布概率密度函数的积分等于1 - 知乎 (zhihu.com)</a> || <a href="https://zhuanlan.zhihu.com/p/58987388">多元高斯分布完全解析 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/40225646">为什么高斯分布概率密度函数的积分等于1
+- 知乎 (zhihu.com)</a> || <a href="https://zhuanlan.zhihu.com/p/58987388">多元高斯分布完全解析 - 知乎
+(zhihu.com)</a></p>
 
 
 
@@ -1596,7 +1678,7 @@ p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T \Sigma_
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1646,7 +1728,7 @@ p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T \Sigma_
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1733,7 +1815,7 @@ p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T \Sigma_
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

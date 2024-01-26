@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,14 +1342,18 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#依概率收敛convergence-in-probability">依概率收敛（convergence in probability）</a></li>
-    <li><a href="#几乎必然收敛almost-sure-convergence">几乎必然收敛（almost-sure convergence）</a></li>
+    <li><a href="#依概率收敛convergence-in-probability">依概率收敛（convergence in
+probability）</a></li>
+    <li><a href="#几乎必然收敛almost-sure-convergence">几乎必然收敛（almost-sure
+convergence）</a></li>
     <li><a href="#l_p收敛convergence-in-l_p"><span class="math inline">\(L_p\)</span>收敛（convergence in <span class="math inline">\(L_p\)</span>）</a>
       <ul>
         <li><a href="#均方收敛">均方收敛</a></li>
       </ul>
     </li>
-    <li><a href="#依分布收敛convergence-in-distribution">依分布收敛（convergence in distribution）</a></li>
+    <li><a href="#依分布收敛convergence-in-distribution">依分布收敛（convergence in
+distribution）</a></li>
+    <li><a href="#收敛到随机变量">“收敛到随机变量”</a></li>
     <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav>
@@ -1418,52 +1450,89 @@
           <div class="article-style">
             
 
-<h2 id="依概率收敛convergence-in-probability">依概率收敛（convergence in probability）</h2>
-<p><strong>随机变量序列</strong>即是由随机变量构成的序列。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能总和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
+<h2 id="依概率收敛convergence-in-probability">依概率收敛（convergence in
+probability）</h2>
+<p><strong>随机变量序列</strong>即是由随机变量构成的序列。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则意味着当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2,
+\dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能总和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
 <ul>
 <li><p>定义</p>
-<p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) = 1\)</span>，抑或是，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)</span>），则称该随机变量序列<strong>依概率收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{P}{\to} c\)</span>。</p>
-<p>换言之，对于任意<span class="math inline">\(\epsilon, \delta &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有 <span class="math display">\[
+<p>设<span class="math inline">\(X_1, X_2,
+\dots\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) =
+1\)</span>，抑或是，对于任意<span class="math inline">\(\epsilon &gt;
+0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n -
+c| \ge \epsilon) =
+0\)</span>），则称该随机变量序列<strong>依概率收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n
+\stackrel{P}{\to} c\)</span>。</p>
+<p>换言之，对于任意<span class="math inline">\(\epsilon, \delta &gt;
+0\)</span>，都存在<span class="math inline">\(N &gt;
+0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有
+<span class="math display">\[
 1 - \delta &lt; P(|X_n - c| &lt; \epsilon) \le 1
 \]</span></p></li>
 </ul>
 <p>依概率收敛的一个例子便是<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Bernoulli大数定律">Bernoulli大数定律</a>，即当试验次数足够多时，事件的频率会依概率收敛到该事件的概率。</p>
-<h2 id="几乎必然收敛almost-sure-convergence">几乎必然收敛（almost-sure convergence）</h2>
+<h2 id="几乎必然收敛almost-sure-convergence">几乎必然收敛（almost-sure
+convergence）</h2>
 <p>在某些情况下，若随机变量序列能够和某个数字<span class="math inline">\(c\)</span>几乎接近，我们说它几乎必然收敛。</p>
 <ul>
 <li><p>定义</p>
-<p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(P(\lim_{n \to \infty} X_n = c) = 1\)</span>，则称该随机变量序列<strong>几乎必然收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{a.s.}{\to} c\)</span>。</p>
-<p>换言之，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都存在<span class="math inline">\(N &gt; 0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有 <span class="math display">\[
+<p>设<span class="math inline">\(X_1, X_2,
+\dots\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(P(\lim_{n \to \infty} X_n = c) =
+1\)</span>，则称该随机变量序列<strong>几乎必然收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n
+\stackrel{a.s.}{\to} c\)</span>。</p>
+<p>换言之，对于任意<span class="math inline">\(\epsilon &gt;
+0\)</span>，都存在<span class="math inline">\(N &gt;
+0\)</span>，使得<span class="math inline">\(n &gt; N\)</span>时，始终有
+<span class="math display">\[
 P(|X_n - c| &lt; \epsilon) = 1
 \]</span></p></li>
 </ul>
-<p>需要注意的是，几乎必然收敛和依概率收敛是不等价的，因为<span class="math inline">\(\lim_{n \to \infty} f(x_n)\)</span>中的极限符号不总是能够交换到函数<span class="math inline">\(f\)</span>内部，举个简单的例子： <span class="math display">\[
+<p>需要注意的是，几乎必然收敛和依概率收敛是不等价的，因为<span class="math inline">\(\lim_{n \to \infty}
+f(x_n)\)</span>中的极限符号不总是能够交换到函数<span class="math inline">\(f\)</span>内部，举个简单的例子： <span class="math display">\[
 \begin{gathered}
 \{ x_n \} = -\frac{1}{n}, \
 f(x) = \begin{cases}
 x^2 - 1, &amp; -1 \le x &lt; 0 \\
 x, &amp; x \ge 0
 \end{cases} \\
-\lim_{n \to \infty} f(x_n) = \lim_{n \to \infty}(\frac{1}{n^2}-1) = -1 \ne f(\lim_{n \to \infty} x_n) = f(0) = 0
+\lim_{n \to \infty} f(x_n) = \lim_{n \to \infty}(\frac{1}{n^2}-1) = -1
+\ne f(\lim_{n \to \infty} x_n) = f(0) = 0
 \end{gathered}
 \]</span> 注意<span class="math inline">\(f\)</span>是右连续的，这也意味着，我们可以找到类似的右连续的分布函数<span class="math inline">\(P\)</span>，使得极限符号不能被移至<span class="math inline">\(P\)</span>内部。也就是说，几乎必然收敛和依概率收敛是不等价的，而显然，几乎必然收敛是强于依概率收敛的。</p>
 <h2 id="l_p收敛convergence-in-l_p"><span class="math inline">\(L_p\)</span>收敛（convergence in <span class="math inline">\(L_p\)</span>）</h2>
 <ul>
 <li><p>定义</p>
-<p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，对于某个<span class="math inline">\(p &gt; 0\)</span>，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(\lim_{n \to \infty} \E(|| X_n - c||_p^p) = 0\)</span>，则称该随机变量序列<strong><span class="math inline">\(L_p\)</span>收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{L_p}{\to} c\)</span>。</p></li>
+<p>设<span class="math inline">\(X_1, X_2,
+\dots\)</span>是一个随机变量序列，对于某个<span class="math inline">\(p
+&gt; 0\)</span>，如果存在一个常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(\lim_{n \to \infty} \E(|| X_n - c||_p^p) =
+0\)</span>，则称该随机变量序列<strong><span class="math inline">\(L_p\)</span>收敛</strong>于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n
+\stackrel{L_p}{\to} c\)</span>。</p></li>
 </ul>
 <h3 id="均方收敛">均方收敛</h3>
 <p>当<span class="math inline">\(p=2\)</span>时，<span class="math inline">\(L_p\)</span>收敛又称作均方收敛。根据<a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/#Chebyshev不等式">Chebyshev不等式</a>， <span class="math display">\[
-P(|X_n-\E(X_n)| \ge \epsilon) \le \frac{\Var(X_n)}{\epsilon^2} = \frac{\E[(X_n - \E(X_n))^2]}{\epsilon^2}
-\]</span> 在两边取<span class="math inline">\(n \to \infty\)</span>可以得到 <span class="math display">\[
-\lim_{n \to \infty} P(|X_n-\E(X_n)| \ge \epsilon) \le \lim_{n \to \infty} \frac{\E[(X_n - \E(X_n))^2]}{\epsilon^2} = 0
-\]</span> 即均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也强于依概率收敛；但它和几乎必然收敛之间并没有推导关系。</p>
-<h2 id="依分布收敛convergence-in-distribution">依分布收敛（convergence in distribution）</h2>
+P(|X_n-\E(X_n)| \ge \epsilon) \le \frac{\Var(X_n)}{\epsilon^2} =
+\frac{\E[(X_n - \E(X_n))^2]}{\epsilon^2}
+\]</span> 在两边取<span class="math inline">\(n \to
+\infty\)</span>可以得到 <span class="math display">\[
+\lim_{n \to \infty} P(|X_n-\E(X_n)| \ge \epsilon) \le \lim_{n \to
+\infty} \frac{\E[(X_n - \E(X_n))^2]}{\epsilon^2} = 0
+\]</span>
+即均方收敛成立时，依概率收敛也成立，反之则不必然，故均方收敛也强于依概率收敛；但均方收敛和几乎必然收敛之间并没有推导关系。</p>
+<h2 id="依分布收敛convergence-in-distribution">依分布收敛（convergence
+in distribution）</h2>
 <p>前面三者描述的是随机变量序列取值的某种特性，而依分布收敛则不同，它描述的是随机变量序列分布函数的特性。</p>
 <ul>
 <li><p>定义</p>
-<p>设<span class="math inline">\(X_1, X_2, \dots\)</span>是一个随机变量序列，让<span class="math inline">\(F_n\)</span>表示<span class="math inline">\(X_n\)</span>的分布函数，如果存在一个分布函数<span class="math inline">\(F\)</span>，使得<span class="math inline">\(\lim_{n \to \infty} F_n(x) = F(x)\)</span>，则称该随机变量序列<strong>依分布收敛</strong>于<span class="math inline">\(F\)</span>，记作<span class="math inline">\(X_n \stackrel{d}{\to} F\)</span>。</p></li>
+<p>设<span class="math inline">\(X_1, X_2,
+\dots\)</span>是一个随机变量序列，让<span class="math inline">\(F_n\)</span>表示<span class="math inline">\(X_n\)</span>的分布函数，如果存在一个分布函数<span class="math inline">\(F\)</span>，使得<span class="math inline">\(\lim_{n \to \infty} F_n(x) =
+F(x)\)</span>，则称该随机变量序列<strong>依分布收敛</strong>于<span class="math inline">\(F\)</span>，记作<span class="math inline">\(X_n
+\stackrel{d}{\to} F\)</span>。</p></li>
 </ul>
+<h2 id="收敛到随机变量">“收敛到随机变量”</h2>
+<p>除了上述讨论的收敛到值、收敛到函数的情况外，另外一个比较有趣的话题是“收敛到随机变量”，或者说“两个随机变量相等”是一个怎样的概念？</p>
+<p>我们讨论概率的时候，会涉及到两个函数：一个是概率函数，另一个是随机变量这一从事件到数字的映射。方便起见我们令<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>为两个随机变量，随机变量相等，则意味着这两个从事件到数字的映射相等，进而<span class="math inline">\(P(X = Y) = 1\)</span>。</p>
+<p>映射相等，意味着定义域、值域、映射关系完全相等。如果我有两个骰子，令<span class="math inline">\(X\)</span>表示第一个骰子掷出的点数、<span class="math inline">\(Y\)</span>表示第二个骰子掷出的点数，那么<span class="math inline">\(X =
+Y\)</span>吗？答案是不，因为这两个随机变量的定义域不相等：<span class="math inline">\(X\)</span>的定义域表示第一个骰子的所有可能事件，<span class="math inline">\(Y\)</span>的定义域表示第二个骰子的所有可能事件；虽然两个骰子掷出的点数都只能是1、2、3、4、5、6，但这代表的仅是值域相同，而“第一个骰子掷出一”（注意这里避免使用任何数字，以表示它是一个事件）这个事件和“第二个骰子掷出一”是不一样的，因为<span class="math inline">\(X\)</span>不会因为第二个骰子掷出一而取为1。</p>
 <h2 id="参考资料">参考资料</h2>
 <p><a href="https://zh.m.wikipedia.org/zh/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B">随机变量的收敛</a></p>
 
@@ -1556,7 +1625,7 @@ P(|X_n-\E(X_n)| \ge \epsilon) \le \frac{\Var(X_n)}{\epsilon^2} = \frac{\E[(X_n -
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1606,7 +1675,7 @@ P(|X_n-\E(X_n)| \ge \epsilon) \le \frac{\Var(X_n)}{\epsilon^2} = \frac{\E[(X_n -
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1693,7 +1762,7 @@ P(|X_n-\E(X_n)| \ge \epsilon) \le \frac{\Var(X_n)}{\epsilon^2} = \frac{\E[(X_n -
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

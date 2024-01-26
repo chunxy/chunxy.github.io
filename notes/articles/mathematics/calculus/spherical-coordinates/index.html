@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="The conversion between the 2-d Cartesian coordinate system and the 2-d polar coordinate system can be extended to a higher dimension, say \(k\)-d. In \(k\)-d case, their conversion can be described as below:" />
+  <meta name="description" content="The conversion between the 2-d Cartesian coordinate system and the 2-d polar coordinate system can be extended to a higher dimension, say \(k\)-d. In \(k\)-d case, their conversion can be" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/calculus/spherical-coordinates/" />
   <meta property="og:title" content="Spherical Coordinates | Chunxy&#39; Website" />
-  <meta property="og:description" content="The conversion between the 2-d Cartesian coordinate system and the 2-d polar coordinate system can be extended to a higher dimension, say \(k\)-d. In \(k\)-d case, their conversion can be described as below:" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="The conversion between the 2-d Cartesian coordinate system and the 2-d polar coordinate system can be extended to a higher dimension, say \(k\)-d. In \(k\)-d case, their conversion can be" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1312,7 +1340,11 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#volume-of-sphere">Volume of Sphere</a></li>
+  </ul>
+</nav>
 
       
     </div>
@@ -1405,60 +1437,136 @@
 
           <div class="article-style">
             
-<p>The conversion between the 2-d Cartesian coordinate system and the 2-d polar coordinate system can be extended to a higher dimension, say <span class="math inline">\(k\)</span>-d. In <span class="math inline">\(k\)</span>-d case, their conversion can be described as below:</p>
+
+<p>The conversion between the 2-d Cartesian coordinate system and the
+2-d polar coordinate system can be extended to a higher dimension, say
+<span class="math inline">\(k\)</span>-d. In <span class="math inline">\(k\)</span>-d case, their conversion can be
+described as below:</p>
 <ul>
-<li><p>Cartesian-to-spherical <span class="math display">\[
+<li><p>Spherical to Cartesian <span class="math display">\[
 \begin{alignat}{2}
 r &amp;= \sqrt{x_1^2 + \dots + x_k^2} &amp;&amp; \\
-\varphi_1 &amp;= \arccot \frac{x_1} {\sqrt{x_k^2 + \dots + x_2^2}} &amp;&amp;=  \arccos \frac{x_1} {\sqrt{x_k^2 + \dots + x_1^2}} \\
-\varphi_2 &amp;= \arccot \frac{x_2} {\sqrt{x_k^2 + \dots + x_3^2}} &amp;&amp;=  \arccos \frac{x_2} {\sqrt{x_k^2 + \dots + x_2^2}} \\
+\varphi_1 &amp;= \arccot \frac{x_1} {\sqrt{x_k^2 + \dots + x_2^2}}
+&amp;&amp;=  \arccos \frac{x_1} {\sqrt{x_k^2 + \dots + x_1^2}} \\
+\varphi_2 &amp;= \arccot \frac{x_2} {\sqrt{x_k^2 + \dots + x_3^2}}
+&amp;&amp;=  \arccos \frac{x_2} {\sqrt{x_k^2 + \dots + x_2^2}} \\
 &amp; \vdots &amp;&amp;\vdots\\
-\varphi_{k-2} &amp;= \arccot \frac{x_{k-1}} {\sqrt{x_k^2 + x_{k-1}^2}} &amp;&amp;= \arccos \frac{x_{k-2}} {\sqrt{x_k^2 + x_{k-1}^2 + x_{k-2}^2}} \\
-\varphi_{k-1} &amp;= 2 \arccot \frac{x_{k-1} + \sqrt{x_k^2 + x_{k-1}^2}}{x_k} &amp;&amp;= 
+\varphi_{k-2} &amp;= \arccot \frac{x_{k-1}} {\sqrt{x_k^2 + x_{k-1}^2}}
+&amp;&amp;= \arccos \frac{x_{k-2}} {\sqrt{x_k^2 + x_{k-1}^2 +
+x_{k-2}^2}} \\
+\varphi_{k-1} &amp;= 2 \arccot \frac{x_{k-1} + \sqrt{x_k^2 +
+x_{k-1}^2}}{x_k} &amp;&amp;=
 \begin{cases}
 \arccos \frac{x_{k-1}} {\sqrt{x_k^2 + x_{k-1}^2}}, &amp;x_n \ge 0 \\
-2\pi - \arccos \frac{x_{k-1}} {\sqrt{x_k^2 + x_{k-1}^2}}, &amp;x_n &gt; 0\\
+2\pi - \arccos \frac{x_{k-1}} {\sqrt{x_k^2 + x_{k-1}^2}}, &amp;x_n &gt;
+0\\
 \end{cases}
 \end{alignat}
 \]</span></p></li>
-<li><p>Spherical-to-Cartesian <span class="math display">\[
+<li><p>Cartesian to spherical <span class="math display">\[
 \begin{align}
 x_1 &amp;= r \cos(\varphi_1) \\
 x_2 &amp;= r \sin(\varphi_1) \cos(\varphi_2) \\
 \notag &amp;\vdots \\
-x_{k-1} &amp;= r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) \\
-x_k &amp;= r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \\
+x_{k-1} &amp;= r \sin(\varphi_1) \dots \sin(\varphi_{k-2})
+\cos(\varphi_{k-1}) \\
+x_k &amp;= r \sin(\varphi_1) \dots \sin(\varphi_{k-2})
+\sin(\varphi_{k-1}) \\
 \end{align}
-\]</span> The corresponding <a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian Matrix</a> is <span class="math display">\[
+\]</span> The corresponding <a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian
+Matrix</a> is <span class="math display">\[
 J^{(k)} = \left[ \begin{array}{ccccc|c}
-\cos (\varphi_1) &amp; -r \sin(\varphi_1) &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
-\sin(\varphi_1) \cos(\varphi_2) &amp; r \cos(\varphi_1) \cos(\varphi_2) &amp; -r \sin(\varphi_1) \sin(\varphi_2) &amp; 0 &amp; \cdots &amp; 0 \\
+\cos (\varphi_1) &amp; -r \sin(\varphi_1) &amp; 0 &amp; 0 &amp; \cdots
+&amp; 0 \\
+\sin(\varphi_1) \cos(\varphi_2) &amp; r \cos(\varphi_1) \cos(\varphi_2)
+&amp; -r \sin(\varphi_1) \sin(\varphi_2) &amp; 0 &amp; \cdots &amp; 0 \\
 \vdots &amp; \vdots &amp; \vdots &amp; \ &amp; \ddots &amp; \vdots \\
 \hline
-\sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) &amp; \cdots &amp; \cdots &amp; \ &amp; \ &amp; -r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \\
-\sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) &amp; \cdots &amp; \cdots &amp; \ &amp; \ &amp; r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1})
+\sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) &amp;
+\cdots &amp; \cdots &amp; \ &amp; \ &amp; -r \sin(\varphi_1) \dots
+\sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \\
+\sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) &amp;
+\cdots &amp; \cdots &amp; \ &amp; \ &amp; r \sin(\varphi_1) \dots
+\sin(\varphi_{k-2}) \cos(\varphi_{k-1})
 \end{array} \right]
-\]</span> <span class="math inline">\(|J^{(2)}|\)</span> can be easily derived as <span class="math inline">\(r\)</span> and <span class="math inline">\(|J^{(k)}|\)</span> can be constructed from <span class="math inline">\(|J^{(k-1)}|\)</span>. Comparing <span class="math inline">\(J^{(k)}\)</span> and <span class="math inline">\(J^{(k-1)}\)</span>,</p>
+\]</span> <span class="math inline">\(|J^{(2)}|\)</span> can be easily
+derived as <span class="math inline">\(r\)</span>; and <span class="math inline">\(|J^{(k)}|\)</span> can be constructed from <span class="math inline">\(|J^{(k-1)}|\)</span>. Comparing <span class="math inline">\(J^{(k)}\)</span> and <span class="math inline">\(J^{(k-1)}\)</span>,</p>
 <ol type="1">
-<li><span class="math inline">\(J^{(k)}\)</span> has an extra column <span class="math inline">\(k\)</span> and an extra row <span class="math inline">\(k\)</span>,</li>
-<li>On row <span class="math inline">\(k-1\)</span>, before column <span class="math inline">\(k\)</span>, <span class="math inline">\(J^{(k)}\)</span> has an extra <span class="math inline">\(\cos(\varphi_{k-1})\)</span> term in each element than the elements of <span class="math inline">\(J^{(k-1)}\)</span> on row <span class="math inline">\(k-1\)</span>,</li>
-<li>On row <span class="math inline">\(k\)</span>, before column <span class="math inline">\(k\)</span>, <span class="math inline">\(J^{(k)}\)</span> has an extra <span class="math inline">\(\sin(\varphi_{k-1})\)</span> term in each element than the elements of <span class="math inline">\(J^{(k-1)}\)</span> on row <span class="math inline">\(k-1\)</span>,</li>
-<li><span class="math inline">\(J^{(k)}\)</span> and <span class="math inline">\(J^{(k-1)}\)</span> are totally the same on the region delimited by row <span class="math inline">\(1\)</span>, row <span class="math inline">\(k-2\)</span>, column <span class="math inline">\(1\)</span>, column <span class="math inline">\(k-1\)</span>.</li>
+<li><span class="math inline">\(J^{(k)}\)</span> has an extra column
+<span class="math inline">\(k\)</span> and an extra row <span class="math inline">\(k\)</span>,</li>
+<li>On row <span class="math inline">\(k-1\)</span>, before column <span class="math inline">\(k\)</span>, <span class="math inline">\(J^{(k)}\)</span> has an extra <span class="math inline">\(\cos(\varphi_{k-1})\)</span> term in each element
+than the elements of <span class="math inline">\(J^{(k-1)}\)</span> on
+row <span class="math inline">\(k-1\)</span>,</li>
+<li>On row <span class="math inline">\(k\)</span>, before column <span class="math inline">\(k\)</span>, <span class="math inline">\(J^{(k)}\)</span> has an extra <span class="math inline">\(\sin(\varphi_{k-1})\)</span> term in each element
+than the elements of <span class="math inline">\(J^{(k-1)}\)</span> on
+row <span class="math inline">\(k-1\)</span>,</li>
+<li><span class="math inline">\(J^{(k)}\)</span> and <span class="math inline">\(J^{(k-1)}\)</span> are totally the same on the
+region delimited by row <span class="math inline">\(1\)</span>, row
+<span class="math inline">\(k-2\)</span>, column <span class="math inline">\(1\)</span>, column <span class="math inline">\(k-1\)</span>.</li>
 </ol>
-<p>Apply the Laplace expansion along column <span class="math inline">\(k\)</span> and combine the property of determinant to give <span class="math display">\[
+<p>Apply the Laplace expansion along column <span class="math inline">\(k\)</span> and combine the property of determinant
+to give <span class="math display">\[
 \begin{aligned}
-|J^{(k)}| =\ &amp; \underbrace{0 + \dots + 0}_{n-2} + (-1)^{(n-1)+n} [-r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1}) \sin(\varphi_{k-1}) \big( \sin(\varphi_{k-1}) |J^{(k-1)}| \big)] + \\
-&amp; (-1)^{n+n} [r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \cos(\varphi_{k-1}) \big( \cos(\varphi_{k-1}) |J^{(k-1)}| \big)] \\
-=\ &amp; r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \big( \sin_{\varphi_{k-1}}^2 + \cos{\varphi_{k-1}}^2 \big) |J^{(k-1)}| \\
+|J^{(k)}| =\ &amp; \underbrace{0 + \dots + 0}_{n-2} + (-1)^{(n-1)+n} [-r
+\sin(\varphi_1) \dots \sin(\varphi_{k-2}) \sin(\varphi_{k-1})
+\sin(\varphi_{k-1}) \big( \sin(\varphi_{k-1}) |J^{(k-1)}| \big)] + \\
+&amp; (-1)^{n+n} [r \sin(\varphi_1) \dots \sin(\varphi_{k-2})
+\cos(\varphi_{k-1}) \big( \cos(\varphi_{k-1}) |J^{(k-1)}| \big)] \\
+=\ &amp; r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) \big(
+\sin_{\varphi_{k-1}}^2 + \cos{\varphi_{k-1}}^2 \big) |J^{(k-1)}| \\
 =\ &amp; r \sin(\varphi_1) \dots \sin(\varphi_{k-2}) |J^{(k-1)}| \\
 \end{aligned}
 \]</span> By induction, <span class="math display">\[
-|J^{(k)}| = r^{k-1} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2})
-\]</span> Therefore when changing basis from orthogonal coordinate system to polar coordinate system, <span class="math display">\[
-\d x_1 \dots \d x_k = r^{k-1} \sin(\varphi_1)^{k-2} \sin(\varphi_2)^{k-3} \dots \sin(\varphi_{k-2}) \d r \d \varphi_1 \dots \d \varphi_{k-1}
+|J^{(k)}| = r^{k-1} \sin^{k-2}(\varphi_1) \sin^{k-3}(\varphi_2) \dots
+\sin(\varphi_{k-2})
+\]</span> Therefore when changing basis from orthogonal coordinate
+system to polar coordinate system, <span class="math display">\[
+\d x_1 \dots \d x_k = r^{k-1} \sin^{k-2}(\varphi_1) \sin^{k-3}
+(\varphi_2) \dots \sin(\varphi_{k-2}) \d r \d \varphi_1 \dots \d
+\varphi_{k-1}
 \]</span></p></li>
 </ul>
-<p><a href="https://en.wikipedia.org/wiki/N-sphere#Spherical_coordinates">Wiki</a> || <a href="https://wuli.wiki//online/SphCar.html">3d Case Blog 1</a> || <a href="https://www.cnblogs.com/hans_gis/archive/2012/11/21/2755126.html">3d Case Blog 2</a></p>
+<p><a href="https://en.wikipedia.org/wiki/N-sphere#Spherical_coordinates">Wiki</a>
+|| <a href="https://wuli.wiki//online/SphCar.html">3d Case Blog 1</a> ||
+<a href="https://www.cnblogs.com/hans_gis/archive/2012/11/21/2755126.html">3d
+Case Blog 2</a></p>
+<h3 id="volume-of-sphere">Volume of Sphere</h3>
+<p>With change of basis between spherical coordinate and Cartesian, we
+may compute the volume of sphere in any <span class="math inline">\(n\)</span>-dimension. <span class="math display">\[
+\begin{aligned}
+V_n &amp;= \int_{B_n} 1 \; \d x_1 \d x_2 \dots \d x_n \\
+&amp;= \int_{0}^{R} \int_{0}^{2 \pi}
+\underbrace{\int_{0}^{\pi} \dots \int_{0}^{\pi}}_{n-2} \\
+&amp;\quad r^{n-1} \sin(\varphi_1)^{n-2} \sin(\varphi_2)^{n-3} \dots
+\sin(\varphi_{n-2}) \d r \d \varphi_1 \dots \d \varphi_{n-1} \\
+&amp;= \int_{0}^{R} r^{n-1} \d r
+\int_{0}^{2 \pi} \d \varphi_{n-1} \\
+&amp;\quad
+\int_{0}^{\pi} \sin(\varphi_{n-2}) \d \varphi_{n-2}
+\int_{0}^{\pi} \sin^2(\varphi_{n-3}) \d \varphi_{n-3}
+\dots
+\int_{0}^{\pi} \sin^{n-2}(\varphi_{1}) \d \varphi_{1} \\
+\end{aligned}
+\]</span> Notice that <span class="math display">\[
+\int_{0}^{\pi} \sin^{n}(x) \d x = \sqrt{\pi} \frac{\Gamma
+(\frac{n-1}{2})}{\Gamma (\frac{n}{2})}
+\]</span> Therefore, <span class="math display">\[
+\begin{aligned}
+V_n &amp;= \int_{0}^{R} r^{n-1} \d r
+\int_{0}^{2 \pi} \d \varphi_{n-1} \\
+&amp;\quad
+\int_{0}^{\pi} \sin(\varphi_{n-2}) \d \varphi_{n-2}
+\int_{0}^{\pi} \sin^2(\varphi_{n-3}) \d \varphi_{n-3}
+\dots
+\int_{0}^{\pi} \sin^{n-2}(\varphi_{1}) \d \varphi_{1} \\
+&amp;= \frac{R^n}{n} \cdot 2\pi \cdot \sqrt{\pi}
+\frac{\Gamma(0)}{\Gamma(1/2)} \cdot \sqrt{\pi}
+\frac{\Gamma(1/2)}{\Gamma(2/2)} \cdots \sqrt{\pi}
+\frac{\Gamma((n-3)/2)}{\Gamma((n-2)/2)} \\
+&amp;= R^n \frac{1}{n/2} \sqrt{\pi^n} \frac{1}{\Gamma((n-2)/2)} \\
+&amp;= \frac{R^n \sqrt{\pi^n}}{\Gamma(n/2)}
+\end{aligned}
+\]</span> <a href="https://www.bilibili.com/video/BV1v8411J7WQ/">《三体》中的数学——为什么很高维度的单位球体积为0？_哔哩哔哩_bilibili</a></p>
 
 
 
@@ -1549,7 +1657,7 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1599,7 +1707,7 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1686,7 +1794,7 @@ J^{(k)} = \left[ \begin{array}{ccccc|c}
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

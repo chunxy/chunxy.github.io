@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Given dataset \(\mathcal D = \{x^{(i)}, i=1,\dots,M\}\), a clustering \(\mathcal C\) of the \(M\) points into \(K (K \le M)\) clusters is a partition of \(\mathcal D\) into \(K\) disjoint groups \(\{C_1,\dots,C_K\}\)." />
+  <meta name="description" content="Big Picture The clustering algorithms can be broadly split into two categories depending on whether the number of clusters is given or to be determined by user. Partitional ones pre-set the number of clusters; while hierarchical ones output a dendrogram that illustrates how clusters are built level by level." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/clustering/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/clustering/" />
   <meta property="og:title" content="Clustering | Chunxy&#39; Website" />
-  <meta property="og:description" content="Given dataset \(\mathcal D = \{x^{(i)}, i=1,\dots,M\}\), a clustering \(\mathcal C\) of the \(M\) points into \(K (K \le M)\) clusters is a partition of \(\mathcal D\) into \(K\) disjoint groups \(\{C_1,\dots,C_K\}\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Big Picture The clustering algorithms can be broadly split into two categories depending on whether the number of clusters is given or to be determined by user. Partitional ones pre-set the number of clusters; while hierarchical ones output a dendrogram that illustrates how clusters are built level by level." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,9 +1342,14 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#k-means">K-means</a></li>
-    <li><a href="#gaussian-mixture-model">Gaussian Mixture Model</a></li>
-    <li><a href="#soft-k-means">Soft K-means</a></li>
+    <li><a href="#big-picture">Big Picture</a></li>
+    <li><a href="#algorithms">Algorithms</a>
+      <ul>
+        <li><a href="#k-means">K-means</a></li>
+        <li><a href="#gaussian-mixture-model">Gaussian Mixture Model</a></li>
+        <li><a href="#soft-k-means">Soft K-means</a></li>
+      </ul>
+    </li>
     <li><a href="#external-material">External Material</a></li>
   </ul>
 </nav>
@@ -1402,144 +1435,298 @@
           <div class="article-style">
             
 
-<p>Given dataset <span class="math inline">\(\mathcal D = \{x^{(i)}, i=1,\dots,M\}\)</span>, a clustering <span class="math inline">\(\mathcal C\)</span> of the <span class="math inline">\(M\)</span> points into <span class="math inline">\(K (K \le M)\)</span> clusters is a partition of <span class="math inline">\(\mathcal D\)</span> into <span class="math inline">\(K\)</span> disjoint groups <span class="math inline">\(\{C_1,\dots,C_K\}\)</span>. Suppose we have a function <span class="math inline">\(f\)</span> that evaluates the clustering <span class="math inline">\(\mathcal C\)</span> and returns lower score with better clustering. The best clustering will be <span class="math display">\[
-\arg \min_{\mathcal C} f(\mathcal C)
-\]</span> The number of all possibilities of clustering with <span class="math inline">\(M\)</span> elements is called the Bell number, denoted as <span class="math inline">\(B_M\)</span>. The calculation of the Bell number is based on dynamic programming. The number of ways to cluster <span class="math inline">\(M+1\)</span> elements is the sum of number of ways to:</p>
+<h2 id="big-picture">Big Picture</h2>
+<p>The clustering algorithms can be broadly split into two categories
+depending on whether the number of clusters is given or to be determined
+by user. <strong>Partitional</strong> ones pre-set the number of
+clusters; while <strong>hierarchical</strong> ones output a dendrogram
+that illustrates how clusters are built level by level. Users are free
+to choose the level of clustering in this hierarchical clustering.</p>
 <ul>
-<li>select <span class="math inline">\(1\)</span> element and cluster it, with the rest belong to one cluster</li>
-<li>select <span class="math inline">\(2\)</span> elements and cluster them, with the rest belong to one cluster</li>
+<li><p>Hierarchical algorithms</p>
+<ul>
+<li><p><strong>Bottom-up</strong> agglomerative clustering</p>
+<p>This approach starts with each object in a separate cluster, and
+repeatedly</p>
+<ul>
+<li>joins the most similar pair of clusters,</li>
+<li>update the similarity of the new cluster to others until there is
+only one cluster.</li>
+</ul>
+<p>There are five further methods in this approach. The difference among
+them lies in the way to measure inter-cluster similarity.</p>
+<ul>
+<li><strong>Single-linkage</strong> measures the similarity between two
+clusters as the distance between their closest members.</li>
+<li><strong>Complete-linkage</strong> measures the similarity between
+two clusters as the distance between their furthest members.</li>
+<li><strong>Average-linkage</strong> measures the similarity between two
+clusters as the average of distances of all the cross-cluster
+pairs.</li>
+<li><strong>Centroid</strong> measures the similarity between two
+clusters as the distance between their centers.</li>
+<li>DBSCAN</li>
+</ul></li>
+<li><p><strong>Top-down</strong> divisive clustering</p>
+<p>This approach starts with all the data in a single cluster, and
+repeatedly split each cluster into two using a partition algorithm until
+each object is in a separate cluster.</p></li>
+</ul></li>
+<li><p>Partition algorithms</p>
+<ul>
+<li>K-means</li>
+<li>Gaussian mixture model</li>
+</ul></li>
+</ul>
+<h2 id="algorithms">Algorithms</h2>
+<p>Given dataset <span class="math inline">\(\mathcal D = \{x^{(i)},
+i=1,\dots,M\}\)</span>, a clustering <span class="math inline">\(\mathcal C\)</span> of the <span class="math inline">\(M\)</span> points into <span class="math inline">\(K (K \le M)\)</span> clusters is a partition of
+<span class="math inline">\(\mathcal D\)</span> into <span class="math inline">\(K\)</span> disjoint groups <span class="math inline">\(\{C_1,\dots,C_K\}\)</span>. Suppose we have a
+function <span class="math inline">\(f\)</span> that evaluates the
+clustering <span class="math inline">\(\mathcal C\)</span> and returns
+lower score with better clustering. The best clustering will be <span class="math display">\[
+\arg \min_{\mathcal C} f(\mathcal C)
+\]</span> The number of all possibilities of clustering with <span class="math inline">\(M\)</span> elements is called the Bell number,
+denoted as <span class="math inline">\(B_M\)</span>. The calculation of
+the Bell number is based on dynamic programming. The number of ways to
+cluster <span class="math inline">\(M+1\)</span> elements is the sum of
+number of ways to:</p>
+<ul>
+<li>select <span class="math inline">\(1\)</span> element and cluster
+it, with the rest belong to one single cluster</li>
+<li>select <span class="math inline">\(2\)</span> elements and cluster
+them, with the rest belong to one single cluster</li>
 <li>…</li>
-<li>select <span class="math inline">\(M\)</span> elements and cluster them, with the rest belong to one cluster</li>
+<li>select <span class="math inline">\(M\)</span> elements and cluster
+them, with the rest belong to one single cluster</li>
 </ul>
 <p>Therefore, <span class="math display">\[
 \begin{gather}
 B_{M+1} = \sum_{i=1}^M\binom{M}{0}B_i \\
 B_0 = 1
 \end{gather}
-\]</span> The exhaustive method will be computationally intractable. We need either an approximation algorithm or a scoring function with special properties.</p>
+\]</span> The exhaustive method will be computationally intractable. We
+need either an approximation algorithm or a scoring function with
+special properties.</p>
 <h3 id="k-means">K-means</h3>
-<p>K-means assumes there are <span class="math inline">\(K\)</span> clusters. This greatly eliminates many possibilities described above. Its objective is <span class="math display">\[
-\min_{c_1,\dots,c_K}\sum_{i=1}^M||x^{(i)} - c_{z^{(i)}}||^2_2, \text{ where }z^{(i)} = \arg \min_{j \in \{1,\dots,K\}}||x^{(i)}-c_j||^2_2
-\]</span> <span class="math inline">\(z^{(i)}\)</span> is the cluster index to which <span class="math inline">\(x^{(i)}\)</span> is assigned. K-means’ objective is to assign each point to its closest cluster center and minimize the total within-cluster square errors. For cluster <span class="math inline">\(j\)</span>, let <span class="math inline">\(C_j = \{x^{(i)}|z^{(i)} = j\}\)</span> be the set of points assigned to it, then the cluster center of cluster <span class="math inline">\(j\)</span> is <span class="math display">\[
+<p>K-means assumes there are <span class="math inline">\(K\)</span>
+clusters. This greatly eliminates many possibilities described above.
+Its objective is <span class="math display">\[
+\min_{c_1,\dots,c_K}\sum_{i=1}^M||x^{(i)} - c_{z^{(i)}}||^2_2, \text{
+where }z^{(i)} = \arg \min_{j \in \{1,\dots,K\}}||x^{(i)}-c_j||^2_2
+\]</span> <span class="math inline">\(z^{(i)}\)</span> is the cluster
+index to which <span class="math inline">\(x^{(i)}\)</span> is assigned.
+K-means’ objective is to assign each point to its closest cluster center
+and minimize the total within-cluster square errors. For cluster <span class="math inline">\(j\)</span>, let <span class="math inline">\(C_j =
+\{x^{(i)}|z^{(i)} = j\}\)</span> be the set of points assigned to it,
+then the cluster center of cluster <span class="math inline">\(j\)</span> is <span class="math display">\[
 c_j = \frac{1}{|C_j|}\sum_{x^{(i)} \in C_j}x^{(i)}
-\]</span> However, both the cluster center <span class="math inline">\(\newcommand{\c}{\mathrm{c}} \c\)</span> and the assignment <span class="math inline">\(\newcommand{\z}{\mathrm{z}} \z\)</span> is initially unknown. K-means solves this by randomly pick up initial cluster centers and enter the assign-data-to-clusters/update-cluster-centers loop, until the cluster centers converge or become satisfactory. Rewrite the objective of K-means as:</p>
+\]</span> However, both the cluster center <span class="math inline">\(\newcommand{\c}{\mathrm{c}} \c\)</span> and the
+assignment <span class="math inline">\(\newcommand{\z}{\mathrm{z}}
+\z\)</span> is initially unknown. K-means solves this by randomly pick
+up initial cluster centers and enter the
+assign-data-to-clusters/update-cluster-centers loop, until the cluster
+centers converge or become satisfactory. Rewrite the objective of
+K-means as:</p>
 <p><span class="math display">\[
 \min_{\z,\c}(l(\z,\c) \coloneq \sum_{i=1}^M||x^{(i)}- c_{z^{(i)}}||^2_2)
-\]</span> K-means is in essence a coordinate descent of the loss <span class="math inline">\(l(\z,\c)\)</span>. The main loop of K-means is to:</p>
+\]</span> K-means is in essence a coordinate descent of the loss <span class="math inline">\(l(\z,\c)\)</span>. The main loop of K-means is
+to:</p>
 <ul>
-<li>assign data points to its nearest cluster center, i.e. minimizing over the assignment <span class="math inline">\(\z\)</span>.</li>
-<li>update cluster centers according to the points assigned to, i.e. minimizing over the centroids <span class="math inline">\(\c\)</span>.</li>
+<li>assign data points to its nearest cluster center, i.e. minimizing
+over the assignment <span class="math inline">\(\z\)</span>.</li>
+<li>update cluster centers according to the points assigned to,
+i.e. minimizing over the centroids <span class="math inline">\(\c\)</span>.</li>
 </ul>
-<p><span class="math inline">\(l\)</span> is monotonically decreasing after each step in the above loop. Also, <span class="math inline">\(l\)</span> is lower-bounded by <span class="math inline">\(0\)</span>. Therefore, <span class="math inline">\(l\)</span> and thus K-means will converge finally.</p>
-<p>Each cluster in K-means has a circular shape because of the Euclidean distance it uses.</p>
+<p><span class="math inline">\(l\)</span> is monotonically decreasing
+after each step in the above loop. Also, <span class="math inline">\(l\)</span> is lower-bounded by <span class="math inline">\(0\)</span>. Therefore, <span class="math inline">\(l\)</span> and thus K-means will converge
+finally.</p>
+<p>Each cluster in K-means has a circular shape because of the Euclidean
+distance it uses.</p>
+<p>For more discussion and an interesting image compression method with
+K-means, please refer <a href="https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a">here</a>.</p>
 <h3 id="gaussian-mixture-model">Gaussian Mixture Model</h3>
-<p>A cluster can also be modelled by a multi-variate Gaussian with elliptical shape: the elliptical shape is controlled by the covariance matrix; the location is controlled by the mean. Gaussian mixture model is a weighted sum of, say <span class="math inline">\(K\)</span>, Gaussian distributions: <span class="math display">\[
+<p>A cluster can also be modelled by a multi-variate Gaussian with
+elliptical shape: the elliptical shape is controlled by the covariance
+matrix; the location is controlled by the mean. Gaussian mixture model
+is a weighted sum of, say <span class="math inline">\(K\)</span>,
+Gaussian distributions: <span class="math display">\[
 p(x) = \sum_{j=1}^K\pi_j\mathcal N(x;\mu_j, \Sigma_j)
-\]</span> <span class="math inline">\(\pi_j\)</span> is the prior that a sample is generated from the <span class="math inline">\(j\)</span>-th Gaussian. <span class="math inline">\(\mathcal N(x;\mu_j, \Sigma_j)\)</span> is the probability to generate the sample <span class="math inline">\(x\)</span> from the <span class="math inline">\(j\)</span>-th Gaussian. Put it together, <span class="math inline">\(p(x)\)</span> is the total probability of <span class="math inline">\(x\)</span> over its latent <span class="math inline">\(z\)</span>, with <span class="math inline">\(z = j\)</span> representing the prior condition that <span class="math inline">\(x\)</span> is sampled from <span class="math inline">\(j\)</span>-th Gaussian. <span class="math display">\[
+\]</span> <span class="math inline">\(\pi_j\)</span> is the prior that a
+sample is generated from the <span class="math inline">\(j\)</span>-th
+Gaussian. <span class="math inline">\(\mathcal N(x;\mu_j,
+\Sigma_j)\)</span> is the probability to generate the sample <span class="math inline">\(x\)</span> from the <span class="math inline">\(j\)</span>-th Gaussian. Put it together, <span class="math inline">\(p(x)\)</span> is the total probability of <span class="math inline">\(x\)</span> over its latent <span class="math inline">\(z\)</span>, with <span class="math inline">\(z =
+j\)</span> representing the prior condition that <span class="math inline">\(x\)</span> is sampled from <span class="math inline">\(j\)</span>-th Gaussian. <span class="math display">\[
 p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^Kp(x|z = j)p(z = j)
 \]</span> GMM is learned by <span class="math display">\[
 \begin{gather}
-\max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) \triangleq \prod_{i=1}^Mp(x^{(i)})\Big) \\
+\max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) \triangleq
+\prod_{i=1}^Mp(x^{(i)})\Big) \\
 s.t.\quad \sum_{j=1}^K\pi_j = 1
 \end{gather}
 \]</span> The log-likelihood function form will be <span class="math display">\[
 \begin{gather}
-\max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) \triangleq \log L(\pi,\mu,\Sigma)\Big) \\
+\max_{\pi,\mu,\Sigma}\Big(l(\pi,\mu,\Sigma) \triangleq \log
+L(\pi,\mu,\Sigma)\Big) \\
 s.t.\quad \sum_{j=1}^K\pi_j = 1
 \end{gather}
 \]</span></p>
 <h4 id="attempt-with-lagrange-multiplier">Attempt with <a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></h4>
 <p><span class="math display">\[
 \begin{gather}
-L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)}) = \prod_{i=1}^M\sum_{j=1}^Kp(z_j)p(x|z = z_j) = \prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) \\
-l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j)\big)
+L(\pi,\mu,\Sigma) = \prod_{i=1}^Mp(x^{(i)}) =
+\prod_{i=1}^M\sum_{j=1}^Kp(z_j)p(x|z = z_j) =
+\prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) \\
+l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^K\pi_j\mathcal
+N(x^{(i)};\mu_j, \Sigma_j)\big)
 = \sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j)
 \end{gather}
 \]</span> The Lagrangian function will be <span class="math display">\[
-J(\pi,\mu,\Sigma,\lambda) = -\sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal N(x^{(i)};\mu_j, \Sigma_j) + \lambda(\sum_{j=1}^K\pi_j - 1)
-\]</span> This expression is just too hard to zero the derivatives. For example, writing <span class="math inline">\(\mathcal N(x^{(i)};\mu_j, \Sigma_j)\)</span> as <span class="math inline">\(z^{(i)}_j\)</span>, then take derivative w.r.t. <span class="math inline">\(\pi\)</span> and make it zero to give <span class="math display">\[
+J(\pi,\mu,\Sigma,\lambda) = -\sum_{i=1}^M\log\sum_{j=1}^K\pi_j\mathcal
+N(x^{(i)};\mu_j, \Sigma_j) + \lambda(\sum_{j=1}^K\pi_j - 1)
+\]</span> This expression is just too hard to zero the derivatives. For
+example, writing <span class="math inline">\(\mathcal N(x^{(i)};\mu_j,
+\Sigma_j)\)</span> as <span class="math inline">\(z^{(i)}_j\)</span>,
+then take derivative w.r.t. <span class="math inline">\(\pi\)</span> and
+make it zero to give <span class="math display">\[
 \begin{align}
-\frac{\partial J}{\partial \pi_j} &amp;= -\sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_j, \Sigma_j)} + \lambda \\
+\frac{\partial J}{\partial \pi_j} &amp;= -\sum_{i=1}^M\frac{\mathcal
+N(x^{(i)};\mu_j, \Sigma_j)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_j,
+\Sigma_j)} + \lambda \\
 &amp;\Downarrow \\
-\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_1, \Sigma_1)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_1, \Sigma_1)} \\
-\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_2, \Sigma_2)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_2, \Sigma_2)} \\
+\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_1,
+\Sigma_1)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_1, \Sigma_1)} \\
+\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_2,
+\Sigma_2)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_2, \Sigma_2)} \\
 &amp;\dots \\
-\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K, \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K)}\\
+\lambda &amp;= \sum_{i=1}^M\frac{\mathcal N(x^{(i)};\mu_K,
+\Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K)}\\
 \end{align}
 \]</span></p>
-<p>By far, the whole expression is too complicated for us to continue with.</p>
-<h4 id="attempt-with-expectation-maximization">Attempt with Expectation Maximization</h4>
+<p>By far, the whole expression is too complicated for us to continue
+with.</p>
+<h4 id="attempt-with-expectation-maximization">Attempt with Expectation
+Maximization</h4>
 <p><span class="math display">\[
 \begin{gather}
-L(\pi,\mu,\Sigma) = \prod_{i=1}^M p(x^{(i)}) = \prod_{i=1}^M \sum_{j=1}^K p(x^{(i)}, z^{(i)} = j) \\
-l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)\big)
+L(\pi,\mu,\Sigma) = \prod_{i=1}^M p(x^{(i)}) = \prod_{i=1}^M
+\sum_{j=1}^K p(x^{(i)}, z^{(i)} = j) \\
+l(\pi,\mu,\Sigma) = \log\big(\prod_{i=1}^M\sum_{j=1}^Kp(x^{(i)}, z^{(i)}
+= j)\big)
 = \sum_{i=1}^M\log\sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j)
 \end{gather}
-\]</span> By Jensen’s inequality, if <span class="math inline">\(\forall i \in \{ 1,\dots,M \}, j \in \{1,\dots,K\}, \alpha_j^{(i)} \ge 0\)</span> and <span class="math inline">\(\sum_{j=1}^K\alpha_j^{(i)} = 1\)</span>, <span class="math display">\[
+\]</span> By Jensen’s inequality, if <span class="math inline">\(\forall
+i \in \{ 1,\dots,M \}, j \in \{1,\dots,K\}, \alpha_j^{(i)} \ge
+0\)</span> and <span class="math inline">\(\sum_{j=1}^K\alpha_j^{(i)} =
+1\)</span>, <span class="math display">\[
 \begin{aligned}
-l(\pi,\mu,\Sigma) &amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)}, z^{(i)} = j) = \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
-&amp;\ge B(\alpha,\pi,\mu,\Sigma) := \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j}{\alpha^{(i)}_j} \\
+l(\pi,\mu,\Sigma) &amp;= \sum_{i=1}^M \log \sum_{j=1}^Kp(x^{(i)},
+z^{(i)} = j) = \sum_{i=1}^M \log \sum_{j=1}^K \alpha^{(i)}_j
+\frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{\alpha^{(i)}_j} \\
+&amp;\ge B(\alpha,\pi,\mu,\Sigma) := \sum_{i=1}^M \sum_{j=1}^K
+\alpha^{(i)}_j \log \frac{\mathcal N(x^{(i)};\mu_j, \Sigma_j)
+\pi_j}{\alpha^{(i)}_j} \\
 \end{aligned}
-\]</span> <span class="math inline">\(B\)</span> is the lower bound of <span class="math inline">\(l\)</span>. If we can enlarge <span class="math inline">\(B\)</span>, we can gently guarantee that <span class="math inline">\(l\)</span> is increasing in this process. As illustrated in <a href="/notes/articles/optimization/expectation-maximization/">expectation maximization</a>, <span class="math inline">\(\alpha^{(i)}_j\)</span> is chosen to be <span class="math inline">\(p(z^{(i)}=j | x^{(i)}; \pi^t, \mu^t,\Sigma^t)\)</span>, where <span class="math inline">\(\pi^t, \mu^t,\Sigma^t\)</span> are estimations in current iteration. With <span class="math inline">\(\alpha\)</span> being fixed, <span class="math display">\[
+\]</span> <span class="math inline">\(B\)</span> is the lower bound of
+<span class="math inline">\(l\)</span>. If we can enlarge <span class="math inline">\(B\)</span>, we can gently guarantee that <span class="math inline">\(l\)</span> is increasing in this process. As
+illustrated in <a href="/notes/articles/optimization/expectation-maximization/">expectation
+maximization</a>, <span class="math inline">\(\alpha^{(i)}_j\)</span> is
+chosen to be <span class="math inline">\(p(z^{(i)}=j | x^{(i)}; \pi^t,
+\mu^t,\Sigma^t)\)</span>, where <span class="math inline">\(\pi^t,
+\mu^t,\Sigma^t\)</span> are estimations in current iteration. With <span class="math inline">\(\alpha\)</span> being fixed, <span class="math display">\[
 \begin{aligned}
-B(\alpha,\pi,\mu,\Sigma) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j - \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \alpha^{(i)}_j \\
+B(\alpha,\pi,\mu,\Sigma) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log
+\mathcal N(x^{(i)};\mu_j, \Sigma_j) \pi_j - \sum_{i=1}^M \sum_{j=1}^K
+\alpha^{(i)}_j \log \alpha^{(i)}_j \\
 \end{aligned}
-\]</span> Grouping terms in <span class="math inline">\(B\)</span> that are relevant to <span class="math inline">\(\pi\)</span>, we are to <span class="math display">\[
+\]</span> Grouping terms in <span class="math inline">\(B\)</span> that
+are relevant to <span class="math inline">\(\pi\)</span>, we are to
+<span class="math display">\[
 \begin{gather}
 \max_\pi \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j \\
 s.t.\quad \sum_{i=1}^K \pi_j = 1
 \end{gather}
 \]</span> We do this by Lagrangian multipliers: <span class="math display">\[
-J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j + \lambda(1 - \sum_{i=1}^K\pi_i )
+J(\pi, \lambda) = \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \pi_j +
+\lambda(1 - \sum_{i=1}^K\pi_i )
 \]</span> Take derivative w.r.t. <span class="math inline">\(\pi_k\)</span> and make it zero to give <span class="math display">\[
-\frac{\partial J}{\partial \pi_k} =\sum_{i=1}^M \frac{\alpha^{(i)}_k}{\pi_k} - \lambda \\
+\frac{\partial J}{\partial \pi_k} =\sum_{i=1}^M
+\frac{\alpha^{(i)}_k}{\pi_k} - \lambda \\
 \Downarrow \\
 \pi_k^{t+1} = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{\lambda}
-\]</span> With the knowledge that <span class="math inline">\(\sum_{j=1}^K \pi_j = 1, \sum_{i=1}^M\alpha^{(i)}_j = 1\)</span>, we have <span class="math display">\[
+\]</span> With the knowledge that <span class="math inline">\(\sum_{j=1}^K \pi_j = 1, \sum_{i=1}^M\alpha^{(i)}_j
+= 1\)</span>, we have <span class="math display">\[
 \pi_k^{t+1} = \frac{\sum_{i=1}^M\alpha^{(i)}_k}{M}
 \]</span></p>
-<p>Take derivative w.r.t. <span class="math inline">\(\mu_k\)</span> and make it zero to give <span class="math display">\[
+<p>Take derivative w.r.t. <span class="math inline">\(\mu_k\)</span> and
+make it zero to give <span class="math display">\[
 \begin{aligned}
-\frac{\partial B}{\partial \mu_k} &amp;= \frac{\partial \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\partial \mu_k} \\
-&amp;= \frac{-\frac{1}{2} \partial \sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k)^T \Sigma_k^{-1} (x^{(i)} - \mu_k)}{\partial \mu_k} \\
+\frac{\partial B}{\partial \mu_k} &amp;= \frac{\partial \sum_{i=1}^M
+\sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j,
+\Sigma_j)}{\partial \mu_k} \\
+&amp;= \frac{-\frac{1}{2} \partial \sum_{i=1}^M \alpha^{(i)}_k (x^{(i)}
+- \mu_k)^T \Sigma_k^{-1} (x^{(i)} - \mu_k)}{\partial \mu_k} \\
 &amp;= \sum_{i=1}^M \alpha^{(i)}_k \Sigma_k^{-1} (x^{(i)} - \mu_k) \\
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
 \sum_{i=1}^M \alpha^{(i)}_k \Sigma_k^{-1} (x^{(i)} - \mu_k) &amp;= 0 \\
-\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) &amp;= 0, \text{ by the invertibility of $\Sigma_j^{-1}$} \\
+\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) &amp;= 0, \text{ by the
+invertibility of $\Sigma_j^{-1}$} \\
 \Downarrow \\
 \mu_k^{t+1} &amp;= \frac{\sum_{i=1}^M \alpha^{(i)}_k x^{(i)}}{M}
 \end{aligned}
 \]</span></p>
-<p>Take derivative w.r.t. <span class="math inline">\(\Sigma_k\)</span> and make it zero to give <span class="math display">\[
+<p>Take derivative w.r.t. <span class="math inline">\(\Sigma_k\)</span>
+and make it zero to give <span class="math display">\[
 \begin{aligned}
-\frac{\partial B}{\partial \Sigma_k} &amp;= \frac{\partial \sum_{i=1}^M \sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j, \Sigma_j)}{\partial \Sigma_k} \\
-&amp;= \frac{-\frac{1}{2} \partial \sum_{i=1}^M \alpha^{(i)}_k ((x^{(i)} - \mu_k)^T \Sigma_k^{-1} (x^{(i)} - \mu_k) + \log|\Sigma_k|)}{\partial \Sigma_k} \\
-&amp;= -\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) \\
+\frac{\partial B}{\partial \Sigma_k} &amp;= \frac{\partial \sum_{i=1}^M
+\sum_{j=1}^K \alpha^{(i)}_j \log \mathcal N(x^{(i)};\mu_j,
+\Sigma_j)}{\partial \Sigma_k} \\
+&amp;= \frac{-\frac{1}{2} \partial \sum_{i=1}^M \alpha^{(i)}_k ((x^{(i)}
+- \mu_k)^T \Sigma_k^{-1} (x^{(i)} - \mu_k) + \log|\Sigma_k|)}{\partial
+\Sigma_k} \\
+&amp;= -\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)}
+- \mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) \\
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{gather}
 \begin{aligned}
--\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) &amp;= 0 \\
-\sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T + I) &amp;= 0 \\
+-\frac{1}{2} \sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} -
+\mu_k) (x^{(i)} - \mu_k)^T \Sigma_k^{-1} + \Sigma_k^{-1}) &amp;= 0 \\
+\sum_{i=1}^M \alpha^{(i)}_k (-\Sigma_k^{-1} (x^{(i)} - \mu_k) (x^{(i)} -
+\mu_k)^T + I) &amp;= 0 \\
 \end{aligned} \\
 \Downarrow \\
-\Sigma_k^{t+1} = \frac{\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k) (x^{(i)} - \mu_k)^T}{\sum_{i=1}^M \alpha^{(i)}_k} \\
+\Sigma_k^{t+1} = \frac{\sum_{i=1}^M \alpha^{(i)}_k (x^{(i)} - \mu_k)
+(x^{(i)} - \mu_k)^T}{\sum_{i=1}^M \alpha^{(i)}_k} \\
 \end{gather}
 \]</span></p>
 <h3 id="soft-k-means">Soft K-means</h3>
-<p><span class="math inline">\(\alpha^{(i)}_j\)</span> in GMM, which measures how likely the sample <span class="math inline">\(i\)</span> is generated from <span class="math inline">\(j\)</span>-th Gaussian, can be viewed as a contribution of sample <span class="math inline">\(i\)</span> to the cluster <span class="math inline">\(j\)</span>. That is, a sample can contribute different portions to different clusters and these portions add up to <span class="math inline">\(1\)</span>.</p>
-<p>In the case where <span class="math inline">\(\pi_j = \frac{1}{K}, \Sigma_k = I\)</span>, <span class="math display">\[
+<p><span class="math inline">\(\alpha^{(i)}_j\)</span> in GMM, which
+measures how likely the sample <span class="math inline">\(i\)</span> is
+generated from <span class="math inline">\(j\)</span>-th Gaussian, can
+be viewed as a contribution of sample <span class="math inline">\(i\)</span> to the cluster <span class="math inline">\(j\)</span>. That is, a sample can contribute
+different portions to different clusters and these portions add up to
+<span class="math inline">\(1\)</span>.</p>
+<p>In the case where <span class="math inline">\(\pi_j = \frac{1}{K},
+\Sigma_k = I\)</span>, <span class="math display">\[
 \begin{gather}
-p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}}\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2) \\
-\alpha^{(i)}_j = p(z^{(i)} = j | x^{(i)}) = \frac{p(x^{(i)}|z^{(i)} = j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I) \frac{1}{K}}{\frac{1}{K} \sum_{k=1}^K \mathcal N(x;\mu_k, I)} = \frac{\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2)}{\sum_{k=1}^K \exp(-\frac{1}{2}||x^{(k)}-\mu_j||^2_2)}
+p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) =
+\frac{1}{\sqrt{(2\pi)^N}}\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2) \\
+\alpha^{(i)}_j = p(z^{(i)} = j | x^{(i)}) = \frac{p(x^{(i)}|z^{(i)} =
+j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I)
+\frac{1}{K}}{\frac{1}{K} \sum_{k=1}^K \mathcal N(x;\mu_k, I)} =
+\frac{\exp(-\frac{1}{2}||x^{(i)}-\mu_j||^2_2)}{\sum_{k=1}^K
+\exp(-\frac{1}{2}||x^{(k)}-\mu_j||^2_2)}
 \end{gather}
-\]</span> The “soft K-means” comes from the softmax of the Euclidean distance.</p>
+\]</span> The “soft K-means” comes from the softmax of the Euclidean
+distance.</p>
 <h2 id="external-material">External Material</h2>
-<p><a href="https://towardsdatascience.com/gaussian-mixture-models-vs-k-means-which-one-to-choose-62f2736025f0">Gaussian Mixture Models vs K-Means. | by K.Kubara | Towards Data Science</a></p>
+<p><a href="https://towardsdatascience.com/gaussian-mixture-models-vs-k-means-which-one-to-choose-62f2736025f0">Gaussian
+Mixture Models vs K-Means. | by K.Kubara | Towards Data Science</a></p>
 
 
 
@@ -1630,7 +1817,7 @@ p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1680,7 +1867,7 @@ p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1767,7 +1954,7 @@ p(x^{(i)}|z^{(i)} = j) = \mathcal N(x^{(i)};\mu_j, I) = \frac{1}{\sqrt{(2\pi)^N}
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

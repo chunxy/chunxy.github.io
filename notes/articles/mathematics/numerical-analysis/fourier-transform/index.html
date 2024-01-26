@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1314,13 +1342,15 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#continuous-time-fourier-transform">Continuous-time Fourier Transform</a>
+    <li><a href="#continuous-time-fourier-transform">Continuous-time Fourier
+Transform</a>
       <ul>
         <li><a href="#fourier-series">Fourier Series</a></li>
         <li><a href="#fourier-transform">Fourier Transform</a></li>
       </ul>
     </li>
-    <li><a href="#discrete-time-fourier-transform">Discrete-time Fourier Transform</a></li>
+    <li><a href="#discrete-time-fourier-transform">Discrete-time Fourier
+Transform</a></li>
   </ul>
 </nav>
 
@@ -1416,25 +1446,42 @@
           <div class="article-style">
             
 
-<h2 id="continuous-time-fourier-transform">Continuous-time Fourier Transform</h2>
+<h2 id="continuous-time-fourier-transform">Continuous-time Fourier
+Transform</h2>
 <h3 id="fourier-series">Fourier Series</h3>
-<p>In Euclidean space, we usually represent a vector by a set of independent and orthogonal base vectors (basis). Orthogonality means the inner product between two basis is zero. Inner product can also be defined on some common interval between two functions, and thus the orthogonality.</p>
+<p>In Euclidean space, we usually represent a vector by a set of
+independent and orthogonal base vectors (basis). Orthogonality means the
+inner product between two basis is zero. Inner product can also be
+defined on some common interval between two functions, and thus the
+orthogonality.</p>
 <h4 id="frequency-domain">Frequency Domain</h4>
-<p>It is intuitive to model after the inner product between vectors. Function (signal) on its domain can be viewed as an “infinite-dimension” vector. We represent this infinity in the definition of function inner product by integration. In particular, given two functions <span class="math inline">\(s\)</span> and <span class="math inline">\(g\)</span>, an interval <span class="math inline">\(I\)</span>, the inner product is <span class="math display">\[
+<p>It is intuitive to model after the inner product between vectors.
+Function (signal) on its domain can be viewed as an “infinite-dimension”
+vector. We represent this infinity in the definition of function inner
+product by integration. In particular, given two functions <span class="math inline">\(s\)</span> and <span class="math inline">\(g\)</span>, an interval <span class="math inline">\(I\)</span>, the inner product is <span class="math display">\[
 \int\limits_{x \in I}s(x)g(x)dx
 \]</span> <span class="math inline">\(s\)</span> and <span class="math inline">\(g\)</span> are orthogonal on interval <span class="math inline">\(I\)</span> if their inner product <span class="math inline">\(\int_{x \in I}s(x)g(x)dx = 0\)</span>.</p>
-<p>A set of basis of <span class="math inline">\(\R^N\)</span> Euclidean space contains <span class="math inline">\(N\)</span> independent orthogonal basis. For an “infinite-dimension” function space, there are an infinite number of basis, among which a group of sine and cosine functions satisfy. For integer <span class="math inline">\(k\)</span> and positive integers <span class="math inline">\(m, n\)</span>, <span class="math display">\[
+<p>A set of basis of <span class="math inline">\(\R^N\)</span> Euclidean
+space contains <span class="math inline">\(N\)</span> independent
+orthogonal basis. For an “infinite-dimension” function space, there are
+an infinite number of basis, among which a group of sine and cosine
+functions satisfy. For integer <span class="math inline">\(k\)</span>
+and positive integers <span class="math inline">\(m, n\)</span>, <span class="math display">\[
 \begin{aligned}
 \left\{
 \begin{array} \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx = \pi, m = n, m, n \ge 1 \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx = 0, m \ne n, m, n \ge 1 \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx = \pi, m = n, m, n
+\ge 1 \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx = 0, m \ne n, m, n
+\ge 1 \\
 \end{array}
 \right. \\
 \left\{
 \begin{array} \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx = \pi, m = n, m, n \ge 1 \\
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx = 0, m \ne n, m, n \ge 1 \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx = \pi, m = n, m, n
+\ge 1 \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx = 0, m \ne n, m, n
+\ge 1 \\
 \end{array}
 \right. \\
 \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx = 0, m, n \ge 1
@@ -1445,110 +1492,183 @@
 <ol type="1">
 <li><p><span class="math inline">\(m = n\)</span> <span class="math display">\[
 \begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos^2(nx)dx \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx &amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \cos^2(nx)dx \\
 &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{1 - \cos(2nx)}{2}dx \\
 &amp;= \pi
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin^2(nx)dx \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx &amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \sin^2(nx)dx \\
 &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{1 + \cos(2nx)}{2}dx \\
 &amp;= \pi
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(nx) \cos(nx)dx \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx &amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \sin(nx) \cos(nx)dx \\
 &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\sin(2nx)}{2}dx \\
 &amp;= 0
 \end{aligned}
 \]</span></p></li>
 <li><p><span class="math inline">\(m \ne n\)</span> <span class="math display">\[
 \begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\cos((m+n)x) + \cos((m-n)x)}{2}dx \\
-&amp;= \frac{\frac{\sin((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi} + \frac{\sin((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi}}{2} \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx &amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \frac{\cos((m+n)x) + \cos((m-n)x)}{2}dx \\
+&amp;= \frac{\frac{\sin((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi} + \frac{\sin((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi}}{2} \\
 &amp;= 0
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\cos((m+n)x) - \cos((m-n)x)}{2}dx \\
-&amp;= \frac{\frac{\sin((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi} - \frac{\sin((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi}}{2} \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx &amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \frac{\cos((m+n)x) - \cos((m-n)x)}{2}dx \\
+&amp;= \frac{\frac{\sin((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi} - \frac{\sin((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi}}{2} \\
 &amp;= 0
 \end{aligned}
 \]</span></p>
 <p><span class="math display">\[
 \begin{aligned}
-\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx &amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\sin((n+m)x) + \sin((n-m)x)}{2}dx \\
-&amp;= -\frac{\frac{\cos((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi} + \frac{\cos((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi + 2k\pi}}{2} \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx &amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \frac{\sin((n+m)x) + \sin((n-m)x)}{2}dx \\
+&amp;= -\frac{\frac{\cos((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi} + \frac{\cos((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi}}{2} \\
 &amp;= 0
 \end{aligned}
 \]</span></p></li>
 </ol></li>
 </ul>
-<p>In other words, we can use the linear combination of <span class="math inline">\(1, \cos(x), \sin(x), \cos(2x), \sin(2x), \dots\)</span> to fit any <strong>continuous function</strong> on interval <span class="math inline">\([-\pi, \pi]\)</span>. Or use <span class="math inline">\(1, \cos(2\pi fx), \sin(2\pi fx), \cos(2\pi f2x), \sin(2\pi f2x), \dots\)</span> to fit any function on interval <span class="math inline">\([\frac{-1}{2f} + \frac{k}{f}, \frac{1}{2f} + \frac{k}{f}]\)</span>, which can be any interval by choosing the value of <span class="math inline">\(f\)</span> (frequency) and the integer <span class="math inline">\(k\)</span>.</p>
-<p>A continuous function <span class="math inline">\(s\)</span> approximated with such series up to level <span class="math inline">\(N\)</span> can be written as: <span class="math display">\[
+<p>In other words, we can use the linear combination of <span class="math inline">\(1, \cos(x), \sin(x), \cos(2x), \sin(2x),
+\dots\)</span> to fit any <strong>continuous function</strong> on
+interval <span class="math inline">\([-\pi, \pi]\)</span>. Or use <span class="math inline">\(1, \cos(2\pi fx), \sin(2\pi fx), \cos(2\pi f2x),
+\sin(2\pi f2x), \dots\)</span> to fit any function on interval <span class="math inline">\([\frac{-1}{2f} + \frac{k}{f}, \frac{1}{2f} +
+\frac{k}{f}]\)</span>, which can be any interval by choosing the value
+of <span class="math inline">\(f\)</span> (frequency) and the integer
+<span class="math inline">\(k\)</span>.</p>
+<p>A continuous function <span class="math inline">\(s\)</span>
+approximated with such series up to level <span class="math inline">\(N\)</span> can be written as: <span class="math display">\[
 \begin{align}
 &amp;\begin{split}
-s_N(x) &amp;= a_0 + \sum_{i=1}^N \big( \underbrace{a_n}_{A_n\sin(\varphi_n)} \cos(2\pi fnx) + \underbrace{b_n}_{A_n\cos(\varphi_n)} \sin(2\pi fnx) \big) \\
-&amp;= a_0 + \sum_{n=1}^N \bigg( A_n\sin(2\pi fnx + \varphi_n) \bigg) \text{, where} \\
+s_N(x) &amp;= a_0 + \sum_{i=1}^N \big(
+\underbrace{a_n}_{A_n\sin(\varphi_n)} \cos(2\pi fnx) +
+\underbrace{b_n}_{A_n\cos(\varphi_n)} \sin(2\pi fnx) \big) \\
+&amp;= a_0 + \sum_{n=1}^N \bigg( A_n\sin(2\pi fnx + \varphi_n) \bigg)
+\text{, where} \\
 \end{split} \\
-\notag &amp;A_n = \sqrt{a_n^2 + b_n^2}, \sin(\varphi_n) = \frac{a_n}{\sqrt{a_n^2 + b_n^2}}, \cos(\varphi_n) = \frac{b_n}{\sqrt{a_n^2 + b_n^2}}
+\notag &amp;A_n = \sqrt{a_n^2 + b_n^2}, \sin(\varphi_n) =
+\frac{a_n}{\sqrt{a_n^2 + b_n^2}}, \cos(\varphi_n) =
+\frac{b_n}{\sqrt{a_n^2 + b_n^2}}
 \end{align}
-\]</span> <span class="math inline">\(A_n\)</span> can be interpreted as the amplitude, <span class="math inline">\(\varphi_n\)</span> as the phase, <span class="math inline">\(nf\)</span> as the frequency.</p>
+\]</span> <span class="math inline">\(A_n\)</span> can be interpreted as
+the amplitude, <span class="math inline">\(\varphi_n\)</span> as the
+phase, <span class="math inline">\(nf\)</span> as the frequency.</p>
 <h4 id="complex-frequency-domain">Complex Frequency Domain</h4>
 <p>By Euler’s Formula we have <span class="math display">\[
 e^{ix} = \cos x + i\sin x
-\]</span> Thus <span class="math inline">\(s_N(x)\)</span> can be re-written as <span class="math display">\[
+\]</span> Thus <span class="math inline">\(s_N(x)\)</span> can be
+re-written as <span class="math display">\[
 \begin{alignat}{2}
-s_N(x) &amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \bigg( \underbrace{a_n}_{A_n\cos \phi_n} \cos(2\pi fnx) + \underbrace{b_n}_{A_n\sin \phi_n} \sin(2\pi fnx) \bigg) \\
-&amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \bigg( A_n\cos(2\pi fnx - \phi_n) \bigg) \\
-&amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \frac{A_n}{2} \bigg( \cos(2\pi fnx - \phi_n) + i\sin(2\pi fnx - \phi_n) \bigg) \\
-&amp; &amp;&amp;+ \sum_{n=1}^N \frac{A_n}{2} \bigg( \cos(2\pi fnx - \phi_n) - i\sin(2\pi fnx - \phi_n) \bigg) \\
-&amp; &amp;&amp;\Downarrow_\text{by multiplication rule between complex numbers in polar form}  \\
+s_N(x) &amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \bigg(
+\underbrace{a_n}_{A_n\cos \phi_n} \cos(2\pi fnx) +
+\underbrace{b_n}_{A_n\sin \phi_n} \sin(2\pi fnx) \bigg) \\
+&amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \bigg( A_n\cos(2\pi fnx - \phi_n)
+\bigg) \\
+&amp;= a_0 &amp;&amp;+ \sum_{n=1}^N \frac{A_n}{2} \bigg( \cos(2\pi fnx -
+\phi_n) + i\sin(2\pi fnx - \phi_n) \bigg) \\
+&amp; &amp;&amp;+ \sum_{n=1}^N \frac{A_n}{2} \bigg( \cos(2\pi fnx -
+\phi_n) - i\sin(2\pi fnx - \phi_n) \bigg) \\
+&amp; &amp;&amp;\Downarrow_\text{by multiplication rule between complex
+numbers in polar form}  \\
 &amp;= &amp;&amp; \sum_{n=-N}^N c_ne^{i 2\pi fnx} \\
 \end{alignat}
 \]</span> where <span class="math display">\[
 \begin{eqnarray}
-c_n &amp;= 
+c_n &amp;=
 \begin{cases}
-\frac{A_n}{2}(\cos \phi_n - i\sin \phi_n) = \frac{1}{2}(a_n - ib_n), &amp;n &gt; 0 \\
-\overline{c_{|n|}} =\frac{A_n}{2}(\cos \phi_n + i\sin \phi_n), &amp;n &lt; 0 \\
+\frac{A_n}{2}(\cos \phi_n - i\sin \phi_n) = \frac{1}{2}(a_n - ib_n),
+&amp;n &gt; 0 \\
+\overline{c_{|n|}} =\frac{A_n}{2}(\cos \phi_n + i\sin \phi_n), &amp;n
+&lt; 0 \\
 a_0, &amp;n = 0
 \end{cases}
 \end{eqnarray}
 \]</span></p>
-<p>When <span class="math inline">\(N \to +\infty\)</span>, <span class="math inline">\(s\)</span> can be reconstructed as the Fourier Series: <span class="math display">\[
-s(x) = \lim_{N \to +\infty} s_N(x) = a_0 + \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg) \\
-\]</span> The problem comes how <span class="math inline">\(a_i\)</span> can be computed. By the orthogonality mentioned before, we have <span class="math display">\[
+<p>When <span class="math inline">\(N \to +\infty\)</span>, <span class="math inline">\(s\)</span> can be reconstructed as the Fourier
+Series: <span class="math display">\[
+s(x) = \lim_{N \to +\infty} s_N(x) = a_0 + \sum_{n=1}^{+\infty} \bigg(
+a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg) \\
+\]</span> The problem comes how <span class="math inline">\(a_i\)</span>
+can be computed. By the orthogonality mentioned before, we have <span class="math display">\[
 \begin{gather}
-\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \d x = \int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \d x = \frac{1}{f} a_0 \\
-\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \cos(2\pi fkx) \d x = \int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \cos (2\pi fkx) \d x = \frac{1}{2f} a_k \\
-\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \sin(2\pi fkx) \d x =\int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \sin (2\pi fkx) \d x = \frac{1}{2f} b_k \\
+\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \d x = \int_{-1/2f+f/k}^{1/2f+f/k} [a_0
++ \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx)
+\bigg)] \d x = \frac{1}{f} a_0 \\
+\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \cos(2\pi fkx) \d x =
+\int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n
+\cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \cos (2\pi fkx) \d x =
+\frac{1}{2f} a_k \\
+\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \sin(2\pi fkx) \d x
+=\int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n
+\cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \sin (2\pi fkx) \d x =
+\frac{1}{2f} b_k \\
 \end{gather}
-\]</span> The computation of <span class="math inline">\(a_k\)</span> and <span class="math inline">\(b_k\)</span> can be combined together by the Euler’s Formula: <span class="math display">\[
+\]</span> The computation of <span class="math inline">\(a_k\)</span>
+and <span class="math inline">\(b_k\)</span> can be combined together by
+the Euler’s Formula: <span class="math display">\[
 \begin{aligned}
-\int_{-1/2f+f/k}^{1/2f+f/k} s(x) e^{-i 2\pi fkx} \d x &amp; = \int_{-1/2f+f/k}^{1/2f+f/k} (a_k \cos(2\pi fkx) + b_k \sin(2\pi fkx)) (\cos(2\pi fkx) - i \sin(2\pi fkx)) \d x \\
+\int_{-1/2f+f/k}^{1/2f+f/k} s(x) e^{-i 2\pi fkx} \d x &amp; =
+\int_{-1/2f+f/k}^{1/2f+f/k} (a_k \cos(2\pi fkx) + b_k \sin(2\pi fkx))
+(\cos(2\pi fkx) - i \sin(2\pi fkx)) \d x \\
 &amp;= \frac{1}{2f} (a_k - i b_k) = \frac{1}{f} c_k
 \end{aligned}
 \]</span></p>
 <h3 id="fourier-transform">Fourier Transform</h3>
-<p>We have been through representing a continuous function on a certain interval using the Fourier Series. This can be quite useful for periodic functions. As long as we figure out the representation on its repeating interval, we obtain the representation on its whole domain. The problem is more of computing the factor for each sine and cosine function.</p>
-<p>The process of finding out factors for an arbitrary continuous function <span class="math inline">\(s\)</span> is called Fourier Transform. It transforms the function <span class="math inline">\(s\)</span> from the time domain to the frequency domain. When <span class="math inline">\(s\)</span> is periodic, it can be easily represented by the Fourier Series as discussed in previous section. When <span class="math inline">\(s\)</span> is not periodic, we can treat the periodic interval as <span class="math inline">\([-\infty, +\infty]\)</span>. Its Fourier Transform and the inverse will be <span class="math display">\[
+<p>We have been through representing a continuous function on a certain
+interval using the Fourier Series. This can be quite useful for periodic
+functions. As long as we figure out the representation on its repeating
+interval, we obtain the representation on its whole domain. The problem
+is more of computing the factor for each sine and cosine function.</p>
+<p>The process of finding out factors for an arbitrary continuous
+function <span class="math inline">\(s\)</span> is called Fourier
+Transform. It transforms the function <span class="math inline">\(s\)</span> from the time domain to the frequency
+domain. When <span class="math inline">\(s\)</span> is periodic, it can
+be easily represented by the Fourier Series as discussed in previous
+section. When <span class="math inline">\(s\)</span> is not periodic, we
+can treat the periodic interval as <span class="math inline">\([-\infty,
++\infty]\)</span>. Its Fourier Transform and the inverse will be <span class="math display">\[
 \begin{gather*}
 \hat s \stackrel{\mathcal F}\Longleftrightarrow s \\
 \hat s(f) = \int_{-\infty}^{+\infty} s(t) e^{-i 2\pi f x} \d t \\
 s(x) = \int_{-\infty}^{+\infty} \hat s(f) e^{i 2\pi f x} \d f
 \end{gather*}
 \]</span></p>
-<h2 id="discrete-time-fourier-transform">Discrete-time Fourier Transform</h2>
-<p>The domain (time axis) of the function (signal) is continuous in our discussion by now. When the time axis is discrete (and usually takes on a series of integers), we are facing the Discrete-time Fourier Transform. We will be using the term <strong>signal</strong> instead of the function from now on.</p>
-<p>For a discrete signal <span class="math inline">\(s\)</span>, its Fourier Transform is <span class="math display">\[
+<h2 id="discrete-time-fourier-transform">Discrete-time Fourier
+Transform</h2>
+<p>The domain (time axis) of the function (signal) is continuous in our
+discussion by now. When the time axis is discrete (and usually takes on
+a series of integers), we are facing the Discrete-time Fourier
+Transform. We will be using the term <strong>signal</strong> instead of
+the function from now on.</p>
+<p>For a discrete signal <span class="math inline">\(s\)</span>, its
+Fourier Transform is <span class="math display">\[
 \hat s(\omega) = \sum_{k=-\infty}^{+\infty} s[k] e^{-i\omega k}
-\]</span> where <span class="math inline">\(\omega\)</span> is the angular speed. <span class="math inline">\(\omega\)</span> is in the unit of radian/sample. <span class="math inline">\(\hat s(\omega)\)</span> is the weight of the component which walks <span class="math inline">\(\omega\)</span> between two signal samples. <span class="math display">\[
+\]</span> where <span class="math inline">\(\omega\)</span> is the
+angular speed. <span class="math inline">\(\omega\)</span> is in the
+unit of radian/sample. <span class="math inline">\(\hat
+s(\omega)\)</span> is the weight of the component which walks <span class="math inline">\(\omega\)</span> between two signal samples. <span class="math display">\[
 \hat s(f) = \sum_{k=-\infty}^{+\infty} s[k] e^{-i 2\pi f k}
-\]</span> where <span class="math inline">\(f\)</span> is the “frequency”. <span class="math inline">\(f\)</span> is in the unit of cycles/sample. <span class="math inline">\(\hat s(f)\)</span> is the weight of the component which walks <span class="math inline">\(f\)</span> cycles between two signal samples.</p>
+\]</span> where <span class="math inline">\(f\)</span> is the
+“frequency”. <span class="math inline">\(f\)</span> is in the unit of
+cycles/sample. <span class="math inline">\(\hat s(f)\)</span> is the
+weight of the component which walks <span class="math inline">\(f\)</span> cycles between two signal samples.</p>
 <p>Todo</p>
 <ul class="task-list">
 <li><input type="checkbox" disabled=""/>
@@ -1558,8 +1678,11 @@ Laplace Transform</li>
 <li><input type="checkbox" disabled=""/>
 Fast Fourier Transform</li>
 </ul>
-<p><a href="https://www.jezzamon.com/fourier/zh-cn.html">傅里叶变换交互式入门 (jezzamon.com)</a> || <a href="https://charlesliuyx.github.io/2018/02/18/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E8%AE%A9%E4%BD%A0%E6%B0%B8%E8%BF%9C%E5%BF%98%E4%B8%8D%E4%BA%86%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E8%A7%A3%E6%9E%90/">傅立叶变换与群</a></p>
-<p><a href="https://www.zhihu.com/question/19714540/answer/1119070975">如何理解傅里叶变换公式？ - 苗华栋的回答 - 知乎</a> || <a href="https://www.zhihu.com/question/19714540/answer/334686351">如何理解傅里叶变换公式？ - 马同学的回答 - 知乎</a></p>
+<p><a href="https://www.jezzamon.com/fourier/zh-cn.html">傅里叶变换交互式入门
+(jezzamon.com)</a> || <a href="https://charlesliuyx.github.io/2018/02/18/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E8%AE%A9%E4%BD%A0%E6%B0%B8%E8%BF%9C%E5%BF%98%E4%B8%8D%E4%BA%86%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E8%A7%A3%E6%9E%90/">傅立叶变换与群</a></p>
+<p><a href="https://www.zhihu.com/question/19714540/answer/1119070975">如何理解傅里叶变换公式？
+- 苗华栋的回答 - 知乎</a> || <a href="https://www.zhihu.com/question/19714540/answer/334686351">如何理解傅里叶变换公式？
+- 马同学的回答 - 知乎</a></p>
 
 
 
@@ -1643,7 +1766,7 @@ Fast Fourier Transform</li>
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1693,7 +1816,7 @@ Fast Fourier Transform</li>
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1780,7 +1903,7 @@ Fast Fourier Transform</li>
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

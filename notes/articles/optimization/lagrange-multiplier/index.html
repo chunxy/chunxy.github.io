@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1405,71 +1433,130 @@
             
 
 <h2 id="standard-form">Standard Form</h2>
-<p>The standard form of the Lagrange multiplier optimization problem is <span class="math display">\[
+<p>The standard form of the Lagrange multiplier optimization problem is
+<span class="math display">\[
 \begin{aligned}
 &amp;\inf f_0(x) \\
 s.t.\quad &amp; f_i(x) \le 0, i = 1,\dots,r \\
 &amp; h_i(x) = 0, i = 1,\dots,s \\
 \end{aligned}
-\]</span> Denote the feasible set of <span class="math inline">\(x\)</span> that satisfies all the requirements in the above problem as <span class="math inline">\(\mathcal X \subseteq \R^n\)</span>. Then the Lagrangian function is <span class="math inline">\(L:\R^n \times \R^r \times \R^s \mapsto \R\)</span> (there is an implicit constraint that the variables must reside in the natural domain of the functions):</p>
+\]</span> Denote the feasible set of <span class="math inline">\(x\)</span> that satisfies all the requirements in
+the above problem as <span class="math inline">\(\mathcal X \subseteq
+\R^n\)</span>. Then the Lagrangian function is <span class="math inline">\(L:\R^n \times \R^r \times \R^s \mapsto \R\)</span>
+(there is an implicit constraint that the variables must reside in the
+natural domain of the functions):</p>
 <p><span class="math display">\[
-L(x, \lambda, \mu) = f_0(x) + \sum_{i=1}^r\lambda_if_i(x) + \sum_{i=1}^s\mu_ih_i(x)
-\]</span> Define the function <span class="math inline">\(P: \mathcal X \mapsto \R\)</span> as <span class="math display">\[
+L(x, \lambda, \mu) = f_0(x) + \sum_{i=1}^r\lambda_if_i(x) +
+\sum_{i=1}^s\mu_ih_i(x)
+\]</span> Define the function <span class="math inline">\(P: \mathcal X
+\mapsto \R\)</span> as <span class="math display">\[
 P(x) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x,\lambda,\mu)
 \]</span> The primal problem is <span class="math display">\[
+\begin{equation}
 \inf_{x \in \mathcal X} P(x) \label{primal}
-\]</span> It is easy to have <span class="math inline">\(P(x) =f_0(x)\)</span> on <span class="math inline">\(\mathcal X\)</span>. Thus the primal problem is equivalent to the original problem. Denote primal problem <span class="math inline">\(\eqref{primal}\)</span>’s optimal value as <span class="math inline">\(p^\star\)</span>.</p>
-<p>Define the dual function <span class="math inline">\(D: \R^r \times \R^s \mapsto \R\)</span> as <span class="math display">\[
+\end{equation}
+\]</span> It is easy to have <span class="math inline">\(P(x)
+=f_0(x)\)</span> on <span class="math inline">\(\mathcal X\)</span>.
+Thus the primal problem is equivalent to the original problem. Denote
+primal problem <span class="math inline">\(\eqref{primal}\)</span>’s
+optimal value as <span class="math inline">\(p^\star\)</span>.</p>
+<p>Define the dual function <span class="math inline">\(D: \R^r \times
+\R^s \mapsto \R\)</span> as <span class="math display">\[
 D(\lambda, \mu) = \inf_{x \in \mathcal \R^n}L(x, \lambda, \mu)
 \]</span> The Lagrangian dual problem is <span class="math display">\[
+\begin{equation}
 \sup_{\lambda,\mu;\lambda_i \ge 0} D(\lambda, \mu) \label{dual}
+\end{equation}
 \]</span> Denote the dual problem <span class="math inline">\(\eqref{dual}\)</span>’s optimal value as <span class="math inline">\(d^\star\)</span>. We always have <span class="math inline">\(p^\star \ge d^\star\)</span>.</p>
 <ul>
 <li><p>Proof</p>
-<p>For any feasible <span class="math inline">\(x \in \mathcal X, (\lambda, \mu) \in {\R^r}^+ \times \R^s\)</span>, <span class="math display">\[
-P(x) = \sup\limits_{\lambda&#39;,\mu&#39;;\lambda&#39;_i \ge 0}L(x,\lambda&#39;,\mu&#39;) \ge L(x,\lambda,\mu) \ge \inf_{x&#39; \in \R^n}L(x&#39;, \lambda, \mu) =D (\lambda, \mu)
-\]</span> Therefore <span class="math inline">\(p^\star \ge d^\star\)</span>.</p></li>
+<p>For any feasible <span class="math inline">\(x \in \mathcal X,
+(\lambda, \mu) \in {\R^r}^+ \times \R^s\)</span>, <span class="math display">\[
+P(x) = \sup\limits_{\lambda&#39;,\mu&#39;;\lambda&#39;_i \ge
+0}L(x,\lambda&#39;,\mu&#39;) \ge L(x,\lambda,\mu) \ge \inf_{x&#39; \in
+\R^n}L(x&#39;, \lambda, \mu) =D (\lambda, \mu)
+\]</span> Therefore <span class="math inline">\(p^\star \ge
+d^\star\)</span>.</p></li>
 </ul>
 <h3 id="strong-duality">Strong Duality</h3>
-<p><span class="math inline">\(p^\star \ge d^\star\)</span> is called weak duality because it always holds. <span class="math inline">\(p^\star = d^\star\)</span> is called strong duality because it does not hold in general. Assume, though, a strong duality holds, let <span class="math inline">\(x^\star\)</span> be the primal optima, <span class="math inline">\((\lambda^\star, \mu^\star)\)</span> be the dual optima, then</p>
+<p><span class="math inline">\(p^\star \ge d^\star\)</span> is called
+weak duality because it always holds. <span class="math inline">\(p^\star = d^\star\)</span> is called strong
+duality because it does not hold in general. Assume, though, a strong
+duality holds, let <span class="math inline">\(x^\star\)</span> be the
+primal optima, <span class="math inline">\((\lambda^\star,
+\mu^\star)\)</span> be the dual optima, then</p>
 <p><span class="math display">\[
 f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) \\
 \]</span></p>
 <ul>
 <li><p>Proof <span class="math display">\[
 \begin{gathered}
-f_0(x^\star) = p^\star = d^\star = D(\lambda^\star, \mu^\star) = \inf_{x \in \R^n}L(x,\lambda^\star,\mu^\star) \le L(x^\star,\lambda^\star,\mu^\star) \\
-f_0(x^\star) = p^\star = P(x^\star) = \sup\limits_{\lambda,\mu;\lambda_i \ge 0}L(x^\star,\lambda,\mu) \ge L(x^\star,\lambda^\star,\mu^\star) \\
-L(x^\star,\lambda^\star,\mu^\star) \le f_0(x^\star) \le L(x^\star,\lambda^\star,\mu^\star)
+f_0(x^\star) = p^\star = d^\star = D(\lambda^\star, \mu^\star) = \inf_{x
+\in \R^n}L(x,\lambda^\star,\mu^\star) \le
+L(x^\star,\lambda^\star,\mu^\star) \\
+f_0(x^\star) = p^\star = P(x^\star) = \sup\limits_{\lambda,\mu;\lambda_i
+\ge 0}L(x^\star,\lambda,\mu) \ge L(x^\star,\lambda^\star,\mu^\star) \\
+L(x^\star,\lambda^\star,\mu^\star) \le f_0(x^\star) \le
+L(x^\star,\lambda^\star,\mu^\star)
 \end{gathered}
 \]</span></p>
 <p>Therefore, <span class="math display">\[
-f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\star,\mu^\star)
+f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) =
+L(x^\star,\lambda^\star,\mu^\star)
 \]</span></p></li>
 </ul>
-<p>If the strong duality holds and <span class="math inline">\((x^\star,\lambda^\star,\mu^\star)\)</span> is the optima, they must satisfy the KKT conditions, and we can leverage the KKT conditions to solve the optima and optimal value:</p>
-<h4 id="karush-kuhn-tucker-conditions">Karush-Kuhn-Tucker Conditions</h4>
-<p>In standard optimization problem, KKT conditions refer to the below four:</p>
+<p>If the strong duality holds and <span class="math inline">\((x^\star,\lambda^\star,\mu^\star)\)</span> is the
+optima, they must satisfy the KKT conditions, and we can leverage the
+KKT conditions to solve the optima and optimal value:</p>
+<h4 id="karush-kuhn-tucker-conditions">Karush-Kuhn-Tucker
+Conditions</h4>
+<p>In standard optimization problem, KKT conditions refer to the below
+four:</p>
 <ul>
-<li><p><strong>primal constraint</strong>: <span class="math inline">\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) = 0\)</span>;</p></li>
+<li><p><strong>primal constraint</strong>: <span class="math inline">\(f_1(x) \dots,f_r(x) \le 0, h_1(x),\dots,h_s(x) =
+0\)</span>;</p></li>
 <li><p><strong>dual constraint</strong>: <span class="math inline">\(\lambda_1,\dots,\lambda_r \ge 0\)</span>;</p></li>
-<li><p><strong>complementary slackness</strong>: <span class="math inline">\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) = 0\)</span>;</p></li>
+<li><p><strong>complementary slackness</strong>: <span class="math inline">\(\lambda_1f_1(x),\dots,\lambda_rf_r(x) =
+0\)</span>;</p></li>
 <li><p><strong>vanishing gradient</strong> of Lagrangian w.r.t. <span class="math inline">\(x\)</span> : <span class="math display">\[
-\nabla f_0(x) + \sum_{i=1}^r\lambda_i\nabla f_i(x) + \sum_{i=1}^s\mu_i\nabla h_i(x) = 0
+\nabla f_0(x) + \sum_{i=1}^r\lambda_i\nabla f_i(x) +
+\sum_{i=1}^s\mu_i\nabla h_i(x) = 0
 \]</span></p></li>
 </ul>
-<p>Note that solutions satisfying KKT conditions do not imply a strong duality or an optimal point. For a better discussion between strong duality and KKT conditions, please go to <a href="https://math.stackexchange.com/questions/3616646/question-about-kkt-conditions-and-strong-duality">this discussion</a>.</p>
+<p>Note that solutions satisfying KKT conditions do not imply a strong
+duality or an optimal point. For a better discussion between strong
+duality and KKT conditions, please go to <a href="https://math.stackexchange.com/questions/3616646/question-about-kkt-conditions-and-strong-duality">this
+discussion</a>.</p>
 <h3 id="when-to-apply">When-to-apply</h3>
 <h4 id="slater-condition">Slater Condition</h4>
-<p>Strong duality does not hold generally. But it does hold in <a href="/notes/articles/optimization/convex-optimization/#Standard Form of the Convex Optimization Problem">standard convex optimization problem</a>. In such case, KKT conditions are also sufficient for strong duality provided that <span class="math inline">\(x^\star\)</span> is an interior point of the feasible region.</p>
+<p>Strong duality does not hold generally. But it does hold in <a href="/notes/articles/optimization/convex-optimization/#Standard Form">standard convex optimization
+problem</a>. In such case, KKT conditions are also sufficient for strong
+duality provided that <span class="math inline">\(x^\star\)</span> is an
+interior point of the feasible region.</p>
 <h4 id="general-case">General Case</h4>
-<p>In cases where we cannot tell strong duality directly, we may still try to apply Lagrangian multiplier to convert the primal problem to the less-constrained dual problem (<span class="math inline">\(\lambda \ge 0\)</span> is much looser than the constraints in the original problem). That is, we solve <span class="math inline">\(d^\star\)</span> first, and then check if <span class="math inline">\(d^\star = p^\star\)</span>. We do so with the following process:</p>
+<p>In cases where we cannot tell strong duality directly, we may still
+try to apply Lagrangian multiplier to convert the primal problem to the
+less-constrained dual problem (<span class="math inline">\(\lambda \ge
+0\)</span> is much looser than the constraints in the original problem).
+That is, we solve <span class="math inline">\(d^\star\)</span> first,
+and then check if <span class="math inline">\(d^\star =
+p^\star\)</span>. We do so with the following process:</p>
 <ul>
-<li>firstly take derivative of <span class="math inline">\(L\)</span> w.r.t. the unconstrained <span class="math inline">\(x\)</span> and make it zero (vanishing gradient) to obtain the closed-form expression of <span class="math inline">\(D(\lambda, \mu)\)</span>,</li>
-<li>find <span class="math inline">\(\lambda^\star \ge 0\)</span> (dual constraint) and <span class="math inline">\(\mu^\star\)</span> that maximizes the <span class="math inline">\(D(\lambda, \mu)\)</span> and solve <span class="math inline">\(x^\star\)</span> w.r.t. <span class="math inline">\(\lambda^\star\)</span> and <span class="math inline">\(\mu^\star\)</span>,</li>
-<li>finally verify that <span class="math inline">\(x^\star\)</span> satisfies the constraints (primal constraint and the implied complementary slackness) in the original problem and <span class="math inline">\(f_0(x^\star) = d^\star\)</span> (strong duality).</li>
+<li>firstly take derivative of <span class="math inline">\(L\)</span>
+w.r.t. the unconstrained <span class="math inline">\(x\)</span> and make
+it zero (vanishing gradient) to obtain the closed-form expression of
+<span class="math inline">\(D(\lambda, \mu)\)</span>,</li>
+<li>find <span class="math inline">\(\lambda^\star \ge 0\)</span> (dual
+constraint) and <span class="math inline">\(\mu^\star\)</span> that
+maximizes the <span class="math inline">\(D(\lambda, \mu)\)</span> and
+solve <span class="math inline">\(x^\star\)</span> w.r.t. <span class="math inline">\(\lambda^\star\)</span> and <span class="math inline">\(\mu^\star\)</span>,</li>
+<li>finally verify that <span class="math inline">\(x^\star\)</span>
+satisfies the constraints (primal constraint and the implied
+complementary slackness) in the original problem and <span class="math inline">\(f_0(x^\star) = d^\star\)</span> (strong
+duality).</li>
 </ul>
-<p>If we can successfully go through the above process, we can still solve the problem with Lagrangian multiplier.</p>
+<p>If we can successfully go through the above process, we can still
+solve the problem with Lagrangian multiplier.</p>
 
 
 
@@ -1553,7 +1640,7 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1603,7 +1690,7 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1690,7 +1777,7 @@ f_0(x^\star) = P(x^\star) = D(\lambda^\star, \mu^\star) = L(x^\star,\lambda^\sta
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value." />
+  <meta name="description" content="Spectral normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), which is exactly \(A\)’s largest singular value \(\sigma_{\max}(A)\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/" />
   <meta property="og:title" content="Spectral Normalization | Chunxy&#39; Website" />
-  <meta property="og:description" content="Spectral Normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), \(\sigma_{\max}(A)\) is \(A\)’s largest singular value." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Spectral normalization of an \(M \times N\) matrix \(A\) is defined as \[ ||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A) \] where \(\rm z \in \R^N\), \(\lambda_{\max}(A^TA)\) is the maximum eigenvalue of matrix \(A^TA\), which is exactly \(A\)’s largest singular value \(\sigma_{\max}(A)\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1312,11 +1340,7 @@
         <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
       </ul>
 
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#power-iteration">Power Iteration</a></li>
-  </ul>
-</nav>
+      <nav id="TableOfContents"></nav>
 
       
     </div>
@@ -1420,40 +1444,40 @@
 
           <div class="article-style">
             
-
-<p>Spectral Normalization of an <span class="math inline">\(M \times N\)</span> matrix <span class="math inline">\(A\)</span> is defined as <span class="math display">\[
-||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} = \sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A)
-\]</span> where <span class="math inline">\(\rm z \in \R^N\)</span>, <span class="math inline">\(\lambda_{\max}(A^TA)\)</span> is the maximum eigenvalue of matrix <span class="math inline">\(A^TA\)</span>, <span class="math inline">\(\sigma_{\max}(A)\)</span> is <span class="math inline">\(A\)</span>’s largest singular value.</p>
-<p>The equation on the right can be proved in this way: <span class="math display">\[
-\max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} \iff \max_{\mathrm z} \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2}
-\]</span> We may force a constraint on <span class="math inline">\(\mathrm z\)</span> such that <span class="math inline">\(||\mathrm z||^2_2 = 1\)</span>. This is because <span class="math display">\[
-\frac{||Ac\mathrm z||^2_2}{||c\mathrm z||^2_2} = \frac{c^2||A\mathrm z||^2_2}{c^2||\mathrm z||^2_2} = \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2}
+<p>Spectral normalization of an <span class="math inline">\(M \times
+N\)</span> matrix <span class="math inline">\(A\)</span> is defined as
+<span class="math display">\[
+||A||_2 = \max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} =
+\sqrt{\lambda_{\max}(A^TA)} = \sigma_{\max}(A)
+\]</span> where <span class="math inline">\(\rm z \in \R^N\)</span>,
+<span class="math inline">\(\lambda_{\max}(A^TA)\)</span> is the maximum
+eigenvalue of matrix <span class="math inline">\(A^TA\)</span>, which is
+exactly <span class="math inline">\(A\)</span>’s largest singular value
+<span class="math inline">\(\sigma_{\max}(A)\)</span>.</p>
+<p>To prove it, firstly note that: <span class="math display">\[
+\max_{\mathrm z} \frac{||A\mathrm z||_2}{||\mathrm z||_2} \iff
+\max_{\mathrm z} \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2}
+\]</span> We may force a constraint on <span class="math inline">\(\mathrm z\)</span> such that <span class="math inline">\(||\mathrm z||^2_2 = 1\)</span>. This is because
+<span class="math display">\[
+\frac{||Ac\mathrm z||^2_2}{||c\mathrm z||^2_2} = \frac{c^2||A\mathrm
+z||^2_2}{c^2||\mathrm z||^2_2} = \frac{||A\mathrm z||^2_2}{||\mathrm
+z||^2_2}
 \]</span> The problem becomes <span class="math display">\[
 \begin{gather}
-\max_{\mathrm z} \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2} = ||A\mathrm z||^2_2 = \mathrm z^TA^TA\mathrm z \\
+\max_{\mathrm z} \frac{||A\mathrm z||^2_2}{||\mathrm z||^2_2} =
+||A\mathrm z||^2_2 = \mathrm z^TA^TA\mathrm z \\
 s.t. ||\mathrm z||^2_2 = 1
 \end{gather}
-\]</span> This can be solved by Lagrange Multiplier, where the Lagrangian function will be <span class="math display">\[
-L(\mathrm z, \lambda) = \mathrm z^TA^TA\mathrm z + \lambda(||\mathrm z||^2_2 - 1)
+\]</span> This can be solved by Lagrange multiplier, where the
+Lagrangian function will be <span class="math display">\[
+L(\mathrm z, \lambda) = \mathrm z^TA^TA\mathrm z + \lambda(||\mathrm
+z||^2_2 - 1)
 \]</span></p>
-<p>The extrapolation of the Spectral Normalization will be related to Rayleigh Quotient.</p>
-<h3 id="power-iteration">Power Iteration</h3>
-<p>We can apply <a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">SVD</a> to obtain a matrix <span class="math inline">\(A\)</span>’s Spectral Norm, i.e. the square root of <span class="math inline">\(A^TA\)</span>’s largest eigenvalue. There is also an iterative method to do so.</p>
-<p>Begin with an arbitrary vector <span class="math inline">\(v_0 = v \in \R^N\)</span>, the iteration rule will be <span class="math display">\[
-v_{t+1} = A^TAv_t
-\]</span> Unroll <span class="math inline">\(v_{t}\)</span> to get <span class="math inline">\(v_t = (A^TA)^tv\)</span>. Because <span class="math inline">\(A^TA\)</span> is real symmetric, <span class="math inline">\(v\)</span> can be written as a linear combination of <span class="math inline">\(A^TA\)</span>’s orthonormal eigenvectors: <span class="math display">\[
-v = \sum_{i=1}^N \alpha_i u_i
-\]</span> Let <span class="math inline">\(u_i\)</span> be arranged by corresponding eigenvector from large to small, then <span class="math display">\[
-\begin{aligned}
-v_t &amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
-&amp;= \sum_{i=1}^N \alpha_i \lambda_i^t u_i \\
-&amp;= \alpha_1 \lambda_1^t \sum_{i=1}^N \frac{\alpha_i}{\alpha_1} (\frac{\lambda_i}{\lambda_1})^t u_i \\
-&amp;\to \alpha_1 \lambda_1^t u_1
-\end{aligned}
-\]</span> Thus <span class="math display">\[
-||A^TA \frac{v_t}{||v_t||}|| = ||A^TAu_1|| = ||\lambda_1 u_1|| = \lambda_1
-\]</span></p>
-<p><a href="https://math.stackexchange.com/questions/2723629/why-is-the-maximum-rayleigh-quotient-equal-to-the-maximum-eigenvalue">matrices - Why is the maximum Rayleigh quotient equal to the maximum eigenvalue? - Mathematics Stack Exchange</a></p>
+<p>The extrapolation of the spectral normalization will be related to
+Rayleigh quotient.</p>
+<p><a href="https://math.stackexchange.com/questions/2723629/why-is-the-maximum-rayleigh-quotient-equal-to-the-maximum-eigenvalue">matrices
+- Why is the maximum Rayleigh quotient equal to the maximum eigenvalue?
+- Mathematics Stack Exchange</a></p>
 
 
 
@@ -1537,7 +1561,7 @@ v_t &amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1587,7 +1611,7 @@ v_t &amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1674,7 +1698,7 @@ v_t &amp;= (A^TA)^t \sum_{i=1}^N \alpha_i u_i \\
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

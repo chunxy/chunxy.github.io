@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1315,7 +1343,8 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#proof-of-discrete-form">Proof of Discrete Form</a></li>
-    <li><a href="#proof-of-continuous-form">Proof of Continuous Form</a></li>
+    <li><a href="#proof-of-continuous-form">Proof of Continuous
+Form</a></li>
     <li><a href="#external-material">External Material</a></li>
   </ul>
 </nav>
@@ -1424,51 +1453,88 @@
             
 
 <p>Chebyshev distance is a specific form of Minkowski norm (<span class="math inline">\(l_p\)</span> norm): <span class="math display">\[
-d_p(x, x^\prime) = ||x - x^\prime||_p \coloneq (\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p}
-\]</span> where <span class="math inline">\(p \to \infty\)</span>. Chebyshev distance is in effect <span class="math inline">\(\max\limits_i (|x_i - x^\prime_i|)\)</span>.</p>
+d_p(x, x^\prime) = ||x - x^\prime||_p \coloneq (\sum_{i=1}^n|x_i -
+x^\prime_i|^p)^{1/p}
+\]</span> where <span class="math inline">\(p \to \infty\)</span>.
+Chebyshev distance is in effect <span class="math inline">\(\max\limits_i (|x_i - x^\prime_i|)\)</span>.</p>
 <h3 id="proof-of-discrete-form">Proof of Discrete Form</h3>
-<p>Let <span class="math inline">\(a_i = |x_i - x^\prime_i|\)</span> and without loss of generality let <span class="math inline">\(a_1 = \max\limits_ia_i = \max\limits_i|x_i - x^\prime_i|\)</span>. <span class="math display">\[
+<p>Let <span class="math inline">\(a_i = |x_i - x^\prime_i|\)</span> and
+without loss of generality let <span class="math inline">\(a_1 =
+\max\limits_ia_i = \max\limits_i|x_i - x^\prime_i|\)</span>. <span class="math display">\[
 \begin{aligned}
-d_p(x, x^\prime) &amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1/p} \\
+d_p(x, x^\prime) &amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i -
+x^\prime_i|^p)^{1/p} \\
 &amp;= \lim_{p \to \infty}(\sum_{i=1}^na_i^p)^{1/p} \\
-&amp;= \lim_{p \to \infty}(a_1^p\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \\ 
-&amp;= \lim_{p \to \infty}(a_1^p)^{1/p} \cdot \lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \\ 
-&amp;= a_1 \cdot \lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \\ 
+&amp;= \lim_{p \to \infty}(a_1^p\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p}
+\\
+&amp;= \lim_{p \to \infty}(a_1^p)^{1/p} \cdot \lim_{p \to
+\infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \\
+&amp;= a_1 \cdot \lim_{p \to
+\infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \\
 \end{aligned}
-\]</span> Because <span class="math inline">\(\forall i, a_1 &gt; a_i\)</span>, then <span class="math inline">\(\frac{a_i}{a_1} \le 1\)</span>, and <span class="math display">\[
+\]</span> Because <span class="math inline">\(\forall i, a_1 &gt;
+a_i\)</span>, then <span class="math inline">\(\frac{a_i}{a_1} \le
+1\)</span>, and <span class="math display">\[
 \begin{aligned}
 1 \le &amp;\sum_{i=1}^n(\frac{a_i}{a_1})^p \le n \\
-1^{1/p} \le &amp;(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \le n^{1/p} \text{, where $p &gt; 1$} \\
-\lim_{p \to \infty}1^{1/p} \le &amp;\lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \le \lim_{p \to \infty}n^{1/p} \\
-1 \le &amp;\lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \le 1 \\
+1^{1/p} \le &amp;(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \le n^{1/p}
+\text{, where $p &gt; 1$} \\
+\lim_{p \to \infty}1^{1/p} \le &amp;\lim_{p \to
+\infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p} \le \lim_{p \to
+\infty}n^{1/p} \\
+1 \le &amp;\lim_{p \to \infty}(\sum_{i=1}^n(\frac{a_i}{a_1})^p)^{1/p}
+\le 1 \\
 \end{aligned}
 \]</span></p>
-<p>Therefore, <span class="math inline">\(d_p(x, x^\prime) = a_1 \cdot 1 = a_1 = \max\limits_i|x_i - x^\prime_i|\)</span>.</p>
+<p>Therefore, <span class="math inline">\(d_p(x, x^\prime) = a_1 \cdot 1
+= a_1 = \max\limits_i|x_i - x^\prime_i|\)</span>.</p>
 <h3 id="proof-of-continuous-form">Proof of Continuous Form</h3>
-<p>Let <span class="math inline">\(f(x)\)</span> be continuous and bounded on interval <span class="math inline">\((a, b)\)</span>, then, <span class="math display">\[
-\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = \sup\limits_{x \in (a,b)}|f(x)|
+<p>Let <span class="math inline">\(f(x)\)</span> be continuous and
+bounded on interval <span class="math inline">\((a, b)\)</span>, then,
+<span class="math display">\[
+\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = \sup\limits_{x
+\in (a,b)}|f(x)|
 \]</span></p>
-<p>Let <span class="math inline">\(S = \sup\limits_{x \in (a,b)}|f(x)|\)</span>, then <span class="math inline">\(\forall\varepsilon &gt; 0, \exists x_0 \in (a,b), |f(x_0)| &gt; S - \varepsilon\)</span>. By continuity, <span class="math inline">\(\lim\limits_{x \to x_0}|f(x)| &gt; S - \varepsilon\)</span>, then <span class="math inline">\(\exists\delta &gt; 0, \forall x \in U(x_0, \delta), ||f(x)| - \lim\limits_{x \to x_0}|f(x)|| &lt; \varepsilon \rightarrow |f(x)| &gt; S - 2\varepsilon\)</span>. <span class="math display">\[
+<p>Let <span class="math inline">\(S = \sup\limits_{x \in
+(a,b)}|f(x)|\)</span>, then <span class="math inline">\(\forall\varepsilon &gt; 0, \exists x_0 \in (a,b),
+|f(x_0)| &gt; S - \varepsilon\)</span>. By continuity, <span class="math inline">\(\lim\limits_{x \to x_0}|f(x)| &gt; S -
+\varepsilon\)</span>, then <span class="math inline">\(\exists\delta
+&gt; 0, \forall x \in U(x_0, \delta), ||f(x)| - \lim\limits_{x \to
+x_0}|f(x)|| &lt; \varepsilon \rightarrow |f(x)| &gt; S -
+2\varepsilon\)</span>. <span class="math display">\[
 \begin{aligned}
-(\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} &amp;\ge (\int_{x_0 - \delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
-\lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} &amp;\ge \lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
+(\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} &amp;\ge
+(\int_{x_0 - \delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
+\lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta}
+|f(x)|^pdx)^{1/p} &amp;\ge \lim\limits_{p \to +\infty}(\int_{x_0 -
+\delta}^{x_0 + \delta} (S - 2\varepsilon)^pdx)^{1/p} \\
 &amp;= \lim\limits_{p \to +\infty}(2\delta(S - 2\varepsilon)^p)^{1/p} \\
 &amp;= S - 2\varepsilon
 \end{aligned}
-\]</span> Since <span class="math inline">\(U(x_0, \delta)\)</span> in within the interval <span class="math inline">\((a,b)\)</span> and <span class="math inline">\(|f(x)|^p \ge 0\)</span>, then, <span class="math display">\[
+\]</span> Since <span class="math inline">\(U(x_0, \delta)\)</span> in
+within the interval <span class="math inline">\((a,b)\)</span> and <span class="math inline">\(|f(x)|^p \ge 0\)</span>, then, <span class="math display">\[
 \begin{aligned}
-(\int_a^b |f(x)|^pdx)^{1/p} &amp;\ge (\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} \\
-\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} &amp;\ge \lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta} |f(x)|^pdx)^{1/p} \\
+(\int_a^b |f(x)|^pdx)^{1/p} &amp;\ge (\int_{x_0 - \delta}^{x_0 + \delta}
+|f(x)|^pdx)^{1/p} \\
+\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} &amp;\ge
+\lim\limits_{p \to +\infty}(\int_{x_0 - \delta}^{x_0 + \delta}
+|f(x)|^pdx)^{1/p} \\
 &amp;\ge S - 2\varepsilon
 \end{aligned}
-\]</span> Because <span class="math inline">\(\varepsilon\)</span> is arbitrarily and positively valued, <span class="math inline">\(\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} \ge S\)</span></p>
+\]</span> Because <span class="math inline">\(\varepsilon\)</span> is
+arbitrarily and positively valued, <span class="math inline">\(\lim\limits_{p \to +\infty}(\int_a^b
+|f(x)|^pdx)^{1/p} \ge S\)</span></p>
 <p>On the other hand, <span class="math display">\[
-\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} \le \lim\limits_{p \to +\infty}(\int_a^b S^pdx)^{1/p} = \lim\limits_{p \to +\infty}((b - a)S^p)^{1/p} = S
+\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} \le
+\lim\limits_{p \to +\infty}(\int_a^b S^pdx)^{1/p} = \lim\limits_{p \to
++\infty}((b - a)S^p)^{1/p} = S
 \]</span> then, <span class="math display">\[
-\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = S = \sup\limits_{x \in (a,b)}|f(x)|
+\lim\limits_{p \to +\infty}(\int_a^b |f(x)|^pdx)^{1/p} = S =
+\sup\limits_{x \in (a,b)}|f(x)|
 \]</span></p>
 <h2 id="external-material">External Material</h2>
-<p><a href="https://www.zhihu.com/question/267575473">p范数的极限（无穷范数）为什么是极大值范数？ - 知乎 (zhihu.com)</a></p>
+<p><a href="https://www.zhihu.com/question/267575473">p范数的极限（无穷范数）为什么是极大值范数？
+- 知乎 (zhihu.com)</a></p>
 
 
 
@@ -1553,7 +1619,7 @@ d_p(x, x^\prime) &amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1603,7 +1669,7 @@ d_p(x, x^\prime) &amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1690,7 +1756,7 @@ d_p(x, x^\prime) &amp;= \lim_{p \to \infty}(\sum_{i=1}^n|x_i - x^\prime_i|^p)^{1
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

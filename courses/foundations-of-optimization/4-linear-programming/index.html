@@ -1,0 +1,1387 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Linear Programming Recall that the linear programming problem is $$ \label{lp} \begin{aligned} \min_{x} \quad&amp; c^T x \ \text{s.t.} \quad&amp; a_i^T x \le b_i, i=1,\dots,m \end{aligned} \tag{LP} $$ where $c \in \R^n$ and $a_i \in \R^{n}, b_i \in \R, i=1,\dots,m$." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/" />
+  <meta property="og:title" content="Chunxy&#39; Website" />
+  <meta property="og:description" content="Linear Programming Recall that the linear programming problem is $$ \label{lp} \begin{aligned} \min_{x} \quad&amp; c^T x \ \text{s.t.} \quad&amp; a_i^T x \le b_i, i=1,\dots,m \end{aligned} \tag{LP} $$ where $c \in \R^n$ and $a_i \in \R^{n}, b_i \in \R, i=1,\dots,m$." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="1e1d7154c495e75f5dd9e5a6a3758086" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+      
+      
+      <div class="article-container py-1" style="background: initial">
+        
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+      </div>
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="linear-programming">Linear Programming</h2>
+<p>Recall that the linear programming problem is
+$$
+\label{lp} \begin{aligned}
+\min_{x} \quad&amp; c^T x \
+\text{s.t.} \quad&amp; a_i^T x \le b_i, i=1,\dots,m
+\end{aligned} \tag{LP}
+$$
+where $c \in \R^n$ and $a_i \in \R^{n}, b_i \in \R, i=1,\dots,m$.</p>
+<blockquote>
+<p>Definition: A <strong>polyhedron</strong> is the intersection of a finite set of halfspaces. A bounded polyhedron is called a <strong>polytope</strong>.</p>
+</blockquote>
+<p>Therefore, the feasible set of LP is a polyhedron. Interestingly, all polyhedrons are convex. That is, the feasible set of LP is convex.</p>
+<h3 id="standard-form">Standard Form</h3>
+<p>The standard form of LP is
+$$
+\label{standard-lp} \begin{aligned}
+\min_{x \in \R_+^n} \quad &amp; c^T x \
+\text{s.t.} \quad &amp; A x = b \
+\end{aligned} \tag{Standard LP}
+$$
+where $c \in \R^n, A \in \R^{m \times n}, b \in \R^m$. Standard LP has standard solutions. Thus, the next question is how to convert an ordinary LP problem to a standard one.</p>
+<p>Now write $x = x^+ - x^-$, where $x^+, x^- \in \R_+^n$. Introduce another slack variable $s \in \R_+^m$. $\eqref{lp}$ is equivalent to
+$$
+\begin{aligned}
+\min_{x^+, x^- \ge 0, s \ge 0} \quad &amp; c^T (x^+ - x^-) \
+\text{s.t.} \quad &amp; A (x^+ - x^-) + s = b \
+\end{aligned}
+$$
+Let
+$$
+A&rsquo; = \left[\begin{array}{c:c}
+A &amp; -A &amp; I
+\end{array}\right] \in \R^{m \times (2n+m)} \
+x&rsquo; = \begin{bmatrix}
+x^+ \
+\hdashline
+x^- \
+\hdashline
+s
+\end{bmatrix} \in \R_+^{2n+m},
+c&rsquo; = \begin{bmatrix}
+c \
+\hdashline
+-c \
+\end{bmatrix} \in \R_+^{2n}
+$$
+The problem becomes
+$$
+\begin{aligned}
+\min_{x&rsquo; \in \R_+^{2n+m}} \quad &amp; (c&rsquo;)^T x&rsquo; \
+\text{s.t.} \quad &amp; A&rsquo; x&rsquo; = b \
+\end{aligned}
+$$
+which observes the formality of standard LP. Here lays down again the standard LP problem:</p>
+<p>$$
+\label{primal} \begin{aligned}
+v_p^* = \min_{x \in \R_+^n} \quad &amp; c^T x \
+\text{s.t.} \quad &amp; A x = b \
+\end{aligned} \tag{P}
+$$</p>
+<p><strong>The first question</strong> to ask is whether there is a optimal solution to it. The answer is:</p>
+<blockquote>
+<p>Proposition: If $\eqref{primal}$ is feasible, then either 1) the optimal value $v^* = -\infty$ (no optimal solution),or 2) it has an optimal solution.</p>
+</blockquote>
+<h3 id="farkas-lemma">Farkas&rsquo; Lemma</h3>
+<p>But <strong>the second question</strong> arises: how to certify that $\eqref{primal}$ is infeasible? We meet the similar dilemma to that when dealing with set-set separation: it is easy to test the feasibility of any $x$; but it is prohibitive to test the feasibility of all $x$&rsquo;s just to show that the original problem is infeasible.</p>
+<p>The idea is that, given the feasible polyhedron $P \triangleq { x \in \R_+^n: Ax = b }$ of the original problem, we construct another auxiliary polyhedron $Q$ such that exactly one of the following holds:</p>
+<ol>
+<li>$P \ne \emptyset, Q = \emptyset$;</li>
+<li>$P = \emptyset, Q \ne \emptyset$.</li>
+</ol>
+<blockquote>
+<p>Theorem: <strong>Farkas&rsquo; lemma</strong>. Let $A \in \R^{m \times n}$ and $b \in \R^m$ be given. Then exactly one of the following systems is solvable:</p>
+<ol>
+<li>$A x = b, x \ge 0$;</li>
+<li>$A^T y \le 0, b^T y &gt; 0$.</li>
+</ol>
+<p>Interpretation:</p>
+<p>$A x = b, x \ge 0$ means that $b$ is a non-negative linear combinations of $a_1, \dots, a_n$. $A^T y \le 0$ means that $y$ forms an obtuse angle to $a_1, \dots, a_n$; $b^T y &gt; 0$ means $y$ forms an acute angle with $b$.</p>
+<p>Proof:</p>
+<p>We claim that the above two statements cannot be solvable at the same time. or else this gives rise to the contradiction for some $x_0 \ge 0, y_0 \in \R^m$:
+$$
+\underbrace{x_0^T}<em>{\ge 0} \underbrace{A^T y_0}</em>{\le 0} = y_0^T A x = \underbrace{y_0^T b}_{&gt; 0}
+$$
+We then claim that the above two statements cannot be unsolvable at the same time. Suppose $1$ is unsolvable.</p>
+<p>In this case, $b \notin A^+ \triangleq { Ax: x \ge 0 }$. It can be verified that $A^+$ is non-empty ($0 \in A^+$), closed (closeness is not generally preserved under affine transformation; but in this case it is &lt;refer to <a href="../3-lp.pdf">this handout</a>&gt;) and convex (because convexity is preserved under affine transformation $A^+ = A \R_+^n$). Then by <em>point-set separation theorem</em>, for any $x \ge 0$, there exists a $y_0 \in \R^m$ such that
+$$
+\max_{x \ge 0} y_0^T A x &lt; y_0^T b
+$$
+Take $x = 0$, we have
+$$
+y_0^T b &gt; 0
+$$
+We claim that $A^T y_0 \le 0$. Suppose on the contrary that there exists an $i$ such that $(A^T y_0)<em>i$ is positive. Then for any $\lambda \ge 0$, take $x = \lambda e_i$ and give
+$$
+y_0^T A x = x^T A^T y_0 = \underbrace{\lambda}</em>{\ge 0} \underbrace{(A^T y_0)<em>i}</em>{&gt; 0} &lt; y_0^T b
+$$
+which is impossible when $\lambda \to \infty$.</p>
+<p>Therefore, $2$ is solvable when $1$ is unsolvable. $1$ and $2$ cannot be unsolvable at the same time.</p>
+</blockquote>
+<p>We construct $Q&rsquo;$ as ${ y \in \R^m: A^T y \le 0, b^T y &gt; 0 }$. Note that $Q&rsquo;$ is not a polyhedron yet, because ${ y \in \R^m: b^T y &gt; 0 }$ is open and is not a half-space. However, observe that (verify it)
+$$
+A^T y \le 0, b^T y &gt; 0 \text{ is solvable} \iff A^T y \le 0, b^T y = 1 \text{ is solvable}
+$$
+${ y \in \R^m: b^T y = 1 }$ can be rewritten as ${ y \in \R^m: b^T y \ge 1, b^T y \le 1 }$ which is an intersection of halfspaces. Therefore, $Q \triangleq { y \in \R^m: A^T y \le 0, b^T y \ge 1, b^T \le 1 }$ is non-empty if and only if $Q&rsquo;$ is non-empty. Moreover, $Q$ is an intersection of half-spaces as desired.</p>
+<p>Now, we convert the infeasibility of $P$ into the feasibility of $Q$. <strong>The third question</strong> is, suppose we verify that $P$ is feasible, then given a solution to $\eqref{primal}$, how to certify its optimality? The idea is to establish a lower bound on the optimal value $v^*_p$.</p>
+<h3 id="duality">Duality</h3>
+<p>Consider a $y \in \R^m$ such that $A^T y \le c$, then for any $x \in \R_+^n$ such that $b \triangleq A x$, we have
+$$
+b^T y = x^T A^T y \le c^T x
+$$
+The above holds for $x^<em>$ of $\eqref{primal}$ as well. Therefore,
+$$
+b^T y \le c^T x_p^</em> = v_p^*
+$$
+We can try to find the largest lower bound w.r.t. $y$:
+$$
+\label{dual} \begin{aligned}
+v_d^* = \max_y &amp;\quad b^T y \
+\text{s.t.} &amp;\quad A^T y \le c
+\end{aligned} \tag{D}
+$$
+Automatically, $v_d^* \le v_p^<em>$. Note that $\eqref{primal}$ is the also the dual of $\eqref{dual}$ in that $v_p^</em> \ge v_d^*$.</p>
+<blockquote>
+<p>Theorem: <strong>weak duality</strong> of LP. Let $\bar x$ be feasible for $\eqref{primal}$ and $\bar y$ be feasible for $\eqref{dual}$. Then,
+$$
+c^T \bar x \ge b^T \bar y
+$$</p>
+</blockquote>
+<blockquote>
+<p>Corollary:</p>
+<ol>
+<li>If $v_p^* = -\infty$, then $\eqref{dual}$ is infeasible.</li>
+<li>If $v_d^* = +\infty$, then $\eqref{primal}$ is infeasible.</li>
+<li>If $\bar x$ is feasible for $\eqref{primal}$, $\bar y$ is feasible for $\eqref{dual}$, and the <strong>duality gap</strong> $\Delta(\bar x, \bar y) \triangleq c^T \bar x - b^T \bar y$ is zero, then $\bar x$ is optimal for $\eqref{primal}$ and $\bar y$ is optimal for $\eqref{dual}$.</li>
+</ol>
+</blockquote>
+<p>What about the converses of conclusions above?</p>
+<ol>
+<li>
+<p>If $\eqref{dual}$ is infeasible, then either $v_p^* = -\infty$ or $\eqref{primal}$ is infeasible.</p>
+<p>It is rather easy to construct a problem such that both the $\eqref{primal}$ and $\eqref{dual}$ are infeasible, since the constraints $Ax = b, x \ge 0$ and $A^T y \le c$ are quite independent. The following will give an example:
+$$
+A =
+\begin{bmatrix}
+-1 &amp; -1 \
+1 &amp; 1
+\end{bmatrix},
+b = [1, 1]^T,
+c = [-1, -1]^T
+$$</p>
+</li>
+<li>
+<p>If $\eqref{primal}$ is infeasible, then either $v_d^* = +\infty$ or $\eqref{dual}$ is infeasible.</p>
+</li>
+</ol>
+<blockquote>
+<p>Theorem: <strong>strong duality</strong> for LP. Suppose $\eqref{primal}$ has an optimal solution $x_p^<em>$. Then $\eqref{dual}$ has an optimal solution $y_d^</em>$ and $v_p^* = c^T x_p^* = b^T y_d^* = v_d^*$.</p>
+<p>Proof:</p>
+<p>We claim that
+$$
+Ax = b, x \ge 0, c^T x - v_p^* &lt; 0 \tag{I}
+$$
+is unsolvable. Consider <strong>homogenizing</strong> the above system:
+$$
+Ax - bt = 0, c^T x - v_p^* t &lt; 0, x \ge 0, t \ge 0 \tag{II}
+$$
+We argue that $\textrm{(I)}$ is solvable if and only if $\textrm{(II)}$ is solvable. If $\bar x$ solves $\textrm{(I)}$, then $(\bar x, 1)$ solves $\textrm{(II)}$ too. If $(\bar x, \bar t)$ solves $\textrm{(II)}$, we discuss by case.</p>
+<ul>
+<li>$\bar t &gt; 0$. In this case, $\bar x / \bar t$ solves $\textrm{(I)}$.</li>
+<li>$\bar t = 0$. In this case, $x^* + \bar x$ solves $\textrm{(I)}$.</li>
+</ul>
+<p>$\textrm{(II)}$ can be rewritten as
+$$
+\begin{bmatrix}
+A &amp; -b \
+-A &amp; b \
+-I &amp; 0 (n \times 1) \
+0 (1 \times m) &amp; -1
+\end{bmatrix}
+\begin{bmatrix}
+x \
+t
+\end{bmatrix} \le 0,</p>
+<p>[-c^T, v_p^<em>]
+\begin{bmatrix}
+x \
+t
+\end{bmatrix} &gt; 0
+$$
+By <em>Farkas&rsquo; lemma</em>, the following system is solvable:
+$$
+\begin{bmatrix}
+A^T &amp; -A^T &amp; -I &amp; 0 (m\times 1) \
+-b^T &amp; b^T &amp; 0 (1 \times n) &amp; -1
+\end{bmatrix}
+\begin{bmatrix}
+z_1 \
+z_2 \
+z_3 \
+z_4
+\end{bmatrix} =
+\begin{bmatrix}
+-c \
+v_p^</em>
+\end{bmatrix},</p>
+<p>\begin{bmatrix}
+z_1 \
+z_2 \
+z_3 \
+z_4
+\end{bmatrix}
+\ge 0
+$$
+This means
+$$
+A^T (z_1 - z_2) - z_3 = -c \Rightarrow \
+A^T (z_2 - z_1) \le c \
+$$</p>
+<p>$$
+-b^T (z_1 - z_2) - z_4 = v_p^* \Rightarrow \
+b^T (z_2 - z_1) \ge v_p^*
+$$</p>
+<p>$y^* \triangleq z_2 - z_1$ is a feasible solution to the $\eqref{dual}$. Plus the weak duality which states $b^T y^* \le v_p^<em>$, $b^T y^</em> = v_p^<em>$. Therefore, $y_d^</em> = y^<em>$ and $c^T x_p^</em> = b^T y_d^*$.</p>
+</blockquote>
+<blockquote>
+<p>Corollary: <strong>complementary slackness</strong>. Let $\bar x$ be feasible for $\eqref{primal}$ and $\bar y$ be feasible for $\eqref{dual}$. Then, they are optimal for their respective problems if and only if
+$$
+\underbrace{\bar x_i}_{\substack{\text{$i$-th} \ \text{primal variable}}}\ \underbrace{(c - A^T \bar y)<em>i}</em>{\substack{\text{$i$-th } \ \text{dual constraint}}} = 0
+$$
+Proof:
+$$
+\begin{aligned}
+c^T \bar x - b^T \bar y &amp;= c^T x - (A \bar x)^T \bar y \
+0 &amp;= \bar x^T (c - A^T \bar y)
+\end{aligned}
+$$
+Plus that $\bar x \ge 0, c - A^T \bar y \ge 0$, we can conclude with the complementary slackness.</p>
+</blockquote>
+<p>After establishing the lower bound of $\eqref{primal}$&rsquo;s optimal value with $\eqref{dual}$&rsquo;s optimal value, by strong duality, to find optimal solutions to $\eqref{primal}$ and $\eqref{dual}$ is equivalent to find a feasible solution to
+$$
+\begin{gather}
+Ax = b, x \ge 0 \tag{primal constraint} \
+A^T y \le c \tag{dual constraint} \
+c^T x = b^T y \tag{zero duality gap}
+\end{gather}
+$$
+Note that the zero duality gap is in essence equivalent to
+$$
+x^T (c - A^T y) = 0 \tag{complementary slackness}
+$$
+An optimization problem is converted to feasibility problem. Particularly, an LP optimization problem is no harder than an LP feasibility problem.</p>
+<h2 id="examples-of-lp-problem">Examples of LP Problem</h2>
+<h3 id="vertex-cover">Vertex Cover</h3>
+<p>Given a graph $G = (V, E)$ and a cost function $c: V \mapsto \R^+$, find a vertex cover that minimizes overall cost. Here we say that $S \subseteq V$ is vertex cover if every edge has at least one endpoint in $S$. The cost of a vertex cover the sum of costs of the vertices contained.</p>
+<p>Let $x_i \in { 0,1 }$ be an indicator variable defined as
+$$
+x_i =
+\begin{cases}
+1, &amp; \text{if vertex $i$ is in the cover} \
+0, &amp; \text{otherwise}
+\end{cases}
+$$
+Then we have the following integer programming problem:
+$$
+\label{vc} \begin{aligned}
+v^* = \min_x \quad &amp;\sum_i x_i c_i \
+\text{s.t.} \quad &amp;x_i + x_j \ge 1, \forall (i,j) \in E \ 
+&amp;x_i \in { 0,1 }, \forall i=1,\dots,|V|
+\end{aligned} \tag{Vertex Cover}
+$$
+The problem above is NP-hard. One typical way to tackle it is to relax the constraint to make it easier.
+$$
+\label{vc-lp-I} \begin{aligned}
+v_\text{LP}^* = \min_x \quad &amp; \sum_i x_i c_i \
+\text{s.t.} \quad &amp; x_i + x_j \ge 1, \forall (i,j) \in E \ 
+&amp; 0 \le x_i \le 1, \forall i=1,\dots,|V|
+\end{aligned} \tag{Relaxed VC I}
+$$
+Note that we can further drop the $x_i \le 1$ in $\eqref{vc-lp-I}$ because we can always let $x_i&rsquo; = 1$ for $x_i &gt; 1$ without violating the constraints but with smaller objective (because $c \ge 0$):
+$$
+\label{vc-lp-II} \begin{aligned}
+v_\text{LP}^* = \min_x \quad &amp; \sum_i x_i c_i \
+\text{s.t.} \quad &amp; x_i + x_j \ge 1, \forall (i,j) \in E \ 
+&amp; 0 \le x_i, \forall i=1,\dots,|V|
+\end{aligned} \tag{Relaxed VC II}
+$$
+Once $x_\text{lp}^<em>$ solves $\eqref{vc-lp-II}$, we need to round $x_\text{lp}^</em>$ to give a feasible $x_\text{rd}$ to $\eqref{vc}$ such that $v_\text{rd} = c^T x_\text{rd} \approx v^<em>$. Obviously, $v^</em> \ge v_\text{lp}^<em>$ and $v^</em> \le v_\text{rd}$. The question is if we can upper-bound $v_\text{rd}$ by $\alpha v^*$ for some $\alpha \ge 1$. Here $\alpha$ is called the <strong>approximation ratio</strong>.</p>
+<blockquote>
+<p>Definition: Let $P = { x \in \R^n: a_i^T x \le b, i=1,\dots,m }$ be a polyhedron and let $\bar x \in P$. Let $I(\bar x) = { i: a_i^T x = b }$ be the active index set. We say that $\bar x$ is a <strong>vertex</strong> of $P$ if ${ a_i: i \in I(\bar x) }$ has $n$ linearly-independent vectors. Alternatively, the system
+$$
+a_i^T x = b_i, i \in I(\bar x)
+$$
+has a unique solution (which is $\bar x$).</p>
+</blockquote>
+<p>The equality constraint ensures that the solution is on the boundary of the feasible set, or rather, on a hyperplane. $n$ linearly-independent vectors ensure that the solution is the intersection of $n$ hyperplanes, which is why it is called <u>vertex solution</u>.</p>
+<blockquote>
+<p>Proposition: If an LP has a vertex feasible solution and is bounded (which means the optimal value is finite), then it has a vertex optimal solution (??).</p>
+</blockquote>
+<blockquote>
+<p>Theorem: Let $Q = { x \in \R^{|V|}: x_i + x_j \ge 1, \forall (i,j) \in E; x \ge 0 }$, which is exactly the feasible set of $\eqref{vc-lp-II}$. Then $Q$ has a vertex solution (??). Let $\bar x$ be one of such vertex solutions. Then,
+$$
+\forall i, \bar x_i \in { 0, 1/2, 1 }
+$$</p>
+</blockquote>
+<p>By the theorem and proposition above, and because $\eqref{vc-lp-II}$ is bounded (verify it), we can have a vertex optimal solution $x_\text{lp}^<em>$ to $\eqref{vc-lp-II}$. Next, we choose to round the optimal vertex solution $x_\text{lp}^</em>$ in this way: if $x_{\text{lp}<em>i}^*$ is $0$, $x</em>{\text{rd}<em>i} = 0$; else $x</em>{\text{rd}<em>i} = 1$. Note that this rounding method satisfies the constraint of $\eqref{vc}$. The largest divergence of $v</em>\text{rd}$ from $v_\text{lp}^<em>$ happens when $x_\text{lp}^</em>$ is full of $1/2$ or $0$, in which case $v_\text{rd} = 2 v_\text{lp}^<em>$. Thus, we can conclude that
+$$
+v_\text{lp}^</em> \le v^* \le c^T x_\text{rd} \le 2 v_\text{lp}^* \le 2 v^*
+$$</p>
+<p>The approximation ratio in this problem is $\alpha = 2$.</p>
+<h3 id="max-flow">Max Flow</h3>
+<p><a href="http://www.cs.cmu.edu/~odonnell/toolkit13/lecture14.pdf" target="_blank" rel="noopener">cs.cmu.edu/~odonnell/toolkit13/lecture14.pdf</a></p>
+<h3 id="cooperative-game-theory">Cooperative Game Theory</h3>
+<p>Let $\mathcal{N} = { 1,\dots,n }$ be the set of players and $v: 2^N \mapsto \R^+$ be the worth function, which satisfies $v(\emptyset) = 0$. The subset of $\mathcal{N}$ is called <strong>coalition</strong>. Let $x \ge 0$ be the <strong>allocation vector</strong> and $x_i$ be the payoff assigned to player $x_i$. Let $x(\emptyset) = 0$ and $x(S) \triangleq \sum_{i \in S} x_i$ for non-empty coalition $S$. We say that coalition $S$ <strong>improves upon</strong> $x$ if $v(S) &gt; x(S)$.</p>
+<blockquote>
+<p>Definition: The allocation vector $x$ is said to be in the <strong>core</strong> if
+$$
+\begin{gather}
+x(\mathcal{N}) = v(\mathcal{N}) \
+\forall S \subseteq \mathcal{N}, x(S) \ge v(S) \label{core-inequality}
+\end{gather}
+$$
+which means no $S$ improves upon $x$.</p>
+</blockquote>
+<p>It is essential to understand <strong>the implication behind the game</strong>. This &ldquo;cooperative game&rdquo; is actually preventing players from cooperation, or collusion, or called forming a coalition. The allocation vector is part of this &ldquo;evil scheme&rdquo;. The fact of matter is, the solver of this problem is trying to pay off players (in total the amount is no more than the value he thinks the whole coalition $\mathcal{N}$ deserves) such that for every possible coalition, there will be some member who thinks it unfair because the share (equal share for everyone!) he gets from the coalition is no more than the amount he would otherwise earns himself.
+$$
+x(S) = \sum_{i \in S} x_i \ge v(S)
+$$
+$x(S)$ is additive w.r.t. $S$, which exactly represents the payoff every player grabs (snout in the trough) covertly and separately. There must be some $i$ in $S$ such that $x_i \ge v(S)/|S|$. The situation worsens when the $\ge$ relation is strict.</p>
+<p>The question is, is the core non-empty for a given $(\mathcal{N}, v)$, or rather, can such scheme exist?</p>
+<blockquote>
+<p>Example: Treasure hunt. $n$ people discovered treasures in the mountain. 2 people are needed to bring one piece out and thus $v(S) = \lfloor \frac{|S|}{2} \rfloor$. Is the core empty?</p>
+<p>First consider the case when $n$ is even. $x = [1/2, \dots, 1/2]$ is in the core.</p>
+<p>Now simply consider the case when $n$ is odd. The fact is that the core is empty in this case.</p>
+</blockquote>
+<blockquote>
+<p>Theorem: <strong>Bondareva-Shapeley theorem</strong>. The cooperative game $(\mathcal{N}, v)$ has a non-empty core if and only if for every set of numbers ${ y_S }_{S \subseteq \mathcal{N}}$, whose elements are indexed by $\mathcal{N}$&rsquo;s subset, such that</p>
+<ul>
+<li>$\forall S \subseteq \mathcal{N}, y_S \ge 0$ and</li>
+<li>$\forall i \in \mathcal{N}, \sum_{S: i \in S} = 1$ and</li>
+<li>$\sum_{S \subseteq \mathcal{N}} y_S v(S) \le v(\mathcal{N})$.</li>
+</ul>
+<p>Interpretation:</p>
+<p>$y_S$ can be interpreted as the amount of time each player in $S$ spent on the coalition $S$, justifying the non-negativity constraint. The total amount of time player $i$ spent on different coalitions is $1$. $y_S v(S)$ can be understood as the proportional outcome from partial-commitment.</p>
+<p>Proof:</p>
+<p>Consider the following optimization problem:
+$$
+\label{cgp} \tag{Coop. Game} \begin{aligned}
+\min \quad &amp; [x(\mathcal{N}) \triangleq \sum_{i \in N} x_i] \
+\text{s.t.} \quad &amp; x(S) \ge v(S), \forall S \subseteq \mathcal{N}
+\end{aligned}
+$$
+Observe that the constraints naturally imply the inequality conditions $\eqref{core-inequality}$ for an allocation to be in the core. $x \ge 0$ is automatically embedded into $x({ i }) \ge v({ i }) \ge 0, i=1,\dots,n$. Other than that, the minimizing objective together with the constraint $x(\mathcal{N}) \ge v(\mathcal{N})$ implies $\eqref{cgp}$ is lower-bounded by $v(\mathcal{N})$. Also note that $\eqref{cgp}$ is always feasible because we can assign each $x(S)$ sufficiently large to surpass $v(S)$. Therefore, $\eqref{cgp}$ always has an optimal solution.</p>
+<p>To rewrite $\eqref{cgp}$ to LP form, let
+$$
+e = [1,\dots,1]^T,
+A =
+\begin{bmatrix}
+\mathbb{1}_n(\emptyset)^T \
+\vdots \
+\mathbb{1}<em>n(S)^T \
+\vdots \
+\mathbb{1}<em>n(\mathcal{N})^T
+\end{bmatrix},
+b =
+\begin{bmatrix}
+v(\emptyset) \
+\vdots \
+v(S) \
+\vdots \
+v(\mathcal{N})
+\end{bmatrix}
+$$
+where $\mathbb{1}</em>\mathcal{N}(S)$ is the indicator function that returns the vector in $\R^n$ whose $i$-th entry indicates if $i \in S$. Then $\eqref{cgp}$ becomes
+$$
+\label{cgp-lp} \tag{Coop. Game LP} \begin{aligned}
+v^* = \min \quad &amp; e^T x \
+\text{s.t.} \quad &amp; A x \ge b
+\end{aligned}
+$$
+We don&rsquo;t rush to convert it to standard LP form yet; otherwise we need to introduce a slack variable. On the other hand, we formulate the following LP problem, whose optimal value is <strong>of the same magnitude as but of different sign to</strong> $\eqref{cgp-lp}$:
+$$
+\label{cgp-primal} \tag{Coop. Game P} \begin{aligned}
+v_p^* = \max \quad &amp; -e^T x \
+\text{s.t.} \quad &amp; -A x \le -b
+\end{aligned}
+$$
+That is, $v^* = -v_p^<em>$. Recall that the primal and the dual are relative. The above problem has the dual
+$$
+\label{cgp-dual} \tag{Coop. Game D} \begin{aligned}
+v_d^</em> = \min</em>{y \ge 0} \quad &amp; -b^T y \
+\text{s.t.} \quad &amp; A^T y = e
+\end{aligned}
+$$
+which is in the standard LP form.</p>
+<p>Note that columns of $A^T$ are exactly those indicator vectors. Thus, $A^T$&rsquo;s columns and $y$&rsquo;s entries can both be indexed by sets. Also, rows of $A^T$ are indexed by elements. Since every entry of $A^T y$ is $1$, interpreting $A^T y$ as the row-column dot-product, the constraint in $\eqref{cgp-dual}$ is exactly
+$$
+\forall i \in \mathcal{N}, \sum_{S: i \in S} y_S = 1
+$$
+By strong duality, we have
+$$
+v^* = x^<em>(\mathcal{N}) = \sum_{S} y_S^</em> v(S) = -v_d^* = -v_p^*
+$$
+$\forall S \subseteq \mathcal{N}, x^<em>(S) \ge v(S)$ by the constraint of $\eqref{cgp-lp}$. By <strong>Bondareva-Shapeley theorem</strong>&rsquo;s condition, we have $x^</em>(\mathcal{N}) = \sum_{S} y_S^* v(S) \le v(\mathcal{N})$. Therefore, we conclude that $x^<em>(\mathcal{N}) = v(\mathcal{N})$. $x^</em>$ is in the core.</p>
+</blockquote>
+<p>It can be inferred that there are lots of duality in game theory, given its mini-max nature.</p>
+<h2 id="solving-lp">Solving LP</h2>
+<p>The algorithm for solving LP problems generally falls into two methods: simplex method and interior point method.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%20https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

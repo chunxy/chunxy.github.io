@@ -18,6 +18,8 @@
   <url>
     <loc>https://chunxy.github.io/notes/articles/optimization/lagrange-multiplier/</loc><lastmod>2022-01-07T13:00:06+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
+    <loc>https://chunxy.github.io/notes/articles/machine-learning/bullet-points/</loc><lastmod>2021-12-19T13:59:49+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
     <loc>https://chunxy.github.io/notes/articles/machine-learning/machine-learning-bullet-points/</loc><lastmod>2021-12-19T13:59:49+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/</loc><lastmod>2021-12-18T20:47:37+00:00</lastmod><changefreq>weekly</changefreq></url>
@@ -53,6 +55,8 @@
     <loc>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/</loc><lastmod>2022-07-10T12:58:49+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc><lastmod>2022-07-10T12:58:49+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/</loc><lastmod>2022-07-07T11:06:13+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/</loc><lastmod>2022-07-07T11:06:13+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
@@ -178,20 +182,50 @@
   <url>
     <loc>https://chunxy.github.io/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/</loc><lastmod>2022-12-06T19:02:13+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</loc><lastmod>2023-05-22T09:43:15+00:00</lastmod><changefreq>weekly</changefreq></url>
-  <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/</loc><lastmod>2022-05-09T11:51:08+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/metrics/</loc><lastmod>2022-07-10T12:58:49+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://chunxy.github.io/</loc><lastmod>2023-05-22T09:43:15+00:00</lastmod><changefreq>weekly</changefreq></url>
+    <loc>https://chunxy.github.io/</loc><lastmod>2023-05-16T11:42:12+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/blogs/</loc><lastmod>2022-08-13T11:23:21+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
+    <loc>https://chunxy.github.io/courses/energy-efficient-computing/notes/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/foundations-of-optimization/1-optimization-problem/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/foundations-of-optimization/2-convex-set/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/foundations-of-optimization/3-convex-function/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/foundations-of-optimization/4-linear-programming/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/foundations-of-optimization/5-conic-linear-programming/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/foundations-of-optimization/6-optimizaition-under-uncertainty/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/</loc><changefreq>weekly</changefreq></url>
+  <url>
     <loc>https://chunxy.github.io/notes/articles/optimization/convex-conjugate/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/introduction/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/</loc><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/authors/</loc><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/categories/</loc><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://chunxy.github.io/courses/</loc><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://chunxy.github.io/tags/</loc><changefreq>weekly</changefreq></url></urlset>

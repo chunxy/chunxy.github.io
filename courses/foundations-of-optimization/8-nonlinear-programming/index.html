@@ -1,0 +1,1184 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Nonlinear Programming Recall the unconstrained optimization problem: $$ \inf_{x \in \R^n} \quad f(x) $$
+ Proposition: Let $f: \R^n \mapsto \R$ be a continuously differentiable function, $\bar x \in \R^n$ be an arbitrary point." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/" />
+  <meta property="og:title" content="Chunxy&#39; Website" />
+  <meta property="og:description" content="Nonlinear Programming Recall the unconstrained optimization problem: $$ \inf_{x \in \R^n} \quad f(x) $$
+ Proposition: Let $f: \R^n \mapsto \R$ be a continuously differentiable function, $\bar x \in \R^n$ be an arbitrary point." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="73ae6a3cc8668c696634befa7218f6d2" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+      
+      
+      <div class="article-container py-1" style="background: initial">
+        
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+      </div>
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="nonlinear-programming">Nonlinear Programming</h2>
+<p>Recall the unconstrained optimization problem:
+$$
+\inf_{x \in \R^n} \quad f(x)
+$$</p>
+<blockquote>
+<p>Proposition: Let $f: \R^n \mapsto \R$ be a continuously differentiable function, $\bar x \in \R^n$ be an arbitrary point. If there exists s <strong>direction</strong> $d \in \R^n \setminus { 0 }$ such that $\nabla f(\bar x)^T d &lt; 0$, then there exists $\alpha_0 &gt; 0$ such that
+$$
+f(\bar x + \alpha d) &lt; f(\bar x), \forall \alpha \in (0, \alpha_0]
+$$
+Here, $d$ is called a <strong>descent direction</strong> of $f$ at $\bar x$.</p>
+</blockquote>
+<p>As a result, a necessary condition for $\bar x$ to be a local minima is that $\nabla f(\bar x) = 0$ (<strong>first-order necessary condition</strong>).</p>
+<blockquote>
+<p>Proposition: Let $f: \R^n \mapsto \R$ be a convex and continuously differentiable function. Then, $\bar x$ is a global minima of $f$ if and only if $\nabla f(\bar x) = 0$.</p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>second-order sufficient condition</strong>. Let $f: \R^n \mapsto \R$ be a twice continuously differentiable function. If $\nabla f(\bar x) = 0$ and $\nabla^2 f(\bar x) \succ 0$, then $\bar x$ is a local minima.</p>
+</blockquote>
+<h3 id="constrained-optimization">Constrained Optimization</h3>
+<p>In constrained case, simple conditions does not apply, e.g. $\inf_{x \ge 1} x^2$ and $\inf_{x \ge -1} x^2$. Consider the following constrained problem:
+$$
+\label{primal} \tag{P} \begin{aligned}
+\inf_{x \in \R^n} \quad &amp; f(x) \
+\text{s.t.} \quad &amp; g_i(x) \le 0, i=1,\dots,r \
+&amp; h_j(x) = 0, j=1,\dots,s
+\end{aligned}
+$$
+where $f, g_i, h_j$ are continuously differentiable.</p>
+<blockquote>
+<p>Theorem: <strong>Fritz John necessary condition</strong>. Let $\bar x$ be a local minimum of $\eqref{primal}$. Then there exist <strong>multipliers</strong> $u \in \R$, $v_1, \dots, v_r \in \R$, $w_1, \dots, w_s \in \R$ such that
+$$
+\begin{gather}
+u \nabla f(\bar x) + \sum_{i=1}^r v_i \nabla g_i(\bar x) + \sum_{j=1}^s w_j \nabla h_j(x) = 0 \tag{vanishing gradient} \
+[u, v_1, \dots, v_r, w_1, \dots, w_s] \ne 0 \tag{non-trivial solution} \
+u, v_i \ge 0, i=1,\dots,r \tag{non-negativity} \
+v_i g_i(\bar x) = 0, i=1,\dots,r \tag{complementarity} \
+\end{gather}
+$$
+$v_i$ tells the importance of the inequality constraint $g_i(x)$; $v_i = 0$ implies that $g_i(x) \le 0$ is well-fulfilled (strictly less than zero).</p>
+</blockquote>
+<p>The implication is that, at a local minima, we should not be able to find a direction that decreases the objective value as well as maintains the feasibility. For simplicity of discussion, we drop the equality constraints below.</p>
+<ol>
+<li>
+<p>Linear non-independence</p>
+<p>The vanishing gradient together with the non-trivial solution in essence rules out the possibility of linear independence among the gradients. This is easy to interpret. If $\nabla f(\bar x), \nabla g_1(\bar x), \dots, \nabla g_r(\bar x)$ are linearly independent, it is easy to find a direction $d$ in the $\Col^\perp(\nabla g_1(\bar x), \dots, \nabla g_r(\bar x))$ that is acute to $-\nabla f(\bar x)$. Then moving along $d$ at $\bar x$ will decrease the objective function value but maintain the inequality constraints, which contradicts that $\bar x$ is a local minima.</p>
+</li>
+<li>
+<p>Non-negativity + complementarity</p>
+<p>These two components should be discussed together and are a bit intriguing. Please refer to <a href="https://www.sciencedirect.com/science/article/pii/0022247X67901631" target="_blank" rel="noopener">this paper</a>.</p>
+</li>
+</ol>
+<p>Surely, the premise is that $u$ is nonzero. When the only solution to $u$ is zero, the corresponding solution $\bar x$ to $x$ will be a garbage point: it will not be a local minima. In this case, $\nabla f(\bar x)$ must have a component that is orthogonal to $\nabla g_i(\bar x)$&rsquo;s. We can walk along this component (or its opposite) to decrease $f$ without compromising inequality constraints. This motivates the study of <strong>constraint qualification</strong>, which aims to ensure a nonzero $u$.</p>
+<p>Note that in the above discussion, we ignore the effect of $\nabla h_j(\bar x)$&rsquo;s. They only make the choice of direction stricter, since the direction has to be orthogonal to them.</p>
+<h3 id="kkt-conditions-and-constraint-qualification">KKT Conditions and Constraint Qualification</h3>
+<p>One observation is that, if the constraint gradients are linearly independent (though required dependent), there is no way to have $u = 0$ or otherwise $v_1, \dots, v_r, u_1, \dots, u_s$ has to be zero due to the linear independence, which in turn violates the nonzero multiplier condition. How to &ldquo;obtain&rdquo; the contradicting linear independence expectation and nonzero multiplier condition at the same time?</p>
+<blockquote>
+<p>Theorem: <strong>Karush-Kuhn-Tucker conditions</strong>. Let $\bar x$ be a local minima of $\eqref{primal}$. Let
+$$
+I(\bar x) = { i: g_i(\bar x) = 0 }
+$$
+be the index set on the <strong>active inequality constraint</strong>. Suppose that ${ \nabla g_i(\bar x) }<em>{i \in I} \cup { \nabla h_j(\bar x) }</em>{j=1}^s$ are linearly independent (<strong>linear-independence constraint qualification</strong>). Then, there exists $v \in \R^r$ and $w \in \R^s$ such that
+$$
+\nabla f(\bar x) + \sum_{i=1}^r \nabla g_i(x) + \sum_{j=1}^s \nabla h_j(x) = 0 \
+v_i \ge 0, i=1,\dots,r \
+v_i g_i(\bar x) = 0, i=1,\dots,r
+$$</p>
+</blockquote>
+<blockquote>
+<p>Example: importance of CQ. Consider the problem
+$$
+\begin{aligned}
+\inf \quad &amp; f(x_1, x_2) = x_1 \
+\text{s.t.} \quad &amp; g_1(x_1, x_2) = (x_1 - 1)^2 + (x_2 - 1)^2 - 1 \le 0 \
+&amp; g_2(x_1, x_2) = (x_1 - 1)^2 + (x_2 + 1)^2 - 1 \le 0 \
+\end{aligned}
+$$
+The only feasible and thus optimal solution is $\bar x = (1, 0)$. In this case, the active inequality constraint gradient is
+$$
+\begin{bmatrix}
+0 \
+-2
+\end{bmatrix},
+\begin{bmatrix}
+0 \
+2
+\end{bmatrix}
+$$
+They are linearly dependent. Therefore, KKT conditions doesn&rsquo;t hold. Here is the reason why we intentionally separate the equality constraints from inequality constraints. Though $h(x) = 0 \iff h(x) \le 0 \land -h(x) \le 0$, if we lay down the equality constraint as inequality constraints, the gradient of $h(x)$ is always linearly dependent to that of $-h(x)$.</p>
+<p>One takeaway is that, even in this convex optimization problem, KKT may not hold.</p>
+<p>Another takeaway is that, it is very convenient to &ldquo;draw circles&rdquo; when finding counter examples related to constraint qualification. Better still, leave only one feasible point.</p>
+</blockquote>
+<p>The problem with LICQ is that it is tedious to check for every solution of $\bar x$. We may prefer some kind of <strong>&ldquo;looser&rdquo; constraint qualifications</strong>.</p>
+<blockquote>
+<p>Theorem: <strong>Slater constraint qualification</strong>. Suppose that $g_1, \dots, g_r$ are convex and $h_1, \dots, h_s$ are affine. Let $\bar x$ be a local minima. Denote the feasible region as $S$. Suppose that there exists $x&rsquo; \in S$ such that $g_i(x&rsquo;) &lt; 0$ for $i=1,\dots,r$. Then, the KKT conditions are necessary for optimality.</p>
+<p>This Slater condition quite resembles that in the conic Farkas&rsquo; lemma.</p>
+</blockquote>
+<blockquote>
+<p>Theorem: Suppose that $g_1, \dots, g_r$ are concave and $h_1, \dots, h_s$ are affine. Then, the KKT conditions are necessary for optimality.</p>
+<p>This theorem is especially useful when all the constraint functions are affine (since affine functions are both convex and concave).</p>
+</blockquote>
+<blockquote>
+<p>Example: Let $A \in \R{m \times n}, b \in \R^m, c \in \R^n$ be given. Consider
+$$
+\begin{aligned}
+\min \quad &amp; c^T x \
+\text{s.t.} \quad &amp; Ax = b \
+&amp; x \ge 0
+\end{aligned}
+$$
+Beware of the dimension of constraint functions when converting this LP problem to nonlinear programming problem:
+$$
+\begin{aligned}
+\min \quad &amp; c^Tx \
+\text{s.t.} \quad &amp; g_i(x) = -x_i = -e_i^T x \le 0, i=1,\dots,n \
+&amp; h_i(x) = b_j - a_j^T x = 0, j=1,\dots,m
+\end{aligned}
+$$
+This is a linearly constrained problem; thus KKT conditions are necessary for optimality:
+$$
+\begin{gather}
+c - \sum_{i=1}^r v_i e_i - \sum_{j=1}^s w_i a_j = 0 \label{grad} \
+v_i \ge 0 \label{dual} \
+v_i x_i = 0, i=1,\dots,r \label{compl}
+\end{gather}
+$$
+From $\eqref{grad}$,
+$$
+c - v - A^T w = 0
+$$
+Given $v \ge 0$ from $\eqref{dual}$ and the complementarity from $\eqref{compl}$, we have $c \ge A^T w$ and $(c - A^T w)_i x_i = 0$. This essentially recovers the sufficient and necessary conditions for the optimality of LP. But KKT only tells the condition is necessary.</p>
+</blockquote>
+<p>The question is when are KKT conditions sufficient?</p>
+<blockquote>
+<p>Theorem: <strong>KKT sufficient conditions</strong>. Suppose that $f, g_1, \dots, g_r$ are convex and $h_1, \dots, h_s$ are affine. Suppose further that there exists $(\bar x, \bar v, \bar w)$ satisfying the KKT conditions:
+$$
+\begin{gather}
+g_i(\bar x) \le 0, h_j(\bar x) = 0, i=1,\dots,r, j=1,\dots,s \tag{primal feasibility} \
+\tag{dual feasibility} \left. \begin{gathered}
+\nabla f(\bar x) + \sum_{i=1}^r \bar v_i \nabla g_i(\bar x) + \sum_{j=1}^s \bar w_i \nabla h_i(x) = 0 \
+\bar v_i \ge 0, i=1,\dots,r
+\end{gathered} \right} \
+\bar v_i g_i(x) = 0, i=1,\dots,r \tag{complentary slackness}
+\end{gather}
+$$
+Then $\bar x$ is a global minima.</p>
+</blockquote>
+<h3 id="lagrangian-duality">Lagrangian Duality</h3>
+<p>For simplicity, we rewrite the constrained problem as follows:
+$$
+\label{primalp} \tag{P} \begin{aligned}
+v_p^* = \inf \quad &amp; f(x) \
+\text{s.t.} \quad &amp; G(x) \le 0 \
+&amp; H(x) = 0
+\end{aligned}
+$$
+where $G(x) = [g_1(x), \dots, g_r(x)]$ and $H(x) = [h_1(x), \dots, h_s(x)]$.</p>
+<p>Observe that
+$$
+\eqref{primalp} \equiv \inf_{x \in \R^n} \sup_{v \in \R_+^r, w \in \R^s} \underbrace{f(x) + v^T G(x) + w^T H(x)}<em>{L(x, v, w)}
+$$
+The dual of $\eqref{primalp}$ is then
+$$
+\begin{equation}
+v_d^* = \sup</em>{v \in \R_+^r, w \in \R^s} \inf_{x \in \R^n} L(x, v, w) \label{dualp} \tag{D}
+\end{equation}
+$$
+Observe that
+$$
+\underbrace{\inf_{x \in \R^n}L(x, \bar v, \bar w)}<em>{\theta(\bar v, \bar w)} \le L(\bar x, \bar v, \bar w) \le \underbrace{\sup</em>{v \in \R_+^r, w \in \R^s} L(\bar x, v, w)}<em>{\gamma(\bar x)}
+$$
+This implies that
+$$
+v_d^* = \sup</em>{v \in \R_+^r, w \in \R^s} \theta(v, w) \le \inf_{x \in \R^n} \gamma(x) = v_p^*
+$$</p>
+<blockquote>
+<p>Theorem: <strong>weak duality</strong>. Let $\bar x$ be feasible for $\eqref{primalp}$ and $(\bar v, \bar w)$ be feasible for $\eqref{dualp}$. Then,
+$$
+f(\bar x) = \gamma(\bar x) \ge \theta(\bar v, \bar w)
+$$</p>
+</blockquote>
+<blockquote>
+<p>Example: illustration of weak duality. Consider a simple case:
+$$
+\begin{gathered}
+\begin{aligned}
+v_p^* = \inf \quad &amp; f(x) \
+\text{s.t.} \quad &amp; g(x) \le 0
+\end{aligned} \
+\rule{6cm}{0.4pt} \
+\begin{aligned}
+v_d^* = \sup_{v \ge 0} &amp; \inf_{x \in \R^n} [f(x) + v g(x)] \
+\end{aligned}
+\end{gathered}
+$$
+Let $\mathcal{G} = { (y,z): y = g(x), z = f(x), x \in \R^n }$. Then,
+$$
+\begin{aligned}
+\theta(v) &amp;= \inf_{x \in \R^n} [f(x) + v g(x)] \
+&amp;= \inf_{(y, z) \in \mathcal{G}} [z + v y]
+\end{aligned}
+$$
+This set is quite related to the proof of the <strong>strong duality</strong> under KKT sufficient condition together with Slater condition.</p>
+</blockquote>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%20https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/courses/foundations-of-optimization/8-nonlinear-programming/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

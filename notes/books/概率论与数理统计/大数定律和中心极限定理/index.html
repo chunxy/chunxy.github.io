@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1320,7 +1348,8 @@
         <li><a href="#依概率收敛">依概率收敛</a></li>
       </ul>
     </li>
-    <li><a href="#弱大数定律weak-law-of-large-numbers">弱大数定律（Weak Law of large numbers）</a>
+    <li><a href="#弱大数定律weak-law-of-large-numbers">弱大数定律（Weak Law
+of large numbers）</a>
       <ul>
         <li><a href="#chebyshev大数定律">Chebyshev大数定律</a></li>
         <li><a href="#khinchin大数定律">Khinchin大数定律</a></li>
@@ -1330,7 +1359,8 @@
     <li><a href="#中心极限定理">中心极限定理</a>
       <ul>
         <li><a href="#lindburg-levy中心极限定理">Lindburg-Levy中心极限定理</a></li>
-        <li><a href="#de-moivre-laplace中心极限定理">de Moivre-Laplace中心极限定理</a></li>
+        <li><a href="#de-moivre-laplace中心极限定理">de
+Moivre-Laplace中心极限定理</a></li>
       </ul>
     </li>
   </ul>
@@ -1428,19 +1458,27 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
 <ol type="1">
 <li><p><span class="math inline">\(X\)</span>为连续型随机变量 <span class="math display">\[
 \begin{aligned}
-&amp;P(|X-\E(X)| \ge \epsilon) = \mathop \int_{|x - \E(x)| \ge \epsilon} p(x)dx \\
-&amp;\le \mathop \int_{|x - \E(x)| \ge \epsilon} \bigg( \frac{X - \E(x)}{\epsilon} \bigg)^2 p(x)dx \\
-&amp;= \frac{1}{\epsilon^2} \mathop \int_{|x - \E(x)| \ge \epsilon} \big( X - \E(x) \big)^2 p(x)dx \\
-&amp;\le \frac{1}{\epsilon^2} \mathop \int_{x \in X} \big( X - \E(x) \big)^2 p(x)dx \\
+&amp;P(|X-\E(X)| \ge \epsilon) = \mathop \int_{|x - \E(x)| \ge \epsilon}
+p(x)dx \\
+&amp;\le \mathop \int_{|x - \E(x)| \ge \epsilon} \bigg( \frac{X -
+\E(x)}{\epsilon} \bigg)^2 p(x)dx \\
+&amp;= \frac{1}{\epsilon^2} \mathop \int_{|x - \E(x)| \ge \epsilon}
+\big( X - \E(x) \big)^2 p(x)dx \\
+&amp;\le \frac{1}{\epsilon^2} \mathop \int_{x \in X} \big( X - \E(x)
+\big)^2 p(x)dx \\
 &amp;= \frac{\Var(X)}{\epsilon^2} \\
 \end{aligned}
 \]</span></p></li>
 <li><p><span class="math inline">\(X\)</span>为离散型随机变量 <span class="math display">\[
 \begin{aligned}
-&amp;P(|X-\E(X)| \ge \epsilon) = \mathop \sum_{|x - \E(x)| \ge \epsilon} P(x) \\
-&amp;\le \mathop \sum_{|x - \E(x)| \ge \epsilon} \bigg( \frac{x - \E(x)}{\epsilon} \bigg)^2 P(x) \\
-&amp;= \frac{1}{\epsilon^2} \mathop \sum_{|x - \E(x)| \ge \epsilon} \big( x - \E(x) \big)^2 P(x) \\
-&amp;\le \frac{1}{\epsilon^2} \mathop \sum_{x \in X} \big( x - \E(x) \big)^2 P(x) \\
+&amp;P(|X-\E(X)| \ge \epsilon) = \mathop \sum_{|x - \E(x)| \ge \epsilon}
+P(x) \\
+&amp;\le \mathop \sum_{|x - \E(x)| \ge \epsilon} \bigg( \frac{x -
+\E(x)}{\epsilon} \bigg)^2 P(x) \\
+&amp;= \frac{1}{\epsilon^2} \mathop \sum_{|x - \E(x)| \ge \epsilon}
+\big( x - \E(x) \big)^2 P(x) \\
+&amp;\le \frac{1}{\epsilon^2} \mathop \sum_{x \in X} \big( x - \E(x)
+\big)^2 P(x) \\
 &amp;= \frac{\Var(X)}{\epsilon^2} \\
 \end{aligned}
 \]</span></p></li>
@@ -1448,69 +1486,121 @@ P(|X-\E(X)| \ge \epsilon) \le \frac{\Var(X)}{\epsilon^2}
 </ul>
 <p>Chebyshev不等式的作用是“估计随机变量偏离其期望的概率”，但显然这种估计是十分粗糙的，Chebyshev不等式的作用是作为证明其它大数定理的基础工具。</p>
 <h3 id="依概率收敛">依概率收敛</h3>
-<p><strong>随机变量序列</strong>即是由随机变量构成。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
+<p><strong>随机变量序列</strong>即是由随机变量构成。对于一个普通数列<span class="math inline">\(\{x_n\}\)</span>来说，若其收敛于<span class="math inline">\(c\)</span>，则当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(x_n\)</span>和<span class="math inline">\(c\)</span>的距离可以达到任意小。而随机变量序列<span class="math inline">\(X_1, X_2,
+\dots\)</span>的极限却不能按照这样定义，因为<span class="math inline">\(X_n\)</span>取值不确定，不可能和某个数字<span class="math inline">\(c\)</span>的距离任意小。</p>
 <p>随机变量是事件的映射，当试验次数足够多时，事件的频率会<strong>依概率收敛</strong>到该事件的概率。</p>
 <ul>
 <li><p>定义</p>
-<p>设<span class="math inline">\(X_1, X_2, \dots,\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) = 1\)</span>，则称该随机变量序列依概率收敛于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n \stackrel{P}{\to} c\)</span>。或者，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) = 0\)</span>。 ### Markov不等式</p></li>
+<p>设<span class="math inline">\(X_1, X_2,
+\dots,\)</span>是一个随机变量序列，如果存在一个常数<span class="math inline">\(c\)</span>，使得对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| &lt; \epsilon) =
+1\)</span>，则称该随机变量序列依概率收敛于<span class="math inline">\(c\)</span>，记作<span class="math inline">\(X_n
+\stackrel{P}{\to} c\)</span>。或者，对于任意<span class="math inline">\(\epsilon &gt; 0\)</span>，都有<span class="math inline">\(\lim_{n \to \infty} P(|X_n - c| \ge \epsilon) =
+0\)</span>。 ### Markov不等式</p></li>
 </ul>
-<p>Chebyshev不等式其实是Markov不等式的一个特例。令<span class="math inline">\(X\)</span>为一非负随机变量、<span class="math inline">\(\alpha\)</span>为一非负实数，Markov不等式描述的是以下关系： <span class="math display">\[
+<p>Chebyshev不等式其实是Markov不等式的一个特例。令<span class="math inline">\(X\)</span>为一非负随机变量、<span class="math inline">\(\alpha\)</span>为一非负实数，Markov不等式描述的是以下关系：
+<span class="math display">\[
 P(X \ge \alpha) \le \frac{\E(X)}{\alpha}
 \]</span> 以连续型随机变量为例，证明如下： <span class="math display">\[
-P(X \ge \alpha) = \int_{x \ge \alpha} p(x) \d x \le \int_{x \ge \alpha} \frac{x}{\alpha} p(x) \d x \le \int_x \frac{x}{\alpha} p(x) \d x = \frac{\E(X)}{\alpha}
-\]</span> 由于<span class="math inline">\(|X - \E(x)| \ge \epsilon \iff (X - \E(X))^2 \ge \epsilon^2\)</span>，将Markov不等式中的的<span class="math inline">\(X\)</span>替换为<span class="math inline">\((X - \E(X))^2\)</span>、<span class="math inline">\(\alpha\)</span>替换为<span class="math inline">\(\epsilon^2\)</span>，即可得到Chebyshev不等式。不过由于Markov不等式有随机变量非负的要求，适用范围就小了一些；而且同样，Markov不等式的这种估计也是很粗糙的。</p>
-<h2 id="弱大数定律weak-law-of-large-numbers">弱大数定律（Weak Law of large numbers）</h2>
+P(X \ge \alpha) = \int_{x \ge \alpha} p(x) \d x \le \int_{x \ge \alpha}
+\frac{x}{\alpha} p(x) \d x \le \int_x \frac{x}{\alpha} p(x) \d x =
+\frac{\E(X)}{\alpha}
+\]</span> 由于<span class="math inline">\(|X - \E(x)| \ge \epsilon \iff
+(X - \E(X))^2 \ge \epsilon^2\)</span>，将Markov不等式中的的<span class="math inline">\(X\)</span>替换为<span class="math inline">\((X -
+\E(X))^2\)</span>、<span class="math inline">\(\alpha\)</span>替换为<span class="math inline">\(\epsilon^2\)</span>，即可得到Chebyshev不等式。不过由于Markov不等式有随机变量非负的要求，适用范围就小了一些；而且同样，Markov不等式的这种估计也是很粗糙的。</p>
+<h2 id="弱大数定律weak-law-of-large-numbers">弱大数定律（Weak Law of
+large numbers）</h2>
 <h3 id="chebyshev大数定律">Chebyshev大数定律</h3>
 <ul>
 <li><p>定理</p>
-<p>设随机变量序列<span class="math inline">\(X_1,X_2,\dots\)</span>两两不相关，若存在常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(\Var(X_i) \le c \ne +\infty, i=1,2,\dots\)</span>，则对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[
-\lim_{n \to \infty} P(|\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| &lt; \epsilon) = 1
-\]</span> 亦即<span class="math inline">\(\bar X = \frac{1}{n} \sum_{i=1}^n X_i \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n \E(X_i)\)</span>。</p></li>
+<p>设随机变量序列<span class="math inline">\(X_1,X_2,\dots\)</span>两两不相关，若存在常数<span class="math inline">\(c\)</span>，使得<span class="math inline">\(\Var(X_i) \le c \ne +\infty,
+i=1,2,\dots\)</span>，则对任意<span class="math inline">\(\epsilon &gt;
+0\)</span>，有 <span class="math display">\[
+\lim_{n \to \infty} P(|\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n}
+\sum_{i=1}^n \E(X_i)| &lt; \epsilon) = 1
+\]</span> 亦即<span class="math inline">\(\bar X = \frac{1}{n}
+\sum_{i=1}^n X_i \stackrel{P}{\to} \frac{1}{n} \sum_{i=1}^n
+\E(X_i)\)</span>。</p></li>
 <li><p>证明</p>
 <p>由于该随机序列两两不相关，故根据期望及方差的性质， <span class="math display">\[
-\E(\frac{1}{n} \sum_{i=1}^n X_i) =  \frac{1}{n} \sum_{i=1}^n \E(X_i),\quad \Var(\frac{1}{n} \sum_{i=1}^N X_i) = \frac{1}{n^2} \sum_{i=1}^n \Var(X_i) \le \frac{c}{n}
-\]</span> 根据切比雪夫不等式， <span class="math display">\[
+\E(\frac{1}{n} \sum_{i=1}^n X_i) =  \frac{1}{n} \sum_{i=1}^n
+\E(X_i),\quad \Var(\frac{1}{n} \sum_{i=1}^N X_i) = \frac{1}{n^2}
+\sum_{i=1}^n \Var(X_i) \le \frac{c}{n}
+\]</span> 根据Chebyshev不等式， <span class="math display">\[
 \begin{gather}
-0 \le P(|\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) &lt; \frac{\Var(\frac{1}{n} \sum_{i=1}^N X_i)}{\epsilon^2} \le \frac{c}{n \epsilon} \\
-\underbrace{\lim_{n \to \infty} 0}_0 \le \lim_{n \to \infty} P(\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) \le \underbrace{\lim_{n \to \infty} \frac{c}{n \epsilon}}_0 \Rightarrow\\
-\lim_{n \to \infty} P(\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge \epsilon) = 0
+0 \le P(|\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n
+\E(X_i)| \ge \epsilon) &lt; \frac{\Var(\frac{1}{n} \sum_{i=1}^N
+X_i)}{\epsilon^2} \le \frac{c}{n \epsilon} \\
+\underbrace{\lim_{n \to \infty} 0}_0 \le \lim_{n \to \infty}
+P(\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n \E(X_i)| \ge
+\epsilon) \le \underbrace{\lim_{n \to \infty} \frac{c}{n \epsilon}}_0
+\Rightarrow\\
+\lim_{n \to \infty} P(\frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n}
+\sum_{i=1}^n \E(X_i)| \ge \epsilon) = 0
 \end{gather}
 \]</span></p></li>
 </ul>
 <h3 id="khinchin大数定律">Khinchin大数定律</h3>
 <h4 id="相互独立同分布大数定律">相互独立同分布大数定律</h4>
 <ul>
-<li>设随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>相互独立且同分布，若<span class="math inline">\(\E(X_i) = \mu, \Var(X_i) = \sigma^2 \ne \infty, i=1,2,\dots\)</span>，则对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[
-\lim_{n \to \infty} P (|\frac{1}{n} \sum_{i=1}^n X_i - \mu| &lt; \epsilon) = 1
+<li>设随机变量序列<span class="math inline">\(X_1, X_2,
+\dots\)</span>相互独立且同分布，若<span class="math inline">\(\E(X_i) =
+\mu, \Var(X_i) = \sigma^2 \ne \infty,
+i=1,2,\dots\)</span>，则对任意<span class="math inline">\(\epsilon &gt;
+0\)</span>，有 <span class="math display">\[
+\lim_{n \to \infty} P (|\frac{1}{n} \sum_{i=1}^n X_i - \mu| &lt;
+\epsilon) = 1
 \]</span></li>
 </ul>
 <p>相互独立同分布大数定律是Chebyshev大数定律的一个特例，然而在方差不存在的情况下，数学家Khinchin证明该定律依然成立，即：</p>
 <ul>
-<li>设随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>相互独立且同分布，若<span class="math inline">\(\E(X_i) = \mu\)</span>，则对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[
-\lim_{n \to \infty} P (|\frac{1}{n} \sum_{i=1}^n X_i - \mu| &lt; \epsilon) = 1
+<li>设随机变量序列<span class="math inline">\(X_1, X_2,
+\dots\)</span>相互独立且同分布，若<span class="math inline">\(\E(X_i) =
+\mu\)</span>，则对任意<span class="math inline">\(\epsilon &gt;
+0\)</span>，有 <span class="math display">\[
+\lim_{n \to \infty} P (|\frac{1}{n} \sum_{i=1}^n X_i - \mu| &lt;
+\epsilon) = 1
 \]</span></li>
 </ul>
 <h3 id="bernoulli大数定律">Bernoulli大数定律</h3>
 <ul>
-<li>随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>相互独立且同分布，若<span class="math inline">\(X_i \sim B(1,p), i=1,2,\dots\)</span>，则对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[
-\lim_{n \to \infty} P(|\frac{1}{n} \sum_{i=1}^n X_i - p| &lt; \epsilon) = 1
+<li>随机变量序列<span class="math inline">\(X_1, X_2,
+\dots\)</span>相互独立且同分布，若<span class="math inline">\(X_i \sim
+B(1,p), i=1,2,\dots\)</span>，则对任意<span class="math inline">\(\epsilon &gt; 0\)</span>，有 <span class="math display">\[
+\lim_{n \to \infty} P(|\frac{1}{n} \sum_{i=1}^n X_i - p| &lt; \epsilon)
+= 1
 \]</span></li>
 </ul>
 <p>显然Bernoulli大数定律也是Chebyshev大数定律的一个特例。</p>
 <h2 id="中心极限定理">中心极限定理</h2>
 <p>注意，在本节中，我们用<span class="math inline">\(\Phi\)</span>表示标准正态分布的分布函数。</p>
 <h3 id="lindburg-levy中心极限定理">Lindburg-Levy中心极限定理</h3>
-<p>设随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>相互独立且同分布，若<span class="math inline">\(\E(X_i) = \mu, \Var(X_i) = \sigma^2 \ne \infty, i=1,2,\dots\)</span>，则对任意实数<span class="math inline">\(x\)</span>，有 <span class="math display">\[
-\lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - n \mu}{\sqrt n \sigma} \le x) = \Phi(x)
+<p>设随机变量序列<span class="math inline">\(X_1, X_2,
+\dots\)</span>相互独立且同分布，若<span class="math inline">\(\E(X_i) =
+\mu, \Var(X_i) = \sigma^2 \ne \infty,
+i=1,2,\dots\)</span>，则对任意实数<span class="math inline">\(x\)</span>，有 <span class="math display">\[
+\lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - n \mu}{\sqrt n \sigma}
+\le x) = \Phi(x)
 \]</span></p>
-<h3 id="de-moivre-laplace中心极限定理">de Moivre-Laplace中心极限定理</h3>
-<p>设随机变量序列<span class="math inline">\(X_1, X_2, \dots\)</span>相互独立且同分布，且<span class="math inline">\(X_i \sim B(1,p), i=1,2,\dots\)</span>，则对任意实数<span class="math inline">\(x\)</span>，有 <span class="math display">\[
-\lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}} \le x) = \Phi(x)
-\]</span> 显然de Moivre-Laplace中心极限定理是Lindburg-Levy中心极限定理的特例。</p>
-<p>前面的Bernoulli大数定律告诉我们可以用<span class="math inline">\(\frac{1}{n} \sum_{i=1}^n X_i\)</span>（频率）近似<span class="math inline">\(p\)</span>（概率），而至于近似程度如何，却不得而知。de Moivre-Laplace中心极限定理则告诉我们当<span class="math inline">\(n\)</span>足够大时，近似程度如何： <span class="math display">\[
-P(|\frac{1}{n}\sum_{i=1}^n X_i - p| \le \epsilon) = P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| \le \frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) \simeq 2\Phi(\frac{\sqrt n \epsilon}{\sqrt{p(1-p)}}) - 1
+<h3 id="de-moivre-laplace中心极限定理">de
+Moivre-Laplace中心极限定理</h3>
+<p>设随机变量序列<span class="math inline">\(X_1, X_2,
+\dots\)</span>相互独立且同分布，且<span class="math inline">\(X_i \sim
+B(1,p), i=1,2,\dots\)</span>，则对任意实数<span class="math inline">\(x\)</span>，有 <span class="math display">\[
+\lim_{n \to \infty} P(\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}} \le
+x) = \Phi(x)
+\]</span> 显然de
+Moivre-Laplace中心极限定理是Lindburg-Levy中心极限定理的特例。</p>
+<p>前面的Bernoulli大数定律告诉我们可以用<span class="math inline">\(\frac{1}{n} \sum_{i=1}^n
+X_i\)</span>（频率）近似<span class="math inline">\(p\)</span>（概率），而至于近似程度如何，却不得而知。de
+Moivre-Laplace中心极限定理则告诉我们当<span class="math inline">\(n\)</span>足够大时，近似程度如何： <span class="math display">\[
+P(|\frac{1}{n}\sum_{i=1}^n X_i - p| \le \epsilon) =
+P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| \le \frac{\sqrt n
+\epsilon}{\sqrt{p(1-p)}}) \simeq 2\Phi(\frac{\sqrt n
+\epsilon}{\sqrt{p(1-p)}}) - 1
 \]</span></p>
-<p>上式实际是在用正态分布近似二项分布（多个伯努利分布随机变量加和为伯努利分布），比如在<a href="https://www.mathsisfun.com/data/quincunx-explained.html">Galton Board游戏</a>中，我们就可以应用de Moivre-Laplace中心极限定理来近似实际概率。</p>
+<p>上式实际是在用正态分布近似二项分布（多个伯努利分布随机变量加和为伯努利分布），比如在<a href="https://www.mathsisfun.com/data/quincunx-explained.html">Galton
+Board游戏</a>中，我们就可以应用de
+Moivre-Laplace中心极限定理来近似实际概率。</p>
 
 
 
@@ -1601,7 +1691,7 @@ P(|\frac{1}{n}\sum_{i=1}^n X_i - p| \le \epsilon) = P(|\frac{\sum_{i=1}^n X_i - 
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1651,7 +1741,7 @@ P(|\frac{1}{n}\sum_{i=1}^n X_i - p| \le \epsilon) = P(|\frac{\sum_{i=1}^n X_i - 
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1738,7 +1828,7 @@ P(|\frac{1}{n}\sum_{i=1}^n X_i - p| \le \epsilon) = P(|\frac{\sum_{i=1}^n X_i - 
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

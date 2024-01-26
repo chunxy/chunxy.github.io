@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1404,41 +1432,82 @@
             
 
 <h2 id="jenson-shannon-divergence">Jenson-Shannon Divergence</h2>
-<p>In probability theory and statistics, <strong>Jenson-Shannon divergence</strong> is another method of measuring the distance between two distributions. It is based on <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> with some notable differences. KL-divergence does not make a good measure of distance between distributions, since in the first place it is <em>not symmetric</em>. Another disadvantage of KL-divergence is that it is <em>not bounded from above</em>. Jenson-Shannon divergence, on the other hand, overcomes these two problems of KL-divergence.</p>
-<p>Given two distributions <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> defined on the same sample space, Jenson-Shannon divergence is defined as <span class="math display">\[
-\newcommand{\JSD}{\mathop{\text{JSD}}} 
-\JSD(p;q) \coloneq \frac{1}{2} (D_\text{KL}(p || m) + D_\text{KL}(q || m)), \text{where $m = \frac{p+q}{2}$}
-\]</span> Since the JSD is the addition of two KL-divergences, it is non-negative by the non-negativity of KL-divergence and it reaches <span class="math inline">\(0\)</span> when <span class="math inline">\(p=q\)</span>. On the other hand, <span class="math display">\[
+<p>In probability theory and statistics, <strong>Jenson-Shannon
+divergence</strong> is another method of measuring the distance between
+two distributions. It is based on <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> with some notable
+differences. KL-divergence does not make a good measure of distance
+between distributions, since in the first place it is <em>not
+symmetric</em>. Another disadvantage of KL-divergence is that it is
+<em>not bounded from above</em>. Jenson-Shannon divergence, on the other
+hand, overcomes these two problems of KL-divergence.</p>
+<p>Given two distributions <span class="math inline">\(p\)</span> and
+<span class="math inline">\(q\)</span> defined on the same sample space,
+Jenson-Shannon divergence is defined as <span class="math display">\[
+\newcommand{\JSD}{\mathop{\text{JSD}}}
+\JSD(p;q) \coloneq \frac{1}{2} (D_\text{KL}(p || m) + D_\text{KL}(q ||
+m)), \text{where $m = \frac{p+q}{2}$}
+\]</span> Since the JSD is the addition of two KL-divergences, it is
+non-negative by the non-negativity of KL-divergence and it reaches <span class="math inline">\(0\)</span> when <span class="math inline">\(p=q\)</span>. On the other hand, <span class="math display">\[
 \begin{aligned}
-\JSD(p;q) &amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{p(x)}{(p(x)+q(x))/2} + \E_{x \sim q} \log \frac{q(x)}{(p(x)+q(x))/2} \big) \\
-&amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{2}{( 1 + e^{\ln \frac{q(x)}{p(x)}} )} + \E_{x \sim q} \log \frac{2}{( 1 + e^{\ln \frac{p(x)}{q(x)}} )} \big) \\
+\JSD(p;q) &amp;= \frac{1}{2} \big( \E_{x \sim p} \log
+\frac{p(x)}{(p(x)+q(x))/2} + \E_{x \sim q} \log
+\frac{q(x)}{(p(x)+q(x))/2} \big) \\
+&amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{2}{( 1 + e^{\ln
+\frac{q(x)}{p(x)}} )} + \E_{x \sim q} \log \frac{2}{( 1 + e^{\ln
+\frac{p(x)}{q(x)}} )} \big) \\
 \end{aligned}
-\]</span> Due to the concavity of <span class="math inline">\(f(x) = \log \frac{2}{1 + e^x}\)</span>, <span class="math display">\[
+\]</span> Due to the concavity of <span class="math inline">\(f(x) =
+\log \frac{2}{1 + e^x}\)</span>, <span class="math display">\[
 \begin{aligned}
-\JSD(p;q) &amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{2}{( 1 + e^{\ln \frac{q(x)}{p(x)}} )} + \E_{x \sim q} \log \frac{2}{( 1 + e^{\ln \frac{p(x)}{q(x)}} )} \big) \\
-&amp;\le \frac{1}{2} \big( \log \frac{2}{( 1 + e^{\E_{x \sim p} \ln \frac{q(x)}{p(x)}} )} + \log \frac{2}{( 1 + e^{\E_{x \sim q} \ln \frac{p(x)}{q(x)}} )} \big) \\
-&amp;\le \frac{1}{2} \big( 2 \log \frac{2}{( 1 + e^{( \E_{x \sim p} \ln \frac{q(x)}{p(x)} + \E_{x \sim q} \ln \frac{p(x)}{q(x)} ) / 2} )} \big) \\
-&amp;= \log \frac{2}{( 1 + e^{-\frac{1}{2} ( D_\text{KL}(p||q) + D_\text{KL}(q||p) )} )}
+\JSD(p;q) &amp;= \frac{1}{2} \big( \E_{x \sim p} \log \frac{2}{( 1 +
+e^{\ln \frac{q(x)}{p(x)}} )} + \E_{x \sim q} \log \frac{2}{( 1 + e^{\ln
+\frac{p(x)}{q(x)}} )} \big) \\
+&amp;\le \frac{1}{2} \big( \log \frac{2}{( 1 + e^{\E_{x \sim p} \ln
+\frac{q(x)}{p(x)}} )} + \log \frac{2}{( 1 + e^{\E_{x \sim q} \ln
+\frac{p(x)}{q(x)}} )} \big) \\
+&amp;\le \frac{1}{2} \big( 2 \log \frac{2}{( 1 + e^{( \E_{x \sim p} \ln
+\frac{q(x)}{p(x)} + \E_{x \sim q} \ln \frac{p(x)}{q(x)} ) / 2} )} \big)
+\\
+&amp;= \log \frac{2}{( 1 + e^{-\frac{1}{2} ( D_\text{KL}(p||q) +
+D_\text{KL}(q||p) )} )}
 \end{aligned}
-\]</span> This upper bound is attributed to Crooks. Since the KL-divergence can go to positive infinity, we can conclude that <span class="math inline">\(\JSD(p;q)\)</span> is upper-bounded by <span class="math inline">\(\log 2\)</span>. The <span class="math inline">\(\newcommand{\J}{\mathop{\text{J}}} \J(p;q) \coloneq \frac{1}{2} ( D_\text{KL}(p||q) + D_\text{KL}(q||p) )\)</span> term is also known as <strong>Jeffreys divergence</strong> (the coefficient <span class="math inline">\(\frac{1}{2}\)</span> may be ignored in some other place). Even more accurately, the upper bound can be rewritten as (<a href="/uploads/Inequalities%20between%20the%20Jenson-Shannon%20and%20Jeffreys%20divergences.pdf" target="_blank">in this note</a>)</p>
+\]</span> This upper bound is attributed to Crooks. Since the
+KL-divergence can go to positive infinity, we can conclude that <span class="math inline">\(\JSD(p;q)\)</span> is upper-bounded by <span class="math inline">\(\log 2\)</span>. The <span class="math inline">\(\newcommand{\J}{\mathop{\text{J}}} \J(p;q)
+\coloneq \frac{1}{2} ( D_\text{KL}(p||q) + D_\text{KL}(q||p) )\)</span>
+term is also known as <strong>Jeffreys divergence</strong> (the
+coefficient <span class="math inline">\(\frac{1}{2}\)</span> may be
+ignored in some other place). Even more accurately, the upper bound can
+be rewritten as
+(<a href="/uploads/Inequalities%20between%20the%20Jenson-Shannon%20and%20Jeffreys%20divergences.pdf" target="_blank">in
+this note</a>)</p>
 <p><span class="math display">\[
-\JSD(p;q) \le \min (\frac{1}{4} \J(p;q), \log \frac{2}{1 + e^{-\J(p;q)}})
-\]</span> A lower bound in terms of Jeffreys divergence can be derived as (<a href="/uploads/A%20Note%20on%20Bound%20for%20Jensen-Shannon%20Divergence%20by%20Jeffreys.pdf" target="_blank">in this note</a>)</p>
+\JSD(p;q) \le \min (\frac{1}{4} \J(p;q), \log \frac{2}{1 +
+e^{-\J(p;q)}})
+\]</span> A lower bound in terms of Jeffreys divergence can be derived
+as
+(<a href="/uploads/A%20Note%20on%20Bound%20for%20Jensen-Shannon%20Divergence%20by%20Jeffreys.pdf" target="_blank">in
+this note</a>)</p>
 <p><span class="math display">\[
 \JSD(p;q) \ge \frac{1}{4} \ln(1 + 2\J(p;q))
 \]</span></p>
-<p>Remarkably, the square root of JSD between two distributions satisfies the <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)#Definition">metric axioms</a>.</p>
+<p>Remarkably, the square root of JSD between two distributions
+satisfies the <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)#Definition">metric
+axioms</a>.</p>
 <h3 id="relation-with-entropy">Relation with Entropy</h3>
 <p>By definition, <span class="math display">\[
 \begin{aligned}
-&amp;\JSD(p;q) = \frac{1}{2} (D_\text{KL}(p || \frac{p+q}{2}) + D_\text{KL}(q || \frac{p+q}{2})) \\
-&amp;= \frac{1}{2} [H(p||\frac{p+q}{2}) - H(p) + H(q||\frac{p+q}{2}) - H(q)] \\
-&amp;= 
+&amp;\JSD(p;q) = \frac{1}{2} (D_\text{KL}(p || \frac{p+q}{2}) +
+D_\text{KL}(q || \frac{p+q}{2})) \\
+&amp;= \frac{1}{2} [H(p||\frac{p+q}{2}) - H(p) + H(q||\frac{p+q}{2}) -
+H(q)] \\
+&amp;=
 \begin{aligned}[t]
-&amp;-\frac{1}{2} [\E_{x \sim p} \log \frac{p+q}{2}(x) + \E_{x \sim q} \log \frac{p+q}{2}(x)] \\
+&amp;-\frac{1}{2} [\E_{x \sim p} \log \frac{p+q}{2}(x) + \E_{x \sim q}
+\log \frac{p+q}{2}(x)] \\
 &amp;- \frac{1}{2} [H(p) + H(q)] \\
 \end{aligned} \\
-&amp;= -\E_{x \sim \frac{p+q}{2}} \frac{p+q}{2}(x) - \frac{1}{2} [H(p) + H(q)] \\
+&amp;= -\E_{x \sim \frac{p+q}{2}} \frac{p+q}{2}(x) - \frac{1}{2} [H(p) +
+H(q)] \\
 &amp;= H(\frac{p+q}{2}) - \frac{1}{2} [H(p) + H(q)]
 \end{aligned}
 \]</span></p>
@@ -1532,7 +1601,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1582,7 +1651,7 @@
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1669,7 +1738,7 @@
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

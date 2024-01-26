@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="The entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x \] This is actually the differential entropy introduced by Shannon." />
+  <meta name="description" content="The entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The entropy reaches its maximum when the underlying distribution \(p\) is a uniform distribution." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/entropy/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/entropy/" />
   <meta property="og:title" content="Entropy | Chunxy&#39; Website" />
-  <meta property="og:description" content="The entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The entropy of continuous distribution \(q\) (probability density function) is usually similarly defined as \[ H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x \] This is actually the differential entropy introduced by Shannon." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="The entropy of discrete distribution \(p\) (probability mass function) is defined as \[ H(p) = -\mathrm{E}_{x \sim p}\log p(x) \] The entropy reaches its maximum when the underlying distribution \(p\) is a uniform distribution." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1399,21 +1427,47 @@
           <div class="article-style">
             
 
-<p>The entropy of discrete distribution <span class="math inline">\(p\)</span> (probability mass function) is defined as <span class="math display">\[
+<p>The entropy of discrete distribution <span class="math inline">\(p\)</span> (probability mass function) is defined
+as <span class="math display">\[
 H(p) = -\mathrm{E}_{x \sim p}\log p(x)
-\]</span> The entropy of continuous distribution <span class="math inline">\(q\)</span> (probability density function) is usually similarly defined as <span class="math display">\[
+\]</span> The entropy reaches its maximum when the underlying
+distribution <span class="math inline">\(p\)</span> is a uniform
+distribution. The maximum value is <span class="math inline">\(\log
+k\)</span> if the support is finite and has <span class="math inline">\(k\)</span> many distinct values. This can be
+derived with the Jenson’s inequality and understood via the level of
+chao of a distribution. From an analysis point of view, the entropy is
+defined on a <span class="math inline">\(k\)</span>-tuple whose domain
+is compact so that the maxima must exist; we can always find a larger
+entropy if any two of <span class="math inline">\(p_1,
+\dots,p_k\)</span> are not equal.</p>
+<p>The entropy of continuous distribution <span class="math inline">\(q\)</span> (probability density function) is
+usually similarly defined as <span class="math display">\[
 H(q) = -\E_{x\sim q}\log q(x) = -\int q(x)\log q(x)\d x
-\]</span> This is actually the <strong>differential entropy</strong> introduced by Shannon. In fact, it is not a good continuous analog of discrete entropy and it was not rigorously derived. For example, this formula can be negative. Therefore, in the case of entropy, the random variable had better be discrete, despite the wide usage of differential entropy.</p>
+\]</span> This is actually the <strong>differential entropy</strong>
+introduced by Shannon. In fact, it is not a good continuous analog of
+discrete entropy and it was not rigorously derived. For example, this
+formula can be negative. Therefore, in the case of entropy, the random
+variable had better be discrete, despite the wide usage of differential
+entropy.</p>
 <h3 id="gaussian-case">Gaussian Case</h3>
-<p>The entropy of a <span class="math inline">\(n\)</span>-dimensional <a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian distribution</a> <span class="math inline">\(p(x) = \frac{e^{-\frac 1 2 (x-\mu)^T \Sigma^{-1}(x-\mu)}}{\sqrt{|2\pi\Sigma|}}\)</span> can be derived as follows: <span class="math display">\[
+<p>The entropy of a <span class="math inline">\(n\)</span>-dimensional
+<a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian distribution</a> <span class="math inline">\(p(x) = \frac{e^{-\frac 1 2 (x-\mu)^T
+\Sigma^{-1}(x-\mu)}}{\sqrt{|2\pi\Sigma|}}\)</span> can be derived as
+follows: <span class="math display">\[
 \begin{aligned}
-H(p) &amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
-&amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2 \log |2\pi\Sigma| \\
-&amp;= \frac 1 2 \int p(x) x^T \Sigma^{-1} x \d x + \frac 1 2 \int p(x) \mu^T \Sigma^{-1} \mu \d x \\
-&amp;\quad - \frac 1 2 \int p(x) \mu^T \Sigma^{-1} x \d x - \frac 1 2 \int p(x) x^T \Sigma^{-1} \mu \d x \\
+H(p) &amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2
+(x-\mu)^T \Sigma^{-1} (x-\mu) - \frac 1 2 \log |2\pi\Sigma|] \d x \\
+&amp;= \frac 1 2 \int p(x) (x-\mu)^T \Sigma^{-1}(x-\mu) \d x + \frac 1 2
+\log |2\pi\Sigma| \\
+&amp;= \frac 1 2 \int p(x) x^T \Sigma^{-1} x \d x + \frac 1 2 \int p(x)
+\mu^T \Sigma^{-1} \mu \d x \\
+&amp;\quad - \frac 1 2 \int p(x) \mu^T \Sigma^{-1} x \d x - \frac 1 2
+\int p(x) x^T \Sigma^{-1} \mu \d x \\
 &amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
-&amp;= [\frac 1 2 \tr(\Sigma^{-1} \Sigma) + \frac 1 2 \mu^T \Sigma^{-1} \mu] + \frac 1 2 \mu^T \Sigma^{-1} \mu \\
-&amp;\quad - \frac 1 2 \mu^T \Sigma^{-1} \mu - \frac 1 2 \mu^T \Sigma^{-1} \mu \\
+&amp;= [\frac 1 2 \tr(\Sigma^{-1} \Sigma) + \frac 1 2 \mu^T \Sigma^{-1}
+\mu] + \frac 1 2 \mu^T \Sigma^{-1} \mu \\
+&amp;\quad - \frac 1 2 \mu^T \Sigma^{-1} \mu - \frac 1 2 \mu^T
+\Sigma^{-1} \mu \\
 &amp;\quad + \frac 1 2 \log |2\pi\Sigma| \\
 &amp;= \frac 1 2 n + \frac 1 2 \log |2\pi\Sigma|
 \end{aligned}
@@ -1501,7 +1555,7 @@ H(p) &amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1551,7 +1605,7 @@ H(p) &amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1638,7 +1692,7 @@ H(p) &amp;\triangleq -\int p(x) \log p(x) \d x = -\int p(x) [-\frac 1 2 (x-\mu)^
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

@@ -1,0 +1,1066 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Quadratically Constrained Quadratic Programming Consider the quadratically constrained quadratic programming: $$ \label{qcqp} \tag{QCQP} \begin{aligned} \inf \quad &amp; x^T Q x \ \text{s.t.} \quad &amp; x^T A_i x \ge b_i, \forall i=1,\dots,m \end{aligned} $$ where $Q, A_1, \dots, A_m \in \mathcal{S}^n$." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/" />
+  <meta property="og:title" content="Chunxy&#39; Website" />
+  <meta property="og:description" content="Quadratically Constrained Quadratic Programming Consider the quadratically constrained quadratic programming: $$ \label{qcqp} \tag{QCQP} \begin{aligned} \inf \quad &amp; x^T Q x \ \text{s.t.} \quad &amp; x^T A_i x \ge b_i, \forall i=1,\dots,m \end{aligned} $$ where $Q, A_1, \dots, A_m \in \mathcal{S}^n$." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="f903c36e56c878811ca496c499c4e61b" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+      
+      
+      <div class="article-container py-1" style="background: initial">
+        
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+      </div>
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1></h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="quadratically-constrained-quadratic-programming">Quadratically Constrained Quadratic Programming</h2>
+<p>Consider the quadratically constrained quadratic programming:
+$$
+\label{qcqp} \tag{QCQP} \begin{aligned}
+\inf \quad &amp; x^T Q x \
+\text{s.t.} \quad &amp; x^T A_i x \ge b_i, \forall i=1,\dots,m
+\end{aligned}
+$$
+where $Q, A_1, \dots, A_m \in \mathcal{S}^n$. By far, no convexity is not assumed. But on the other hand, we can apply the <strong>semi-definite relaxation</strong> technique to transform the $\eqref{qcqp}$.</p>
+<p>Observe that $x^T Q x = \tr(x^T Q x) = \tr(Q x x^T) = Q \bullet x x^T$, which is linear in $x x^T$. We can apply the same trick to the constraints so that $\eqref{qcqp}$ is equivalent to
+$$
+\begin{aligned}
+v^* = \inf \quad &amp; Q \bullet X \
+\text{s.t.} \quad &amp; A_i \bullet X \ge b_i, \forall i=1,\dots,m \
+&amp; \exists x \in \R^n, X = x x^T \
+\text{ non-convex??}
+\end{aligned}
+$$
+Note that $\exists x \in \R^n, X = x x^T \iff X \in \mathcal{S}_+^n, \rank(X) \le 1$. That is.
+$$
+\begin{aligned}
+\inf \quad &amp; Q \bullet X \
+\text{s.t.} \quad &amp; A_i \bullet X \ge b_i, \forall i=1,\dots,m \
+&amp; X \succeq 0 \
+&amp; \rank(X) \le 1
+\end{aligned}
+$$
+The $\rank$ function is not convex. We may as well drop the rank constraint so that the semi-definite relaxation of $\eqref{qcqp}$ is
+$$
+\label{relaxed-qcqp} \tag{Relaxed QP} \begin{aligned}
+v_R^* = \inf \quad &amp; Q \bullet X \
+\text{s.t.} \quad &amp; A_i \bullet X \ge b_i, \forall i=1,\dots,m \
+&amp; X \succeq 0
+\end{aligned}
+$$
+Observe that $v^* \ge v_R^*$ and $\eqref{relaxed-qcqp}$ is a SDP.</p>
+<h3 id="max-cut-problem">Max-cut Problem</h3>
+<p>Let $G = (V,E)$ be an undirected graph and $w: E \mapsto \R_+$ be a weight function on $E$. A subset $S \subseteq V$ defines a cut and the value of a cut is
+$$
+w(S) \triangleq \sum_{(i,j) \in E, i \in S, j \notin S} w_{ij}
+$$
+The goal is to find $S \subseteq V$ such that $w(S)$ is maximized. The minimization problem is trivial, simply choosing $S$ as $V$ or $\emptyset$ gives the minimum value $0$. Let $x_i \in { -1, +1 }$ be a binary variable indicating whether vertex $i$ is in the cut ($+1$) or not ($-1$). Then,
+$$
+\label{mc} \tag{Max-cut} \begin{aligned}
+v^* = \max \quad &amp; \sum_{(i,j) \in E} \frac{1}{2} w_{ij} (1 - x_i x_j) \
+\text{s.t.} \quad &amp; x_i^2 = 1, \forall i=1,\dots,n \
+\end{aligned}
+$$
+Apply the SDR technique (there is a middle step to convert the above to a QP) to get
+$$
+\label{relaxed-mc} \tag{Relaxed Max-cut} \begin{aligned}
+v_\text{sdr}^* = \max \quad &amp; \sum_{(i,j) \in E} \frac{1}{2} w_{ij} (1 - X_{ij}) \
+\text{s.t.} \quad &amp; X_{ii} = 1, \forall i=1,\dots,n \
+&amp; X \succeq 0
+\end{aligned}
+$$
+Note that $v^* \le v_\text{sdr}^<em>$. If $\eqref{relaxed-mc}$ is solved with a rank-one matrix $X^</em>$, we can automatically decompose it to give the optimal solution to $\eqref{mc}$. The crux is how to preserve the optimality when $X^*$ is of rank higher than one. Here is an algorithm for it:</p>
+<ol>
+<li>Solve $\eqref{relaxed-mc}$ to get an optimal solution $X^<em>$. Let $X^</em> = U^T U$ where $U \in \R^{n \times n}$. Let $u_i \in \R^n$ be the $i$-th column of $U$. We have $|u_i|<em>2^2 = u_i^T u_i = X</em>{ii}^* = 1$.</li>
+<li>Let $r \in \R^n$ be a random vector uniformly distributed on the sphere $S^n = { x \in \R^n: |x|_2 = 1 }$ (this can be done by normalizing the samples from standard Gaussian in $\R^n$).</li>
+<li>Let $x_i&rsquo; = \sign(u_i^T r)$ where $\sign(z)$ is $+1$ if $z \ge 0$ or $-1$ otherwise. Return ${ x_i&rsquo;: i=1,\dots,n }$ as a feasible solution to $\eqref{mc}$. This is also referred to as the <strong>hyperplane rounding</strong>.</li>
+</ol>
+<p>In the first place, $x_i&rsquo;$s are feasible. Let $v&rsquo;$ be the objective value associated with the cut ${ x_i&rsquo;: i=1,\dots,n }$. Clearly, $v&rsquo; \le v^<em>$. To analyze its approximation bound, firstly note that ${ x_i&rsquo;: i=1,\dots,n }$ is random. We can only consider the $\E[v&rsquo;]$.
+$$
+\begin{aligned}
+&amp;\E[v&rsquo;] = \frac{1}{2} \E[\sum_{(i,j) \in E} w_{ij} (1 - x_i&rsquo; x_j&rsquo;)] \
+&amp;= \sum_{(i,j) \in E} w_{ij} \E[\frac{1 - x_i&rsquo; x_j&rsquo;}{2}] \
+&amp;= \sum_{(i,j) \in E} w_{ij} \Pr[\sign(u_i^T r) \ne \sign(u_j^T r)] \
+\end{aligned}
+$$
+Let $u, v \in S^n$ be arbitrary, $r$ be uniformly distributed on $S^{n-1}$. Then,
+$$
+\Pr[\sign(u^T r) \ne \sign(v^T r)] = \frac{\arccos(u^T v)}{\pi}
+$$
+Under the above setting, for any $z \in [-1, 1]$ and $\theta$ such that $\cos \theta = z$,
+$$
+\frac{\arccos z}{\pi} = \frac{2 \theta}{\pi(1 - \cos \theta)} \frac{1}{2} (1 - z) \
+\ge \alpha \cdot \frac{1}{2} (1-z)
+$$
+where $\alpha = \min_{0 \le \theta \le \pi} \frac{2 \theta}{\pi (1 - \cos \theta)} &gt; 0.878$. As a result,
+$$
+\begin{aligned}
+&amp;\E[v&rsquo;] = \sum_{(i,j) \in E} w_{ij} \frac{\arccos u_i^T u_j}{\pi} \
+&amp;\ge \sum_{(i,j) \in E} w_{ij} \alpha \cdot \frac{1}{2} (1 - \underbrace{u_i^T u_j}<em>{X</em>{ij}^</em>}) \
+&amp;= \alpha \sum_{(i,j) \in E} \frac{1}{2} w_{ij} (1 - X_{ij}^<em>) \
+&amp;= \alpha v_\text{sdr}^</em> \ge \alpha v^*
+\end{aligned}
+$$</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%20https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

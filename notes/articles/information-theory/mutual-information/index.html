@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1400,7 +1428,10 @@
           <div class="article-style">
             
 
-<p>Mutual information of <strong>two random variables</strong> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a measure of the mutual independence between them. It quantifies the amount of information obtained about one random variable by observing the other random variable. It is defined as <span class="math display">\[
+<p>Mutual information of <strong>two random variables</strong> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a measure of the mutual independence
+between them. It quantifies the amount of information obtained about one
+random variable by observing the other random variable. It is defined as
+<span class="math display">\[
 I(X;Y) = \sum_{(x,y) \in X \times Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
 \]</span> By its definition, <span class="math display">\[
 \begin{gather}
@@ -1410,9 +1441,16 @@ I(X;Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)
 \end{gather}
 \]</span></p>
 <h3 id="gaussian-case">Gaussian Case</h3>
-<p>To better illustrate the formula of mutual information between two <a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian-distributed</a> random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. We can concatenate them to form, say an <span class="math inline">\(n\)</span>-dimensional random variable <span class="math inline">\(Z\)</span>, which is also Gaussian-distributed. Then the mutual information between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be computed as: <span class="math display">\[
-I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
-\]</span> The key to the derivation is that mutual information is the KL-divergence between the joint distribution and the product of the marginal distributions.</p>
+<p>To better illustrate the formula of mutual information between two <a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian-distributed</a> random
+variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. We can concatenate them to form, say
+an <span class="math inline">\(n\)</span>-dimensional random variable
+<span class="math inline">\(Z\)</span>, which is also
+Gaussian-distributed. Then the mutual information between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be computed as: <span class="math display">\[
+I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det
+\Sigma_Z}
+\]</span> The key to the derivation is that mutual information is the
+KL-divergence between the joint distribution and the product of the
+marginal distributions.</p>
 <p>The joint can be described as <span class="math display">\[
 p_{X:Y} = N(\underbrace{\mu_X:\mu_Y}_\mu,
 \underbrace{
@@ -1430,69 +1468,111 @@ p_{X} \times p_{Y} = N(\mu_x:\mu_y,
 0 &amp; \Sigma_{yy} \\
 \end{bmatrix}
 )
-\]</span> The probability density function of an <span class="math inline">\(n&#39;\)</span>-dimensional Gaussian distribution is <span class="math inline">\(p(x&#39;) = \frac{1}{\sqrt{|2\pi \Sigma&#39;|}}e^{-\frac{1}{2}(x&#39;-\mu&#39;)^T\Sigma&#39;^{-1}(x&#39;-\mu&#39;)}\)</span>. The entropy of this Gaussian distribution is <span class="math inline">\(\frac 1 2 n&#39; + \frac 1 2 \log |2\pi\Sigma&#39;|\)</span>. In view of above, <span class="math display">\[
+\]</span> The probability density function of an <span class="math inline">\(n&#39;\)</span>-dimensional Gaussian distribution
+is <span class="math inline">\(p(x&#39;) = \frac{1}{\sqrt{|2\pi
+\Sigma&#39;|}}e^{-\frac{1}{2}(x&#39;-\mu&#39;)^T\Sigma&#39;^{-1}(x&#39;-\mu&#39;)}\)</span>.
+The entropy of this Gaussian distribution is <span class="math inline">\(\frac 1 2 n&#39; + \frac 1 2 \log
+|2\pi\Sigma&#39;|\)</span>. In view of above, <span class="math display">\[
 \begin{aligned}
 I&amp;(X;Y) = D_{KL}(p_{X:Y} || p_X \times p_Y)
-= \int p_{X:Y}(\underbrace{x:y}_z) \log \frac{p_{X:Y}(x:y)} {p_X(x) p_{Y}(y)} \d z \\
+= \int p_{X:Y}(\underbrace{x:y}_z) \log \frac{p_{X:Y}(x:y)} {p_X(x)
+p_{Y}(y)} \d z \\
 &amp;= \int p_{X:Y}(\underbrace{x:y}_z) \log p_{X:Y}(x:y) \d z -
     \int p_{X:Y}(\underbrace{x:y}_z) \log p_X(x) \d z \\
-&amp;\quad\quad\quad -\int p_{X:Y}(\underbrace{x:y}_z) \log p_Y(y) \d z \\
+&amp;\quad\quad\quad -\int p_{X:Y}(\underbrace{x:y}_z) \log p_Y(y) \d z
+\\
 &amp;= \int p_{Z}(z) \log p_{Z}(z) \d z -
-    \int p_{X}(x) \log p_X(x) \d x - 
+    \int p_{X}(x) \log p_X(x) \d x -
     \int p_{Y}(y) \log p_Y(y) \d y \\
 &amp;= -(\log \sqrt{\det(2\pi \Sigma)} + \frac n 2) +
     (\log \sqrt{\det(2\pi \Sigma_{X}}) + \frac {n_X} 2) \\
-&amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y} 2) \\    
+&amp;\quad\quad\quad +(\log \sqrt{\det(2\pi \Sigma_{Y}}) + \frac {n_Y}
+2) \\    
 &amp;= \frac 1 2 \log \frac{\det \Sigma_X \det \Sigma_Y}{\det \Sigma_Z}
 \end{aligned}
 \]</span></p>
 <h4 id="kronecker-gaussian">Kronecker Gaussian</h4>
-<p>Consider the multivariate Gaussian distribution random vector <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> of the same length <span class="math inline">\(k\)</span>. Suppose they are both independent internally and they have the component-wise correlation <span class="math inline">\(corr(X_i, Y_j) = \delta_{ij} \rho\)</span>, where <span class="math inline">\(\rho \in (-1, 1)\)</span> (open to ensure the covariance matrix is invertible), <span class="math inline">\(1 \le i, j \le k\)</span>, <span class="math inline">\(\delta_{ij}\)</span> is the Kronecker’s delta: <span class="math display">\[
-\delta_{ij} = 
+<p>Consider the multivariate Gaussian distribution random vector <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> of the same length <span class="math inline">\(k\)</span>. Suppose they are both independent
+internally and they have the component-wise correlation <span class="math inline">\(corr(X_i, Y_j) = \delta_{ij} \rho\)</span>, where
+<span class="math inline">\(\rho \in (-1, 1)\)</span> (open to ensure
+the covariance matrix is invertible), <span class="math inline">\(1 \le
+i, j \le k\)</span>, <span class="math inline">\(\delta_{ij}\)</span> is
+the Kronecker’s delta: <span class="math display">\[
+\delta_{ij} =
 \begin{cases}
 0, &amp; i \ne j \\
 1, &amp; i = j
 \end{cases}
-\]</span> Let <span class="math inline">\(Z_k\)</span> be the vector concatenated by <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span>. It is easy to draw its covariance matrix <span class="math inline">\(\Sigma_{Z_k}\)</span> like <span class="math display">\[
+\]</span> Let <span class="math inline">\(Z_k\)</span> be the vector
+concatenated by <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span>. It is easy to draw its covariance
+matrix <span class="math inline">\(\Sigma_{Z_k}\)</span> like <span class="math display">\[
 \begin{pmatrix}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0
+\\
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho
+\\
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0
+\\
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1
+\\
 \end{pmatrix}
 \]</span> The mutual information between the <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> can be calculated as <span class="math display">\[
-I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det \Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
-\]</span> The problem remains as how to compute <span class="math inline">\(\det \Sigma_{Z_{k}}\)</span>. After applying the Laplacian expansion along the first column, it remains to deal with the determinants of following two matrices (dashed lines rule out the row/column to be deleted): <span class="math display">\[
+I(X;Y) = \frac 1 2 \log \frac{\det \Sigma_{X_k} \det \Sigma_{Y_k}}{\det
+\Sigma_{Z_k}} = -\frac 1 2 \log \det \Sigma_{Z_k}
+\]</span> The problem remains as how to compute <span class="math inline">\(\det \Sigma_{Z_{k}}\)</span>. After applying the
+Laplacian expansion along the first column, it remains to deal with the
+determinants of following two matrices (dashed lines rule out the
+row/column to be deleted): <span class="math display">\[
 \begin{gather}
 A_k = \underbrace{
 \left( \begin{array}{c:ccccccc}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0
+\\
 \hdashline
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho
+\\
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0
+\\
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1
+\\
 \end{array} \right)
 }_\text{$2k$ columns},
 B_k = \underbrace{
 \left( \begin{array}{c:ccccccc}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0
+\\
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho
+\\
 \hdashline
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0
+\\
 \hdashline
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1
+\\
 \end{array} \right)
 }_\text{$2k$ columns}, \\
 \det Z_k =
@@ -1508,17 +1588,25 @@ B_k = \underbrace{
 \det A_k =
 \underbrace{
 \left| \begin{array}{c:ccc:c:ccc}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0
+\\
 \hdashline
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho
+\\
 \hdashline
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0
+\\
 \hdashline
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1
+\\
 \end{array} \right|
 }_\text{$2k$ columns}
 = \det Z_{k-1}
@@ -1526,28 +1614,43 @@ B_k = \underbrace{
 \det B_k = (-1)^k \rho
 \underbrace{
 \left| \begin{array}{c:ccc:c:ccc}
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0 \\
+1 &amp; 0 &amp; \cdots &amp; 0 &amp; \rho &amp; 0 &amp; \cdots &amp; 0
+\\
 \hdashline
-0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho \\
+0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 &amp; \rho &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \rho
+\\
 \hdashline
-\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+\rho &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0
+\\
 \hdashline
-0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+0 &amp; \rho  &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0
+\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \rho  &amp; 0 &amp; 0 &amp; \cdots &amp; 1
+\\
 \end{array} \right|
-}_\text{$2k$ columns} 
+}_\text{$2k$ columns}
 = (-1)^k \rho \det Z_{k-1}
-\]</span> In all, <span class="math inline">\(\det Z_k = \det Z_{k-1} - (-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}\)</span>. Because <span class="math inline">\(\det Z_1 = 1 - \rho^2\)</span>, we finally have <span class="math display">\[
+\]</span> In all, <span class="math inline">\(\det Z_k = \det Z_{k-1} -
+(-1)^{2k} \rho^2 \det Z_{k-1} = (1 - \rho^2) Z_{k-1}\)</span>. Because
+<span class="math inline">\(\det Z_1 = 1 - \rho^2\)</span>, we finally
+have <span class="math display">\[
 \det Z_k = (1 - \rho^2)^k
 \]</span> Therefore, <span class="math display">\[
-I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
+I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 -
+\rho^2)
 \]</span></p>
 <h2 id="external-materials">External Materials</h2>
-<p><a href="https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr">Mutual information between subsets of variables in the multivariate normal distribution - Cross Validated (stackexchange.com)</a></p>
-<p><a href="https://www.math.nyu.edu/~kleeman/infolect7.pdf">Information Theory and Predictability Lecture 7: Gaussian Case</a></p>
+<p><a href="https://stats.stackexchange.com/questions/438607/mutual-information-between-subsets-of-variables-in-the-multivariate-normal-distr">Mutual
+information between subsets of variables in the multivariate normal
+distribution - Cross Validated (stackexchange.com)</a></p>
+<p><a href="https://www.math.nyu.edu/~kleeman/infolect7.pdf">Information
+Theory and Predictability Lecture 7: Gaussian Case</a></p>
 
 
 
@@ -1638,7 +1741,7 @@ I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1688,7 +1791,7 @@ I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1775,7 +1878,7 @@ I(X;Y) = -\frac 1 2 \log \det \Sigma_{Z_k} = -\frac k 2 \log (1 - \rho^2)
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

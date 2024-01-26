@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1390,67 +1418,131 @@
           <div class="article-style">
             
 
-<p>FlatNCE provides a way to compute the gradient of InfoNCE without introducing the rounding error when subtracting between two similar numbers.</p>
-<p>Specifically, let <span class="math inline">\(g^\ominus_{ij}\)</span> is the affinity score between reference sample <span class="math inline">\(x_i\)</span> and negative (noise) sample <span class="math inline">\(y&#39;_j\)</span>; <span class="math inline">\(g^\oplus_{ii}\)</span> is the affinity score between positive sample and itself/its transformation <span class="math inline">\(y_j\)</span>; <span class="math inline">\(i\)</span> is the batch index. Denote by <span class="math inline">\(\hat l_\text{InfoNCE}\)</span> the batch estimate of the loss from InfoNCE: <span class="math display">\[
+<p>FlatNCE provides a way to compute the gradient of InfoNCE without
+introducing the rounding error when subtracting between two similar
+numbers.</p>
+<p>Specifically, let <span class="math inline">\(g^\ominus_{ij}\)</span>
+is the affinity score between reference sample <span class="math inline">\(x_i\)</span> and negative (noise) sample <span class="math inline">\(y&#39;_j\)</span>; <span class="math inline">\(g^\oplus_{ii}\)</span> is the affinity score
+between positive sample and itself/its transformation <span class="math inline">\(y_j\)</span>; <span class="math inline">\(i\)</span> is the batch index. Denote by <span class="math inline">\(\hat l_\text{InfoNCE}\)</span> the batch estimate
+of the loss from InfoNCE: <span class="math display">\[
 \newcommand{detach}{\mathop{\text{detach}}}
 \newcommand{logsumexp}{\mathop{\text{logsumexp}}}
 \begin{gather}
-\hat l_\text{InfoNCE} = \logsumexp_j g^\ominus_{ij} - g^\oplus_{ii} = \log (\sum_{j \ne i} \exp g^\ominus_{ij} ) -g^\oplus_{ii} \\
+\hat l_\text{InfoNCE} = \logsumexp_j g^\ominus_{ij} - g^\oplus_{ii} =
+\log (\sum_{j \ne i} \exp g^\ominus_{ij} ) -g^\oplus_{ii} \\
 \end{gather}
 \]</span></p>
 <p>Usually, the above is calculated as <span class="math display">\[
-\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} } \exp(g^\ominus_{ij} - \max_k g^\ominus_{ik}) ] + \max_k g^\ominus_{ik} - g^\oplus_{ii}
-\]</span> When the learning saturates, <span class="math inline">\(\hat l_\text{InfoNCE}\)</span> goes to <span class="math inline">\(0\)</span>, which means <span class="math inline">\(\max_k g^\ominus_{ik}\)</span> becomes <span class="math inline">\(g^\oplus_{ii}\)</span> and thus <span class="math display">\[
-\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} } \exp(g^\ominus_{ij} - g^\oplus_{ii}) ] + \underbrace{g^\oplus_{ii} - g^\oplus_{ii} }_{\text{error-prone}}
-\]</span> A rounding error will very likely happen when <a href="https://en.wikipedia.org/wiki/Loss_of_significance">subtracting two near numbers</a>. Such error will accumulate and fail the InfoNCE. As said, FlatNCE provides a way to circumvent this rounding error.</p>
+\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} }
+\exp(g^\ominus_{ij} - \max_k g^\ominus_{ik}) ] + \max_k g^\ominus_{ik} -
+g^\oplus_{ii}
+\]</span> When the learning saturates, <span class="math inline">\(\hat
+l_\text{InfoNCE}\)</span> goes to <span class="math inline">\(0\)</span>, which means <span class="math inline">\(\max_k g^\ominus_{ik}\)</span> becomes <span class="math inline">\(g^\oplus_{ii}\)</span> and thus <span class="math display">\[
+\hat l_\text{InfoNCE} = \log[\sum_{j \in {\oplus, \ominus} }
+\exp(g^\ominus_{ij} - g^\oplus_{ii}) ] + \underbrace{g^\oplus_{ii} -
+g^\oplus_{ii} }_{\text{error-prone}}
+\]</span> A rounding error will very likely happen when <a href="https://en.wikipedia.org/wiki/Loss_of_significance">subtracting
+two near numbers</a>. Such error will accumulate and fail the InfoNCE.
+As said, FlatNCE provides a way to circumvent this rounding error.</p>
 <h2 id="gradient-perspective">Gradient Perspective</h2>
-<p>Denote by <span class="math inline">\(\hat l_\text{FlatNCE}\)</span> the batch estimate of the negative loss from FlatNCE: <span class="math display">\[
+<p>Denote by <span class="math inline">\(\hat l_\text{FlatNCE}\)</span>
+the batch estimate of the negative loss from FlatNCE: <span class="math display">\[
 \begin{aligned}
-\hat l_\text{FlatNCE} &amp;= \exp [ \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) - \detach \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) ] \\
-&amp;= \frac{\exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) } {\detach [ \exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii} ) ] } \\
-&amp;= \frac{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ]} {\detach \{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] \} } \\
-&amp;= \frac{\sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ]} {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] \} }
+\hat l_\text{FlatNCE} &amp;= \exp [ \logsumexp_{j \ne i} (
+g^\ominus_{ij} - g^\oplus_{ii} ) - \detach \logsumexp_{j \ne i} (
+g^\ominus_{ij} - g^\oplus_{ii} ) ] \\
+&amp;= \frac{\exp \logsumexp_{j \ne i} ( g^\ominus_{ij} - g^\oplus_{ii}
+) } {\detach [ \exp \logsumexp_{j \ne i} ( g^\ominus_{ij} -
+g^\oplus_{ii} ) ] } \\
+&amp;= \frac{\exp \log \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) -
+g_\theta (x_i, y_i) ]} {\detach \{\exp \log \sum_{j \ne i} \exp [
+g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] \} } \\
+&amp;= \frac{\sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta
+(x_i, y_i) ]} {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j)
+- g_\theta (x_i, y_i) ] \} }
 \end{aligned}
 \]</span></p>
 <p>By putting the positive sample into the contrasting samples, <span class="math display">\[
-\hat l_\text{FlatNCE}^\oplus =  \frac{1 + \sum_j \exp \big( g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) \big)} {1 + \text{detach}[\sum_j \exp \big( g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) \big)]}
-\]</span> where the <span class="math inline">\(1\)</span> comes from adding the positive sample <span class="math inline">\(y_i\)</span> to the set of negative samples (let’s denote this “negative” sample by <span class="math inline">\(y&#39;_0\)</span>). It can be easily found that</p>
+\hat l_\text{FlatNCE}^\oplus =  \frac{1 + \sum_j \exp \big(
+g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) \big)} {1 +
+\text{detach}[\sum_j \exp \big( g_\theta(x_i, y&#39;_j) - g_\theta (x_i,
+y_i) \big)]}
+\]</span> where the <span class="math inline">\(1\)</span> comes from
+adding the positive sample <span class="math inline">\(y_i\)</span> to
+the set of negative samples (let’s denote this “negative” sample by
+<span class="math inline">\(y&#39;_0\)</span>). It can be easily found
+that</p>
 <p><span class="math display">\[
-\nabla_\theta \hat l_\text{FlatNCE}^\oplus (g_\theta) = \nabla_\theta \hat l_\text{InfoNCE} (g_\theta)
+\nabla_\theta \hat l_\text{FlatNCE}^\oplus (g_\theta) = \nabla_\theta
+\hat l_\text{InfoNCE} (g_\theta)
 \]</span></p>
-<p>We may further find that the gradient of FlatNCE is an importance-weighted estimator of the form <span class="math display">\[
+<p>We may further find that the gradient of FlatNCE is an
+importance-weighted estimator of the form <span class="math display">\[
 \begin{aligned}
-\nabla_\theta \hat l^\oplus_\text{FlatNCE} &amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] [\nabla_\theta g_\theta(x_i, y&#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} } {\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] \} } \\
-&amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&#39;_j) ] [\nabla_\theta g_\theta(x_i, y&#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) ] } \\
-&amp;= \sum_{k \ne i} \left\{ \underbrace {\frac{ \exp [ g_\theta(x_i, y&#39;_k) ] } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) ] } }_{w_k} \nabla_\theta g_\theta(x_i, y&#39;_k) \right\} - \nabla_\theta g_\theta(x_i, y_i) \\
+\nabla_\theta \hat l^\oplus_\text{FlatNCE} &amp;= \frac{\sum_{j \ne i}
+\{ \exp [ g_\theta(x_i, y&#39;_j) - g_\theta (x_i, y_i) ] [\nabla_\theta
+g_\theta(x_i, y&#39;_j) - \nabla_\theta g_\theta(x_i, y_i)] \} }
+{\detach \{ \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) - g_\theta
+(x_i, y_i) ] \} } \\
+&amp;= \frac{\sum_{j \ne i} \{ \exp [ g_\theta(x_i, y&#39;_j) ]
+[\nabla_\theta g_\theta(x_i, y&#39;_j) - \nabla_\theta g_\theta(x_i,
+y_i)] \} } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) ] } \\
+&amp;= \sum_{k \ne i} \left\{ \underbrace {\frac{ \exp [ g_\theta(x_i,
+y&#39;_k) ] } { \sum_{j \ne i} \exp [ g_\theta(x_i, y&#39;_j) ] }
+}_{w_k} \nabla_\theta g_\theta(x_i, y&#39;_k) \right\} - \nabla_\theta
+g_\theta(x_i, y_i) \\
 \end{aligned}
-\]</span> As the learning progresses, <span class="math inline">\(w_k\)</span>’s other than <span class="math inline">\(w_0\)</span> will go to <span class="math inline">\(0\)</span>; <span class="math inline">\(w_0\)</span> will go to <span class="math inline">\(1\)</span>, which will cause the gradient to vanish.</p>
+\]</span> As the learning progresses, <span class="math inline">\(w_k\)</span>’s other than <span class="math inline">\(w_0\)</span> will go to <span class="math inline">\(0\)</span>; <span class="math inline">\(w_0\)</span> will go to <span class="math inline">\(1\)</span>, which will cause the gradient to
+vanish.</p>
 <h2 id="lower-bound-perspective">Lower-bound Perspective</h2>
-<p><span class="math inline">\(-\hat l_\text{InfoNCE}\)</span> and <span class="math inline">\(-\hat l_\text{FlatNCE}\)</span> are part of the lower bounds to the mutual information in two methods. Given <span class="math inline">\(y_0\)</span> the positive sample and <span class="math inline">\(y_{j&gt;0}\)</span> are the negative samples,</p>
+<p><span class="math inline">\(-\hat l_\text{InfoNCE}\)</span> and <span class="math inline">\(-\hat l_\text{FlatNCE}\)</span> are part of the
+lower bounds to the mutual information in two methods. Given <span class="math inline">\(y_0\)</span> the positive sample and <span class="math inline">\(y_{j&gt;0}\)</span> are the negative samples,</p>
 <p><span class="math display">\[
-\label{lemma3.3} \begin{aligned} 
--\hat l^{K, \theta}_\text{InfoNCE} &amp;= -\log \{ \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] \} \\
-&amp;= \sup_v (v \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] - (-1 - \log (-v)) \\
+\label{lemma3.3} \begin{aligned}
+-\hat l^{K, \theta}_\text{InfoNCE} &amp;= -\log \{ \frac 1 K \sum_{j
+&gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] \} \\
+&amp;= \sup_v (v \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0)] - (-1 - \log (-v)) \\
 &amp;\Downarrow_{v = -e^{-u}} \\
-&amp;\ge  -e^{-u} \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)] - (-1 - \log (e^{-u}) \\
-&amp;= 1 - u - \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0) - u]
+&amp;\ge  -e^{-u} \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0)] - (-1 - \log (e^{-u}) \\
+&amp;= 1 - u - \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0) - u]
 \end{aligned}
 \]</span></p>
-<p>Consider <span class="math inline">\(g_\theta\)</span> as the primal critic and <span class="math inline">\(u\)</span> as the dual critic. Since arbitrary choice of <span class="math inline">\(u\)</span> and <span class="math inline">\(g_\theta\)</span> lower-bounds the mutual information, we can either jointly optimize <span class="math inline">\(u\)</span> and <span class="math inline">\(g_\theta\)</span> or more preferably, train in an iterative fashion. Given <span class="math inline">\(\theta\)</span>, set <span class="math inline">\(u\)</span> to</p>
+<p>Consider <span class="math inline">\(g_\theta\)</span> as the primal
+critic and <span class="math inline">\(u\)</span> as the dual critic.
+Since arbitrary choice of <span class="math inline">\(u\)</span> and
+<span class="math inline">\(g_\theta\)</span> lower-bounds the mutual
+information, we can either jointly optimize <span class="math inline">\(u\)</span> and <span class="math inline">\(g_\theta\)</span> or more preferably, train in an
+iterative fashion. Given <span class="math inline">\(\theta\)</span>,
+set <span class="math inline">\(u\)</span> to</p>
 <p><span class="math display">\[
-\hat u(g_\theta) = \log ({\frac 1 K \sum_j \exp[g_\theta(x,y_j) - g_\theta(x, y)]})
-\]</span> Then we fix <span class="math inline">\(u\)</span> and only update <span class="math inline">\(\theta\)</span>. Because <span class="math inline">\(u\)</span> is fixed, the only gradient comes from <span class="math inline">\(g_\theta\)</span>. Plugin <span class="math inline">\(\hat u\)</span> to the right-hand side of <span class="math inline">\(\eqref{lemma3.3}\)</span> to give <span class="math display">\[
+\hat u(g_\theta) = \log ({\frac 1 K \sum_j \exp[g_\theta(x,y_j) -
+g_\theta(x, y)]})
+\]</span> Then we fix <span class="math inline">\(u\)</span> and only
+update <span class="math inline">\(\theta\)</span>. Because <span class="math inline">\(u\)</span> is fixed, the only gradient comes from
+<span class="math inline">\(g_\theta\)</span>. Plugin <span class="math inline">\(\hat u\)</span> to the right-hand side of <span class="math inline">\(\eqref{lemma3.3}\)</span> to give <span class="math display">\[
 \begin{align}
-&amp;1 - u - \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0) - u] \\
-&amp;= 1 - \log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}) \notag \\
-&amp;\quad - \frac 1 K \frac{\sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0,y_0)}{{\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}} \\
-&amp;= -\log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0, y_0)]}) \label{obj} \\
+&amp;1 - u - \frac 1 K \sum_{j &gt; 0} \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0) - u] \\
+&amp;= 1 - \log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0, y_0)]}) \notag \\
+&amp;\quad - \frac 1 K \frac{\sum_j \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0,y_0)}{{\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) -
+g_\theta(x_0, y_0)]}} \\
+&amp;= -\log ({\frac 1 K \sum_j \exp[g_\theta(x_0,y_j) - g_\theta(x_0,
+y_0)]}) \label{obj} \\
 &amp;= -\hat l^K_\text{InfoNCE}
 \end{align}
 \]</span></p>
-<p>which tightly lower-bounds the <span class="math inline">\(-\hat l^K_\text{InfoNCE}\)</span>. However we update <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\theta&#39;\)</span>, <span class="math inline">\(\eqref{lemma3.3}\)</span> will always hold. The objective of the whole FlatNCE is to enlarge <span class="math inline">\(\eqref{obj}\)</span> after substituting <span class="math inline">\(u = \hat u(g_\theta&#39;)\)</span> so that <span class="math inline">\(-\hat l^{K, \theta&#39;}_\text{InfoNCE}\)</span> can float up.</p>
+<p>which tightly lower-bounds the <span class="math inline">\(-\hat
+l^K_\text{InfoNCE}\)</span>. However we update <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\theta&#39;\)</span>, <span class="math inline">\(\eqref{lemma3.3}\)</span> will always hold. The
+objective of the whole FlatNCE is to enlarge <span class="math inline">\(\eqref{obj}\)</span> after substituting <span class="math inline">\(u = \hat u(g_\theta&#39;)\)</span> so that <span class="math inline">\(-\hat l^{K, \theta&#39;}_\text{InfoNCE}\)</span>
+can float up.</p>
 <h2 id="external-materials">External Materials</h2>
-<p><a href="https://kexue.fm/archives/8586">FlatNCE：小批次对比学习效果差的原因竟是浮点误差？ - 科学空间|Scientific Spaces (kexue.fm)</a></p>
+<p><a href="https://kexue.fm/archives/8586">FlatNCE：小批次对比学习效果差的原因竟是浮点误差？
+- 科学空间|Scientific Spaces (kexue.fm)</a></p>
 
 
 
@@ -1535,7 +1627,7 @@
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1585,7 +1677,7 @@
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1672,7 +1764,7 @@
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     

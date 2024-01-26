@@ -715,6 +715,10 @@
       
 
 
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/machine-learning-bullet-points/">Machine Learning Bullet Points</a></li>
 
 
@@ -771,7 +775,15 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/"></a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/"></a></li>
 
       
         </ul>
@@ -915,6 +927,10 @@
     
       </div>
     
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
 
       
         </ul>
@@ -1118,7 +1134,19 @@
       
 
 
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
   <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theory/">Source Coding Theory</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/"></a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/"></a></li>
 
       
         </ul>
@@ -1399,36 +1427,55 @@
           <div class="article-style">
             
 
-<p>Outliers (noises) in the data can diverge the regression model to reduce prediction errors for them, instead of the majority real data points. <strong>RAN</strong>dom <strong>SA</strong>mple <strong>C</strong>onsensus is a methodology to robustly fit the model in the presence of outliers.</p>
+<p>Outliers (noises) in the data can diverge the regression model to
+reduce prediction errors for them, instead of the majority real data
+points. <strong>RAN</strong>dom <strong>SA</strong>mple
+<strong>C</strong>onsensus is a methodology to robustly fit the model in
+the presence of outliers.</p>
 <p>RANSAC does the following:</p>
 <ul>
-<li>randomly sample a subset of data of an fairly enough amount for training;</li>
+<li>randomly sample a subset of data of an fairly enough amount for
+training;</li>
 <li>fit a model to the this subset;</li>
-<li>determine data points in the whole data set as inliers or outliers by comparing the residuals (prediction errors) to a threshold. The set of inliers is called a consensus set;</li>
-<li>repeat above for some iterations and retrain the final model with the largest consensus set (since inliers should be the majority).</li>
+<li>determine data points in the whole data set as inliers or outliers
+by comparing the residuals (prediction errors) to a threshold. The set
+of inliers is called a consensus set;</li>
+<li>repeat above for some iterations and retrain the final model with
+the largest consensus set (since inliers should be the majority).</li>
 </ul>
 <p>Parameters of RANSAC include:</p>
 <ul>
-<li><p><span class="math inline">\(s\)</span>: number of points to fit the model;</p></li>
-<li><p><span class="math inline">\(t\)</span>: threshold of the residual;</p></li>
-<li><p><span class="math inline">\(e\)</span>: proportion the outliers;</p></li>
-<li><p><span class="math inline">\(\delta\)</span>: probability of success (at least one iteration is finished with no outlier);</p></li>
-<li><p><span class="math inline">\(T\)</span>: number of iterations to be determined.</p></li>
+<li><p><span class="math inline">\(s\)</span>: number of points to fit
+the model;</p></li>
+<li><p><span class="math inline">\(t\)</span>: threshold of the
+residual;</p></li>
+<li><p><span class="math inline">\(e\)</span>: proportion the
+outliers;</p></li>
+<li><p><span class="math inline">\(\delta\)</span>: probability of
+success (at least one iteration is finished with no outlier);</p></li>
+<li><p><span class="math inline">\(T\)</span>: number of iterations to
+be determined.</p></li>
 </ul>
 <p>Then,</p>
 <ul>
-<li><span class="math inline">\(p\text{(training subset has no outliers)} = (1 - e)^s\)</span></li>
-<li><span class="math inline">\(p\text{(training subset has at least one outlier)} = 1 - (1 - e)^s\)</span></li>
-<li><span class="math inline">\(p\text{(all T subsets have outliers)} = (1 - (1 - e)^s)^T\)</span></li>
+<li><span class="math inline">\(p\text{(training subset has no
+outliers)} = (1 - e)^s\)</span></li>
+<li><span class="math inline">\(p\text{(training subset has at least one
+outlier)} = 1 - (1 - e)^s\)</span></li>
+<li><span class="math inline">\(p\text{(all T subsets have outliers)} =
+(1 - (1 - e)^s)^T\)</span></li>
 </ul>
 <p>We want <span class="math display">\[
 \begin{gather}
-p\text{(all T subsets have outliers)} = (1 - (1 - e)^s)^T &lt; 1 - \delta \\
+p\text{(all T subsets have outliers)} = (1 - (1 - e)^s)^T &lt; 1 -
+\delta \\
 T &gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
 \end{gather}
-\]</span> The threshold <span class="math inline">\(t\)</span> is usually set as the median absolute deviation of <span class="math inline">\(y\)</span>.</p>
+\]</span> The threshold <span class="math inline">\(t\)</span> is
+usually set as the median absolute deviation of <span class="math inline">\(y\)</span>.</p>
 <h2 id="external-material">External Material</h2>
-<p><a href="https://www.cnblogs.com/xingshansi/p/6763668.html">随机抽样一致算法（Random sample consensus，RANSAC） - 桂。 - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://www.cnblogs.com/xingshansi/p/6763668.html">随机抽样一致算法（Random
+sample consensus，RANSAC） - 桂。 - 博客园 (cnblogs.com)</a></p>
 
 
 
@@ -1519,7 +1566,7 @@ T &gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
 
   
   <p class="powered-by copyright-license-text">
-    © 2023 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
   </p>
   
 
@@ -1569,7 +1616,7 @@ T &gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
       
 
     
-    <script src="/js/vendor-bundle.min.53d67dc2cb1ebceb89d5e2aba2f86112.js"></script>
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
 
     
     
@@ -1656,7 +1703,7 @@ T &gt; \log\frac{1 - \delta}{1 - (1 - e)^s}
       
     
     
-    <script src="/en/js/wowchemy.min.d14f720598b8ad98ae8105a0a502bab6.js"></script>
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
 
     
     
