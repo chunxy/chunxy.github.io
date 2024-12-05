@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Energy Efficient Computation | Chunxy&#39; Website</title>
+    <link>https://chunxy.github.io/courses/energy-efficient-computing/</link>
+      <atom:link href="https://chunxy.github.io/courses/energy-efficient-computing/index.xml" rel="self" type="application/rss+xml" />
+    <description>Energy Efficient Computation</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
+    <image>
+      <url>https://chunxy.github.io/media/sharing.png</url>
+      <title>Energy Efficient Computation</title>
+      <link>https://chunxy.github.io/courses/energy-efficient-computing/</link>
+    </image>
+    
+    <item>
+      <title>Note</title>
+      <link>https://chunxy.github.io/courses/energy-efficient-computing/images/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/courses/energy-efficient-computing/images/</guid>
+      <description>
+
+&lt;h1 id=&#34;implementation-trickcomm-lower-bound&#34;&gt;Implementation Trick&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;gemm&#34;&gt;GEMM&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Ge&lt;/strong&gt;neral &lt;strong&gt;M&lt;/strong&gt;atrix
+&lt;strong&gt;M&lt;/strong&gt;ultiplication describes the implementation tricks that
+speeds up computation in neural network. Matrix multiplication is a
+classical, fundamental and established field in both math and computer
+science. And this is the reason why much effort and interest have been
+put into how to further speed up it and how to convert other kinds of
+operations into it.&lt;/p&gt;
+&lt;h3 id=&#34;im2col&#34;&gt;Im2Col&lt;/h3&gt;
+&lt;h4 id=&#34;single-feature-map-and-kernel&#34;&gt;Single Feature Map and
+Kernel&lt;/h4&gt;
+&lt;p&gt;A normal convolution operation will slide a &lt;strong&gt;window&lt;/strong&gt;
+of the same size as &lt;strong&gt;kernel&lt;/strong&gt; (&lt;span class=&#34;math inline&#34;&gt;\(F: k_h \times k_w\)&lt;/span&gt;) through the
+&lt;strong&gt;feature map&lt;/strong&gt; (&lt;span class=&#34;math inline&#34;&gt;\(I: i_h \times
+i_w\)&lt;/span&gt;) in a row-major order (for simplicity, we will take that
+stride is &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; and padding is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;). This causes problem because numbers
+in a single convolution operation will span multiple columns, due to
+which the spatial locality cannot be exploited.&lt;/p&gt;
+&lt;p&gt;Since the convolution operation is in essence doing the “sum of
+products”, we may just as well treat the convolution as dot product
+between two vectors.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./im2col.png&#34; style=&#34;zoom:50%;&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;To realize it, we can squeeze the kernel into a &lt;span class=&#34;math inline&#34;&gt;\(k_h k_w \times 1\)&lt;/span&gt; column vector and each
+window on the feature map to a &lt;span class=&#34;math inline&#34;&gt;\(1 \times k_h
+k_w\)&lt;/span&gt; row vector (in memory, a column vector &lt;code&gt;v[N][1]&lt;/code&gt;
+is no difference from a row vector &lt;code&gt;v[1][N]&lt;/code&gt;). Then we stack
+these row vectors vertically in the order as their original window would
+appear in the convolution. This newly synthesized matrix &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; is usually called &lt;strong&gt;lowered
+matrix&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;As for implementation, we don’t do this “window by window”, because
+usually the feature map has a large width, which still introduce the
+same issue of not exploiting the spatial locality when accessing across
+rows. For each position in the feature map, we can identify all the
+positions that it will appear in the lowered matrix in one off. Since
+kernel size is usually small, accessing this lowered matrix across rows
+causes less cache misses than that in the input.&lt;/p&gt;
+&lt;p&gt;Treating &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(l_h \times l_w \times k_h \times k_w\)&lt;/span&gt;, we
+fill up its entries in following way:&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb1&#34;&gt;&lt;pre class=&#34;sourceCode c&#34;&gt;&lt;code class=&#34;sourceCode c&#34;&gt;&lt;span id=&#34;cb1-1&#34;&gt;&lt;a href=&#34;#cb1-1&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i_h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; i_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-2&#34;&gt;&lt;a href=&#34;#cb1-2&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; k_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; k_h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-3&#34;&gt;&lt;a href=&#34;#cb1-3&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;// For simplicity, set s_w = s_h = 1, padding = 0.&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-4&#34;&gt;&lt;a href=&#34;#cb1-4&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; l_h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; i_h &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt; k_h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; l_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; i_w &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt; k_w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-5&#34;&gt;&lt;a href=&#34;#cb1-5&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-6&#34;&gt;&lt;a href=&#34;#cb1-6&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;void&lt;/span&gt; im2lower&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;double&lt;/span&gt; I&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i_w&lt;span class=&#34;op&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;double&lt;/span&gt; L&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;l_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;l_w&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_w&lt;span class=&#34;op&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-7&#34;&gt;&lt;a href=&#34;#cb1-7&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; i_h&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; h&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-8&#34;&gt;&lt;a href=&#34;#cb1-8&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; i_w&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; w&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-9&#34;&gt;&lt;a href=&#34;#cb1-9&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt;k_h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-10&#34;&gt;&lt;a href=&#34;#cb1-10&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt;k_w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; j&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-11&#34;&gt;&lt;a href=&#34;#cb1-11&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;          &lt;span class=&#34;cf&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;||&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;gt;=&lt;/span&gt; l_h&lt;span class=&#34;op&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;continue&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-12&#34;&gt;&lt;a href=&#34;#cb1-12&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;          &lt;span class=&#34;cf&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;||&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;&amp;gt;=&lt;/span&gt; l_w&lt;span class=&#34;op&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;continue&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-13&#34;&gt;&lt;a href=&#34;#cb1-13&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;          L&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; j&lt;span class=&#34;op&#34;&gt;][-&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;][-&lt;/span&gt;j&lt;span class=&#34;op&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; I&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;w&lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-14&#34;&gt;&lt;a href=&#34;#cb1-14&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-15&#34;&gt;&lt;a href=&#34;#cb1-15&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-16&#34;&gt;&lt;a href=&#34;#cb1-16&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-17&#34;&gt;&lt;a href=&#34;#cb1-17&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-18&#34;&gt;&lt;a href=&#34;#cb1-18&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-19&#34;&gt;&lt;a href=&#34;#cb1-19&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;normal-input-and-filter&#34;&gt;Normal Input and Filter&lt;/h4&gt;
+&lt;p&gt;By far we only consider the case of a single convolution. More often
+that not, the real-world convolution is done in batch with multiple
+channels, meaning that the input &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt;
+is of shape &lt;span class=&#34;math inline&#34;&gt;\(i_n \times i_c \times i_w \times
+i_w\)&lt;/span&gt; and filter &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; is of
+shape &lt;span class=&#34;math inline&#34;&gt;\(f_c \times i_c \times k_h \times
+k_w\)&lt;/span&gt;. Each of &lt;span class=&#34;math inline&#34;&gt;\(f_c\)&lt;/span&gt; output
+channels is obtained as the sum of the one-on-one convolution between
+each of the &lt;span class=&#34;math inline&#34;&gt;\(i_c\)&lt;/span&gt; kernels and each of
+the &lt;span class=&#34;math inline&#34;&gt;\(i_c\)&lt;/span&gt; channels (which is in
+accordance with PyTorch’s &lt;code&gt;Conv2d&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Now we consider the case where there are multiple channels. We
+simplify a bit by still setting &lt;span class=&#34;math inline&#34;&gt;\(i_n =
+1\)&lt;/span&gt;. As a result, the input &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; is of shape &lt;span class=&#34;math inline&#34;&gt;\(i_c \times i_h \times i_w\)&lt;/span&gt; and filter
+&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; still remains &lt;span class=&#34;math inline&#34;&gt;\(f_c \times i_c \times k_h \times k_w\)&lt;/span&gt;.
+Suppose each feature map contains &lt;span class=&#34;math inline&#34;&gt;\(d = o_h
+\times o_w\)&lt;/span&gt; unique kernel windows. Then each transformed channel
+should be of shape &lt;span class=&#34;math inline&#34;&gt;\(d \times k_h k_w\)&lt;/span&gt;
+(the order of symbols in shortened multiplication matters too; in this
+case, &lt;span class=&#34;math inline&#34;&gt;\(k_h k_w\)&lt;/span&gt; indicates we squeeze
+by row); each transformed kernel should be of shape &lt;span class=&#34;math inline&#34;&gt;\(k_h k_w \times 1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The input contains &lt;span class=&#34;math inline&#34;&gt;\(i_c\)&lt;/span&gt; such
+transformed &lt;span class=&#34;math inline&#34;&gt;\(d \times k_h k_w\)&lt;/span&gt;
+channels. Instead of doing matrix multiplication &lt;span class=&#34;math inline&#34;&gt;\(i_c\)&lt;/span&gt; times, we can concatenate these &lt;span class=&#34;math inline&#34;&gt;\(i_c\)&lt;/span&gt; matrices horizontally to give a
+single &lt;span class=&#34;math inline&#34;&gt;\(d \times (i_c k_h k_w)\)&lt;/span&gt;
+lowered matrix &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The filter contains &lt;span class=&#34;math inline&#34;&gt;\(f_c \times
+i_c\)&lt;/span&gt; such transformed &lt;span class=&#34;math inline&#34;&gt;\(k_h k_w \times
+1\)&lt;/span&gt; kernels. For each output channel, we can concatenate
+corresponding &lt;span class=&#34;math inline&#34;&gt;\(i_c\)&lt;/span&gt; kernels
+vertically to facilitate the one-on-one convolution, which gives a
+single &lt;span class=&#34;math inline&#34;&gt;\((i_c k_h k_w) \times f_c\)&lt;/span&gt;
+transformed filter &lt;span class=&#34;math inline&#34;&gt;\(F&amp;#39;\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Now &lt;span class=&#34;math inline&#34;&gt;\(I \circledast F\)&lt;/span&gt; becomes
+&lt;span class=&#34;math inline&#34;&gt;\(L \times F&amp;#39;\)&lt;/span&gt;. The output shape
+is &lt;span class=&#34;math inline&#34;&gt;\(d \times f_c\)&lt;/span&gt;. Each input image
+becomes a &lt;span class=&#34;math inline&#34;&gt;\(d \times 1\)&lt;/span&gt; column vector
+finally, which is exactly what “Im2Col” means. This &lt;span class=&#34;math inline&#34;&gt;\(d \times 1\)&lt;/span&gt; vector can be transposed and
+then reshaped into &lt;span class=&#34;math inline&#34;&gt;\(o_h \times o_w\)&lt;/span&gt;
+to recover the convolution result (no actual transformation has to be
+done, just to interpret it this way). Then by applying the Im2Col trick
+repeatedly, we can chain up and handle consecutive convolutional
+layers.&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb2&#34;&gt;&lt;pre class=&#34;sourceCode c&#34;&gt;&lt;code class=&#34;sourceCode c&#34;&gt;&lt;span id=&#34;cb2-1&#34;&gt;&lt;a href=&#34;#cb2-1&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i_h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; i_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; i_c &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-2&#34;&gt;&lt;a href=&#34;#cb2-2&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; k_h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; k_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; f_c &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-3&#34;&gt;&lt;a href=&#34;#cb2-3&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;// For simplicity, set s_w = s_h = 1, padding = 0.&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-4&#34;&gt;&lt;a href=&#34;#cb2-4&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; l_h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; i_h &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt; k_h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; l_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; i_w &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt; k_w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-5&#34;&gt;&lt;a href=&#34;#cb2-5&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-6&#34;&gt;&lt;a href=&#34;#cb2-6&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;void&lt;/span&gt; im2lower&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;double&lt;/span&gt; I&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i_c&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i_w&lt;span class=&#34;op&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;double&lt;/span&gt; L&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;l_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;l_w&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i_c&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_w&lt;span class=&#34;op&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-7&#34;&gt;&lt;a href=&#34;#cb2-7&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; c &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; c &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; i_c&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; c&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-8&#34;&gt;&lt;a href=&#34;#cb2-8&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; i_h&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; h&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-9&#34;&gt;&lt;a href=&#34;#cb2-9&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; i_w&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; w&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-10&#34;&gt;&lt;a href=&#34;#cb2-10&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt;k_h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-11&#34;&gt;&lt;a href=&#34;#cb2-11&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;          &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt;k_w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; j&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-12&#34;&gt;&lt;a href=&#34;#cb2-12&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;            &lt;span class=&#34;cf&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;||&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;gt;=&lt;/span&gt; l_h&lt;span class=&#34;op&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;continue&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-13&#34;&gt;&lt;a href=&#34;#cb2-13&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;            &lt;span class=&#34;cf&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;||&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;&amp;gt;=&lt;/span&gt; l_w&lt;span class=&#34;op&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;continue&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-14&#34;&gt;&lt;a href=&#34;#cb2-14&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;            L&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;h &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; j&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;c&lt;span class=&#34;op&#34;&gt;][-&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;][-&lt;/span&gt;j&lt;span class=&#34;op&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; I&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;c&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;w&lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-15&#34;&gt;&lt;a href=&#34;#cb2-15&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;          &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-16&#34;&gt;&lt;a href=&#34;#cb2-16&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-17&#34;&gt;&lt;a href=&#34;#cb2-17&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-18&#34;&gt;&lt;a href=&#34;#cb2-18&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-19&#34;&gt;&lt;a href=&#34;#cb2-19&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-20&#34;&gt;&lt;a href=&#34;#cb2-20&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-21&#34;&gt;&lt;a href=&#34;#cb2-21&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-22&#34;&gt;&lt;a href=&#34;#cb2-22&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;void&lt;/span&gt; ker2col&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;double&lt;/span&gt; F&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;f_c&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i_c&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_w&lt;span class=&#34;op&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;double&lt;/span&gt; K&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i_c&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_w&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;f_c&lt;span class=&#34;op&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-23&#34;&gt;&lt;a href=&#34;#cb2-23&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; i_c&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-24&#34;&gt;&lt;a href=&#34;#cb2-24&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; k_h&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; h&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-25&#34;&gt;&lt;a href=&#34;#cb2-25&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; k_w&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; w&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-26&#34;&gt;&lt;a href=&#34;#cb2-26&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; f &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; f &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; f_c&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; f&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-27&#34;&gt;&lt;a href=&#34;#cb2-27&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;          K&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;w&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;f&lt;span class=&#34;op&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; F&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;f&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;w&lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-28&#34;&gt;&lt;a href=&#34;#cb2-28&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-29&#34;&gt;&lt;a href=&#34;#cb2-29&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-30&#34;&gt;&lt;a href=&#34;#cb2-30&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-31&#34;&gt;&lt;a href=&#34;#cb2-31&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-32&#34;&gt;&lt;a href=&#34;#cb2-32&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;mecmec&#34;&gt;MEC&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Im2Col costs much extra space because most entries in the feature map
+appears &lt;span class=&#34;math inline&#34;&gt;\(k^2\)&lt;/span&gt; times in the
+transformed lowered matrix. The
+&lt;strong&gt;m&lt;/strong&gt;emory-&lt;strong&gt;e&lt;/strong&gt;fficient
+&lt;strong&gt;c&lt;/strong&gt;omputation method improves on this by putting the
+entries of (say vertically) adjacent windows in one row so that entries
+can be reused. By doing so, the transformed kernel row vector will slide
+through each row of obtained matrix to compute convolution result.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./mec-basic.svg&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Again in single feature map and kernel case, the filter &lt;span class=&#34;math inline&#34;&gt;\(F: k_h \times k_w\)&lt;/span&gt; is squeezed to a &lt;span class=&#34;math inline&#34;&gt;\(k_h k_w \times 1\)&lt;/span&gt; column vector. The input
+&lt;span class=&#34;math inline&#34;&gt;\(I: i_h \times i_w\)&lt;/span&gt; is converted to
+the lowered matrix &lt;span class=&#34;math inline&#34;&gt;\(L: l_h \times
+l_w\)&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+l_h = o_w \triangleq (i_w - k_w) / s_w + 1 \\
+l_w = i_h k_w, \text{assuming that $k_w \ge s_w$}\\
+\]&lt;/span&gt; Note that a &lt;span class=&#34;math inline&#34;&gt;\(k_w\)&lt;/span&gt;-width bar
+in &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; (like &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;) expands to a row in &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;, and finally a row in &lt;span class=&#34;math inline&#34;&gt;\(O\)&lt;/span&gt;. Treating &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(o_w
+\times i_h \times k_w\)&lt;/span&gt;, we fill up its entries in following
+way:&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb3&#34;&gt;&lt;pre class=&#34;sourceCode c&#34;&gt;&lt;code class=&#34;sourceCode c&#34;&gt;&lt;span id=&#34;cb3-1&#34;&gt;&lt;a href=&#34;#cb3-1&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i_h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; i_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-2&#34;&gt;&lt;a href=&#34;#cb3-2&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; k_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; s_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-3&#34;&gt;&lt;a href=&#34;#cb3-3&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; o_w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;i_w &lt;span class=&#34;op&#34;&gt;-&lt;/span&gt; k_w&lt;span class=&#34;op&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;/&lt;/span&gt; s_w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-4&#34;&gt;&lt;a href=&#34;#cb3-4&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;// const int l_h = o_w, l_w = i_h * k_w;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-5&#34;&gt;&lt;a href=&#34;#cb3-5&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;void&lt;/span&gt; mec&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;double&lt;/span&gt; I&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i_w&lt;span class=&#34;op&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;double&lt;/span&gt; L&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;o_w&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i_h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k_w&lt;span class=&#34;op&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-6&#34;&gt;&lt;a href=&#34;#cb3-6&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; o_w&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; w&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-7&#34;&gt;&lt;a href=&#34;#cb3-7&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; h &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; i_h&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; h&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-8&#34;&gt;&lt;a href=&#34;#cb3-8&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; k_w&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-9&#34;&gt;&lt;a href=&#34;#cb3-9&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;co&#34;&gt;// I can be transposed first for better spatial locality.&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-10&#34;&gt;&lt;a href=&#34;#cb3-10&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        L&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;w&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; I&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;h&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;s_w &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt; w &lt;span class=&#34;op&#34;&gt;+&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-11&#34;&gt;&lt;a href=&#34;#cb3-11&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-12&#34;&gt;&lt;a href=&#34;#cb3-12&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-13&#34;&gt;&lt;a href=&#34;#cb3-13&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-14&#34;&gt;&lt;a href=&#34;#cb3-14&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;memory-layout&#34;&gt;Memory Layout&lt;/h4&gt;
+&lt;p&gt;Memory layout is not a standalone method to speed up matrix
+computation, but that it cornerstones most implementation tricks.
+Different methods may assume different memory layouts.&lt;/p&gt;
+&lt;p&gt;In convention, the input is of shape &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{N \times C \times H \times W}\)&lt;/span&gt;,
+which is the assumed layout of Im2Col. However, the preferred layout for
+convolution is usually &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{N \times H
+\times W \times C}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The justification is that, we usually would parallelize by accessing
+a window of pixels across all the channels. Though the window spans
+multiple columns in both cases, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{N
+\times C \times H \times W}\)&lt;/span&gt; would separate these &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; windows apart but &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{N \times H \times W \times C}\)&lt;/span&gt;
+would otherwise bring all the &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;
+channel values of a pixel in a row, in which case the spatial locality
+can be exploited.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\mathrm{N \times H \times W \times
+C}\)&lt;/span&gt; is the assumed layout by MEC. That is, &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; is of shape &lt;span class=&#34;math inline&#34;&gt;\(i_n \times i_h \times i_w \times i_c\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; is of shape &lt;span class=&#34;math inline&#34;&gt;\(k_h \times k_w \times i_c \times f_c\)&lt;/span&gt;.
+Given &lt;span class=&#34;math inline&#34;&gt;\(i_n \times i_c\)&lt;/span&gt; number of
+&lt;span class=&#34;math inline&#34;&gt;\(o_w \times i_h k_w\)&lt;/span&gt; matrices, &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; is obtained by interleaving
+horizontally across channels, and stacked vertically across images. As a
+result, &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; is of shape &lt;span class=&#34;math inline&#34;&gt;\(i_n o_w \times i_h k_w i_c\)&lt;/span&gt;. Accordingly,
+&lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt; is squeezed to &lt;span class=&#34;math inline&#34;&gt;\(F&amp;#39;: k_h k_w i_c \times f_c\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The example below shows a &lt;span class=&#34;math inline&#34;&gt;\(3 \times 7
+\times 7 \times 1\)&lt;/span&gt; input and &lt;span class=&#34;math inline&#34;&gt;\(3
+\times 3 \times 1 \times 1\)&lt;/span&gt; filter.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./mec-batch.svg&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Given the transformed &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(F&amp;#39;\)&lt;/span&gt;, there are two methods for
+the remaining dot product (convolution). One is to do &lt;span class=&#34;math inline&#34;&gt;\(L[0 : i_n o_w, s_w i_h k_w h : s_w i_h k_w h + k_h
+k_w c] \times F&amp;#39;\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(h = 0,
+\dots, o_h\)&lt;/span&gt;, resulting in a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{H \times N \times W \times C}\)&lt;/span&gt;
+layout (note that each bar in &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;
+expands to a row in &lt;span class=&#34;math inline&#34;&gt;\(O\)&lt;/span&gt;), illustrated
+at the upper right in the above figure. If we want to chain up
+convolutional layers, we need to convert this layout to &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{N \times H \times W \times
+C}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Another is to do &lt;span class=&#34;math inline&#34;&gt;\(L[o_w n : o_w (n+1), s_w
+i_h k_w h : s_w i_h k_w h + k_h k_w c]\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(h = 0, \dots, o_h, n = 0,\dots,i_n\)&lt;/span&gt;,
+resulting in a &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{N \times H \times W
+\times C}\)&lt;/span&gt; layout, illustrated at the lower right in the above
+figure (the tensor is not properly drawn though; it should have been of
+shape &lt;span class=&#34;math inline&#34;&gt;\(3 \times 5 \times 5\)&lt;/span&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;direct-convmmdirect-convdirect-mm-1direct-mm-2direct-mm-3&#34;&gt;Direct
+Conv/MM&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;&lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt;&lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt;&lt;a href=&#34;#fn6&#34; class=&#34;footnote-ref&#34; id=&#34;fnref6&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;GEMM usually requires extra time and space to do transformation.
+In-place convolution/matrix multiplication also have room for
+improvement.&lt;/p&gt;
+&lt;h3 id=&#34;loop-reordering&#34;&gt;Loop Reordering&lt;/h3&gt;
+&lt;p&gt;Nested loop is very common in computation. If the effective
+statements only appear in the innermost loop, the nesting level of loop
+indices can be usually be changed without causing side effect.&lt;/p&gt;
+&lt;p&gt;One reason to shuffle the loop indices is to better exploit the
+spatial locality. Another is to exploit the temporal locality, or called
+input reuse. As an example,&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb4&#34;&gt;&lt;pre class=&#34;sourceCode c&#34;&gt;&lt;code class=&#34;sourceCode c&#34;&gt;&lt;span id=&#34;cb4-1&#34;&gt;&lt;a href=&#34;#cb4-1&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;// before reordering&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-2&#34;&gt;&lt;a href=&#34;#cb4-2&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;void&lt;/span&gt; matmul&lt;span class=&#34;op&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-3&#34;&gt;&lt;a href=&#34;#cb4-3&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  memset&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;C&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kw&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;C&lt;span class=&#34;op&#34;&gt;));&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-4&#34;&gt;&lt;a href=&#34;#cb4-4&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; n&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-5&#34;&gt;&lt;a href=&#34;#cb4-5&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; n&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; j&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-6&#34;&gt;&lt;a href=&#34;#cb4-6&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; k &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; k &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; n&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; k&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-7&#34;&gt;&lt;a href=&#34;#cb4-7&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        C&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;j&lt;span class=&#34;op&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;+=&lt;/span&gt; A&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k&lt;span class=&#34;op&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt; B&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;k&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;j&lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-8&#34;&gt;&lt;a href=&#34;#cb4-8&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-9&#34;&gt;&lt;a href=&#34;#cb4-9&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-10&#34;&gt;&lt;a href=&#34;#cb4-10&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-11&#34;&gt;&lt;a href=&#34;#cb4-11&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-12&#34;&gt;&lt;a href=&#34;#cb4-12&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-13&#34;&gt;&lt;a href=&#34;#cb4-13&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;// after reordering&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-14&#34;&gt;&lt;a href=&#34;#cb4-14&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;void&lt;/span&gt; matmul_ikj&lt;span class=&#34;op&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-15&#34;&gt;&lt;a href=&#34;#cb4-15&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  memset&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;C&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kw&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;C&lt;span class=&#34;op&#34;&gt;));&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-16&#34;&gt;&lt;a href=&#34;#cb4-16&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; n&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; i&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-17&#34;&gt;&lt;a href=&#34;#cb4-17&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; k &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; k &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; n&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; k&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-18&#34;&gt;&lt;a href=&#34;#cb4-18&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;dt&#34;&gt;int&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; j &lt;span class=&#34;op&#34;&gt;&amp;lt;&lt;/span&gt; n&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt; j&lt;span class=&#34;op&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-19&#34;&gt;&lt;a href=&#34;#cb4-19&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        C&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;j&lt;span class=&#34;op&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;+=&lt;/span&gt; A&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;k&lt;span class=&#34;op&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt; B&lt;span class=&#34;op&#34;&gt;[&lt;/span&gt;k&lt;span class=&#34;op&#34;&gt;][&lt;/span&gt;j&lt;span class=&#34;op&#34;&gt;];&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-20&#34;&gt;&lt;a href=&#34;#cb4-20&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;      &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-21&#34;&gt;&lt;a href=&#34;#cb4-21&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-22&#34;&gt;&lt;a href=&#34;#cb4-22&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;  &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-23&#34;&gt;&lt;a href=&#34;#cb4-23&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Before reordering, when innermost loop traverses over &lt;code&gt;k&lt;/code&gt;,
+there will be one output reuse (&lt;code&gt;C[i][j]&lt;/code&gt;), one cache hit
+(&lt;code&gt;A[i][k]&lt;/code&gt;) and one cache miss (&lt;code&gt;B[k][j]&lt;/code&gt;. After
+reordering, when innermost loop traverses over &lt;code&gt;j&lt;/code&gt;, there
+will be one input reuse (&lt;code&gt;A[i][k]&lt;/code&gt;) and one cache hit
+(&lt;code&gt;B[k][j]&lt;/code&gt;).&lt;/p&gt;
+&lt;h3 id=&#34;loop-unrolling&#34;&gt;Loop Unrolling&lt;/h3&gt;
+&lt;p&gt;At the end of a loop, there is usually a branch checking to determine
+whether to exit the loop or not. Loop unrolling tries to reduce the
+number of branch checking in loop (see &lt;a href=&#34;https://www.wikiwand.com/en/Duff&amp;#39;s_device&#34;&gt;Duff’s device&lt;/a&gt;).
+If the number of loops is known in advance, as is usually the case in a
+&lt;code&gt;for&lt;/code&gt; loop, the number of branch checking can be reduced by
+repeating the loop statements several times:&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb5&#34;&gt;&lt;pre class=&#34;sourceCode c&#34;&gt;&lt;code class=&#34;sourceCode c&#34;&gt;&lt;span id=&#34;cb5-1&#34;&gt;&lt;a href=&#34;#cb5-1&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;/* count &amp;gt; 0 and count % 8 == 0 assumed */&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-2&#34;&gt;&lt;a href=&#34;#cb5-2&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;// before unrolling&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-3&#34;&gt;&lt;a href=&#34;#cb5-3&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;send&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;to&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; from&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; count&lt;span class=&#34;op&#34;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-4&#34;&gt;&lt;a href=&#34;#cb5-4&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;register&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;short&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-5&#34;&gt;&lt;a href=&#34;#cb5-5&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;register&lt;/span&gt; count&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-6&#34;&gt;&lt;a href=&#34;#cb5-6&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-7&#34;&gt;&lt;a href=&#34;#cb5-7&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;cf&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-8&#34;&gt;&lt;a href=&#34;#cb5-8&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-9&#34;&gt;&lt;a href=&#34;#cb5-9&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(--&lt;/span&gt;count &lt;span class=&#34;op&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-10&#34;&gt;&lt;a href=&#34;#cb5-10&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-11&#34;&gt;&lt;a href=&#34;#cb5-11&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-12&#34;&gt;&lt;a href=&#34;#cb5-12&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;// after unrolling&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-13&#34;&gt;&lt;a href=&#34;#cb5-13&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;send&lt;span class=&#34;op&#34;&gt;(&lt;/span&gt;to&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; from&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; count&lt;span class=&#34;op&#34;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-14&#34;&gt;&lt;a href=&#34;#cb5-14&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;register&lt;/span&gt; &lt;span class=&#34;dt&#34;&gt;short&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to&lt;span class=&#34;op&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-15&#34;&gt;&lt;a href=&#34;#cb5-15&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;dt&#34;&gt;register&lt;/span&gt; count&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-16&#34;&gt;&lt;a href=&#34;#cb5-16&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-17&#34;&gt;&lt;a href=&#34;#cb5-17&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;dt&#34;&gt;register&lt;/span&gt; n &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; count &lt;span class=&#34;op&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-18&#34;&gt;&lt;a href=&#34;#cb5-18&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;cf&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-19&#34;&gt;&lt;a href=&#34;#cb5-19&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-20&#34;&gt;&lt;a href=&#34;#cb5-20&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-21&#34;&gt;&lt;a href=&#34;#cb5-21&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-22&#34;&gt;&lt;a href=&#34;#cb5-22&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-23&#34;&gt;&lt;a href=&#34;#cb5-23&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-24&#34;&gt;&lt;a href=&#34;#cb5-24&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-25&#34;&gt;&lt;a href=&#34;#cb5-25&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-26&#34;&gt;&lt;a href=&#34;#cb5-26&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;to &lt;span class=&#34;op&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;*&lt;/span&gt;from&lt;span class=&#34;op&#34;&gt;++;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-27&#34;&gt;&lt;a href=&#34;#cb5-27&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;op&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;op&#34;&gt;(--&lt;/span&gt;n &lt;span class=&#34;op&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;op&#34;&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-28&#34;&gt;&lt;a href=&#34;#cb5-28&#34; aria-hidden=&#34;true&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;op&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Manual loop unrolling makes little sense nowadays since modern CPU
+can smartly predict the correct branch and modern compiler can
+automatically optimize the loop code.&lt;/p&gt;
+&lt;h3 id=&#34;write-caching&#34;&gt;Write Caching&lt;/h3&gt;
+&lt;h3 id=&#34;tilingtiled-mmtiled-mm-multithreaded&#34;&gt;Tiling&lt;a href=&#34;#fn7&#34; class=&#34;footnote-ref&#34; id=&#34;fnref7&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt;&lt;a href=&#34;#fn8&#34; class=&#34;footnote-ref&#34; id=&#34;fnref8&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;8&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Tiling utilizes the matrix multiplication property that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather*}
+A =
+\begin{pmatrix}
+A_{11} &amp;amp; A_{12} \\
+A_{21} &amp;amp; A_{22}
+\end{pmatrix},
+B =
+\begin{pmatrix}
+B_{11} &amp;amp; B_{12} \\
+B_{21} &amp;amp; B_{22}
+\end{pmatrix} \\ \\
+A B =
+\begin{pmatrix}
+A_{11} B_{11} + A_{12} B_{21} &amp;amp; A_{11} B_{12} + A_{12} B_{22} \\
+A_{21} B_{11} + A_{22} B_{21} &amp;amp; A_{21} B_{12} + A_{22} B_{22} \\
+\end{pmatrix}
+\end{gather*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Tiling divides the matrix into blocks that can better fit in the
+cache line, so that the temporal locality can be exploited.&lt;/p&gt;
+&lt;h3 id=&#34;vectorization-simdvectorization&#34;&gt;Vectorization (SIMD)&lt;a href=&#34;#fn9&#34; class=&#34;footnote-ref&#34; id=&#34;fnref9&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;9&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;array-packing&#34;&gt;Array Packing&lt;/h3&gt;
+&lt;h2 id=&#34;dataflow-optimization&#34;&gt;Dataflow Optimization&lt;/h2&gt;
+&lt;h3 id=&#34;systolic-arraysystolic-array&#34;&gt;Systolic Array&lt;a href=&#34;#fn10&#34; class=&#34;footnote-ref&#34; id=&#34;fnref10&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;10&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Systolic array is dataflow trick implemented in hardware level to
+speed up compute-bound task. It is an analog to the heart beat: in
+systolic array setting, memory is the heart, which bumps data (blood) to
+(usually a regular array of) processing elements (cells) and then
+recycle (processing result).&lt;/p&gt;
+&lt;p&gt;A whole bandwidth of data would certainly entail a bunch of PEs to
+digest. These PEs can have local memory and execution kernel, which
+means they can be any kind of computing devices. PEs also connect to
+each for passing data. All that’s left to do is to properly orchestrate
+the data flow.&lt;/p&gt;
+&lt;p&gt;The crux is that, instead of bumping one piece of data to a single
+processing element (PE), bringing the memory bandwidth to the utmost
+utilization would be more efficient. Other than that, once data is
+brought out from memory, it and its intermediate result can be used
+effectively at each PE it passes through.&lt;/p&gt;
+&lt;h2 id=&#34;elimination-of-multiplicationmnnfaster-mm&#34;&gt;Elimination of
+Multiplication&lt;a href=&#34;#fn11&#34; class=&#34;footnote-ref&#34; id=&#34;fnref11&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;11&lt;/sup&gt;&lt;/a&gt;&lt;a href=&#34;#fn12&#34; class=&#34;footnote-ref&#34; id=&#34;fnref12&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;12&lt;/sup&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Multiplication is way more time-consuming than addition. Therefore
+generally, we are willing to trade off with more additions for less
+multiplications. The two algorithms below can reduce the number of
+multiplications in matrix computation.&lt;/p&gt;
+&lt;h3 id=&#34;strassens-algorithmstrassen-implstrassen-analysis&#34;&gt;Strassen’s
+Algorithm&lt;a href=&#34;#fn13&#34; class=&#34;footnote-ref&#34; id=&#34;fnref13&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;13&lt;/sup&gt;&lt;/a&gt;&lt;a href=&#34;#fn14&#34; class=&#34;footnote-ref&#34; id=&#34;fnref14&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;14&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Firstly we look at the &lt;strong&gt;Strassen’s algorithm&lt;/strong&gt; of
+matrix computation. Suppose we do the matrix multiplication on two
+square matrices &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; following the idea of blockwise
+multiplication. We split the two matrices into &lt;span class=&#34;math display&#34;&gt;\[
+M = \begin{bmatrix}
+A &amp;amp; B \\
+C &amp;amp; D
+\end{bmatrix},
+N = \begin{bmatrix}
+E &amp;amp; F \\
+G &amp;amp; H
+\end{bmatrix}
+\]&lt;/span&gt; Then we calculate the intermediate matrices &lt;span class=&#34;math display&#34;&gt;\[
+\begin{align*}
+S_1 &amp;amp;= (B-D)(G+H) \\
+S_2 &amp;amp;= (A+D)(E+H) \\
+S_3 &amp;amp;= (A-C)(E+F) \\
+S_4 &amp;amp;= (A+B)H \\
+S_5 &amp;amp;= A(F-H) \\
+S_6 &amp;amp;= D(G-E) \\
+S_7 &amp;amp;= (C+D)E \\
+\end{align*}
+\]&lt;/span&gt; And the final result will be &lt;span class=&#34;math display&#34;&gt;\[
+\begin{bmatrix}
+A &amp;amp; B \\
+C &amp;amp; D
+\end{bmatrix}
+\begin{bmatrix}
+E &amp;amp; F \\
+G &amp;amp; H
+\end{bmatrix}
+=
+\begin{bmatrix}
+S_1 + S_2 - S_4 + S_6 &amp;amp; S_4 + S_5 \\
+S_6 + S_7 &amp;amp; S_2 - S_3 + S_5 - S_7
+\end{bmatrix}
+\]&lt;/span&gt; The derivation of matrix multiplication with Strassen’s
+algorithm can be formulated as &lt;span class=&#34;math display&#34;&gt;\[
+T(n) =
+\begin{cases}
+\Theta(1), &amp;amp; \text{if $n=1$;} \\
+7 \Theta(\frac{n}{2}) + \Theta(n^2), &amp;amp; \text{if $n&amp;gt;1$.}
+\end{cases}
+\]&lt;/span&gt; The master theorem provides an asymptotic analysis for
+divide-and-conquer recurrence like this. Let &lt;span class=&#34;math inline&#34;&gt;\(T(n)\)&lt;/span&gt; be a monotonically increasing
+function that satisfies &lt;span class=&#34;math display&#34;&gt;\[
+T(n) = a T(\frac{n}{b}) + f(n) \\
+T(1) = c
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(a \ge 1, b \ge 2, c &amp;gt;
+0\)&lt;/span&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(f(n) \in \Theta(n^d)\)&lt;/span&gt;
+where &lt;span class=&#34;math inline&#34;&gt;\(d \ge 0\)&lt;/span&gt;, then &lt;span class=&#34;math display&#34;&gt;\[
+T(n) = \begin{cases}
+\Theta(n^d) &amp;amp; \text{if $a &amp;lt; b^d$} \\
+\Theta(n^d \log n) &amp;amp; \text{if $a = b^d$} \\
+\Theta(n^{\log_b a}) &amp;amp; \text{if $a &amp;gt; b^d$} \\
+\end{cases}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The time complexity of Strassen’s algorithm is &lt;span class=&#34;math inline&#34;&gt;\(\Theta(n^{\log_2 7}) \approx
+\Theta(n^{2.8074})\)&lt;/span&gt;. There are 7 multiplications and 18
+additions (recall that subtraction is addition in computer arithmetics)
+in Strassen’s algorithm. In usual blockwise matrix multiplication, these
+numbers are 8 and 4. These extra 14 additions in Strassen’s algorithm
+may drag down its performance when input size is small. Other than that,
+the memory access pattern of Strassen’s algorithm is quite chaotic.
+There are many temp matrices of different shapes generated during the
+execution. Besides, floating-point errors will accumulate in Strassen’s
+large number of additions. These factors may constitute the reason why
+Stassen algorithm is not widely adopted.&lt;/p&gt;
+&lt;h3 id=&#34;winograd-algorithmwinograd&#34;&gt;Winograd Algorithm&lt;a href=&#34;#fn15&#34; class=&#34;footnote-ref&#34; id=&#34;fnref15&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;15&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In 1-D convolution, let &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; be the
+length of the output vector and &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt;
+be the length of kernel. The baseline implementation would require &lt;span class=&#34;math inline&#34;&gt;\(mr\)&lt;/span&gt; multiplications. But it is argued that
+the minimum number of required multiplications is &lt;span class=&#34;math inline&#34;&gt;\(m + r - 1\)&lt;/span&gt; (denoted as &lt;span class=&#34;math inline&#34;&gt;\(F(m,r)\)&lt;/span&gt; the corresponding algorithm).&lt;/p&gt;
+&lt;p&gt;Similarly in 2-D convolution, let &lt;span class=&#34;math inline&#34;&gt;\(m
+\times n\)&lt;/span&gt; be the output dimension and &lt;span class=&#34;math inline&#34;&gt;\(r \times s\)&lt;/span&gt; be the kernel dimension. The
+baseline implementation would require &lt;span class=&#34;math inline&#34;&gt;\(m n r
+s\)&lt;/span&gt; multiplications. But the minimum number of required
+multiplications is &lt;span class=&#34;math inline&#34;&gt;\((m + r - 1)(n + s -
+1)\)&lt;/span&gt; (denoted as &lt;span class=&#34;math inline&#34;&gt;\(F(m \times n, r
+\times s)\)&lt;/span&gt; the corresponding algorithm).&lt;/p&gt;
+&lt;p&gt;The Winograd paper documents the following algorithm for &lt;span class=&#34;math inline&#34;&gt;\(F(2,3)\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+F(2,3) =
+\begin{bmatrix}
+d_0 &amp;amp; d_1 &amp;amp; d_2 \\
+d_1 &amp;amp; d_2 &amp;amp; d_3
+\end{bmatrix}
+\begin{bmatrix}
+g_0 \\
+g_1 \\
+g_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+m_1 + m_2 + m_3 \\
+m_2 - m_3 - m_4
+\end{bmatrix}
+\]&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+m_1 = (d_0 - d_2) g_0, m_2 = (d_1 + d_2) \frac{g_0 + g_1 + g_2}{2} \\
+m_4 = (d_1 - d_3) g_2, m_3 = (d_2 - d_1) \frac{g_0 - g_1 + g_2}{2}
+\]&lt;/span&gt; Actually, this can be written in matrix form as &lt;span class=&#34;math display&#34;&gt;\[
+Y =A^T [(G g) \odot (B^T d)]
+\]&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+B^T =
+\begin{bmatrix}
+1 &amp;amp; 0 &amp;amp; -1 &amp;amp; 0 \\
+0 &amp;amp; 1 &amp;amp; 1 &amp;amp; 0 \\
+0 &amp;amp; -1 &amp;amp; 1 &amp;amp; 0 \\
+0 &amp;amp; 1 &amp;amp; 0 &amp;amp; -1
+\end{bmatrix},
+G =
+\begin{bmatrix}
+1 &amp;amp; 0 &amp;amp; 0 \\
+\frac{1}{2} &amp;amp; \frac{1}{2} &amp;amp; \frac{1}{2} \\
+\frac{1}{2} &amp;amp; -\frac{1}{2} &amp;amp; \frac{1}{2} \\
+0 &amp;amp; 0 &amp;amp; 1
+\end{bmatrix} \\
+A^T =
+\begin{bmatrix}
+1 &amp;amp; 1 &amp;amp; 1 &amp;amp; 0 \\
+0 &amp;amp; 1 &amp;amp; -1 &amp;amp; -1
+\end{bmatrix}\\
+g =
+\begin{bmatrix}
+g_0 &amp;amp; g_1 &amp;amp; g_2
+\end{bmatrix}^T \\
+d =
+\begin{bmatrix}
+d_0 &amp;amp; d_1 &amp;amp; d_2 &amp;amp; d_3
+\end{bmatrix}^T
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(F(m \times m, r \times r)\)&lt;/span&gt;
+can be built upon &lt;span class=&#34;math inline&#34;&gt;\(F(m, r)\)&lt;/span&gt;. For
+example, &lt;span class=&#34;math inline&#34;&gt;\(F(2 \times 2, 3 \times 3)\)&lt;/span&gt;
+is &lt;span class=&#34;math display&#34;&gt;\[
+Y&amp;#39; = A^T \left[ [G g G^T] \odot [B^T d B] \right] A
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(F(m \times n, r \times s)\)&lt;/span&gt;
+can be built upon &lt;span class=&#34;math inline&#34;&gt;\(F(m, r)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(F(n, s)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Winograd algorithm is great. One problem is that the &lt;span class=&#34;math inline&#34;&gt;\(A,B,G\)&lt;/span&gt; matrix are too specific. For
+input/kernel of different sizes, &lt;span class=&#34;math inline&#34;&gt;\(A,B,G\)&lt;/span&gt; will be greatly different. For a
+convolutional neural network that involves inputs/kernels of varying
+sizes, Winograd algorithm is not suitable for acceleration on
+special-purpose hardware, which is usually dedicated to a fixed type of
+computation.&lt;/p&gt;
+&lt;h2 id=&#34;sparse-computationsparse&#34;&gt;Sparse Computation[^sparse]&lt;/h2&gt;
+&lt;p&gt;Structured sparsity can reduce computation when there is zero in the
+multiplicands. But this involves zero-check for each element of the
+filter, which might ruin the CPU pipeline however. To avoid zero-check
+in a sparse matrix, we may as well store the positions of all the
+nonzero elements. During computation, only involved nonzero elements
+will be multiplied and accumulated to obtain the final result.&lt;/p&gt;
+&lt;h3 id=&#34;sparse-matrix-multiplication&#34;&gt;Sparse Matrix Multiplication&lt;/h3&gt;
+&lt;p&gt;For a sparse matrix, we either store it in &lt;strong&gt;compressed sparse
+row&lt;/strong&gt; (CSR) or &lt;strong&gt;compressed sparse column&lt;/strong&gt; (CSC)
+(or other formats&lt;a href=&#34;#fn16&#34; class=&#34;footnote-ref&#34; id=&#34;fnref16&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;16&lt;/sup&gt;&lt;/a&gt;). That is, for every row/column, we
+maintain a linked list whose nodes store the nonzero value and its
+offset in this row/column.&lt;/p&gt;
+&lt;p&gt;The compression is done after training. The choice of CSR or CSC in
+matrix multiplication seems arbitrary, so long as one matrix is CSR and
+the other is CSC. But in practice, convolution is done row-by-row. We
+need to access the feature map across rows more often than across
+columns. Thus, feature map is stored in CSR and the filter is stored in
+CSC.&lt;/p&gt;
+&lt;h3 id=&#34;sparse-sparse-convolution&#34;&gt;Sparse-sparse Convolution&lt;/h3&gt;
+&lt;p&gt;Sometimes not only the filter, but also the feature map is sparse,
+e.g. in point cloud case. We may as well apply the Im2Col and then apply
+the sparse matrix multiplication. But better still, we hope to directly
+apply the sparse convolution&lt;a href=&#34;#fn17&#34; class=&#34;footnote-ref&#34; id=&#34;fnref17&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;17&lt;/sup&gt;&lt;/a&gt;&lt;a href=&#34;#fn18&#34; class=&#34;footnote-ref&#34; id=&#34;fnref18&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;18&lt;/sup&gt;&lt;/a&gt;
+on the original feature map.&lt;/p&gt;
+&lt;p&gt;But does sparse-sparse convolution always work? It depends. The crux
+is that we don’t just carry out a single sparse-sparse convolution.
+Modern models consist of multiple layers. We hope the output of each
+layer is sparse so that sparse-sparse convolution can be chained up. If
+the output of any intermediate layer is not sparse enough, the whole
+process becomes pointless.&lt;/p&gt;
+&lt;h2 id=&#34;tensor-virtual-machine&#34;&gt;Tensor Virtual Machine&lt;/h2&gt;
+&lt;p&gt;Current neural network frameworks translate models into a computation
+graph in ONNX format, which in turn is translated into hardware
+instructions by the compilers from different manufacturers
+(e.g. TensorRT for NVIDIA GPU, MNN for ARM Cortex-A CPU, OpenVINO for
+Intel CPU).&lt;/p&gt;
+&lt;h2 id=&#34;cuda&#34;&gt;CUDA&lt;/h2&gt;
+&lt;p&gt;Ideally, the computation can be parallelized for greater speedup.
+CUDA provides such API for parallel computation on GPU. One key concept
+of CUDA is its granularity of execution: grid -&amp;gt; block -&amp;gt; thread
+(from coarsest to finest).&lt;/p&gt;
+&lt;h1 id=&#34;model-trick&#34;&gt;Model Trick&lt;/h1&gt;
+&lt;p&gt;Other than implementation tricks, the matrix computation can be sped
+up by multiplication with zero. Block of zeros usually allows us to jump
+a series of block computation when using the implementation tricks
+mentioned before. Other than that, it saves space due to the sparse
+matrix storage model (a kind of &lt;strong&gt;model compression&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;It would be great if there are multiple blocks of zeros in the
+matrix. Better still, these zeros won’t undermine the model results
+much.&lt;/p&gt;
+&lt;h2 id=&#34;sparsification&#34;&gt;Sparsification&lt;/h2&gt;
+&lt;p&gt;Sparsification tries to zero parameters in block during training. It
+does so by adding special regularization term to the loss function.
+Typical sparsity analysis assumes the linear-regression-like problem.
+Denote the original loss as &lt;span class=&#34;math inline&#34;&gt;\(\ell_w(X,
+Y)\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; is the MSE
+loss function, &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; is the data, &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; is the target (&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; may be a feature map or label vector)
+and &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; is the model parameters
+(interpreted as a vector). Then, the problem is formulated as &lt;span class=&#34;math display&#34;&gt;\[
+\min_{w} \ell_w(X, Y) \triangleq ||Y - X w||_F
+\]&lt;/span&gt; We may force an extra &lt;span class=&#34;math inline&#34;&gt;\(l_p\)&lt;/span&gt;
+norm term on &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\hat \ell_w(X, Y) \triangleq \ell_w(X, Y) + \lambda ||w||_p
+\]&lt;/span&gt; Note that &lt;span class=&#34;math display&#34;&gt;\[
+||w||_0 = \sum_{i} \mathbb{1}[w_i \ne 0] \\
+||w||_1 = \sum_{i} |w_i| \\
+||w||_2 = \sqrt{\sum_{i} x_i^2} \\
+||w||_\infty = \max_{i} |x_i|
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(l_0\)&lt;/span&gt; norm is a direct
+attempt to penalize nonzero parameters. However, &lt;span class=&#34;math inline&#34;&gt;\(\lambda ||w||_0\)&lt;/span&gt; is not continuous at
+points when there is a zero entry in &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;; when &lt;span class=&#34;math inline&#34;&gt;\(\forall i, w_i \ne 0\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\lambda ||w||_0\)&lt;/span&gt; does not contribute
+gradient at all. There is no analytical way to determine &lt;span class=&#34;math inline&#34;&gt;\(w_i\)&lt;/span&gt; should be zero or not. The only
+course open is to manually set each &lt;span class=&#34;math inline&#34;&gt;\(w_i\)&lt;/span&gt; to zero. But this method is
+prohibitive in terms of the complexity: there are &lt;span class=&#34;math inline&#34;&gt;\(2^{|w|}\)&lt;/span&gt; combinations to try (there are &lt;a href=&#34;https://www.wikiwand.com/en/Matching_pursuit&#34;&gt;orthogonal matching
+pursuit&lt;/a&gt; &amp;lt;??&amp;gt; and &lt;a href=&#34;https://www.jmlr.org/papers/volume19/17-194/17-194.pdf&#34;&gt;other
+methods&lt;/a&gt; that try to approximate it though). Thus, the &lt;span class=&#34;math inline&#34;&gt;\(l_0\)&lt;/span&gt; norm is ruled out for
+consideration.&lt;/p&gt;
+&lt;p&gt;Then &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt; norm pops up. &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt; norm is good since there is an
+analytical solution to its gradient w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt;. (why does &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt; norm add sparsity?)&lt;/p&gt;
+&lt;h3 id=&#34;structured-sparsity&#34;&gt;Structured Sparsity&lt;/h3&gt;
+&lt;p&gt;Better zero parameters is that zero parameters appear block-wise.
+Block-wise zero entries are the essence of sparsity. However, the Lasso
+term does not guarantee zero entries appear in block. To amend it,
+&lt;strong&gt;group Lasso&lt;/strong&gt; trick is invented and the regularized loss
+becomes &lt;span class=&#34;math display&#34;&gt;\[
+\hat \ell_w(X, Y) = \ell_w(X, Y) + \sum_j \lambda_j ||\beta_j||_1
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\beta_j\)&lt;/span&gt; is the
+&lt;span class=&#34;math inline&#34;&gt;\(l_2\)&lt;/span&gt; norm of &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th group of parameters that usually
+spatially near.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./structured-sparsity.svg&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;Structured sparsity precedes random sparsity, because random sparsity
+does not secure a regular memory access pattern, so that there will be a
+poor cache locality. The figure above illustrates from irregular
+structured sparsity to regular structured sparsity&lt;a href=&#34;#fn19&#34; class=&#34;footnote-ref&#34; id=&#34;fnref19&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;19&lt;/sup&gt;&lt;/a&gt;.
+Obviously, regular structured sparsity is preferred so long as it won’t
+undermine the model performance much.&lt;/p&gt;
+&lt;h3 id=&#34;nonlinearity-approximationnonlinear-approx&#34;&gt;Nonlinearity
+Approximation&lt;a href=&#34;#fn20&#34; class=&#34;footnote-ref&#34; id=&#34;fnref20&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;20&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;As mentioned, typical sparsification analyzes the linear regression
+problem, which has two components: 1) the model as a linear function; 2)
+the MSE loss function. The MSE loss function does well, not among the
+best though, in most tasks. But mere linear model won’t do
+generally.&lt;/p&gt;
+&lt;p&gt;Most nonlinearity in nonlinear model comes from the element-wise
+function mapping on the tensor obtained by linear transformation of
+input, e.g. the response on feature map obtained by convolution (in this
+case, &lt;span class=&#34;math inline&#34;&gt;\(X,w,X w\)&lt;/span&gt; will be the
+transformed input, kernel and convolution result respectively, as shown
+in &lt;a href=&#34;#GEMM&#34;&gt;GEMM&lt;/a&gt; section). Our focus is still on sparsity of
+the linear component in the nonlineear model.&lt;/p&gt;
+&lt;p&gt;The objective becomes &lt;span class=&#34;math display&#34;&gt;\[
+\min_w ||Y - f(X w)||_F
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is a nonlineear
+function like &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{ReLU}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;pruning&#34;&gt;Pruning&lt;/h2&gt;
+&lt;p&gt;Pruning is a kind of post-processing trick, which happens after
+training, to make parameters more “zero”.&lt;/p&gt;
+&lt;h3 id=&#34;channel-pruning&#34;&gt;Channel Pruning&lt;/h3&gt;
+&lt;p&gt;Channel pruning boils down to the following optimization problem:
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\min_{\beta, W} \quad &amp;amp; \left\Vert Y - \sum_{i} \beta_i X_i W_i
+\right\Vert_F^2 \\
+\text{s.t.} \quad &amp;amp; ||\beta||_0 \le c&amp;#39;
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Note here that &lt;span class=&#34;math inline&#34;&gt;\(X_i\)&lt;/span&gt; is not the
+feature map at &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;-th channel, but
+instead the sampled window of kernel size (&lt;span class=&#34;math inline&#34;&gt;\(k_h \times k_h\)&lt;/span&gt;) on &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;-th feature map. It is known that this
+problem is NP-hard because of the &lt;span class=&#34;math inline&#34;&gt;\(l_0\)&lt;/span&gt; norm term in the constraint. In
+practice, it can be relaxed to (why and really?) &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\min_{\beta, W} \quad &amp;amp; \left\Vert Y - \sum_{i} \beta_i X_i W_i
+\right\Vert_F^2 \\
+\text{s.t.} \quad &amp;amp; ||\beta||_1 \le c&amp;#39;&amp;#39; \and \forall i,
+||W_i||_F = 1
+\end{aligned}
+\]&lt;/span&gt; Note that kernels &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; is
+also included for optimization. This is because after pruning, kernels
+may still be fine-tuned a bit to preserve the accuracy.&lt;/p&gt;
+&lt;p&gt;The above formula can be optimized in an alternative fashion:
+i.e. &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; is fixed and &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; is to be optimized; then &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; is fixed and &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; is to be optimized. We also add a
+regularization term for each &lt;span class=&#34;math inline&#34;&gt;\(W_i\)&lt;/span&gt;.
+This is because optimizing &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; is
+materially a linear regression task, which easily has infinitely many
+solution due to the dimension of &lt;span class=&#34;math inline&#34;&gt;\(X_i\)&lt;/span&gt; unless there is an extra
+constraint.&lt;/p&gt;
+&lt;h3 id=&#34;low-rank-decomposition&#34;&gt;Low-rank Decomposition&lt;/h3&gt;
+&lt;p&gt;Take the matrix multiplication as an example to appreciate the idea
+of low-rank decomposition: &lt;span class=&#34;math display&#34;&gt;\[
+X \times W \Rightarrow X \times U \times V
+\]&lt;/span&gt; We may decompose &lt;span class=&#34;math inline&#34;&gt;\(W: m \times
+n\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(U: m \times r\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(N: r \times n\)&lt;/span&gt; where hopefully &lt;span class=&#34;math inline&#34;&gt;\(r &amp;lt; n,m\)&lt;/span&gt; (note that when &lt;span class=&#34;math inline&#34;&gt;\(r = \rank W\)&lt;/span&gt;, there exists &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt; that can fully recover &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt;). In this way, storage cost can be
+saved and computation can be sped up.&lt;/p&gt;
+&lt;p&gt;Note that our objective is not to reconstruct the matrix &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; (called &lt;strong&gt;matrix
+approximation&lt;/strong&gt;) with some other lower-rank matrices. Or else
+simply the singular value decomposition would do the job. Instead, we
+are to reconstruct the model output (called &lt;strong&gt;matrix
+regression&lt;/strong&gt;). Therefore, the problem is formulated as &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\min_{W, A, B} \quad &amp;amp; ||Y -  X W||_F \\
+\text{s.t.} \quad &amp;amp; W = U V \\
+&amp;amp; \rank U, \rank V \le r
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;combination-with-other-methods&#34;&gt;Combination with Other
+Methods&lt;/h4&gt;
+&lt;p&gt;Low-rank decomposition can be combined with sparsity and nonlinearity
+approximation to give the following ultimate pruning problem: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\min_{W, A, B} \quad &amp;amp; ||Y -  f(X W)||_F \\
+\text{s.t.} \quad &amp;amp; W = A + B \\
+&amp;amp; ||A||_0 \le S \\
+&amp;amp; \rank B \le L \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(|| \cdot ||_0\)&lt;/span&gt; is the
+number of nonzero entries in the matrix.&lt;/p&gt;
+&lt;p&gt;The sparsity comes from &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and
+low-rank decomposition comes from &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;. The above problem is NP-hard due to
+the constraints on &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;. We can relax these constraints to
+other forms: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\min_{W, A, B} \quad &amp;amp; ||Y -  f(X W)||_F \\
+\text{s.t.} \quad &amp;amp; W = A + B \\
+&amp;amp; ||A||_{21} \le S  \\
+&amp;amp; ||B||_* \le L \\
+\end{aligned}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(|| \cdot ||_{21}\)&lt;/span&gt;
+takes the &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt; norm of the &lt;span class=&#34;math inline&#34;&gt;\(l_2\)&lt;/span&gt; norms taken on each column of the
+matrix; and &lt;span class=&#34;math inline&#34;&gt;\(|| \cdot ||_*\)&lt;/span&gt; is the
+nuclear norm that equals to the sum of singular values.&lt;/p&gt;
+&lt;p&gt;To solve it, alternating direction method of multipliers (ADMM) can
+be adopted. The augmented Lagrangian function is (??) &lt;span class=&#34;math display&#34;&gt;\[
+L(W,A,B,\Lambda) = ||Y -  f(X W)||_F + \lambda_1 ||A||_{21} + \lambda_2
+||B||_* + \Lambda \odot (W - A - B) + \frac{\rho}{2}||W - A - B||_F^2
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;tensor-decomposition&#34;&gt;Tensor Decomposition&lt;/h4&gt;
+&lt;p&gt;Tucker decomp, CP decomp, Tucker-2 (or TT) decomp&lt;/p&gt;
+&lt;h2 id=&#34;quantizationquant-pytorch&#34;&gt;Quantization&lt;a href=&#34;#fn21&#34; class=&#34;footnote-ref&#34; id=&#34;fnref21&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;21&lt;/sup&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Model parameters are natively floating-point numbers. During
+training, model parameters usually won’t be too large and won’t exceed
+the range of &lt;code&gt;int8&lt;/code&gt;. One way to make the model smaller and
+run faster is to map model parameters to integers of smaller size (say
+from &lt;code&gt;fp32&lt;/code&gt; to &lt;code&gt;int16&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Other than the efficiency perspective, if the original values span a
+very narrow range (say from -10 to 10), by mapping them to a wider range
+of integers, better precision may even be obtained. This is mainly due
+to that most floating-point number arithmetic suffer from precision
+loss. Particularly, when two floating-point numbers of significant
+difference adds or subtracts, a great loss in precision can occur
+(called &lt;strong&gt;catastrophic cancellation&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;After integer arithmetic, we can map these integer values back again.
+The process involved is called
+&lt;strong&gt;quantization/dequantization&lt;/strong&gt;. For a number &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt;, its quantization is &lt;span class=&#34;math inline&#34;&gt;\(Q(r) = \text{Int}(r/k) - b\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; is the scale and &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt; is the bias. To dequantize, &lt;span class=&#34;math inline&#34;&gt;\(\hat r = k(Q(r) + b)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./quant_sym.png&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./quant_asym.png&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;The first question to consider &lt;strong&gt;symmetric quantization or
+asymmetric quantization&lt;/strong&gt; (the figure above). That is, should the
+zero in the original domain mapped to zero or &lt;span class=&#34;math inline&#34;&gt;\(-b\)&lt;/span&gt; (because &lt;span class=&#34;math inline&#34;&gt;\(\text{Int}(0/k)-b = -b\)&lt;/span&gt;). In essence, this
+is a question of choice of bias. Preferring to computation efficiency,
+we hope bias is zero. To show it, consider the dequantization process of
+the matrix product: &lt;span class=&#34;math display&#34;&gt;\[
+A = k_A \times A_Q + b_A \\
+B = k_B \times B_Q + b_B \\
+A B = k_A k_B A_Q B_Q + k_A b_B A_Q ＋ k_B b_A B_Q + b_A b_B
+\]&lt;/span&gt; It would have been cleaner if &lt;span class=&#34;math inline&#34;&gt;\(b_A,
+b_B\)&lt;/span&gt; are zero. However, if the activations in the network are
+mostly non-negative, like in the case where ReLU is used, symmetric
+quantization would waste half of the quantization range.&lt;/p&gt;
+&lt;p&gt;The second question is to consider using the &lt;strong&gt;restricted range
+or the full range&lt;/strong&gt; of the target integer type. Take
+&lt;code&gt;int8&lt;/code&gt; for an example, should we map numbers to &lt;span class=&#34;math inline&#34;&gt;\([-127, 127]\)&lt;/span&gt; or &lt;span class=&#34;math inline&#34;&gt;\([-128, 127]\)&lt;/span&gt;? When symmetric quantization
+is used, the answer is the restricted range. The reason is that, the
+quantization of two numbers of the same magnitude but different signs,
+should be of the same magnitude but different signs too. But had the
+full range been used, supposing the floating-point range was &lt;span class=&#34;math inline&#34;&gt;\([-2.2, 2.2]\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(2.2\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(-2.2\)&lt;/span&gt; would have been quantized into &lt;span class=&#34;math inline&#34;&gt;\(2.2 \times \frac{127}{2.2} = 127\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(-2.2 \times \frac{128}{2.2} = -128\)&lt;/span&gt;
+respectively. The problem is that the scaling factors for positive
+number and negative number are different due to the asymmetric range, in
+which case a small bias would be introduced and leads to precision
+loss.&lt;/p&gt;
+&lt;p&gt;The third question is the timing of quantization. Should the
+quantization happen during training (&lt;strong&gt;quantization-aware
+training&lt;/strong&gt;) or after training (&lt;strong&gt;post-training
+quantization&lt;/strong&gt;)? Accompanying this question is what the best
+scale should be.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Post-training (static) quantization (PTQ)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./ptq.svg&#34; style=&#34;zoom: 25%;&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;In PTQ, model are trained before quantized. After training, a small
+subset of training data (called &lt;strong&gt;calibration data&lt;/strong&gt;) is
+used to determine the scale (magnitude) and the clipping range
+(quantization bit number). Notice that model parameters are fixed in
+this process.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Quantization-aware training (QAT)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./qat.svg&#34; style=&#34;zoom:25%;&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;In QAT, model parameters are quantized and then trained. QAT brings a
+great save in computation during training. But this yields another
+question: should the quantization happen during forward pass or during
+back propagation?&lt;/p&gt;
+&lt;p&gt;Quantization is used in forward pass but not in back propagation. The
+reason not to update gradient in quantized domain is that, numbers in
+quantized domain are integers but gradient is fractional. Another reason
+not to back-propagate in quantized domain is that, the gradient might be
+so large as to disturb the convergence of model, compared with that in
+dequantized domain.&lt;/p&gt;
+&lt;p&gt;The error is measured between the dequantized output and the target
+output. Model parameters will update in dequantized format and will be
+re-quantized for next round of training. There are arguments on both
+sides for this approach. One good aspect is that it takes the
+quantization error into consideration. But this causes the gradient
+mismatch because the gradient of the parameters are computed with
+quantized values but updated in dequantized format. In worst case, this
+may cause the model to diverge.&lt;/p&gt;
+&lt;p&gt;This training method reconciles with the idea of stochastic neuron,
+where back propagation is done by &lt;strong&gt;straight-through
+estimator&lt;/strong&gt; (STE)&lt;a href=&#34;#fn22&#34; class=&#34;footnote-ref&#34; id=&#34;fnref22&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;22&lt;/sup&gt;&lt;/a&gt;. There is another
+method based on STE and called &lt;strong&gt;parameterized clipping
+activation&lt;/strong&gt; (PACT)&lt;a href=&#34;#fn23&#34; class=&#34;footnote-ref&#34; id=&#34;fnref23&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;23&lt;/sup&gt;&lt;/a&gt;. The meat of PACT is a
+learnable ReLU function: &lt;span class=&#34;math display&#34;&gt;\[
+y = \mathrm{PACT}(x, \alpha) = 0.5 (|x| - |x-\alpha| + \alpha) =
+\begin{cases}
+0, &amp;amp; x \le 0 \\
+x, &amp;amp; 0 &amp;lt; x &amp;lt; \alpha \\
+\alpha, &amp;amp; x \ge \alpha
+\end{cases}
+\]&lt;/span&gt; Back-propagation is done w.r.t. the dequantized value &lt;span class=&#34;math inline&#34;&gt;\(y_{dq} \triangleq \lfloor y \cdot \frac{2^k -
+1}{\alpha} \rfloor \frac{\alpha}{2^k - 1}\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial y_{dq}}{\partial y}\)&lt;/span&gt; is set
+to &lt;span class=&#34;math inline&#34;&gt;\(\frac{\text{range before
+quant.}}{\text{range of quant. domain}}\)&lt;/span&gt; as would be in STE.
+&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; is learnable so that
+clipping range can be dynamically adjusted: &lt;span class=&#34;math display&#34;&gt;\[
+\frac{\partial y}{\partial \alpha} =
+\begin{cases}
+0, &amp;amp; x &amp;lt; \alpha \\
+1, &amp;amp; x \ge \alpha
+\end{cases}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The fourth question is the granularity of quantization. There are
+usually three kinds of choices, namely channel-wise, layer-wise and
+group-wise quantization.&lt;/p&gt;
+&lt;h3 id=&#34;bnntnnbnn&#34;&gt;BNN/TNN&lt;a href=&#34;#fn24&#34; class=&#34;footnote-ref&#34; id=&#34;fnref24&#34; role=&#34;doc-noteref&#34;&gt;&lt;sup&gt;24&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Binarized and ternary neural network bring quantization to an
+extreme. The reason to particularly split them out under &lt;a href=&#34;#quantization&#34;&gt;quantization&lt;/a&gt; is that, their multiplication and
+addition logic are quite different. They use 1 bit and 2 bits for
+clipping: BNN maps values to -1 and 1; TNN maps values to -1, 0 and 1.
+Then the multiplication and addition only involve Boolean operations,
+which will be much faster. Other than that, the training process of
+BNN/TNN resembles that of quantization.&lt;/p&gt;
+&lt;p&gt;The motivation behind is that model parameters are usually within
+&lt;span class=&#34;math inline&#34;&gt;\([-1, 1]\)&lt;/span&gt;. So why not try just using
+-1, 0 and 1? Given a weight matrix &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; (squeezed into an &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt; vector), there is an analytical
+solution to the best scaling factor &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and the quantized value &lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt; (squeezed into an &lt;span class=&#34;math inline&#34;&gt;\(\R^n\)&lt;/span&gt; vector) for BNN:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+B^* &amp;amp;= \arg \min_{B} \| W - kB \|_2 = \arg \min_{B} \| W - kB \|_2^2
+\\
+&amp;amp;= \arg \min_{B} W^T W - 2 k W^T B + k^2 B^T B \\
+\end{aligned}
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; is known and
+&lt;span class=&#34;math inline&#34;&gt;\(B \in \{ -1, 1 \}^n\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(W^T W\)&lt;/span&gt; is a constant &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(B^T
+B\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;. Thus, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+B^* = \arg \min_{B} k^2 n + c - 2 k W^T B = \mathrm{sign}(W) \\
+k = \frac{W^T B^*}{n}
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;knowledge-distillation&#34;&gt;Knowledge Distillation&lt;/h2&gt;
+&lt;p&gt;Knowledge distillation is a model compression method in which a
+smaller model is trained to mimic the pre-trained larger model. The
+larger and the smaller model are referred to as “teacher” and “student”
+respectively.&lt;/p&gt;
+&lt;p&gt;There are three kinds of distillation methods:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;Response-based knowledge&lt;/p&gt;
+&lt;p&gt;This is perhaps the easiest one to think of: given the same input,
+the output (usually a categorical distribution) should be the same.&lt;/p&gt;
+&lt;p&gt;In this case, the distillation loss is set to be the cross entropy
+between the distributions output by the teacher and the student.
+Minimizing the cross entropy between the output distributions
+equivalently minimizes the their KL-divergence, given that teacher’s
+distribution is fixed.&lt;/p&gt;
+&lt;p&gt;On the other hand, the student model can further be rectified by the
+ground-truth loss.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Feature-based knowledge&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Relation-based knowledge&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;network-architecture-search&#34;&gt;Network Architecture Search&lt;/h2&gt;
+&lt;p&gt;There are mainly two indexes for a network: one is the
+&lt;strong&gt;latency&lt;/strong&gt; and the other is &lt;strong&gt;accuracy&lt;/strong&gt;. In
+NAS, latency is cheaper to check upon than accuracy, since the training
+is more time-consuming than a single pass of input.&lt;/p&gt;
+&lt;p&gt;NAS is mostly based on heuristics. During training, we can save time
+by&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;early stop&lt;/li&gt;
+&lt;li&gt;warm restart (parameter reuse)&lt;/li&gt;
+&lt;li&gt;use the arrogate target like FLOPs (which is usually proportional to
+latency)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As for searching in the solution space, we can do with&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;grid search&lt;/li&gt;
+&lt;li&gt;random sampling&lt;/li&gt;
+&lt;li&gt;reinforcement learning&lt;/li&gt;
+&lt;li&gt;evolutional algorithm&lt;/li&gt;
+&lt;li&gt;Bayesian optimization like Gaussian process&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;useful-links&#34;&gt;Useful Links&lt;/h1&gt;
+&lt;p&gt;Related courses:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sites.cs.ucsb.edu/~tyang/class/240a17/&#34;&gt;CS240A -
+Applied Parallel Computing (ucsb.edu)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hanlab.mit.edu/courses/2023-fall-65940&#34;&gt;MIT 6.5940
+Fall 2023 TinyML and Efficient Deep Learning Computing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;section class=&#34;footnotes footnotes-end-of-document&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr/&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/abs/1911.05662&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/abs/1706.06873&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://ieeexplore.ieee.org/document/10144741&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://tvm.apache.org/docs/how_to/optimize_operators/opt_gemm.html&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://ieeexplore.ieee.org/document/6877334&lt;a href=&#34;#fnref5&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn6&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://spatial-lang.org/dotprod&lt;a href=&#34;#fnref6&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn7&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;http://csapp.cs.cmu.edu/3e/waside/waside-blocking.pdf&lt;a href=&#34;#fnref7&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn8&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://penny-xu.github.io/blog/tiled-matrix-multiplication&lt;a href=&#34;#fnref8&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn9&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://docs.juliahub.com/LoopVectorization/4TogI/0.9.8/examples/matrix_multiplication/&lt;a href=&#34;#fnref9&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn10&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://www.youtube.com/watch?v=8zbh4gWGa7I&amp;amp;t=424s&lt;a href=&#34;#fnref10&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn11&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/abs/2002.12418&lt;a href=&#34;#fnref11&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn12&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://www.youtube.com/watch?v=DruwS2_cVys&lt;a href=&#34;#fnref12&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn13&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://martin-thoma.com/strassen-algorithm-in-python-java-cpp/&lt;a href=&#34;#fnref13&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn14&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://www.diva-portal.org/smash/get/diva2:1219121/FULLTEXT01.pdf&lt;a href=&#34;#fnref14&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn15&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/abs/1509.09308&lt;a href=&#34;#fnref15&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn16&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://ceca.pku.edu.cn/docs/20191126112405101722.pdf&lt;a href=&#34;#fnref16&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn17&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/how-does-sparse-convolution-work-3257a0a8fd1&#34;&gt;How
+does sparse convolution work? | by Zhiliang Zhou | Towards Data
+Science&lt;/a&gt;&lt;a href=&#34;#fnref17&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn18&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://rancheng.github.io/Sparse-Convolution-Explained/&#34;&gt;Sparse
+Convolution explained with code – Ran Cheng – Robotics, Vision,
+Learning.&lt;/a&gt;&lt;a href=&#34;#fnref18&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn19&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/pdf/1705.08922.pdf&lt;a href=&#34;#fnref19&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn20&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/abs/1411.4229&lt;a href=&#34;#fnref20&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn21&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://pytorch.org/blog/quantization-in-practice/&lt;a href=&#34;#fnref21&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn22&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/abs/1308.3432&lt;a href=&#34;#fnref22&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn23&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/abs/1805.06085&lt;a href=&#34;#fnref23&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn24&#34; role=&#34;doc-endnote&#34;&gt;&lt;p&gt;https://arxiv.org/abs/1603.05279&lt;a href=&#34;#fnref24&#34; class=&#34;footnote-back&#34; role=&#34;doc-backlink&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

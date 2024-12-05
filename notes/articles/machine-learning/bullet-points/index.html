@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1453,7 +1520,12 @@ subject.</p>
 <li>feature extraction/engineering
 <ul>
 <li>domain expertise</li>
-<li>kernel method</li>
+<li>mathematical methods
+<ul>
+<li><a href="/notes/articles/machine-learning/principal-component-analysis/">PCA</a></li>
+<li>kernel methods</li>
+</ul></li>
+<li>neural network self-adaptation</li>
 </ul></li>
 </ul>
 <h3 id="model">Model</h3>
@@ -1462,6 +1534,9 @@ subject.</p>
 <ul>
 <li>supervised learning
 <ul>
+<li>fits towards given target</li>
+<li>includes
+<ul>
 <li>classification
 <ul>
 <li><a href="/notes/articles/machine-learning/logistic-regression/">logistic regression</a></li>
@@ -1469,35 +1544,55 @@ subject.</p>
 <li><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">Bayes classifier</a></li>
 <li><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">linear discriminant
 analysis</a></li>
+<li>extrapolation
+<ul>
+<li>from classification model to regression model</li>
+<li>from binary classification to multi-class classification</li>
+</ul></li>
 </ul></li>
 <li>regression (<a href="/notes/articles/machine-learning/linear-regression/">linear</a> and <a href="/notes/articles/machine-learning/non-linear-regression/">non-linear</a> case)</li>
 </ul></li>
+</ul></li>
 <li>unsupervised learning
 <ul>
-<li>discovers inherent properties (latent variables) in the data</li>
+<li>discovers inherent structures within/among the data</li>
 <li>includes
 <ul>
 <li><a href="/notes/articles/machine-learning/clustering/">clustering</a></li>
-<li><a href="/notes/articles/machine-learning/dimensionality-reduction/">dimensionality
-reduction</a>/manifold embedding</li>
 <li>anomaly detection</li>
-<li>latent-variable model
+<li><a href="/notes/articles/machine-learning/dimensionality-reduction/">dimensionality
+reduction</a></li>
+<li>manifold embedding</li>
+<li>latent variable modelling
 <ul>
 <li><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">hidden Markov model</a></li>
+<li>conditional random field</li>
 <li><a href="/notes/articles/machine-learning/independent-component-analysis/">independent component
 analysis</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
+<li>reinforcement learning
+<ul>
+<li>adapts to the environment via explore-and-exploit strategy</li>
+<li>depending on the knowledge of the environment, categorizes into
+<ul>
+<li>model-based</li>
+<li>model-free</li>
+</ul></li>
+<li>depending on the learning objective, categorizes into
+<ul>
+<li>value-based (prediction problem)</li>
+<li>policy-based (control problem)</li>
+</ul></li>
+</ul></li>
 </ul></li>
 <li>discriminative vs. generative</li>
-<li>classification vs. regression
-<ul>
-<li>from classification model to regression model</li>
-<li>from binary classification to multi-class classification</li>
-</ul></li>
-<li>linear vs. non-linear</li>
-<li>parametric vs. non-parametric</li>
+<li>linear vs. non-linear (depending on whether the decision boundary is
+a hyperplane)</li>
+<li>parametric vs. non-parametric (depending on whether the data is
+characterized 1) by a distribution 2) with a finite number of
+parameters)</li>
 <li>ensemble method
 <ul>
 <li>bootstrap aggregating
@@ -1531,7 +1626,7 @@ analysis</a></li>
 <table>
 <thead>
 <tr class="header">
-<th>Real\Pred</th>
+<th>Real</th>
 <th>Positive</th>
 <th>Negative</th>
 </tr>
@@ -1556,7 +1651,8 @@ analysis</a></li>
 <li>F-score</li>
 </ul></li>
 <li><p>precision-recall curve</p></li>
-<li><p>receiver operation curve</p></li>
+<li><p><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">receiver operation
+characteristics</a></p></li>
 <li><p><a href="/notes/articles/machine-learning/mean-average-precision/">mean average
 precision</a></p></li>
 </ul></li>

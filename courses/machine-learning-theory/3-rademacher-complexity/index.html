@@ -1,0 +1,1690 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Rademacher Complexity  [!note]
+Sometimes people use hypothesis set and function set interchangeably. But to differentiate, a hypothesis \(h\) is typically a feature function \(f\) composed with a loss function \(\ell\)." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/machine-learning-theory/3-rademacher-complexity/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/machine-learning-theory/3-rademacher-complexity/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/machine-learning-theory/3-rademacher-complexity/" />
+  <meta property="og:title" content="3-rademacher-complexity | Chunxy&#39; Website" />
+  <meta property="og:description" content="Rademacher Complexity  [!note]
+Sometimes people use hypothesis set and function set interchangeably. But to differentiate, a hypothesis \(h\) is typically a feature function \(f\) composed with a loss function \(\ell\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="article:published_time" content="2022-01-07T13:39:19&#43;00:00" />
+    
+    <meta property="article:modified_time" content="2022-01-07T13:39:19&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>3-rademacher-complexity | Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="eb38ecbc798f2549c0ae848aadc42220" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Machine Learning Theory
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/courses/">Courses</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/energy-efficient-computing/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Efficient Computation</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/energy-efficient-computing/images/">Note</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/foundations-of-optimization/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/1-optimization-problem/">1-optimization-problem</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/2-convex-set/">2-convex-set</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/3-convex-function/">3-convex-function</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/4-linear-programming/">4-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/5-conic-linear-programming/">5-conic-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/6-optimizaition-under-uncertainty/">6-optimizaition-under-uncertainty</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/">7-quadratically-constrained-quadratic-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/8-nonlinear-programming/">8-nonlinear-programming</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/machine-learning-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/machine-learning-theory/0-intro/">0-intro</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/1-exp-family/">1-exp-family</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/2-uniform-convergence/">2-uniform-convergence</a></li>
+
+
+
+  <li class="active"><a href="/courses/machine-learning-theory/3-rademacher-complexity/">3-rademacher-complexity</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/4-vc-dimension/">4-vc-dimension</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/5-kernel-methods/">5-kernel-methods</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/6-online-learning/">6-online-learning</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/advanced-topics-in-distributed-system/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Distributed System</a>
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rademacher-complexity">Rademacher Complexity</a>
+      <ul>
+        <li><a href="#bounding-via-mcdiarmids-inequality">Bounding via
+McDiarmid’s Inequality</a></li>
+        <li><a href="#comparison-of-convergence-bounds">Comparison of
+Convergence Bounds</a></li>
+      </ul>
+    </li>
+    <li><a href="#empirical-rademacher-complexity">Empirical Rademacher
+Complexity</a></li>
+    <li><a href="#rademacher-complexity-algebra">Rademacher Complexity
+Algebra</a></li>
+    <li><a href="#applications-of-rademacher-complexity">Applications of
+Rademacher Complexity</a>
+      <ul>
+        <li><a href="#l_2-norm-bounded-linear-functions"><span class="math inline">\(l_2\)</span>-norm-bounded Linear
+Functions</a></li>
+        <li><a href="#neural-network">Neural Network</a></li>
+      </ul>
+    </li>
+    <li><a href="#massart-lemma">Massart Lemma</a>
+      <ul>
+        <li><a href="#l_1-norm-bounded-linear-functions"><span class="math inline">\(l_1\)</span>-norm-bounded Linear
+Functions</a></li>
+        <li><a href="#l_infty-norm-bounded-linear-functions"><span class="math inline">\(l_\infty\)</span>-norm-bounded Linear
+Functions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/machine-learning-theory/">
+        
+          Machine Learning Theory
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        3-rademacher-complexity
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>3-rademacher-complexity</h1>
+
+          <div class="article-style">
+            
+
+<h2 id="rademacher-complexity">Rademacher Complexity</h2>
+<blockquote>
+<p>[!note]</p>
+<p>Sometimes people use hypothesis set and function set interchangeably.
+But to differentiate, a hypothesis <span class="math inline">\(h\)</span> is typically a feature function <span class="math inline">\(f\)</span> composed with a loss function <span class="math inline">\(\ell\)</span>.</p>
+</blockquote>
+<p>In this section, we deal with the <strong>infinite hypothesis
+set</strong>, but still adopt the zero-one loss.</p>
+<blockquote>
+<p>Definition: <strong>Rademacher complexity</strong>. For a function
+set <span class="math inline">\(\mathcal{H}\)</span>, given an i.i.d.
+sample of points <span class="math inline">\(\{X_1, \dots, X_n\} \sim
+X^n\)</span> from a probability distribution <span class="math inline">\(\mathcal{P}\)</span>, and a
+statistically-independent Rademacher variables <span class="math inline">\(\sigma = [\sigma_1, \dots, \sigma_n]\)</span>
+(with i.i.d. components), <span class="math inline">\(\mathcal{H}\)</span>’s Rademacher complexity is
+defined as <span class="math display">\[
+\newcommand{\rade}{\mathsf{R}} \rade_{\mathcal{P},n}(\mathcal{H})
+\triangleq \E_{X^n, \sigma} \left[ \sup_{h \in \mathcal{H}} \frac{1}{n}
+\sum_{i=1}^n \sigma_i h(X_i) \right]
+\]</span></p>
+</blockquote>
+<p>Rademacher complexity reflects the generalization capability of the
+function class <span class="math inline">\(\mathcal{H}\)</span> w.r.t.
+the probability distribution <span class="math inline">\(\mathcal{P}\)</span> given sample size <span class="math inline">\(n\)</span>. A large Rademacher complexity
+indicates that the model is able to transform the random variable of
+distribution <span class="math inline">\(\mathcal{P}\)</span> to match a
+statistically-independent variable such that the correlation can be
+maximized. Or simply, a large Rademacher complexity indicates better
+(over)fitting capability.</p>
+<p>In learning theory, given a function class <span class="math inline">\(\mathcal{F}\)</span>, we usually define <span class="math display">\[
+\mathcal{H} \triangleq \{ h(x,y) \triangleq \ell(f(x), y): f \in
+\mathcal{F} \}
+\]</span> In Rademacher complexity discussion, <span class="math inline">\(\ell\)</span> is still chosen to be
+<strong>zero/one-loss</strong>.</p>
+<h3 id="bounding-via-mcdiarmids-inequality">Bounding via McDiarmid’s
+Inequality</h3>
+<p>Recall in the uniform convergence theorem, we have <span class="math display">\[
+\begin{equation} \label{uniconv}
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \Pr(\sup_{f \in
+\mathcal{F}} |L(f) - \hat L(f)| \ge \frac{\epsilon}{2})
+\end{equation}
+\]</span> The supremum on the right-hand side is not easy to deal with.
+McDiarmid’s inequality comes handy.</p>
+<blockquote>
+<p>Theorem: <strong>McDiarmid’s inequality</strong>. Let <span class="math inline">\(f: \mathcal{X}^n \mapsto \R\)</span> be a function
+such that for every <span class="math inline">\(x_1,\dots,x_n,x_1&#39;,\dots,x_n&#39;\)</span> the
+following holds <span class="math display">\[
+\forall 1 \le i \le n, |f(x_1,\dots,x_i,\dots,x_n) -
+f(x_1,\dots,x_i&#39;,\dots,x_n)| \le c_i
+\]</span> Then, assuming <span class="math inline">\(x_1,\dots,x_n\)</span> are the realizations of
+independent random variables <span class="math inline">\(X_1,\dots,X_n\)</span> respectively, we have <span class="math display">\[
+\Pr(f(x_1,\dots,x_n) - \E[f(X_1,\dots,X_n)]   \ge \epsilon) \le
+\exp(\frac{-2 \epsilon^2}{\sum_{i=1}^n c_i^2})
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>[!note]</p>
+<p>McDiarmid’s inequality is a generalization of Hoeffding’s inequality.
+Simply choosing <span class="math inline">\(f\)</span>​ in the
+McDiarmid’s inequality to be the empirical mean would recover the
+Hoeffding’s inequality.</p>
+</blockquote>
+<p>Now back to <span class="math inline">\(\eqref{uniconv}\)</span>. For
+convenience, we define the <strong>worst-case generalization
+error</strong>: <span class="math display">\[
+\begin{aligned}
+G_n &amp;\triangleq \sup_{f \in \mathcal{F}} [L(f) - \hat L(f)] \\
+&amp;= \sup_{f \in \mathcal{F}} [\E[\ell(f(X), Y)] - \frac{1}{n}
+\sum_{i=1}^n \ell(f(X_i), Y_i)]
+\end{aligned}
+\]</span></p>
+<p>Treating <span class="math inline">\(G_{n}\)</span> as the supremum
+over <span class="math inline">\(\mathcal{F}\)</span> of function <span class="math inline">\(g\)</span> defined on <span class="math inline">\(f \in \mathcal{F}\)</span> and <span class="math inline">\(n\)</span>-sized sample, we have <span class="math inline">\(G_{n}(x_1,\dots,x_n) = \sup_{f \in \mathcal{F}}
+g_f(x_1, \dots, x_n)\)</span> where <span class="math inline">\(g_f(x_1,\dots,x_n) = L(f) - \hat L(f)\)</span>.
+Note that <span class="math display">\[
+\begin{aligned}
+&amp;\underbrace{g_f(x_1,\dots,x_i,\dots,x_n)}_{A(f)} -
+\underbrace{g_f(x_1,\dots,x_i&#39;,\dots,x_n)}_{B(f)} \\
+&amp;= \frac{1}{n} [\ell(f(x_i&#39;), y_i&#39;) - \ell(f(x_i), y_i)] \\
+&amp;\Downarrow_\text{$\ell$ is a zero/one-loss} \\
+&amp;\le \frac{1}{n}
+\end{aligned}
+\]</span> &gt; Lemma. If for every <span class="math inline">\(f \in
+\mathcal{F}\)</span>, <span class="math inline">\(|A(f) - B(f)| \le
+\epsilon\)</span>, then <span class="math inline">\(|\sup_{f} A(f) -
+\sup_{f} B(f)| \le \epsilon\)</span>. &gt; &gt; Proof. &gt; <span class="math display">\[
+&gt; \begin{aligned}
+&gt; \sup_{f} A(f) - \sup_{f} B(f) \le \sup_f [A(f) - B(f)] \le \epsilon
+\\
+&gt; \sup_{f} B(f) - \sup_{f} A(f) \le \sup_f [B(f) - A(f)] \le \epsilon
+&gt; \end{aligned}
+&gt; \]</span></p>
+<p>As a result, <span class="math display">\[
+\left| \sup_{f \in \mathcal{F}} g_f(x_1,\dots,x_i,\dots,x_n) - \sup_{f
+\in \mathcal{F}} g_f(x_1,\dots,x_i&#39;,\dots,x_n) \right| \le
+\frac{1}{n}
+\]</span> Apply the McDiarmid’s inequality to give <span class="math display">\[
+\Pr[G_n - \E[G_n] \ge \epsilon] \le \exp(-2n \epsilon^2)
+\]</span> The remaining step is to bound <span class="math inline">\(\E[G_n]\)</span> (it has to be small for the above
+to be meaningful). <span class="math inline">\(\E[G_n]\)</span> is
+actually an expectation over a sample <span class="math inline">\(\mathrm{X}\)</span> of size <span class="math inline">\(n\)</span>​. <span class="math display">\[
+\E[G_n] = \E_\mathrm{X} \left[ \sup_{f \in \mathcal{F}} [L(f) - \hat
+L_\mathrm{X}(f)] \right]
+\]</span> We again apply the symmetrization trick. Let <span class="math inline">\(\mathrm{X}&#39;\)</span> be a virtual sample
+independent from <span class="math inline">\(\mathrm{X}\)</span> but
+converge in distribution to <span class="math inline">\(\mathrm{X}\)</span>. Then <span class="math inline">\(L(f) = \E[\hat L_{\mathrm{X}&#39;}(f)]\)</span>.
+As a result, <span class="math display">\[
+\begin{aligned}
+\E[G_n] &amp;= \E_\mathrm{X} \left[ \sup_{f \in \mathcal{F}}
+[\E_{\mathrm{X}&#39;}[\hat L_{\mathrm{X}&#39;}(f)] - \hat
+L_\mathrm{X}(f)] \right] \\
+&amp;= \E_\mathrm{X} \left[ \sup_{f \in \mathcal{F}}
+[\E_{\mathrm{X}&#39;}[\hat L_{\mathrm{X}&#39;}(f) - \hat
+L_\mathrm{X}(f)]] \right] \\
+&amp;\le \E_\mathrm{X} \left[ \E_{\mathrm{X}&#39;} [\sup_{f \in
+\mathcal{F}}[\hat L_{\mathrm{X}&#39;}(f) - \hat L_\mathrm{X}(f)]]
+\right] \\
+&amp;= \E_{\mathrm{X}, \mathrm{X}&#39;} \sup_{f \in \mathcal{F}} [\hat
+L_{\mathrm{X}&#39;}(f) - \hat L_\mathrm{X}(f)]
+\end{aligned}
+\]</span> Again we introduce another Rademacher random vector of length
+<span class="math inline">\(n\)</span> so that <span class="math inline">\(\sigma, \mathrm{X}, \mathrm{X}&#39;\)</span> are
+independent. Let <span class="math inline">\(Z_i \triangleq \ell(f(X_i),
+Y_i), Z_i&#39; \triangleq \ell(f(X_i&#39;), Y_i&#39;)\)</span>. We have
+<span class="math display">\[
+\begin{gathered}
+Z_i&#39; - Z_i &amp;\stackrel{d}{=}&amp; \sigma_i [Z_i&#39; - Z_i] \\
+\hat L_\mathrm{X&#39;}(f) - \hat L_\mathrm{X}(f)
+&amp;\stackrel{d}{=}&amp; \frac{1}{n} \sum_{i=1}^n \sigma_i [Z_i&#39; -
+Z_i]
+\end{gathered}
+\]</span> and <span class="math display">\[
+\begin{aligned}
+&amp;\E[G_n] \le \E_{\mathrm{X}, \mathrm{X}&#39;} \sup_{f \in
+\mathcal{F}} [\hat L_{\mathrm{X}&#39;}(f) - \hat L_\mathrm{X}(f)] \\
+&amp;= \E_{\mathrm{X}, \mathrm{X}&#39;, \sigma} \sup_{f \in \mathcal{F}}
+[\frac{1}{n} \sum_{i=1}^n \sigma_i [Z_i&#39; - Z_i]] \\
+&amp;= \E_{\mathrm{X}&#39;, \sigma} \sup_{f \in \mathcal{F}}
+[\frac{1}{n} \sum_{i=1}^n \sigma_i Z_i&#39;] \\
+&amp;\quad + \E_{\mathrm{X}, \sigma} \sup_{f \in \mathcal{F}}
+[\frac{1}{n} \sum_{i=1}^n -\sigma_i Z_i] \\
+&amp;\le 2 \E_{\mathrm{X}, \sigma} \sup_{f \in \mathcal{F}} [\frac{1}{n}
+\sum_{i=1}^n \sigma_i Z_i] \\
+&amp;= 2 \rade_{n}(\mathcal{\mathcal{H}})
+\end{aligned}
+\]</span> Next note that excess error is bounded by twice the worst-case
+generalization error: <span class="math display">\[
+\begin{aligned}
+&amp;\Pr[L(\hat f) - L(f^*) \ge \epsilon] \le \Pr[\sup_{f \in
+\mathcal{F}} |L(f) - \hat L(f)| \ge \frac{\epsilon}{2}] \\
+&amp;= \Pr[\underbrace{\sup_{f \in \mathcal{F}} [L(f) - \hat
+L(f)]}_{G_n} \ge \frac{\epsilon}{2}] + \Pr[\underbrace{\sup_{f \in
+\mathcal{F}} [(-L(f)) - (-\hat L(f))]}_{G_n&#39;} \ge
+\frac{\epsilon}{2}] \\
+&amp;= \Pr[G_n - \E[G_n] \ge \frac{\epsilon}{2} - \E[G_n]] +
+\Pr[G_n&#39; - \E[G_n&#39;] \ge \frac{\epsilon}{2} - \E[G_n&#39;]] \\
+&amp;\le \exp[-2n(\frac{\epsilon}{2} - \E[G_n])^2] +
+\exp[-2n(\frac{\epsilon}{2} - \E[G_n&#39;])^2] \\
+&amp;\Downarrow_{-\mathcal{H} \triangleq \{ h(x,y) \triangleq
+-\ell(f(x), y): f \in \mathcal{F} \}} \\
+&amp;\le \exp[-2n(\frac{\epsilon}{2} - 2\rade_n(\mathcal{H}))^2] +
+\exp[-2n(\frac{\epsilon}{2} - 2\rade_n(\mathcal{-H}))^2] \\
+&amp;= 2 \exp[-2n(\frac{\epsilon}{2} - 2\rade_n(\mathcal{H}))^2]
+\end{aligned}
+\]</span> Putting things together, we have</p>
+<blockquote>
+<p>Theorem: <strong>excess error bound via Rademacher
+complexity</strong>. For a hypothesis set <span class="math inline">\(\mathcal{F}\)</span>, define <span class="math display">\[
+\mathcal{H} = \{ h(x,y) \triangleq \mathbb{1}[f(x) \ne y]: f \in
+\mathcal{F} \}
+\]</span> Then, with probability at least <span class="math inline">\(1-\delta\)</span>, <span class="math display">\[
+L(\hat f) - L(f^*) \le 4 \rade_n(\mathcal{H}) + \sqrt{\frac{2
+\log(2/\delta)}{n}}
+\]</span></p>
+</blockquote>
+<p>Here we emphasize that, a small Rademacher complexity implies a small
+gap between ERM model and PRM model. But they may as well be equally
+bad. It is just that we usually assume a very low population risk.</p>
+<h3 id="comparison-of-convergence-bounds">Comparison of Convergence
+Bounds</h3>
+<p>Realizability case corresponds to the noiseless setting;
+non-realizability case corresponds to the noisy setting.</p>
+<table>
+<colgroup>
+<col style="width: 16%"/>
+<col style="width: 5%"/>
+<col style="width: 8%"/>
+<col style="width: 10%"/>
+<col style="width: 20%"/>
+<col style="width: 38%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>0/1-loss</th>
+<th>Realizability</th>
+<th>Finite Hypothesis</th>
+<th><span class="math inline">\(z_i-\mu\)</span> Assumption</th>
+<th>Excess Risk Bound</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Introductory case</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>N/A</td>
+<td><span class="math inline">\(\frac{\log t/\delta}{n}\)</span></td>
+</tr>
+<tr class="even">
+<td>Via Markov’s inequality</td>
+<td>❌</td>
+<td>❌</td>
+<td>✔</td>
+<td>Expectation and variance exists.</td>
+<td><span class="math inline">\(2 \sigma\sqrt{\frac{t}{n
+\delta}}\)</span> (derived on my own)</td>
+</tr>
+<tr class="odd">
+<td>Via Chernoff’s inequality</td>
+<td>✔</td>
+<td>❌</td>
+<td>✔</td>
+<td>Sub-Gaussian</td>
+<td><span class="math inline">\(\sqrt{\frac{8\log
+(2t/\delta)}{n}}\)</span> (derived on my own)</td>
+</tr>
+<tr class="even">
+<td>Via Hoeffding’s inequality</td>
+<td>✔</td>
+<td>❌</td>
+<td>✔</td>
+<td>Bounded</td>
+<td><span class="math inline">\(\sqrt{\frac{2\log
+(2t/\delta)}{n}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Via McDiarmid’s Inequality</td>
+<td>✔</td>
+<td>❌</td>
+<td>❌</td>
+<td>None</td>
+<td><span class="math inline">\(4 \mathsf{R}_n(\mathcal{H}) +
+\sqrt{\frac{2 \log(2/\delta)}{n}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="empirical-rademacher-complexity">Empirical Rademacher
+Complexity</h2>
+<blockquote>
+<p>Definition: <strong>empirical Rademacher complexity</strong>. For a
+hypothesis set <span class="math inline">\(\mathcal{H}\)</span> and
+fixed dataset <span class="math inline">\(\mathrm{X} = \{ x_1,\dots,x_n
+\}\)</span>, we define <span class="math inline">\(\mathcal{H}\)</span>’s empirical Rademacher
+complexity as <span class="math display">\[
+\hat \rade_{\mathrm{X}}(\mathcal{H}) \triangleq \E_{\sigma} \left[
+\sup_{h \in \mathcal{H}} \frac{1}{n} \sum_{i=1}^n \sigma_i h(x_i)
+\right]
+\]</span></p>
+</blockquote>
+<p>Can we approximate Rademacher complexity via sampling? That is, given
+a fixed dataset, can we use stochastic optimization (gradient ascent) to
+obtain the max of the model’s capability. The answer is yes. Refer to
+the Question 6 of Homework 1.</p>
+<h2 id="rademacher-complexity-algebra">Rademacher Complexity
+Algebra</h2>
+<blockquote>
+<p>Theorem: <strong>basic properties of Rademacher
+complexity</strong>.</p>
+<ol type="1">
+<li><p><strong>Monotonicity</strong>: If <span class="math inline">\(\mathcal{H}_1 \subseteq \mathcal{H}_2\)</span>,
+then <span class="math inline">\(\rade(\mathcal{H}_1) \le
+\rade(\mathcal{H}_2)\)</span>.</p></li>
+<li><p><strong>Singleton set</strong>: If <span class="math inline">\(\mathcal{H} = \{ h \}\)</span> contains only one
+function, then <span class="math inline">\(\rade(\mathcal{H}) =
+0\)</span>​​​.</p>
+<p>Proof. See below: <span class="math display">\[
+\begin{aligned}
+\rade_{\mathcal{P},n}(\mathcal{H}) &amp;= \E_{X^n, \sigma} \left[
+\sup_{h \in \mathcal{H}} \frac{1}{n} \sum_{i=1}^n \sigma_i h(X_i)
+\right] \\
+&amp;= \E_{X^n, \sigma} \left[\frac{1}{n} \sum_{i=1}^n \sigma_i h(X_i)
+\right] \\
+&amp;= \frac{1}{n} \sum_{i=1}^n \E[\sigma_i] \E[h(X_i)] = 0
+\end{aligned}
+\]</span></p>
+<ul>
+<li><p><strong>Non-negativity</strong>: <span class="math inline">\(\rade_n(\mathcal{H}) \ge 0\)</span> for any
+non-empty <span class="math inline">\(\mathcal{H}\)</span>​.</p>
+<p>Proof. This is immediate after the property monotonicity and property
+singleton set.</p></li>
+</ul></li>
+<li><p><strong>Scalar product</strong>: For constant <span class="math inline">\(c\)</span> and <span class="math inline">\(c
+\mathcal{H} \triangleq \{ c h: h \in \mathcal{H} \}\)</span>, <span class="math inline">\(\rade_n(c \mathcal{H}) = |c|
+\rade_n(\mathcal{H})\)</span>.</p></li>
+<li><p><strong>Lipschitz composition</strong></p>
+<p>If <span class="math inline">\(g: \R \mapsto \R\)</span> is a <span class="math inline">\(\rho\)</span>-Lipschitz function, i.e. <span class="math display">\[
+\forall z, z&#39; \in \R, |g(z) - g(z&#39;)| \le \rho |z - z&#39;|
+\]</span> then <span class="math inline">\(\rade_n(g \circ \mathcal{H})
+\le \rho \rade_n(\mathcal{H})\)</span>.</p></li>
+<li><p><strong>Convex hull</strong></p>
+<p>For a hypothesis set <span class="math inline">\(\mathcal{H} = \{
+h_1,\dots,h_t \}\)</span>, we define its convex hull as <span class="math display">\[
+\textrm{convex-hull}(\mathcal{H}) \triangleq \{ \sum_{i=1}^t \alpha_i
+h_i: \alpha_1,\dots,\alpha_t \ge 0, \sum_{i=1}^t \alpha_i = 1 \}
+\]</span> Then <span class="math inline">\(\rade_n(\textrm{convex-hull}(\mathcal{H})) =
+\rade_n(\mathcal{H})\)</span>​.</p>
+<p>Interestingly, a convex hull contains an infinite number of
+hypothesis. But its Rademacher complexity does not increase with its
+infinite cardinality.</p></li>
+</ol>
+</blockquote>
+<h2 id="applications-of-rademacher-complexity">Applications of
+Rademacher Complexity</h2>
+<p>In this section, we study how to apply the Rademacher complexity to
+various machine learning models.</p>
+<h3 id="l_2-norm-bounded-linear-functions"><span class="math inline">\(l_2\)</span>-norm-bounded Linear Functions</h3>
+<blockquote>
+<p>Theorem: <strong>empirical Rademacher complexity of <span class="math inline">\(l_2\)</span>-norm-bounded linear
+functions</strong>. Consider the following set of <span class="math inline">\(l_2\)</span>-norm bounded linear functions: <span class="math display">\[
+\mathcal{H} = \{ h_w(x) \triangleq w^T x: \|w\|_2 \le M  \}
+\]</span> Then for a dataset <span class="math inline">\(\mathrm{X} = \{
+x_1,\dots,x_n \}\)</span>, we have the following bound on the empirical
+Rademacher complexity: <span class="math display">\[
+\newcommand{\rade}{\mathsf{R}} \hat \rade_{\mathrm{X}}(\mathcal{H}) \le
+\frac{M \max_i \|x_i\|_2}{\sqrt{n}}
+\]</span> Proof. <span class="math display">\[
+\begin{aligned}[t]
+&amp;\hat \rade_{\mathrm{X}}(\mathcal{H}) = \E_{\sigma} \left[
+\sup_{\|w\|_2 \le M} \frac{1}{n} \sum_{i=1}^n \sigma_i w^T x_i \right]
+\\
+&amp;= \frac{1}{n} \E_{\sigma} \left[ \sup_{\|w\|_2 \le M} w^T
+(\sum_{i=1}^n \sigma_i x_i) \right] \\
+&amp;\Downarrow_\text{optimization over a compact set} \\
+&amp;= \frac{1}{n} \E_{\sigma} \left[ \max_{\|w\|_2 \le M} w^T
+(\sum_{i=1}^n \sigma_i x_i) \right] \\
+&amp;\Downarrow_\text{Cauchy-Schwartz inequality} \\
+&amp;= \frac{1}{n} \E_{\sigma} \left[ M \|\sum_{i=1}^n \sigma_i x_i\|_2
+\right] \\
+&amp;= \frac{M}{n} \E_{\sigma} \left[ \|\sum_{i=1}^n \sigma_i x_i\|_2
+\right] \\
+\end{aligned} \quad \text{cont&#39;d}
+\begin{aligned}[t]
+&amp;\le \frac{M}{n} \sqrt{\E_{\sigma} \left[ \|\sum_{i=1}^n \sigma_i
+x_i\|_2^2 \right]} \\
+&amp;= \frac{M}{n} \sqrt{\E_{\sigma} \left[ \sum_{i=1}^n \sum_{j=1}^n
+\sigma_i \sigma_j x_i^T x_j \right]} \\
+&amp;= \frac{M}{n} \sqrt{\left[ \sum_{i=1}^n \sum_{j=1}^n \E[\sigma_i
+\sigma_j] x_i^T x_j \right]} \\
+&amp;= \frac{M}{n} \sqrt{\sum_{i=1}^n \|x_i\|_2^2} \\
+&amp;\le \frac{M}{n} \sqrt{n \max_i \|x_i\|_2^2} \\
+&amp;= \frac{M \max_i \|x_i\|_2}{\sqrt{n}} \\
+\end{aligned}
+\]</span></p>
+</blockquote>
+<p>The implication of the above theorem is that excess risk is of order
+<span class="math inline">\(\mathcal{O}(\frac{1}{\sqrt{n}})\)</span>​.</p>
+<h3 id="neural-network">Neural Network</h3>
+<blockquote>
+<p>Theorem: <strong>empirical Rademacher complexity of ReLU-based and
+Frobenius-norm-bounded feedforward neural nets</strong>. Consider the
+following set of <span class="math inline">\(L\)</span>-layer neural
+nets with ReLU activation function: <span class="math display">\[
+\mathcal{H} = \{ h(x) = W_L \psi_\text{ReLU}(W_{L-1} \dots
+\psi_\text{ReLU}(W_1 x)): \forall i, \|W_i\|_F \le M \}
+\]</span> Then for a dataset <span class="math inline">\(\mathrm{X} = \{
+x_1,\dots,x_n \}\)</span>, we have the following bound based on the
+empirical Rademacher complexity: <span class="math display">\[
+\hat \rade_{\mathrm{X}}(\mathcal{H}) \le \frac{(\sqrt{2L} + 1) M \max_i
+\|x_i\|_2}{\sqrt{n}}
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>[!note]</p>
+<p>Similar result can be derived for ReLU-like activation functions in
+the above theorem. When we say ReLU-like, we mean that the activation
+function needs to be Lipschitz and homogeneous for positive scalars
+(e.g. <span class="math inline">\(\forall a &gt; 0,
+\mathop{\mathrm{ReLU}}(az) = a\mathop{\mathrm{ReLU}}(z)\)</span>). These
+two properties are critical in the proof.</p>
+<p>As an aside, linearity is homogeneity plus additivity.</p>
+</blockquote>
+<h2 id="massart-lemma">Massart Lemma</h2>
+<p>Deriving bounds for different models can be tedious. It would be
+immensely helpful to have a general rule or framework that allows us to
+plug in different models and obtain the bounds more easily. Massart
+lemma is one of such rule.</p>
+<blockquote>
+<p>Theorem: <strong>Massart lemma</strong>. Suppose that <span class="math inline">\(\mathcal{H} = \{ h_1,\dots,h_t \}\)</span> is a
+finite set of <span class="math inline">\(t\)</span> functions. Also,
+suppose that for every <span class="math inline">\(h \in
+\mathcal{H}\)</span> and dataset <span class="math inline">\(\mathrm{X}
+= \{ x_1,\dots,x_n \}\)</span> the following holds: <span class="math display">\[
+\frac{1}{n} \sum_{i=1}^n h(x_i)^2 \le M
+\]</span> Then, the following bound on the empirical Rademacher
+complexity holds: <span class="math display">\[
+\hat \rade_{\mathrm{X}}(\mathcal{H}) \le \sqrt{\frac{2M \log t}{n}}
+\]</span> Proof. <span class="math display">\[
+\begin{aligned}[t]
+&amp;\hat \rade_\mathrm{X}(\mathcal{H}) = \frac{1}{n} \E_\sigma \left[
+\sup_{h \in \mathcal{H}} \sum_{i=1}^n \sigma_i h(x_i) \right] \\
+&amp;\Downarrow_{\mathrm{h} = {[h(x_1),\dots,h(x_n)]}^\intercal} \\
+&amp;= \frac{1}{n} \E_\sigma \left[ \max_{\mathrm{h} \in \mathrm{H}}
+\sigma^T \mathrm{h} \right] \\
+&amp;= \frac{1}{n} \E_\sigma \left[ \frac{1}{\lambda} \log
+\max_{\mathrm{h} \in \mathrm{H}} \exp(\lambda \sigma^T \mathrm{h})
+\right] \\
+&amp;\le \frac{1}{n} \E_\sigma \left[ \frac{1}{\lambda} \log
+\sum_{j=1}^t \exp(\lambda \sigma^T \mathrm{h}_j) \right] \\
+&amp;\le \frac{1}{n \lambda} \log \E_\sigma \left[ \sum_{j=1}^t
+\exp(\lambda \sigma^T \mathrm{h_j}) \right] \\
+\end{aligned} \quad \text{cont&#39;d}
+\begin{aligned}[t]
+&amp;= \frac{1}{n \lambda} \log \sum_{j=1}^t \E_\sigma \left[
+\exp(\lambda \sigma^T \mathrm{h}_j) \right] \\
+&amp;= \frac{1}{n \lambda} \log \sum_{j=1}^t \prod_{i=1}^n
+\underbrace{\E \left[ \exp(\lambda \sigma_i^T h_j(x_i))
+\right]}_{M_\sigma(\lambda h_j(x_i))} \\
+&amp;\le \frac{1}{n \lambda} \log \sum_{j=1}^t \prod_{i=1}^n
+\exp(\frac{1}{2} h_j^2(x_i) \lambda^2)  \\
+&amp;\le \frac{1}{n \lambda} \log \sum_{j=1}^t \exp(\frac{nM
+\lambda^2}{2} ) \\
+&amp;= \frac{\log t}{n \lambda} + \frac{M \lambda}{2} \\
+&amp;\le \sqrt{\frac{2M \lambda \log t}{n}}
+\end{aligned}
+\]</span></p>
+</blockquote>
+<p>Massart lemma is essentially helpful in the derivation of Rademacher
+complexity of various <strong>norm-bounded linear
+functions</strong>.</p>
+<h3 id="l_1-norm-bounded-linear-functions"><span class="math inline">\(l_1\)</span>-norm-bounded Linear Functions</h3>
+<p>Massart lemma can be applied to <span class="math inline">\(l_1\)</span>-norm-bounded functions.</p>
+<blockquote>
+<p>Corollary: <strong>empirical Rademacher complexity of <span class="math inline">\(l_1\)</span>-norm-bounded linear
+functions</strong>. Consider the following set of <span class="math inline">\(l_1\)</span>-norm bounded linear functions: <span class="math display">\[
+\mathcal{H} = \{ \R^d \to \R \ni h_w(x) \triangleq w^T x: \|w\|_1 \le
+M  \}
+\]</span> Then for a dataset <span class="math inline">\(\mathrm{X} = \{
+x_1,\dots,x_n \}\)</span>, we have the following bound on the empirical
+Rademacher complexity: <span class="math display">\[
+\hat \rade_{\mathrm{X}}(\mathcal{H}) \le M \max_i \|x_i\|_\infty
+\sqrt{\frac{2 \log (2d)}{{n}}}
+\]</span></p>
+<p>Proof. We highlight that <span class="math inline">\(\mathcal{H}\)</span> is the convex hull of the
+following set of functions: <span class="math display">\[
+\tilde{\mathcal{H}} = \{ h_1(x),
+h_2(x),\dots,h_d(x),-h_1(x),\dots,-h_d(x) \}
+\]</span> where <span class="math inline">\(h_i(x) = M x_i\)</span>.
+This is because, for any <span class="math inline">\(h_{w} \in
+\mathcal{H}\)</span>, we can rewrite it as <span class="math display">\[
+h_w(x) = w^T x = \sum_{i=1}^n w_i x_i = \underbrace{\sum_{i=1}^n
+\frac{|w_i|}{\|w\|_1}}_{\text{sum to 1}} \underbrace{\sign(w_i) \|w\|_1
+x_i}_{\in \mathrm{convex-hull}(\tilde{\mathcal{H}})}
+\]</span> By Rademacher complexity’s property, we know that <span class="math inline">\(\hat \rade_\mathrm{X}(\tilde{\mathcal{H}}) = \hat
+\rade_\mathrm{X}(\mathcal{H})\)</span>. Hence, we may use Massart lemma
+on <span class="math inline">\(\tilde{\mathcal{H}}\)</span>. To bound on
+<span class="math inline">\(\frac{1}{n} \sum_{i=1}^n
+h_w^2(x_i)\)</span>, note that <span class="math display">\[
+\begin{aligned}
+&amp;\frac{1}{n} \sum_{i=1}^n h_w^2(x_i) = \frac{1}{n} \sum_{i=1}^n (w^T
+x_i)^2 \\
+&amp;\Downarrow_\text{Holder&#39;s inequality} \\
+&amp;\le \frac{1}{n} \sum_{i=1}^n \|w\|_1^2 \|x_i\|_\infty^2 \\
+&amp;\le M^2 \max_i \|x_i\|_\infty^2
+\end{aligned}
+\]</span> As a result, <span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\hat \rade_\mathrm{X}(\mathcal{H}) &amp;\le \sqrt{\frac{2(M^2 \max_i
+\|x\|_\infty^2) \log (2d)}{n}} \\
+&amp;= M \max_i \|x_i\|_\infty \sqrt{\frac{2 \log (2d)}{{n}}}
+\end{aligned} \tag{By Holder&#39;s Inequality}
+\end{equation}
+\]</span> The derivation via Cauchy-Schwartz inequality is not as tight
+as Holder’s inequality, which is to be shown below. Note that <span class="math display">\[
+\begin{aligned}
+&amp;\frac{1}{n} \sum_{i=1}^n h_w^2(x_i) = \frac{1}{n} \sum_{i=1}^n (w^T
+x_i)^2 \\
+&amp;\Downarrow_\text{Cauchy-Schwartz inequality} \\
+&amp;\le \frac{1}{n} \sum_{i=1}^n \|w\|_2^2 \|x_i\|_2^2 \\
+&amp;\le \frac{1}{n} \sum_{i=1}^n \|w\|_1^2 \|x_i\|_2^2 \\
+&amp;\le M^2 \max_i \|x_i\|_2^2
+\end{aligned}
+\]</span> From another perspective, since <span class="math inline">\(\|w\|_2 \le \|w\|_1 \le \sqrt{d} \|w\|_2\)</span>,
+<span class="math inline">\(\|w\|_1\)</span> cannot be greater than
+<span class="math inline">\(M\)</span> if <span class="math inline">\(\|w\|_2\)</span> is no greater than <span class="math inline">\(M \sqrt{d}\)</span>. Thus, <span class="math display">\[
+\mathcal{H} \subseteq \mathcal{H}&#39; \triangleq \{ h_w(x) = w^T x:
+\|w\|_2 \le M\sqrt{d} \}
+\]</span> By Rademacher complexity’s property and from previous
+conclusion on <u><span class="math inline">\(l_2\)</span>-norm-bounded
+Linear Functions</u>, we have <span class="math display">\[
+\begin{equation}
+\hat \rade_\mathrm{X}(\mathcal{H}) \le \hat
+\rade_{\mathrm{X}}(\mathcal{H&#39;}) = M \max_i \|x_i\|_2
+\sqrt{\frac{d}{n}} \tag{By Cauchy-Schwartz Inequality}
+\end{equation}
+\]</span> Obviously, the bound derived with Massart lemma is tighter for
+<span class="math inline">\(l_1\)</span>-norm bounded linear functions,
+because of the order of <span class="math inline">\(d\)</span> and
+because <span class="math inline">\(\|x\|_\infty \le
+\|x\|_2\)</span>.</p>
+</blockquote>
+<h3 id="l_infty-norm-bounded-linear-functions"><span class="math inline">\(l_\infty\)</span>-norm-bounded Linear
+Functions</h3>
+<p>A similar bound can be derived for <span class="math inline">\(l_\infty\)</span>-norm-bounded functions, which is
+a convex hull of <span class="math inline">\(2^d\)</span> points.</p>
+<p>Another application of Massart lemma is to be shown in
+<strong>connecting the VC dimension and Rademacher
+complexity</strong>.</p>
+
+
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/machine-learning-theory/2-uniform-convergence/" rel="next">2-uniform-convergence</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/courses/machine-learning-theory/4-vc-dimension/" rel="prev">4-vc-dimension</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jan 7, 2022</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

@@ -60,8 +60,8 @@
   
     
   
-  <meta name="description" content="Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both conditional entropy and mutual information, as well as joint entropy, describe the relationship between two random variables." />
+  <meta name="description" content="Both cross entropy and KL-divergence describe the relationship between two different probability measures/functions over the same event space.
+Both conditional entropy and mutual information, as well as joint entropy, describe the relationship between two different random variables." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/overview/" />
@@ -322,8 +322,8 @@ Both conditional entropy and mutual information, as well as joint entropy, descr
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/overview/" />
   <meta property="og:title" content="Overview | Chunxy&#39; Website" />
-  <meta property="og:description" content="Both Cross Entropy and KL-divergence describe the relationship between two distributions.
-Both conditional entropy and mutual information, as well as joint entropy, describe the relationship between two random variables." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Both cross entropy and KL-divergence describe the relationship between two different probability measures/functions over the same event space.
+Both conditional entropy and mutual information, as well as joint entropy, describe the relationship between two different random variables." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -501,6 +501,36 @@ Both conditional entropy and mutual information, as well as joint entropy, descr
 
           <li class="nav-item">
             <a class="nav-link  active" href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
           </li>
 
           
@@ -773,6 +803,10 @@ Both conditional entropy and mutual information, as well as joint entropy, descr
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -781,7 +815,7 @@ Both conditional entropy and mutual information, as well as joint entropy, descr
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1011,6 +1045,39 @@ Both conditional entropy and mutual information, as well as joint entropy, descr
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1426,12 +1493,13 @@ Conditional Entropy</a></li>
           <div class="article-style">
             
 
-<p>Both <a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a> and <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> describe the
-relationship between <strong>two distributions</strong>.</p>
+<p>Both <a href="/notes/articles/information-theory/cross-entropy/">cross entropy</a> and <a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a> describe the
+relationship between <strong>two different probability
+measures/functions over the same event space</strong>.</p>
 <p>Both <a href="/notes/articles/information-theory/conditional-entropy/">conditional entropy</a> and
 <a href="/notes/articles/information-theory/mutual-information/">mutual information</a>, as well as
 <u>joint entropy</u>, describe the relationship between <strong>two
-random variables</strong>.</p>
+different random variables</strong>.</p>
 <p>Since the notion of entropy is the basis of all other concepts in
 this section and the entropy is more well-defined on discrete random
 variable, they are more meaningful to be applied in discrete case,
@@ -1440,15 +1508,15 @@ though they are usually trivially extended to continuous case.</p>
 and Cross Entropy</h2>
 <p>By definition, <span class="math display">\[
 \begin{align}
-D_\text{KL}(p||q) &amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)}
+&amp;D_\text{KL}(p||q) = -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)}
 \\
-&amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log
-{p(x)}) \\
+&amp;= -\mathrm{E}_{x \sim p} \log q(x) - [-\mathrm{E}_{x \sim p} \log
+{p(x)}] \\
 &amp;= H(p||q) - H(p)
 \end{align}
 \]</span> By the convexity of <span class="math inline">\(-\log\)</span>, <span class="math display">\[
 \begin{align}
-D_\text{KL}(p||q) &amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}]
+&amp;D_\text{KL}(p||q) = \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}]
 \\
 &amp;\ge -\log(\mathrm{E}_{x \sim p} \frac{q(x)}{p(x)}) \\
 &amp;= 0

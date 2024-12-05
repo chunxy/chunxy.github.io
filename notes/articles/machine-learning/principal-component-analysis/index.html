@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Given a data matrix \(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance contained in the" />
+  <meta name="description" content="Given a data matrix \(X = [x^{(1)}, \dots, x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance contained in the data" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/" />
   <meta property="og:title" content="Principal Component Analysis | Chunxy&#39; Website" />
-  <meta property="og:description" content="Given a data matrix \(X = [x^{(1)}, x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance contained in the" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Given a data matrix \(X = [x^{(1)}, \dots, x^{(M)}] \in \mathbb R^{N \times M}\), the goal of PCA is to identify the directions of maximum variance contained in the data" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -499,6 +499,36 @@
 
           <li class="nav-item">
             <a class="nav-link  active" href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
           </li>
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1421,11 +1488,11 @@
           <div class="article-style">
             
 
-<p>Given a data matrix <span class="math inline">\(X = [x^{(1)},
-x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)</span>, the goal of
-PCA is to identify the directions of maximum variance contained in the
-data (compared with directional derivative, this is directional
-variance) and project data onto those directions.</p>
+<p>Given a data matrix <span class="math inline">\(X = [x^{(1)}, \dots,
+x^{(M)}] \in \mathbb R^{N \times M}\)</span>, the goal of PCA is to
+identify the directions of maximum variance contained in the data
+(compared with directional derivative, this is directional variance) and
+project data onto those directions.</p>
 <h3 id="linear-pca">Linear PCA</h3>
 <p>Let <span class="math inline">\(v \in \mathbb R^{N \times 1}\)</span>
 and <span class="math inline">\(||v||^2 = 1\)</span>, the variance in
@@ -1460,9 +1527,9 @@ v^Tv = 0\)</span> instead of <span class="math inline">\(v^Tv - 1 =
 0\)</span>. The reason is if we take derivative w.r.t <span class="math inline">\(v\)</span>, we have <span class="math display">\[
 \frac{\partial L}{\partial v} = 2\Sigma v - 2\lambda v
 \]</span> which is more intuitive than <span class="math inline">\(\frac{\partial L}{\partial v} = 2\Sigma v +
-2\lambda v\)</span>. Let the derivative be <span class="math inline">\(0\)</span> to have <span class="math inline">\(\Sigma v = \lambda v\)</span>. Since <span class="math inline">\(v^tv = 1\)</span>, <span class="math inline">\(v
+2\lambda v\)</span>. Let the derivative be <span class="math inline">\(0\)</span> to have <span class="math inline">\(\Sigma v = \lambda v\)</span>. Since <span class="math inline">\(v^T v = 1\)</span>, <span class="math inline">\(v
 \ne 0\)</span>, this means the optimal solution <span class="math inline">\((\lambda^\star, v^\star)\)</span> must be a pair
-of eigenvalue of eigenvector of <span class="math inline">\(\Sigma\)</span>:</p>
+of eigenvalue and eigenvector of <span class="math inline">\(\Sigma\)</span>:</p>
 <p><span class="math display">\[
 v^\star = v_i, \lambda^\star = \lambda_i
 \]</span> where <span class="math inline">\(v_i\)</span> is rescaled
@@ -1476,7 +1543,7 @@ the result back to the objective to give</p>
 &amp;= \lambda_i
 \end{aligned}
 \]</span> So the <span class="math inline">\(N\)</span> largest
-directions of variance will be the <span class="math inline">\(\Sigma\)</span>’s eigenvectors <span class="math inline">\(v_1, v_2, ..., v_N\)</span>, corresponding to the
+directions of variance will be the <span class="math inline">\(\Sigma\)</span>’s eigenvectors <span class="math inline">\(v_1, \dots, v_N\)</span>, corresponding to the
 eigenvalues <span class="math inline">\(\lambda_1 &gt; \lambda_2 &gt;
 ... &gt; \lambda_N\)</span>.</p>
 <h4 id="compared-with-svd">Compared with SVD</h4>
@@ -1498,7 +1565,7 @@ post</a>.</p>
 the projection of <span class="math inline">\(x^{(i)}\)</span> on <span class="math inline">\(v\)</span> because <span class="math inline">\(||v|| = 1\)</span> and thus the objective
 indicates minimizing the overall approximation error.</p>
 <h3 id="kernel-pca">Kernel PCA</h3>
-<p>We can map the data to a higher-dimension space: <span class="math inline">\(x^{(i)} \to \phi(x^{(i)})\)</span>. Let <span class="math inline">\(\mathcal{X} = [\phi(x^{(1)}), \phi(x^{(2)}), ...,
+<p>We can map the data to a higher-dimension space: <span class="math inline">\(x^{(i)} \to \phi(x^{(i)})\)</span>. Let <span class="math inline">\(\mathcal{X} = [\phi(x^{(1)}), ...,
 \phi(x^{(M)})]\)</span>. Kernel tricks allow us not to explicitly define
 <span class="math inline">\(\phi\)</span>, but to only focus on the
 inner product of mapped data: <span class="math inline">\(\mathcal
@@ -1542,7 +1609,7 @@ v &amp;= \frac{1}{M\lambda}\sum_{i=1}^M\phi(x^{(i)})[(\phi(x^{(i)})^Tv]
 \end{aligned}
 \end{gather}
 \]</span> <span class="math inline">\(v\)</span> is some linear
-combination of <span class="math inline">\(\phi(x^{(i)})\)</span> and
+combination of <span class="math inline">\(\phi(x^{(i)})\)</span>’s and
 can be written as <span class="math display">\[
 v = \mathcal{X}\alpha, \alpha \in \R^N
 \]</span> Substitute this back to <span class="math inline">\(\Sigma v =
@@ -1557,18 +1624,20 @@ M\lambda\mathcal{X}^T\mathcal{X}\alpha \\
 \end{aligned}
 \]</span> Let <span class="math inline">\(K =
 \mathcal{X}^T\mathcal{X}\)</span> which is invertible. Then, <span class="math display">\[
+\begin{gathered}
 KK\alpha = M\lambda K\alpha \\
 K\alpha = M\lambda\alpha
+\end{gathered}
 \]</span> We can solve <span class="math inline">\(\alpha\)</span> as
 <span class="math inline">\(K\)</span>’s eigenvector. Kernel trick can
-be applied since that <span class="math inline">\(K_{ij} =
+be applied since <span class="math inline">\(K_{ij} =
 (\mathcal{X}^T\mathcal{X})_{ij} =
 \phi(x^{(i)})^T\phi(x^{(j)})\)</span>.</p>
 <p><span class="math inline">\(M\lambda\)</span> is <span class="math inline">\(K\)</span>’s eigenvalue, which is proportional to
-<span class="math inline">\(\lambda\)</span>, <span class="math inline">\(\Sigma\)</span>’s eigenvalue and thus the
-objective. So <span class="math inline">\(K\)</span>’s largest <span class="math inline">\(L\)</span> eigenvalues correspond to <span class="math inline">\(L\)</span> largest objective respectively. <span class="math inline">\(K\)</span>’s <span class="math inline">\(L\)</span> eigenvectors <span class="math inline">\(\alpha_1, \alpha_2, ..., \alpha_L\)</span> has to
-be solved with constraint that <span class="math inline">\(\alpha_i^T\alpha_i = \frac{1}{M\lambda}\)</span>
-because <span class="math display">\[
+<span class="math inline">\(\lambda\)</span>, i.e. <span class="math inline">\(\Sigma\)</span>’s eigenvalue and thus the
+objective. So <span class="math inline">\(K\)</span>’s largest <span class="math inline">\(L\)</span> eigenvalues correspond to <span class="math inline">\(L\)</span> largest objective one-by-one. <span class="math inline">\(K\)</span>’s <span class="math inline">\(L\)</span> eigenvectors <span class="math inline">\(\alpha_1, ..., \alpha_L\)</span> has to be solved
+with constraint <span class="math inline">\(\alpha_i^T\alpha_i =
+\frac{1}{M\lambda}\)</span> so that for <span class="math inline">\(\mathcal{X}\)</span>’s eigenvector <span class="math inline">\(v\)</span>: <span class="math display">\[
 \begin{aligned}
 v^Tv &amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
 &amp;= \alpha^T(\mathcal{X}^T\mathcal{X})\alpha \\
@@ -1577,12 +1646,12 @@ v^Tv &amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
 &amp;= 1
 \end{aligned}
 \]</span></p>
-<p>Given a sample <span class="math inline">\(x^*\)</span>, we first
-transform it with <span class="math inline">\(\phi\)</span> and
-dot-product with <span class="math inline">\(v_1,\dots,v_L\)</span> to
-get the new coordinates. To get its <span class="math inline">\(j\)</span>-th coordinate, <span class="math display">\[
-\phi(x^*)^Tv_j = \phi(x^*)^T\mathcal X\alpha_j = [\mathcal K(x^*,
-x^{(1)}), \mathcal K(x^*, x^{(2)}), \dots, \mathcal K(x^*,
+<p>Given a sample <span class="math inline">\(x^*\)</span>, we compute
+its dot-products with <span class="math inline">\(v_1,\dots,v_L\)</span>
+in the kernel space to get the projected coordinates. To get <span class="math inline">\(j\)</span>-th coordinate of transformed sample,
+<span class="math display">\[
+\phi(x^*)^T \phi(v_j) = \phi(x^*)^T \mathcal X \alpha_j = [\mathcal
+K(x^*, x^{(1)}), \mathcal K(x^*, x^{(2)}), \dots, \mathcal K(x^*,
 x^{(M)})]\alpha_j
 \]</span></p>
 <h4 id="centralizing-in-kernel-trick">Centralizing in Kernel Trick</h4>

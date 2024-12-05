@@ -194,6 +194,8 @@ p_Z(\z) = \frac{1}{\sqrt{(2\pi)^n|\Sigma_Z|}} e^{-\frac{1}{2} (\z-\mu)^T
 \Sigma_Z^{-1} (\z-\mu)}
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://gestalt.ink/gaussians&#34;&gt;Gaussians |
+gestalt.ink&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/40225646&#34;&gt;为什么高斯分布概率密度函数的积分等于1
 - 知乎 (zhihu.com)&lt;/a&gt; || &lt;a href=&#34;https://zhuanlan.zhihu.com/p/58987388&#34;&gt;多元高斯分布完全解析 - 知乎
 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
@@ -422,10 +424,11 @@ F(x)\)&lt;/span&gt;，则称该随机变量序列&lt;strong&gt;依分布收敛&l
 \stackrel{d}{\to} F\)&lt;/span&gt;。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;收敛到随机变量&#34;&gt;“收敛到随机变量”&lt;/h2&gt;
-&lt;p&gt;除了上述讨论的收敛到值、收敛到函数的情况外，另外一个比较有趣的话题是“收敛到随机变量”，或者说“两个随机变量相等”是一个怎样的概念？&lt;/p&gt;
+&lt;p&gt;除了上述讨论的收敛到值、收敛到（分布）函数的情况外，另外一个比较有趣的话题是“收敛到随机变量”，或者说“两个随机变量相等”是一个怎样的概念？&lt;/p&gt;
 &lt;p&gt;我们讨论概率的时候，会涉及到两个函数：一个是概率函数，另一个是随机变量这一从事件到数字的映射。方便起见我们令&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;为两个随机变量，随机变量相等，则意味着这两个从事件到数字的映射相等，进而&lt;span class=&#34;math inline&#34;&gt;\(P(X = Y) = 1\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;映射相等，意味着定义域、值域、映射关系完全相等。如果我有两个骰子，令&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;表示第一个骰子掷出的点数、&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;表示第二个骰子掷出的点数，那么&lt;span class=&#34;math inline&#34;&gt;\(X =
-Y\)&lt;/span&gt;吗？答案是不，因为这两个随机变量的定义域不相等：&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的定义域表示第一个骰子的所有可能事件，&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的定义域表示第二个骰子的所有可能事件；虽然两个骰子掷出的点数都只能是1、2、3、4、5、6，但这代表的仅是值域相同，而“第一个骰子掷出一”（注意这里避免使用任何数字，以表示它是一个事件）这个事件和“第二个骰子掷出一”是不一样的，因为&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;不会因为第二个骰子掷出一而取为1。&lt;/p&gt;
+Y\)&lt;/span&gt;吗？答案是不，因为这两个随机变量的定义域不相等：&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;的定义域表示第一个骰子的所有可能事件，&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的定义域表示第二个骰子的所有可能事件；虽然两个骰子掷出的点数都只能是1、2、3、4、5、6，但这代表的仅是值域相同，而“第一个骰子掷出一”（注意这里避免使用阿拉伯数字，以表示它是一个事件）这个事件和“第二个骰子掷出一”是不一样的，因为&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;不会因为第二个骰子掷出一而取为1。&lt;/p&gt;
+&lt;p&gt;至此，我们更加能够体会到“收敛到函数”的含义：只是碰巧该随机变量的分布函数在极限情况下与某个满足分布函数条件的函数相同而已。而“收敛到值”相较于“收敛到函数”，提供的信息更少，因为“收敛到值”只是告诉我们在极限情况下，该随机变量在某一处取值的概率趋近于&lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;而已。&lt;/p&gt;
 &lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://zh.m.wikipedia.org/zh/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B&#34;&gt;随机变量的收敛&lt;/a&gt;&lt;/p&gt;
 

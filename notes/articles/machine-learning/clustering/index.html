@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1464,10 +1531,11 @@ clusters as the distance between their centers.</li>
 repeatedly split each cluster into two using a partition algorithm until
 each object is in a separate cluster.</p></li>
 </ul></li>
-<li><p>Partition algorithms</p>
+<li><p>Partitional algorithms</p>
 <ul>
 <li>K-means</li>
 <li>Gaussian mixture model</li>
+<li>Soft K-means</li>
 </ul></li>
 </ul>
 <h2 id="algorithms">Algorithms</h2>
@@ -1478,11 +1546,11 @@ function <span class="math inline">\(f\)</span> that evaluates the
 clustering <span class="math inline">\(\mathcal C\)</span> and returns
 lower score with better clustering. The best clustering will be <span class="math display">\[
 \arg \min_{\mathcal C} f(\mathcal C)
-\]</span> The number of all possibilities of clustering with <span class="math inline">\(M\)</span> elements is called the Bell number,
-denoted as <span class="math inline">\(B_M\)</span>. The calculation of
-the Bell number is based on dynamic programming. The number of ways to
-cluster <span class="math inline">\(M+1\)</span> elements is the sum of
-number of ways to:</p>
+\]</span> The number of all possibilities of clustering with <span class="math inline">\(M\)</span> elements is called the <strong>Bell
+number</strong>, denoted as <span class="math inline">\(B_M\)</span>.
+The calculation of the Bell number is based on dynamic programming. The
+number of ways to cluster <span class="math inline">\(M+1\)</span>
+elements is the sum of number of ways to:</p>
 <ul>
 <li>select <span class="math inline">\(1\)</span> element and cluster
 it, with the rest belong to one single cluster</li>
@@ -1497,9 +1565,9 @@ them, with the rest belong to one single cluster</li>
 B_{M+1} = \sum_{i=1}^M\binom{M}{0}B_i \\
 B_0 = 1
 \end{gather}
-\]</span> The exhaustive method will be computationally intractable. We
-need either an approximation algorithm or a scoring function with
-special properties.</p>
+\]</span> It grows exponentially with <span class="math inline">\(M\)</span> and thus the exhaustive method will be
+computationally intractable. We need either an approximation algorithm
+or a scoring function with special properties.</p>
 <h3 id="k-means">K-means</h3>
 <p>K-means assumes there are <span class="math inline">\(K\)</span>
 clusters. This greatly eliminates many possibilities described above.
@@ -1533,8 +1601,8 @@ i.e. minimizing over the centroids <span class="math inline">\(\c\)</span>.</li
 <p><span class="math inline">\(l\)</span> is monotonically decreasing
 after each step in the above loop. Also, <span class="math inline">\(l\)</span> is lower-bounded by <span class="math inline">\(0\)</span>. Therefore, <span class="math inline">\(l\)</span> and thus K-means will converge
 finally.</p>
-<p>Each cluster in K-means has a circular shape because of the Euclidean
-distance it uses.</p>
+<p>K-means clustering produces a <a href="http://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a>
+which consists of linear decision boundaries.</p>
 <p>For more discussion and an interesting image compression method with
 K-means, please refer <a href="https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a">here</a>.</p>
 <h3 id="gaussian-mixture-model">Gaussian Mixture Model</h3>
@@ -1547,9 +1615,9 @@ p(x) = \sum_{j=1}^K\pi_j\mathcal N(x;\mu_j, \Sigma_j)
 \]</span> <span class="math inline">\(\pi_j\)</span> is the prior that a
 sample is generated from the <span class="math inline">\(j\)</span>-th
 Gaussian. <span class="math inline">\(\mathcal N(x;\mu_j,
-\Sigma_j)\)</span> is the probability to generate the sample <span class="math inline">\(x\)</span> from the <span class="math inline">\(j\)</span>-th Gaussian. Put it together, <span class="math inline">\(p(x)\)</span> is the total probability of <span class="math inline">\(x\)</span> over its latent <span class="math inline">\(z\)</span>, with <span class="math inline">\(z =
+\Sigma_j)\)</span> is the probability to generate the sample <span class="math inline">\(x\)</span> from the <span class="math inline">\(j\)</span>-th Gaussian. Putting it together, <span class="math inline">\(p(x)\)</span> is the total probability of <span class="math inline">\(x\)</span> over its latent <span class="math inline">\(z\)</span>, with <span class="math inline">\(z =
 j\)</span> representing the prior condition that <span class="math inline">\(x\)</span> is sampled from <span class="math inline">\(j\)</span>-th Gaussian. <span class="math display">\[
-p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^Kp(x|z = j)p(z = j)
+p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^K p(z = j) p(x|z = j)
 \]</span> GMM is learned by <span class="math display">\[
 \begin{gather}
 \max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) \triangleq
@@ -1595,8 +1663,8 @@ N(x^{(i)};\mu_j, \Sigma_j)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_j,
 \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K)}\\
 \end{align}
 \]</span></p>
-<p>By far, the whole expression is too complicated for us to continue
-with.</p>
+<p>By far, the whole expression is far too complicated for us to
+continue…</p>
 <h4 id="attempt-with-expectation-maximization">Attempt with Expectation
 Maximization</h4>
 <p><span class="math display">\[
@@ -1718,7 +1786,8 @@ j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I)
 distance.</p>
 <h2 id="external-material">External Material</h2>
 <p><a href="https://towardsdatascience.com/gaussian-mixture-models-vs-k-means-which-one-to-choose-62f2736025f0">Gaussian
-Mixture Models vs K-Means. | by K.Kubara | Towards Data Science</a></p>
+Mixture Models vs K-Means. | by K.Kubara | Towards Data Science</a> <a href="https://neptune.ai/blog/clustering-algorithms">Exploring
+Clustering Algorithms: Explanation and Use Cases (neptune.ai)</a></p>
 
 
 

@@ -146,12 +146,11 @@ p_\theta(x)}{p_\theta(x) + \nu q(x)} \\
 \frac{p_\theta(x)}{p_\theta(x) + \nu q(x)} \iff p_\theta(x) = \tilde
 p(x)\\
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;gradient-descent&#34;&gt;Gradient descent&lt;/h3&gt;
+&lt;h3 id=&#34;gradient-descent&#34;&gt;Gradient Descent&lt;/h3&gt;
 &lt;p&gt;https://leimao.github.io/article/Noise-Contrastive-Estimation/&lt;/p&gt;
-&lt;h2 id=&#34;implementation&#34;&gt;Implementation&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Stonesjtu/Pytorch-NCE&#34;&gt;PyTorch-NCE&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;other-reference&#34;&gt;Other Reference&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/334772391&#34;&gt;NCE与语言模型&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;externals&#34;&gt;Externals&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/334772391&#34;&gt;NCE与语言模型&lt;/a&gt; ||
+&lt;a href=&#34;https://github.com/Stonesjtu/Pytorch-NCE&#34;&gt;PyTorch-NCE&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -263,7 +262,7 @@ p_X(\x&amp;#39;)} \big) \\
 \end{aligned}
 \]&lt;/span&gt; Therefore, &lt;span class=&#34;math inline&#34;&gt;\(I(\x;\c^\star) \ge
 \log(N-1) - \mathcal L^{\mathrm{opt}}_{N}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
+&lt;h2 id=&#34;externals&#34;&gt;Externals&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://anilkeshwani.github.io/CPC/&#34;&gt;Paper Review&lt;/a&gt; || &lt;a href=&#34;https://www.youtube.com/watch?v=zNKMHj1eLa0&#34;&gt;CPC Formulation&lt;/a&gt;
 || &lt;a href=&#34;https://jxmo.io/posts/nce&#34;&gt;NCE and InfoNCE&lt;/a&gt; || &lt;a href=&#34;https://colab.research.google.com/github/google-research/google-research/blob/master/vbmi/vbmi_demo.ipynb#scrollTo=DUd0hFZ5Js8k&#34;&gt;Demo
 of Bounding Mutual Information&lt;/a&gt;&lt;/p&gt;

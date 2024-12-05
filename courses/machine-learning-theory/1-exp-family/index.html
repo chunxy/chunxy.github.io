@@ -1,0 +1,1586 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Exponential Family Basics  [!note]
+Though the results below are mainly with regards to the finite support case, they also apply to infinite support case after switching to differential entropy." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/machine-learning-theory/1-exp-family/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/machine-learning-theory/1-exp-family/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/machine-learning-theory/1-exp-family/" />
+  <meta property="og:title" content="1-exp-family | Chunxy&#39; Website" />
+  <meta property="og:description" content="Exponential Family Basics  [!note]
+Though the results below are mainly with regards to the finite support case, they also apply to infinite support case after switching to differential entropy." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="article:published_time" content="2022-01-07T13:39:19&#43;00:00" />
+    
+    <meta property="article:modified_time" content="2022-01-07T13:39:19&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>1-exp-family | Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="fea286369616e441721e035ead08876f" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Machine Learning Theory
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/courses/">Courses</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/energy-efficient-computing/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Efficient Computation</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/energy-efficient-computing/images/">Note</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/foundations-of-optimization/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/1-optimization-problem/">1-optimization-problem</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/2-convex-set/">2-convex-set</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/3-convex-function/">3-convex-function</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/4-linear-programming/">4-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/5-conic-linear-programming/">5-conic-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/6-optimizaition-under-uncertainty/">6-optimizaition-under-uncertainty</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/">7-quadratically-constrained-quadratic-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/8-nonlinear-programming/">8-nonlinear-programming</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/machine-learning-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/machine-learning-theory/0-intro/">0-intro</a></li>
+
+
+
+  <li class="active"><a href="/courses/machine-learning-theory/1-exp-family/">1-exp-family</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/2-uniform-convergence/">2-uniform-convergence</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/3-rademacher-complexity/">3-rademacher-complexity</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/4-vc-dimension/">4-vc-dimension</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/5-kernel-methods/">5-kernel-methods</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/6-online-learning/">6-online-learning</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/advanced-topics-in-distributed-system/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Distributed System</a>
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#exponential-family-basics">Exponential Family Basics</a>
+      <ul>
+        <li><a href="#example-and-definition">Example and Definition</a></li>
+        <li><a href="#properties">Properties</a></li>
+      </ul>
+    </li>
+    <li><a href="#estimation-of-exponential-family">Estimation of
+Exponential Family</a>
+      <ul>
+        <li><a href="#maximum-likelihood-estimation">Maximum Likelihood
+Estimation</a></li>
+        <li><a href="#method-of-moments">Method of Moments</a></li>
+      </ul>
+    </li>
+    <li><a href="#principle-of-maximum-entropy">Principle of Maximum
+Entropy</a>
+      <ul>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#maximizing-conditional-entropy">Maximizing Conditional
+Entropy</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/machine-learning-theory/">
+        
+          Machine Learning Theory
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        1-exp-family
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>1-exp-family</h1>
+
+          <div class="article-style">
+            
+
+<h2 id="exponential-family-basics">Exponential Family Basics</h2>
+<blockquote>
+<p>[!note]</p>
+<p>Though the results below are mainly with regards to the finite
+support case, they also apply to infinite support case after switching
+to differential entropy.</p>
+</blockquote>
+<blockquote>
+<p>[!important]</p>
+<p>In fact, we are restricting the discussion to the natural exponential
+family.</p>
+</blockquote>
+<h3 id="example-and-definition">Example and Definition</h3>
+<p>Recall the PDF of univariate Gaussian distribution: <span class="math display">\[
+p_{\mathcal{N}(\mu, \sigma^2)}(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}
+e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
+\]</span> It can be rewritten as <span class="math display">\[
+p_{\mathcal{N}(\mu, \sigma^2)}(x) = \exp(-\frac{1}{2 \sigma^2} x^2 +
+\frac{\mu}{\sigma^2} x - \frac{\mu}{2 \sigma^2} - \frac{1}{2} \log(2 \pi
+\sigma^2))
+\]</span> Let the mapping <span class="math inline">\(\phi(x) = [x^2,
+x]\)</span> and the parameter vector <span class="math inline">\(\theta
+= [-\frac{1}{2 \sigma^2}, \frac{\mu}{\sigma^2}]\)</span>. Then for a
+properly-chosen function <span class="math inline">\(A: \R^2 \mapsto
+\R\)</span> we have <span class="math display">\[
+p_{\mathcal{N}(\mu, \sigma^2)}(x) = \exp(\theta^T \phi(x) - A(\theta))
+\]</span> That is <span class="math display">\[
+p_{\mathcal{N}(\mu, \sigma^2)}(x) \propto \exp(\theta^T \phi(x))
+\]</span></p>
+<blockquote>
+<p>Definition: <strong>exponential family</strong>. Given a feature
+function <span class="math inline">\(\phi: \mathcal{X} \mapsto
+\R^m\)</span> and an <span class="math inline">\(m\)</span>-dimensional
+parameter vector <span class="math inline">\(\theta \in \R^m\)</span>,
+an exponential family is defined as the set <span class="math inline">\(\mathcal{P} \triangleq \{ p_\theta: \theta \in
+\R^m \}\)</span> where for a function <span class="math inline">\(A:
+\R^m \mapsto \R\)</span> the mass (or the density) function <span class="math inline">\(p_\theta\)</span> is defined as: <span class="math display">\[
+p_\theta(x) = \exp(\theta^T \phi(x) - A(\theta))
+\]</span> In the above definition,</p>
+<ul>
+<li>we call <span class="math inline">\(\phi: \R^d \mapsto \R^m\)</span>
+the <strong>feature function</strong>;</li>
+<li>we call <span class="math inline">\(\theta \in \R^m\)</span> the
+<strong>canonical parameters</strong>;</li>
+<li>we call <span class="math inline">\(A: \R^m \mapsto \R\)</span> the
+<strong>log-partition function</strong>.</li>
+</ul>
+</blockquote>
+<p>The underlying max-entropy assumption of exponential family seems to
+be the reason why we usually use softmax in the last layer in the neural
+network model.</p>
+<h3 id="properties">Properties</h3>
+<h4 id="convexity">Convexity</h4>
+<blockquote>
+<p>Proposition: <strong>derivation of log-partition function</strong> in
+discrete case. Given an exponential family with feature function <span class="math inline">\(\phi: \mathcal{X} \mapsto \R^m\)</span> over a
+<em>finite support set</em> <span class="math inline">\(\mathcal{X}\)</span>, canonical parameters <span class="math inline">\(\theta \in \R^m\)</span>, the log partition
+function <span class="math inline">\(A: \R^m \mapsto \R\)</span> can be
+determined as <span class="math display">\[
+A(\theta) = \log \left( \sum_{x \in \mathcal{X}} e^{\theta^T \phi(x)}
+\right)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>derivatives of log-partition function</strong>.
+Consider an exponential family with feature function <span class="math inline">\(\phi: \mathcal{X} \mapsto \R^m\)</span> over a
+<em>finite support set</em> <span class="math inline">\(\mathcal{X}\)</span>, canonical parameters <span class="math inline">\(\theta \in \R^m\)</span>, and the log partition
+function <span class="math inline">\(A: \R^m \mapsto \R\)</span> . Then,
+the first- and second-order derivatives of <span class="math inline">\(A\)</span> satisfy:</p>
+<ol type="1">
+<li><p>The <strong>gradient</strong> of <span class="math inline">\(A\)</span> will be the mean of random vector <span class="math inline">\(\phi(X)\)</span>: <span class="math display">\[
+\nabla A(\theta) = \E_{X \sim p_\theta} [\phi(x)]
+\]</span></p></li>
+<li><p>The <strong>Hessian</strong> of <span class="math inline">\(A\)</span> will be the covariance matrix of random
+vector <span class="math inline">\(\phi(X)\)</span>:?? <span class="math display">\[
+\nabla^2 A(\theta) = \Cov_{X \sim p_\theta}(\phi(X))
+\]</span></p></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Corollary: <strong>convexity of log-partition function</strong>. The
+log-partition function of an exponential family distribution is a convex
+function.</p>
+</blockquote>
+<blockquote>
+<p>Theorem: <strong>monotone gradient of convex function</strong>. A
+differentiable function <span class="math inline">\(f: \R^d \mapsto
+\R\)</span> is convex if and only if its gradient <span class="math inline">\(\nabla f: \R^d \mapsto \R^d\)</span> is monotone,
+i.e. <span class="math display">\[
+\forall x, y \in \R^d, (x-y)^T(\nabla f(x) - \nabla f(y)) \ge 0
+\]</span> Corollary: <strong>monotone gradient of mean vector</strong>.
+The mean vector <span class="math inline">\(\mu_\theta = \E_{X \sim
+p_\theta} [\phi(X)]\)</span> of an exponential family model <span class="math inline">\(p_\theta\)</span> is a monotone function of the
+canonical parameter <span class="math inline">\(\theta\)</span>, i.e.
+<span class="math display">\[
+\forall \theta_1, \theta_2 \in \R^d, (\theta_1 - \theta_2)^T (\nabla
+A(\theta_1) - \nabla A(\theta_2)) \ge 0
+\]</span></p>
+</blockquote>
+<h4 id="strong-convexity">Strong Convexity</h4>
+<p>Convexity is not enough for fruitful derivation. Below we introduce
+the idea of strong convexity.</p>
+<blockquote>
+<p>Definition: <strong>strongly convex function</strong>. We call a
+twice-differentiable <span class="math inline">\(f: \R^d \mapsto
+\R\)</span> <span class="math inline">\(\mu\)</span>-strongly-convex if
+the eigenvalues of its Hessian are always greater than or equal to <span class="math inline">\(\mu &gt; 0\)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>invertibility of the gradient of strongly convex
+function</strong>. The gradient of a <span class="math inline">\(\mu\)</span>-strongly-convex function is an
+invertible mapping and satisfies the following: <span class="math display">\[
+\forall x, y \in \R^d, (\nabla f(x) - \nabla f(y))^T (x-y) \ge \mu
+\|x-y\|_2^2
+\]</span> The implication is that, it is impossible for <span class="math inline">\(x \ne y\)</span> to have the same gradient,
+verifying that <span class="math inline">\(\nabla f\)</span> is
+invertible.</p>
+</blockquote>
+<h2 id="estimation-of-exponential-family">Estimation of Exponential
+Family</h2>
+<h3 id="maximum-likelihood-estimation">Maximum Likelihood
+Estimation</h3>
+<p>In this section, we assume a strong convexity on the log-partition
+function. That is, we can relate the canonical parameter and the mean
+vector: <span class="math display">\[
+\mu = \nabla A(\theta), \theta = (\nabla A)^{-1}(\mu)
+\]</span> Suppose we observe independent and identically distributed
+samples <span class="math inline">\(x_1, \dots, x_n \sim
+p_\theta\)</span>. How do we estimate <span class="math inline">\(\theta\)</span>? The most natural estimation is
+the maximum (log-)likelihood estimation. We try to derive it for
+exponential family in the following. <span class="math display">\[
+\theta^\text{MLE} = \arg \max_\theta l(\theta) = \log \left[
+\prod_{i=1}^n p_\theta(x_i) \right]
+\]</span> MLE is a good fit for the exponential family because of the
+<span class="math inline">\(\exp\)</span> term in the density function.
+<span class="math display">\[
+\begin{aligned}
+&amp;\theta^\text{MLE} = \arg \max_\theta \sum_{i=1}^n \log
+p_\theta(x_i) \\
+&amp;= \arg \max_\theta \sum_{i=1}^n [\theta^T \phi(x_i) - A(\theta)] \\
+&amp;= \arg \max_\theta \frac{1}{n} \sum_{i=1}^n [\theta^T \phi(x_i) -
+A(\theta)] \\
+&amp;= \arg \max_\theta \theta^T \underbrace{\left[ \frac{1}{n}
+\sum_{i=1}^n \phi(x_i) \right]}_{\hat \mu} - A(\theta) \\
+&amp;= \arg \min_\theta A(\theta) - \theta^T \hat \mu
+\end{aligned}
+\]</span> It turns out to be a standard unconstrained convex
+optimization problem. The optimal solution would be to zero out the
+gradient: <span class="math display">\[
+\begin{aligned}
+\nabla A(\theta^\text{MLE}) - \hat \mu &amp;= 0 \\
+\theta^\text{MLE} &amp;= (\nabla A)^{-1} (\hat \mu)
+\end{aligned}
+\]</span> As a result, the resulting <span class="math inline">\(\mu^\text{MLE} \triangleq \E_{\theta^\text{MLE}}
+[\phi(X)] = \nabla A(\theta^\text{MLE})\)</span> will be exactly the
+empirical mean <span class="math inline">\(\hat \mu\)</span>. Suppose
+<span class="math inline">\(\phi(X)\)</span> has the covariance matrix
+<span class="math inline">\(\Sigma\)</span>. By the central limit
+theorem, <span class="math display">\[
+\sqrt{n} (\hat u - \E[\phi(X)]) \stackrel{d}{\to} N(0, \Sigma)
+\]</span> But what we are interested in is the asymptotic performance of
+the estimation of <span class="math inline">\(\theta\)</span>, which is
+<span class="math inline">\(\theta^\text{MLE}\)</span>. By the <a href="https://www.wikiwand.com/en/Delta_method">delta method</a>, for
+<span class="math inline">\(\theta^\text{MLE}\)</span> which is a
+function of <span class="math inline">\(\hat \mu\)</span>, we have <span class="math display">\[
+\sqrt{n} (\theta^\text{MLE} - \theta) \stackrel{d}{\to} N(0,
+\Sigma^{-1})
+\]</span></p>
+<h3 id="method-of-moments">Method of Moments</h3>
+<blockquote>
+<p>Definition: <strong>method of moments</strong>. Given a parameterized
+family of distributions <span class="math inline">\(\{ p_\theta: \theta
+\in \R^d \}\)</span>, the method of moments estimator finds the
+parameter <span class="math inline">\(\hat \theta\)</span> that matches
+the <strong>population moments</strong> with the <strong>empirical
+moments</strong> of i.i.d. samples <span class="math inline">\(x_1,
+\dots, x_n\)</span>. Let <span class="math inline">\(\phi\)</span> be
+the moment function. Hence, <span class="math inline">\(\hat
+\theta\)</span> must satisfy <span class="math display">\[
+\E_{\hat \theta} [\phi(X)] = \frac{1}{n} \sum_{i=1}^n \phi(x_i)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>equivalence of method of moments and maximum
+likelihood estimation</strong>. Given an exponential family <span class="math inline">\(\{ p_\theta: \theta \in \R^d \}\)</span> with
+feature function <span class="math inline">\(\phi\)</span>, the method
+of moments estimator with <strong><span class="math inline">\(\phi\)</span>-based moments</strong> results in
+the same estimator as maximum likelihood estimator <span class="math inline">\(\theta^\text{MLE}\)</span>.</p>
+<p>Proof. Recall that we have shown <span class="math inline">\(\mu^\text{MLE} = \hat \mu\)</span> in the previous
+note. Additionally, due to the invertibility of <span class="math inline">\(\nabla A(\hat \theta) = \E_{\hat \theta}
+[\phi(X)]\)</span> (thanks to Yiyao :D), the solution to method of
+moments is unique. As a result, the two methods are equivalent.</p>
+</blockquote>
+<h2 id="principle-of-maximum-entropy">Principle of Maximum Entropy</h2>
+<p>The above develops the method of moments for the exponential family,
+making it a model-based approach. What if the distribution is not coming
+from an exponential family? In such case, we follow the principle of
+maximum entropy.</p>
+<blockquote>
+<p>Definition: <strong>principle of maximum entropy</strong>. Given a
+set of probability distributions <span class="math inline">\(M\)</span>
+(e.g. using the method of moments), conduct the inference and base the
+decision on the distribution maximizing the entropy function: <span class="math display">\[
+\arg \max_{q \in M} H_q(X) \triangleq \sum_{x \in \mathcal{X}} q(x) \log
+\frac{1}{q(x)}
+\]</span></p>
+</blockquote>
+<p>Recall in the method of moments we are restricting ourselves to <span class="math display">\[
+M_\phi \triangleq \{ q \in \mathcal{P}_\mathcal{X}: \E_q [\phi(X)] =
+\frac{1}{n} \sum_{i=1}^n \phi(x_i) \}
+\]</span> We stick to the method of moments and the principle of maximum
+entropy. Therefore, the optimization problem becomes <span class="math display">\[
+\begin{aligned}
+\min_q \quad &amp; \sum_{x \in \mathcal{X}} q_x \log q_x \\
+\text{s.t.} \quad &amp; \sum_{x \in \mathcal{X}} q_x \phi(x) =
+\underbrace{\frac{1}{n} \sum_{i=1}^n \phi(x_i)}_{\hat \mu} \\
+&amp; \sum_{x \in \mathcal{X}} q_x = 1 \\
+&amp; q_x \ge 0, \forall x \in \mathcal{X}
+\end{aligned}
+\]</span> Note that we use <span class="math inline">\(q_x\)</span> to
+indicate that <span class="math inline">\(q\)</span> is a probability
+vector on a finite support. We proceed with ignoring the non-negativity
+constraint and show that relaxed solution is still the optimal to the
+original. Suppose <span class="math inline">\(\phi(x)\)</span> is <span class="math inline">\(k\)</span>-dimensional. Denote as <span class="math inline">\(\gamma \in \R^k, \eta \in \R\)</span> the
+Lagrangian multipliers. The Lagrangian function is as follows: <span class="math display">\[
+\mathcal{L}(q, \gamma, \eta) = \left[ \sum_{x \in \mathcal{X}} q_x (\log
+(q_x) + \gamma^\top \phi(x) + \eta) \right] - \gamma^\top \hat \mu -
+\eta
+\]</span> We apply the KKT conditions (verify that the regularity
+condition holds) to give <span class="math display">\[
+\begin{gathered}
+1 + \log (q_x) + \gamma^\top \phi(x) + \eta = 0, \forall x \in
+\mathcal{X} \\
+\Downarrow \\
+q_x^* = \exp[-(1 + \gamma^\top \phi(x) + \eta)] \ge 0
+\end{gathered}
+\]</span> From above we know <span class="math inline">\(q_x^* \propto
+\exp(-\gamma^\top \phi(x))\)</span> and as a result <span class="math display">\[
+q_x^* = \frac{\exp(-\gamma^\top \phi(x))}{\sum_{x&#39; \in \mathcal{X}}
+\exp(-\gamma^\top \phi(x&#39;))}
+\]</span> Now we substitute the primal optima back to the Lagrangian
+function to give <span class="math display">\[
+\mathcal{L}(q^*, \gamma, \eta) = -\log \left( \sum_{x \in \mathcal{X}}
+\exp(-\gamma^\top \phi(x)) \right) - \gamma^\top \hat \mu
+\]</span> Hence, we can formulate the dual problem as <span class="math display">\[
+\begin{aligned}
+\max_{\gamma \in \R^k} \quad &amp; -\log \left( \sum_{x \in \mathcal{X}}
+\exp(-\gamma^\top \phi(x)) \right) - \gamma^\top \hat \mu
+\end{aligned}
+\]</span> After rewriting <span class="math inline">\(-\gamma\)</span>
+as <span class="math inline">\(\theta\)</span>, this exactly recovers
+the maximum likelihood estimation problem for an exponential family with
+the feature function <span class="math inline">\(\phi\)</span>.</p>
+<blockquote>
+<p>Corollary: <strong>maximum entropy as the dual to maximum
+likelihood</strong>. In a set of distribution <span class="math inline">\(M_\phi \triangleq \{ q: \E_q [\phi(X)] = \mu
+\}\)</span>, the distribution <span class="math inline">\(q^*\)</span>
+that maximizes the entropy will be from an exponential family with
+feature function <span class="math inline">\(\phi\)</span>. That is, for
+some <span class="math inline">\(\theta\)</span> we will have <span class="math display">\[
+q^*(x) = \exp(\theta^\top \phi(x) - A(\theta))
+\]</span> In addition, if <span class="math inline">\(\mu\)</span> is
+the empirical mean of sample, the maximum entropy problem over <span class="math inline">\(M_\phi\)</span> is the dual optimization problem
+to the maximum likelihood estimation for the exponential family with
+feature function <span class="math inline">\(\phi\)</span>.</p>
+</blockquote>
+<p>We conclude the magic powers of exponential family here. With
+appropriate conditions,</p>
+<ol type="1">
+<li>exponential family + method of moments = maximum likelihood
+estimation</li>
+<li>principle of max entropy + method of moments = exponential
+family</li>
+</ol>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><p>What distribution in the set <span class="math inline">\(M_\phi
+\triangleq \{ q_x: \E_q[X] = \mu \}\)</span> will maximize the entropy
+of an integer-valued random variable <span class="math inline">\(X \in
+\N\)</span>​ with a fixed mean value?</p>
+<p>The problem is <span class="math display">\[
+\begin{aligned}
+\min_q \quad &amp; \sum_{x \in \mathcal{X}} q_x \log q_x \\
+\text{s.t.} \quad &amp; \sum_{x \in \mathcal{X}} q_x x = \mu \\
+&amp; \sum_{x \in \mathcal{X}} q_x = 1 \\
+&amp; q_x \ge 0, \forall x \in \mathcal{X}
+\end{aligned}
+\]</span> We write down the Lagrangian function: <span class="math display">\[
+\begin{aligned}
+\mathcal{L}(\theta, \lambda) &amp;= \sum_{x \in \mathcal{X}} q_x \log
+q_x + \lambda_1 (\sum_{x \in \mathcal{X}} q_x - 1) + \lambda_2 (\sum_{x
+\in \mathcal{X}} x q_x - \mu) \\
+&amp;= \sum_{x \in \mathcal{X}} [(\log q_x + \lambda_1 + \lambda_2 x)
+q_x] - \lambda_1 - \lambda_2 \mu
+\end{aligned}
+\]</span></p>
+<p>Take its derivative w.r.t. <span class="math inline">\(p\)</span> and
+make it zero to give <span class="math display">\[
+\begin{aligned}
+0 &amp;= 1 + \log q_x + \lambda_1 + \lambda_2 x \\
+q_x &amp;= \exp[-(1 + \lambda_1 + \lambda_2 x)]
+\end{aligned}
+\]</span> Consider the normalization constraint to give <span class="math display">\[
+\begin{gathered}
+q_x = \frac{\exp(-\lambda_2 x)}{\sum_{x&#39;=1}^\infty \exp(-\lambda_2
+x&#39;)} \\
+\exp(-1 - \lambda_1) = \sum_{x&#39;=1}^\infty \exp(-\lambda_2 x&#39;)
+\end{gathered}
+\]</span></p>
+<p>For <span class="math inline">\(\lambda_1\)</span> to converge, <span class="math inline">\(\lambda_2\)</span> has to be positive. As a
+result, <span class="math display">\[
+\begin{aligned}
+&amp;\exp(-1 - \lambda_1) = \sum_{x&#39;=1}^\infty \exp(-\lambda_2
+x&#39;) \\
+&amp;= \exp(-\lambda_2) \frac{1}{1 - \exp(-\lambda_2)} \\
+&amp;= \frac{1}{\exp(\lambda_2) - 1} \\
+\end{aligned}
+\]</span> Consider the expectation constraint to give <span class="math display">\[
+\begin{aligned}
+&amp;\E_p[X] = \frac{\sum_{x=1}^\infty x \exp(-\lambda_2
+x)}{\sum_{x&#39;=1}^\infty \exp(-\lambda_2 x&#39;)} \\
+&amp;= \frac{\exp(-\lambda_2) / [1-\exp(-\lambda_2)]^2}{\exp(-\lambda_2)
+/ [1-\exp(-\lambda_2)]} \\
+&amp;= \frac{1}{1-\exp(-\lambda_2)} = \mu
+\end{aligned}
+\]</span></p>
+<p>Hence, <span class="math display">\[
+\begin{aligned}
+&amp; \lambda_2 = -\log(1-\frac{1}{\mu}) \\
+&amp; \lambda_1 = -\log(\mu-1) - 1 \\
+&amp; q_x = \frac{(1-\frac{1}{\mu})^x}{\mu-1} = \frac{1}{\mu}
+(1-\frac{1}{\mu})^{x-1}
+\end{aligned}
+\]</span></p></li>
+<li><p>What distribution in the set <span class="math inline">\(M_\phi
+\triangleq \{ q: \E_q[X] = \mu, \Cov_q[X] = \Sigma \}\)</span> will
+maximize the entropy of a random vector <span class="math inline">\(X
+\in \R^d\)</span>​​ with a fixed mean vector and covariance matrix??</p>
+<p>This is the first attempt to extend the discussion to a continuous
+case. We know that <span class="math inline">\(q^*\)</span> is in the
+form of <span class="math display">\[
+q^*(x) = \exp(\theta^\top \phi(x) - A(\theta))
+\]</span> Note that <span class="math display">\[
+\begin{aligned}
+\Cov[X] &amp;= \E[(X-\mu)(X-\mu)^T] \\
+\Cov[X] &amp;= \E[X X^T] - \E[X] \E[X]^T \\
+\E[X X^T] &amp;= \Cov[X] + \E[X] \E[X]^T \\
+\end{aligned}
+\]</span> Therefore, we can choose our feature function as <span class="math display">\[
+\phi(x) = [x_1, \dots, x_d, x_1 x_1, \dots, x_1 x_d, x_2 x_2, \dots, x_2
+x_d, \dots, x_d x_d]
+\]</span></p>
+<blockquote>
+<p>In a simpler way, we know <span class="math inline">\(q^*(x) =
+\exp(\theta^T \phi(x) - A(\theta))\)</span> where <span class="math inline">\(\theta \in \R^{d^2+d}\)</span>. This form of
+exponential family is exactly the Gaussian distribution: <span class="math display">\[
+q^*(x) = \frac{\exp[-\frac{1}{2}{(x-\mu)}^\top \Sigma^{-1}
+(x-\mu)]}{\sqrt{|2\pi \Sigma|}}
+\]</span></p>
+</blockquote>
+<p>Consider the normalization constraint to give <span class="math display">\[
+\int \exp(A(\theta)) = 1
+\]</span></p></li>
+</ul>
+<h3 id="maximizing-conditional-entropy">Maximizing Conditional
+Entropy</h3>
+<p>Consider the prediction problem where we want to predict the label
+variable from the feature variable. Denote as <span class="math inline">\(P_{X,Y}\)</span> the joint distribution of <span class="math inline">\((X,Y)\)</span>. The question is how to determine
+the prediction rule <span class="math inline">\(f: \mathcal{X} \mapsto
+\mathcal{Y}\)</span>?</p>
+<ul>
+<li><p>If <span class="math inline">\(P_{X,Y}\)</span> is known…</p>
+<p>This would depend on the loss function. If the loss function is the
+squared error, the MMSE estimator gives <span class="math display">\[
+f^*(x) = \E[Y|X=x]
+\]</span></p></li>
+<li><p>If <span class="math inline">\(P_{X,Y}\)</span> is unknown and we
+know that <span class="math inline">\(P_{X, Y}\)</span> belongs to the
+family <span class="math inline">\(M_\phi \triangleq \{ Q_{X,Y}:
+\E_Q[\phi(X, Y)] = \mu \}\)</span>…</p>
+<p>In this case, we can further apply the principle of maximum
+conditional entropy. But why not maximize the joint entropy <span class="math inline">\(H(X, Y)\)</span> as done in previous discussion?
+In fact, in this case, the two approaches are equivalent due to the
+following relationship: <span class="math display">\[
+H(X,Y) = H(Y|X) + H(X)
+\]</span> Since <span class="math inline">\(H(X)\)</span> is
+fixed/deterministic given the samples (because we can directly learn
+<span class="math inline">\(p_X\)</span> at least in a non-parametric
+way from samples), we can resort to maximizing <span class="math inline">\(H(Y|X)\)</span> to slim down the formula. Note
+that even though we have been given the samples from <span class="math inline">\(p_{X,Y}\)</span>, we can still adjust <span class="math inline">\(p_{Y|X}\)</span> to maximize <span class="math inline">\(H(Y|X)\)</span> (because can’t learn <span class="math inline">\(p_{Y|X=x}\)</span> for every <span class="math inline">\(x \in \mathcal{X}\)</span> from samples). From
+another perspective, in prediction task, what we are interested in is
+the <span class="math inline">\(p_{Y|X}\)</span> instead of <span class="math inline">\(p_X\)</span>.</p></li>
+</ul>
+<blockquote>
+<p>Definition: <strong>principle of maximum conditional
+entropy</strong>. Given the set of probability distributions <span class="math inline">\(M\)</span> on <span class="math inline">\((X,Y)\)</span>, base the prediction of <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span> on the distribution maximizing the
+conditional entropy <span class="math inline">\(H(Y|X)\)</span>: <span class="math display">\[
+\arg \max_{q \in M} H_q(Y|X) \triangleq \sum_{x \in \mathcal{X}} q(x, y)
+\frac{1}{q(x|y)}
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Theorem: <strong>maximum conditional entropy and logistic
+regression</strong>. The conditional distribution <span class="math inline">\(q_{Y|X}^*\)</span> chosen from <span class="math inline">\(M_\phi \triangleq \{ Q_{X,Y}: \E_Q[Y \phi(X)] =
+\mu \}\)</span> (i.e., “<span class="math inline">\(\phi(X,Y)\)</span>”
+is chosen to be in the form of <span class="math inline">\(Y
+\phi(X)\)</span>) that results in the maximum conditional entropy will
+follow a logistic regression model for some vector <span class="math inline">\(\theta\)</span>: <span class="math display">\[
+q_{Y|X}^*(y|x) = \frac{\exp(y \theta^\top \phi(x))}{\sum_{y&#39; \in
+\mathcal{Y}} \exp(y&#39; \theta^\top \phi(x))}
+\]</span></p>
+</blockquote>
+
+
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/machine-learning-theory/0-intro/" rel="next">0-intro</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/courses/machine-learning-theory/2-uniform-convergence/" rel="prev">2-uniform-convergence</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jan 7, 2022</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

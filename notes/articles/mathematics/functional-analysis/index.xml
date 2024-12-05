@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Functional Analysis | Chunxy&#39; Website</title>
+    <link>https://chunxy.github.io/notes/articles/mathematics/functional-analysis/</link>
+      <atom:link href="https://chunxy.github.io/notes/articles/mathematics/functional-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <description>Functional Analysis</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
+    <image>
+      <url>https://chunxy.github.io/media/sharing.png</url>
+      <title>Functional Analysis</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/functional-analysis/</link>
+    </image>
+    
+    <item>
+      <title>Fourier Transform</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/functional-analysis/fourier-transform/</link>
+      <pubDate>Mon, 09 May 2022 22:09:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/functional-analysis/fourier-transform/</guid>
+      <description>
+
+&lt;h2 id=&#34;continuous-time-fourier-transform&#34;&gt;Continuous-time Fourier
+Transform&lt;/h2&gt;
+&lt;h3 id=&#34;fourier-series&#34;&gt;Fourier Series&lt;/h3&gt;
+&lt;p&gt;In Euclidean space, we usually represent a vector by a set of
+independent and orthogonal base vectors (basis). Orthogonality means the
+inner product between two basis is zero. Inner product can also be
+defined on some common interval between two functions, and thus the
+orthogonality.&lt;/p&gt;
+&lt;h4 id=&#34;frequency-domain&#34;&gt;Frequency Domain&lt;/h4&gt;
+&lt;p&gt;It is intuitive to model after the inner product between vectors.
+Function (signal) on its domain can be viewed as an “infinite-dimension”
+vector. We represent this infinity in the definition of function inner
+product by integration. In particular, given two functions &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt;, an interval &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt;, the inner product is &lt;span class=&#34;math display&#34;&gt;\[
+\int\limits_{x \in I}s(x)g(x)dx
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; are orthogonal on interval &lt;span class=&#34;math inline&#34;&gt;\(I\)&lt;/span&gt; if their inner product &lt;span class=&#34;math inline&#34;&gt;\(\int_{x \in I}s(x)g(x)dx = 0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;A set of basis of &lt;span class=&#34;math inline&#34;&gt;\(\R^N\)&lt;/span&gt; Euclidean
+space contains at most &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;
+independent orthogonal basis. For an “infinite-dimension” function
+space, there are an infinite number of basis, among which a group of
+sine and cosine functions satisfy. For integer &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; and positive integers &lt;span class=&#34;math inline&#34;&gt;\(m, n\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\left\{
+\begin{array} \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx = \pi, m = n, m, n
+\ge 1 \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx = 0, m \ne n, m, n
+\ge 1 \\
+\end{array}
+\right. \\
+\left\{
+\begin{array} \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx = \pi, m = n, m, n
+\ge 1 \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx = 0, m \ne n, m, n
+\ge 1 \\
+\end{array}
+\right. \\
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx = 0, m, n \ge 1
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Proof&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(m = n\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx &amp;amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \cos^2(nx)dx \\
+&amp;amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{1 - \cos(2nx)}{2}dx \\
+&amp;amp;= \pi
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx &amp;amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \sin^2(nx)dx \\
+&amp;amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{1 + \cos(2nx)}{2}dx \\
+&amp;amp;= \pi
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx &amp;amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \sin(nx) \cos(nx)dx \\
+&amp;amp;= \int_{-\pi + 2k\pi}^{\pi + 2k\pi} \frac{\sin(2nx)}{2}dx \\
+&amp;amp;= 0
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(m \ne n\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \cos(nx)dx &amp;amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \frac{\cos((m+n)x) + \cos((m-n)x)}{2}dx \\
+&amp;amp;= \frac{\frac{\sin((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi} + \frac{\sin((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi}}{2} \\
+&amp;amp;= 0
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \sin(mx) \sin(nx)dx &amp;amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \frac{\cos((m+n)x) - \cos((m-n)x)}{2}dx \\
+&amp;amp;= \frac{\frac{\sin((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi} - \frac{\sin((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi}}{2} \\
+&amp;amp;= 0
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-\pi + 2k\pi}^{\pi + 2k\pi} \cos(mx) \sin(nx)dx &amp;amp;= \int_{-\pi
++ 2k\pi}^{\pi + 2k\pi} \frac{\sin((n+m)x) + \sin((n-m)x)}{2}dx \\
+&amp;amp;= -\frac{\frac{\cos((m+n)x)}{m+n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi} + \frac{\cos((m-n)x)}{m-n}\bigg|^{x=\pi + 2k\pi}_{x=-\pi +
+2k\pi}}{2} \\
+&amp;amp;= 0
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In other words, we can use the linear combination of &lt;span class=&#34;math inline&#34;&gt;\(1, \cos(x), \sin(x), \cos(2x), \sin(2x),
+\dots\)&lt;/span&gt; to fit any &lt;strong&gt;continuous function&lt;/strong&gt; on
+interval &lt;span class=&#34;math inline&#34;&gt;\([-\pi, \pi]\)&lt;/span&gt;. Or use &lt;span class=&#34;math inline&#34;&gt;\(1, \cos(2\pi fx), \sin(2\pi fx), \cos(2\pi f2x),
+\sin(2\pi f2x), \dots\)&lt;/span&gt; to fit any function on interval &lt;span class=&#34;math inline&#34;&gt;\([\frac{-1}{2f} + \frac{k}{f}, \frac{1}{2f} +
+\frac{k}{f}]\)&lt;/span&gt;, which can be any interval by properly choosing
+the value of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; (frequency) and the
+integer &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;A continuous function &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;
+approximated with such series up to level &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; can be written as: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{align}
+&amp;amp;\begin{split}
+s_N(x) &amp;amp;= a_0 + \sum_{n=1}^N \big(
+\underbrace{a_n}_{A_n\sin(\varphi_n)} \cos(2\pi fnx) +
+\underbrace{b_n}_{A_n\cos(\varphi_n)} \sin(2\pi fnx) \big) \\
+&amp;amp;= a_0 + \sum_{n=1}^N \bigg( A_n\sin(2\pi fnx + \varphi_n) \bigg)
+\text{, where} \\
+\end{split} \\
+\notag &amp;amp;A_n = \sqrt{a_n^2 + b_n^2}, \sin(\varphi_n) =
+\frac{a_n}{\sqrt{a_n^2 + b_n^2}}, \cos(\varphi_n) =
+\frac{b_n}{\sqrt{a_n^2 + b_n^2}}
+\end{align}
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(A_n\)&lt;/span&gt; can be interpreted as
+the amplitude, &lt;span class=&#34;math inline&#34;&gt;\(\varphi_n\)&lt;/span&gt; as the
+phase, &lt;span class=&#34;math inline&#34;&gt;\(nf\)&lt;/span&gt; as the frequency.&lt;/p&gt;
+&lt;h4 id=&#34;complex-domain&#34;&gt;Complex Domain&lt;/h4&gt;
+&lt;p&gt;By Euler’s Formula we have &lt;span class=&#34;math display&#34;&gt;\[
+e^{ix} = \cos x + i\sin x
+\]&lt;/span&gt; Thus &lt;span class=&#34;math inline&#34;&gt;\(s_N(x)\)&lt;/span&gt; can be
+re-written as &lt;span class=&#34;math display&#34;&gt;\[
+\begin{alignat}{2}
+s_N(x) &amp;amp;= a_0 &amp;amp;&amp;amp;+ \sum_{n=1}^N \bigg(
+\underbrace{a_n}_{A_n\cos \phi_n} \cos(2\pi fnx) +
+\underbrace{b_n}_{A_n\sin \phi_n} \sin(2\pi fnx) \bigg) \\
+&amp;amp;= a_0 &amp;amp;&amp;amp;+ \sum_{n=1}^N \bigg( A_n\cos(2\pi fnx - \phi_n)
+\bigg) \\
+&amp;amp;= a_0 &amp;amp;&amp;amp;+ \sum_{n=1}^N \frac{A_n}{2} \bigg( \cos(2\pi fnx -
+\phi_n) + i\sin(2\pi fnx - \phi_n) \bigg) \\
+&amp;amp; &amp;amp;&amp;amp;+ \sum_{n=1}^N \frac{A_n}{2} \bigg( \cos(2\pi fnx -
+\phi_n) - i\sin(2\pi fnx - \phi_n) \bigg) \\
+&amp;amp; &amp;amp;&amp;amp;\Downarrow_\text{by multiplication rule between complex
+numbers in polar form}  \\
+&amp;amp;= &amp;amp;&amp;amp; \sum_{n=-N}^N c_ne^{i 2\pi fnx} \\
+\end{alignat}
+\]&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+\begin{eqnarray}
+c_n &amp;amp;=
+\begin{cases}
+\frac{A_n}{2}(\cos \phi_n - i\sin \phi_n) = \frac{1}{2}(a_n - ib_n),
+&amp;amp;n &amp;gt; 0 \\
+\overline{c_{|n|}} =\frac{A_n}{2}(\cos \phi_n + i\sin \phi_n), &amp;amp;n
+&amp;lt; 0 \\
+a_0, &amp;amp;n = 0
+\end{cases}
+\end{eqnarray}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(N \to +\infty\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; can be reconstructed as the Fourier
+Series: &lt;span class=&#34;math display&#34;&gt;\[
+s(x) = \lim_{N \to +\infty} s_N(x) = a_0 + \sum_{n=1}^{+\infty} \bigg(
+a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg) \\
+\]&lt;/span&gt; The problem comes how &lt;span class=&#34;math inline&#34;&gt;\(a_i\)&lt;/span&gt;
+can be computed. By the orthogonality mentioned before, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \d x = \int_{-1/2f+f/k}^{1/2f+f/k} [a_0
++ \sum_{n=1}^{+\infty} \bigg( a_n \cos(2\pi fnx) + b_n \sin(2\pi fnx)
+\bigg)] \d x = \frac{1}{f} a_0 \\
+\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \cos(2\pi fkx) \d x =
+\int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n
+\cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \cos (2\pi fkx) \d x =
+\frac{1}{2f} a_k \\
+\int_{-1/2f+f/k}^{1/2f+f/k} s(x) \sin(2\pi fkx) \d x
+=\int_{-1/2f+f/k}^{1/2f+f/k} [a_0 + \sum_{n=1}^{+\infty} \bigg( a_n
+\cos(2\pi fnx) + b_n \sin(2\pi fnx) \bigg)] \sin (2\pi fkx) \d x =
+\frac{1}{2f} b_k \\
+\end{gather}
+\]&lt;/span&gt; The computation of &lt;span class=&#34;math inline&#34;&gt;\(a_k\)&lt;/span&gt;
+and &lt;span class=&#34;math inline&#34;&gt;\(b_k\)&lt;/span&gt; can be combined together by
+the Euler’s Formula: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\int_{-1/2f+f/k}^{1/2f+f/k} s(x) e^{-i 2\pi fkx} \d x &amp;amp; =
+\int_{-1/2f+f/k}^{1/2f+f/k} (a_k \cos(2\pi fkx) + b_k \sin(2\pi fkx))
+(\cos(2\pi fkx) - i \sin(2\pi fkx)) \d x \\
+&amp;amp;= \frac{1}{2f} (a_k - i b_k) = \frac{1}{f} c_k
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;fourier-transform&#34;&gt;Fourier Transform&lt;/h3&gt;
+&lt;p&gt;We have been through representing a continuous function on a certain
+interval using the Fourier Series. This can be quite useful for periodic
+functions. As long as we figure out the representation on its repeating
+interval, we obtain the representation on its whole domain. The problem
+is more of computing the factor for each sine and cosine function.&lt;/p&gt;
+&lt;p&gt;The process of finding out factors for an arbitrary continuous
+function &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; is called Fourier
+Transform. It transforms the function &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; from the time domain to the frequency
+domain. When &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; is periodic, it can
+be easily represented by the Fourier Series as discussed in previous
+section. When &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; is not periodic, we
+can treat the periodic interval as &lt;span class=&#34;math inline&#34;&gt;\([-\infty,
++\infty]\)&lt;/span&gt;. Its Fourier Transform and the inverse will be &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather*}
+\hat s \stackrel{\mathcal F}\Longleftrightarrow s \\
+\hat s(f) = \int_{-\infty}^{+\infty} s(t) e^{-i 2\pi f x} \d t \\
+s(x) = \int_{-\infty}^{+\infty} \hat s(f) e^{i 2\pi f x} \d f
+\end{gather*}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;discrete-time-fourier-transform&#34;&gt;Discrete-time Fourier
+Transform&lt;/h2&gt;
+&lt;p&gt;The domain (time axis) of the function (signal) is continuous in our
+discussion by now. When the time axis is discrete (and usually takes on
+a series of integers), we are facing the discrete-time Fourier
+transform. We will be using the term &lt;strong&gt;signal&lt;/strong&gt; instead of
+the function from now on.&lt;/p&gt;
+&lt;p&gt;For a discrete signal &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt;, its
+Fourier transform is &lt;span class=&#34;math display&#34;&gt;\[
+\hat s(\omega) = \sum_{k=-\infty}^{+\infty} s[k] e^{-i\omega k}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\omega\)&lt;/span&gt; is the
+angular speed. &lt;span class=&#34;math inline&#34;&gt;\(\omega\)&lt;/span&gt; is in the
+unit of radian/sample. &lt;span class=&#34;math inline&#34;&gt;\(\hat
+s(\omega)\)&lt;/span&gt; is the weight of the component which walks &lt;span class=&#34;math inline&#34;&gt;\(\omega\)&lt;/span&gt; between two signal samples. &lt;span class=&#34;math display&#34;&gt;\[
+\hat s(f) = \sum_{k=-\infty}^{+\infty} s[k] e^{-i 2\pi f k}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is the
+“frequency”. &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is in the unit of
+cycles/sample. &lt;span class=&#34;math inline&#34;&gt;\(\hat s(f)\)&lt;/span&gt; is the
+weight of the component which walks &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; cycles between two signal samples.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jezzamon.com/fourier/zh-cn.html&#34;&gt;傅里叶变换交互式入门
+(jezzamon.com)&lt;/a&gt; || &lt;a href=&#34;https://charlesliuyx.github.io/2018/02/18/%E3%80%90%E7%9B%B4%E8%A7%82%E8%AF%A6%E8%A7%A3%E3%80%91%E8%AE%A9%E4%BD%A0%E6%B0%B8%E8%BF%9C%E5%BF%98%E4%B8%8D%E4%BA%86%E7%9A%84%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E8%A7%A3%E6%9E%90/&#34;&gt;傅立叶变换与群&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/1119070975&#34;&gt;如何理解傅里叶变换公式？
+- 苗华栋的回答 - 知乎&lt;/a&gt; || &lt;a href=&#34;https://www.zhihu.com/question/19714540/answer/334686351&#34;&gt;如何理解傅里叶变换公式？
+- 马同学的回答 - 知乎&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Stirling&#39;s Approximation</title>
+      <link>https://chunxy.github.io/notes/articles/mathematics/functional-analysis/stirlings-approximation/</link>
+      <pubDate>Mon, 09 May 2022 22:09:00 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/mathematics/functional-analysis/stirlings-approximation/</guid>
+      <description>
+
+&lt;h2 id=&#34;stirlings-approximation&#34;&gt;Stirling’s Approximation&lt;/h2&gt;
+&lt;p&gt;Stirling’s approximation, which states that &lt;span class=&#34;math inline&#34;&gt;\(\Gamma(n+1) \sim \sqrt{2 \pi n} \left( \frac{n}{e}
+\right)^n\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(n \to \infty\)&lt;/span&gt;,
+is useful when estimating the order of &lt;span class=&#34;math inline&#34;&gt;\(n!\)&lt;/span&gt;. Notably, it is quite accurate even
+when &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is small.&lt;/p&gt;
+&lt;p&gt;The authentic proof entails Gamma function and Laplace’s method.
+However in integer case, Stirling’s approximation can be approached with
+Poisson distribution. Start from a Poisson distribution with mean &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+P(r ; \lambda) = e^{-\lambda} \frac{\lambda^r}{r!}
+\]&lt;/span&gt; When &lt;span class=&#34;math inline&#34;&gt;\(X \sim P(\lambda_1)\)&lt;/span&gt;,
+&lt;span class=&#34;math inline&#34;&gt;\(Y \sim P(\lambda_2)\)&lt;/span&gt;, and suppose
+&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; are independent, &lt;span class=&#34;math inline&#34;&gt;\(X + Y \sim P(\lambda_1 + \lambda_2)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Proof &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp; \Pr(X + Y = r) = \sum_{k=0}^r \Pr(X = k) \Pr(Y = r-k) \\
+&amp;amp;= \sum_{k=0}^r e^{-\lambda_1} \frac{\lambda_1^k}{k!} e^{-\lambda_2}
+\frac{\lambda_2^{r-k}}{(r-k)!} \\
+&amp;amp;= \frac{e^{-(\lambda_1 + \lambda_2)}}{r!} \sum_{k=0}^r \frac{r!}{k!
+(r-k)!} \lambda_1^k \lambda_2^{r-k} \\
+&amp;amp;= e^{-(\lambda_1 + \lambda_2)} \frac{(\lambda_1 + \lambda_2)^r}{r!}
+\\
+&amp;amp;= P(r; \lambda_1 + \lambda_2)
+\end{aligned}
+\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Therefore, a random variable &lt;span class=&#34;math inline&#34;&gt;\(X \sim
+P(\lambda)\)&lt;/span&gt; (with integer &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;) can be treated as the addition
+of &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; independent &lt;span class=&#34;math inline&#34;&gt;\(Y_i \sim P(1)\)&lt;/span&gt;. By the central limit
+theorem, for a large &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\mathbb \Pr(\frac{\underbrace{\sum_i Y_i}_X - \lambda}{\sqrt{\lambda}}
+\le x) \simeq \Phi(x)
+\]&lt;/span&gt; Or put it another way, the mass of the Poisson distribution
+&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; follows is well approximated by
+the density of the Gaussian distribution with mean &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; and variance &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+P(x;\lambda) &amp;amp;\simeq N(x; \lambda, \lambda) \\
+e^{-r} \frac{\lambda^r}{r!} &amp;amp;\approx \frac{1}{\sqrt{2\pi \lambda}}
+e^{-\frac{(r - \lambda)^2}{2\lambda}}
+\end{aligned}
+\]&lt;/span&gt; Plug &lt;span class=&#34;math inline&#34;&gt;\(r = \lambda\)&lt;/span&gt; into
+this formula and rearrange it to have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+e^{-\lambda} \frac{\lambda^\lambda}{\lambda!} &amp;amp;\approx
+\frac{1}{\sqrt{2\pi \lambda}} \\
+\lambda! &amp;amp;\approx \sqrt{2\pi \lambda} \left( \frac{\lambda}{e}
+\right)^\lambda
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1521,10 +1588,11 @@ F(x)\)</span>，则称该随机变量序列<strong>依分布收敛</strong>于<s
 \stackrel{d}{\to} F\)</span>。</p></li>
 </ul>
 <h2 id="收敛到随机变量">“收敛到随机变量”</h2>
-<p>除了上述讨论的收敛到值、收敛到函数的情况外，另外一个比较有趣的话题是“收敛到随机变量”，或者说“两个随机变量相等”是一个怎样的概念？</p>
+<p>除了上述讨论的收敛到值、收敛到（分布）函数的情况外，另外一个比较有趣的话题是“收敛到随机变量”，或者说“两个随机变量相等”是一个怎样的概念？</p>
 <p>我们讨论概率的时候，会涉及到两个函数：一个是概率函数，另一个是随机变量这一从事件到数字的映射。方便起见我们令<span class="math inline">\(X\)</span>和<span class="math inline">\(Y\)</span>为两个随机变量，随机变量相等，则意味着这两个从事件到数字的映射相等，进而<span class="math inline">\(P(X = Y) = 1\)</span>。</p>
 <p>映射相等，意味着定义域、值域、映射关系完全相等。如果我有两个骰子，令<span class="math inline">\(X\)</span>表示第一个骰子掷出的点数、<span class="math inline">\(Y\)</span>表示第二个骰子掷出的点数，那么<span class="math inline">\(X =
-Y\)</span>吗？答案是不，因为这两个随机变量的定义域不相等：<span class="math inline">\(X\)</span>的定义域表示第一个骰子的所有可能事件，<span class="math inline">\(Y\)</span>的定义域表示第二个骰子的所有可能事件；虽然两个骰子掷出的点数都只能是1、2、3、4、5、6，但这代表的仅是值域相同，而“第一个骰子掷出一”（注意这里避免使用任何数字，以表示它是一个事件）这个事件和“第二个骰子掷出一”是不一样的，因为<span class="math inline">\(X\)</span>不会因为第二个骰子掷出一而取为1。</p>
+Y\)</span>吗？答案是不，因为这两个随机变量的定义域不相等：<span class="math inline">\(X\)</span>的定义域表示第一个骰子的所有可能事件，<span class="math inline">\(Y\)</span>的定义域表示第二个骰子的所有可能事件；虽然两个骰子掷出的点数都只能是1、2、3、4、5、6，但这代表的仅是值域相同，而“第一个骰子掷出一”（注意这里避免使用阿拉伯数字，以表示它是一个事件）这个事件和“第二个骰子掷出一”是不一样的，因为<span class="math inline">\(X\)</span>不会因为第二个骰子掷出一而取为1。</p>
+<p>至此，我们更加能够体会到“收敛到函数”的含义：只是碰巧该随机变量的分布函数在极限情况下与某个满足分布函数条件的函数相同而已。而“收敛到值”相较于“收敛到函数”，提供的信息更少，因为“收敛到值”只是告诉我们在极限情况下，该随机变量在某一处取值的概率趋近于<span class="math inline">\(1\)</span>而已。</p>
 <h2 id="参考资料">参考资料</h2>
 <p><a href="https://zh.m.wikipedia.org/zh/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B">随机变量的收敛</a></p>
 

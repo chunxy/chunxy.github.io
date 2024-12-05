@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1435,7 +1502,7 @@
 
 <h2 id="事件的运算">事件的运算</h2>
 <h3 id="事件的包含和相等">事件的包含和相等</h3>
-<p>同一试验下的两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，如果<span class="math inline">\(A\)</span>发生时B也发生，则称<span class="math inline">\(B\)</span>包含<span class="math inline">\(A\)</span>，记作<span class="math inline">\(A
+<p>同一试验下的两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，如果<span class="math inline">\(A\)</span>发生时<span class="math inline">\(B\)</span>也发生，则称<span class="math inline">\(B\)</span>包含<span class="math inline">\(A\)</span>，记作<span class="math inline">\(A
 \subseteq B\)</span>。如果<span class="math inline">\(A,B\)</span>互相包含，则二者相等。</p>
 <h3 id="事件的互斥和对立">事件的互斥和对立</h3>
 <p>若两事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>不能再同一试验中同时发生，则称它们是互斥的。互斥事件的一个特例是对立事件，对于事件<span class="math inline">\(A\)</span>，其对立事件<span class="math inline">\(\bar A\)</span>为<span class="math inline">\(\{
@@ -1472,12 +1539,12 @@ P(A) = \sum_i P(B_i) P(A | B_i) = P(B_1) P(A|B_1) + P(B_2) P(A|B_2) +
 <p>设两个事件<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，定义新事件<span class="math inline">\(C\)</span>为<span class="math inline">\(C = \{
 \text{$A$发生，$B$不发生} \}\)</span>，则称事件<span class="math inline">\(C\)</span>为事件<span class="math inline">\(A\)</span>与事件<span class="math inline">\(B\)</span>的差，记作<span class="math inline">\(C
 = A - B\)</span>。</p>
-<p>我们对事件引入了和、积、差、对立运算。显然，这些运算符在数字运算中成立的运算规律，不一定对事件运算成立，比如说<span class="math inline">\(A + A = A\)</span>而非<span class="math inline">\(2 A\)</span>（无意义），<span class="math inline">\(A A = A\)</span>而非<span class="math inline">\(A^2\)</span>（无意义），<span class="math inline">\((A - B) + B = A + B\)</span>而不是<span class="math inline">\(A\)</span>。</p>
+<p>我们对事件引入了和、积、差、对立运算。显然，这些运算符在数字运算中成立的运算规律，不一定对事件运算成立，比如说<span class="math inline">\(A + A = A\)</span>而非<span class="math inline">\(2 A\)</span>（无意义），<span class="math inline">\(A A = A\)</span>而非<span class="math inline">\(A^2\)</span>（无意义），<span class="math inline">\((A - B) + B = A + B\)</span>而不是<span class="math inline">\(A\)</span>。基于这些运算，我们还能得出一些其他性质，比如<span class="math inline">\(A-B=A \bar B\)</span>、<span class="math inline">\(A(B-C)=AB-AC\)</span>。</p>
 <p>基于这些基本运算，我们也可以表示出更多的事件，比如：</p>
 <table>
 <colgroup>
-<col style="width: 72%"/>
-<col style="width: 27%"/>
+<col style="width: 84%"/>
+<col style="width: 15%"/>
 </colgroup>
 <thead>
 <tr class="header">

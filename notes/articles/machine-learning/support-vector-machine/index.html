@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1427,7 +1494,10 @@
 to find a <strong>linear hyperplane</strong> that separates the data
 with different labels with the maximum margin. By symmetry, there should
 be at least one margin point on both side of the decision boundary.
-These points are called <strong>support vectors</strong>.</p>
+These points are called <strong>support vectors</strong>. Further, not
+all points on the margin can be called support vectors. If we move
+support vectors away from the margin, the decision hyperplane should
+change.</p>
 <h3 id="hard-margin-svm">Hard-margin SVM</h3>
 <p>Suppose the data <span class="math inline">\(\mathcal D = \{(x^{(i)},
 y^{(i)}), i=1, \dots, M\}\)</span>, and is linearly separable. The
@@ -1467,8 +1537,11 @@ s.t.\quad y^{(i)}(w^Tx^{(i)} + b) \ge 1, i = 1,\dots,M
 may exist noisy samples that disrupt this linear separability. In such
 case, we may allow some samples to violate the margin. We define some
 slack variables <span class="math inline">\(\xi_i \ge 0\)</span>. <span class="math inline">\(\xi_i &gt; 0\)</span> means that the sample is
-inside the margin (or even this sample will be misclassified), <span class="math inline">\(\xi_i = 0\)</span> means that the sample is
-outside the margin.</p>
+inside the margin (<span class="math inline">\(\xi_i &lt; 1\)</span>),
+on the boundary (<span class="math inline">\(\xi_i = 1\)</span>), or
+even worse, misclassified (<span class="math inline">\(\xi_i &gt;
+1\)</span>). <span class="math inline">\(\xi_i = 0\)</span> means that
+the sample is outside the margin.</p>
 <p>Of course, these slack variables should be as small as possible. Then
 the problem becomes <span class="math display">\[
 \begin{gather}
@@ -1532,8 +1605,10 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 \]</span> Since we know the optimal solution exists, instead of taking
 derivative of <span class="math inline">\(D\)</span> w.r.t. <span class="math inline">\(\lambda\)</span> to solve it, we assume the
 solution to above problem is <span class="math inline">\(\lambda^\star\)</span>. Then, <span class="math display">\[
+\begin{gathered}
 w^\star = \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)} \\
 \mu^\star = C - \lambda^\star
+\end{gathered}
 \]</span> Complementary constraints will give <span class="math display">\[
 \lambda^\star_i(1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} +
 b^\star)) = 0 \\
@@ -1553,7 +1628,7 @@ b^\star &amp;= \frac{1 - \xi^\star_j}{y^{(j)}} - (w^\star)^Tx^{(j)} \\
 \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)}\cdot x^{(j)}
 \end{aligned}
 \]</span></p>
-According to the value of <span class="math inline">\(\lambda^\star_i\)</span> (not know yet), added
+According to the value of <span class="math inline">\(\lambda^\star_i\)</span> (not known yet), added
 with primal constraints and the complementary constraints, <span class="math display">\[
 \begin{gather}
 1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 0 \\
@@ -1585,15 +1660,17 @@ b^\star)) = 0 \\
 \Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 1 \\
 
 \end{aligned}\]</span>
-<p>$$ They corresponds to cases where sample <span class="math inline">\(x^{(i)}\)</span> is outside margin, is on the
-margin, violates the margin, respectively.</p>
-<p>The key to the above derivation is <span class="math inline">\(\lambda^\star\)</span>, which is to be solved in
-Solving SVM section.</p>
-<p>Soft Margin SVM is equivalent to <span class="math display">\[
+<p>$$ They corresponds to cases where sample <span class="math inline">\(x^{(i)}\)</span> is beyond the margin, is on the
+margin, within the margin, respectively. The key to the above derivation
+is <span class="math inline">\(\lambda^\star\)</span>, which is to be
+solved in <a href="#Solving%20SVM">Solving SVM</a> section.</p>
+<h4 id="hinge-loss-perspective">Hinge Loss Perspective</h4>
+<p>As an aside, soft-margin SVM is equivalent to <span class="math display">\[
 \min \frac{1}{C}||w||^2_2 + \sum_{i=1}^M\max(0, 1 - y^{(i)}(w^Tx^{(i)} +
 b))
-\]</span> where <span class="math inline">\(l_h(z) = \max(0, 1 -
-z)\)</span> is called Hinge loss.</p>
+\]</span> where <span class="math inline">\(l_h(\hat y) = \max(0, 1 - y
+\hat y)\)</span> is called the <strong>hinge loss</strong> and <span class="math inline">\(\frac{1}{C} \|w\|_2^2\)</span> plays as the
+regularization term.</p>
 <h3 id="kernel-svm">Kernel SVM</h3>
 <p>The term <span class="math inline">\(x^{(i)} \cdot x^{(j)}\)</span>
 in <span class="math inline">\(D(\lambda,\mu)\)</span> is the inner
@@ -1645,7 +1722,7 @@ explicitly.</p></li>
 </ul>
 <h3 id="solving-svm">Solving SVM</h3>
 <p><span class="math inline">\(\lambda^\star\)</span> is the key to the
-final solution and by far it is still remained unsolved: <span class="math display">\[
+final solution and by far it remains unsolved: <span class="math display">\[
 \begin{gather}
 \max_{\lambda,\mu}D(\lambda,\mu) =
 -\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot
@@ -1656,10 +1733,10 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 \]</span> We can attack it by sequential minimal optimization.</p>
 <h3 id="multi-class-svm">Multi-class SVM</h3>
 <ul>
-<li><p>1 vs. 1</p>
+<li><p>1 v.s. 1</p>
 <p>Train 1-vs-1 SVM for all pairs of classes. Then decide by majority
 voting.</p></li>
-<li><p>1 vs. rest</p>
+<li><p>1 v.s. rest</p>
 <p>Train 1-vs-rest SVM for all classes (<span class="math inline">\(y =
 1\)</span> when <span class="math inline">\(x\)</span> belongs to the
 “1”). Choose the class with the largest geometric margin.</p></li>

@@ -1,0 +1,1659 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="In standard supervised learning, we consider the training data are given in a batch randomly sampled from a fixed distribution. However, in real-world applications, data may come in an one-by-one fashion, while the underlying distribution evolves as the time goes." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/machine-learning-theory/6-online-learning/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/machine-learning-theory/6-online-learning/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/machine-learning-theory/6-online-learning/" />
+  <meta property="og:title" content="6-online-learning | Chunxy&#39; Website" />
+  <meta property="og:description" content="In standard supervised learning, we consider the training data are given in a batch randomly sampled from a fixed distribution. However, in real-world applications, data may come in an one-by-one fashion, while the underlying distribution evolves as the time goes." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="article:published_time" content="2022-01-07T13:39:19&#43;00:00" />
+    
+    <meta property="article:modified_time" content="2022-01-07T13:39:19&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>6-online-learning | Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="b8a15d6fa97883e167c6967a93c0a2e8" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Machine Learning Theory
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/courses/">Courses</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/energy-efficient-computing/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Efficient Computation</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/energy-efficient-computing/images/">Note</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/foundations-of-optimization/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/1-optimization-problem/">1-optimization-problem</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/2-convex-set/">2-convex-set</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/3-convex-function/">3-convex-function</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/4-linear-programming/">4-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/5-conic-linear-programming/">5-conic-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/6-optimizaition-under-uncertainty/">6-optimizaition-under-uncertainty</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/">7-quadratically-constrained-quadratic-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/8-nonlinear-programming/">8-nonlinear-programming</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/machine-learning-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/machine-learning-theory/0-intro/">0-intro</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/1-exp-family/">1-exp-family</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/2-uniform-convergence/">2-uniform-convergence</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/3-rademacher-complexity/">3-rademacher-complexity</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/4-vc-dimension/">4-vc-dimension</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/5-kernel-methods/">5-kernel-methods</a></li>
+
+
+
+  <li class="active"><a href="/courses/machine-learning-theory/6-online-learning/">6-online-learning</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/advanced-topics-in-distributed-system/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Distributed System</a>
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#online-learning">Online Learning</a>
+      <ul>
+        <li><a href="#examples-of-learning-strategies">Examples of Learning
+Strategies</a></li>
+        <li><a href="#online-convex-optimization">Online Convex
+Optimization</a></li>
+        <li><a href="#follow-the-leader-strategy">Follow-the-leader
+Strategy</a></li>
+        <li><a href="#follow-the-regularized-leader-strategy">Follow-the-regularized-leader
+Strategy</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/machine-learning-theory/">
+        
+          Machine Learning Theory
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        6-online-learning
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>6-online-learning</h1>
+
+          <div class="article-style">
+            
+
+<p>In standard supervised learning, we consider the training data are
+given in a <strong>batch</strong> randomly sampled from a
+<strong>fixed</strong> distribution. However, in real-world
+applications, data may come in an one-by-one fashion, while the
+underlying distribution evolves as the time goes.</p>
+<p>In online learning, we suppose the learning task is formed as a game
+between the <strong>learner</strong> and <strong>nature</strong>
+players:</p>
+<ol type="1">
+<li>at every iteration <span class="math inline">\(t\)</span>, nature
+reveals the input <span class="math inline">\(x_t \in
+\mathcal{X}\)</span> to the learner;</li>
+<li>learner outputs a prediction <span class="math inline">\(p_t \in
+\mathcal{Y}\)</span>;</li>
+<li>nature reveals the true label <span class="math inline">\(y_t \in
+\mathcal{Y}\)</span>, and Learner will suffer a loss <span class="math inline">\(l(y_t, p_t)\)</span>;</li>
+<li>learner updates its prediction model.</li>
+</ol>
+<p>In the online learning framework, we no longer have two different
+phases of training and testing. An implicit goal in online learning is
+to distribute the computations over all the iterations as uniformly as
+possible.</p>
+<h2 id="online-learning">Online Learning</h2>
+<blockquote>
+<p>Definition: <strong>regret of an online learner</strong>. Given an
+<strong>expert</strong> <span class="math inline">\(h: \mathcal{X} \to
+\mathcal{Y}\)</span>, the regret of the online learner is defined as the
+<strong>extra</strong> cumulative loss of the learner with respect to
+expert <span class="math inline">\(h\)</span>: <span class="math display">\[
+\newcommand{\reg}{{\mathrm{Regret}}} \reg(h) \triangleq
+\sum_{t=1}^T[\ell(y_t, p_t)] - \sum_{t=1}^T[\ell(y_t, h(x_t))]
+\]</span> Next, for a set of experts <span class="math inline">\(\mathcal{H}\)</span>, we define the learner’s
+regret as the worst-case regret for any expert <span class="math inline">\(h \in \mathcal{H}\)</span>: <span class="math display">\[
+\reg(\mathcal{H}) \triangleq \max_{h \in \mathcal{H}} \reg(h) =
+\sum_{i=1}^T[\ell(y_t, p_t)] - \min_{h \in \mathcal{H}}
+\sum_{i=1}^T[\ell(y_t, h(x_t))]
+\]</span></p>
+</blockquote>
+<p>The overall objective is to have a regret that is <strong>sublinear
+in <span class="math inline">\(T\)</span></strong>.</p>
+<h3 id="examples-of-learning-strategies">Examples of Learning
+Strategies</h3>
+<ul>
+<li><p>Consider a binary classification task with <span class="math inline">\(\mathcal{Y} = \{ 0,1 \}\)</span>, zero/one loss
+and an <strong>adversary nature</strong> that always generates the
+opposite label to the learner’s prediction.</p>
+<p>Consider the expert system <span class="math inline">\(\mathcal{H} =
+\{ h_0, h_1 \}\)</span> where <span class="math inline">\(h_i(x) =
+i\)</span>. We claim that the regret w.r.t. <span class="math inline">\(\mathcal{H}\)</span> will be at least <span class="math inline">\(\frac{T}{2}\)</span> at iteration <span class="math inline">\(T\)</span>. <span class="math display">\[
+\begin{aligned}
+\reg(h_i) &amp;= \sum_{t=1}^T[\ell(y_t, p_t)] - \sum_{t=1}^T[\ell(y_t,
+h_i(x_t))] \\
+&amp;= T - \sum_{t=1}^T[\ell(y_t, h_i(x_t))] \\
+\end{aligned}
+\]</span> But <span class="math inline">\(\reg(h_0) + \reg(h_1) =
+T\)</span>. As a result, <span class="math inline">\(\reg(\mathcal{H}) =
+\max_{h \in \{ h_0, h_1 \}} \reg(h) \ge \frac{T}{2}\)</span>.</p></li>
+<li><p>Consider a binary classification task with <span class="math inline">\(\mathcal{Y} = \{ 0,1 \}\)</span>, zero/one loss
+and a <strong>realizable scenario</strong> where nature generates the
+label according to an expert <span class="math inline">\(h^* \in
+\mathcal{H}\)</span>. In this scenario, the cumulative loss of a
+learning algorithm is equal to its regret w.r.t <span class="math inline">\(\mathcal{H}\)</span>.</p>
+<p>Consider the <strong>follow-the-best algorithm</strong> where at each
+iteration <span class="math inline">\(t\)</span> we arbitrarily choose
+among the experts with the best score up to now for prediction. The
+regret w.r.t. <span class="math inline">\(\mathcal{H}\)</span> can be as
+large as <span class="math inline">\(|\mathcal{H}|-1\)</span>. This is
+because every time an expert makes a mistake, it is excluded from
+candidates.</p>
+<p>Consider the <strong>majority algorithm</strong> where we vote for
+the label with the majority vote among experts in <span class="math inline">\(\mathcal{H}\)</span>. The regret w.r.t. <span class="math inline">\(\mathcal{H}\)</span> is upper-bounded by <span class="math inline">\(\log_2|\mathcal{H}|\)</span>. This is because
+every time there is a mistake, half of considered experts are excluded
+from consideration.</p></li>
+</ul>
+<h3 id="online-convex-optimization">Online Convex Optimization</h3>
+<p>Adversary nature and realizable scenario represents the two extreme
+wings of situations. To analyze the general non-realizable situations,
+we introduce a framework called <strong>online convex
+optimization</strong> where</p>
+<ol type="1">
+<li><p>learner chooses model parameters <span class="math inline">\(w_t\)</span> from a convex set <span class="math inline">\(S\)</span> at iteration <span class="math inline">\(t\)</span>;</p></li>
+<li><p>nature chooses a convex loss function <span class="math inline">\(f_t\)</span>;</p></li>
+<li><p>the regret w.r.t. model parameter <span class="math inline">\(u\)</span> will be <span class="math display">\[
+\reg(u) = \sum_{t=1}^T f_t(w_t) - \sum_{t=1}^T f_t(u) \\
+\reg(S) = \sum_{t=1}^T f_t(w_t) - \min_{u \in S} \sum_{t=1}^T f_t(u)
+\]</span></p></li>
+</ol>
+<h4 id="example-online-linear-regression">Example: Online Linear
+Regression</h4>
+<p>The setting is as follows:</p>
+<ol type="1">
+<li><p>nature reveals input vector <span class="math inline">\(x_t \in
+\R^d\)</span>;</p></li>
+<li><p>learner chooses model parameters <span class="math inline">\(w_t
+\in \R^d\)</span>;</p></li>
+<li><p>nature reveals output <span class="math inline">\(y_t \in
+\R\)</span> and the loss value at iteration <span class="math inline">\(t\)</span> is <span class="math display">\[
+f_t(w_t) = (w_t^\top x_t - y_t)^2
+\]</span></p></li>
+</ol>
+<h4 id="convexification">Convexification</h4>
+<p>Consider a <strong>general loss</strong> <span class="math inline">\(\ell\)</span> (which doesn’t have to be convex)
+and a <strong>finite set</strong> of experts <span class="math inline">\(\mathcal{H} = \{ h_1,\dots,h_m \}\)</span>. To
+convexify the problem, the learner searches for a probability
+distribution over the <span class="math inline">\(m\)</span> experts
+which means <span class="math inline">\(w_t \in \Delta_m\)</span> where
+<span class="math inline">\(\Delta_m\)</span> is the set of all
+categorical distributions over <span class="math inline">\(\{ 1,\dots,m
+\}\)</span>. The online learning algorithm will be as follows:</p>
+<ol type="1">
+<li><p>nature reveals input vector <span class="math inline">\(x_t \in
+\R^d\)</span>;</p></li>
+<li><p>learner chooses model parameters <span class="math inline">\(w_t
+\in \R^m\)</span>;</p></li>
+<li><p>nature reveals output <span class="math inline">\(y_t \in
+\R\)</span> and the loss value at iteration <span class="math inline">\(t\)</span> is <span class="math display">\[
+f_t(w_t) = w_t^\top \underbrace{[\ell(h_1(x_t), y_t), \dots,
+\ell(h_m(x_t), y_t)]}_{L_t} \\
+\]</span></p></li>
+</ol>
+<p>We will assume a online convex optimization setting from now on.</p>
+<h3 id="follow-the-leader-strategy">Follow-the-leader Strategy</h3>
+<p>The <strong>follow-the-leader (FTL)</strong> strategy seems a natural
+choice to the online learning: <span class="math display">\[
+w_t = \arg \min_{w \in S} \sum_{i=1}^{t-1} f_i(w)
+\]</span> Note that now it is a convex optimization problem.</p>
+<blockquote>
+<p>Lemma: <strong>regret bound for FTL</strong>. Given that <span class="math inline">\(w_t\)</span> is chosen according to a FTL
+strategy, we have the following upper bound on the FTL learner’s regret
+at iteration <span class="math inline">\(T\)</span>: <span class="math display">\[
+\reg(S) \le \sum_{i=1}^T [f_t(w_t) - f_{t}(w_{t+1})]
+\]</span> Proof. Recall that <span class="math inline">\(\reg(S) =
+\max_{u \in S} \reg(u)\)</span>. We need to show for every <span class="math inline">\(u \in S\)</span>, <span class="math display">\[
+\reg(u) = \sum_{t=1}^T [f_t(w_t) - f_t(u)] \le \sum_{t=1}^T [f_t(w_t) -
+f_t(w_{t+1})] \\
+\iff \\
+\sum_{t=1}^T f_t(w_{t+1}) \le \sum_{t=1}^T f_t(u)
+\]</span> <span class="math inline">\(w_{t+1}\)</span> is the
+<strong>one-step-ahead</strong> expert (relative to <span class="math inline">\(f_t\)</span>); so it should perform better than
+any other choice. We use induction to show it. When <span class="math inline">\(T=1\)</span>, we trivially have <span class="math inline">\(\forall u, f_1(u) \ge f_1(w_2)\)</span>. Suppose
+when <span class="math inline">\(T=k\)</span>, the above holds. Then,
+for every <span class="math inline">\(u \in S\)</span>, <span class="math display">\[
+\sum_{i=1}^k f_t(w_{t+1}) \le \sum_{i=1}^k f_t(u)
+\]</span> As a result, <span class="math display">\[
+\begin{aligned}
+\sum_{i=1}^{k+1} f_t(w_{t+1}) &amp;\le f_{k+1}(w_{k+2}) + \sum_{i=1}^k
+f_t(u) \\
+&amp;\Downarrow_{u=w_{k+2}} \\
+\sum_{i=1}^{k+1} f_t(w_{t+1}) &amp;\le \sum_{i=1}^{k+1} f_t(w_{k+2}) \\
+&amp;= \min_{w \in S} \sum_{i=1}^{k+1} f_t(w) \\
+&amp;\Downarrow \\
+\sum_{i=1}^{k+1} f_t(w_{t+1}) &amp;\le \sum_{i=1}^{k+1} f_t(u)
+\end{aligned}
+\]</span> which holds for every <span class="math inline">\(u \in
+S\)</span>.</p>
+</blockquote>
+<h4 id="example-i">Example I</h4>
+<p>Consider a quadratic loss function where nature chooses the input
+<span class="math inline">\(z_t\)</span> satisfying the norm bound <span class="math inline">\(\|z_t\|_2 \le M\)</span>: <span class="math display">\[
+f_t(w) = \frac{1}{2} \|w-z_t\|_2^2
+\]</span> Let <span class="math inline">\(S = \{ x:\|x\|_2 \le M
+\}\)</span>. Then the FTL strategy will choose <span class="math display">\[
+w_{t+1} = \arg \min_{w \in S} \sum_{i=1}^t \frac{1}{2} \|w-z_i\|_2^2 =
+\frac{1}{t} \sum_{i=1}^t z_i
+\]</span> Note that <span class="math display">\[
+\begin{gathered}
+w_{t+1} = \frac{t-1}{t} w_t + \frac{1}{t} z_t \\
+w_{t+1} - z_t = \frac{t-1}{t}(w_t - z_t)
+\end{gathered}
+\]</span> The regret bound will be <span class="math display">\[
+\begin{aligned}
+&amp;\reg(S) \le \sum_{t=1}^T [f_t(w_t) - f_t(w_{t+1})] \\
+&amp;= \sum_{t=1}^T \frac{1}{2} [\|w_t-z_t\|_2^2 - \|w_{t+1}-z_t\|_2^2]
+\\
+&amp;= \sum_{t=1}^T \frac{1}{2} [\|w_t-z_t\|_2^2 - (1-\frac{1}{t})^2
+\|w_t-z_t\|_2^2] \\
+&amp;= \sum_{t=1}^T \frac{1}{2} [(\frac{2}{t} -
+\frac{1}{t^2})\|w_t-z_t\|_2^2] \\
+&amp;\le \sum_{t=1}^T \frac{1}{t} \|w_t-z_t\|_2^2 \\
+&amp;\le \sum_{t=1}^T \frac{1}{t} 4M^2 \\
+&amp;\le 4M^2 (\log T + 1)
+\end{aligned}
+\]</span></p>
+<h4 id="example-ii">Example II</h4>
+<p>There are cases where FTL could also fail. We give an example here.
+Consider a linear loss function where nature chooses the input <span class="math inline">\(z_t\)</span> satisfying the norm bound <span class="math inline">\(\|z_t\|_2 \le M\)</span>:</p>
+<p><span class="math display">\[
+f_t(w) = w^\top z_t
+\]</span> Let <span class="math inline">\(S = \{ x:\|x\|_2 \le M
+\}\)</span>. Then the FTL strategy will choose <span class="math display">\[
+w_{t+1} = \arg \min_{w \in S} \sum_{i=1}^t w^\top z_t = \arg \min_{w \in
+S} w^\top \sum_{i=1}^t z_t = \frac{M}{\|\sum_{i=1}^t z_t\|_2}
+\sum_{i=1}^t z_t
+\]</span> But consider the one-dimensional input sequence <span class="math inline">\(-0.5, 1, -1, 1, -1, \dots\)</span> The parameters
+learner gives would be <span class="math inline">\(M, -M, M, -M,
+\dots\)</span> The loss incurred would be <span class="math inline">\(\sum_{i=1}^T w_i z_i = (T-1)M = M \cdot
+O(T)\)</span>. But the strategy that sets <span class="math inline">\(w=0\)</span> will give a loss of <span class="math inline">\(0\)</span>.</p>
+<p>The crux of the problem is the sudden change of the nature.</p>
+<h3 id="follow-the-regularized-leader-strategy">Follow-the-regularized-leader
+Strategy</h3>
+<p>Continuing the discussion of <u>Example II</u>, one makeup for it is
+the <strong>follow-the-regularized-leader (FTRL)</strong> strategy. That
+is, the learner returns <span class="math display">\[
+w_{t+1} = \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} f_i(w)
+\]</span> Let <span class="math inline">\(\psi(x)\)</span> be the common
+choice <span class="math inline">\(\frac{\lambda}{2}\|x\|_2^2\)</span>
+and let <span class="math inline">\(f_i\)</span> still be the linear
+loss. Then, <span class="math display">\[
+\begin{aligned}
+w_{t+1} &amp;= \arg \min_{w \in S} \frac{\lambda}{2} \|w\|_2^2 + w^\top
+\sum_{i=1}^{t} z_i \\
+&amp;\Downarrow_{v_t = -\frac{1}{\lambda} \sum_{i=1}^t z_i}  \\
+&amp;= \arg \min_{w \in S} \frac{\lambda}{2} \|w - v_t\|_2^2 -
+\frac{\lambda}{2} \|v_t\|_2^2 \\
+&amp;= \arg \min_{w \in S} \frac{\lambda}{2} \|w - v_t\|_2^2 \\
+&amp;= \Pi_S (v_t) \\
+\end{aligned}
+\]</span> If <span class="math inline">\(S=\R^d\)</span>, <span class="math display">\[
+\begin{gathered}
+w_{t+1} = -\frac{1}{\lambda} v_t \\
+w_{t+1} - w_t = -\frac{1}{\lambda} z_t = -\frac{1}{\lambda} \nabla
+f_t(w_t) \\
+\end{gathered}
+\]</span> The update rule resembles the formulation of gradient descent.
+If <span class="math inline">\(\lambda\)</span> is too large, the update
+of learner will be too stable and learner is not able to adapt to the
+environment. If <span class="math inline">\(\lambda\)</span>​ is too
+small, learner can easily overfit to the noise.</p>
+<p>But actually, we don’t need to update at every step. By the
+closed-form formula of <span class="math inline">\(w_{t+1}\)</span>, we
+can accumulate via <span class="math inline">\(v_t\)</span> and do the
+projection at the last step <span class="math inline">\(T\)</span>.</p>
+<blockquote>
+<p>Lemma: <strong>regret bound for FTRL</strong>. Suppose that <span class="math inline">\(f_t(w) = w^\top z_t\)</span> is <strong>linear
+loss</strong>, <span class="math inline">\(S\)</span> is a convex set
+and <span class="math inline">\(\psi(w) = \frac{\lambda}{2}
+\|w\|_2^2\)</span>. We have the following upper bound on the FTRL
+learner’s regret at iteration <span class="math inline">\(T\)</span>:
+<span class="math display">\[
+\reg(u) \le \frac{\lambda}{2} \|u\|_2^2 + \frac{1}{\lambda} \sum_{i=1}^T
+\|z_t\|_2^2
+\]</span> Proof. A natural idea is to reuse the conclusion from FTL. We
+may synthesize an iteration <span class="math inline">\(0\)</span> for
+FTL such that <span class="math inline">\(f_0(w) = \psi(w)\)</span>. By
+doing so, <span class="math display">\[
+w_{t+1}^\text{FTL} = \arg \min_{w \in S} \sum_{i=0}^T f_t(w) = \arg
+\min_{w \in S} [\psi(w) + \sum_{i=1}^T f_t(w)] = w_{t+1}^\text{FTRL}
+\]</span> Thus, for every <span class="math inline">\(u\)</span>, <span class="math inline">\(f_t(w_t^\text{FTRL}) - f(u) = f_t(w_t^\text{FTL})
+- f(u)\)</span> for <span class="math inline">\(t=1,\dots,T\)</span> and
+<span class="math display">\[
+\begin{aligned}
+\reg_{0:T}^\text{FTL}(u) &amp;= \psi(w_0) - \psi(u) +
+\reg_{1:T}^\text{FTL}(u) \\
+&amp;= \psi(w_0) - \psi(u) + \reg_{1:T}^\text{FTRL}(u)
+\end{aligned}
+\]</span> Note that by FTL’s bound, <span class="math display">\[
+\begin{aligned}
+&amp;\reg_{0:T}^\text{FTL}(u) = \sum_{t=0}^T [f_t(w_t) - f_t(u)] \\
+&amp;= \psi(w_0) - \psi(u) + \sum_{t=1}^T [f_t(w_t) - f_t(u)] \\
+&amp;\Downarrow_\text{one step ahead} \\
+&amp;\le \psi(w_0) - \psi(w_1) + \sum_{t=1}^T [f_t(w_t) - f_t(w_{t+1})]
+\\
+\end{aligned}
+\]</span> As a result, <span class="math display">\[
+\begin{aligned}
+&amp;\reg_{1:T}^\text{FTRL}(u) \le \psi(u) - \psi(w_1) + \sum_{t=1}^T
+[f_t(w_t) - f_t(w_{t+1})] + \psi(w_1) - \psi(w_0) \\
+&amp;= \psi(u) - \psi(w_1) + \sum_{t=1}^T [f_t(w_t) - f_t(w_{t+1})] \\
+&amp;= \psi(u) - \psi(w_1) + \sum_{t=1}^T z_t^\top (w_t - w_{t+1}) \\
+&amp;\le \psi(u) - \psi(w_1) + \sum_{t=1}^T \|z_t\|_2 \|w_t -
+w_{t+1}\|_2 \\
+&amp;= \frac{\lambda}{2} \|u\|_2^2 - \frac{\lambda}{2} \|w_1\|_2^2 +
+\sum_{t=1}^T \|z_t\|_2 \|\Pi_S (-\frac{1}{\lambda} \sum_{i=1}^{t-1} z_i)
+- \Pi_S (-\frac{1}{\lambda} \sum_{i=1}^t z_i)\|_2 \\
+&amp;\Downarrow_\text{by the shrinking property of projection of Hilbert
+norm, which is $\ell_2$ here ??} \\
+&amp;\le \frac{\lambda}{2} \|u\|_2^2 - \frac{\lambda}{2} \|w_1\|_2^2 +
+\sum_{t=1}^T \|z_t\|_2 \frac{1}{\lambda} \|z_t\|_2 \\
+&amp;\le \frac{\lambda}{2} \|u\|_2^2 + \frac{1}{\lambda} \sum_{t=1}^T
+\|z_t\|_2^2
+\end{aligned}
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Corollary: <strong>best choice of <span class="math inline">\(\lambda\)</span> for FTRL</strong>. Given above
+inequality, suppose that <span class="math inline">\(\|u\|_2 \le
+B\)</span> for every <span class="math inline">\(u \in S\)</span> and
+<span class="math inline">\(\|z_t\| \le M\)</span>. Then, <span class="math display">\[
+\reg(S) \le \frac{\lambda B^2}{2} + \frac{TM^2}{\lambda}
+\]</span> Minimizing the upper bound over <span class="math inline">\(\lambda &gt; 0\)</span> results in <span class="math inline">\(\lambda^* = \frac{M}{B} \sqrt{2T}\)</span>, under
+which <span class="math display">\[
+\reg(S) \le MB \sqrt{2T}
+\]</span></p>
+</blockquote>
+<p>The above is the conclusion drawn for <span class="math inline">\(\ell_2\)</span>-norm regularizer and linear loss.
+We would like to extend them to general case.</p>
+<h4 id="online-gradient-descent-general-loss">Online Gradient Descent
+(General Loss)</h4>
+<p>When <span class="math inline">\(f\)</span> is not a linear function,
+we can “linearize” it using the Taylor expansion: <span class="math display">\[
+\begin{aligned}
+f(w) &amp;\approx f(w_t) + \nabla f(w_t)^\top (w-w_t) = [f(w_t) - \nabla
+f(w_t)^\top w_t] + \underbrace{\nabla f(w_t)^\top}_{z_t} w
+\end{aligned}
+\]</span> As a result, <span class="math display">\[
+\begin{aligned}
+w_{t+1} &amp;= \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} f_i(w) \\
+&amp;\approx \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} \nabla
+f_{i}(w_{i})^\top w \\
+\end{aligned}
+\]</span> Note that <span class="math inline">\(f_{t+1}\)</span> first
+appears in the derivation of <span class="math inline">\(w_{t+1}\)</span>. The latest model learner output
+is <span class="math inline">\(w_t\)</span>​ so we just expand there.
+This gives rise to the online gradient descent algorithm. The update
+rule will be</p>
+<blockquote>
+<p>Algorithm: <strong>online gradient descent</strong>.</p>
+<ol type="1">
+<li><p>Pick an <strong>initial point</strong> <span class="math inline">\(w_1 \in S\)</span>.</p></li>
+<li><p>For <span class="math inline">\(t=1\)</span> to <span class="math inline">\(T\)</span> do:</p>
+<ol type="1">
+<li>Output <span class="math inline">\(w_t\)</span> (in fact, this <span class="math inline">\(w_t\)</span> is computed in last timestep and
+formally should have been <span class="math inline">\(w_{t-1}\)</span>
+in the previous context) and receive <span class="math inline">\(f_t\)</span></li>
+<li>Compute <span class="math inline">\(z_t = \nabla
+f_t(w_t)\)</span></li>
+<li>Pick a stepsize <span class="math inline">\(\alpha_t &gt; 0\)</span>
+(which is usually fixed w.r.t. <span class="math inline">\(t\)</span>)</li>
+<li>Update <span class="math inline">\(w_{t+\frac{1}{2}} \leftarrow w_t
+- \alpha_t z_t\)</span></li>
+<li>Project <span class="math inline">\(w_{t+\frac{1}{2}}\)</span> onto
+<span class="math inline">\(S\)</span> as <span class="math inline">\(w_{t+1} \leftarrow
+\Pi_S(w_{t+\frac{1}{2}})\)</span></li>
+</ol></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Theorem: <strong>regret bound for OGD learner</strong>. In the online
+convex optimization setting, we have the following regret bound for the
+OGD learner initialized at <span class="math inline">\(w_1 = 0\)</span>
+with respect to every <span class="math inline">\(u \in S\)</span>:
+<span class="math display">\[
+\reg(u) \le \frac{\|u\|_2^2}{2\alpha} + \frac{\alpha}{2} \sum_{i=1}^T
+\|z_t\|_2^2
+\]</span> If we assume that every <span class="math inline">\(f_t\)</span> is <span class="math inline">\(\rho\)</span>-Lipschitz (and thus <span class="math inline">\(\|z_t\|_2^2 = \|\nabla f_t(w_t)\|_2^2 \le
+\rho^2\)</span>) and <span class="math inline">\(\|u\|_2 \le B\)</span>
+for every <span class="math inline">\(u \in S\)</span>, we will further
+have the following for <span class="math inline">\(\alpha^* =
+\frac{B}{\rho \sqrt{T}}\)</span>: <span class="math display">\[
+\reg(S) \le B \rho \sqrt{T}
+\]</span> Proof. Because <span class="math inline">\(w_{t+1}\)</span> is
+the projection of <span class="math inline">\(w_{t+\frac{1}{2}}\)</span>
+onto <span class="math inline">\(S\)</span>, for every <span class="math inline">\(u \in S\)</span>, we have <span class="math display">\[
+\begin{aligned}
+&amp;\|w_{t+\frac{1}{2}} - u\|_2^2 = \|w_{t+\frac{1}{2}} - w_{t+1} +
+w_{t+1} - u\|_2^2 \\
+&amp;= \underbrace{\|w_{t+\frac{1}{2}} - w_{t+1}\|_2^2}_{\ge 0} +
+\|w_{t+1} - u\|_2^2 \\
+&amp;\quad\quad + 2\underbrace{(w_{t+\frac{1}{2}} - w_{t+1})^\top
+(w_{t+1} - u)}_{\ge 0 \text{ due to the property of projection}} \\
+&amp;\ge \|w_{t+1} - u\|_2^2
+\end{aligned}
+\]</span> As a result, <span class="math display">\[
+\begin{aligned}
+&amp;\frac{1}{2} \|w_{t+1} - u\|_2^2 - \frac{1}{2} \|w_t - u\|_2^2 \\
+\le &amp;\frac{1}{2} \|w_{t+\frac{1}{2}} - u\|_2^2 - \frac{1}{2} \|w_t -
+u\|_2^2 \\
+= &amp;\frac{1}{2} \|w_t - \alpha z_t - u\|_2^2 - \frac{1}{2} \|w_t -
+u\|_2^2 \\
+= &amp;\frac{1}{2} \|\alpha z_t\|_2^2 - \alpha z_t^\top (w_t - u) \\
+= &amp;\frac{1}{2} \alpha^2 \|z_t\|_2^2 - \alpha \nabla f_t(w_t)^\top
+(w_t - u) \\
+\le &amp;\frac{1}{2} \alpha^2 \|z_t\|_2^2 - \alpha [f_t(w) - f_t(u)] \\
+\end{aligned}
+\]</span> Adding up the above inequality for <span class="math inline">\(t=1,\dots,T\)</span> gives <span class="math display">\[
+\begin{aligned}
+\alpha \sum_{t=1}^T (f_t(w_t) - f_t(u)) &amp;\le \frac{1}{2}
+\sum_{t=1}^T \alpha^2 \|z_t\|_2^2 + \frac{1}{2} \|w_1 - u\|_2^2 -
+\frac{1}{2} \|w_{T+1} - u\|_2^2 \\
+\sum_{t=1}^T (f_t(w_t) - f_t(u)) &amp;\le \frac{\alpha}{2} \sum_{t=1}^T
+\|z_t\|_2^2 + \frac{1}{2\alpha} \|w_1 - u\|_2^2 - \frac{1}{2\alpha}
+\|w_{T+1} - u\|_2^2 \\
+&amp;\le \frac{\alpha}{2} \sum_{t=1}^T \|z_t\|_2^2 + \frac{1}{2\alpha}
+\|w_1 - u\|_2^2 \\
+&amp;\Downarrow_{w_1=0} \\
+&amp;= \frac{\alpha}{2} \sum_{t=1}^T \|z_t\|_2^2 + \frac{1}{2\alpha}
+\|u\|_2^2
+\end{aligned}
+\]</span></p>
+</blockquote>
+<h4 id="online-mirror-descent-general-regularizer">Online Mirror Descent
+(General Regularizer)</h4>
+<h5 id="fenchel-conjugate">Fenchel Conjugate</h5>
+<blockquote>
+<p>Definition: <strong>Fenchel (convex) conjugate</strong>. For a
+function <span class="math inline">\(\psi: \R^d \to \R\)</span>, we
+define its Fenchel conjugate as <span class="math display">\[
+\psi^*(\theta) = \sup_{\omega \in \R^d} \omega^\top \theta -
+\psi(\omega)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>convexity of Fenchel conjugate</strong>. For
+every function <span class="math inline">\(\psi: \R^d \to \R\)</span>,
+its Fenchel conjugate <span class="math inline">\(\psi^*\)</span> is a
+convex function.</p>
+<p>Proof. <span class="math inline">\(\psi^*\)</span> is the supremum
+over affine functions.</p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>gradient of Fenchel conjugate</strong>. Consider
+the Fenchel conjugate of a differentiable function <span class="math inline">\(\psi\)</span>. Then by <u>Danskin’s theorem</u>,
+the gradient of the conjugate function will be <span class="math display">\[
+\nabla \psi^*(\theta) = \arg \max_{\omega \in \R^d}\ \omega^\top \theta
+- \psi(\omega)
+\]</span> If <span class="math inline">\(\psi\)</span> is convex, then
+<span class="math display">\[
+\nabla \psi^*(\theta) = \arg \max_{\omega \in \R^d}\ \omega^\top \theta
+- \psi(\omega) = (\nabla \psi)^{-1}(\theta)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>Fenchel conjugate of convex functions</strong>.
+Consider a convex function <span class="math inline">\(\psi: \R^d \to
+\R\)</span>. Then <span class="math inline">\(\psi\)</span>’s double
+conjugate <span class="math inline">\(\psi^{**} = \psi\)</span>. On the
+other hand, if <span class="math inline">\(\psi\)</span> is not convex,
+<span class="math inline">\(\psi^{**}\)</span> is <span class="math inline">\(\psi\)</span>’s <strong>convex
+envelope</strong>.</p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>Fenchel-Young inequality</strong>. Consider
+<span class="math inline">\(\psi: \R^d \to \R\)</span> and its Fenchel
+conjugate <span class="math inline">\(\psi^*\)</span>. Then for every
+<span class="math inline">\(\omega, \theta \in \R^d\)</span>, <span class="math display">\[
+\omega^\top \theta \le \psi(\omega) + \psi^*(\theta)
+\]</span> Proof. The proof is simply an interpretation of the
+definition: <span class="math display">\[
+\psi^*(\theta) = \max_{\omega} [\omega^\top \theta - \psi(\omega)] \ge
+\omega^\top \theta - \psi(\omega)
+\]</span></p>
+</blockquote>
+<p>Some examples of Fenchel conjugate: <span class="math display">\[
+\begin{gathered}
+\psi(\omega) = \frac{\lambda}{2} \|\omega\|_2^2 \to \psi^*(\theta) =
+\frac{1}{2\lambda} \|\theta\|_2^2 \\
+\psi(\omega) = \frac{1}{2} \omega^\top A \omega \to \psi^*(\theta) =
+\frac{1}{2} \theta^\top A^{-1} \theta \\
+\psi(\omega) = \sum_{i=1}^d \omega_i \log \omega_i \to \psi^*(\theta) =
+\sum_{i=1}^d \exp(\theta_i - 1)
+\end{gathered}
+\]</span> Now refer to the optimization problem <span class="math display">\[
+\begin{aligned}
+&amp;w_{t+1} = \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} f_i(w) \\
+&amp;\approx \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} \nabla
+f_{i}(w_{i})^\top w \\
+&amp;= \arg \max_{w \in S} \underbrace{\left[-\sum_{i=1}^{t} \nabla
+f_{i}(w_{i})\right]^\top}_{v_{t+1}^\top} w - \psi(w) \\
+&amp;= \nabla \psi^*(v_t)
+\end{aligned}
+\]</span> This motivates the online mirror descent.</p>
+<blockquote>
+<p>Algorithm: <strong>online mirror descent</strong>.</p>
+<ol type="1">
+<li>Pick an <strong>initial point</strong> <span class="math inline">\(w_1 \in S\)</span>.</li>
+<li>For <span class="math inline">\(t=1\)</span> to <span class="math inline">\(T\)</span> do:
+<ol type="1">
+<li>Output <span class="math inline">\(w_t\)</span> (in fact, this <span class="math inline">\(w_t\)</span> is computed in last timestep and
+formally should have been <span class="math inline">\(w_{t-1}\)</span>
+in the previous context) and receive <span class="math inline">\(f_t\)</span></li>
+<li>Compute <span class="math inline">\(z_t = -\nabla
+f_t(w_t)\)</span></li>
+<li>Update <span class="math inline">\(v_t \leftarrow v_{t-1} +
+z_t\)</span></li>
+<li>Update <span class="math inline">\(w_{t+1} \leftarrow \arg \min_{w}
+\psi(w) - w^\top \theta = \nabla \psi^*(v_t)\)</span></li>
+</ol></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Definition: <strong>strongly-convex and smooth function</strong>.
+Given a convex differentiable function <span class="math inline">\(\psi
+: \R^d \to \R\)</span>, consider its Bregman divergence <span class="math inline">\(D_\psi\)</span>. Then,</p>
+<ul>
+<li>We call <span class="math inline">\(\psi\)</span> <span class="math inline">\(\mu\)</span>-strongly-convex with respect to norm
+function <span class="math inline">\(\| \cdot \|\)</span> if for every
+<span class="math inline">\(w, u\)</span> we have <span class="math inline">\(D_\psi(w \| u) \ge \mu \|w − u\|_2^2\)</span>,
+which is equivalent to that for every <span class="math inline">\(x\)</span>, <span class="math inline">\(H_\psi(x)
+\succeq \mu I\)</span>.</li>
+<li>We call <span class="math inline">\(\psi\)</span> <span class="math inline">\(\lambda\)</span>-smooth with respect to norm
+function <span class="math inline">\(\| \cdot \|\)</span> if for every
+<span class="math inline">\(w, u\)</span> we have <span class="math inline">\(D_\psi(w \| u) \le \frac{\lambda}{2} \|w −
+u\|_2^2\)</span>, which is equivalent to <span class="math inline">\(\|
+\nabla \psi(w) - \nabla \psi(u)\|_2 \le \lambda \|w-u\|\)</span>.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Theorem: <strong>strong convexity and smoothness</strong>. <span class="math inline">\(\psi\)</span> is <span class="math inline">\(\mu\)</span>-strongly-convex w.r.t to norm <span class="math inline">\(\| \cdot \|\)</span> if and only if its Fenchel
+conjugate <span class="math inline">\(\psi^*\)</span> is <span class="math inline">\(\frac{1}{\mu}\)</span>-smooth w.r.t. dual norm
+<span class="math inline">\(\| \cdot \|_*\)</span> where <span class="math display">\[
+\| w \|_* = \max_{\|u\| \le 1} w^\top u
+\]</span></p>
+</blockquote>
+
+
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/machine-learning-theory/5-kernel-methods/" rel="next">5-kernel-methods</a>
+  </div>
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jan 7, 2022</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="Two-class Logistic Regression Logistic Regression is a binary linear classifier. Suppose the feature space is \(\R^N\), then it processes the feature vector \(x\) with a linear function \(f(x) = w^Tx &#43; b\), where \(w \in \R^N\) and \(b \in \R\)." />
+  <meta name="description" content="Two-class Logistic Regression Logistic regression is a binary linear classifier. Suppose the feature space is \(\R^N\), then it processes the feature vector \(x\) with a linear function \(f(x) = w^Tx &#43; b\), where \(w \in \R^N\) and \(b \in \R\)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/" />
   <meta property="og:title" content="Logistic Regression | Chunxy&#39; Website" />
-  <meta property="og:description" content="Two-class Logistic Regression Logistic Regression is a binary linear classifier. Suppose the feature space is \(\R^N\), then it processes the feature vector \(x\) with a linear function \(f(x) = w^Tx &#43; b\), where \(w \in \R^N\) and \(b \in \R\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Two-class Logistic Regression Logistic regression is a binary linear classifier. Suppose the feature space is \(\R^N\), then it processes the feature vector \(x\) with a linear function \(f(x) = w^Tx &#43; b\), where \(w \in \R^N\) and \(b \in \R\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -499,6 +499,36 @@
 
           <li class="nav-item">
             <a class="nav-link  active" href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
           </li>
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1337,6 +1404,8 @@
     <li><a href="#two-class-logistic-regression">Two-class Logistic
 Regression</a>
       <ul>
+        <li><a href="#logistic-loss-perspective">Logistic Loss
+Perspective</a></li>
         <li><a href="#some-history">Some History</a></li>
       </ul>
     </li>
@@ -1428,7 +1497,7 @@ Regression</a></li>
 
 <h2 id="two-class-logistic-regression">Two-class Logistic
 Regression</h2>
-<p>Logistic Regression is a binary linear classifier. Suppose the
+<p>Logistic regression is a binary linear classifier. Suppose the
 feature space is <span class="math inline">\(\R^N\)</span>, then it
 processes the feature vector <span class="math inline">\(x\)</span> with
 a linear function <span class="math inline">\(f(x) = w^Tx + b\)</span>,
@@ -1508,6 +1577,16 @@ p(y|x) = \frac{1}{1 + e^{-(w^Tx + b)}}
 is a generative model which learns <span class="math inline">\(p(x|y)\)</span> and <span class="math inline">\(p(y)\)</span>, LR is a discriminative model which
 only learns <span class="math inline">\(p(y|x)\)</span>. One can
 discriminate with a generative model, but not reversely.</p>
+<h3 id="logistic-loss-perspective">Logistic Loss Perspective</h3>
+<p>Logistic regression is equivalent to <span class="math display">\[
+\arg \min\limits_{w, b} \sum_{i=1}^M \log [1 + e^{-y^{(i)}(w^T
+x^{(i)}+b)}] \\
+\]</span> where <span class="math inline">\(\ell(z) = \log(1 + e^{-y
+z})\)</span> is the logistic loss and <span class="math inline">\(z =
+w^T x + b = \frac{P(\hat y=1|x)}{P(\hat y=0|x)}\)</span> is the logit.
+Square loss <span class="math inline">\(\ell(\hat y) = (y - \hat
+y)^2\)</span> is not used because this will make the problem non-convex,
+forfeiting the facility of theoretical guarantee.</p>
 <h3 id="some-history">Some History</h3>
 <p>Historically, there has been efforts on adapting linear regression to
 the classification task where the output is a probability value between
@@ -1522,10 +1601,13 @@ followed on, naming its model as “<strong>log</strong>istic
 un<strong>it</strong>” (logit). Essentially, the logit function is the
 log of the odds: <span class="math display">\[
 \mathrm{logit} (p) = \ln \frac{p}{1-p}
-\]</span> In machine learning, un-normalized scores for different
-classes are usually called logits too. It makes some sense since these
-unbounded values are to be mapped to <span class="math inline">\((0,
-1)\)</span>, which means they are logit-ted values.</p>
+\]</span> It can be verified that in logistic regression, <span class="math inline">\(\mathrm{logit}(p) = w^T x + b\)</span>. Therefore,
+the solution of logistic regression is in essence “linear-regressing”
+the logit term, explaining why it is called “logistic regression”.</p>
+<p>Also note that in machine learning, un-normalized scores for
+different classes are usually called logits too. It makes some sense
+since these unbounded values are to be mapped to <span class="math inline">\((0, 1)\)</span>, which means they are “logitted”
+values.</p>
 <h2 id="multi-class-logistic-regression">Multi-class Logistic
 Regression</h2>
 <p>One way to train use Logistic Regression in multi-class

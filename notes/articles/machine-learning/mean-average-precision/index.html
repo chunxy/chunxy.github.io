@@ -61,9 +61,7 @@
     
   
   <meta name="description" content="The Precision The typical precision and recall definition in a binary classification is
-$$
-\text{precision} = \frac{\text{TP}}{\text{TP} &#43; \text{FP}}, \text{recall} = \frac{\text{TP}}{\text{TP} &#43; \text{FN}}
-$$
+\[ \text{precision} = \frac{\text{TP}}{\text{TP} &#43; \text{FP}}, \text{recall} = \frac{\text{TP}}{\text{TP} &#43; \text{FN}} \]
 Precision determines, among all the samples that are identified as positive, how many are really positive." />
 
   
@@ -324,16 +322,16 @@ Precision determines, among all the samples that are identified as positive, how
   
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/" />
-  <meta property="og:title" content="Chunxy&#39; Website" />
+  <meta property="og:title" content="Mean Average Precision | Chunxy&#39; Website" />
   <meta property="og:description" content="The Precision The typical precision and recall definition in a binary classification is
-$$
-\text{precision} = \frac{\text{TP}}{\text{TP} &#43; \text{FP}}, \text{recall} = \frac{\text{TP}}{\text{TP} &#43; \text{FN}}
-$$
+\[ \text{precision} = \frac{\text{TP}}{\text{TP} &#43; \text{FP}}, \text{recall} = \frac{\text{TP}}{\text{TP} &#43; \text{FN}} \]
 Precision determines, among all the samples that are identified as positive, how many are really positive." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
+      <meta property="article:published_time" content="2022-01-14T21:19:17&#43;00:00" />
     
+    <meta property="article:modified_time" content="2022-01-14T21:19:17&#43;00:00">
   
 
   
@@ -346,7 +344,7 @@ Precision determines, among all the samples that are identified as positive, how
 
   
 
-  <title>Chunxy&#39; Website</title>
+  <title>Mean Average Precision | Chunxy&#39; Website</title>
 </head>
 
 
@@ -510,6 +508,36 @@ Precision determines, among all the samples that are identified as positive, how
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -565,10 +593,840 @@ Precision determines, among all the samples that are identified as positive, how
     
     
     
-      
-      
-      <div class="article-container py-1" style="background: initial">
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
         
+        
+          Machine Learning
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/notes/">Notes</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/"><i class="far fa-file-lines pr-1"></i>Articles</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/information-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Information Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/information-theory/entropy/">Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/conditional-entropy/">Conditional Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/cross-entropy/">Cross Entropy</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/mutual-information/">Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/kl-divergence/">KL-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/f-divergence/">f-divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/jenson-shannon-divergence/">Jenson-Shannon Divergence</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/information-theory/overview/">Overview</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/machine-learning/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bullet-points/">Bullet Points</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-discriminant-analysis/">Linear Discriminant Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/logistic-regression/">Logistic Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/support-vector-machine/">Support Vector Machine</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/linear-regression/">Linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/non-linear-regression/">Non-linear Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/clustering/">Clustering</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/dimensionality-reduction/">Dimension Reduction</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/principal-component-analysis/">Principal Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/eckart-young-mirsky-theorem/">Eckart-Young-Mirsky Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/independent-component-analysis/">Independent Component Analysis</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/ransac/">RANSAC</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/fishers-linear-discriminant/">Fisher&#39;s Linear Discriminant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/bias-variance-decomposition/">Bias-variance Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/">隐马尔可夫模型</a></li>
+
+
+
+  <li class="active"><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Mathematics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/calculus/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Calculus</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/jacobian-matrix/">Jacobian Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/spherical-coordinates/">Spherical Coordinates</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/calculus/lipschitz-continuity/">Lipschitz Continuity</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Linear Algebra</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/determinant/">Determinant</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/eigenvectors-and-eigenvalues/">Eigenvectors and Eigenvalues</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/singular-value-decomposition/">Singular Value Decomposition</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/real-symmetric-matrix/">Real Symmetric Matrix</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/difference-equation/">Difference Equation</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/matrix-identity/">Matrix Identity</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/quadratic-form/">Quadratic Form</a></li>
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/linear-algebra/metrics/"><img src="/media/icons/header3.png" alt="header3.png" class="svg-icon svg-baseline pr-1">Metrics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/spectral-normalization/">Spectral Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/frobenius-normalization/">Frobenius Normalization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/metrics/chebyshev-distance/">Chebyshev Distance</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/linear-algebra/positive-semi-definite-matrix/"></a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/numerical-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Numerical Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/numerical-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/probability-and-statistics/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Probability and Statistics</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/law-of-total-variance/">Law of Total Variance</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/gaussian-distribution/">Gaussian Distribution</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/unconscious-statistics/">Unconscious Statistics</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/whitening/">Whitening</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%94%B6%E6%95%9B/">随机变量的收敛</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/optimization/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/optimization/lagrange-multiplier/">Lagrange Multiplier</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-optimization/">Convex Optimization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/gradient-descent/">Gradient Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/coordinate-descent/">Coordinate Descent</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/expectation-maximization/">Expectation Maximization</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/subgradient/">Subgradient</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/least-angle-regression/">Least Angle Regression</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/optimization/convex-conjugate/"></a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/"><i class="fas fa-book pr-1"></i>Books</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/information-theory-inference-and-learning-algorithms/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Information Theory, Inference and Learning Algorithms</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/introduction/">Introduction</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/source-coding-theorem/">Source Coding Theorem</a></li>
+
+
+
+  <li class=""><a href="/notes/books/information-theory-inference-and-learning-algorithms/symbol-code/">Symbol Code</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/linear-algebra-and-its-applications/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Linear Algebra and Its Applications</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/coordinate-system-and-change-of-basis/">Coordinate System and Change of Basis</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/orthogonality-and-projection/">Orthogonality and Projection</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/gram-schmidt-orthogonalization/">Gram-Schmidt Orthogonalization</a></li>
+
+
+
+  <li class=""><a href="/notes/books/linear-algebra-and-its-applications/least-squares/">Least Squares</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">概率论与数理统计</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%80%BB%E8%A7%88/">总览</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/">事件与概率</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%B8%B8%E8%A7%81%E5%88%86%E5%B8%83/">常见分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8D%8F%E6%96%B9%E5%B7%AE%E4%B8%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/">协方差与相关系数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0/">随机变量的函数</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/">大数定律和中心极限定理</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E4%B8%89%E5%A4%A7%E5%88%86%E5%B8%83%E4%B8%8E%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/">三大分布与正态总体的抽样分布</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E7%BB%9F%E8%AE%A1%E9%87%8F/">统计量</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">参数估计</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD/">贝叶斯推断</a></li>
+
+
+
+  <li class=""><a href="/notes/books/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">假设检验</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/papers/"><i class="fas fa-paperclip pr-1"></i>Papers</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/papers/noise-contrastive-estimation/">Noise Contrastive Estimation</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/contrastive-predictive-coding/">Contrastive Predictive Coding</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/bounding-mutual-information/">Bounding Mutual Information</a></li>
+
+
+
+  <li class=""><a href="/notes/papers/flatnce/">FlatNCE</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-precision">The Precision</a></li>
+    <li><a href="#average-precision">Average Precision</a>
+      <ul>
+        <li><a href="#mean-average-precision">Mean Average Precision</a></li>
+        <li><a href="#average-mean-average-precision">“Average Mean Average
+Precision”</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
   <nav class="d-none d-md-flex" aria-label="breadcrumb">
     <ol class="breadcrumb">
       
@@ -619,7 +1477,7 @@ Precision determines, among all the samples that are identified as positive, how
   
 
       <li class="breadcrumb-item active" aria-current="page">
-        
+        Mean Average Precision
       </li>
     </ol>
   </nav>
@@ -627,228 +1485,122 @@ Precision determines, among all the samples that are identified as positive, how
 
 
 
-      </div>
-    
+          
+        </div>
 
-    <article class="article">
+        
+        
 
-  
+        <div class="docs-article-container">
+          <h1>Mean Average Precision</h1>
 
+          <div class="article-style">
+            
 
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-  
-  
-<div class="article-container pt-3">
-  <h1></h1>
-
-  
-
-  
-    
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Jan 1, 0001
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
-    
-
-
-
-
-
-  
-</div>
-
-
-
-  <div class="article-container">
-
-    <div class="article-style">
-      <h2 id="the-precision">The Precision</h2>
-<p>The typical <strong>precision</strong> and <strong>recall</strong> definition in a binary classification is</p>
-<p>$$<br>
-\text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}, \text{recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}<br>
-$$</p>
-<p>Precision determines, among all the samples that are identified as positive, how many are really positive. Recall determines, among all the samples that are positive, how many are successfully identified.</p>
-<p>Binary classification task will assign each case a score that shows how confident the model is in the case is indeed positive. We can arrange all the samples in descending order of this score. Then beginning with an empty set, we add the sample one by one into this set. Every time we add in a new sample, we can calculate the precision and the recall within this set.</p>
-<p>During this process, recall will increase monotonically; but precision may go up and down. We can draw a plot with regard to this two numbers and this is the precision-recall curve (PRC). The area under PRC usually indicates the goodness of the model, as that of a perfect model will be 1.</p>
+<h2 id="the-precision">The Precision</h2>
+<p>The typical <strong>precision</strong> and <strong>recall</strong>
+definition in a binary classification is</p>
+<p><span class="math display">\[
+\text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}},
+\text{recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+\]</span></p>
+<p>Precision determines, among all the samples that are identified as
+positive, how many are really positive. Recall determines, among all the
+samples that are positive, how many are successfully identified.</p>
+<p>Binary classification task will assign each case a score that shows
+how confident the model is in the case is indeed positive. We can
+arrange all the samples in descending order of this score. Then
+beginning with an empty set, we add the sample one by one into this set.
+Every time we add in a new sample, we can calculate the precision and
+the recall within this set.</p>
+<p>During this process, recall will increase monotonically; but
+precision may go up and down. We can draw a plot with regard to this two
+numbers and this is the precision-recall curve (PRC). The area under PRC
+usually indicates the goodness of the model, as that of a perfect model
+will be 1.</p>
 <h2 id="average-precision">Average Precision</h2>
-<p>The &ldquo;average precision&rdquo; term usually appears in document retrieval and object detection scenario. For document retrieval task,</p>
-<p>$$<br>
-\text{precision} = \frac{{ \text{relevant documents} } \cap { \text{retrieved documents} } } {{ \text{retrieved documents} }}<br>
-$$</p>
-<p>The question is where the &ldquo;average&rdquo; comes from. Similar to the plotting of PRC, we may rank the retrieved documents according to the relevance. Starting from an empty set of documents predicted as relevant, we add these retrieved documents one by one. Then we can have a series of precisions to average upon.</p>
-<p>On the other hand, in object detection task, predicted anchors are firstly ranked according to its predicted objectness score. After that, each anchor will be assigned a objectness label. The &ldquo;positivity&rdquo; of a anchor is mainly determined by its intersection over union (IoU) with the ground-truth bounding boxes. The rules for determining positivity is complex. But as a result, we will have positive anchors, negative anchors and those neither positive nor negative. During training, only positive and negative anchors will contribute gradient. But in precision, non-positive anchors are treated as &ldquo;negative&rdquo;. For a detailed discussion of positivity in object detection, please refer <a href="https://vignesh943628.medium.com/metrics-on-object-detection-b9fe3f1bac59" target="_blank" rel="noopener">here</a>.</p>
-<p>We can rank the anchors according to the objectness score. Then similarly beginning with an empty set, we add the anchor one by one into this set. Every time we add in a new anchor, we can calculate the precision. By doing so, we obtain a series of precisions to average.</p>
+<p>The “average precision” term usually appears in document retrieval
+and object detection scenario. For document retrieval task,</p>
+<p><span class="math display">\[
+\text{precision} = \frac{\{ \text{relevant documents} \} \cap \{
+\text{retrieved documents} \} } {\{ \text{retrieved documents} \}}
+\]</span></p>
+<p>The question is where the “average” comes from. Similar to the
+plotting of PRC, we may rank the retrieved documents according to the
+relevance. Starting from an empty set of documents predicted as
+relevant, we add these retrieved documents one by one. Then we can have
+a series of precisions to average upon.</p>
+<p>On the other hand, in object detection task, predicted anchors are
+firstly ranked according to its predicted objectness score. After that,
+each anchor will be assigned a objectness label. The “positivity” of a
+anchor is mainly determined by its intersection over union (IoU) with
+the ground-truth bounding boxes. The rules for determining positivity is
+complex. But as a result, we will have positive anchors, negative
+anchors and those neither positive nor negative. During training, only
+positive and negative anchors will contribute gradient. But in
+precision, non-positive anchors are treated as “negative”. For a
+detailed discussion of positivity in object detection, please refer <a href="https://vignesh943628.medium.com/metrics-on-object-detection-b9fe3f1bac59">here</a>.</p>
+<p>We can rank the anchors according to the objectness score. Then
+similarly beginning with an empty set, we add the anchor one by one into
+this set. Every time we add in a new anchor, we can calculate the
+precision. By doing so, we obtain a series of precisions to average.</p>
 <h3 id="mean-average-precision">Mean Average Precision</h3>
-<p>We can also obtain a series of average precisions for different classes of objects, yielding the concept of <strong>mean average precision</strong>.</p>
-<h3 id="average-mean-average-precision">&ldquo;Average Mean Average Precision&rdquo;</h3>
-<p>Moreover, we may change the IoU threshold to obtain a series of mean average precisions to average upon; in some sense this is the &ldquo;average mean average precision&rdquo;.</p>
-
-    </div>
-
-    
-
-
-
+<p>We can also obtain a series of average precisions for different
+classes of objects, yielding the concept of <strong>mean average
+precision</strong>.</p>
+<h3 id="average-mean-average-precision">“Average Mean Average
+Precision”</h3>
+<p>Moreover, we may change the IoU threshold to obtain a series of mean
+average precisions to average upon; in some sense this is the “average
+mean average precision”.</p>
 
 
 
-<div class="share-box">
-  <ul class="share">
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://twitter.com/intent/tweet?url=https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/&amp;text=" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/&amp;t=" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="mailto:?subject=&amp;body=https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/&amp;title=" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="whatsapp://send?text=%20https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </li>
-    
-      
-      
-      
-        
-      
-      
-      
-      <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/&amp;title=" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
-          <i class="fab fa-weibo"></i>
-        </a>
-      </li>
-    
-  </ul>
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/" rel="next">隐马尔可夫模型</a>
+  </div>
+  
+  
 </div>
 
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jan 14, 2022</p>
+
+          
+
+
+
+          
 
 
 
 
+          
 
 
+        </div>
 
+      </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-</article>
-  </div>
-
-  <div class="page-footer">
-    
-    
-    <div class="container">
       <footer class="site-footer">
 
   
@@ -920,7 +1672,15 @@ $$</p>
   </p>
 </footer>
 
-    </div>
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
     
   </div>
 
@@ -946,6 +1706,11 @@ $$</p>
     
 
     
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
     
 
     
@@ -993,11 +1758,10 @@ $$</p>
     
     
     
-    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
 
     
     
-      <script src="/js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
     
     
     

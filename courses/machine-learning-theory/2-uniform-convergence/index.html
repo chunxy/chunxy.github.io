@@ -1,0 +1,1680 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="In a typical supervised learning, the goal is to find a function \(\mathcal{F} \ni f: \mathcal{X} \to \mathcal{Y}\) that minimizes the loss measured by the loss function \(\ell: \mathcal{Y} \times \mathcal{Y} \to \R^&#43;\) over the distribution \(P_{X,Y}\)." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/machine-learning-theory/2-uniform-convergence/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/machine-learning-theory/2-uniform-convergence/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/machine-learning-theory/2-uniform-convergence/" />
+  <meta property="og:title" content="2-uniform-convergence | Chunxy&#39; Website" />
+  <meta property="og:description" content="In a typical supervised learning, the goal is to find a function \(\mathcal{F} \ni f: \mathcal{X} \to \mathcal{Y}\) that minimizes the loss measured by the loss function \(\ell: \mathcal{Y} \times \mathcal{Y} \to \R^&#43;\) over the distribution \(P_{X,Y}\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="article:published_time" content="2022-01-07T13:39:19&#43;00:00" />
+    
+    <meta property="article:modified_time" content="2022-01-07T13:39:19&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>2-uniform-convergence | Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="fae44e289705cd5ebd6818240494edef" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Machine Learning Theory
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/courses/">Courses</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/energy-efficient-computing/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Efficient Computation</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/energy-efficient-computing/images/">Note</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/foundations-of-optimization/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/1-optimization-problem/">1-optimization-problem</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/2-convex-set/">2-convex-set</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/3-convex-function/">3-convex-function</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/4-linear-programming/">4-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/5-conic-linear-programming/">5-conic-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/6-optimizaition-under-uncertainty/">6-optimizaition-under-uncertainty</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/">7-quadratically-constrained-quadratic-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/8-nonlinear-programming/">8-nonlinear-programming</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/machine-learning-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/machine-learning-theory/0-intro/">0-intro</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/1-exp-family/">1-exp-family</a></li>
+
+
+
+  <li class="active"><a href="/courses/machine-learning-theory/2-uniform-convergence/">2-uniform-convergence</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/3-rademacher-complexity/">3-rademacher-complexity</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/4-vc-dimension/">4-vc-dimension</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/5-kernel-methods/">5-kernel-methods</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/6-online-learning/">6-online-learning</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/advanced-topics-in-distributed-system/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Distributed System</a>
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introductory-case-and-initial-assumptions">Introductory
+Case and Initial Assumptions</a></li>
+    <li><a href="#uniform-convergence-analysis">Uniform Convergence
+Analysis</a>
+      <ul>
+        <li><a href="#bounding-via-markovs-inequality">Bounding via Markov’s
+Inequality</a></li>
+        <li><a href="#bounding-via-hoeffdings-inequality">Bounding via
+Hoeffding’s Inequality</a></li>
+        <li><a href="#revisiting-excess-error">Revisiting Excess Error</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/machine-learning-theory/">
+        
+          Machine Learning Theory
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        2-uniform-convergence
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>2-uniform-convergence</h1>
+
+          <div class="article-style">
+            
+
+<p>In a typical supervised learning, the goal is to find a function
+<span class="math inline">\(\mathcal{F} \ni f: \mathcal{X} \to
+\mathcal{Y}\)</span> that minimizes the loss measured by the loss
+function <span class="math inline">\(\ell: \mathcal{Y} \times
+\mathcal{Y} \to \R^+\)</span> over the distribution <span class="math inline">\(P_{X,Y}\)</span>. However, given that the sample
+size is limited, it is only possible to minimize over the given samples
+<span class="math inline">\((x_1,y_1), \dots, (x_n,y_n)\)</span>,
+yielding the empirical risk minimization (ERM).</p>
+<ul>
+<li>Empirical risk minimization vs. population risk minimization <span class="math display">\[
+\begin{gather}
+\hat f \triangleq \min_{f \in \mathcal{F}} \hat L(f) \triangleq
+\frac{1}{n} \sum_{i=1}^n [\ell(f(x_i), y_i)] \tag{ERM} \\
+f^* \triangleq \min_{f \in \mathcal{F}} L(f) \triangleq \E_{P_{X,Y}}
+[\ell(f(X), Y)] \tag{PRM/Supervised Learning} \\
+\end{gather}
+\]</span></li>
+</ul>
+<p>In machine learning, training is exactly an optimization process. But
+machine learning additionally takes into consideration the adaptation of
+the trained model from training data to unknown test data. Thus, we
+introduce the concept of <strong>generalization error</strong> to
+reflect the model’s generalization capability.</p>
+<p>Generalization risk alone cannot be the only index. It only measures
+the performance difference between training set and test set. A model
+that is the same worse on the training data and the test data
+“generalizes” well. Thus, we introduce the concept of <strong>excess
+error</strong> to reflect the model’s overall capability.</p>
+<ul>
+<li>Generalization error vs. excess error <span class="math display">\[
+\begin{gather}
+\epsilon_\text{gen}(\hat f) \triangleq L(\hat f) - \hat L(\hat f)
+\tag{Generalization Error} \\
+\epsilon_\text{excess}(\hat f) \triangleq L(\hat f) - L(f^*) \tag{Excess
+Error}
+\end{gather}
+\]</span></li>
+</ul>
+<p>Note that generalization error may be positive, zero or negative;
+excess error cannot be negative. Also note that even a small excess
+error does not imply an effective learning algorithm: the EMR model may
+be as bad as the PRM model. It is just that we usually assume a very low
+population risk.</p>
+<p>The overall purpose is to build a bound on the excess error
+<strong>for the ERM method</strong> with respect to the sample size,
+which is the main topic of <strong>uniform convergence
+analysis</strong>.</p>
+<h2 id="introductory-case-and-initial-assumptions">Introductory Case and
+Initial Assumptions</h2>
+<p>As a kickstart, we make the following assumptions:</p>
+<ol type="1">
+<li>We consider the zero-one loss.</li>
+<li>We assume a <strong>realizable scenario</strong> where <span class="math inline">\(L(f^*) = 0\)</span> and <span class="math inline">\(f^*\)</span> belongs to the hypothesis set.</li>
+<li>We consider a finite hypothesis set <span class="math inline">\(\mathcal{F} = \{ f_1,\dots,f_t \}\)</span> with
+<span class="math inline">\(t\)</span>​ functions.</li>
+</ol>
+<p>Note that due to the realizability assumption, the excess risk is
+exactly the population risk.</p>
+<blockquote>
+<p>Theorem: <strong>excess error bound for realizable finite hypothesis
+set</strong>. The following population risk bound holds for the ERM
+solution <span class="math inline">\(\hat f\)</span> with probability at
+least <span class="math inline">\(1-\delta\)</span>: <span class="math display">\[
+\epsilon_\text{excess}(\hat f) = L(\hat f) \le \frac{\log t + \log
+\frac{1}{\delta}}{n}
+\]</span> Proof. Let <span class="math inline">\(B \triangleq \{ f \in
+\mathcal{F}, L(f) &gt; \epsilon \}\)</span>. Since the problem is
+realizable in that <span class="math inline">\(L(f^*) = 0\)</span> and
+<span class="math inline">\(f^* \in \mathcal{F}\)</span>, we have <span class="math display">\[
+\begin{gathered}
+0 \le \hat L(\hat f) \le \hat L(f^*) = L(f^*) = 0 \\
+\Rightarrow \hat L(\hat f) = 0
+\end{gathered}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}[t]
+&amp;\Pr(L(\hat f) &gt; \epsilon) \\
+&amp;= \Pr(\hat f \in B) \\
+&amp;\Downarrow_{\hat L(\hat f) = 0} \\
+&amp;\le \Pr(\exists h \in B, \hat L(h) = 0) \\
+&amp;\le \sum_{h \in B} \Pr(\hat L(h) = 0) \\
+\\
+&amp;\Downarrow \\
+&amp;\le \sum_{h \in B} \exp(-\epsilon n) \\
+&amp;= t \exp(-\epsilon n)
+\end{aligned}
+\quad
+\begin{aligned}[t]
+&amp;\Pr(\hat L(h) = 0) \\
+&amp;= \Pr(\forall i, h(x_i) = y_i) \\
+&amp;= \prod_i \Pr(h(x_i) = y_i) \\
+&amp;\Downarrow \\
+&amp;= (1-L(h))^n \\
+&amp;\le \exp(-L(h) n) \\
+&amp;\Downarrow \\
+\Leftarrow \quad &amp; \le \exp(-\epsilon n)
+\end{aligned} \quad
+%
+\begin{gathered}[t]
+\begin{aligned}[t]
+\E[\mathbb{1}[h(x_i) \ne y_i]] = L(h) \\
+1 - \E[\mathbb{1}[h(x_i) = y_i]] = L(h) \\
+1 - \Pr(h(x_i) = y_i) = L(h) \\
+\end{aligned} \\
+\Downarrow \\
+\begin{gathered}
+&amp;\Leftarrow &amp;\Pr(h(x_i) = y_i) = 1 - L(h) \\
+\\ \\
+&amp;\Leftarrow &amp;(1-z)^n \le \exp(-z n)
+\end{gathered}
+\end{gathered}
+\]</span></p>
+</blockquote>
+<p>Interestingly, <span class="math inline">\(\log t\)</span> reflects
+the capacity of the function class.</p>
+<h2 id="uniform-convergence-analysis">Uniform Convergence Analysis</h2>
+<p>The three assumptions are restrictive. In this section, we first try
+to wriggle out of them and draw some general conclusions. Then, we bring
+some of them back to show some more meaningful results.</p>
+<p>First note that <span class="math display">\[
+\begin{gathered}
+0 \le \epsilon_\text{excess}(\hat f) = L(\hat f) - L(f^*) \\
+= \underbrace{L(\hat f) - \hat L(\hat f)}_{\epsilon_\text{gen}(\hat f)}
++ \underbrace{\hat L(\hat f) - \hat L(f^*)}_{\le 0} + \underbrace{\hat
+L(f^*) - L(f^*)}_{-\epsilon_\text{gen}(f^*)}
+\end{gathered}
+\]</span> That is (this is the <strong>key inequality</strong> that
+relates the excess error and generalization error, based on which
+various inequalities are derived later on), <span class="math display">\[
+\begin{aligned}
+\epsilon_\text{excess}(\hat f) &amp;\le L(\hat f) - \hat L(\hat f) +
+\hat L(f^*) - L(f^*) \\
+&amp;\Downarrow_{0 \le \epsilon_\text{excess}(\hat f)} \\
+&amp;\le |L(\hat f) - \hat L(\hat f)| + |\hat L(f^*) - L(f^*)| \\
+&amp;\le 2 \sup_{f \in \mathcal{F}} |L(f) - \hat L(f)|
+\end{aligned}
+\]</span> In other words, a sufficient condition for excess risk to be
+upper-bounded by <span class="math inline">\(\epsilon\)</span> is that
+for every <span class="math inline">\(f \in \mathcal{F}\)</span>, the
+generalization error is <strong>uniformly</strong> less than <span class="math inline">\(\epsilon/2\)</span>. <span class="math display">\[
+\begin{gather}
+\Pr(\epsilon_\text{excess}(\hat f) \le \epsilon) \ge \Pr(\sup_{f \in
+\mathcal{F}} |L(f) - \hat L(f)| \le \frac{\epsilon}{2})
+\label{uniconv-1} \\
+\Downarrow \notag \\
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \Pr(\sup_{f \in
+\mathcal{F}} |L(f) - \hat L(f)| \ge \frac{\epsilon}{2})
+\label{uniconv-2} \\
+\end{gather}
+\]</span> The supremum operation is still ambiguous. To demystify it, we
+can instead turn to study the distribution of <span class="math inline">\(L(f) - \hat L(f)\)</span> for arbitrary <span class="math inline">\(f \in \mathcal{F}\)</span>, which is a form of
+deviation of population mean from the empirical mean. That is, we remove
+<span class="math inline">\(\sup\)</span> with following inequality:
+<span class="math display">\[
+\begin{equation}
+\begin{aligned}
+&amp;\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \Pr(\sup_{f
+\in \mathcal{F}} |L(f) - \hat L(f)| \ge \frac{\epsilon}{2}) \\
+&amp;= \Pr(\cup_{1 \le i \le t} |L(f_i) - \hat L(f_i)| \ge
+\frac{\epsilon}{2}) \\
+&amp;\le \sum_{i=1}^t \Pr(|L(f_i) - \hat L(f_i)| \ge \frac{\epsilon}{2})
+\\
+\end{aligned} \label{uniconv-3}
+\end{equation}
+\]</span> The formula on the last line is the reason why we can only
+deal with <strong>finite hypothesis set</strong> in this section. It is
+also reminiscent of the law of large numbers and central limit theorem
+in the probability and statistics. But remember that, both of them
+provides a guarantee in an asymptotic fashion, which is not suitable due
+to finite sample size. To prove a non-asymptotic generalization bound,
+we can use some readily-available <strong>tail bounds</strong> from the
+probability literature.</p>
+<h3 id="bounding-via-markovs-inequality">Bounding via Markov’s
+Inequality</h3>
+<p>In a verbatim way, treat every <span class="math inline">\(l(f(x_i),
+y_i)\)</span> as an i.i.d. sample <span class="math inline">\(z_i\)</span> and assume that <strong>both the
+expectation and the variance exist</strong> for <span class="math inline">\(z_i\)</span>. That is, let <span class="math display">\[
+\begin{gathered}
+\mu \triangleq \E[z_i], \sigma^2 \triangleq \Var[z_i]
+\end{gathered}
+\]</span> For some arbitrary <span class="math inline">\(f&#39; \in
+\mathcal{F}\)</span>, we have <span class="math display">\[
+\begin{gathered}
+\hat L(f&#39;) = \hat \mu_n = \frac{1}{n} \sum_{i=1}^n z_i,L(f&#39;) =
+\mu \\
+\end{gathered}
+\]</span> Then by Chebyshev’s inequality (derived from Markov’s
+inequality), <span class="math display">\[
+\begin{gathered}
+\left.
+\begin{gathered}
+\E[\frac{1}{n} \sum_{i=1}^n z_i] = \mu \\
+\Var[\frac{1}{n} \sum_{i=1}^n z_i] = \frac{\sigma^2}{n} \\
+\end{gathered}
+\right\} \Rightarrow \Pr(|\frac{1}{n} \sum_{i=1}^n z_i - \mu | \ge
+\frac{\epsilon}{2}) \le \frac{4\sigma^2}{n \epsilon^2}
+\end{gathered}
+\]</span></p>
+<p>Adopting <span class="math inline">\(\eqref{uniconv-3}\)</span>, we
+have <span class="math display">\[
+\begin{aligned}
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \sum_{i=1}^t
+\Pr(|\frac{1}{n} \sum_{i=1}^n z_i - \mu | \ge \frac{\epsilon}{2}) \le
+\frac{4t \sigma^2}{n \epsilon^2}
+\end{aligned}
+\]</span> This indicates that the excess risk of <span class="math inline">\(\hat f\)</span> will decay by a <span class="math inline">\(\mathcal{O}(\frac{1}{n})\)</span> rate. Is this a
+good decay rate? Not yet, because even a statistical inference of <a href="https://www.wikiwand.com/en/Binomial_distribution">binomial
+distribution</a>’s <span class="math inline">\(p\)</span> parameter can
+give an exponential decay rate.</p>
+<p>Remember that sitting above the polynomial order is the exponential
+order. By far, we only make very limited assumption on <span class="math inline">\(z_i\)</span>. For Gaussian and bounded random
+variable, we show below that we can improve the decay rate from the
+geometric one​​ to an exponential one.</p>
+<h3 id="bounding-via-hoeffdings-inequality">Bounding via Hoeffding’s
+Inequality</h3>
+<h4 id="moment-generating-function">Moment Generating Function</h4>
+<blockquote>
+<p>Definition: <strong>moment generating function</strong>. For a random
+variable <span class="math inline">\(Z\)</span>, the moment generating
+function (MGF) <span class="math inline">\(M_Z: \R \to \R\)</span> is
+defined as <span class="math display">\[
+M_Z(t) \triangleq \E[e^{t Z}] = \int_{-\infty}^{+\infty} p_Z(z) e^{t z}
+\d z
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>MGF of sum of independent random
+variables</strong>. If <span class="math inline">\(Z_1\)</span> and
+<span class="math inline">\(Z_2\)</span> are independent random
+variables, then the MGF of their sum is the product of their MGFs: <span class="math display">\[
+M_{Z_1 + Z_2}(t) = M_{Z_1}(t) M_{Z_2}(t)
+\]</span> Proof. <span class="math display">\[
+\begin{aligned}
+&amp;M_{Z_1+Z_2}(t) = \E_{Z_1, Z_2}[e^{t(Z_1 + Z_2)}] \\
+&amp;= \E_{Z_1} \E_{Z_2} [e^{t(Z_1 + Z_2)}] \\
+&amp;= \E_{Z_1} [e^{t Z_1}] \E_{Z_2} [e^{t Z_2}] \\
+&amp;= M_{Z_1}(t) M_{Z_2}(t)
+\end{aligned}
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>MGF of linear transformation of random
+variables</strong>. For a random variable <span class="math inline">\(Z\)</span> and constants <span class="math inline">\(\alpha \ne 0, \beta\)</span>, then the MGFs of the
+random variable <span class="math inline">\(Z&#39; \triangleq \alpha
+Z\)</span> and the random variable <span class="math inline">\(Z&#39;&#39; \triangleq Z + \beta\)</span> are
+<span class="math display">\[
+\begin{aligned}[t]
+&amp;M_{Z&#39;}(t) = \int_{-\infty}^{+\infty} p_{Z&#39;}(z) e^{t z} \d z
+\\
+&amp;= ??\alpha \int_{-\infty}^{+\infty} p_{Z}(z/\alpha) e^{(\alpha t) *
+(z/\alpha)} \d (z/\alpha) \\
+&amp;= M_Z(\alpha t)
+\end{aligned} \quad
+\begin{aligned}[t]
+&amp;M_{Z&#39;&#39;}(t) = \int_{-\infty}^{+\infty} p_{Z&#39;&#39;}(z)
+e^{t z} \d z \\
+&amp;= e^{\beta t} \int_{-\infty}^{+\infty} p_{Z}(z-\beta) e^{t
+(z-\beta)} \d (z-\beta) \\
+&amp;= e^{\beta t} M_Z(t)
+\end{aligned}
+\]</span> In short, <span class="math display">\[
+M_{\alpha Z + \beta}(t) = \E[e^{(\alpha Z + \beta) t}] = e^{\beta t}
+\E[e^{\alpha Z t}] = e^{\beta t} M_Z(\alpha t)
+\]</span> Show that the expectation of linear transformation of RV is
+the linear transformation of expectation of RV??</p>
+</blockquote>
+<h4 id="chernoffs-inequality">Chernoff’s Inequality</h4>
+<blockquote>
+<p>Theorem: <strong>Chernoff’s inequality</strong>. Consider random
+variable <span class="math inline">\(Z\)</span> with moment generating
+function <span class="math inline">\(M_Z\)</span>. Then, <span class="math display">\[
+\forall t &gt; 0: \Pr(Z \ge \epsilon) \le \frac{M_Z(t)}{e^{t \epsilon}}
+\]</span> Proof. Define the random variable <span class="math inline">\(V = e^{t Z}\)</span> for <span class="math inline">\(t &gt; 0\)</span>. Then by the Markov’s inequality
+<span class="math display">\[
+\Pr(Z \ge \epsilon) = \Pr(V \ge e^{t \epsilon}) \le \frac{\E[V]}{e^{t
+\epsilon}} = \frac{M_Z(t)}{e^{t \epsilon}}
+\]</span></p>
+</blockquote>
+<p>Note that <span class="math inline">\(\hat \mu_n - \mu\)</span> can
+be rewritten in a summation form <span class="math inline">\(\sum_{i=1}^n \frac{z_i - \mu}{n}\)</span>.
+Therefore, for all <span class="math inline">\(t &gt; 0\)</span> <span class="math display">\[
+\begin{aligned}
+&amp;\Pr(\hat \mu_n - \mu \ge \epsilon) \le \frac{M_{\hat \mu_n -
+\mu}(t)}{e^{t \epsilon}} \\
+&amp;= \frac{(M_{(Z - \mu)/n}(t))^n}{e^{t \epsilon}} \\
+&amp;= \frac{(M_{(Z - \mu)}(t/n))^n}{e^{t \epsilon}} \\
+\end{aligned}
+\]</span> Since <span class="math inline">\(n\)</span> is fixed, we have
+<span class="math display">\[
+\begin{gathered}
+\forall t &gt; 0, \Pr(\hat \mu_n - \mu \ge \epsilon) \le \frac{(M_{(Z -
+\mu)}(t))^n}{e^{t \epsilon}} \\
+\Downarrow \\
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le \frac{\inf_{t &gt; 0}\ (M_{Z -
+\mu}(t))^n}{e^{t \epsilon}} \\
+\end{gathered}
+\]</span></p>
+<p>If only <span class="math inline">\(\inf_{t &gt; 0}\ M_{Z - \mu}(t)
+&lt; 1\)</span>! We divert to the applications of Chernoff’s inequality
+for some well-defined distributions. And then we show that the scenario
+that <span class="math inline">\(\inf_{t &gt; 0}\ M_{Z - \mu}(t) &lt;
+1\)</span> is not rare.</p>
+<h5 id="zero-mean-gaussians">Zero-mean Gaussians</h5>
+<blockquote>
+<p>Proposition: <strong>MGF of zero-mean Gaussians</strong>. Suppose
+<span class="math inline">\(Z \sim \mathcal{N}(0, \sigma^2)\)</span> is
+zero-mean Gaussian random variable. Then <span class="math display">\[
+\begin{aligned}
+&amp;M_Z(t) = \int_{-\infty}^{+\infty} p_Z(z) e^{t z} \d z \\
+&amp;= \int_{-\infty}^{+\infty} \frac{e^{-\frac{z}{2 \sigma^2} + tz}}
+{\sqrt{2 \pi \sigma^2}} \d z \\
+&amp;= \int_{-\infty}^{+\infty} \frac{e^{-\frac{(z - \sigma^2 t)^2}{2
+\sigma^2} + \frac{\sigma^2 t^2}{2}}} {\sqrt{2 \pi \sigma^2}}  \d z \\
+&amp;= e^{\frac{\sigma^2 t^2}{2}} \int_{-\infty}^{+\infty}
+\frac{e^{-\frac{(z - \sigma^2 t)^2}{2 \sigma^2}}} {\sqrt{2 \pi
+\sigma^2}} \d (z-\sigma^2 t^2) \\
+&amp;= e^{\frac{\sigma^2 t^2}{2}}
+\end{aligned}
+\]</span></p>
+</blockquote>
+<p>Note that it is the nice property of <strong>MGF of zero-mean
+Gaussian</strong> that confines our discussion to zero-mean variables. A
+direct application of Chernoff’s inequality gives</p>
+<blockquote>
+<p>Theorem: <strong>Chernoff tail bound for zero-mean
+Gaussians</strong>. The optimized Chernoff tail bound for <span class="math inline">\(Z \sim \mathcal{N}(0, \sigma^2)\)</span> is <span class="math display">\[
+\begin{aligned}
+\Pr(Z \ge \epsilon) &amp;\le \inf_{t&gt;0}\quad M_Z(t) e^{-t \epsilon}
+\\
+&amp;= \inf_{t&gt;0}\quad e^{\frac{\sigma^2 t^2}{2} - \epsilon t} \\
+&amp;= e^{-\frac{\epsilon^2}{2\sigma^2}}
+\end{aligned}
+\]</span></p>
+</blockquote>
+<p>A direct application of the above theorem on the sum of i.i.d.
+zero-mean Gaussians gives the following:</p>
+<blockquote>
+<p>Corollary: <strong>Chernoff-based concentration inequality for
+zero-mean Gaussians</strong>. Given i.i.d. sample <span class="math inline">\(z_1, \dots, z_n \sim \mathcal{N}(0,
+\sigma^2)\)</span>, we have the following error bound for empirical mean
+<span class="math inline">\(\hat \mu_n = \frac{1}{n} \sum_{i=1}^{n}
+z_i\)</span>: <span class="math display">\[
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le e^{-\frac{n \epsilon^2}{2
+\sigma^2}}
+\]</span></p>
+</blockquote>
+<h5 id="sub-gaussians">Sub-Gaussians</h5>
+<p>The key step in the illustration of Chernoff’s inequality for the
+Gaussian case is the derivation of MGF. On the wide spectrum of
+non-Gaussian distributions, we focus on those whose MGF is smaller than
+that of some zero-mean Gaussians.</p>
+<blockquote>
+<p>Definition: <strong>sub-Gaussian random variables</strong>. We call
+random variable <span class="math inline">\(Z\)</span> with mean <span class="math inline">\(\mu\)</span> sub-Gaussian with parameters <span class="math inline">\(\sigma^2\)</span> if the MGF of <span class="math inline">\(Z-\mu\)</span> satisfies the following inequality
+for all <span class="math inline">\(t &gt; 0\)</span>: <span class="math display">\[
+M_{Z-\mu}(t) \le \exp(\frac{\sigma^2 t^2}{2})
+\]</span></p>
+</blockquote>
+<p>By the way, it is interesting to know that if a random variable is
+sub-Gaussian with parameter <span class="math inline">\(\sigma^2\)</span>, then its variance is
+upper-bounded by <span class="math inline">\(\sigma^2\)</span>.</p>
+<blockquote>
+<p>Proposition: <strong>sum of independent sub-Gaussians</strong>. If
+<span class="math inline">\(Z_1\)</span> and <span class="math inline">\(Z_2\)</span> are two independent sub-Gaussian
+random variables with parameters <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span>, then <span class="math inline">\(Z_1 + Z_2\)</span> will be sub-Gaussian with
+parameter <span class="math inline">\(\sigma_1^2 +
+\sigma_2^2\)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>MGF of scalar product of sub-Gaussians</strong>.
+If <span class="math inline">\(Z\)</span> is a sub-Gaussian random
+variable with parameter <span class="math inline">\(\sigma^2\)</span>,
+then <span class="math inline">\(c Z\)</span> for scalar <span class="math inline">\(c \in \R\)</span> will be sub-Gaussian with
+parameter <span class="math inline">\(c^2 \sigma^2\)</span>.</p>
+</blockquote>
+<p>We can draw similar conclusions for sub-Gaussians.</p>
+<blockquote>
+<p>Theorem: <strong>Chernoff tail bound for sub-Gaussians</strong>. The
+optimized Chernoff tail bound for sub-Gaussian <span class="math inline">\(Z\)</span> with parameter <span class="math inline">\(\sigma^2\)</span> and with mean <span class="math inline">\(\mu\)</span> is <span class="math display">\[
+\begin{aligned}
+\Pr(Z-\mu \ge \epsilon) \le \exp(-\frac{\epsilon^2}{2\sigma^2})
+\end{aligned}
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Corollary: <strong>Chernoff-based concentration inequality for
+sub-Gaussians</strong>. Given i.i.d. sub-Gaussian samples <span class="math inline">\(z_1, \dots, z_n\)</span> with parameter <span class="math inline">\(\sigma^2\)</span> and mean <span class="math inline">\(\mu\)</span>, we have the following error bound
+for empirical mean <span class="math inline">\(\hat \mu_n = \frac{1}{n}
+\sum_{i=1}^{n} z_i\)</span>: <span class="math display">\[
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le \exp(-\frac{n \epsilon^2}{2
+\sigma^2})
+\]</span></p>
+</blockquote>
+<p>Now it remains the question that what kind of random variables are
+sub-Gaussians.</p>
+<h6 id="rademacher-distribution">Rademacher Distribution</h6>
+<p>We first introduce the Rademacher random variable <span class="math inline">\(X_\mathsf{R}\)</span> whose PMF is <span class="math display">\[
+X_\mathsf{R} = \begin{cases}
++1 &amp; \text{w.p. $1/2$} \\
+-1 &amp; \text{w.p. $1/2$}
+\end{cases}
+\]</span></p>
+<p>We can obtain its MGF as <span class="math display">\[
+\begin{aligned}
+M_{X_\mathsf{R}}(t) &amp;= \E[e^{t X}] = \frac{1}{2} (e^t + e^{-t}) \\
+&amp;= \frac{1}{2} \sum_{k=0}^\infty (\frac{t^k}{k!} +
+\frac{(-t)^k}{k!}) \\
+&amp;= \sum_{s=0}^\infty \frac{t^{2s}}{(2s)!} \\
+&amp;\le \sum_{s=0}^\infty \frac{t^{2s}}{2^s(s)!} \\
+&amp;= \sum_{s=0}^\infty \frac{(t^2/2)^s}{s!} \\
+&amp;= e^{t^2/2}
+\end{aligned}
+\]</span> This indicates that <span class="math inline">\(X_\mathsf{R}\)</span> is sub-Gaussian with
+parameter <span class="math inline">\(1\)</span>.</p>
+<h6 id="bounded-random-variable">Bounded Random Variable</h6>
+<p>Next we show that a random variable <span class="math inline">\(a \le
+Z \le b\)</span> for scalars <span class="math inline">\(a,b\)</span> is
+sub-Gaussian with parameter <span class="math inline">\((b-a)^2\)</span>. To show it, we apply the
+<strong>symmetrization trick</strong>, creating another random variable
+<span class="math inline">\(Z&#39;\)</span> i.i.d. as <span class="math inline">\(Z\)</span>: <span class="math display">\[
+\begin{aligned}
+&amp;M_{Z-\E[Z]}(t) = \E_Z[e^{t(Z-\E[Z])}] \\
+&amp;= \E_Z[e^{t(Z-\E[Z&#39;])}] \\
+&amp;\Downarrow_{\text{Jenson&#39;s inequality}} \\
+&amp;\le \E_Z \E_{Z&#39;}[e^{t(Z-Z&#39;)}] \\
+&amp;= \E_{Z, Z&#39;} [e^{t(Z-Z&#39;)}]
+\end{aligned}
+\]</span> Directly concluding that <span class="math inline">\(M_{Z-\E[Z]}(t) \le e^{t(b-a)}\)</span> is neither
+interesting nor helpful in resulting a sub-Gaussian. We introduce
+another Rademacher random variable <span class="math inline">\(\sigma\)</span> so that <span class="math inline">\(\sigma, Z, Z&#39;\)</span> are independent. We
+have <span class="math display">\[
+Z-Z&#39; \stackrel{d}{=} \sigma(Z-Z&#39;)
+\]</span> Also note that <span class="math inline">\((Z-Z&#39;) \le
+(b-a)^2\)</span>. Hence, <span class="math display">\[
+\begin{aligned}
+&amp;M_{Z-\E[Z]}(t) \le \E_{Z, Z&#39;} [e^{t(Z-Z&#39;)}] \\
+&amp;= \E_{Z, Z&#39;, \sigma} [e^{[t(Z-Z&#39;)]\sigma}] \\
+&amp;= \E_{Z, Z&#39;} \E_{\sigma} [e^{[t(Z-Z&#39;)]\sigma}] \\
+&amp;\le \E_{Z, Z&#39;} e^{\frac{t^2(Z-Z&#39;)^2}{2}} \\
+&amp;\le e^{\frac{t^2(b-a)^2}{2}} \\
+\end{aligned}
+\]</span></p>
+<p>This indicates that <span class="math inline">\(Z\)</span> is
+sub-Gaussian with parameter <span class="math inline">\((b-a)^2\)</span>. In fact, <span class="math inline">\(Z\)</span>​’s sub-Gaussian parameter can be
+further tightened.</p>
+<h4 id="hoeffdings-inequality">Hoeffding’s Inequality</h4>
+<blockquote>
+<p>Lemma: <strong>Hoeffding’s lemma</strong>. Suppose that random
+variable <span class="math inline">\(Z\)</span> is bounded and satisfies
+<span class="math inline">\(a \le Z \le b\)</span> for scalars <span class="math inline">\(a,b \in \R\)</span>. Then, <span class="math inline">\(Z\)</span> is sub-Gaussian with parameter <span class="math inline">\(\frac{(b-a)^2}{4}\)</span>. That is, we have <span class="math display">\[
+M_{Z-\mu}(t) \le \exp(\frac{t^2 (b-a)^2}{8})
+\]</span></p>
+</blockquote>
+<p>A direct application of Hoeffding’s lemma and Chernoff tail bound for
+sub-Gaussians gives the following:</p>
+<blockquote>
+<p>Theorem: <strong>Hoeffding’s inequality</strong>. Suppose that random
+variables <span class="math inline">\(Z_1, \dots, Z_n\)</span> are
+independent and bounded as <span class="math inline">\(a_i \le Z_i \le
+b_i\)</span>. Then defining the empirical mean <span class="math inline">\(\hat \mu_n \triangleq \frac{1}{n} \sum_{i=1}^n
+Z_i\)</span> and the underlying mean <span class="math inline">\(\mu
+\triangleq \frac{1}{n} \sum_{i=1}^n \E[Z_i]\)</span> results in the
+following concentration inequality <span class="math display">\[
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le \exp\left( -\frac{2n^2
+\epsilon^2}{\sum_{i=1}^n (b_i-a_i)^2} \right)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Corollary: <strong>Hoeffding’s concentration inequality for bounded
+random variables</strong>. Given i.i.d. bounded samples <span class="math inline">\(a \le z_1, \dots, z_n \le b\)</span> with mean
+<span class="math inline">\(\mu\)</span>, we have the following error
+bound for empirical mean <span class="math inline">\(\hat \mu_n =
+\frac{1}{n} \sum_{i=1}^{n} z_i\)</span>: <span class="math display">\[
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le \exp\left( -\frac{2 n
+\epsilon^2}{(b-a)^2} \right)
+\]</span></p>
+</blockquote>
+<h3 id="revisiting-excess-error">Revisiting Excess Error</h3>
+<p>In quite a long run of paragraphs, we have been working with
+statistics. Now let’s turn to uniform convergence analysis. We
+assume</p>
+<ol type="1">
+<li>the usage of the zero/one-loss,</li>
+<li>and a finite set of hypothesis <span class="math inline">\(\mathcal{F} = \{ f_1,\dots,f_t \}\)</span>.</li>
+</ol>
+<blockquote>
+<p>Theorem: <strong>excess error bound for finite hypothesis
+sets</strong>. Under the above assumptions, the following excess risk
+bound holds for the ERM solution <span class="math inline">\(\hat
+f\)</span> with probability at least <span class="math inline">\(1-\delta\)</span>: <span class="math display">\[
+\epsilon_{\text{excess}}(\hat f) \le \sqrt{\frac{2(\log t +
+\log\frac{2}{\delta})}{n}} =
+\mathcal{O}(\sqrt{\frac{\log(t/\delta)}{n}})
+\]</span> Proof. According to <span class="math inline">\(\eqref{uniconv-3}\)</span>, we have <span class="math display">\[
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \Pr(\cup_{1 \le i
+\le t} |L(f_i) - \hat L(f_i)| \ge \frac{\epsilon}{2})
+\]</span> We can apply the union bound and Hoeffding’s lemma to further
+show that <span class="math display">\[
+\begin{aligned}
+&amp;\Pr(\cup_{1 \le i \le t} |L(f_i) - \hat L(f_i)| \ge
+\frac{\epsilon}{2}) \le \sum_{i=1}^t \Pr(|L(f_i) - \hat L(f_i)| \ge
+\frac{\epsilon}{2}) \\
+&amp;= \sum_{i=1}^t [\Pr(\hat L(f_i) - L(f_i) \ge \frac{\epsilon}{2}) +
+\Pr(\underbrace{(-\hat L(f_i))}_{\hat \mu&#39;} -
+\underbrace{(-L(f_i))}_{\mu&#39;}) \ge \frac{\epsilon}{2})] \\
+&amp;\le \sum_{i=1}^t [\exp\left( -\frac{2n (\epsilon/2)^2}{(1-0)^2}
+\right) + \exp\left( -\frac{2n (\epsilon/2)^2}{(1-0)^2} \right)] \\
+&amp;= 2t \exp(-\frac{n\epsilon^2}{2})
+\end{aligned}
+\]</span> As a result, <span class="math display">\[
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le 2t \exp(-\frac{n
+\epsilon^2}{2})
+\]</span> Let <span class="math inline">\(\delta = 2t \exp(-\frac{n
+\epsilon^2}{2})\)</span>. Then we can draw that, with probability at
+least <span class="math inline">\(1-\delta\)</span>, <span class="math display">\[
+\epsilon_\text{excess}(\hat f) \le \sqrt{\frac{2(\log (2t/\delta))}{n}}
+\]</span></p>
+</blockquote>
+
+
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/machine-learning-theory/1-exp-family/" rel="next">1-exp-family</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/courses/machine-learning-theory/3-rademacher-complexity/" rel="prev">3-rademacher-complexity</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jan 7, 2022</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

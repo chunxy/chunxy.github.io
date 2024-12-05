@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1472,7 +1539,7 @@ hypothesis null），因为其包含的假设值不止一个。</p>
 <p>对于另外一些参数，可能本身越大越好（比如身高均值），所以我们仅需要左侧的单边检测，此时对应的否定域为
 <span class="math display">\[
 W = \{ (x_1, \dots, x_n) \big | \hat \theta(x_1, \dots, x_n) - \theta_0
-&lt; c \} \\
+&lt; -c \} \\
 \]</span> 同理，此时可以等价认为<span class="math inline">\(H_0: \theta
 \ge \theta_0\)</span>，这种情况下，<span class="math inline">\(H_0\)</span>也是一个复合原假设。</p>
 <h4 id="设定显著性水平">设定显著性水平</h4>
@@ -1500,7 +1567,7 @@ W = \{ (x_1, \dots, x_n) \big | \hat \theta(x_1, \dots, x_n) - \theta_0
 </table>
 <p>通常较低的第一类错误风险<span class="math inline">\(P(\text{否定}H_0;
 H_0\text{成立})\)</span>和较低的第二类错误风险<span class="math inline">\(P(\text{接受}H_0;
-H_1\text{成立})\)</span>不可兼得，因为在检验统计量确定后，这两个概率主要是由临界值<span class="math inline">\(c\)</span>导出的否定域大小来控制的。而我们更希望降低第一类错误发生的风险。也就是说我们一旦否定，<span class="math inline">\(H_0\)</span>很大概率确实是不成立的；尽管这意味着我们在接受<span class="math inline">\(H_0\)</span>时，<span class="math inline">\(H_0\)</span>有可能不成立——不过虚惊一场总好过后知后觉。所以实际应用中，<span class="math inline">\(H_0\)</span>往往对应了比较严重的结果，我们不希望在<span class="math inline">\(H_0\)</span>成立时，我们却没有发现（即否定<span class="math inline">\(H_0\)</span>）；或者<span class="math inline">\(H_0\)</span>本身就对应了我们比较想否定的结果，这样我们否定时，它确实不成立的概率也更高。</p>
+H_1\text{成立})\)</span>不可兼得，因为在检验统计量确定后，这两个概率主要是由临界值<span class="math inline">\(c\)</span>导出的否定域大小来控制的。而我们更希望降低第一类错误发生的风险（意味着更大的<span class="math inline">\(c\)</span>），也就是说我们一旦否定，<span class="math inline">\(H_0\)</span>很大概率确实是不成立的；尽管这意味着我们在接受<span class="math inline">\(H_0\)</span>时，<span class="math inline">\(H_0\)</span>有可能不成立——不过虚惊一场总好过后知后觉。所以实际应用中，<span class="math inline">\(H_0\)</span>往往对应了比较严重的结果，我们不希望在<span class="math inline">\(H_0\)</span>成立时，我们却没有发现（即否定<span class="math inline">\(H_0\)</span>）；或者<span class="math inline">\(H_0\)</span>本身就对应了我们比较想否定的结果，这样我们否定时，它确实不成立的概率也更高。</p>
 <p>我们会将第一类错误发生的概率限制在<span class="math inline">\(\alpha\)</span>之内，这个<span class="math inline">\(\alpha\)</span>便是<strong>显著性水平</strong>（significance
 level）。显著性水平其实代表了我们对小概率事件的接受程度，即我们认为概率小于<span class="math inline">\(\alpha\)</span>的事件应该是小概率事件，并且是不应该被正好碰上的；而此时在<span class="math inline">\(H_0\)</span>成立的假设下，“给定的一组样本属于否定域”正是这样的一个小概率事件，如果碰上了这样的小概率事件，则有理由怀疑<span class="math inline">\(H_0\)</span>不成立。</p>
 <h4 id="确定临界值">确定临界值</h4>
@@ -1518,7 +1585,7 @@ H_0\text{成立})\)</span>不应写作<span class="math inline">\(P( (X_1,
 <p><span class="math inline">\(P( (X_1, \dots, X_n) \in W;\theta =
 \theta_0)\)</span>又叫作<strong>功效函数</strong>（power
 function），记作<span class="math inline">\(\beta_W(\cdot)\)</span>，它表示在未知参数取特定值时，一组随机样本属于否定域的概率。
-前面我们之所以说单边检验等价于原假设对应某个形式的复合假设（比如<span class="math inline">\(H_0: \theta \le \theta_0\)</span>或<span class="math inline">\(H_0: \theta \ge
+前面我们之所以说单边检验等价于<u>原假设对应某个形式的复合假设</u>（比如<span class="math inline">\(H_0: \theta \le \theta_0\)</span>或<span class="math inline">\(H_0: \theta \ge
 \theta_0\)</span>），是因为这种情况下，有 <span class="math display">\[
 \max_{h \in H_0} \beta_W(h) = \beta_W(\theta_0) \le \alpha
 \]</span></p>

@@ -47,7 +47,12 @@ subject.&lt;/p&gt;
 &lt;li&gt;feature extraction/engineering
 &lt;ul&gt;
 &lt;li&gt;domain expertise&lt;/li&gt;
-&lt;li&gt;kernel method&lt;/li&gt;
+&lt;li&gt;mathematical methods
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/&#34;&gt;PCA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;kernel methods&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;neural network self-adaptation&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;model&#34;&gt;Model&lt;/h3&gt;
@@ -56,6 +61,9 @@ subject.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;supervised learning
 &lt;ul&gt;
+&lt;li&gt;fits towards given target&lt;/li&gt;
+&lt;li&gt;includes
+&lt;ul&gt;
 &lt;li&gt;classification
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/logistic-regression/&#34;&gt;logistic regression&lt;/a&gt;&lt;/li&gt;
@@ -63,35 +71,55 @@ subject.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/&#34;&gt;Bayes classifier&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/linear-discriminant-analysis/&#34;&gt;linear discriminant
 analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;extrapolation
+&lt;ul&gt;
+&lt;li&gt;from classification model to regression model&lt;/li&gt;
+&lt;li&gt;from binary classification to multi-class classification&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;regression (&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/linear-regression/&#34;&gt;linear&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/non-linear-regression/&#34;&gt;non-linear&lt;/a&gt; case)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;unsupervised learning
 &lt;ul&gt;
-&lt;li&gt;discovers inherent properties (latent variables) in the data&lt;/li&gt;
+&lt;li&gt;discovers inherent structures within/among the data&lt;/li&gt;
 &lt;li&gt;includes
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/clustering/&#34;&gt;clustering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimensionality-reduction/&#34;&gt;dimensionality
-reduction&lt;/a&gt;/manifold embedding&lt;/li&gt;
 &lt;li&gt;anomaly detection&lt;/li&gt;
-&lt;li&gt;latent-variable model
+&lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/dimensionality-reduction/&#34;&gt;dimensionality
+reduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;manifold embedding&lt;/li&gt;
+&lt;li&gt;latent variable modelling
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/%E9%9A%90%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B/&#34;&gt;hidden Markov model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;conditional random field&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/independent-component-analysis/&#34;&gt;independent component
 analysis&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;reinforcement learning
+&lt;ul&gt;
+&lt;li&gt;adapts to the environment via explore-and-exploit strategy&lt;/li&gt;
+&lt;li&gt;depending on the knowledge of the environment, categorizes into
+&lt;ul&gt;
+&lt;li&gt;model-based&lt;/li&gt;
+&lt;li&gt;model-free&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;depending on the learning objective, categorizes into
+&lt;ul&gt;
+&lt;li&gt;value-based (prediction problem)&lt;/li&gt;
+&lt;li&gt;policy-based (control problem)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;discriminative vs. generative&lt;/li&gt;
-&lt;li&gt;classification vs. regression
-&lt;ul&gt;
-&lt;li&gt;from classification model to regression model&lt;/li&gt;
-&lt;li&gt;from binary classification to multi-class classification&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;linear vs. non-linear&lt;/li&gt;
-&lt;li&gt;parametric vs. non-parametric&lt;/li&gt;
+&lt;li&gt;linear vs. non-linear (depending on whether the decision boundary is
+a hyperplane)&lt;/li&gt;
+&lt;li&gt;parametric vs. non-parametric (depending on whether the data is
+characterized 1) by a distribution 2) with a finite number of
+parameters)&lt;/li&gt;
 &lt;li&gt;ensemble method
 &lt;ul&gt;
 &lt;li&gt;bootstrap aggregating
@@ -125,7 +153,7 @@ analysis&lt;/a&gt;&lt;/li&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
-&lt;th&gt;Real\Pred&lt;/th&gt;
+&lt;th&gt;Real&lt;/th&gt;
 &lt;th&gt;Positive&lt;/th&gt;
 &lt;th&gt;Negative&lt;/th&gt;
 &lt;/tr&gt;
@@ -150,7 +178,8 @@ analysis&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;F-score&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;precision-recall curve&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;receiver operation curve&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/receiver-operator-characteristic/&#34;&gt;receiver operation
+characteristics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/&#34;&gt;mean average
 precision&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -231,7 +260,7 @@ and thus its nullspace is &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span
 \end{aligned}
 \]&lt;/span&gt; Let &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
-l_2(\varphi) &amp;amp;= \sum_{i=1}^m\log p(y^{(i)}; \varphi) \\
+&amp;amp;l_2(\varphi) = \sum_{i=1}^m\log p(y^{(i)}; \varphi) \\
 &amp;amp;= \sum_{i=1}^m\log\prod_{j=1}^c\varphi_j^{\mathbb{I}(y^{(i)}=C_j)}
 \\
 &amp;amp;= \sum_{i=1}^m\sum_{j=1}^c\mathbb{I}(y^{(i)}=C_j)\log \varphi_j
@@ -273,7 +302,7 @@ J(\varphi, \lambda) =
 
 &lt;h2 id=&#34;two-class-logistic-regression&#34;&gt;Two-class Logistic
 Regression&lt;/h2&gt;
-&lt;p&gt;Logistic Regression is a binary linear classifier. Suppose the
+&lt;p&gt;Logistic regression is a binary linear classifier. Suppose the
 feature space is &lt;span class=&#34;math inline&#34;&gt;\(\R^N\)&lt;/span&gt;, then it
 processes the feature vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; with
 a linear function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = w^Tx + b\)&lt;/span&gt;,
@@ -353,6 +382,16 @@ p(y|x) = \frac{1}{1 + e^{-(w^Tx + b)}}
 is a generative model which learns &lt;span class=&#34;math inline&#34;&gt;\(p(x|y)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p(y)\)&lt;/span&gt;, LR is a discriminative model which
 only learns &lt;span class=&#34;math inline&#34;&gt;\(p(y|x)\)&lt;/span&gt;. One can
 discriminate with a generative model, but not reversely.&lt;/p&gt;
+&lt;h3 id=&#34;logistic-loss-perspective&#34;&gt;Logistic Loss Perspective&lt;/h3&gt;
+&lt;p&gt;Logistic regression is equivalent to &lt;span class=&#34;math display&#34;&gt;\[
+\arg \min\limits_{w, b} \sum_{i=1}^M \log [1 + e^{-y^{(i)}(w^T
+x^{(i)}+b)}] \\
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\ell(z) = \log(1 + e^{-y
+z})\)&lt;/span&gt; is the logistic loss and &lt;span class=&#34;math inline&#34;&gt;\(z =
+w^T x + b = \frac{P(\hat y=1|x)}{P(\hat y=0|x)}\)&lt;/span&gt; is the logit.
+Square loss &lt;span class=&#34;math inline&#34;&gt;\(\ell(\hat y) = (y - \hat
+y)^2\)&lt;/span&gt; is not used because this will make the problem non-convex,
+forfeiting the facility of theoretical guarantee.&lt;/p&gt;
 &lt;h3 id=&#34;some-history&#34;&gt;Some History&lt;/h3&gt;
 &lt;p&gt;Historically, there has been efforts on adapting linear regression to
 the classification task where the output is a probability value between
@@ -367,10 +406,13 @@ followed on, naming its model as “&lt;strong&gt;log&lt;/strong&gt;istic
 un&lt;strong&gt;it&lt;/strong&gt;” (logit). Essentially, the logit function is the
 log of the odds: &lt;span class=&#34;math display&#34;&gt;\[
 \mathrm{logit} (p) = \ln \frac{p}{1-p}
-\]&lt;/span&gt; In machine learning, un-normalized scores for different
-classes are usually called logits too. It makes some sense since these
-unbounded values are to be mapped to &lt;span class=&#34;math inline&#34;&gt;\((0,
-1)\)&lt;/span&gt;, which means they are logit-ted values.&lt;/p&gt;
+\]&lt;/span&gt; It can be verified that in logistic regression, &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{logit}(p) = w^T x + b\)&lt;/span&gt;. Therefore,
+the solution of logistic regression is in essence “linear-regressing”
+the logit term, explaining why it is called “logistic regression”.&lt;/p&gt;
+&lt;p&gt;Also note that in machine learning, un-normalized scores for
+different classes are usually called logits too. It makes some sense
+since these unbounded values are to be mapped to &lt;span class=&#34;math inline&#34;&gt;\((0, 1)\)&lt;/span&gt;, which means they are “logitted”
+values.&lt;/p&gt;
 &lt;h2 id=&#34;multi-class-logistic-regression&#34;&gt;Multi-class Logistic
 Regression&lt;/h2&gt;
 &lt;p&gt;One way to train use Logistic Regression in multi-class
@@ -403,7 +445,10 @@ p(w) \propto \exp(-\frac{1}{C}w^Tw)
 to find a &lt;strong&gt;linear hyperplane&lt;/strong&gt; that separates the data
 with different labels with the maximum margin. By symmetry, there should
 be at least one margin point on both side of the decision boundary.
-These points are called &lt;strong&gt;support vectors&lt;/strong&gt;.&lt;/p&gt;
+These points are called &lt;strong&gt;support vectors&lt;/strong&gt;. Further, not
+all points on the margin can be called support vectors. If we move
+support vectors away from the margin, the decision hyperplane should
+change.&lt;/p&gt;
 &lt;h3 id=&#34;hard-margin-svm&#34;&gt;Hard-margin SVM&lt;/h3&gt;
 &lt;p&gt;Suppose the data &lt;span class=&#34;math inline&#34;&gt;\(\mathcal D = \{(x^{(i)},
 y^{(i)}), i=1, \dots, M\}\)&lt;/span&gt;, and is linearly separable. The
@@ -443,8 +488,11 @@ s.t.\quad y^{(i)}(w^Tx^{(i)} + b) \ge 1, i = 1,\dots,M
 may exist noisy samples that disrupt this linear separability. In such
 case, we may allow some samples to violate the margin. We define some
 slack variables &lt;span class=&#34;math inline&#34;&gt;\(\xi_i \ge 0\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\xi_i &amp;gt; 0\)&lt;/span&gt; means that the sample is
-inside the margin (or even this sample will be misclassified), &lt;span class=&#34;math inline&#34;&gt;\(\xi_i = 0\)&lt;/span&gt; means that the sample is
-outside the margin.&lt;/p&gt;
+inside the margin (&lt;span class=&#34;math inline&#34;&gt;\(\xi_i &amp;lt; 1\)&lt;/span&gt;),
+on the boundary (&lt;span class=&#34;math inline&#34;&gt;\(\xi_i = 1\)&lt;/span&gt;), or
+even worse, misclassified (&lt;span class=&#34;math inline&#34;&gt;\(\xi_i &amp;gt;
+1\)&lt;/span&gt;). &lt;span class=&#34;math inline&#34;&gt;\(\xi_i = 0\)&lt;/span&gt; means that
+the sample is outside the margin.&lt;/p&gt;
 &lt;p&gt;Of course, these slack variables should be as small as possible. Then
 the problem becomes &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
@@ -508,8 +556,10 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 \]&lt;/span&gt; Since we know the optimal solution exists, instead of taking
 derivative of &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; to solve it, we assume the
 solution to above problem is &lt;span class=&#34;math inline&#34;&gt;\(\lambda^\star\)&lt;/span&gt;. Then, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
 w^\star = \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)} \\
 \mu^\star = C - \lambda^\star
+\end{gathered}
 \]&lt;/span&gt; Complementary constraints will give &lt;span class=&#34;math display&#34;&gt;\[
 \lambda^\star_i(1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} +
 b^\star)) = 0 \\
@@ -529,7 +579,7 @@ b^\star &amp;amp;= \frac{1 - \xi^\star_j}{y^{(j)}} - (w^\star)^Tx^{(j)} \\
 \sum_{i=1}^M\lambda^\star_iy^{(i)}x^{(i)}\cdot x^{(j)}
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-According to the value of &lt;span class=&#34;math inline&#34;&gt;\(\lambda^\star_i\)&lt;/span&gt; (not know yet), added
+According to the value of &lt;span class=&#34;math inline&#34;&gt;\(\lambda^\star_i\)&lt;/span&gt; (not known yet), added
 with primal constraints and the complementary constraints, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 1 - \xi^\star_i - y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 0 \\
@@ -561,15 +611,17 @@ b^\star)) = 0 \\
 \Rightarrow y^{(i)}((w^{\star T})x^{(i)} + b^\star) \le 1 \\
 
 \end{aligned}\]&lt;/span&gt;
-&lt;p&gt;$$ They corresponds to cases where sample &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is outside margin, is on the
-margin, violates the margin, respectively.&lt;/p&gt;
-&lt;p&gt;The key to the above derivation is &lt;span class=&#34;math inline&#34;&gt;\(\lambda^\star\)&lt;/span&gt;, which is to be solved in
-Solving SVM section.&lt;/p&gt;
-&lt;p&gt;Soft Margin SVM is equivalent to &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;$$ They corresponds to cases where sample &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; is beyond the margin, is on the
+margin, within the margin, respectively. The key to the above derivation
+is &lt;span class=&#34;math inline&#34;&gt;\(\lambda^\star\)&lt;/span&gt;, which is to be
+solved in &lt;a href=&#34;#Solving%20SVM&#34;&gt;Solving SVM&lt;/a&gt; section.&lt;/p&gt;
+&lt;h4 id=&#34;hinge-loss-perspective&#34;&gt;Hinge Loss Perspective&lt;/h4&gt;
+&lt;p&gt;As an aside, soft-margin SVM is equivalent to &lt;span class=&#34;math display&#34;&gt;\[
 \min \frac{1}{C}||w||^2_2 + \sum_{i=1}^M\max(0, 1 - y^{(i)}(w^Tx^{(i)} +
 b))
-\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(l_h(z) = \max(0, 1 -
-z)\)&lt;/span&gt; is called Hinge loss.&lt;/p&gt;
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(l_h(\hat y) = \max(0, 1 - y
+\hat y)\)&lt;/span&gt; is called the &lt;strong&gt;hinge loss&lt;/strong&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{C} \|w\|_2^2\)&lt;/span&gt; plays as the
+regularization term.&lt;/p&gt;
 &lt;h3 id=&#34;kernel-svm&#34;&gt;Kernel SVM&lt;/h3&gt;
 &lt;p&gt;The term &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \cdot x^{(j)}\)&lt;/span&gt;
 in &lt;span class=&#34;math inline&#34;&gt;\(D(\lambda,\mu)\)&lt;/span&gt; is the inner
@@ -621,7 +673,7 @@ explicitly.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;solving-svm&#34;&gt;Solving SVM&lt;/h3&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\lambda^\star\)&lt;/span&gt; is the key to the
-final solution and by far it is still remained unsolved: &lt;span class=&#34;math display&#34;&gt;\[
+final solution and by far it remains unsolved: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 \max_{\lambda,\mu}D(\lambda,\mu) =
 -\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\lambda_i\lambda_jy^{(i)}y^{(j)}x^{(i)}\cdot
@@ -632,10 +684,10 @@ s.t.\quad \sum_{i=1}^M\lambda_iy^{(i)} = 0 \\
 \]&lt;/span&gt; We can attack it by sequential minimal optimization.&lt;/p&gt;
 &lt;h3 id=&#34;multi-class-svm&#34;&gt;Multi-class SVM&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1 vs. 1&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;1 v.s. 1&lt;/p&gt;
 &lt;p&gt;Train 1-vs-1 SVM for all pairs of classes. Then decide by majority
 voting.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;1 vs. rest&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;1 v.s. rest&lt;/p&gt;
 &lt;p&gt;Train 1-vs-rest SVM for all classes (&lt;span class=&#34;math inline&#34;&gt;\(y =
 1\)&lt;/span&gt; when &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; belongs to the
 “1”). Choose the class with the largest geometric margin.&lt;/p&gt;&lt;/li&gt;
@@ -662,7 +714,7 @@ mean square error: &lt;span class=&#34;math display&#34;&gt;\[
 \mathrm{MSE}(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} -
 f(x^{(i)}))^2
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;As a sidenote, it is very convenient to standardize the feature (so
+&lt;p&gt;As an aside, it is very convenient to standardize the feature (so
 that the solution won’t depend to unit used in the measurement) and
 pre-center the label (so that the intercept term, or the bias term &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt; can be omitted).&lt;/p&gt;
 &lt;h3 id=&#34;ordinary-least-squares&#34;&gt;Ordinary Least Squares&lt;/h3&gt;
@@ -670,8 +722,7 @@ pre-center the label (so that the intercept term, or the bias term &lt;span clas
 error: &lt;span class=&#34;math display&#34;&gt;\[
 w^\star, b^\star = \arg \min_{w,b}\frac{1}{M}\sum_{i=1}^M(y^{(i)} -
 w^Tx^{(i)} - b)^2
-\]&lt;/span&gt; This is equivalent to the below least squares problem. Let
-&lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; This is equivalent to the least squares problem. Let &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gathered}
 X =
 \left [
@@ -691,13 +742,10 @@ y^{(1)} \\
 y^{(2)} \\
 \vdots \\
 y^{(M)}
-\end{bmatrix} \\
-\\
-XW =  Y
+\end{bmatrix}
 \end{gathered}
-\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; may not lie in the
-column space of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;. Therefore we
-have to approximate &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; by &lt;span class=&#34;math display&#34;&gt;\[
+\]&lt;/span&gt; Least squares problem aims to find the best approximation to
+&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;’s column space, which is &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;’s projection in &lt;span class=&#34;math inline&#34;&gt;\(\Col(X)\)&lt;/span&gt;. Therefore we solve &lt;span class=&#34;math inline&#34;&gt;\(W\)&lt;/span&gt; by &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 X\hat W = \Pi_{\Col(X)}Y \Rightarrow Y &amp;amp;- X\hat W \in \Nul(X^T) \\
 \Downarrow\\
@@ -705,13 +753,13 @@ X^T(Y - X\hat W) &amp;amp;= 0 \\
 X^TX\hat W &amp;amp;= X^TY
 \end{aligned}
 \]&lt;/span&gt; Columns of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; are
-independent &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is not invertible, there are
-infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt;.
-We can get one specific &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; by
-enforcing regularization on &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt;
-or adding more samples when &lt;span class=&#34;math inline&#34;&gt;\(M &amp;lt; N +
-1\)&lt;/span&gt;. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is
-invertible, there is a unique solution that &lt;span class=&#34;math inline&#34;&gt;\(\hat W = (X^TX)^{-1}X^TY\)&lt;/span&gt;.&lt;/p&gt;
+independent &lt;span class=&#34;math inline&#34;&gt;\(\iff\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible because they share the
+same nullspace. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is not
+invertible, there are infinite many solutions to &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt;. We can get one specific &lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; by enforcing regularization on
+&lt;span class=&#34;math inline&#34;&gt;\(\hat W\)&lt;/span&gt; or adding more samples when
+&lt;span class=&#34;math inline&#34;&gt;\(M &amp;lt; N + 1\)&lt;/span&gt;. When &lt;span class=&#34;math inline&#34;&gt;\(X^TX\)&lt;/span&gt; is invertible, there is a unique
+solution that &lt;span class=&#34;math inline&#34;&gt;\(\hat W =
+(X^TX)^{-1}X^TY\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;This gives the same result with minimizing the MSE: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 W^\star = \arg \min_{W} \mathrm{MSE}(W) = \frac{1}{M}(Y - XW)^T(Y - XW)
@@ -870,7 +918,7 @@ to &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm: &lt;span c
 norm is that, &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; is the least number
 that preserves convexity among the &lt;span class=&#34;math inline&#34;&gt;\(l_p\)&lt;/span&gt; norms. Interestingly, when the
 penalty term on the &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt; norm is
-large enough, the resulting estimation will be zero (refer &lt;a href=&#34;https://stats.stackexchange.com/questions/280823/what-is-the-mathematical-rigorous-proof-that-l1-regularization-will-give-sparse&#34;&gt;this&lt;/a&gt;).
+large enough, the resulting estimation will be zero (refer to &lt;a href=&#34;https://stats.stackexchange.com/questions/280823/what-is-the-mathematical-rigorous-proof-that-l1-regularization-will-give-sparse&#34;&gt;this&lt;/a&gt;).
 The solution to the lasso regression can be efficiently approached using
 &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/coordinate-descent/&#34;&gt;coordinate descent&lt;/a&gt; or &lt;a href=&#34;https://chunxy.github.io/notes/articles/optimization/least-angle-regression/&#34;&gt;least angle regression&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;external-materials&#34;&gt;External Materials&lt;/h2&gt;
@@ -1052,10 +1100,11 @@ clusters as the distance between their centers.&lt;/li&gt;
 repeatedly split each cluster into two using a partition algorithm until
 each object is in a separate cluster.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Partition algorithms&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Partitional algorithms&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;K-means&lt;/li&gt;
 &lt;li&gt;Gaussian mixture model&lt;/li&gt;
+&lt;li&gt;Soft K-means&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;algorithms&#34;&gt;Algorithms&lt;/h2&gt;
@@ -1066,11 +1115,11 @@ function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; that evaluat
 clustering &lt;span class=&#34;math inline&#34;&gt;\(\mathcal C\)&lt;/span&gt; and returns
 lower score with better clustering. The best clustering will be &lt;span class=&#34;math display&#34;&gt;\[
 \arg \min_{\mathcal C} f(\mathcal C)
-\]&lt;/span&gt; The number of all possibilities of clustering with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements is called the Bell number,
-denoted as &lt;span class=&#34;math inline&#34;&gt;\(B_M\)&lt;/span&gt;. The calculation of
-the Bell number is based on dynamic programming. The number of ways to
-cluster &lt;span class=&#34;math inline&#34;&gt;\(M+1\)&lt;/span&gt; elements is the sum of
-number of ways to:&lt;/p&gt;
+\]&lt;/span&gt; The number of all possibilities of clustering with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; elements is called the &lt;strong&gt;Bell
+number&lt;/strong&gt;, denoted as &lt;span class=&#34;math inline&#34;&gt;\(B_M\)&lt;/span&gt;.
+The calculation of the Bell number is based on dynamic programming. The
+number of ways to cluster &lt;span class=&#34;math inline&#34;&gt;\(M+1\)&lt;/span&gt;
+elements is the sum of number of ways to:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;select &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; element and cluster
 it, with the rest belong to one single cluster&lt;/li&gt;
@@ -1085,9 +1134,9 @@ them, with the rest belong to one single cluster&lt;/li&gt;
 B_{M+1} = \sum_{i=1}^M\binom{M}{0}B_i \\
 B_0 = 1
 \end{gather}
-\]&lt;/span&gt; The exhaustive method will be computationally intractable. We
-need either an approximation algorithm or a scoring function with
-special properties.&lt;/p&gt;
+\]&lt;/span&gt; It grows exponentially with &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; and thus the exhaustive method will be
+computationally intractable. We need either an approximation algorithm
+or a scoring function with special properties.&lt;/p&gt;
 &lt;h3 id=&#34;k-means&#34;&gt;K-means&lt;/h3&gt;
 &lt;p&gt;K-means assumes there are &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;
 clusters. This greatly eliminates many possibilities described above.
@@ -1121,8 +1170,8 @@ i.e. minimizing over the centroids &lt;span class=&#34;math inline&#34;&gt;\(\c
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is monotonically decreasing
 after each step in the above loop. Also, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; is lower-bounded by &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(l\)&lt;/span&gt; and thus K-means will converge
 finally.&lt;/p&gt;
-&lt;p&gt;Each cluster in K-means has a circular shape because of the Euclidean
-distance it uses.&lt;/p&gt;
+&lt;p&gt;K-means clustering produces a &lt;a href=&#34;http://en.wikipedia.org/wiki/Voronoi_diagram&#34;&gt;Voronoi diagram&lt;/a&gt;
+which consists of linear decision boundaries.&lt;/p&gt;
 &lt;p&gt;For more discussion and an interesting image compression method with
 K-means, please refer &lt;a href=&#34;https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;gaussian-mixture-model&#34;&gt;Gaussian Mixture Model&lt;/h3&gt;
@@ -1135,9 +1184,9 @@ p(x) = \sum_{j=1}^K\pi_j\mathcal N(x;\mu_j, \Sigma_j)
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\pi_j\)&lt;/span&gt; is the prior that a
 sample is generated from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th
 Gaussian. &lt;span class=&#34;math inline&#34;&gt;\(\mathcal N(x;\mu_j,
-\Sigma_j)\)&lt;/span&gt; is the probability to generate the sample &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. Put it together, &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; is the total probability of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; over its latent &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, with &lt;span class=&#34;math inline&#34;&gt;\(z =
+\Sigma_j)\)&lt;/span&gt; is the probability to generate the sample &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; from the &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. Putting it together, &lt;span class=&#34;math inline&#34;&gt;\(p(x)\)&lt;/span&gt; is the total probability of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; over its latent &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt;, with &lt;span class=&#34;math inline&#34;&gt;\(z =
 j\)&lt;/span&gt; representing the prior condition that &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; is sampled from &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th Gaussian. &lt;span class=&#34;math display&#34;&gt;\[
-p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^Kp(x|z = j)p(z = j)
+p(x) = \sum_{j=1}^Kp(x, z = j) = \sum_{j=1}^K p(z = j) p(x|z = j)
 \]&lt;/span&gt; GMM is learned by &lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 \max_{\pi,\mu,\Sigma}\Big(L(\pi,\mu,\Sigma) \triangleq
@@ -1183,8 +1232,8 @@ N(x^{(i)};\mu_j, \Sigma_j)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_j,
 \Sigma_K)}{\sum_{k=1}^K\pi_k\mathcal N(x^{(i)};\mu_K, \Sigma_K)}\\
 \end{align}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;By far, the whole expression is too complicated for us to continue
-with.&lt;/p&gt;
+&lt;p&gt;By far, the whole expression is far too complicated for us to
+continue…&lt;/p&gt;
 &lt;h4 id=&#34;attempt-with-expectation-maximization&#34;&gt;Attempt with Expectation
 Maximization&lt;/h4&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
@@ -1306,7 +1355,8 @@ j)p(z^{(i)} = j)}{p(x^{(i)})} = \frac{\mathcal N(x^{(i)};\mu_j, I)
 distance.&lt;/p&gt;
 &lt;h2 id=&#34;external-material&#34;&gt;External Material&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://towardsdatascience.com/gaussian-mixture-models-vs-k-means-which-one-to-choose-62f2736025f0&#34;&gt;Gaussian
-Mixture Models vs K-Means. | by K.Kubara | Towards Data Science&lt;/a&gt;&lt;/p&gt;
+Mixture Models vs K-Means. | by K.Kubara | Towards Data Science&lt;/a&gt; &lt;a href=&#34;https://neptune.ai/blog/clustering-algorithms&#34;&gt;Exploring
+Clustering Algorithms: Explanation and Use Cases (neptune.ai)&lt;/a&gt;&lt;/p&gt;
 
 
 </description>
@@ -1464,11 +1514,11 @@ a lower-dimensional space so as to minimize the class overlap.&lt;/p&gt;
       <guid>https://chunxy.github.io/notes/articles/machine-learning/principal-component-analysis/</guid>
       <description>
 
-&lt;p&gt;Given a data matrix &lt;span class=&#34;math inline&#34;&gt;\(X = [x^{(1)},
-x^{(2)}, ..., x^{(M)}] \in \mathbb R^{N \times M}\)&lt;/span&gt;, the goal of
-PCA is to identify the directions of maximum variance contained in the
-data (compared with directional derivative, this is directional
-variance) and project data onto those directions.&lt;/p&gt;
+&lt;p&gt;Given a data matrix &lt;span class=&#34;math inline&#34;&gt;\(X = [x^{(1)}, \dots,
+x^{(M)}] \in \mathbb R^{N \times M}\)&lt;/span&gt;, the goal of PCA is to
+identify the directions of maximum variance contained in the data
+(compared with directional derivative, this is directional variance) and
+project data onto those directions.&lt;/p&gt;
 &lt;h3 id=&#34;linear-pca&#34;&gt;Linear PCA&lt;/h3&gt;
 &lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(v \in \mathbb R^{N \times 1}\)&lt;/span&gt;
 and &lt;span class=&#34;math inline&#34;&gt;\(||v||^2 = 1\)&lt;/span&gt;, the variance in
@@ -1503,9 +1553,9 @@ v^Tv = 0\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(v^T
 0\)&lt;/span&gt;. The reason is if we take derivative w.r.t &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
 \frac{\partial L}{\partial v} = 2\Sigma v - 2\lambda v
 \]&lt;/span&gt; which is more intuitive than &lt;span class=&#34;math inline&#34;&gt;\(\frac{\partial L}{\partial v} = 2\Sigma v +
-2\lambda v\)&lt;/span&gt;. Let the derivative be &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to have &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(v^tv = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v
+2\lambda v\)&lt;/span&gt;. Let the derivative be &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to have &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v = \lambda v\)&lt;/span&gt;. Since &lt;span class=&#34;math inline&#34;&gt;\(v^T v = 1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(v
 \ne 0\)&lt;/span&gt;, this means the optimal solution &lt;span class=&#34;math inline&#34;&gt;\((\lambda^\star, v^\star)\)&lt;/span&gt; must be a pair
-of eigenvalue of eigenvector of &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;:&lt;/p&gt;
+of eigenvalue and eigenvector of &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 v^\star = v_i, \lambda^\star = \lambda_i
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(v_i\)&lt;/span&gt; is rescaled
@@ -1519,7 +1569,7 @@ the result back to the objective to give&lt;/p&gt;
 &amp;amp;= \lambda_i
 \end{aligned}
 \]&lt;/span&gt; So the &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; largest
-directions of variance will be the &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, v_2, ..., v_N\)&lt;/span&gt;, corresponding to the
+directions of variance will be the &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(v_1, \dots, v_N\)&lt;/span&gt;, corresponding to the
 eigenvalues &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1 &amp;gt; \lambda_2 &amp;gt;
 ... &amp;gt; \lambda_N\)&lt;/span&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;compared-with-svd&#34;&gt;Compared with SVD&lt;/h4&gt;
@@ -1541,7 +1591,7 @@ post&lt;/a&gt;.&lt;/p&gt;
 the projection of &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)}\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; because &lt;span class=&#34;math inline&#34;&gt;\(||v|| = 1\)&lt;/span&gt; and thus the objective
 indicates minimizing the overall approximation error.&lt;/p&gt;
 &lt;h3 id=&#34;kernel-pca&#34;&gt;Kernel PCA&lt;/h3&gt;
-&lt;p&gt;We can map the data to a higher-dimension space: &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \to \phi(x^{(i)})\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{X} = [\phi(x^{(1)}), \phi(x^{(2)}), ...,
+&lt;p&gt;We can map the data to a higher-dimension space: &lt;span class=&#34;math inline&#34;&gt;\(x^{(i)} \to \phi(x^{(i)})\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{X} = [\phi(x^{(1)}), ...,
 \phi(x^{(M)})]\)&lt;/span&gt;. Kernel tricks allow us not to explicitly define
 &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;, but to only focus on the
 inner product of mapped data: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal
@@ -1585,7 +1635,7 @@ v &amp;amp;= \frac{1}{M\lambda}\sum_{i=1}^M\phi(x^{(i)})[(\phi(x^{(i)})^Tv]
 \end{aligned}
 \end{gather}
 \]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is some linear
-combination of &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt; and
+combination of &lt;span class=&#34;math inline&#34;&gt;\(\phi(x^{(i)})\)&lt;/span&gt;’s and
 can be written as &lt;span class=&#34;math display&#34;&gt;\[
 v = \mathcal{X}\alpha, \alpha \in \R^N
 \]&lt;/span&gt; Substitute this back to &lt;span class=&#34;math inline&#34;&gt;\(\Sigma v =
@@ -1600,18 +1650,20 @@ M\lambda\mathcal{X}^T\mathcal{X}\alpha \\
 \end{aligned}
 \]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(K =
 \mathcal{X}^T\mathcal{X}\)&lt;/span&gt; which is invertible. Then, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
 KK\alpha = M\lambda K\alpha \\
 K\alpha = M\lambda\alpha
+\end{gathered}
 \]&lt;/span&gt; We can solve &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; as
 &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s eigenvector. Kernel trick can
-be applied since that &lt;span class=&#34;math inline&#34;&gt;\(K_{ij} =
+be applied since &lt;span class=&#34;math inline&#34;&gt;\(K_{ij} =
 (\mathcal{X}^T\mathcal{X})_{ij} =
 \phi(x^{(i)})^T\phi(x^{(j)})\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(M\lambda\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s eigenvalue, which is proportional to
-&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvalue and thus the
-objective. So &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s largest &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; eigenvalues correspond to &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; largest objective respectively. &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(\alpha_1, \alpha_2, ..., \alpha_L\)&lt;/span&gt; has to
-be solved with constraint that &lt;span class=&#34;math inline&#34;&gt;\(\alpha_i^T\alpha_i = \frac{1}{M\lambda}\)&lt;/span&gt;
-because &lt;span class=&#34;math display&#34;&gt;\[
+&lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;’s eigenvalue and thus the
+objective. So &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s largest &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; eigenvalues correspond to &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; largest objective one-by-one. &lt;span class=&#34;math inline&#34;&gt;\(K\)&lt;/span&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt; eigenvectors &lt;span class=&#34;math inline&#34;&gt;\(\alpha_1, ..., \alpha_L\)&lt;/span&gt; has to be solved
+with constraint &lt;span class=&#34;math inline&#34;&gt;\(\alpha_i^T\alpha_i =
+\frac{1}{M\lambda}\)&lt;/span&gt; so that for &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{X}\)&lt;/span&gt;’s eigenvector &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
 &amp;amp;= \alpha^T(\mathcal{X}^T\mathcal{X})\alpha \\
@@ -1620,12 +1672,12 @@ v^Tv &amp;amp;= (\mathcal{X}\alpha)^T\mathcal{X}\alpha \\
 &amp;amp;= 1
 \end{aligned}
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Given a sample &lt;span class=&#34;math inline&#34;&gt;\(x^*\)&lt;/span&gt;, we first
-transform it with &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; and
-dot-product with &lt;span class=&#34;math inline&#34;&gt;\(v_1,\dots,v_L\)&lt;/span&gt; to
-get the new coordinates. To get its &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th coordinate, &lt;span class=&#34;math display&#34;&gt;\[
-\phi(x^*)^Tv_j = \phi(x^*)^T\mathcal X\alpha_j = [\mathcal K(x^*,
-x^{(1)}), \mathcal K(x^*, x^{(2)}), \dots, \mathcal K(x^*,
+&lt;p&gt;Given a sample &lt;span class=&#34;math inline&#34;&gt;\(x^*\)&lt;/span&gt;, we compute
+its dot-products with &lt;span class=&#34;math inline&#34;&gt;\(v_1,\dots,v_L\)&lt;/span&gt;
+in the kernel space to get the projected coordinates. To get &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt;-th coordinate of transformed sample,
+&lt;span class=&#34;math display&#34;&gt;\[
+\phi(x^*)^T \phi(v_j) = \phi(x^*)^T \mathcal X \alpha_j = [\mathcal
+K(x^*, x^{(1)}), \mathcal K(x^*, x^{(2)}), \dots, \mathcal K(x^*,
 x^{(M)})]\alpha_j
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h4 id=&#34;centralizing-in-kernel-trick&#34;&gt;Centralizing in Kernel Trick&lt;/h4&gt;
@@ -2110,6 +2162,65 @@ Niwratti Kasture | Analytics Vidhya | Medium&lt;/a&gt;&lt;/p&gt;
     </item>
     
     <item>
+      <title>Receiver Operator Characteristic</title>
+      <link>https://chunxy.github.io/notes/articles/machine-learning/receiver-operator-characteristic/</link>
+      <pubDate>Fri, 14 Jan 2022 21:19:17 +0000</pubDate>
+      <guid>https://chunxy.github.io/notes/articles/machine-learning/receiver-operator-characteristic/</guid>
+      <description>
+
+&lt;h2 id=&#34;receiver-operator-characteristic&#34;&gt;Receiver Operator
+Characteristic&lt;/h2&gt;
+&lt;p&gt;Receiver operator characteristic (ROC) curve connects the consecutive
+TPR-FPR 2-D points, which are obtained by&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ranking the testcases according to the probability of being
+positive from high to low;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;repeatedly labelling the current testcase as positive and
+re-computing the TPR-FPR;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;and proceeding to the next.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that true positive rate (TPR, also the recall) and false
+positive rate (FPR) are&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\text{TPR} = \frac{\text{TP}}{\text{TP + FN}},\ \text{FPR} =
+\frac{\text{FP}}{\text{FP} + \text{TN}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;When we lower the threshold (from &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;) of the probability of estimating the
+sample as positive, both TPR and FPR will increase from &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; monotonically. The area under the curve
+(AUC) of ROC depicts the probability that a random positive testcase has
+a higher predicted probability of being positive than a random negative
+testcase.&lt;/p&gt;
+&lt;p&gt;To show it, note that in the process described above, when a positive
+testcase is added as positive, TPR goes up by &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{\text{\# total positive
+samples}}\)&lt;/span&gt;; when a negative testcase is added as positive, FPR
+goes up (right) by &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{\text{\# total
+negative samples}}\)&lt;/span&gt;. Suppose at iteration i there is an update
+on FPR, we can accumulate the area by&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\frac{\text{\# current positive samples}_i}{\text{\# total negative
+samples} \times \text{\# total positive samples}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\text{\# current positive
+samples}_i\)&lt;/span&gt; is the number of positive testcases that are added
+before the negative testcase i. This holds for each negative testcase.
+That is&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned} \text{AUC-ROC} = \frac{\text{\# positive-negative pairs
+where $+$ is ranked before $-$}}{\text{\# total negative samples} \times
+\text{\# total positive samples}} \\ = \frac{\text{\# positive-negative
+pairs where $+$ is ranked before $-$}}{\text{\# total positive-negative
+pairs}} \end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;AUC-ROC reflects the model’s capability of telling positive testcase
+from negative testcase.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc&#34;&gt;Classification:
+ROC Curve and AUC | Machine Learning | Google for Developers&lt;/a&gt;&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>贝叶斯分类器</title>
       <link>https://chunxy.github.io/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/</link>
       <pubDate>Mon, 22 May 2023 09:43:15 +0000</pubDate>
@@ -2345,30 +2456,70 @@ y_k]}{\sum_{t=1}^T P(\Y, i_t=j; \lambda^t)}
     </item>
     
     <item>
-      <title></title>
+      <title>Mean Average Precision</title>
       <link>https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 14 Jan 2022 21:19:17 +0000</pubDate>
       <guid>https://chunxy.github.io/notes/articles/machine-learning/mean-average-precision/</guid>
-      <description>&lt;h2 id=&#34;the-precision&#34;&gt;The Precision&lt;/h2&gt;
-&lt;p&gt;The typical &lt;strong&gt;precision&lt;/strong&gt; and &lt;strong&gt;recall&lt;/strong&gt; definition in a binary classification is&lt;/p&gt;
-&lt;p&gt;$$&lt;br&gt;
-\text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}, \text{recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}&lt;br&gt;
-$$&lt;/p&gt;
-&lt;p&gt;Precision determines, among all the samples that are identified as positive, how many are really positive. Recall determines, among all the samples that are positive, how many are successfully identified.&lt;/p&gt;
-&lt;p&gt;Binary classification task will assign each case a score that shows how confident the model is in the case is indeed positive. We can arrange all the samples in descending order of this score. Then beginning with an empty set, we add the sample one by one into this set. Every time we add in a new sample, we can calculate the precision and the recall within this set.&lt;/p&gt;
-&lt;p&gt;During this process, recall will increase monotonically; but precision may go up and down. We can draw a plot with regard to this two numbers and this is the precision-recall curve (PRC). The area under PRC usually indicates the goodness of the model, as that of a perfect model will be 1.&lt;/p&gt;
+      <description>
+
+&lt;h2 id=&#34;the-precision&#34;&gt;The Precision&lt;/h2&gt;
+&lt;p&gt;The typical &lt;strong&gt;precision&lt;/strong&gt; and &lt;strong&gt;recall&lt;/strong&gt;
+definition in a binary classification is&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\text{precision} = \frac{\text{TP}}{\text{TP} + \text{FP}},
+\text{recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Precision determines, among all the samples that are identified as
+positive, how many are really positive. Recall determines, among all the
+samples that are positive, how many are successfully identified.&lt;/p&gt;
+&lt;p&gt;Binary classification task will assign each case a score that shows
+how confident the model is in the case is indeed positive. We can
+arrange all the samples in descending order of this score. Then
+beginning with an empty set, we add the sample one by one into this set.
+Every time we add in a new sample, we can calculate the precision and
+the recall within this set.&lt;/p&gt;
+&lt;p&gt;During this process, recall will increase monotonically; but
+precision may go up and down. We can draw a plot with regard to this two
+numbers and this is the precision-recall curve (PRC). The area under PRC
+usually indicates the goodness of the model, as that of a perfect model
+will be 1.&lt;/p&gt;
 &lt;h2 id=&#34;average-precision&#34;&gt;Average Precision&lt;/h2&gt;
-&lt;p&gt;The &amp;ldquo;average precision&amp;rdquo; term usually appears in document retrieval and object detection scenario. For document retrieval task,&lt;/p&gt;
-&lt;p&gt;$$&lt;br&gt;
-\text{precision} = \frac{{ \text{relevant documents} } \cap { \text{retrieved documents} } } {{ \text{retrieved documents} }}&lt;br&gt;
-$$&lt;/p&gt;
-&lt;p&gt;The question is where the &amp;ldquo;average&amp;rdquo; comes from. Similar to the plotting of PRC, we may rank the retrieved documents according to the relevance. Starting from an empty set of documents predicted as relevant, we add these retrieved documents one by one. Then we can have a series of precisions to average upon.&lt;/p&gt;
-&lt;p&gt;On the other hand, in object detection task, predicted anchors are firstly ranked according to its predicted objectness score. After that, each anchor will be assigned a objectness label. The &amp;ldquo;positivity&amp;rdquo; of a anchor is mainly determined by its intersection over union (IoU) with the ground-truth bounding boxes. The rules for determining positivity is complex. But as a result, we will have positive anchors, negative anchors and those neither positive nor negative. During training, only positive and negative anchors will contribute gradient. But in precision, non-positive anchors are treated as &amp;ldquo;negative&amp;rdquo;. For a detailed discussion of positivity in object detection, please refer &lt;a href=&#34;https://vignesh943628.medium.com/metrics-on-object-detection-b9fe3f1bac59&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;We can rank the anchors according to the objectness score. Then similarly beginning with an empty set, we add the anchor one by one into this set. Every time we add in a new anchor, we can calculate the precision. By doing so, we obtain a series of precisions to average.&lt;/p&gt;
+&lt;p&gt;The “average precision” term usually appears in document retrieval
+and object detection scenario. For document retrieval task,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\text{precision} = \frac{\{ \text{relevant documents} \} \cap \{
+\text{retrieved documents} \} } {\{ \text{retrieved documents} \}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The question is where the “average” comes from. Similar to the
+plotting of PRC, we may rank the retrieved documents according to the
+relevance. Starting from an empty set of documents predicted as
+relevant, we add these retrieved documents one by one. Then we can have
+a series of precisions to average upon.&lt;/p&gt;
+&lt;p&gt;On the other hand, in object detection task, predicted anchors are
+firstly ranked according to its predicted objectness score. After that,
+each anchor will be assigned a objectness label. The “positivity” of a
+anchor is mainly determined by its intersection over union (IoU) with
+the ground-truth bounding boxes. The rules for determining positivity is
+complex. But as a result, we will have positive anchors, negative
+anchors and those neither positive nor negative. During training, only
+positive and negative anchors will contribute gradient. But in
+precision, non-positive anchors are treated as “negative”. For a
+detailed discussion of positivity in object detection, please refer &lt;a href=&#34;https://vignesh943628.medium.com/metrics-on-object-detection-b9fe3f1bac59&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We can rank the anchors according to the objectness score. Then
+similarly beginning with an empty set, we add the anchor one by one into
+this set. Every time we add in a new anchor, we can calculate the
+precision. By doing so, we obtain a series of precisions to average.&lt;/p&gt;
 &lt;h3 id=&#34;mean-average-precision&#34;&gt;Mean Average Precision&lt;/h3&gt;
-&lt;p&gt;We can also obtain a series of average precisions for different classes of objects, yielding the concept of &lt;strong&gt;mean average precision&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;average-mean-average-precision&#34;&gt;&amp;ldquo;Average Mean Average Precision&amp;rdquo;&lt;/h3&gt;
-&lt;p&gt;Moreover, we may change the IoU threshold to obtain a series of mean average precisions to average upon; in some sense this is the &amp;ldquo;average mean average precision&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;We can also obtain a series of average precisions for different
+classes of objects, yielding the concept of &lt;strong&gt;mean average
+precision&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;average-mean-average-precision&#34;&gt;“Average Mean Average
+Precision”&lt;/h3&gt;
+&lt;p&gt;Moreover, we may change the IoU threshold to obtain a series of mean
+average precisions to average upon; in some sense this is the “average
+mean average precision”.&lt;/p&gt;
+
+
 </description>
     </item>
     

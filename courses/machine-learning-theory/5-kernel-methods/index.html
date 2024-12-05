@@ -1,0 +1,1733 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Kernel Methods Approximation Error While a bounded excess risk is necessary for satisfactory learning performance, satisfactory learning results also require a small value for \(L(f^*)\), commonly called the approximation error." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/machine-learning-theory/5-kernel-methods/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/machine-learning-theory/5-kernel-methods/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/machine-learning-theory/5-kernel-methods/" />
+  <meta property="og:title" content="5-kernel-methods | Chunxy&#39; Website" />
+  <meta property="og:description" content="Kernel Methods Approximation Error While a bounded excess risk is necessary for satisfactory learning performance, satisfactory learning results also require a small value for \(L(f^*)\), commonly called the approximation error." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="article:published_time" content="2022-01-07T13:39:19&#43;00:00" />
+    
+    <meta property="article:modified_time" content="2022-01-07T13:39:19&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  <title>5-kernel-methods | Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="a7d0730e8f6daa210059ff093f71a50e" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Machine Learning Theory
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/courses/">Courses</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/energy-efficient-computing/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Efficient Computation</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/energy-efficient-computing/images/">Note</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/foundations-of-optimization/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/1-optimization-problem/">1-optimization-problem</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/2-convex-set/">2-convex-set</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/3-convex-function/">3-convex-function</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/4-linear-programming/">4-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/5-conic-linear-programming/">5-conic-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/6-optimizaition-under-uncertainty/">6-optimizaition-under-uncertainty</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/">7-quadratically-constrained-quadratic-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/8-nonlinear-programming/">8-nonlinear-programming</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/machine-learning-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/machine-learning-theory/0-intro/">0-intro</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/1-exp-family/">1-exp-family</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/2-uniform-convergence/">2-uniform-convergence</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/3-rademacher-complexity/">3-rademacher-complexity</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/4-vc-dimension/">4-vc-dimension</a></li>
+
+
+
+  <li class="active"><a href="/courses/machine-learning-theory/5-kernel-methods/">5-kernel-methods</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/6-online-learning/">6-online-learning</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/advanced-topics-in-distributed-system/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Distributed System</a>
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#kernel-methods">Kernel Methods</a>
+      <ul>
+        <li><a href="#approximation-error">Approximation Error</a></li>
+        <li><a href="#revisiting-linear-regression">Revisiting Linear
+Regression</a></li>
+        <li><a href="#kernel-function">Kernel Function</a></li>
+        <li><a href="#learning-with-kernel-functions">Learning with Kernel
+Functions</a></li>
+        <li><a href="#shift-invariant-kernel-functions">Shift-invariant Kernel
+Functions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/machine-learning-theory/">
+        
+          Machine Learning Theory
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        5-kernel-methods
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>5-kernel-methods</h1>
+
+          <div class="article-style">
+            
+
+<h2 id="kernel-methods">Kernel Methods</h2>
+<h3 id="approximation-error">Approximation Error</h3>
+<p>While a bounded excess risk is necessary for satisfactory learning
+performance, satisfactory learning results also require a small value
+for <span class="math inline">\(L(f^*)\)</span>, commonly called the
+approximation error.</p>
+<p>We can decompose the loss of a supervised learning model as the sum
+of <strong>excess risk</strong> (also called estimation error or
+variance &lt;not necessarily the statistical one&gt;) and
+<strong>approximation error</strong> (also called bias): <span class="math display">\[
+L(\hat f) = \underbrace{L(\hat f) - L(f^*)}_{\text{excess risk}} +
+\underbrace{\color{red}{L(f^*)}}_\text{approximation eror}
+\]</span> Another key question in machine learning is how to reduce the
+approximation error.</p>
+<h3 id="revisiting-linear-regression">Revisiting Linear Regression</h3>
+<p>Recall that in <strong>linear regression</strong> we want to learn a
+linear model <span class="math inline">\(f_w(x) = w^T x\)</span> to
+predict a continuous label <span class="math inline">\(Y \in
+\R\)</span>. When using squared-error loss, we obtain the following ERM
+task: <span class="math display">\[
+\begin{equation}
+\min_{w}\ \frac{1}{n} \sum_{i=1}^n \left( w^\top x_i - y_i \right)^2
+\tag{Linear Regression} \label{linreg}
+\end{equation}
+\]</span> One way to empower the above formulation is to extend linear
+function set to some richer function set. This is reminiscent of
+powerful models like neural network. However, another powerful and
+well-established approach is the kernel method which substitutes <span class="math inline">\(x \in \R^d\)</span> with a <strong>fixed</strong>
+feature map <span class="math inline">\(\phi(x): \R^d \to \R^m\)</span>
+transferring the input to a potentially high-dimensional space <span class="math inline">\(m \gg d\)</span>.</p>
+<p><span class="math display">\[
+\begin{equation}
+\min_w\ \frac{1}{n} \sum_{i=1}^n (w^\top \phi(x_i) - y_i)^2 \tag{Kernel
+Method} \label{kernel-method}
+\end{equation}
+\]</span></p>
+<p>The typical way to solve the above problem would be the gradient
+descent: <span class="math display">\[
+w^{t+1} = w^{t} - \gamma \frac{2}{n} \sum_{i=1}^n ((w^t)^\top \phi(x_i)
+- y_i) \phi(x_i)
+\]</span> One observation (<strong>representer theorem</strong>) is
+that, the update to <span class="math inline">\(w\)</span> is a linear
+combination of <span class="math inline">\(\phi(x_i)\)</span>’s. If
+<span class="math inline">\(w^0 = 0\)</span>, we have that <span class="math inline">\(w^t \in \Col(\phi(x_1),\dots,\phi(x_n))\)</span>.
+In this sense, the update of <span class="math inline">\(m\)</span>-dimensional <span class="math inline">\(w\)</span> is controlled by <span class="math inline">\(\phi(x_1),\dots,\phi(x_n)\)</span>, which is only
+<span class="math inline">\(n\)</span>-dimensional. If <span class="math inline">\(m &lt; n\)</span>, the above is not interesting
+because <span class="math inline">\(n\)</span> <span class="math inline">\(m\)</span>-dimensional vectors already cover <span class="math inline">\(\R^m\)</span>. On the other hand if <span class="math inline">\(m &gt; n\)</span>, <span class="math inline">\(w^t\)</span> will reside in a <span class="math inline">\(m\)</span>-dimensional subspace. <strong>We reduce
+an <span class="math inline">\(m\)</span>-dimensional optimization
+problem to an <span class="math inline">\(n\)</span>-dimensional
+one.</strong></p>
+<p>Let’s rewrite <span class="math inline">\(w\)</span> as the linear
+combination of <span class="math inline">\(\phi(x_1),\dots,\phi(x_n)\)</span>, i.e. <span class="math inline">\(w = \sum_{j=1}^n \alpha_j \phi(x_j)\)</span>. The
+problem becomes <span class="math display">\[
+\min_\alpha \frac{1}{n} \sum_{i=1}^n \left( \sum_{j=1}^n \alpha_j
+\underbrace{\langle \phi(x_j), \phi(x_i) \rangle}_{\mathcal{K}(x_j,
+x_i)} - y_i \right)^2
+\]</span> It turns out that the denotation of the problem can be
+simplified as <span class="math display">\[
+\min_\alpha \frac{1}{n} \| y - K \alpha \|_2^2
+\]</span> where <span class="math display">\[
+y = [y_1,\dots,y_n]^\top, \alpha = [\alpha_1, \dots, \alpha_n]^\top \\
+K =
+\begin{pmatrix}
+\mathcal{K}(x_1, x_1) &amp; \cdots &amp; \mathcal{K}(x_1, x_n) \\
+\vdots &amp; \ddots &amp; \vdots \\
+\mathcal{K}(x_n, x_1) &amp; \cdots &amp; \mathcal{K}(x_n, x_n)
+\end{pmatrix}
+\]</span> The question remains for what function <span class="math inline">\(\mathcal{K}: \R^m \times \R^m \to \R\)</span>,
+there exists a <span class="math inline">\(\phi: \R^d \to \R\)</span>
+such that <span class="math inline">\(\mathcal{K}(x,x&#39;) = \langle
+\phi(x), \phi(x&#39;) \rangle\)</span>.</p>
+<h3 id="kernel-function">Kernel Function</h3>
+<blockquote>
+<p>Definition: <strong>kernel function</strong>. We call <span class="math inline">\(\mathcal{K}: \mathcal{X} \times \mathcal{X} \to
+\R\)</span> a kernel function, if for every integer <span class="math inline">\(t \in \N\)</span> and vectors <span class="math inline">\(x_1, \dots, x_t \in \mathcal{X}\)</span>, the
+matrix <span class="math inline">\(K \in \R^{t \times t}\)</span> with
+the <span class="math inline">\((i,j)\)</span>-th entry <span class="math inline">\(\mathcal{K}(x_i, x_j)\)</span> will be symmetric
+and positive semi-definite (why better PSD??): <span class="math display">\[
+K =
+\begin{pmatrix}
+\mathcal{K}(x_1, x_1) &amp; \cdots &amp; \mathcal{K}(x_1, x_n) \\
+\vdots &amp; \ddots &amp; \vdots \\
+\mathcal{K}(x_n, x_1) &amp; \cdots &amp; \mathcal{K}(x_n, x_n)
+\end{pmatrix} \succeq 0
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Theorem: <span class="math inline">\(\mathcal{K}: \R^d \times \R^d
+\to \R\)</span> is a kernel function if and only if there exists a
+feature map <span class="math inline">\(\phi: \R^d \to \R^m\)</span>
+such that for every <span class="math inline">\(x, x&#39;\)</span>,
+<span class="math display">\[
+\mathcal{K}(x, x&#39;) = \langle \phi(x), \phi(x&#39;) \rangle
+\]</span> Note that there is a subtlety that <span class="math inline">\(m\)</span> can be <span class="math inline">\(\infty\)</span>.</p>
+</blockquote>
+<h4 id="examples">Examples</h4>
+<ol type="1">
+<li><p><strong>Linear kernel</strong>: <span class="math inline">\(\mathcal{K}_\text{linear}(x, x&#39;) = \langle x,
+x&#39; \rangle\)</span></p></li>
+<li><p>Degree-<span class="math inline">\(r\)</span> <strong>polynomial
+kernel</strong>: <span class="math inline">\(\mathcal{K}_\text{poly-$r$}(x, x&#39;) = (1 +
+\langle x, x&#39; \rangle)^r\)</span></p>
+<p>The interesting thing about the polynomial kernel is that, if we
+directly use the degree-<span class="math inline">\(r\)</span> feature
+map <span class="math inline">\(\phi_r\)</span>, the number of variables
+will be <span class="math inline">\(m = O(d^r)\)</span>; but in this
+case, the number of variables is just <span class="math inline">\(n\)</span>​.</p>
+<p>As for the proof, it simply follows from the fact that sum (between
+<span class="math inline">\(1\)</span> and <span class="math inline">\(x^\top x\)</span>) and product (among <span class="math inline">\((1+x^\top x)\)</span>’s) of kernel functions are
+kernel functions.</p></li>
+<li><p><strong>Gaussian kernel</strong> with bandwidth <span class="math inline">\(\sigma^2\)</span>: <span class="math inline">\(\mathcal{K}_\text{Gaussian($\sigma^2$)}(x, x’) =
+\exp(-\frac{\|x-x&#39;\|_2^2}{2\sigma^2})\)</span></p>
+<p>The reason why we don’t use <span class="math inline">\(f(x, x&#39;)
+= -\|x-x&#39;\|_2^2\)</span>​ is that the resulting matrix is not
+PSD.</p>
+<p>As for the proof, we can separate the terms: <span class="math display">\[
+\begin{aligned}
+&amp;\exp(-\frac{\|x-x&#39;\|_2^2}{2\sigma^2}) =
+\exp(-\frac{\|x\|_2^2}{2\sigma^2} - \frac{\|x&#39;\|_2^2}{2\sigma^2} +
+\frac{x^T x&#39;}{\sigma^2}) \\
+&amp;= \underbrace{\exp(-\frac{\|x\|_2^2}{2\sigma^2})}_{\varphi(x)}
+\underbrace{\exp(-\frac{\|x&#39;\|_2^2}{2\sigma^2})}_{\varphi(x&#39;)}
+\exp(\frac{x^T x&#39;}{\sigma^2}) \\
+\end{aligned}
+\]</span> Now it remains to show that <span class="math inline">\(\exp(\frac{x^T x&#39;}{\sigma^2})\)</span> is a
+kernel function. To show it, recall the Taylor series: <span class="math display">\[
+\exp(\frac{x^T x&#39;}{\sigma^2}) = \sum_{i=0}^\infty \frac{(x^T
+x&#39;)^m}{\sigma^{2m} i!}
+\]</span> which is the sum of infinite-many kernel functions.</p></li>
+</ol>
+<h4 id="properties">Properties</h4>
+<blockquote>
+<p>Proposition: <strong>sum of kernel functions</strong>. If <span class="math inline">\(\mathcal{K}_1\)</span> and <span class="math inline">\(\mathcal{K}_2\)</span> are kernel functions, then
+their sum, i.e. <span class="math display">\[
+\mathcal{K}(x,x&#39;) = \mathcal{K}_1(x,x&#39;) +
+\mathcal{K}_2(x,x&#39;)
+\]</span> will also be a kernel function.</p>
+<p>Proof. Consider concatenating <span class="math inline">\(\phi(x) =
+[\phi_1(x), \phi_2(x)]\)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Theorem: <strong>product of kernel functions</strong>. If <span class="math inline">\(\mathcal{K}_1\)</span> and <span class="math inline">\(\mathcal{K}_2\)</span> are kernel functions, then
+their product, i.e. <span class="math display">\[
+\mathcal{K}(x,x&#39;) = \mathcal{K}_1(x,x&#39;) \times
+\mathcal{K}_2(x,x&#39;)
+\]</span> will also be a kernel function.</p>
+<p>Proof. Let <span class="math inline">\(A, B\)</span> be two symmetric
+matrices whose spectral decompositions are <span class="math display">\[
+\begin{aligned}
+A \odot B &amp;= \left( \sum_{i=1}^t \lambda_i u_i u_i^T \right) \odot
+\left( \sum_{j=1}^{t&#39;} \gamma_j v_j v_j^T \right) \\
+&amp;= \sum_{i=1}^t \sum_{j=1}^{t&#39;} \lambda_i \gamma_j (u_i u_i^T)
+\odot (v_j v_j^T) \\
+&amp;= \sum_{i=1}^t \sum_{j=1}^{t&#39;} \lambda_i \gamma_j (u_i \odot
+v_j) (u_i \odot v_j)^T \\
+\end{aligned}
+\]</span> As a result, <span class="math inline">\(A \odot B\)</span> is
+PSD.</p>
+</blockquote>
+<h4 id="defining-function-space-via-kernel">Defining Function Space via
+Kernel</h4>
+<p>The motivation of RKHS is that, we need to define a function space
+(which is a linear transformation of the feature function associated
+with the kernel function) based on the kernel function <span class="math inline">\(\mathcal{K}\)</span>. The reason why we need such
+function space is that, we can never resort to optimizing over <span class="math inline">\(\set{w^T \phi: w \in \R^m}\)</span> where <span class="math inline">\(\phi\)</span> is not guaranteed to have a
+closed-form formula in kernel method. We need to find a surrogate
+function space to do the optimization.</p>
+<blockquote>
+<p>Definition: <strong>reproducing kernel Hilbert space (RKHS)</strong>.
+For kernel function <span class="math inline">\(\mathcal{K}\)</span>, we
+define the reproducing kernel Hilbert space <span class="math inline">\(\mathcal{H}\)</span> as the following set of
+functions: <span class="math display">\[
+\mathcal{H} = \{ f(x) \triangleq \sum_{i=1}^t \alpha_i \mathcal{K}(x_i,
+x): t \in \N, \alpha_1,\dots,\alpha_t \in \R, x_1,\dots,x_t \in
+\mathcal{X} \}
+\]</span></p>
+</blockquote>
+<p>This looks frustrating because it seems that we convert an <span class="math inline">\(m\)</span>-dimensional optimization problem to an
+infinite-dimensional one. But later the <em>representer theorem</em>
+will show us interesting conclusion.</p>
+<h5 id="example-rkhs-of-linear-kernel">Example: RKHS of linear
+kernel</h5>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal{H} &amp;= \{ \sum_{i=1}^t \alpha_i x_i^T x: t \in \N,
+\alpha_1,\dots,\alpha_t \in \R, x_1,\dots,x_t \in \mathcal{X} \} \\
+\end{aligned}
+\]</span> Note that <span class="math display">\[
+\sum_{i=1}^t \alpha_i x_i^T x = (\sum_{i=1}^t \alpha_i x_i^T) x
+\]</span> <span class="math inline">\((\sum_{i=1}^t \alpha_i
+x_i^T)\)</span> can span all the <span class="math inline">\(w \in
+\R^d\)</span>. Therefore, <span class="math inline">\(\mathcal{H}\)</span> is the set of all the linear
+functions.</p>
+<h5 id="example-rkhs-of-polynomial-kernel">Example: RKHS of polynomial
+kernel</h5>
+<p>Take <span class="math inline">\(r=2\)</span>​ as an example. <span class="math display">\[
+\begin{aligned}
+\mathcal{H} &amp;= \{ \sum_{i=1}^t \alpha_i (1 + x_i^T x)^2: t \in \N,
+\alpha_1,\dots,\alpha_t \in \R, x_1,\dots,x_t \in \mathcal{X} \} \\
+\end{aligned}
+\]</span> Note that <span class="math display">\[
+\begin{aligned}
+&amp;\sum_{i=1}^t \alpha_i (1 + x_i^T x)^2 = \sum_{i=1}^t \alpha_i (1 +
+2 x_i^T x + (x_i^T x)^2) \\
+&amp;= \sum_{i=1}^t \alpha_i + (\sum_{i=1}^t 2\alpha_i x_i^T) x +
+\sum_{i=1}^t \alpha_i (x^T x_i x_i^T x) \\
+&amp;= \sum_{i=1}^t \alpha_i + (\sum_{i=1}^t 2\alpha_i x_i^T) x + x^T
+(\sum_{i=1}^t \alpha_i x_i x_i^T) x \\
+\end{aligned}
+\]</span> Now with the quadratic form <span class="math inline">\(x^T A
+x + bx + c\)</span> for arbitrary symmetric matrix <span class="math inline">\(A\)</span> with rank <span class="math inline">\(r\)</span>, vector <span class="math inline">\(b\)</span> and constant <span class="math inline">\(c\)</span>, we first apply spectral decomposition
+to <span class="math inline">\(A\)</span> to get <span class="math display">\[
+A = \sum_{i=1}^r \lambda_i v_i v_i^T
+\]</span> For <span class="math inline">\(i=1,\dots,r\)</span>, we
+choose <span class="math display">\[
+x_i = v_i, x_{r+i} = -v_{i}, \\
+b = \sum_{i=1}^r \gamma_i v_i ??, \\
+\alpha_i + \alpha_{r+i} = \lambda_{i}, \\
+\alpha_i - \alpha_{r+i} = \gamma_{i}/2 \\
+\]</span> Further, we can choose <span class="math inline">\(x_{2r+1},\dots,x_{2r+k} = 0\)</span> and <span class="math inline">\(\alpha_{2r+1},\dots,\alpha_{2r+k}\)</span> such
+that <span class="math inline">\(\sum_{i=1}^k \alpha_{2r+k} =
+c\)</span>.</p>
+<p>In this way, we can rewrite any quadratic function into the form of
+element of <span class="math inline">\(\mathcal{H}\)</span>. As a
+result, <span class="math inline">\(\mathcal{H}\)</span>​ is the set of
+all the quadratic functions.</p>
+<h4 id="hilbert-space">Hilbert Space</h4>
+<p>Note that in the above we go to RKHS via the kernel instead of the
+feature function. This is due to the same reason that the computation of
+feature function is in a higher dimension, which is more costly.</p>
+<blockquote>
+<p>Definition: <strong>inner product in an RKHS</strong>. Given two
+functions <span class="math inline">\(f(x) = \sum_{i=1}^t \alpha_i
+\mathcal{K}(x_i, x)\)</span> and <span class="math inline">\(g(x) =
+\sum_{j=1}^{t&#39;} = \alpha_j&#39; \mathcal{K}(x_j&#39;, x)\)</span> in
+the RKHS <span class="math inline">\(\mathcal{H}\)</span> of kernel
+<span class="math inline">\(\mathcal{K}\)</span>, we define their inner
+produce as <span class="math display">\[
+\langle f,g \rangle = \sum_{i=1}^t \sum_{j=1}^{t&#39;} \alpha_i \beta_j
+\mathcal{K}(x_i, x_j&#39;)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Proposition: <strong>RKHS with the defined inner product is a Hilbert
+space</strong>. The RKHS defined for a kernel <span class="math inline">\(\mathcal{K}\)</span> coupled with the above inner
+product will result in a Hilbert space, where the following holds for
+every <span class="math inline">\(f, f_1, f_2, g \in
+\mathcal{H}\)</span>:</p>
+<ol type="1">
+<li><strong>Symmetry</strong>: <span class="math inline">\(\langle f, g
+\rangle = \langle g, f \rangle\)</span></li>
+<li><strong>Linearity and homogenity</strong>: for all <span class="math inline">\(\gamma \in \R\)</span>: <span class="math inline">\(\langle f_1 + \gamma f_2, g \rangle = \langle f_1,
+g \rangle + \gamma \langle f_2, g \rangle\)</span></li>
+<li><strong>Positive definiteness</strong>: <span class="math inline">\(\langle f, f \rangle \ge 0\)</span> where the
+equality holds only for <span class="math inline">\(f = 0\)</span></li>
+</ol>
+</blockquote>
+<p>With the Hilbert space, we can determine the norm resident in it:</p>
+<blockquote>
+<p>Definition: <strong>norm in an RKHS</strong>. For a function <span class="math inline">\(f(x) = \sum_{i=1}^t \alpha_i \mathcal{K}(x_i,
+x)\)</span> in the RKHS <span class="math inline">\(\mathcal{H}\)</span>
+for kernel <span class="math inline">\(\mathcal{K}\)</span>, we define
+its norm as <span class="math display">\[
+\|f\|_\mathcal{H}^2 \triangleq \langle f,f \rangle = \sum_{i=1}^t
+\sum_{j=1}^t \alpha_i \alpha_j \mathcal{K}(x_i, x_j) = \alpha^\top K
+\alpha
+\]</span> where <span class="math inline">\(K \in \R^{t \times
+t}\)</span> and <span class="math inline">\(K_{ij} = \mathcal{K}(x_i,
+x_j)\)</span>.</p>
+</blockquote>
+<h3 id="learning-with-kernel-functions">Learning with Kernel
+Functions</h3>
+<p>For <span class="math inline">\(f(x) = w^T x\)</span> and <span class="math inline">\(g(x) = (w&#39;)^T x\)</span> that belong to the
+<u>RKHS of linear kernel</u> <span class="math inline">\(\mathcal{H}_\text{linear} = \{ f_w(x) = w^\top x:
+w \in \R^d \}\)</span>, we have <span class="math display">\[
+\begin{aligned}
+\langle f,g \rangle &amp;= \sum_i \sum_j \alpha_i \beta_j x_i^T x_j \\
+&amp;= \sum_i \alpha_i x_i^T \sum_j \beta_j x_j \\
+&amp;= \sum_i \alpha_i x_i^T w&#39; \\
+&amp;= w^T w&#39; \\
+\end{aligned}
+\]</span> As a result, <span class="math inline">\(\|f\|_{\mathcal{H}_\text{linear}} =
+\|w\|\)</span>. We generalize from <span class="math inline">\(\eqref{linreg}\)</span> to <span class="math display">\[
+\begin{equation}
+\min_{f \in \mathcal{H}}\ \frac{1}{n} \sum_{i=1}^n \ell(f(x_i), y_i) +
+Q(\|f\|_\mathcal{H}) \tag{Regulaized Kernel Method}
+\label{regularized-kernel-method}
+\end{equation}
+\]</span> where <span class="math inline">\(\mathcal{H}\)</span> is a
+general RKHS <span class="math inline">\(Q: \R^+ \to \R\)</span> is an
+increasing function acting as a regularization term.</p>
+<blockquote>
+<p>Theorem: <strong>representer theorem</strong>. Given samples <span class="math inline">\(x_1,\dots,x_n\)</span>, consider the <span class="math inline">\(\eqref{regularized-kernel-method}\)</span>
+problem. Every optimal solution <span class="math inline">\(f^* \in
+\mathcal{H}\)</span> satisfies the following for some real coefficients
+<span class="math inline">\(\alpha_1,\dots,\alpha_n \in \R\)</span>:
+<span class="math display">\[
+f^*(x) = \sum_{j=1}^n \alpha_j \mathcal{K}(x_j, x)
+\]</span> Proof. To show it, first note that <span class="math inline">\(f^*\)</span> comes from <span class="math inline">\(\mathcal{H}\)</span>. Let <span class="math inline">\(\phi\)</span> be the feature function associated
+with the kernel function <span class="math inline">\(\mathcal{K}\)</span>. Thus, <span class="math inline">\(f^*(x)\)</span> can be written as <span class="math inline">\((w^*)^\top \phi(x)\)</span> where <span class="math inline">\(w^* = \sum_{j=1}^n \alpha_j \phi(x_j) + v\)</span>
+and <span class="math inline">\(v\)</span> is the component that is
+perpendicular to <span class="math inline">\(\Col(\phi(x_1), \dots,
+\phi(x_n))\)</span>​.</p>
+<p>Let <span class="math inline">\(\tilde w = \sum_{j=1}^n \alpha_j
+\phi(x_j)\)</span>. We claim that <span class="math inline">\(v =
+0\)</span>; otherwise <span class="math inline">\(\tilde f(x) = \tilde
+w^\top x\)</span> incurs the same loss but smaller norm, contradicting
+the fact that <span class="math inline">\(f^*\)</span> is the
+optimal.</p>
+</blockquote>
+<p>Representer theorem implies that the kernel method solves the
+following optimization problem: <span class="math display">\[
+\min_{\alpha \in \R^n} \frac{1}{n} \sum_{i=1}^n \ell \left( \sum_{j=1}^n
+\alpha_j \mathcal{K}(x_j, x_i), y_i \right) + Q(\sqrt{\alpha^\top K
+\alpha})
+\]</span></p>
+<p>Note how we drop the intractable <span class="math inline">\(\phi\)</span> in <span class="math inline">\(\eqref{kernel-method}\)</span> in the above
+formulation.</p>
+<h4 id="example-kernel-based-ridge-regression">Example: Kernel-based
+Ridge Regression</h4>
+<p>We choose <span class="math inline">\(\ell(\hat y, y) = (\hat
+y-y)^2\)</span>. We choose <span class="math inline">\(Q(w) = \lambda
+\|w\|_2^2\)</span>. The kernel function is the linear kernel. <span class="math display">\[
+\begin{gathered}
+\min_{w \in \R^d} \sum_{i=1}^n (w^\top x_i -y_i)^2 + \lambda \|w\|_2^2
+\\
+\Downarrow \\
+\min_{\alpha \in \R^n} \|y - K \alpha\|_2^2 + \lambda \alpha^\top K
+\alpha
+\end{gathered}
+\]</span> The above is a convex optimization problem. As a result, <span class="math display">\[
+\begin{aligned}
+2 K (K \alpha^* - y) + 2\lambda K \alpha^* &amp;= 0 \\
+K (K + \lambda) \alpha^* &amp;= K y \\
+\end{aligned}
+\]</span></p>
+<p><span class="math inline">\(\alpha^* = (K + \lambda I)^{-1} K
+y\)</span> will be the solution.</p>
+<h4 id="example-kernel-based-svm">Example: Kernel-based SVM</h4>
+<p>We choose <span class="math inline">\(\ell(\hat y, y) = \max(0, 1 -
+\hat y y)\)</span> which is the <strong>hinge loss</strong>. We choose
+<span class="math inline">\(Q(w) = \lambda \|w\|_2^2\)</span>. The
+kernel function is the linear kernel. <span class="math display">\[
+\min_{w \in \R^d} \sum_{i=1}^n \ell(w^T x_i, y_i) + \lambda \|w\|_2^2 \\
+\]</span> Note that <span class="math inline">\(\max(0, 1-z) =
+\max_{\alpha \in [0,1]} \alpha(1-z)\)</span>. The problem can be
+reformulated as <span class="math display">\[
+\min_{w \in \R^d} \max_{\alpha \in [0,1]^n} \sum_{i=1}^n \alpha_i (1 -
+y_i w^T x_i) + \lambda \|w\|_2^2 \\
+\]</span> The <u>minimax theorem</u> implies that (the reason for
+choosing <span class="math inline">\(\alpha \in [0,1]^n\)</span> instead
+of <span class="math inline">\(\alpha \in \{ 0,1 \}^n\)</span> is that
+we want to satisfy the condition of minimax theorem) we can swap the
+<span class="math inline">\(\min\)</span> and <span class="math inline">\(\max\)</span>​ in the above formula to obtain
+<span class="math display">\[
+\max_{\alpha \in [0,1]^n} \min_{w \in \R^d} \sum_{i=1}^n \alpha_i (1 -
+y_i w^T x_i) + \lambda \|w\|_2^2 \\
+\]</span> The minimization term inside gives <span class="math display">\[
+\begin{aligned}
+&amp;\min_{w \in \R^d} \sum_{i=1}^n \alpha_i (1 - y_i w^\top x_i) +
+\lambda \|w\|_2^2 \\
+=\ &amp;\sum_{i=1}^n \alpha_i + \min_{w \in \R^d} - \sum_{i=1}^n
+\alpha_i y_i x_i^\top w + \lambda \|w\|_2^2 \\
+=\ &amp;\sum_{i=1}^n \alpha_i - \frac{2}{\lambda} \big\| \sum_{i=1}^n
+\alpha_i y_i x_i^\top \big\|_2^2 \\
+=\ &amp;\sum_{i=1}^n \alpha_i - \frac{2}{\lambda} \sum_{i=1}^n
+\sum_{j=1}^n \alpha_i \alpha_j y_i y_j \langle x_i, x_j \rangle \\
+\end{aligned}
+\]</span> Therefore, the dual optimization problem to SVM is <span class="math display">\[
+\max_{\alpha \in [0,1]^n} \sum_{i=1}^n \alpha_i - \frac{2}{\lambda}
+\sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j y_i y_j \underbrace{\langle
+x_i, x_j \rangle}_{\mathcal{K}(x_i, x_j)}
+\]</span> If we define <span class="math inline">\(\tilde K = [y_i y_j
+\mathcal{K}(x_i, x_j)]\)</span>, the problem becomes <span class="math display">\[
+\max_{\alpha \in [0,1]^n} 1^\top \alpha - \frac{2}{\lambda} \alpha^\top
+\tilde K \alpha
+\]</span> The method for solving such constrained optimization would be
+the coordinate descent.</p>
+<h3 id="shift-invariant-kernel-functions">Shift-invariant Kernel
+Functions</h3>
+<blockquote>
+<p>Definition: <strong>shift-invariant kernel</strong>. We call a kernel
+function <span class="math inline">\(\mathcal{K}: \mathcal{X} \times
+\mathcal{X} \to \R\)</span> shift-invariant if there exists function
+<span class="math inline">\(\kappa: \mathcal{X} \to \R\)</span> such
+that for every <span class="math inline">\(x,x&#39; \in
+\mathcal{X}\)</span>: <span class="math display">\[
+\mathcal{K}(x,x&#39;) = \kappa(x-x&#39;)
+\]</span> Note that <span class="math inline">\(\kappa\)</span>
+<strong>must be even</strong>.</p>
+</blockquote>
+<p>One example would be the Gaussian kernel. On the other hand, linear
+kernel and polynomial kernel are not shift-invariant (easy to verify).
+An important question to ask, <strong>how to determine whether a kernel
+function is shift-invariant or not</strong>.</p>
+<blockquote>
+<p>Definition: <strong>Fourier series</strong>. Given a function <span class="math inline">\(f: \R^d \to \R\)</span>, we define its
+<strong>Fourier (transform) series</strong> <span class="math inline">\(\hat f: \R \to \R\)</span> as <span class="math display">\[
+\hat f(\omega) \triangleq \int f(x) \exp(-i\omega^\top x) \d x
+\]</span> The <strong>inverse Fourier transform</strong> of <span class="math inline">\(f\)</span> would be (related to spherical
+coordinate??) <span class="math display">\[
+f(x) = (\frac{1}{2\pi})^d \int \hat f(\omega) \exp(i \omega^\top x) \d
+\omega \\
+\Rightarrow (\frac{1}{2\pi})^d \int \hat f(\omega) \d \omega = f(0)
+\]</span> The Fouries (transform) series of <span class="math inline">\(\hat f\)</span> would be <span class="math display">\[
+\hat{\hat f}(x) = \int \hat f(\omega) \exp(-i\omega^\top x) \d x =
+(\frac{1}{2 \pi})^d f(-x)
+\]</span></p>
+</blockquote>
+<blockquote>
+<p>Theorem: <strong>Bochner’s theorem</strong>. A function <span class="math inline">\(\kappa: \R^d \to \R\)</span> results in a valid
+shift-invariant kernel <span class="math inline">\(\mathcal{K}(x,x&#39;)
+= \kappa(x-x&#39;)\)</span> if and only if its Fourier transform <span class="math inline">\(\hat \kappa\)</span> is real and non-negative
+everywhere, i.e., <span class="math display">\[
+\forall \omega \in \R^d, \hat \kappa(\omega) \ge 0
+\]</span></p>
+</blockquote>
+<h4 id="example-gaussian-kernel">Example: Gaussian Kernel</h4>
+<p>The Gaussian kernel <span class="math inline">\(\mathcal{K}(x,x&#39;)
+= \kappa_\text{Gaussian}(z \triangleq x-x&#39;) =
+\exp(-\frac{\|z\|_2^2}{2\sigma^2})\)</span> is a valid and
+shift-invariant kernel function because <span class="math display">\[
+\hat \kappa_\text{Gaussian}(\omega) = ({\sqrt{2\pi}}{\sigma})^d
+\exp(-\frac{\sigma^2 \|\omega\|_2^2}{2}) \ge 0
+\]</span> There are two interesting observations:</p>
+<ol type="1">
+<li><p>Gaussian-shaped function is <strong>fixed point</strong> w.r.t.
+Fourier transform in that its Fourier series is still
+Gaussian-shaped.</p></li>
+<li><p>Note that <span class="math inline">\((\frac{1}{2 \pi})^d \hat
+\kappa_\text{Gaussian}\)</span> is in essence the PDF of normal
+distribution <span class="math inline">\(\mathcal{N}(0,
+\frac{1}{\sigma^2} I)\)</span>.</p>
+<p>If the <span class="math inline">\(\sigma^2\)</span> is small, <span class="math inline">\(\hat \kappa_\text{Gaussian}(\omega)\)</span> will
+spread out; if <span class="math inline">\(\sigma^2\)</span> is large,
+<span class="math inline">\(\hat \kappa_\text{Gaussian}(\omega)\)</span>
+will concentrate.</p></li>
+</ol>
+<h4 id="non-example-box-similarity-score">Non-Example: Box Similarity
+Score</h4>
+<p>A non-example of shift-invariant kernel is the <strong>box similarity
+score</strong> where <span class="math display">\[
+s(x,x&#39;) = \begin{cases}
+1 &amp; \text{if $\|x-x&#39;\|_2 \le \epsilon$} \\
+0 &amp; \text{otherwise}
+\end{cases}
+\]</span> In this example, we can easily tell that <span class="math inline">\(s\)</span> is shift-invariant. But we still have
+to check if box similarity score is a valid kernel function. We form the
+following function <span class="math display">\[
+\Pi_\epsilon(z) = \begin{cases}
+1 &amp; \text{if $\|z\| \le \epsilon$} \\
+0 &amp; \text{otherwise}
+\end{cases}
+\]</span> We attempt to check both the validity and the shift-invariance
+in one gut via Bochner’s theorem. Let’s try with <span class="math inline">\(x \in \R\)</span> first: <span class="math display">\[
+\begin{aligned}
+&amp;\hat \Pi_\epsilon(\omega) = \int_{-\infty}^{\infty} \Pi_\epsilon(x)
+\exp(-i \omega x) \d x \\
+&amp;= \int_{-\epsilon}^{+\epsilon} [\cos (\omega x) + i \sin(\omega x)]
+\d x \\
+&amp;= \int_{-\epsilon}^{+\epsilon} \cos (\omega x) \d x \\
+&amp;= \frac{2 \sin (\omega \epsilon)}{\omega}
+\end{aligned}
+\]</span> The Fourier series <span class="math inline">\(\hat
+\Pi_\epsilon\)</span> is not non-negative everywhere. As a result, box
+similarity score is not valid or not shift-invariant. But box similarity
+score is shift-invariant. Thus, box similarity score is not valid.</p>
+<h4 id="example-sinc-kernel">Example: Sinc Kernel</h4>
+<p>The kernel function associated with the <span class="math inline">\(\DeclareMathOperator{\sinc}{sinc}
+\kappa_\text{sinc}(z) = \sinc z \triangleq \frac{\sin(\pi z)}{\pi
+z}\)</span> function (note that here <span class="math inline">\(z\)</span> is univariate) is a valid and
+shift-invariant kernel function. This holds because <span class="math display">\[
+\begin{gathered}
+\hat \Pi_\epsilon(\omega) = \frac{2 \sin (\omega \epsilon)}{\omega} = 2
+\epsilon \sinc(\frac{\omega \epsilon}{\pi}) \\
+\end{gathered}
+\]</span></p>
+<p>And thus, <span class="math display">\[
+\begin{gathered}
+\begin{aligned}
+\frac{1}{2\pi} \Pi_\epsilon(-z) &amp;= \hat{\hat \Pi}_\epsilon(z) \\
+&amp;\Downarrow_\text{evenness of $\Pi_\epsilon$} \\
+\frac{1}{2\pi} \Pi_\epsilon(z) &amp;=\int 2 \epsilon \sinc(\frac{\omega
+\epsilon}{\pi}) \exp(-i\omega z)\d \omega \\
+\frac{1}{2\pi} \Pi_\epsilon(z) &amp;= C_1 \cdot \widehat{\sinc}(C_2 z)
+\ge 0
+\end{aligned} \\
+\end{gathered}
+\]</span> In fact, <span class="math display">\[
+\widehat{\sinc}(\omega) = \mathbb{1}[-1 \le \omega \le 1] \ge 0
+\]</span></p>
+<p>The above inspires us of <strong>how to construct a shift-invariant
+kernel</strong>: begin from a non-negative even function <span class="math inline">\(f\)</span> and take <span class="math inline">\(\hat f\)</span>’s Fourier series as the kernel
+function. <span class="math inline">\(\hat f\)</span> in this case is
+also called the <strong>synthesis function</strong>.</p>
+<h4 id="random-fourier-features">Random Fourier Features</h4>
+<p>Recall that in the synthesizing process, <span class="math inline">\(\kappa\)</span> is the carefully-chosen
+non-negative even function to form a valid shift-invariant kernel.
+However, Fourier transform of <span class="math inline">\(\hat
+\kappa\)</span> is not always easy to derive. To tackle it, note that
+because <span class="math inline">\(\kappa\)</span> is non-negative and
+even, <span class="math inline">\(\hat \kappa\)</span> is also
+non-negative and even. Recall the inverse Fourier transform: <span class="math display">\[
+\begin{gathered}
+(\frac{1}{2\pi})^d \int \hat \kappa(\omega) \d \omega = \kappa(0) \\ \\
+\begin{aligned}
+\kappa(\underbrace{x-x&#39;}_z) &amp;= (\frac{1}{2 \pi})^d \int \hat
+\kappa(\omega) \exp(i \omega z) \d \omega \ge 0 \\
+% &amp;\Downarrow_{\text{connecting to synthesizing due to the evenness
+of $\hat \kappa$ ??}} \\
+% &amp;= (\frac{1}{2 \pi})^d \int \hat \kappa(\omega) \exp(-i \omega z)
+\d \omega \\
+&amp;= (\frac{1}{2 \pi})^d \int \hat \kappa(\omega) \exp(i \omega x - i
+\omega x&#39;) \d \omega \\
+\end{aligned}
+\end{gathered}
+\]</span> We can intentionally rescale <span class="math inline">\(\kappa(0)\)</span> to <span class="math inline">\(1\)</span>. Thus, <span class="math inline">\((\frac{1}{2\pi})^d \hat \kappa\)</span> is a PDF
+and <span class="math inline">\(\kappa(z)\)</span> is in a form of
+expectation: <span class="math display">\[
+\begin{aligned}
+&amp;\kappa(z) = \E_{\omega \sim (\frac{1}{2 \pi})^d \hat \kappa}[e^{i
+\omega^\top (x-x&#39;)}] = \E[\underbrace{\exp(iw^\top x)}_{\phi(x)}
+\underbrace{\exp(-iw^\top x&#39;)}_{\overline{\phi(x&#39;)}}] \\
+&amp;= \E_{\omega \sim (\frac{1}{2 \pi})^d \hat \kappa}[\cos\omega
+(x-x&#39;) - i\sin\omega (x-x&#39;)] \\
+&amp;\Downarrow_\text{evenness of $\hat \kappa$} \\
+&amp;= \E_{\omega \sim (\frac{1}{2 \pi})^d \hat \kappa}[\cos\omega
+(x-x&#39;)] \\
+&amp;= \E_{\omega \sim (\frac{1}{2 \pi})^d \hat \kappa}[\cos \omega x
+\cos \omega x&#39; + \sin \omega x \sin \omega x&#39;] \\
+&amp;\Downarrow_\text{using $r$ samples} \\
+&amp;\approx \frac{1}{r} \sum_{i=1}^r (\cos \omega_i x \cos \omega_i
+x&#39; + \sin \omega_i x \sin \omega_i x&#39;)
+\end{aligned}
+\]</span> Let <span class="math inline">\(\tilde \phi: \R^d \to
+\R^{2r}\)</span> and <span class="math inline">\(\tilde \phi(x) =
+\frac{1}{\sqrt{r}}[\cos(\omega_1 x), \dots, \cos(\omega_r x),
+\sin(\omega_1 x), \dots, \sin(\omega_r x)]\)</span>. We have <span class="math display">\[
+\kappa(z) \approx \tilde \phi(x)^\top \tilde \phi(x&#39;)
+\]</span> <span class="math inline">\(\tilde \phi\)</span> is called the
+<strong>random Fourier features</strong>. With this approximation, we
+obtain the proxy problem to <span class="math inline">\(\eqref{kernel-method}\)</span> <span class="math display">\[
+\begin{gather*}
+\min_{w \in \R^m}\ \frac{1}{n} \sum_{i=1}^n (w^\top \phi(x) - y_i)^2 \\
+\approx \\
+\min_{\tilde w \in \R^{2r}}\ \frac{1}{n} \sum_{i=1}^n (\tilde w^\top
+\tilde\phi(x) - y_i)^2 \\
+\end{gather*}
+\]</span> This trick is especially helpful in Gaussian kernel case where
+<span class="math inline">\(m\)</span> is <span class="math inline">\(\infty\)</span>. Using the kernel function
+(instead of feature function) notation, we have the following
+theorem:</p>
+<blockquote>
+<p>Theorem: <strong>approximation error of random Fourier
+features</strong>. Suppose <span class="math inline">\(\mathcal{K}\)</span> is a shift-invariant kernel
+function. We consider a subset of the resulting RKHS <span class="math inline">\(\mathcal{H}\)</span> where the Fourier
+coefficients are bounded by <span class="math inline">\(C\)</span> as
+<span class="math display">\[
+\mathcal{H}_C \triangleq \{ (\frac{1}{2\pi})^d \int \alpha(\omega) \hat
+\kappa(\omega) \underbrace{\exp(i\omega z)}_{\phi_{\omega}(z)} \d
+\omega: |\alpha(\omega)| \le C \}
+\]</span> Consider the norm <span class="math inline">\(\| \cdot
+\|\)</span> inducted by a distribution <span class="math inline">\(q\)</span>-based inner product <span class="math inline">\(\langle f,g \rangle = \E_q[f(x) g(x)]\)</span>.
+Then for <span class="math inline">\(f^*\)</span> and sample <span class="math inline">\(\omega_1,\dots,\omega_m\)</span> i.i.d. drawn from
+<span class="math inline">\((\frac{1}{2\pi})^d \hat \kappa\)</span>,
+with probability at least <span class="math inline">\(1-\delta\)</span>,
+there exists coefficients <span class="math inline">\(\alpha_1,\dots,\alpha_m\)</span> such that <span class="math display">\[
+\| \frac{1}{m} \sum_{i=1}^m \alpha_i \phi_{\omega_i} - f^* \| \le
+\sqrt{\frac{C^2}{m}} + \sqrt{\frac{2 \log(1/\delta)}{m}}
+\]</span> Proof. See Homework 2.</p>
+</blockquote>
+
+
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/machine-learning-theory/4-vc-dimension/" rel="next">4-vc-dimension</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/courses/machine-learning-theory/6-online-learning/" rel="prev">6-online-learning</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jan 7, 2022</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

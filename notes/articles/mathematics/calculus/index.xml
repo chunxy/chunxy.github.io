@@ -225,8 +225,8 @@ system to polar coordinate system, &lt;span class=&#34;math display&#34;&gt;\[
 &lt;a href=&#34;https://www.cnblogs.com/hans_gis/archive/2012/11/21/2755126.html&#34;&gt;3d
 Case Blog 2&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;volume-of-sphere&#34;&gt;Volume of Sphere&lt;/h3&gt;
-&lt;p&gt;With change of basis between spherical coordinate and Cartesian, we
-may compute the volume of sphere in any &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimension. &lt;span class=&#34;math display&#34;&gt;\[
+&lt;p&gt;When changing basis between spherical coordinate and Cartesian, we
+may need to compute the volume of sphere of radius &lt;span class=&#34;math inline&#34;&gt;\(R\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimension. &lt;span class=&#34;math display&#34;&gt;\[
 \begin{aligned}
 V_n &amp;amp;= \int_{B_n} 1 \; \d x_1 \d x_2 \dots \d x_n \\
 &amp;amp;= \int_{0}^{R} \int_{0}^{2 \pi}

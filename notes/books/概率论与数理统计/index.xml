@@ -23,7 +23,7 @@
 &lt;p&gt;随机变量其实是一个从事件（概率空间的子集）到数字的映射，是一个具体事件数字化的过程。概率论和统计的一个共同的主要话题就是随机变量，可以说它们像是随机变量的一体两面。&lt;/p&gt;
 &lt;p&gt;概率论更加注重随机变量取值集合相对应事件的概率。为此，概率论需要讨论事件所有可能的试验结果、事件的运算、事件的独立性、随机变量的取值范围、随机变量的概率分布等话题。&lt;/p&gt;
 &lt;p&gt;统计中的随机变量来自于对总体的随机抽样，这个过程中，我们会得到一组样本，每个样本在被观测之前，都是服从总体分布的随机变量；观测（observation）之后，它们便有了一个具体的观测值（realization）。我们可以将观测行为类比概率论中的试验，而这种观测行为将会导致一个随机变量坍缩成为一个具体的观测值。&lt;/p&gt;
-&lt;p&gt;可以这样理解概率论与统计：概率论是根据事件总体的自身属性，正向推导所有事件对应概率分布的分布函数；统计是根据某个概率分布（即总体分布）采样得到的结果，反向推导该分布的属性。&lt;/p&gt;
+&lt;p&gt;可以这样理解概率论与统计：概率论是根据事件总体的属性，正向推导所有事件对应概率分布的分布函数；统计是根据某个概率分布（即总体分布）采样得到的结果，反向推导该分布的属性。&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
@@ -65,7 +65,7 @@
 
 &lt;h2 id=&#34;事件的运算&#34;&gt;事件的运算&lt;/h2&gt;
 &lt;h3 id=&#34;事件的包含和相等&#34;&gt;事件的包含和相等&lt;/h3&gt;
-&lt;p&gt;同一试验下的两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，如果&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;发生时B也发生，则称&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;包含&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(A
+&lt;p&gt;同一试验下的两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，如果&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;发生时&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;也发生，则称&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;包含&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;，记作&lt;span class=&#34;math inline&#34;&gt;\(A
 \subseteq B\)&lt;/span&gt;。如果&lt;span class=&#34;math inline&#34;&gt;\(A,B\)&lt;/span&gt;互相包含，则二者相等。&lt;/p&gt;
 &lt;h3 id=&#34;事件的互斥和对立&#34;&gt;事件的互斥和对立&lt;/h3&gt;
 &lt;p&gt;若两事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;不能再同一试验中同时发生，则称它们是互斥的。互斥事件的一个特例是对立事件，对于事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;，其对立事件&lt;span class=&#34;math inline&#34;&gt;\(\bar A\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(\{
@@ -102,12 +102,12 @@ P(A) = \sum_i P(B_i) P(A | B_i) = P(B_1) P(A|B_1) + P(B_2) P(A|B_2) +
 &lt;p&gt;设两个事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;，定义新事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为&lt;span class=&#34;math inline&#34;&gt;\(C = \{
 \text{$A$发生，$B$不发生} \}\)&lt;/span&gt;，则称事件&lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt;为事件&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;与事件&lt;span class=&#34;math inline&#34;&gt;\(B\)&lt;/span&gt;的差，记作&lt;span class=&#34;math inline&#34;&gt;\(C
 = A - B\)&lt;/span&gt;。&lt;/p&gt;
-&lt;p&gt;我们对事件引入了和、积、差、对立运算。显然，这些运算符在数字运算中成立的运算规律，不一定对事件运算成立，比如说&lt;span class=&#34;math inline&#34;&gt;\(A + A = A\)&lt;/span&gt;而非&lt;span class=&#34;math inline&#34;&gt;\(2 A\)&lt;/span&gt;（无意义），&lt;span class=&#34;math inline&#34;&gt;\(A A = A\)&lt;/span&gt;而非&lt;span class=&#34;math inline&#34;&gt;\(A^2\)&lt;/span&gt;（无意义），&lt;span class=&#34;math inline&#34;&gt;\((A - B) + B = A + B\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;。&lt;/p&gt;
+&lt;p&gt;我们对事件引入了和、积、差、对立运算。显然，这些运算符在数字运算中成立的运算规律，不一定对事件运算成立，比如说&lt;span class=&#34;math inline&#34;&gt;\(A + A = A\)&lt;/span&gt;而非&lt;span class=&#34;math inline&#34;&gt;\(2 A\)&lt;/span&gt;（无意义），&lt;span class=&#34;math inline&#34;&gt;\(A A = A\)&lt;/span&gt;而非&lt;span class=&#34;math inline&#34;&gt;\(A^2\)&lt;/span&gt;（无意义），&lt;span class=&#34;math inline&#34;&gt;\((A - B) + B = A + B\)&lt;/span&gt;而不是&lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt;。基于这些运算，我们还能得出一些其他性质，比如&lt;span class=&#34;math inline&#34;&gt;\(A-B=A \bar B\)&lt;/span&gt;、&lt;span class=&#34;math inline&#34;&gt;\(A(B-C)=AB-AC\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;基于这些基本运算，我们也可以表示出更多的事件，比如：&lt;/p&gt;
 &lt;table&gt;
 &lt;colgroup&gt;
-&lt;col style=&#34;width: 72%&#34;/&gt;
-&lt;col style=&#34;width: 27%&#34;/&gt;
+&lt;col style=&#34;width: 84%&#34;/&gt;
+&lt;col style=&#34;width: 15%&#34;/&gt;
 &lt;/colgroup&gt;
 &lt;thead&gt;
 &lt;tr class=&#34;header&#34;&gt;
@@ -196,13 +196,13 @@ B(x;n,p) = {n \choose x} p^x (1-p)^{n-x}, x = 0,1,\dots \\
 0.366\)&lt;/span&gt;。其实也就意味着，100个人中，能至少看到1个身高高于两米的人的概率其实大约是&lt;span class=&#34;math inline&#34;&gt;\(1-0.366 = 63.4\%\)&lt;/span&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;泊松分布poisson-distribution&#34;&gt;泊松分布（Poisson
 distribution）&lt;/h3&gt;
-&lt;p&gt;泊松分布产生于&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;用来表示在一定时间或空间内出现的事件个数的场景中。泊松分布有一些基本假设，设观察的这一单位时间或空间为&lt;span class=&#34;math inline&#34;&gt;\([0, 1)\)&lt;/span&gt;，取一个很大的自然数&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;，将&lt;span class=&#34;math inline&#34;&gt;\([0,1)\)&lt;/span&gt;平分为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;段窗口：&lt;span class=&#34;math inline&#34;&gt;\(l_1
+&lt;p&gt;泊松分布产生于表示在一定时间或空间内出现的事件个数的场景。泊松分布有一些基本假设，设观察的这一单位时间或空间为&lt;span class=&#34;math inline&#34;&gt;\([0, 1)\)&lt;/span&gt;，取一个很大的自然数&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;，将&lt;span class=&#34;math inline&#34;&gt;\([0,1)\)&lt;/span&gt;平分为&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;段窗口：&lt;span class=&#34;math inline&#34;&gt;\(l_1
 = [0, \frac{1}{n}), l_2 = [\frac{1}{n}, \frac{2}{n}), \dots, l_n =
 [\frac{n-1}{n}, 1)\)&lt;/span&gt;，则：&lt;/p&gt;
 &lt;ol type=&#34;1&#34;&gt;
 &lt;li&gt;在每段&lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt;内，恰发生一个事件的概率正比于这段的长度&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;，即可取为&lt;span class=&#34;math inline&#34;&gt;\(\frac{\lambda}{n}\)&lt;/span&gt;；又假定&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;很大故&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n}\)&lt;/span&gt;很小时，不可能发生两次以上事件；&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(l_1, l_2, \dots,
-l_n\)&lt;/span&gt;中是否发生时间是相互独立的；&lt;/li&gt;
+l_n\)&lt;/span&gt;中是否发生事件是相互独立的；&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;这样的基本假设下，单位窗口内发生事件的总数记为随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;。此时&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;应当服从二项分布，而当&lt;span class=&#34;math inline&#34;&gt;\(n \to \infty\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;则服从泊松分布，故泊松分布也可以看作是某种形式的二项分布取极限而得到：
 &lt;span class=&#34;math display&#34;&gt;\[
@@ -285,7 +285,7 @@ p(x;\lambda) = \begin{cases}
 &lt;h3 id=&#34;正态分布normal-distribution&#34;&gt;正态分布（normal
 distribution）&lt;/h3&gt;
 &lt;p&gt;正态分布也叫作高斯分布（Gaussian distribution），一维情况下： &lt;span class=&#34;math display&#34;&gt;\[
-p(x; \mu, \sigma) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x -
+p(x; \mu, \sigma^2) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x -
 \mu)^2}{2 \sigma^2}}
 \]&lt;/span&gt; 二维情况下： &lt;span class=&#34;math display&#34;&gt;\[
 p \Big( (x,y); \mu_X, \mu_Y, \sigma_X, \sigma_Y, \sigma_{XY} \Big) =
@@ -327,7 +327,8 @@ E(Y)]\} \\
 E(Y) + \mathrm E(X) \mathrm E(Y) \\
 &amp;amp;= \mathrm E(XY) - \mathrm E(X) \mathrm E(Y)
 \end{aligned}
-\]&lt;/span&gt; 而二维随机变量[X, Y]对应的协方差矩阵即为&lt;/p&gt;
+\]&lt;/span&gt; 而二维随机变量&lt;span class=&#34;math inline&#34;&gt;\([X,
+Y]\)&lt;/span&gt;对应的协方差矩阵即为&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \Sigma = \begin{bmatrix} \Cov(X,X) &amp;amp; \Cov(X,Y) \\ \Cov(Y,X) &amp;amp;
 \Cov(Y,Y) \\ \end{bmatrix}
@@ -341,7 +342,10 @@ X^\star = \frac{X - \E(X)}{\sqrt{\Var(X)}}，Y^\star = \frac{Y -
 Y^\star)\)&lt;/span&gt;，这便是随机变量&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;和&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;的相关系数： &lt;span class=&#34;math display&#34;&gt;\[
 \rho(X, Y) = \mathrm{Cov}(X^\star, Y^\star) = \frac{\Cov(X,
 Y)}{\sqrt{\Var(X) \Var(Y)}}
-\]&lt;/span&gt;&lt;/p&gt;
+\]&lt;/span&gt; 实际上对于任意常数&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;，都有
+&lt;span class=&#34;math display&#34;&gt;\[
+\rho(cX, cY) = \rho(X, Y)
+\]&lt;/span&gt; 相关系数绝对值小于等于&lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;。该性质可以由Cauchy-Schwartz不等式在期望中的应用直接证明，也可以&lt;a href=&#34;https://statproofbook.github.io/P/corr-range.html&#34;&gt;通过期望、方差性质证明&lt;/a&gt;。&lt;/p&gt;
 
 
 </description>
@@ -546,7 +550,7 @@ X_i\)&lt;/span&gt;（频率）近似&lt;span class=&#34;math inline&#34;&gt;\(p\
 Moivre-Laplace中心极限定理则告诉我们当&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;足够大时，近似程度如何： &lt;span class=&#34;math display&#34;&gt;\[
 P(|\frac{1}{n}\sum_{i=1}^n X_i - p| \le \epsilon) =
 P(|\frac{\sum_{i=1}^n X_i - np}{\sqrt{np(1-p)}}| \le \frac{\sqrt n
-\epsilon}{\sqrt{p(1-p)}}) \simeq 2\Phi(\frac{\sqrt n
+\epsilon}{\sqrt{p(1-p)}}) \approx 2\Phi(\frac{\sqrt n
 \epsilon}{\sqrt{p(1-p)}}) - 1
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;上式实际是在用正态分布近似二项分布（多个伯努利分布随机变量加和为伯努利分布），比如在&lt;a href=&#34;https://www.mathsisfun.com/data/quincunx-explained.html&#34;&gt;Galton
@@ -802,7 +806,7 @@ Applet/Calculator (uiowa.edu)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
 \begin{gather}
 \text{样本均值：}\bar X = \frac{1}{n} \sum_{i=1}^n X_i \\
-\text{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^N (X_i - \bar X)^2 =
+\text{样本方差：}S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar X)^2 =
 \frac{1}{n-1} (\sum_{i=1}^n X_i^2 - n \bar X^2)
 \end{gather}
 \]&lt;/span&gt;&lt;/p&gt;
@@ -932,7 +936,7 @@ p(x;\theta)\)&lt;/span&gt;的分布形式已知，但其参数&lt;span class=&#3
 X_n\)&lt;/span&gt;为总体的一组样本，若用一个统计量&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta = \hat \theta(X_1, \dots,
 X_n)\)&lt;/span&gt;来估计&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;，则称&lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt;为参数&lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。&lt;/p&gt;
 &lt;h3 id=&#34;矩估计&#34;&gt;矩估计&lt;/h3&gt;
-&lt;p&gt;矩估计的思想就是就是替换思想，即用样本矩替换总体矩。设总体的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩（origin moment）&lt;span class=&#34;math inline&#34;&gt;\(\mu_k = \E[X^k]\)&lt;/span&gt;，总体的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;中心矩（central moment）&lt;span class=&#34;math inline&#34;&gt;\(\alpha_k = \E[(X - \mu)^k]\)&lt;/span&gt;；样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩为&lt;span class=&#34;math inline&#34;&gt;\(m_k = \frac 1 n \sum_{i=1}^n
+&lt;p&gt;矩估计的思想就是就是替换思想，即用样本矩替换总体矩。设总体的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩（moment）&lt;span class=&#34;math inline&#34;&gt;\(\mu_k = \E[X^k]\)&lt;/span&gt;，总体的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;中心矩（moment about mean）&lt;span class=&#34;math inline&#34;&gt;\(\alpha_k = \E[(X - \mu)^k]\)&lt;/span&gt;；样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶原点矩为&lt;span class=&#34;math inline&#34;&gt;\(m_k = \frac 1 n \sum_{i=1}^n
 X_i^k\)&lt;/span&gt;，样本的&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;阶中心矩为&lt;span class=&#34;math inline&#34;&gt;\(a_k = \frac 1 n \sum_{i=1}^n (X_i - \bar
 X)^k\)&lt;/span&gt;。&lt;/p&gt;
 &lt;p&gt;仅以中心矩为例，如果未知参数&lt;span class=&#34;math inline&#34;&gt;\(\theta =
@@ -1218,7 +1222,7 @@ hypothesis null），因为其包含的假设值不止一个。&lt;/p&gt;
 &lt;p&gt;对于另外一些参数，可能本身越大越好（比如身高均值），所以我们仅需要左侧的单边检测，此时对应的否定域为
 &lt;span class=&#34;math display&#34;&gt;\[
 W = \{ (x_1, \dots, x_n) \big | \hat \theta(x_1, \dots, x_n) - \theta_0
-&amp;lt; c \} \\
+&amp;lt; -c \} \\
 \]&lt;/span&gt; 同理，此时可以等价认为&lt;span class=&#34;math inline&#34;&gt;\(H_0: \theta
 \ge \theta_0\)&lt;/span&gt;，这种情况下，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;也是一个复合原假设。&lt;/p&gt;
 &lt;h4 id=&#34;设定显著性水平&#34;&gt;设定显著性水平&lt;/h4&gt;
@@ -1246,7 +1250,7 @@ W = \{ (x_1, \dots, x_n) \big | \hat \theta(x_1, \dots, x_n) - \theta_0
 &lt;/table&gt;
 &lt;p&gt;通常较低的第一类错误风险&lt;span class=&#34;math inline&#34;&gt;\(P(\text{否定}H_0;
 H_0\text{成立})\)&lt;/span&gt;和较低的第二类错误风险&lt;span class=&#34;math inline&#34;&gt;\(P(\text{接受}H_0;
-H_1\text{成立})\)&lt;/span&gt;不可兼得，因为在检验统计量确定后，这两个概率主要是由临界值&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;导出的否定域大小来控制的。而我们更希望降低第一类错误发生的风险。也就是说我们一旦否定，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;很大概率确实是不成立的；尽管这意味着我们在接受&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;有可能不成立——不过虚惊一场总好过后知后觉。所以实际应用中，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;往往对应了比较严重的结果，我们不希望在&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;成立时，我们却没有发现（即否定&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;）；或者&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;本身就对应了我们比较想否定的结果，这样我们否定时，它确实不成立的概率也更高。&lt;/p&gt;
+H_1\text{成立})\)&lt;/span&gt;不可兼得，因为在检验统计量确定后，这两个概率主要是由临界值&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;导出的否定域大小来控制的。而我们更希望降低第一类错误发生的风险（意味着更大的&lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;），也就是说我们一旦否定，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;很大概率确实是不成立的；尽管这意味着我们在接受&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;时，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;有可能不成立——不过虚惊一场总好过后知后觉。所以实际应用中，&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;往往对应了比较严重的结果，我们不希望在&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;成立时，我们却没有发现（即否定&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;）；或者&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;本身就对应了我们比较想否定的结果，这样我们否定时，它确实不成立的概率也更高。&lt;/p&gt;
 &lt;p&gt;我们会将第一类错误发生的概率限制在&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;之内，这个&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;便是&lt;strong&gt;显著性水平&lt;/strong&gt;（significance
 level）。显著性水平其实代表了我们对小概率事件的接受程度，即我们认为概率小于&lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt;的事件应该是小概率事件，并且是不应该被正好碰上的；而此时在&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;成立的假设下，“给定的一组样本属于否定域”正是这样的一个小概率事件，如果碰上了这样的小概率事件，则有理由怀疑&lt;span class=&#34;math inline&#34;&gt;\(H_0\)&lt;/span&gt;不成立。&lt;/p&gt;
 &lt;h4 id=&#34;确定临界值&#34;&gt;确定临界值&lt;/h4&gt;
@@ -1264,7 +1268,7 @@ H_0\text{成立})\)&lt;/span&gt;不应写作&lt;span class=&#34;math inline&#34;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(P( (X_1, \dots, X_n) \in W;\theta =
 \theta_0)\)&lt;/span&gt;又叫作&lt;strong&gt;功效函数&lt;/strong&gt;（power
 function），记作&lt;span class=&#34;math inline&#34;&gt;\(\beta_W(\cdot)\)&lt;/span&gt;，它表示在未知参数取特定值时，一组随机样本属于否定域的概率。
-前面我们之所以说单边检验等价于原假设对应某个形式的复合假设（比如&lt;span class=&#34;math inline&#34;&gt;\(H_0: \theta \le \theta_0\)&lt;/span&gt;或&lt;span class=&#34;math inline&#34;&gt;\(H_0: \theta \ge
+前面我们之所以说单边检验等价于&lt;u&gt;原假设对应某个形式的复合假设&lt;/u&gt;（比如&lt;span class=&#34;math inline&#34;&gt;\(H_0: \theta \le \theta_0\)&lt;/span&gt;或&lt;span class=&#34;math inline&#34;&gt;\(H_0: \theta \ge
 \theta_0\)&lt;/span&gt;），是因为这种情况下，有 &lt;span class=&#34;math display&#34;&gt;\[
 \max_{h \in H_0} \beta_W(h) = \beta_W(\theta_0) \le \alpha
 \]&lt;/span&gt;&lt;/p&gt;

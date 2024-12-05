@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1437,7 +1504,7 @@ p(x;\theta)\)</span>的分布形式已知，但其参数<span class="math inline
 X_n\)</span>为总体的一组样本，若用一个统计量<span class="math inline">\(\hat \theta = \hat \theta(X_1, \dots,
 X_n)\)</span>来估计<span class="math inline">\(\theta\)</span>，则称<span class="math inline">\(\hat \theta\)</span>为参数<span class="math inline">\(\theta\)</span>的一个点估计量。构造点估计量的常用方式有两种：矩估计法和最大似然估计法。</p>
 <h3 id="矩估计">矩估计</h3>
-<p>矩估计的思想就是就是替换思想，即用样本矩替换总体矩。设总体的<span class="math inline">\(k\)</span>阶原点矩（origin moment）<span class="math inline">\(\mu_k = \E[X^k]\)</span>，总体的<span class="math inline">\(k\)</span>中心矩（central moment）<span class="math inline">\(\alpha_k = \E[(X - \mu)^k]\)</span>；样本的<span class="math inline">\(k\)</span>阶原点矩为<span class="math inline">\(m_k = \frac 1 n \sum_{i=1}^n
+<p>矩估计的思想就是就是替换思想，即用样本矩替换总体矩。设总体的<span class="math inline">\(k\)</span>阶原点矩（moment）<span class="math inline">\(\mu_k = \E[X^k]\)</span>，总体的<span class="math inline">\(k\)</span>中心矩（moment about mean）<span class="math inline">\(\alpha_k = \E[(X - \mu)^k]\)</span>；样本的<span class="math inline">\(k\)</span>阶原点矩为<span class="math inline">\(m_k = \frac 1 n \sum_{i=1}^n
 X_i^k\)</span>，样本的<span class="math inline">\(k\)</span>阶中心矩为<span class="math inline">\(a_k = \frac 1 n \sum_{i=1}^n (X_i - \bar
 X)^k\)</span>。</p>
 <p>仅以中心矩为例，如果未知参数<span class="math inline">\(\theta =

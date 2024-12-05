@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1485,11 +1552,11 @@ p_{Y}(y)} \d z \\
 \]</span></p>
 <h4 id="kronecker-gaussian">Kronecker Gaussian</h4>
 <p>Consider the multivariate Gaussian distribution random vector <span class="math inline">\(X_k\)</span> and <span class="math inline">\(Y_k\)</span> of the same length <span class="math inline">\(k\)</span>. Suppose they are both independent
-internally and they have the component-wise correlation <span class="math inline">\(corr(X_i, Y_j) = \delta_{ij} \rho\)</span>, where
-<span class="math inline">\(\rho \in (-1, 1)\)</span> (open to ensure
-the covariance matrix is invertible), <span class="math inline">\(1 \le
-i, j \le k\)</span>, <span class="math inline">\(\delta_{ij}\)</span> is
-the Kronecker’s delta: <span class="math display">\[
+internally and they have the component-wise correlation coefficient
+<span class="math inline">\(\text{corr\_coef}(X_i, Y_j) = \delta_{ij}
+\rho\)</span>, where <span class="math inline">\(\rho \in (-1,
+1)\)</span> (open to ensure the covariance matrix is invertible), <span class="math inline">\(1 \le i, j \le k\)</span>; <span class="math inline">\(\delta_{ij}\)</span> is the Kronecker’s delta:
+<span class="math display">\[
 \delta_{ij} =
 \begin{cases}
 0, &amp; i \ne j \\

@@ -177,11 +177,11 @@ p_{Y}(y)} \d z \\
 \]&lt;/span&gt;&lt;/p&gt;
 &lt;h4 id=&#34;kronecker-gaussian&#34;&gt;Kronecker Gaussian&lt;/h4&gt;
 &lt;p&gt;Consider the multivariate Gaussian distribution random vector &lt;span class=&#34;math inline&#34;&gt;\(X_k\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_k\)&lt;/span&gt; of the same length &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;. Suppose they are both independent
-internally and they have the component-wise correlation &lt;span class=&#34;math inline&#34;&gt;\(corr(X_i, Y_j) = \delta_{ij} \rho\)&lt;/span&gt;, where
-&lt;span class=&#34;math inline&#34;&gt;\(\rho \in (-1, 1)\)&lt;/span&gt; (open to ensure
-the covariance matrix is invertible), &lt;span class=&#34;math inline&#34;&gt;\(1 \le
-i, j \le k\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\delta_{ij}\)&lt;/span&gt; is
-the Kronecker’s delta: &lt;span class=&#34;math display&#34;&gt;\[
+internally and they have the component-wise correlation coefficient
+&lt;span class=&#34;math inline&#34;&gt;\(\text{corr\_coef}(X_i, Y_j) = \delta_{ij}
+\rho\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\rho \in (-1,
+1)\)&lt;/span&gt; (open to ensure the covariance matrix is invertible), &lt;span class=&#34;math inline&#34;&gt;\(1 \le i, j \le k\)&lt;/span&gt;; &lt;span class=&#34;math inline&#34;&gt;\(\delta_{ij}\)&lt;/span&gt; is the Kronecker’s delta:
+&lt;span class=&#34;math display&#34;&gt;\[
 \delta_{ij} =
 \begin{cases}
 0, &amp;amp; i \ne j \\
@@ -443,7 +443,8 @@ x^T \Sigma_X^{-1} x \d x + \frac 1 2 \mu_X^T \Sigma_X^{-1} \mu_X \\
       <description>
 
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence can be treated as
-the generalization of the KL-divergence. It is defined as &lt;span class=&#34;math display&#34;&gt;\[
+the generalization of the KL-divergence. For continuous random variable,
+it is defined as &lt;span class=&#34;math display&#34;&gt;\[
 D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x
 \]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; has to satisfy
 that &lt;span class=&#34;math inline&#34;&gt;\(f(1) = 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is a convex function. The reason for
@@ -452,9 +453,23 @@ these two constraints is that we hope &lt;span class=&#34;math display&#34;&gt;\
 D_f (p||q) = 0 \text{ when $p=q$} \\
 \forall p, q, D_f (p||q) \ge 0
 \end{gather}
+\]&lt;/span&gt; To show it, &lt;span class=&#34;math display&#34;&gt;\[
+D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \ge f(\int
+\frac{p(x)}{q(x)} q(x) \d x) = f(1) = 0 \\
 \]&lt;/span&gt; When &lt;span class=&#34;math inline&#34;&gt;\(f(x) = x\log x\)&lt;/span&gt;,
-&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence becomes
-KL-divergence.&lt;/p&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence becomes KL-divergence.
+The log sum inequality property can be derived using the formulation of
+&lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\sum_{i=1}^n a_i \log \frac{a_i}{b_i} &amp;amp;= \sum_{i=1}^n b_i
+\underbrace{\frac{a_i}{b_i} \log \frac{a_i}{b_i}}_{f(\frac{a_i}{b_i})}
+\\
+&amp;amp;= b \sum_{i=1}^n \frac{b_i}{b} f(\frac{a_i}{b_i}) \\
+&amp;amp;\ge b f(\sum_{i=1}^n \frac{b_i}{b} \frac{a_i}{b_i}) \\
+&amp;amp;= b f(\frac{a}{b}) \\
+&amp;amp;= a \log \frac{a}{b}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&#34;variational-f-divergence&#34;&gt;Variational &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence&lt;/h2&gt;
 &lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; have no closed-form expression, it is
 difficult to compute the &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence. Therefore in practice &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;-divergence is computed with a
@@ -580,12 +595,13 @@ H(q)] \\
       <guid>https://chunxy.github.io/notes/articles/information-theory/overview/</guid>
       <description>
 
-&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;Cross Entropy&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt; describe the
-relationship between &lt;strong&gt;two distributions&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/cross-entropy/&#34;&gt;cross entropy&lt;/a&gt; and &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/kl-divergence/&#34;&gt;KL-divergence&lt;/a&gt; describe the
+relationship between &lt;strong&gt;two different probability
+measures/functions over the same event space&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Both &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/conditional-entropy/&#34;&gt;conditional entropy&lt;/a&gt; and
 &lt;a href=&#34;https://chunxy.github.io/notes/articles/information-theory/mutual-information/&#34;&gt;mutual information&lt;/a&gt;, as well as
 &lt;u&gt;joint entropy&lt;/u&gt;, describe the relationship between &lt;strong&gt;two
-random variables&lt;/strong&gt;.&lt;/p&gt;
+different random variables&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Since the notion of entropy is the basis of all other concepts in
 this section and the entropy is more well-defined on discrete random
 variable, they are more meaningful to be applied in discrete case,
@@ -594,15 +610,15 @@ though they are usually trivially extended to continuous case.&lt;/p&gt;
 and Cross Entropy&lt;/h2&gt;
 &lt;p&gt;By definition, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
-D_\text{KL}(p||q) &amp;amp;= -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)}
+&amp;amp;D_\text{KL}(p||q) = -\mathrm{E}_{x \sim p} \log \frac{q(x)}{p(x)}
 \\
-&amp;amp;= -\mathrm{E}_{x \sim p} \log q(x) - (-\mathrm{E}_{x \sim p} \log
-{p(x)}) \\
+&amp;amp;= -\mathrm{E}_{x \sim p} \log q(x) - [-\mathrm{E}_{x \sim p} \log
+{p(x)}] \\
 &amp;amp;= H(p||q) - H(p)
 \end{align}
 \]&lt;/span&gt; By the convexity of &lt;span class=&#34;math inline&#34;&gt;\(-\log\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
 \begin{align}
-D_\text{KL}(p||q) &amp;amp;= \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}]
+&amp;amp;D_\text{KL}(p||q) = \mathrm{E}_{x \sim p} [-\log \frac{q(x)}{p(x)}]
 \\
 &amp;amp;\ge -\log(\mathrm{E}_{x \sim p} \frac{q(x)}{p(x)}) \\
 &amp;amp;= 0

@@ -1,0 +1,2818 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning Theory | Chunxy&#39; Website</title>
+    <link>https://chunxy.github.io/courses/machine-learning-theory/</link>
+      <atom:link href="https://chunxy.github.io/courses/machine-learning-theory/index.xml" rel="self" type="application/rss+xml" />
+    <description>Machine Learning Theory</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
+    <image>
+      <url>https://chunxy.github.io/media/sharing.png</url>
+      <title>Machine Learning Theory</title>
+      <link>https://chunxy.github.io/courses/machine-learning-theory/</link>
+    </image>
+    
+    <item>
+      <title>0-intro</title>
+      <link>https://chunxy.github.io/courses/machine-learning-theory/0-intro/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/courses/machine-learning-theory/0-intro/</guid>
+      <description>
+
+&lt;h2 id=&#34;roadmap&#34;&gt;Roadmap&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;What is the difference between machine learning and
+optimization?&lt;/p&gt;
+&lt;p&gt;Machine learning training is exactly an optimization process. But
+machine learning additionally takes into consideration the adaptation of
+the trained model from training data to unknown test data.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Statistical model (multi-variate central limit theorem
+exemplified with Gaussian and &lt;a href=&#34;https://online.stat.psu.edu/stat504/book/export/html/667&#34;&gt;multinomial
+distribution&lt;/a&gt;) and its limitation in machine learning analytics&lt;/p&gt;
+&lt;p&gt;The analysis mostly focuses on asymptotic scenarios, and does not
+provide non-asymptotic guarantees.&lt;/p&gt;
+&lt;p&gt;The analysis requires a well-behaved statistical model, e.g. a normal
+or multinomial distribution. However, real-world image, text, and sound
+distributions could be more complex.&lt;/p&gt;
+&lt;p&gt;The analysis aims to find the entire probability distribution, which
+could be too costly to compute and analyze. An approach to directly
+analyze the error could be more feasible for large-scale machine
+learning models and datasets. For example, an approximation bound
+guarantee other than a statistical guarantee is also useful.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;What is machine learning theory about?&lt;/p&gt;
+&lt;p&gt;Analysis of finite training data falls under probability, statistics
+and information theory.&lt;/p&gt;
+&lt;p&gt;Analysis of learning models falls under functional analysis and
+signal processing.&lt;/p&gt;
+&lt;p&gt;Analysis of computing algorithms falls under optimization and
+computation theory.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;What is this course about?&lt;/p&gt;
+&lt;p&gt;Theory of &lt;strong&gt;model-based&lt;/strong&gt; statistical learning:
+exponential families, maximum likelihood, method of moments, maximum
+entropy principle&lt;/p&gt;
+&lt;p&gt;Theory of &lt;strong&gt;model-free&lt;/strong&gt; machine learning: uniform
+convergence bounds, VC dimension, Rademacher complexity, covering
+numbers&lt;/p&gt;
+&lt;p&gt;Theory of representation: kernel functions and methods, approximation
+in deep learning&lt;/p&gt;
+&lt;p&gt;Theory of convergence: optimization and generalization in deep
+learning, convex vs. non-convex machine learning problems&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>1-exp-family</title>
+      <link>https://chunxy.github.io/courses/machine-learning-theory/1-exp-family/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/courses/machine-learning-theory/1-exp-family/</guid>
+      <description>
+
+&lt;h2 id=&#34;exponential-family-basics&#34;&gt;Exponential Family Basics&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!note]&lt;/p&gt;
+&lt;p&gt;Though the results below are mainly with regards to the finite
+support case, they also apply to infinite support case after switching
+to differential entropy.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!important]&lt;/p&gt;
+&lt;p&gt;In fact, we are restricting the discussion to the natural exponential
+family.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;example-and-definition&#34;&gt;Example and Definition&lt;/h3&gt;
+&lt;p&gt;Recall the PDF of univariate Gaussian distribution: &lt;span class=&#34;math display&#34;&gt;\[
+p_{\mathcal{N}(\mu, \sigma^2)}(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}
+e^{-\frac{(x-\mu)^2}{2 \sigma^2}}
+\]&lt;/span&gt; It can be rewritten as &lt;span class=&#34;math display&#34;&gt;\[
+p_{\mathcal{N}(\mu, \sigma^2)}(x) = \exp(-\frac{1}{2 \sigma^2} x^2 +
+\frac{\mu}{\sigma^2} x - \frac{\mu}{2 \sigma^2} - \frac{1}{2} \log(2 \pi
+\sigma^2))
+\]&lt;/span&gt; Let the mapping &lt;span class=&#34;math inline&#34;&gt;\(\phi(x) = [x^2,
+x]\)&lt;/span&gt; and the parameter vector &lt;span class=&#34;math inline&#34;&gt;\(\theta
+= [-\frac{1}{2 \sigma^2}, \frac{\mu}{\sigma^2}]\)&lt;/span&gt;. Then for a
+properly-chosen function &lt;span class=&#34;math inline&#34;&gt;\(A: \R^2 \mapsto
+\R\)&lt;/span&gt; we have &lt;span class=&#34;math display&#34;&gt;\[
+p_{\mathcal{N}(\mu, \sigma^2)}(x) = \exp(\theta^T \phi(x) - A(\theta))
+\]&lt;/span&gt; That is &lt;span class=&#34;math display&#34;&gt;\[
+p_{\mathcal{N}(\mu, \sigma^2)}(x) \propto \exp(\theta^T \phi(x))
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;exponential family&lt;/strong&gt;. Given a feature
+function &lt;span class=&#34;math inline&#34;&gt;\(\phi: \mathcal{X} \mapsto
+\R^m\)&lt;/span&gt; and an &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;-dimensional
+parameter vector &lt;span class=&#34;math inline&#34;&gt;\(\theta \in \R^m\)&lt;/span&gt;,
+an exponential family is defined as the set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{P} \triangleq \{ p_\theta: \theta \in
+\R^m \}\)&lt;/span&gt; where for a function &lt;span class=&#34;math inline&#34;&gt;\(A:
+\R^m \mapsto \R\)&lt;/span&gt; the mass (or the density) function &lt;span class=&#34;math inline&#34;&gt;\(p_\theta\)&lt;/span&gt; is defined as: &lt;span class=&#34;math display&#34;&gt;\[
+p_\theta(x) = \exp(\theta^T \phi(x) - A(\theta))
+\]&lt;/span&gt; In the above definition,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;we call &lt;span class=&#34;math inline&#34;&gt;\(\phi: \R^d \mapsto \R^m\)&lt;/span&gt;
+the &lt;strong&gt;feature function&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;we call &lt;span class=&#34;math inline&#34;&gt;\(\theta \in \R^m\)&lt;/span&gt; the
+&lt;strong&gt;canonical parameters&lt;/strong&gt;;&lt;/li&gt;
+&lt;li&gt;we call &lt;span class=&#34;math inline&#34;&gt;\(A: \R^m \mapsto \R\)&lt;/span&gt; the
+&lt;strong&gt;log-partition function&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The underlying max-entropy assumption of exponential family seems to
+be the reason why we usually use softmax in the last layer in the neural
+network model.&lt;/p&gt;
+&lt;h3 id=&#34;properties&#34;&gt;Properties&lt;/h3&gt;
+&lt;h4 id=&#34;convexity&#34;&gt;Convexity&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;derivation of log-partition function&lt;/strong&gt; in
+discrete case. Given an exponential family with feature function &lt;span class=&#34;math inline&#34;&gt;\(\phi: \mathcal{X} \mapsto \R^m\)&lt;/span&gt; over a
+&lt;em&gt;finite support set&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{X}\)&lt;/span&gt;, canonical parameters &lt;span class=&#34;math inline&#34;&gt;\(\theta \in \R^m\)&lt;/span&gt;, the log partition
+function &lt;span class=&#34;math inline&#34;&gt;\(A: \R^m \mapsto \R\)&lt;/span&gt; can be
+determined as &lt;span class=&#34;math display&#34;&gt;\[
+A(\theta) = \log \left( \sum_{x \in \mathcal{X}} e^{\theta^T \phi(x)}
+\right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;derivatives of log-partition function&lt;/strong&gt;.
+Consider an exponential family with feature function &lt;span class=&#34;math inline&#34;&gt;\(\phi: \mathcal{X} \mapsto \R^m\)&lt;/span&gt; over a
+&lt;em&gt;finite support set&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{X}\)&lt;/span&gt;, canonical parameters &lt;span class=&#34;math inline&#34;&gt;\(\theta \in \R^m\)&lt;/span&gt;, and the log partition
+function &lt;span class=&#34;math inline&#34;&gt;\(A: \R^m \mapsto \R\)&lt;/span&gt; . Then,
+the first- and second-order derivatives of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; satisfy:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;The &lt;strong&gt;gradient&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; will be the mean of random vector &lt;span class=&#34;math inline&#34;&gt;\(\phi(X)\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\nabla A(\theta) = \E_{X \sim p_\theta} [\phi(x)]
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The &lt;strong&gt;Hessian&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; will be the covariance matrix of random
+vector &lt;span class=&#34;math inline&#34;&gt;\(\phi(X)\)&lt;/span&gt;:?? &lt;span class=&#34;math display&#34;&gt;\[
+\nabla^2 A(\theta) = \Cov_{X \sim p_\theta}(\phi(X))
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Corollary: &lt;strong&gt;convexity of log-partition function&lt;/strong&gt;. The
+log-partition function of an exponential family distribution is a convex
+function.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;monotone gradient of convex function&lt;/strong&gt;. A
+differentiable function &lt;span class=&#34;math inline&#34;&gt;\(f: \R^d \mapsto
+\R\)&lt;/span&gt; is convex if and only if its gradient &lt;span class=&#34;math inline&#34;&gt;\(\nabla f: \R^d \mapsto \R^d\)&lt;/span&gt; is monotone,
+i.e. &lt;span class=&#34;math display&#34;&gt;\[
+\forall x, y \in \R^d, (x-y)^T(\nabla f(x) - \nabla f(y)) \ge 0
+\]&lt;/span&gt; Corollary: &lt;strong&gt;monotone gradient of mean vector&lt;/strong&gt;.
+The mean vector &lt;span class=&#34;math inline&#34;&gt;\(\mu_\theta = \E_{X \sim
+p_\theta} [\phi(X)]\)&lt;/span&gt; of an exponential family model &lt;span class=&#34;math inline&#34;&gt;\(p_\theta\)&lt;/span&gt; is a monotone function of the
+canonical parameter &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, i.e.
+&lt;span class=&#34;math display&#34;&gt;\[
+\forall \theta_1, \theta_2 \in \R^d, (\theta_1 - \theta_2)^T (\nabla
+A(\theta_1) - \nabla A(\theta_2)) \ge 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;strong-convexity&#34;&gt;Strong Convexity&lt;/h4&gt;
+&lt;p&gt;Convexity is not enough for fruitful derivation. Below we introduce
+the idea of strong convexity.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;strongly convex function&lt;/strong&gt;. We call a
+twice-differentiable &lt;span class=&#34;math inline&#34;&gt;\(f: \R^d \mapsto
+\R\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;-strongly-convex if
+the eigenvalues of its Hessian are always greater than or equal to &lt;span class=&#34;math inline&#34;&gt;\(\mu &amp;gt; 0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;invertibility of the gradient of strongly convex
+function&lt;/strong&gt;. The gradient of a &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;-strongly-convex function is an
+invertible mapping and satisfies the following: &lt;span class=&#34;math display&#34;&gt;\[
+\forall x, y \in \R^d, (\nabla f(x) - \nabla f(y))^T (x-y) \ge \mu
+\|x-y\|_2^2
+\]&lt;/span&gt; The implication is that, it is impossible for &lt;span class=&#34;math inline&#34;&gt;\(x \ne y\)&lt;/span&gt; to have the same gradient,
+verifying that &lt;span class=&#34;math inline&#34;&gt;\(\nabla f\)&lt;/span&gt; is
+invertible.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;estimation-of-exponential-family&#34;&gt;Estimation of Exponential
+Family&lt;/h2&gt;
+&lt;h3 id=&#34;maximum-likelihood-estimation&#34;&gt;Maximum Likelihood
+Estimation&lt;/h3&gt;
+&lt;p&gt;In this section, we assume a strong convexity on the log-partition
+function. That is, we can relate the canonical parameter and the mean
+vector: &lt;span class=&#34;math display&#34;&gt;\[
+\mu = \nabla A(\theta), \theta = (\nabla A)^{-1}(\mu)
+\]&lt;/span&gt; Suppose we observe independent and identically distributed
+samples &lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_n \sim
+p_\theta\)&lt;/span&gt;. How do we estimate &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;? The most natural estimation is
+the maximum (log-)likelihood estimation. We try to derive it for
+exponential family in the following. &lt;span class=&#34;math display&#34;&gt;\[
+\theta^\text{MLE} = \arg \max_\theta l(\theta) = \log \left[
+\prod_{i=1}^n p_\theta(x_i) \right]
+\]&lt;/span&gt; MLE is a good fit for the exponential family because of the
+&lt;span class=&#34;math inline&#34;&gt;\(\exp\)&lt;/span&gt; term in the density function.
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\theta^\text{MLE} = \arg \max_\theta \sum_{i=1}^n \log
+p_\theta(x_i) \\
+&amp;amp;= \arg \max_\theta \sum_{i=1}^n [\theta^T \phi(x_i) - A(\theta)] \\
+&amp;amp;= \arg \max_\theta \frac{1}{n} \sum_{i=1}^n [\theta^T \phi(x_i) -
+A(\theta)] \\
+&amp;amp;= \arg \max_\theta \theta^T \underbrace{\left[ \frac{1}{n}
+\sum_{i=1}^n \phi(x_i) \right]}_{\hat \mu} - A(\theta) \\
+&amp;amp;= \arg \min_\theta A(\theta) - \theta^T \hat \mu
+\end{aligned}
+\]&lt;/span&gt; It turns out to be a standard unconstrained convex
+optimization problem. The optimal solution would be to zero out the
+gradient: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\nabla A(\theta^\text{MLE}) - \hat \mu &amp;amp;= 0 \\
+\theta^\text{MLE} &amp;amp;= (\nabla A)^{-1} (\hat \mu)
+\end{aligned}
+\]&lt;/span&gt; As a result, the resulting &lt;span class=&#34;math inline&#34;&gt;\(\mu^\text{MLE} \triangleq \E_{\theta^\text{MLE}}
+[\phi(X)] = \nabla A(\theta^\text{MLE})\)&lt;/span&gt; will be exactly the
+empirical mean &lt;span class=&#34;math inline&#34;&gt;\(\hat \mu\)&lt;/span&gt;. Suppose
+&lt;span class=&#34;math inline&#34;&gt;\(\phi(X)\)&lt;/span&gt; has the covariance matrix
+&lt;span class=&#34;math inline&#34;&gt;\(\Sigma\)&lt;/span&gt;. By the central limit
+theorem, &lt;span class=&#34;math display&#34;&gt;\[
+\sqrt{n} (\hat u - \E[\phi(X)]) \stackrel{d}{\to} N(0, \Sigma)
+\]&lt;/span&gt; But what we are interested in is the asymptotic performance of
+the estimation of &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, which is
+&lt;span class=&#34;math inline&#34;&gt;\(\theta^\text{MLE}\)&lt;/span&gt;. By the &lt;a href=&#34;https://www.wikiwand.com/en/Delta_method&#34;&gt;delta method&lt;/a&gt;, for
+&lt;span class=&#34;math inline&#34;&gt;\(\theta^\text{MLE}\)&lt;/span&gt; which is a
+function of &lt;span class=&#34;math inline&#34;&gt;\(\hat \mu\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\sqrt{n} (\theta^\text{MLE} - \theta) \stackrel{d}{\to} N(0,
+\Sigma^{-1})
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;method-of-moments&#34;&gt;Method of Moments&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;method of moments&lt;/strong&gt;. Given a parameterized
+family of distributions &lt;span class=&#34;math inline&#34;&gt;\(\{ p_\theta: \theta
+\in \R^d \}\)&lt;/span&gt;, the method of moments estimator finds the
+parameter &lt;span class=&#34;math inline&#34;&gt;\(\hat \theta\)&lt;/span&gt; that matches
+the &lt;strong&gt;population moments&lt;/strong&gt; with the &lt;strong&gt;empirical
+moments&lt;/strong&gt; of i.i.d. samples &lt;span class=&#34;math inline&#34;&gt;\(x_1,
+\dots, x_n\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; be
+the moment function. Hence, &lt;span class=&#34;math inline&#34;&gt;\(\hat
+\theta\)&lt;/span&gt; must satisfy &lt;span class=&#34;math display&#34;&gt;\[
+\E_{\hat \theta} [\phi(X)] = \frac{1}{n} \sum_{i=1}^n \phi(x_i)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;equivalence of method of moments and maximum
+likelihood estimation&lt;/strong&gt;. Given an exponential family &lt;span class=&#34;math inline&#34;&gt;\(\{ p_\theta: \theta \in \R^d \}\)&lt;/span&gt; with
+feature function &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;, the method
+of moments estimator with &lt;strong&gt;&lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;-based moments&lt;/strong&gt; results in
+the same estimator as maximum likelihood estimator &lt;span class=&#34;math inline&#34;&gt;\(\theta^\text{MLE}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Proof. Recall that we have shown &lt;span class=&#34;math inline&#34;&gt;\(\mu^\text{MLE} = \hat \mu\)&lt;/span&gt; in the previous
+note. Additionally, due to the invertibility of &lt;span class=&#34;math inline&#34;&gt;\(\nabla A(\hat \theta) = \E_{\hat \theta}
+[\phi(X)]\)&lt;/span&gt; (thanks to Yiyao :D), the solution to method of
+moments is unique. As a result, the two methods are equivalent.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;principle-of-maximum-entropy&#34;&gt;Principle of Maximum Entropy&lt;/h2&gt;
+&lt;p&gt;The above develops the method of moments for the exponential family,
+making it a model-based approach. What if the distribution is not coming
+from an exponential family? In such case, we follow the principle of
+maximum entropy.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;principle of maximum entropy&lt;/strong&gt;. Given a
+set of probability distributions &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;
+(e.g. using the method of moments), conduct the inference and base the
+decision on the distribution maximizing the entropy function: &lt;span class=&#34;math display&#34;&gt;\[
+\arg \max_{q \in M} H_q(X) \triangleq \sum_{x \in \mathcal{X}} q(x) \log
+\frac{1}{q(x)}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Recall in the method of moments we are restricting ourselves to &lt;span class=&#34;math display&#34;&gt;\[
+M_\phi \triangleq \{ q \in \mathcal{P}_\mathcal{X}: \E_q [\phi(X)] =
+\frac{1}{n} \sum_{i=1}^n \phi(x_i) \}
+\]&lt;/span&gt; We stick to the method of moments and the principle of maximum
+entropy. Therefore, the optimization problem becomes &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\min_q \quad &amp;amp; \sum_{x \in \mathcal{X}} q_x \log q_x \\
+\text{s.t.} \quad &amp;amp; \sum_{x \in \mathcal{X}} q_x \phi(x) =
+\underbrace{\frac{1}{n} \sum_{i=1}^n \phi(x_i)}_{\hat \mu} \\
+&amp;amp; \sum_{x \in \mathcal{X}} q_x = 1 \\
+&amp;amp; q_x \ge 0, \forall x \in \mathcal{X}
+\end{aligned}
+\]&lt;/span&gt; Note that we use &lt;span class=&#34;math inline&#34;&gt;\(q_x\)&lt;/span&gt; to
+indicate that &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; is a probability
+vector on a finite support. We proceed with ignoring the non-negativity
+constraint and show that relaxed solution is still the optimal to the
+original. Suppose &lt;span class=&#34;math inline&#34;&gt;\(\phi(x)\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;-dimensional. Denote as &lt;span class=&#34;math inline&#34;&gt;\(\gamma \in \R^k, \eta \in \R\)&lt;/span&gt; the
+Lagrangian multipliers. The Lagrangian function is as follows: &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{L}(q, \gamma, \eta) = \left[ \sum_{x \in \mathcal{X}} q_x (\log
+(q_x) + \gamma^\top \phi(x) + \eta) \right] - \gamma^\top \hat \mu -
+\eta
+\]&lt;/span&gt; We apply the KKT conditions (verify that the regularity
+condition holds) to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+1 + \log (q_x) + \gamma^\top \phi(x) + \eta = 0, \forall x \in
+\mathcal{X} \\
+\Downarrow \\
+q_x^* = \exp[-(1 + \gamma^\top \phi(x) + \eta)] \ge 0
+\end{gathered}
+\]&lt;/span&gt; From above we know &lt;span class=&#34;math inline&#34;&gt;\(q_x^* \propto
+\exp(-\gamma^\top \phi(x))\)&lt;/span&gt; and as a result &lt;span class=&#34;math display&#34;&gt;\[
+q_x^* = \frac{\exp(-\gamma^\top \phi(x))}{\sum_{x&amp;#39; \in \mathcal{X}}
+\exp(-\gamma^\top \phi(x&amp;#39;))}
+\]&lt;/span&gt; Now we substitute the primal optima back to the Lagrangian
+function to give &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{L}(q^*, \gamma, \eta) = -\log \left( \sum_{x \in \mathcal{X}}
+\exp(-\gamma^\top \phi(x)) \right) - \gamma^\top \hat \mu
+\]&lt;/span&gt; Hence, we can formulate the dual problem as &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\max_{\gamma \in \R^k} \quad &amp;amp; -\log \left( \sum_{x \in \mathcal{X}}
+\exp(-\gamma^\top \phi(x)) \right) - \gamma^\top \hat \mu
+\end{aligned}
+\]&lt;/span&gt; After rewriting &lt;span class=&#34;math inline&#34;&gt;\(-\gamma\)&lt;/span&gt;
+as &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;, this exactly recovers
+the maximum likelihood estimation problem for an exponential family with
+the feature function &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Corollary: &lt;strong&gt;maximum entropy as the dual to maximum
+likelihood&lt;/strong&gt;. In a set of distribution &lt;span class=&#34;math inline&#34;&gt;\(M_\phi \triangleq \{ q: \E_q [\phi(X)] = \mu
+\}\)&lt;/span&gt;, the distribution &lt;span class=&#34;math inline&#34;&gt;\(q^*\)&lt;/span&gt;
+that maximizes the entropy will be from an exponential family with
+feature function &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;. That is, for
+some &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt; we will have &lt;span class=&#34;math display&#34;&gt;\[
+q^*(x) = \exp(\theta^\top \phi(x) - A(\theta))
+\]&lt;/span&gt; In addition, if &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; is
+the empirical mean of sample, the maximum entropy problem over &lt;span class=&#34;math inline&#34;&gt;\(M_\phi\)&lt;/span&gt; is the dual optimization problem
+to the maximum likelihood estimation for the exponential family with
+feature function &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We conclude the magic powers of exponential family here. With
+appropriate conditions,&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;exponential family + method of moments = maximum likelihood
+estimation&lt;/li&gt;
+&lt;li&gt;principle of max entropy + method of moments = exponential
+family&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;What distribution in the set &lt;span class=&#34;math inline&#34;&gt;\(M_\phi
+\triangleq \{ q_x: \E_q[X] = \mu \}\)&lt;/span&gt; will maximize the entropy
+of an integer-valued random variable &lt;span class=&#34;math inline&#34;&gt;\(X \in
+\N\)&lt;/span&gt;​ with a fixed mean value?&lt;/p&gt;
+&lt;p&gt;The problem is &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\min_q \quad &amp;amp; \sum_{x \in \mathcal{X}} q_x \log q_x \\
+\text{s.t.} \quad &amp;amp; \sum_{x \in \mathcal{X}} q_x x = \mu \\
+&amp;amp; \sum_{x \in \mathcal{X}} q_x = 1 \\
+&amp;amp; q_x \ge 0, \forall x \in \mathcal{X}
+\end{aligned}
+\]&lt;/span&gt; We write down the Lagrangian function: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\mathcal{L}(\theta, \lambda) &amp;amp;= \sum_{x \in \mathcal{X}} q_x \log
+q_x + \lambda_1 (\sum_{x \in \mathcal{X}} q_x - 1) + \lambda_2 (\sum_{x
+\in \mathcal{X}} x q_x - \mu) \\
+&amp;amp;= \sum_{x \in \mathcal{X}} [(\log q_x + \lambda_1 + \lambda_2 x)
+q_x] - \lambda_1 - \lambda_2 \mu
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Take its derivative w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; and
+make it zero to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+0 &amp;amp;= 1 + \log q_x + \lambda_1 + \lambda_2 x \\
+q_x &amp;amp;= \exp[-(1 + \lambda_1 + \lambda_2 x)]
+\end{aligned}
+\]&lt;/span&gt; Consider the normalization constraint to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+q_x = \frac{\exp(-\lambda_2 x)}{\sum_{x&amp;#39;=1}^\infty \exp(-\lambda_2
+x&amp;#39;)} \\
+\exp(-1 - \lambda_1) = \sum_{x&amp;#39;=1}^\infty \exp(-\lambda_2 x&amp;#39;)
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;For &lt;span class=&#34;math inline&#34;&gt;\(\lambda_1\)&lt;/span&gt; to converge, &lt;span class=&#34;math inline&#34;&gt;\(\lambda_2\)&lt;/span&gt; has to be positive. As a
+result, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\exp(-1 - \lambda_1) = \sum_{x&amp;#39;=1}^\infty \exp(-\lambda_2
+x&amp;#39;) \\
+&amp;amp;= \exp(-\lambda_2) \frac{1}{1 - \exp(-\lambda_2)} \\
+&amp;amp;= \frac{1}{\exp(\lambda_2) - 1} \\
+\end{aligned}
+\]&lt;/span&gt; Consider the expectation constraint to give &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\E_p[X] = \frac{\sum_{x=1}^\infty x \exp(-\lambda_2
+x)}{\sum_{x&amp;#39;=1}^\infty \exp(-\lambda_2 x&amp;#39;)} \\
+&amp;amp;= \frac{\exp(-\lambda_2) / [1-\exp(-\lambda_2)]^2}{\exp(-\lambda_2)
+/ [1-\exp(-\lambda_2)]} \\
+&amp;amp;= \frac{1}{1-\exp(-\lambda_2)} = \mu
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Hence, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp; \lambda_2 = -\log(1-\frac{1}{\mu}) \\
+&amp;amp; \lambda_1 = -\log(\mu-1) - 1 \\
+&amp;amp; q_x = \frac{(1-\frac{1}{\mu})^x}{\mu-1} = \frac{1}{\mu}
+(1-\frac{1}{\mu})^{x-1}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;What distribution in the set &lt;span class=&#34;math inline&#34;&gt;\(M_\phi
+\triangleq \{ q: \E_q[X] = \mu, \Cov_q[X] = \Sigma \}\)&lt;/span&gt; will
+maximize the entropy of a random vector &lt;span class=&#34;math inline&#34;&gt;\(X
+\in \R^d\)&lt;/span&gt;​​ with a fixed mean vector and covariance matrix??&lt;/p&gt;
+&lt;p&gt;This is the first attempt to extend the discussion to a continuous
+case. We know that &lt;span class=&#34;math inline&#34;&gt;\(q^*\)&lt;/span&gt; is in the
+form of &lt;span class=&#34;math display&#34;&gt;\[
+q^*(x) = \exp(\theta^\top \phi(x) - A(\theta))
+\]&lt;/span&gt; Note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Cov[X] &amp;amp;= \E[(X-\mu)(X-\mu)^T] \\
+\Cov[X] &amp;amp;= \E[X X^T] - \E[X] \E[X]^T \\
+\E[X X^T] &amp;amp;= \Cov[X] + \E[X] \E[X]^T \\
+\end{aligned}
+\]&lt;/span&gt; Therefore, we can choose our feature function as &lt;span class=&#34;math display&#34;&gt;\[
+\phi(x) = [x_1, \dots, x_d, x_1 x_1, \dots, x_1 x_d, x_2 x_2, \dots, x_2
+x_d, \dots, x_d x_d]
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In a simpler way, we know &lt;span class=&#34;math inline&#34;&gt;\(q^*(x) =
+\exp(\theta^T \phi(x) - A(\theta))\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\theta \in \R^{d^2+d}\)&lt;/span&gt;. This form of
+exponential family is exactly the Gaussian distribution: &lt;span class=&#34;math display&#34;&gt;\[
+q^*(x) = \frac{\exp[-\frac{1}{2}{(x-\mu)}^\top \Sigma^{-1}
+(x-\mu)]}{\sqrt{|2\pi \Sigma|}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Consider the normalization constraint to give &lt;span class=&#34;math display&#34;&gt;\[
+\int \exp(A(\theta)) = 1
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;maximizing-conditional-entropy&#34;&gt;Maximizing Conditional
+Entropy&lt;/h3&gt;
+&lt;p&gt;Consider the prediction problem where we want to predict the label
+variable from the feature variable. Denote as &lt;span class=&#34;math inline&#34;&gt;\(P_{X,Y}\)&lt;/span&gt; the joint distribution of &lt;span class=&#34;math inline&#34;&gt;\((X,Y)\)&lt;/span&gt;. The question is how to determine
+the prediction rule &lt;span class=&#34;math inline&#34;&gt;\(f: \mathcal{X} \mapsto
+\mathcal{Y}\)&lt;/span&gt;?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(P_{X,Y}\)&lt;/span&gt; is known…&lt;/p&gt;
+&lt;p&gt;This would depend on the loss function. If the loss function is the
+squared error, the MMSE estimator gives &lt;span class=&#34;math display&#34;&gt;\[
+f^*(x) = \E[Y|X=x]
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(P_{X,Y}\)&lt;/span&gt; is unknown and we
+know that &lt;span class=&#34;math inline&#34;&gt;\(P_{X, Y}\)&lt;/span&gt; belongs to the
+family &lt;span class=&#34;math inline&#34;&gt;\(M_\phi \triangleq \{ Q_{X,Y}:
+\E_Q[\phi(X, Y)] = \mu \}\)&lt;/span&gt;…&lt;/p&gt;
+&lt;p&gt;In this case, we can further apply the principle of maximum
+conditional entropy. But why not maximize the joint entropy &lt;span class=&#34;math inline&#34;&gt;\(H(X, Y)\)&lt;/span&gt; as done in previous discussion?
+In fact, in this case, the two approaches are equivalent due to the
+following relationship: &lt;span class=&#34;math display&#34;&gt;\[
+H(X,Y) = H(Y|X) + H(X)
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(H(X)\)&lt;/span&gt; is
+fixed/deterministic given the samples (because we can directly learn
+&lt;span class=&#34;math inline&#34;&gt;\(p_X\)&lt;/span&gt; at least in a non-parametric
+way from samples), we can resort to maximizing &lt;span class=&#34;math inline&#34;&gt;\(H(Y|X)\)&lt;/span&gt; to slim down the formula. Note
+that even though we have been given the samples from &lt;span class=&#34;math inline&#34;&gt;\(p_{X,Y}\)&lt;/span&gt;, we can still adjust &lt;span class=&#34;math inline&#34;&gt;\(p_{Y|X}\)&lt;/span&gt; to maximize &lt;span class=&#34;math inline&#34;&gt;\(H(Y|X)\)&lt;/span&gt; (because can’t learn &lt;span class=&#34;math inline&#34;&gt;\(p_{Y|X=x}\)&lt;/span&gt; for every &lt;span class=&#34;math inline&#34;&gt;\(x \in \mathcal{X}\)&lt;/span&gt; from samples). From
+another perspective, in prediction task, what we are interested in is
+the &lt;span class=&#34;math inline&#34;&gt;\(p_{Y|X}\)&lt;/span&gt; instead of &lt;span class=&#34;math inline&#34;&gt;\(p_X\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;principle of maximum conditional
+entropy&lt;/strong&gt;. Given the set of probability distributions &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; on &lt;span class=&#34;math inline&#34;&gt;\((X,Y)\)&lt;/span&gt;, base the prediction of &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; from &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; on the distribution maximizing the
+conditional entropy &lt;span class=&#34;math inline&#34;&gt;\(H(Y|X)\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\arg \max_{q \in M} H_q(Y|X) \triangleq \sum_{x \in \mathcal{X}} q(x, y)
+\frac{1}{q(x|y)}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;maximum conditional entropy and logistic
+regression&lt;/strong&gt;. The conditional distribution &lt;span class=&#34;math inline&#34;&gt;\(q_{Y|X}^*\)&lt;/span&gt; chosen from &lt;span class=&#34;math inline&#34;&gt;\(M_\phi \triangleq \{ Q_{X,Y}: \E_Q[Y \phi(X)] =
+\mu \}\)&lt;/span&gt; (i.e., “&lt;span class=&#34;math inline&#34;&gt;\(\phi(X,Y)\)&lt;/span&gt;”
+is chosen to be in the form of &lt;span class=&#34;math inline&#34;&gt;\(Y
+\phi(X)\)&lt;/span&gt;) that results in the maximum conditional entropy will
+follow a logistic regression model for some vector &lt;span class=&#34;math inline&#34;&gt;\(\theta\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+q_{Y|X}^*(y|x) = \frac{\exp(y \theta^\top \phi(x))}{\sum_{y&amp;#39; \in
+\mathcal{Y}} \exp(y&amp;#39; \theta^\top \phi(x))}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>2-uniform-convergence</title>
+      <link>https://chunxy.github.io/courses/machine-learning-theory/2-uniform-convergence/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/courses/machine-learning-theory/2-uniform-convergence/</guid>
+      <description>
+
+&lt;p&gt;In a typical supervised learning, the goal is to find a function
+&lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F} \ni f: \mathcal{X} \to
+\mathcal{Y}\)&lt;/span&gt; that minimizes the loss measured by the loss
+function &lt;span class=&#34;math inline&#34;&gt;\(\ell: \mathcal{Y} \times
+\mathcal{Y} \to \R^+\)&lt;/span&gt; over the distribution &lt;span class=&#34;math inline&#34;&gt;\(P_{X,Y}\)&lt;/span&gt;. However, given that the sample
+size is limited, it is only possible to minimize over the given samples
+&lt;span class=&#34;math inline&#34;&gt;\((x_1,y_1), \dots, (x_n,y_n)\)&lt;/span&gt;,
+yielding the empirical risk minimization (ERM).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Empirical risk minimization vs. population risk minimization &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\hat f \triangleq \min_{f \in \mathcal{F}} \hat L(f) \triangleq
+\frac{1}{n} \sum_{i=1}^n [\ell(f(x_i), y_i)] \tag{ERM} \\
+f^* \triangleq \min_{f \in \mathcal{F}} L(f) \triangleq \E_{P_{X,Y}}
+[\ell(f(X), Y)] \tag{PRM/Supervised Learning} \\
+\end{gather}
+\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In machine learning, training is exactly an optimization process. But
+machine learning additionally takes into consideration the adaptation of
+the trained model from training data to unknown test data. Thus, we
+introduce the concept of &lt;strong&gt;generalization error&lt;/strong&gt; to
+reflect the model’s generalization capability.&lt;/p&gt;
+&lt;p&gt;Generalization risk alone cannot be the only index. It only measures
+the performance difference between training set and test set. A model
+that is the same worse on the training data and the test data
+“generalizes” well. Thus, we introduce the concept of &lt;strong&gt;excess
+error&lt;/strong&gt; to reflect the model’s overall capability.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generalization error vs. excess error &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\epsilon_\text{gen}(\hat f) \triangleq L(\hat f) - \hat L(\hat f)
+\tag{Generalization Error} \\
+\epsilon_\text{excess}(\hat f) \triangleq L(\hat f) - L(f^*) \tag{Excess
+Error}
+\end{gather}
+\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that generalization error may be positive, zero or negative;
+excess error cannot be negative. Also note that even a small excess
+error does not imply an effective learning algorithm: the EMR model may
+be as bad as the PRM model. It is just that we usually assume a very low
+population risk.&lt;/p&gt;
+&lt;p&gt;The overall purpose is to build a bound on the excess error
+&lt;strong&gt;for the ERM method&lt;/strong&gt; with respect to the sample size,
+which is the main topic of &lt;strong&gt;uniform convergence
+analysis&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;introductory-case-and-initial-assumptions&#34;&gt;Introductory Case and
+Initial Assumptions&lt;/h2&gt;
+&lt;p&gt;As a kickstart, we make the following assumptions:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;We consider the zero-one loss.&lt;/li&gt;
+&lt;li&gt;We assume a &lt;strong&gt;realizable scenario&lt;/strong&gt; where &lt;span class=&#34;math inline&#34;&gt;\(L(f^*) = 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(f^*\)&lt;/span&gt; belongs to the hypothesis set.&lt;/li&gt;
+&lt;li&gt;We consider a finite hypothesis set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F} = \{ f_1,\dots,f_t \}\)&lt;/span&gt; with
+&lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;​ functions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Note that due to the realizability assumption, the excess risk is
+exactly the population risk.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;excess error bound for realizable finite hypothesis
+set&lt;/strong&gt;. The following population risk bound holds for the ERM
+solution &lt;span class=&#34;math inline&#34;&gt;\(\hat f\)&lt;/span&gt; with probability at
+least &lt;span class=&#34;math inline&#34;&gt;\(1-\delta\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\epsilon_\text{excess}(\hat f) = L(\hat f) \le \frac{\log t + \log
+\frac{1}{\delta}}{n}
+\]&lt;/span&gt; Proof. Let &lt;span class=&#34;math inline&#34;&gt;\(B \triangleq \{ f \in
+\mathcal{F}, L(f) &amp;gt; \epsilon \}\)&lt;/span&gt;. Since the problem is
+realizable in that &lt;span class=&#34;math inline&#34;&gt;\(L(f^*) = 0\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(f^* \in \mathcal{F}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+0 \le \hat L(\hat f) \le \hat L(f^*) = L(f^*) = 0 \\
+\Rightarrow \hat L(\hat f) = 0
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}[t]
+&amp;amp;\Pr(L(\hat f) &amp;gt; \epsilon) \\
+&amp;amp;= \Pr(\hat f \in B) \\
+&amp;amp;\Downarrow_{\hat L(\hat f) = 0} \\
+&amp;amp;\le \Pr(\exists h \in B, \hat L(h) = 0) \\
+&amp;amp;\le \sum_{h \in B} \Pr(\hat L(h) = 0) \\
+\\
+&amp;amp;\Downarrow \\
+&amp;amp;\le \sum_{h \in B} \exp(-\epsilon n) \\
+&amp;amp;= t \exp(-\epsilon n)
+\end{aligned}
+\quad
+\begin{aligned}[t]
+&amp;amp;\Pr(\hat L(h) = 0) \\
+&amp;amp;= \Pr(\forall i, h(x_i) = y_i) \\
+&amp;amp;= \prod_i \Pr(h(x_i) = y_i) \\
+&amp;amp;\Downarrow \\
+&amp;amp;= (1-L(h))^n \\
+&amp;amp;\le \exp(-L(h) n) \\
+&amp;amp;\Downarrow \\
+\Leftarrow \quad &amp;amp; \le \exp(-\epsilon n)
+\end{aligned} \quad
+%
+\begin{gathered}[t]
+\begin{aligned}[t]
+\E[\mathbb{1}[h(x_i) \ne y_i]] = L(h) \\
+1 - \E[\mathbb{1}[h(x_i) = y_i]] = L(h) \\
+1 - \Pr(h(x_i) = y_i) = L(h) \\
+\end{aligned} \\
+\Downarrow \\
+\begin{gathered}
+&amp;amp;\Leftarrow &amp;amp;\Pr(h(x_i) = y_i) = 1 - L(h) \\
+\\ \\
+&amp;amp;\Leftarrow &amp;amp;(1-z)^n \le \exp(-z n)
+\end{gathered}
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Interestingly, &lt;span class=&#34;math inline&#34;&gt;\(\log t\)&lt;/span&gt; reflects
+the capacity of the function class.&lt;/p&gt;
+&lt;h2 id=&#34;uniform-convergence-analysis&#34;&gt;Uniform Convergence Analysis&lt;/h2&gt;
+&lt;p&gt;The three assumptions are restrictive. In this section, we first try
+to wriggle out of them and draw some general conclusions. Then, we bring
+some of them back to show some more meaningful results.&lt;/p&gt;
+&lt;p&gt;First note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+0 \le \epsilon_\text{excess}(\hat f) = L(\hat f) - L(f^*) \\
+= \underbrace{L(\hat f) - \hat L(\hat f)}_{\epsilon_\text{gen}(\hat f)}
++ \underbrace{\hat L(\hat f) - \hat L(f^*)}_{\le 0} + \underbrace{\hat
+L(f^*) - L(f^*)}_{-\epsilon_\text{gen}(f^*)}
+\end{gathered}
+\]&lt;/span&gt; That is (this is the &lt;strong&gt;key inequality&lt;/strong&gt; that
+relates the excess error and generalization error, based on which
+various inequalities are derived later on), &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\epsilon_\text{excess}(\hat f) &amp;amp;\le L(\hat f) - \hat L(\hat f) +
+\hat L(f^*) - L(f^*) \\
+&amp;amp;\Downarrow_{0 \le \epsilon_\text{excess}(\hat f)} \\
+&amp;amp;\le |L(\hat f) - \hat L(\hat f)| + |\hat L(f^*) - L(f^*)| \\
+&amp;amp;\le 2 \sup_{f \in \mathcal{F}} |L(f) - \hat L(f)|
+\end{aligned}
+\]&lt;/span&gt; In other words, a sufficient condition for excess risk to be
+upper-bounded by &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt; is that
+for every &lt;span class=&#34;math inline&#34;&gt;\(f \in \mathcal{F}\)&lt;/span&gt;, the
+generalization error is &lt;strong&gt;uniformly&lt;/strong&gt; less than &lt;span class=&#34;math inline&#34;&gt;\(\epsilon/2\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather}
+\Pr(\epsilon_\text{excess}(\hat f) \le \epsilon) \ge \Pr(\sup_{f \in
+\mathcal{F}} |L(f) - \hat L(f)| \le \frac{\epsilon}{2})
+\label{uniconv-1} \\
+\Downarrow \notag \\
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \Pr(\sup_{f \in
+\mathcal{F}} |L(f) - \hat L(f)| \ge \frac{\epsilon}{2})
+\label{uniconv-2} \\
+\end{gather}
+\]&lt;/span&gt; The supremum operation is still ambiguous. To demystify it, we
+can instead turn to study the distribution of &lt;span class=&#34;math inline&#34;&gt;\(L(f) - \hat L(f)\)&lt;/span&gt; for arbitrary &lt;span class=&#34;math inline&#34;&gt;\(f \in \mathcal{F}\)&lt;/span&gt;, which is a form of
+deviation of population mean from the empirical mean. That is, we remove
+&lt;span class=&#34;math inline&#34;&gt;\(\sup\)&lt;/span&gt; with following inequality:
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{equation}
+\begin{aligned}
+&amp;amp;\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \Pr(\sup_{f
+\in \mathcal{F}} |L(f) - \hat L(f)| \ge \frac{\epsilon}{2}) \\
+&amp;amp;= \Pr(\cup_{1 \le i \le t} |L(f_i) - \hat L(f_i)| \ge
+\frac{\epsilon}{2}) \\
+&amp;amp;\le \sum_{i=1}^t \Pr(|L(f_i) - \hat L(f_i)| \ge \frac{\epsilon}{2})
+\\
+\end{aligned} \label{uniconv-3}
+\end{equation}
+\]&lt;/span&gt; The formula on the last line is the reason why we can only
+deal with &lt;strong&gt;finite hypothesis set&lt;/strong&gt; in this section. It is
+also reminiscent of the law of large numbers and central limit theorem
+in the probability and statistics. But remember that, both of them
+provides a guarantee in an asymptotic fashion, which is not suitable due
+to finite sample size. To prove a non-asymptotic generalization bound,
+we can use some readily-available &lt;strong&gt;tail bounds&lt;/strong&gt; from the
+probability literature.&lt;/p&gt;
+&lt;h3 id=&#34;bounding-via-markovs-inequality&#34;&gt;Bounding via Markov’s
+Inequality&lt;/h3&gt;
+&lt;p&gt;In a verbatim way, treat every &lt;span class=&#34;math inline&#34;&gt;\(l(f(x_i),
+y_i)\)&lt;/span&gt; as an i.i.d. sample &lt;span class=&#34;math inline&#34;&gt;\(z_i\)&lt;/span&gt; and assume that &lt;strong&gt;both the
+expectation and the variance exist&lt;/strong&gt; for &lt;span class=&#34;math inline&#34;&gt;\(z_i\)&lt;/span&gt;. That is, let &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\mu \triangleq \E[z_i], \sigma^2 \triangleq \Var[z_i]
+\end{gathered}
+\]&lt;/span&gt; For some arbitrary &lt;span class=&#34;math inline&#34;&gt;\(f&amp;#39; \in
+\mathcal{F}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\hat L(f&amp;#39;) = \hat \mu_n = \frac{1}{n} \sum_{i=1}^n z_i,L(f&amp;#39;) =
+\mu \\
+\end{gathered}
+\]&lt;/span&gt; Then by Chebyshev’s inequality (derived from Markov’s
+inequality), &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\left.
+\begin{gathered}
+\E[\frac{1}{n} \sum_{i=1}^n z_i] = \mu \\
+\Var[\frac{1}{n} \sum_{i=1}^n z_i] = \frac{\sigma^2}{n} \\
+\end{gathered}
+\right\} \Rightarrow \Pr(|\frac{1}{n} \sum_{i=1}^n z_i - \mu | \ge
+\frac{\epsilon}{2}) \le \frac{4\sigma^2}{n \epsilon^2}
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Adopting &lt;span class=&#34;math inline&#34;&gt;\(\eqref{uniconv-3}\)&lt;/span&gt;, we
+have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \sum_{i=1}^t
+\Pr(|\frac{1}{n} \sum_{i=1}^n z_i - \mu | \ge \frac{\epsilon}{2}) \le
+\frac{4t \sigma^2}{n \epsilon^2}
+\end{aligned}
+\]&lt;/span&gt; This indicates that the excess risk of &lt;span class=&#34;math inline&#34;&gt;\(\hat f\)&lt;/span&gt; will decay by a &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{O}(\frac{1}{n})\)&lt;/span&gt; rate. Is this a
+good decay rate? Not yet, because even a statistical inference of &lt;a href=&#34;https://www.wikiwand.com/en/Binomial_distribution&#34;&gt;binomial
+distribution&lt;/a&gt;’s &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt; parameter can
+give an exponential decay rate.&lt;/p&gt;
+&lt;p&gt;Remember that sitting above the polynomial order is the exponential
+order. By far, we only make very limited assumption on &lt;span class=&#34;math inline&#34;&gt;\(z_i\)&lt;/span&gt;. For Gaussian and bounded random
+variable, we show below that we can improve the decay rate from the
+geometric one​​ to an exponential one.&lt;/p&gt;
+&lt;h3 id=&#34;bounding-via-hoeffdings-inequality&#34;&gt;Bounding via Hoeffding’s
+Inequality&lt;/h3&gt;
+&lt;h4 id=&#34;moment-generating-function&#34;&gt;Moment Generating Function&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;moment generating function&lt;/strong&gt;. For a random
+variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, the moment generating
+function (MGF) &lt;span class=&#34;math inline&#34;&gt;\(M_Z: \R \to \R\)&lt;/span&gt; is
+defined as &lt;span class=&#34;math display&#34;&gt;\[
+M_Z(t) \triangleq \E[e^{t Z}] = \int_{-\infty}^{+\infty} p_Z(z) e^{t z}
+\d z
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;MGF of sum of independent random
+variables&lt;/strong&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(Z_1\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(Z_2\)&lt;/span&gt; are independent random
+variables, then the MGF of their sum is the product of their MGFs: &lt;span class=&#34;math display&#34;&gt;\[
+M_{Z_1 + Z_2}(t) = M_{Z_1}(t) M_{Z_2}(t)
+\]&lt;/span&gt; Proof. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;M_{Z_1+Z_2}(t) = \E_{Z_1, Z_2}[e^{t(Z_1 + Z_2)}] \\
+&amp;amp;= \E_{Z_1} \E_{Z_2} [e^{t(Z_1 + Z_2)}] \\
+&amp;amp;= \E_{Z_1} [e^{t Z_1}] \E_{Z_2} [e^{t Z_2}] \\
+&amp;amp;= M_{Z_1}(t) M_{Z_2}(t)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;MGF of linear transformation of random
+variables&lt;/strong&gt;. For a random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; and constants &lt;span class=&#34;math inline&#34;&gt;\(\alpha \ne 0, \beta\)&lt;/span&gt;, then the MGFs of the
+random variable &lt;span class=&#34;math inline&#34;&gt;\(Z&amp;#39; \triangleq \alpha
+Z\)&lt;/span&gt; and the random variable &lt;span class=&#34;math inline&#34;&gt;\(Z&amp;#39;&amp;#39; \triangleq Z + \beta\)&lt;/span&gt; are
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}[t]
+&amp;amp;M_{Z&amp;#39;}(t) = \int_{-\infty}^{+\infty} p_{Z&amp;#39;}(z) e^{t z} \d z
+\\
+&amp;amp;= ??\alpha \int_{-\infty}^{+\infty} p_{Z}(z/\alpha) e^{(\alpha t) *
+(z/\alpha)} \d (z/\alpha) \\
+&amp;amp;= M_Z(\alpha t)
+\end{aligned} \quad
+\begin{aligned}[t]
+&amp;amp;M_{Z&amp;#39;&amp;#39;}(t) = \int_{-\infty}^{+\infty} p_{Z&amp;#39;&amp;#39;}(z)
+e^{t z} \d z \\
+&amp;amp;= e^{\beta t} \int_{-\infty}^{+\infty} p_{Z}(z-\beta) e^{t
+(z-\beta)} \d (z-\beta) \\
+&amp;amp;= e^{\beta t} M_Z(t)
+\end{aligned}
+\]&lt;/span&gt; In short, &lt;span class=&#34;math display&#34;&gt;\[
+M_{\alpha Z + \beta}(t) = \E[e^{(\alpha Z + \beta) t}] = e^{\beta t}
+\E[e^{\alpha Z t}] = e^{\beta t} M_Z(\alpha t)
+\]&lt;/span&gt; Show that the expectation of linear transformation of RV is
+the linear transformation of expectation of RV??&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;chernoffs-inequality&#34;&gt;Chernoff’s Inequality&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;Chernoff’s inequality&lt;/strong&gt;. Consider random
+variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; with moment generating
+function &lt;span class=&#34;math inline&#34;&gt;\(M_Z\)&lt;/span&gt;. Then, &lt;span class=&#34;math display&#34;&gt;\[
+\forall t &amp;gt; 0: \Pr(Z \ge \epsilon) \le \frac{M_Z(t)}{e^{t \epsilon}}
+\]&lt;/span&gt; Proof. Define the random variable &lt;span class=&#34;math inline&#34;&gt;\(V = e^{t Z}\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(t &amp;gt; 0\)&lt;/span&gt;. Then by the Markov’s inequality
+&lt;span class=&#34;math display&#34;&gt;\[
+\Pr(Z \ge \epsilon) = \Pr(V \ge e^{t \epsilon}) \le \frac{\E[V]}{e^{t
+\epsilon}} = \frac{M_Z(t)}{e^{t \epsilon}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Note that &lt;span class=&#34;math inline&#34;&gt;\(\hat \mu_n - \mu\)&lt;/span&gt; can
+be rewritten in a summation form &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^n \frac{z_i - \mu}{n}\)&lt;/span&gt;.
+Therefore, for all &lt;span class=&#34;math inline&#34;&gt;\(t &amp;gt; 0\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\Pr(\hat \mu_n - \mu \ge \epsilon) \le \frac{M_{\hat \mu_n -
+\mu}(t)}{e^{t \epsilon}} \\
+&amp;amp;= \frac{(M_{(Z - \mu)/n}(t))^n}{e^{t \epsilon}} \\
+&amp;amp;= \frac{(M_{(Z - \mu)}(t/n))^n}{e^{t \epsilon}} \\
+\end{aligned}
+\]&lt;/span&gt; Since &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is fixed, we have
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\forall t &amp;gt; 0, \Pr(\hat \mu_n - \mu \ge \epsilon) \le \frac{(M_{(Z -
+\mu)}(t))^n}{e^{t \epsilon}} \\
+\Downarrow \\
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le \frac{\inf_{t &amp;gt; 0}\ (M_{Z -
+\mu}(t))^n}{e^{t \epsilon}} \\
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;If only &lt;span class=&#34;math inline&#34;&gt;\(\inf_{t &amp;gt; 0}\ M_{Z - \mu}(t)
+&amp;lt; 1\)&lt;/span&gt;! We divert to the applications of Chernoff’s inequality
+for some well-defined distributions. And then we show that the scenario
+that &lt;span class=&#34;math inline&#34;&gt;\(\inf_{t &amp;gt; 0}\ M_{Z - \mu}(t) &amp;lt;
+1\)&lt;/span&gt; is not rare.&lt;/p&gt;
+&lt;h5 id=&#34;zero-mean-gaussians&#34;&gt;Zero-mean Gaussians&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;MGF of zero-mean Gaussians&lt;/strong&gt;. Suppose
+&lt;span class=&#34;math inline&#34;&gt;\(Z \sim \mathcal{N}(0, \sigma^2)\)&lt;/span&gt; is
+zero-mean Gaussian random variable. Then &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;M_Z(t) = \int_{-\infty}^{+\infty} p_Z(z) e^{t z} \d z \\
+&amp;amp;= \int_{-\infty}^{+\infty} \frac{e^{-\frac{z}{2 \sigma^2} + tz}}
+{\sqrt{2 \pi \sigma^2}} \d z \\
+&amp;amp;= \int_{-\infty}^{+\infty} \frac{e^{-\frac{(z - \sigma^2 t)^2}{2
+\sigma^2} + \frac{\sigma^2 t^2}{2}}} {\sqrt{2 \pi \sigma^2}}  \d z \\
+&amp;amp;= e^{\frac{\sigma^2 t^2}{2}} \int_{-\infty}^{+\infty}
+\frac{e^{-\frac{(z - \sigma^2 t)^2}{2 \sigma^2}}} {\sqrt{2 \pi
+\sigma^2}} \d (z-\sigma^2 t^2) \\
+&amp;amp;= e^{\frac{\sigma^2 t^2}{2}}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Note that it is the nice property of &lt;strong&gt;MGF of zero-mean
+Gaussian&lt;/strong&gt; that confines our discussion to zero-mean variables. A
+direct application of Chernoff’s inequality gives&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;Chernoff tail bound for zero-mean
+Gaussians&lt;/strong&gt;. The optimized Chernoff tail bound for &lt;span class=&#34;math inline&#34;&gt;\(Z \sim \mathcal{N}(0, \sigma^2)\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Pr(Z \ge \epsilon) &amp;amp;\le \inf_{t&amp;gt;0}\quad M_Z(t) e^{-t \epsilon}
+\\
+&amp;amp;= \inf_{t&amp;gt;0}\quad e^{\frac{\sigma^2 t^2}{2} - \epsilon t} \\
+&amp;amp;= e^{-\frac{\epsilon^2}{2\sigma^2}}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A direct application of the above theorem on the sum of i.i.d.
+zero-mean Gaussians gives the following:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Corollary: &lt;strong&gt;Chernoff-based concentration inequality for
+zero-mean Gaussians&lt;/strong&gt;. Given i.i.d. sample &lt;span class=&#34;math inline&#34;&gt;\(z_1, \dots, z_n \sim \mathcal{N}(0,
+\sigma^2)\)&lt;/span&gt;, we have the following error bound for empirical mean
+&lt;span class=&#34;math inline&#34;&gt;\(\hat \mu_n = \frac{1}{n} \sum_{i=1}^{n}
+z_i\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le e^{-\frac{n \epsilon^2}{2
+\sigma^2}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;sub-gaussians&#34;&gt;Sub-Gaussians&lt;/h5&gt;
+&lt;p&gt;The key step in the illustration of Chernoff’s inequality for the
+Gaussian case is the derivation of MGF. On the wide spectrum of
+non-Gaussian distributions, we focus on those whose MGF is smaller than
+that of some zero-mean Gaussians.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;sub-Gaussian random variables&lt;/strong&gt;. We call
+random variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; with mean &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; sub-Gaussian with parameters &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; if the MGF of &lt;span class=&#34;math inline&#34;&gt;\(Z-\mu\)&lt;/span&gt; satisfies the following inequality
+for all &lt;span class=&#34;math inline&#34;&gt;\(t &amp;gt; 0\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+M_{Z-\mu}(t) \le \exp(\frac{\sigma^2 t^2}{2})
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;By the way, it is interesting to know that if a random variable is
+sub-Gaussian with parameter &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt;, then its variance is
+upper-bounded by &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;sum of independent sub-Gaussians&lt;/strong&gt;. If
+&lt;span class=&#34;math inline&#34;&gt;\(Z_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Z_2\)&lt;/span&gt; are two independent sub-Gaussian
+random variables with parameters &lt;span class=&#34;math inline&#34;&gt;\(\sigma_1^2\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\sigma_2^2\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(Z_1 + Z_2\)&lt;/span&gt; will be sub-Gaussian with
+parameter &lt;span class=&#34;math inline&#34;&gt;\(\sigma_1^2 +
+\sigma_2^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;MGF of scalar product of sub-Gaussians&lt;/strong&gt;.
+If &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is a sub-Gaussian random
+variable with parameter &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt;,
+then &lt;span class=&#34;math inline&#34;&gt;\(c Z\)&lt;/span&gt; for scalar &lt;span class=&#34;math inline&#34;&gt;\(c \in \R\)&lt;/span&gt; will be sub-Gaussian with
+parameter &lt;span class=&#34;math inline&#34;&gt;\(c^2 \sigma^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We can draw similar conclusions for sub-Gaussians.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;Chernoff tail bound for sub-Gaussians&lt;/strong&gt;. The
+optimized Chernoff tail bound for sub-Gaussian &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; with parameter &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; and with mean &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\Pr(Z-\mu \ge \epsilon) \le \exp(-\frac{\epsilon^2}{2\sigma^2})
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Corollary: &lt;strong&gt;Chernoff-based concentration inequality for
+sub-Gaussians&lt;/strong&gt;. Given i.i.d. sub-Gaussian samples &lt;span class=&#34;math inline&#34;&gt;\(z_1, \dots, z_n\)&lt;/span&gt; with parameter &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; and mean &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;, we have the following error bound
+for empirical mean &lt;span class=&#34;math inline&#34;&gt;\(\hat \mu_n = \frac{1}{n}
+\sum_{i=1}^{n} z_i\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le \exp(-\frac{n \epsilon^2}{2
+\sigma^2})
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now it remains the question that what kind of random variables are
+sub-Gaussians.&lt;/p&gt;
+&lt;h6 id=&#34;rademacher-distribution&#34;&gt;Rademacher Distribution&lt;/h6&gt;
+&lt;p&gt;We first introduce the Rademacher random variable &lt;span class=&#34;math inline&#34;&gt;\(X_\mathsf{R}\)&lt;/span&gt; whose PMF is &lt;span class=&#34;math display&#34;&gt;\[
+X_\mathsf{R} = \begin{cases}
++1 &amp;amp; \text{w.p. $1/2$} \\
+-1 &amp;amp; \text{w.p. $1/2$}
+\end{cases}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We can obtain its MGF as &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+M_{X_\mathsf{R}}(t) &amp;amp;= \E[e^{t X}] = \frac{1}{2} (e^t + e^{-t}) \\
+&amp;amp;= \frac{1}{2} \sum_{k=0}^\infty (\frac{t^k}{k!} +
+\frac{(-t)^k}{k!}) \\
+&amp;amp;= \sum_{s=0}^\infty \frac{t^{2s}}{(2s)!} \\
+&amp;amp;\le \sum_{s=0}^\infty \frac{t^{2s}}{2^s(s)!} \\
+&amp;amp;= \sum_{s=0}^\infty \frac{(t^2/2)^s}{s!} \\
+&amp;amp;= e^{t^2/2}
+\end{aligned}
+\]&lt;/span&gt; This indicates that &lt;span class=&#34;math inline&#34;&gt;\(X_\mathsf{R}\)&lt;/span&gt; is sub-Gaussian with
+parameter &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h6 id=&#34;bounded-random-variable&#34;&gt;Bounded Random Variable&lt;/h6&gt;
+&lt;p&gt;Next we show that a random variable &lt;span class=&#34;math inline&#34;&gt;\(a \le
+Z \le b\)&lt;/span&gt; for scalars &lt;span class=&#34;math inline&#34;&gt;\(a,b\)&lt;/span&gt; is
+sub-Gaussian with parameter &lt;span class=&#34;math inline&#34;&gt;\((b-a)^2\)&lt;/span&gt;. To show it, we apply the
+&lt;strong&gt;symmetrization trick&lt;/strong&gt;, creating another random variable
+&lt;span class=&#34;math inline&#34;&gt;\(Z&amp;#39;\)&lt;/span&gt; i.i.d. as &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;M_{Z-\E[Z]}(t) = \E_Z[e^{t(Z-\E[Z])}] \\
+&amp;amp;= \E_Z[e^{t(Z-\E[Z&amp;#39;])}] \\
+&amp;amp;\Downarrow_{\text{Jenson&amp;#39;s inequality}} \\
+&amp;amp;\le \E_Z \E_{Z&amp;#39;}[e^{t(Z-Z&amp;#39;)}] \\
+&amp;amp;= \E_{Z, Z&amp;#39;} [e^{t(Z-Z&amp;#39;)}]
+\end{aligned}
+\]&lt;/span&gt; Directly concluding that &lt;span class=&#34;math inline&#34;&gt;\(M_{Z-\E[Z]}(t) \le e^{t(b-a)}\)&lt;/span&gt; is neither
+interesting nor helpful in resulting a sub-Gaussian. We introduce
+another Rademacher random variable &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(\sigma, Z, Z&amp;#39;\)&lt;/span&gt; are independent. We
+have &lt;span class=&#34;math display&#34;&gt;\[
+Z-Z&amp;#39; \stackrel{d}{=} \sigma(Z-Z&amp;#39;)
+\]&lt;/span&gt; Also note that &lt;span class=&#34;math inline&#34;&gt;\((Z-Z&amp;#39;) \le
+(b-a)^2\)&lt;/span&gt;. Hence, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;M_{Z-\E[Z]}(t) \le \E_{Z, Z&amp;#39;} [e^{t(Z-Z&amp;#39;)}] \\
+&amp;amp;= \E_{Z, Z&amp;#39;, \sigma} [e^{[t(Z-Z&amp;#39;)]\sigma}] \\
+&amp;amp;= \E_{Z, Z&amp;#39;} \E_{\sigma} [e^{[t(Z-Z&amp;#39;)]\sigma}] \\
+&amp;amp;\le \E_{Z, Z&amp;#39;} e^{\frac{t^2(Z-Z&amp;#39;)^2}{2}} \\
+&amp;amp;\le e^{\frac{t^2(b-a)^2}{2}} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This indicates that &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is
+sub-Gaussian with parameter &lt;span class=&#34;math inline&#34;&gt;\((b-a)^2\)&lt;/span&gt;. In fact, &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;​’s sub-Gaussian parameter can be
+further tightened.&lt;/p&gt;
+&lt;h4 id=&#34;hoeffdings-inequality&#34;&gt;Hoeffding’s Inequality&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lemma: &lt;strong&gt;Hoeffding’s lemma&lt;/strong&gt;. Suppose that random
+variable &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is bounded and satisfies
+&lt;span class=&#34;math inline&#34;&gt;\(a \le Z \le b\)&lt;/span&gt; for scalars &lt;span class=&#34;math inline&#34;&gt;\(a,b \in \R\)&lt;/span&gt;. Then, &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt; is sub-Gaussian with parameter &lt;span class=&#34;math inline&#34;&gt;\(\frac{(b-a)^2}{4}\)&lt;/span&gt;. That is, we have &lt;span class=&#34;math display&#34;&gt;\[
+M_{Z-\mu}(t) \le \exp(\frac{t^2 (b-a)^2}{8})
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A direct application of Hoeffding’s lemma and Chernoff tail bound for
+sub-Gaussians gives the following:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;Hoeffding’s inequality&lt;/strong&gt;. Suppose that random
+variables &lt;span class=&#34;math inline&#34;&gt;\(Z_1, \dots, Z_n\)&lt;/span&gt; are
+independent and bounded as &lt;span class=&#34;math inline&#34;&gt;\(a_i \le Z_i \le
+b_i\)&lt;/span&gt;. Then defining the empirical mean &lt;span class=&#34;math inline&#34;&gt;\(\hat \mu_n \triangleq \frac{1}{n} \sum_{i=1}^n
+Z_i\)&lt;/span&gt; and the underlying mean &lt;span class=&#34;math inline&#34;&gt;\(\mu
+\triangleq \frac{1}{n} \sum_{i=1}^n \E[Z_i]\)&lt;/span&gt; results in the
+following concentration inequality &lt;span class=&#34;math display&#34;&gt;\[
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le \exp\left( -\frac{2n^2
+\epsilon^2}{\sum_{i=1}^n (b_i-a_i)^2} \right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Corollary: &lt;strong&gt;Hoeffding’s concentration inequality for bounded
+random variables&lt;/strong&gt;. Given i.i.d. bounded samples &lt;span class=&#34;math inline&#34;&gt;\(a \le z_1, \dots, z_n \le b\)&lt;/span&gt; with mean
+&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;, we have the following error
+bound for empirical mean &lt;span class=&#34;math inline&#34;&gt;\(\hat \mu_n =
+\frac{1}{n} \sum_{i=1}^{n} z_i\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\Pr(\hat \mu_n - \mu \ge \epsilon) \le \exp\left( -\frac{2 n
+\epsilon^2}{(b-a)^2} \right)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;revisiting-excess-error&#34;&gt;Revisiting Excess Error&lt;/h3&gt;
+&lt;p&gt;In quite a long run of paragraphs, we have been working with
+statistics. Now let’s turn to uniform convergence analysis. We
+assume&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;the usage of the zero/one-loss,&lt;/li&gt;
+&lt;li&gt;and a finite set of hypothesis &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F} = \{ f_1,\dots,f_t \}\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;excess error bound for finite hypothesis
+sets&lt;/strong&gt;. Under the above assumptions, the following excess risk
+bound holds for the ERM solution &lt;span class=&#34;math inline&#34;&gt;\(\hat
+f\)&lt;/span&gt; with probability at least &lt;span class=&#34;math inline&#34;&gt;\(1-\delta\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\epsilon_{\text{excess}}(\hat f) \le \sqrt{\frac{2(\log t +
+\log\frac{2}{\delta})}{n}} =
+\mathcal{O}(\sqrt{\frac{\log(t/\delta)}{n}})
+\]&lt;/span&gt; Proof. According to &lt;span class=&#34;math inline&#34;&gt;\(\eqref{uniconv-3}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \Pr(\cup_{1 \le i
+\le t} |L(f_i) - \hat L(f_i)| \ge \frac{\epsilon}{2})
+\]&lt;/span&gt; We can apply the union bound and Hoeffding’s lemma to further
+show that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\Pr(\cup_{1 \le i \le t} |L(f_i) - \hat L(f_i)| \ge
+\frac{\epsilon}{2}) \le \sum_{i=1}^t \Pr(|L(f_i) - \hat L(f_i)| \ge
+\frac{\epsilon}{2}) \\
+&amp;amp;= \sum_{i=1}^t [\Pr(\hat L(f_i) - L(f_i) \ge \frac{\epsilon}{2}) +
+\Pr(\underbrace{(-\hat L(f_i))}_{\hat \mu&amp;#39;} -
+\underbrace{(-L(f_i))}_{\mu&amp;#39;}) \ge \frac{\epsilon}{2})] \\
+&amp;amp;\le \sum_{i=1}^t [\exp\left( -\frac{2n (\epsilon/2)^2}{(1-0)^2}
+\right) + \exp\left( -\frac{2n (\epsilon/2)^2}{(1-0)^2} \right)] \\
+&amp;amp;= 2t \exp(-\frac{n\epsilon^2}{2})
+\end{aligned}
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le 2t \exp(-\frac{n
+\epsilon^2}{2})
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(\delta = 2t \exp(-\frac{n
+\epsilon^2}{2})\)&lt;/span&gt;. Then we can draw that, with probability at
+least &lt;span class=&#34;math inline&#34;&gt;\(1-\delta\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\epsilon_\text{excess}(\hat f) \le \sqrt{\frac{2(\log (2t/\delta))}{n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>3-rademacher-complexity</title>
+      <link>https://chunxy.github.io/courses/machine-learning-theory/3-rademacher-complexity/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/courses/machine-learning-theory/3-rademacher-complexity/</guid>
+      <description>
+
+&lt;h2 id=&#34;rademacher-complexity&#34;&gt;Rademacher Complexity&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!note]&lt;/p&gt;
+&lt;p&gt;Sometimes people use hypothesis set and function set interchangeably.
+But to differentiate, a hypothesis &lt;span class=&#34;math inline&#34;&gt;\(h\)&lt;/span&gt; is typically a feature function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; composed with a loss function &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In this section, we deal with the &lt;strong&gt;infinite hypothesis
+set&lt;/strong&gt;, but still adopt the zero-one loss.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;Rademacher complexity&lt;/strong&gt;. For a function
+set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;, given an i.i.d.
+sample of points &lt;span class=&#34;math inline&#34;&gt;\(\{X_1, \dots, X_n\} \sim
+X^n\)&lt;/span&gt; from a probability distribution &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{P}\)&lt;/span&gt;, and a
+statistically-independent Rademacher variables &lt;span class=&#34;math inline&#34;&gt;\(\sigma = [\sigma_1, \dots, \sigma_n]\)&lt;/span&gt;
+(with i.i.d. components), &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;’s Rademacher complexity is
+defined as &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\rade}{\mathsf{R}} \rade_{\mathcal{P},n}(\mathcal{H})
+\triangleq \E_{X^n, \sigma} \left[ \sup_{h \in \mathcal{H}} \frac{1}{n}
+\sum_{i=1}^n \sigma_i h(X_i) \right]
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Rademacher complexity reflects the generalization capability of the
+function class &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; w.r.t.
+the probability distribution &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{P}\)&lt;/span&gt; given sample size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;. A large Rademacher complexity
+indicates that the model is able to transform the random variable of
+distribution &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{P}\)&lt;/span&gt; to match a
+statistically-independent variable such that the correlation can be
+maximized. Or simply, a large Rademacher complexity indicates better
+(over)fitting capability.&lt;/p&gt;
+&lt;p&gt;In learning theory, given a function class &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt;, we usually define &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{H} \triangleq \{ h(x,y) \triangleq \ell(f(x), y): f \in
+\mathcal{F} \}
+\]&lt;/span&gt; In Rademacher complexity discussion, &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; is still chosen to be
+&lt;strong&gt;zero/one-loss&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;bounding-via-mcdiarmids-inequality&#34;&gt;Bounding via McDiarmid’s
+Inequality&lt;/h3&gt;
+&lt;p&gt;Recall in the uniform convergence theorem, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{equation} \label{uniconv}
+\Pr(\epsilon_\text{excess}(\hat f) \ge \epsilon) \le \Pr(\sup_{f \in
+\mathcal{F}} |L(f) - \hat L(f)| \ge \frac{\epsilon}{2})
+\end{equation}
+\]&lt;/span&gt; The supremum on the right-hand side is not easy to deal with.
+McDiarmid’s inequality comes handy.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;McDiarmid’s inequality&lt;/strong&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(f: \mathcal{X}^n \mapsto \R\)&lt;/span&gt; be a function
+such that for every &lt;span class=&#34;math inline&#34;&gt;\(x_1,\dots,x_n,x_1&amp;#39;,\dots,x_n&amp;#39;\)&lt;/span&gt; the
+following holds &lt;span class=&#34;math display&#34;&gt;\[
+\forall 1 \le i \le n, |f(x_1,\dots,x_i,\dots,x_n) -
+f(x_1,\dots,x_i&amp;#39;,\dots,x_n)| \le c_i
+\]&lt;/span&gt; Then, assuming &lt;span class=&#34;math inline&#34;&gt;\(x_1,\dots,x_n\)&lt;/span&gt; are the realizations of
+independent random variables &lt;span class=&#34;math inline&#34;&gt;\(X_1,\dots,X_n\)&lt;/span&gt; respectively, we have &lt;span class=&#34;math display&#34;&gt;\[
+\Pr(f(x_1,\dots,x_n) - \E[f(X_1,\dots,X_n)]   \ge \epsilon) \le
+\exp(\frac{-2 \epsilon^2}{\sum_{i=1}^n c_i^2})
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!note]&lt;/p&gt;
+&lt;p&gt;McDiarmid’s inequality is a generalization of Hoeffding’s inequality.
+Simply choosing &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;​ in the
+McDiarmid’s inequality to be the empirical mean would recover the
+Hoeffding’s inequality.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now back to &lt;span class=&#34;math inline&#34;&gt;\(\eqref{uniconv}\)&lt;/span&gt;. For
+convenience, we define the &lt;strong&gt;worst-case generalization
+error&lt;/strong&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+G_n &amp;amp;\triangleq \sup_{f \in \mathcal{F}} [L(f) - \hat L(f)] \\
+&amp;amp;= \sup_{f \in \mathcal{F}} [\E[\ell(f(X), Y)] - \frac{1}{n}
+\sum_{i=1}^n \ell(f(X_i), Y_i)]
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Treating &lt;span class=&#34;math inline&#34;&gt;\(G_{n}\)&lt;/span&gt; as the supremum
+over &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt; of function &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt; defined on &lt;span class=&#34;math inline&#34;&gt;\(f \in \mathcal{F}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-sized sample, we have &lt;span class=&#34;math inline&#34;&gt;\(G_{n}(x_1,\dots,x_n) = \sup_{f \in \mathcal{F}}
+g_f(x_1, \dots, x_n)\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(g_f(x_1,\dots,x_n) = L(f) - \hat L(f)\)&lt;/span&gt;.
+Note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\underbrace{g_f(x_1,\dots,x_i,\dots,x_n)}_{A(f)} -
+\underbrace{g_f(x_1,\dots,x_i&amp;#39;,\dots,x_n)}_{B(f)} \\
+&amp;amp;= \frac{1}{n} [\ell(f(x_i&amp;#39;), y_i&amp;#39;) - \ell(f(x_i), y_i)] \\
+&amp;amp;\Downarrow_\text{$\ell$ is a zero/one-loss} \\
+&amp;amp;\le \frac{1}{n}
+\end{aligned}
+\]&lt;/span&gt; &amp;gt; Lemma. If for every &lt;span class=&#34;math inline&#34;&gt;\(f \in
+\mathcal{F}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(|A(f) - B(f)| \le
+\epsilon\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(|\sup_{f} A(f) -
+\sup_{f} B(f)| \le \epsilon\)&lt;/span&gt;. &amp;gt; &amp;gt; Proof. &amp;gt; &lt;span class=&#34;math display&#34;&gt;\[
+&amp;gt; \begin{aligned}
+&amp;gt; \sup_{f} A(f) - \sup_{f} B(f) \le \sup_f [A(f) - B(f)] \le \epsilon
+\\
+&amp;gt; \sup_{f} B(f) - \sup_{f} A(f) \le \sup_f [B(f) - A(f)] \le \epsilon
+&amp;gt; \end{aligned}
+&amp;gt; \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\left| \sup_{f \in \mathcal{F}} g_f(x_1,\dots,x_i,\dots,x_n) - \sup_{f
+\in \mathcal{F}} g_f(x_1,\dots,x_i&amp;#39;,\dots,x_n) \right| \le
+\frac{1}{n}
+\]&lt;/span&gt; Apply the McDiarmid’s inequality to give &lt;span class=&#34;math display&#34;&gt;\[
+\Pr[G_n - \E[G_n] \ge \epsilon] \le \exp(-2n \epsilon^2)
+\]&lt;/span&gt; The remaining step is to bound &lt;span class=&#34;math inline&#34;&gt;\(\E[G_n]\)&lt;/span&gt; (it has to be small for the above
+to be meaningful). &lt;span class=&#34;math inline&#34;&gt;\(\E[G_n]\)&lt;/span&gt; is
+actually an expectation over a sample &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X}\)&lt;/span&gt; of size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;​. &lt;span class=&#34;math display&#34;&gt;\[
+\E[G_n] = \E_\mathrm{X} \left[ \sup_{f \in \mathcal{F}} [L(f) - \hat
+L_\mathrm{X}(f)] \right]
+\]&lt;/span&gt; We again apply the symmetrization trick. Let &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X}&amp;#39;\)&lt;/span&gt; be a virtual sample
+independent from &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X}\)&lt;/span&gt; but
+converge in distribution to &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X}\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(L(f) = \E[\hat L_{\mathrm{X}&amp;#39;}(f)]\)&lt;/span&gt;.
+As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\E[G_n] &amp;amp;= \E_\mathrm{X} \left[ \sup_{f \in \mathcal{F}}
+[\E_{\mathrm{X}&amp;#39;}[\hat L_{\mathrm{X}&amp;#39;}(f)] - \hat
+L_\mathrm{X}(f)] \right] \\
+&amp;amp;= \E_\mathrm{X} \left[ \sup_{f \in \mathcal{F}}
+[\E_{\mathrm{X}&amp;#39;}[\hat L_{\mathrm{X}&amp;#39;}(f) - \hat
+L_\mathrm{X}(f)]] \right] \\
+&amp;amp;\le \E_\mathrm{X} \left[ \E_{\mathrm{X}&amp;#39;} [\sup_{f \in
+\mathcal{F}}[\hat L_{\mathrm{X}&amp;#39;}(f) - \hat L_\mathrm{X}(f)]]
+\right] \\
+&amp;amp;= \E_{\mathrm{X}, \mathrm{X}&amp;#39;} \sup_{f \in \mathcal{F}} [\hat
+L_{\mathrm{X}&amp;#39;}(f) - \hat L_\mathrm{X}(f)]
+\end{aligned}
+\]&lt;/span&gt; Again we introduce another Rademacher random vector of length
+&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; so that &lt;span class=&#34;math inline&#34;&gt;\(\sigma, \mathrm{X}, \mathrm{X}&amp;#39;\)&lt;/span&gt; are
+independent. Let &lt;span class=&#34;math inline&#34;&gt;\(Z_i \triangleq \ell(f(X_i),
+Y_i), Z_i&amp;#39; \triangleq \ell(f(X_i&amp;#39;), Y_i&amp;#39;)\)&lt;/span&gt;. We have
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+Z_i&amp;#39; - Z_i &amp;amp;\stackrel{d}{=}&amp;amp; \sigma_i [Z_i&amp;#39; - Z_i] \\
+\hat L_\mathrm{X&amp;#39;}(f) - \hat L_\mathrm{X}(f)
+&amp;amp;\stackrel{d}{=}&amp;amp; \frac{1}{n} \sum_{i=1}^n \sigma_i [Z_i&amp;#39; -
+Z_i]
+\end{gathered}
+\]&lt;/span&gt; and &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\E[G_n] \le \E_{\mathrm{X}, \mathrm{X}&amp;#39;} \sup_{f \in
+\mathcal{F}} [\hat L_{\mathrm{X}&amp;#39;}(f) - \hat L_\mathrm{X}(f)] \\
+&amp;amp;= \E_{\mathrm{X}, \mathrm{X}&amp;#39;, \sigma} \sup_{f \in \mathcal{F}}
+[\frac{1}{n} \sum_{i=1}^n \sigma_i [Z_i&amp;#39; - Z_i]] \\
+&amp;amp;= \E_{\mathrm{X}&amp;#39;, \sigma} \sup_{f \in \mathcal{F}}
+[\frac{1}{n} \sum_{i=1}^n \sigma_i Z_i&amp;#39;] \\
+&amp;amp;\quad + \E_{\mathrm{X}, \sigma} \sup_{f \in \mathcal{F}}
+[\frac{1}{n} \sum_{i=1}^n -\sigma_i Z_i] \\
+&amp;amp;\le 2 \E_{\mathrm{X}, \sigma} \sup_{f \in \mathcal{F}} [\frac{1}{n}
+\sum_{i=1}^n \sigma_i Z_i] \\
+&amp;amp;= 2 \rade_{n}(\mathcal{\mathcal{H}})
+\end{aligned}
+\]&lt;/span&gt; Next note that excess error is bounded by twice the worst-case
+generalization error: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\Pr[L(\hat f) - L(f^*) \ge \epsilon] \le \Pr[\sup_{f \in
+\mathcal{F}} |L(f) - \hat L(f)| \ge \frac{\epsilon}{2}] \\
+&amp;amp;= \Pr[\underbrace{\sup_{f \in \mathcal{F}} [L(f) - \hat
+L(f)]}_{G_n} \ge \frac{\epsilon}{2}] + \Pr[\underbrace{\sup_{f \in
+\mathcal{F}} [(-L(f)) - (-\hat L(f))]}_{G_n&amp;#39;} \ge
+\frac{\epsilon}{2}] \\
+&amp;amp;= \Pr[G_n - \E[G_n] \ge \frac{\epsilon}{2} - \E[G_n]] +
+\Pr[G_n&amp;#39; - \E[G_n&amp;#39;] \ge \frac{\epsilon}{2} - \E[G_n&amp;#39;]] \\
+&amp;amp;\le \exp[-2n(\frac{\epsilon}{2} - \E[G_n])^2] +
+\exp[-2n(\frac{\epsilon}{2} - \E[G_n&amp;#39;])^2] \\
+&amp;amp;\Downarrow_{-\mathcal{H} \triangleq \{ h(x,y) \triangleq
+-\ell(f(x), y): f \in \mathcal{F} \}} \\
+&amp;amp;\le \exp[-2n(\frac{\epsilon}{2} - 2\rade_n(\mathcal{H}))^2] +
+\exp[-2n(\frac{\epsilon}{2} - 2\rade_n(\mathcal{-H}))^2] \\
+&amp;amp;= 2 \exp[-2n(\frac{\epsilon}{2} - 2\rade_n(\mathcal{H}))^2]
+\end{aligned}
+\]&lt;/span&gt; Putting things together, we have&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;excess error bound via Rademacher
+complexity&lt;/strong&gt;. For a hypothesis set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt;, define &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{H} = \{ h(x,y) \triangleq \mathbb{1}[f(x) \ne y]: f \in
+\mathcal{F} \}
+\]&lt;/span&gt; Then, with probability at least &lt;span class=&#34;math inline&#34;&gt;\(1-\delta\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+L(\hat f) - L(f^*) \le 4 \rade_n(\mathcal{H}) + \sqrt{\frac{2
+\log(2/\delta)}{n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here we emphasize that, a small Rademacher complexity implies a small
+gap between ERM model and PRM model. But they may as well be equally
+bad. It is just that we usually assume a very low population risk.&lt;/p&gt;
+&lt;h3 id=&#34;comparison-of-convergence-bounds&#34;&gt;Comparison of Convergence
+Bounds&lt;/h3&gt;
+&lt;p&gt;Realizability case corresponds to the noiseless setting;
+non-realizability case corresponds to the noisy setting.&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col style=&#34;width: 16%&#34;/&gt;
+&lt;col style=&#34;width: 5%&#34;/&gt;
+&lt;col style=&#34;width: 8%&#34;/&gt;
+&lt;col style=&#34;width: 10%&#34;/&gt;
+&lt;col style=&#34;width: 20%&#34;/&gt;
+&lt;col style=&#34;width: 38%&#34;/&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Method&lt;/th&gt;
+&lt;th&gt;0/1-loss&lt;/th&gt;
+&lt;th&gt;Realizability&lt;/th&gt;
+&lt;th&gt;Finite Hypothesis&lt;/th&gt;
+&lt;th&gt;&lt;span class=&#34;math inline&#34;&gt;\(z_i-\mu\)&lt;/span&gt; Assumption&lt;/th&gt;
+&lt;th&gt;Excess Risk Bound&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Introductory case&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\frac{\log t/\delta}{n}\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Via Markov’s inequality&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;Expectation and variance exists.&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(2 \sigma\sqrt{\frac{t}{n
+\delta}}\)&lt;/span&gt; (derived on my own)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Via Chernoff’s inequality&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;Sub-Gaussian&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\sqrt{\frac{8\log
+(2t/\delta)}{n}}\)&lt;/span&gt; (derived on my own)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Via Hoeffding’s inequality&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;Bounded&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\sqrt{\frac{2\log
+(2t/\delta)}{n}}\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Via McDiarmid’s Inequality&lt;/td&gt;
+&lt;td&gt;✔&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;td&gt;❌&lt;/td&gt;
+&lt;td&gt;None&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(4 \mathsf{R}_n(\mathcal{H}) +
+\sqrt{\frac{2 \log(2/\delta)}{n}}\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;empirical-rademacher-complexity&#34;&gt;Empirical Rademacher
+Complexity&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;empirical Rademacher complexity&lt;/strong&gt;. For a
+hypothesis set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; and
+fixed dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X} = \{ x_1,\dots,x_n
+\}\)&lt;/span&gt;, we define &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;’s empirical Rademacher
+complexity as &lt;span class=&#34;math display&#34;&gt;\[
+\hat \rade_{\mathrm{X}}(\mathcal{H}) \triangleq \E_{\sigma} \left[
+\sup_{h \in \mathcal{H}} \frac{1}{n} \sum_{i=1}^n \sigma_i h(x_i)
+\right]
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Can we approximate Rademacher complexity via sampling? That is, given
+a fixed dataset, can we use stochastic optimization (gradient ascent) to
+obtain the max of the model’s capability. The answer is yes. Refer to
+the Question 6 of Homework 1.&lt;/p&gt;
+&lt;h2 id=&#34;rademacher-complexity-algebra&#34;&gt;Rademacher Complexity
+Algebra&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;basic properties of Rademacher
+complexity&lt;/strong&gt;.&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Monotonicity&lt;/strong&gt;: If &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}_1 \subseteq \mathcal{H}_2\)&lt;/span&gt;,
+then &lt;span class=&#34;math inline&#34;&gt;\(\rade(\mathcal{H}_1) \le
+\rade(\mathcal{H}_2)\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Singleton set&lt;/strong&gt;: If &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H} = \{ h \}\)&lt;/span&gt; contains only one
+function, then &lt;span class=&#34;math inline&#34;&gt;\(\rade(\mathcal{H}) =
+0\)&lt;/span&gt;​​​.&lt;/p&gt;
+&lt;p&gt;Proof. See below: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\rade_{\mathcal{P},n}(\mathcal{H}) &amp;amp;= \E_{X^n, \sigma} \left[
+\sup_{h \in \mathcal{H}} \frac{1}{n} \sum_{i=1}^n \sigma_i h(X_i)
+\right] \\
+&amp;amp;= \E_{X^n, \sigma} \left[\frac{1}{n} \sum_{i=1}^n \sigma_i h(X_i)
+\right] \\
+&amp;amp;= \frac{1}{n} \sum_{i=1}^n \E[\sigma_i] \E[h(X_i)] = 0
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Non-negativity&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\rade_n(\mathcal{H}) \ge 0\)&lt;/span&gt; for any
+non-empty &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;​.&lt;/p&gt;
+&lt;p&gt;Proof. This is immediate after the property monotonicity and property
+singleton set.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Scalar product&lt;/strong&gt;: For constant &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(c
+\mathcal{H} \triangleq \{ c h: h \in \mathcal{H} \}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\rade_n(c \mathcal{H}) = |c|
+\rade_n(\mathcal{H})\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Lipschitz composition&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If &lt;span class=&#34;math inline&#34;&gt;\(g: \R \mapsto \R\)&lt;/span&gt; is a &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;-Lipschitz function, i.e. &lt;span class=&#34;math display&#34;&gt;\[
+\forall z, z&amp;#39; \in \R, |g(z) - g(z&amp;#39;)| \le \rho |z - z&amp;#39;|
+\]&lt;/span&gt; then &lt;span class=&#34;math inline&#34;&gt;\(\rade_n(g \circ \mathcal{H})
+\le \rho \rade_n(\mathcal{H})\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Convex hull&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For a hypothesis set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H} = \{
+h_1,\dots,h_t \}\)&lt;/span&gt;, we define its convex hull as &lt;span class=&#34;math display&#34;&gt;\[
+\textrm{convex-hull}(\mathcal{H}) \triangleq \{ \sum_{i=1}^t \alpha_i
+h_i: \alpha_1,\dots,\alpha_t \ge 0, \sum_{i=1}^t \alpha_i = 1 \}
+\]&lt;/span&gt; Then &lt;span class=&#34;math inline&#34;&gt;\(\rade_n(\textrm{convex-hull}(\mathcal{H})) =
+\rade_n(\mathcal{H})\)&lt;/span&gt;​.&lt;/p&gt;
+&lt;p&gt;Interestingly, a convex hull contains an infinite number of
+hypothesis. But its Rademacher complexity does not increase with its
+infinite cardinality.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;applications-of-rademacher-complexity&#34;&gt;Applications of
+Rademacher Complexity&lt;/h2&gt;
+&lt;p&gt;In this section, we study how to apply the Rademacher complexity to
+various machine learning models.&lt;/p&gt;
+&lt;h3 id=&#34;l_2-norm-bounded-linear-functions&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(l_2\)&lt;/span&gt;-norm-bounded Linear Functions&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;empirical Rademacher complexity of &lt;span class=&#34;math inline&#34;&gt;\(l_2\)&lt;/span&gt;-norm-bounded linear
+functions&lt;/strong&gt;. Consider the following set of &lt;span class=&#34;math inline&#34;&gt;\(l_2\)&lt;/span&gt;-norm bounded linear functions: &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{H} = \{ h_w(x) \triangleq w^T x: \|w\|_2 \le M  \}
+\]&lt;/span&gt; Then for a dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X} = \{
+x_1,\dots,x_n \}\)&lt;/span&gt;, we have the following bound on the empirical
+Rademacher complexity: &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\rade}{\mathsf{R}} \hat \rade_{\mathrm{X}}(\mathcal{H}) \le
+\frac{M \max_i \|x_i\|_2}{\sqrt{n}}
+\]&lt;/span&gt; Proof. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}[t]
+&amp;amp;\hat \rade_{\mathrm{X}}(\mathcal{H}) = \E_{\sigma} \left[
+\sup_{\|w\|_2 \le M} \frac{1}{n} \sum_{i=1}^n \sigma_i w^T x_i \right]
+\\
+&amp;amp;= \frac{1}{n} \E_{\sigma} \left[ \sup_{\|w\|_2 \le M} w^T
+(\sum_{i=1}^n \sigma_i x_i) \right] \\
+&amp;amp;\Downarrow_\text{optimization over a compact set} \\
+&amp;amp;= \frac{1}{n} \E_{\sigma} \left[ \max_{\|w\|_2 \le M} w^T
+(\sum_{i=1}^n \sigma_i x_i) \right] \\
+&amp;amp;\Downarrow_\text{Cauchy-Schwartz inequality} \\
+&amp;amp;= \frac{1}{n} \E_{\sigma} \left[ M \|\sum_{i=1}^n \sigma_i x_i\|_2
+\right] \\
+&amp;amp;= \frac{M}{n} \E_{\sigma} \left[ \|\sum_{i=1}^n \sigma_i x_i\|_2
+\right] \\
+\end{aligned} \quad \text{cont&amp;#39;d}
+\begin{aligned}[t]
+&amp;amp;\le \frac{M}{n} \sqrt{\E_{\sigma} \left[ \|\sum_{i=1}^n \sigma_i
+x_i\|_2^2 \right]} \\
+&amp;amp;= \frac{M}{n} \sqrt{\E_{\sigma} \left[ \sum_{i=1}^n \sum_{j=1}^n
+\sigma_i \sigma_j x_i^T x_j \right]} \\
+&amp;amp;= \frac{M}{n} \sqrt{\left[ \sum_{i=1}^n \sum_{j=1}^n \E[\sigma_i
+\sigma_j] x_i^T x_j \right]} \\
+&amp;amp;= \frac{M}{n} \sqrt{\sum_{i=1}^n \|x_i\|_2^2} \\
+&amp;amp;\le \frac{M}{n} \sqrt{n \max_i \|x_i\|_2^2} \\
+&amp;amp;= \frac{M \max_i \|x_i\|_2}{\sqrt{n}} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The implication of the above theorem is that excess risk is of order
+&lt;span class=&#34;math inline&#34;&gt;\(\mathcal{O}(\frac{1}{\sqrt{n}})\)&lt;/span&gt;​.&lt;/p&gt;
+&lt;h3 id=&#34;neural-network&#34;&gt;Neural Network&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;empirical Rademacher complexity of ReLU-based and
+Frobenius-norm-bounded feedforward neural nets&lt;/strong&gt;. Consider the
+following set of &lt;span class=&#34;math inline&#34;&gt;\(L\)&lt;/span&gt;-layer neural
+nets with ReLU activation function: &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{H} = \{ h(x) = W_L \psi_\text{ReLU}(W_{L-1} \dots
+\psi_\text{ReLU}(W_1 x)): \forall i, \|W_i\|_F \le M \}
+\]&lt;/span&gt; Then for a dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X} = \{
+x_1,\dots,x_n \}\)&lt;/span&gt;, we have the following bound based on the
+empirical Rademacher complexity: &lt;span class=&#34;math display&#34;&gt;\[
+\hat \rade_{\mathrm{X}}(\mathcal{H}) \le \frac{(\sqrt{2L} + 1) M \max_i
+\|x_i\|_2}{\sqrt{n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!note]&lt;/p&gt;
+&lt;p&gt;Similar result can be derived for ReLU-like activation functions in
+the above theorem. When we say ReLU-like, we mean that the activation
+function needs to be Lipschitz and homogeneous for positive scalars
+(e.g. &lt;span class=&#34;math inline&#34;&gt;\(\forall a &amp;gt; 0,
+\mathop{\mathrm{ReLU}}(az) = a\mathop{\mathrm{ReLU}}(z)\)&lt;/span&gt;). These
+two properties are critical in the proof.&lt;/p&gt;
+&lt;p&gt;As an aside, linearity is homogeneity plus additivity.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;massart-lemma&#34;&gt;Massart Lemma&lt;/h2&gt;
+&lt;p&gt;Deriving bounds for different models can be tedious. It would be
+immensely helpful to have a general rule or framework that allows us to
+plug in different models and obtain the bounds more easily. Massart
+lemma is one of such rule.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;Massart lemma&lt;/strong&gt;. Suppose that &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H} = \{ h_1,\dots,h_t \}\)&lt;/span&gt; is a
+finite set of &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; functions. Also,
+suppose that for every &lt;span class=&#34;math inline&#34;&gt;\(h \in
+\mathcal{H}\)&lt;/span&gt; and dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X}
+= \{ x_1,\dots,x_n \}\)&lt;/span&gt; the following holds: &lt;span class=&#34;math display&#34;&gt;\[
+\frac{1}{n} \sum_{i=1}^n h(x_i)^2 \le M
+\]&lt;/span&gt; Then, the following bound on the empirical Rademacher
+complexity holds: &lt;span class=&#34;math display&#34;&gt;\[
+\hat \rade_{\mathrm{X}}(\mathcal{H}) \le \sqrt{\frac{2M \log t}{n}}
+\]&lt;/span&gt; Proof. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}[t]
+&amp;amp;\hat \rade_\mathrm{X}(\mathcal{H}) = \frac{1}{n} \E_\sigma \left[
+\sup_{h \in \mathcal{H}} \sum_{i=1}^n \sigma_i h(x_i) \right] \\
+&amp;amp;\Downarrow_{\mathrm{h} = {[h(x_1),\dots,h(x_n)]}^\intercal} \\
+&amp;amp;= \frac{1}{n} \E_\sigma \left[ \max_{\mathrm{h} \in \mathrm{H}}
+\sigma^T \mathrm{h} \right] \\
+&amp;amp;= \frac{1}{n} \E_\sigma \left[ \frac{1}{\lambda} \log
+\max_{\mathrm{h} \in \mathrm{H}} \exp(\lambda \sigma^T \mathrm{h})
+\right] \\
+&amp;amp;\le \frac{1}{n} \E_\sigma \left[ \frac{1}{\lambda} \log
+\sum_{j=1}^t \exp(\lambda \sigma^T \mathrm{h}_j) \right] \\
+&amp;amp;\le \frac{1}{n \lambda} \log \E_\sigma \left[ \sum_{j=1}^t
+\exp(\lambda \sigma^T \mathrm{h_j}) \right] \\
+\end{aligned} \quad \text{cont&amp;#39;d}
+\begin{aligned}[t]
+&amp;amp;= \frac{1}{n \lambda} \log \sum_{j=1}^t \E_\sigma \left[
+\exp(\lambda \sigma^T \mathrm{h}_j) \right] \\
+&amp;amp;= \frac{1}{n \lambda} \log \sum_{j=1}^t \prod_{i=1}^n
+\underbrace{\E \left[ \exp(\lambda \sigma_i^T h_j(x_i))
+\right]}_{M_\sigma(\lambda h_j(x_i))} \\
+&amp;amp;\le \frac{1}{n \lambda} \log \sum_{j=1}^t \prod_{i=1}^n
+\exp(\frac{1}{2} h_j^2(x_i) \lambda^2)  \\
+&amp;amp;\le \frac{1}{n \lambda} \log \sum_{j=1}^t \exp(\frac{nM
+\lambda^2}{2} ) \\
+&amp;amp;= \frac{\log t}{n \lambda} + \frac{M \lambda}{2} \\
+&amp;amp;\le \sqrt{\frac{2M \lambda \log t}{n}}
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Massart lemma is essentially helpful in the derivation of Rademacher
+complexity of various &lt;strong&gt;norm-bounded linear
+functions&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;l_1-norm-bounded-linear-functions&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm-bounded Linear Functions&lt;/h3&gt;
+&lt;p&gt;Massart lemma can be applied to &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm-bounded functions.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Corollary: &lt;strong&gt;empirical Rademacher complexity of &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm-bounded linear
+functions&lt;/strong&gt;. Consider the following set of &lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm bounded linear functions: &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{H} = \{ \R^d \to \R \ni h_w(x) \triangleq w^T x: \|w\|_1 \le
+M  \}
+\]&lt;/span&gt; Then for a dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X} = \{
+x_1,\dots,x_n \}\)&lt;/span&gt;, we have the following bound on the empirical
+Rademacher complexity: &lt;span class=&#34;math display&#34;&gt;\[
+\hat \rade_{\mathrm{X}}(\mathcal{H}) \le M \max_i \|x_i\|_\infty
+\sqrt{\frac{2 \log (2d)}{{n}}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Proof. We highlight that &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; is the convex hull of the
+following set of functions: &lt;span class=&#34;math display&#34;&gt;\[
+\tilde{\mathcal{H}} = \{ h_1(x),
+h_2(x),\dots,h_d(x),-h_1(x),\dots,-h_d(x) \}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(h_i(x) = M x_i\)&lt;/span&gt;.
+This is because, for any &lt;span class=&#34;math inline&#34;&gt;\(h_{w} \in
+\mathcal{H}\)&lt;/span&gt;, we can rewrite it as &lt;span class=&#34;math display&#34;&gt;\[
+h_w(x) = w^T x = \sum_{i=1}^n w_i x_i = \underbrace{\sum_{i=1}^n
+\frac{|w_i|}{\|w\|_1}}_{\text{sum to 1}} \underbrace{\sign(w_i) \|w\|_1
+x_i}_{\in \mathrm{convex-hull}(\tilde{\mathcal{H}})}
+\]&lt;/span&gt; By Rademacher complexity’s property, we know that &lt;span class=&#34;math inline&#34;&gt;\(\hat \rade_\mathrm{X}(\tilde{\mathcal{H}}) = \hat
+\rade_\mathrm{X}(\mathcal{H})\)&lt;/span&gt;. Hence, we may use Massart lemma
+on &lt;span class=&#34;math inline&#34;&gt;\(\tilde{\mathcal{H}}\)&lt;/span&gt;. To bound on
+&lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{n} \sum_{i=1}^n
+h_w^2(x_i)\)&lt;/span&gt;, note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\frac{1}{n} \sum_{i=1}^n h_w^2(x_i) = \frac{1}{n} \sum_{i=1}^n (w^T
+x_i)^2 \\
+&amp;amp;\Downarrow_\text{Holder&amp;#39;s inequality} \\
+&amp;amp;\le \frac{1}{n} \sum_{i=1}^n \|w\|_1^2 \|x_i\|_\infty^2 \\
+&amp;amp;\le M^2 \max_i \|x_i\|_\infty^2
+\end{aligned}
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{equation}
+\begin{aligned}
+\hat \rade_\mathrm{X}(\mathcal{H}) &amp;amp;\le \sqrt{\frac{2(M^2 \max_i
+\|x\|_\infty^2) \log (2d)}{n}} \\
+&amp;amp;= M \max_i \|x_i\|_\infty \sqrt{\frac{2 \log (2d)}{{n}}}
+\end{aligned} \tag{By Holder&amp;#39;s Inequality}
+\end{equation}
+\]&lt;/span&gt; The derivation via Cauchy-Schwartz inequality is not as tight
+as Holder’s inequality, which is to be shown below. Note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\frac{1}{n} \sum_{i=1}^n h_w^2(x_i) = \frac{1}{n} \sum_{i=1}^n (w^T
+x_i)^2 \\
+&amp;amp;\Downarrow_\text{Cauchy-Schwartz inequality} \\
+&amp;amp;\le \frac{1}{n} \sum_{i=1}^n \|w\|_2^2 \|x_i\|_2^2 \\
+&amp;amp;\le \frac{1}{n} \sum_{i=1}^n \|w\|_1^2 \|x_i\|_2^2 \\
+&amp;amp;\le M^2 \max_i \|x_i\|_2^2
+\end{aligned}
+\]&lt;/span&gt; From another perspective, since &lt;span class=&#34;math inline&#34;&gt;\(\|w\|_2 \le \|w\|_1 \le \sqrt{d} \|w\|_2\)&lt;/span&gt;,
+&lt;span class=&#34;math inline&#34;&gt;\(\|w\|_1\)&lt;/span&gt; cannot be greater than
+&lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt; if &lt;span class=&#34;math inline&#34;&gt;\(\|w\|_2\)&lt;/span&gt; is no greater than &lt;span class=&#34;math inline&#34;&gt;\(M \sqrt{d}\)&lt;/span&gt;. Thus, &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{H} \subseteq \mathcal{H}&amp;#39; \triangleq \{ h_w(x) = w^T x:
+\|w\|_2 \le M\sqrt{d} \}
+\]&lt;/span&gt; By Rademacher complexity’s property and from previous
+conclusion on &lt;u&gt;&lt;span class=&#34;math inline&#34;&gt;\(l_2\)&lt;/span&gt;-norm-bounded
+Linear Functions&lt;/u&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{equation}
+\hat \rade_\mathrm{X}(\mathcal{H}) \le \hat
+\rade_{\mathrm{X}}(\mathcal{H&amp;#39;}) = M \max_i \|x_i\|_2
+\sqrt{\frac{d}{n}} \tag{By Cauchy-Schwartz Inequality}
+\end{equation}
+\]&lt;/span&gt; Obviously, the bound derived with Massart lemma is tighter for
+&lt;span class=&#34;math inline&#34;&gt;\(l_1\)&lt;/span&gt;-norm bounded linear functions,
+because of the order of &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt; and
+because &lt;span class=&#34;math inline&#34;&gt;\(\|x\|_\infty \le
+\|x\|_2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;l_infty-norm-bounded-linear-functions&#34;&gt;&lt;span class=&#34;math inline&#34;&gt;\(l_\infty\)&lt;/span&gt;-norm-bounded Linear
+Functions&lt;/h3&gt;
+&lt;p&gt;A similar bound can be derived for &lt;span class=&#34;math inline&#34;&gt;\(l_\infty\)&lt;/span&gt;-norm-bounded functions, which is
+a convex hull of &lt;span class=&#34;math inline&#34;&gt;\(2^d\)&lt;/span&gt; points.&lt;/p&gt;
+&lt;p&gt;Another application of Massart lemma is to be shown in
+&lt;strong&gt;connecting the VC dimension and Rademacher
+complexity&lt;/strong&gt;.&lt;/p&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>4-vc-dimension</title>
+      <link>https://chunxy.github.io/courses/machine-learning-theory/4-vc-dimension/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/courses/machine-learning-theory/4-vc-dimension/</guid>
+      <description>
+
+&lt;h2 id=&#34;vc-dimension&#34;&gt;VC Dimension&lt;/h2&gt;
+&lt;p&gt;Recall that in Massart lemma, we transfer our focus from the
+hypothesis set to &lt;span class=&#34;math inline&#34;&gt;\(\{ [h(x_1),\dots,h(x_n)]:
+h \in \mathcal{H} \}\)&lt;/span&gt; to give &lt;span class=&#34;math inline&#34;&gt;\(M\)&lt;/span&gt;. Another aspect is this set’s
+cardinality &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;, especially its
+relation with &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;. In classification task, &lt;span class=&#34;math inline&#34;&gt;\(t\textendash n\)&lt;/span&gt;​ relation corresponds to
+label assignment which easily goes to exponential. But we particularly
+hope that this is not the case.&lt;/p&gt;
+&lt;p&gt;We restrict ourselves to &lt;strong&gt;binary classification task&lt;/strong&gt;
+and &lt;strong&gt;zero/one-loss&lt;/strong&gt; in this section.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;shattering coefficient&lt;/strong&gt;. Given a function
+set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt; whose members map a
+feature vector &lt;span class=&#34;math inline&#34;&gt;\(x \mapsto
+\mathcal{X}\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{Y} = \{ 0,1
+\}\)&lt;/span&gt;, we define shattering coefficient &lt;span class=&#34;math inline&#34;&gt;\(s(\mathcal{F}, n)\)&lt;/span&gt; as the maximum number
+of different label assignment over datasets of size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(\{
+x_1,\dots,x_n \} \to \mathcal{X}^n\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+s_\mathcal{F}(n) \triangleq \max_{x_1,\dots,x_n \in \mathcal{X}} \left|
+\{ [f(x_1),\dots,f(x_n)]: f \in \mathcal{F} \} \right|
+\]&lt;/span&gt; A trivial upper bound for shattering coefficient is &lt;span class=&#34;math inline&#34;&gt;\(2^n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Corollary: &lt;strong&gt;Massart lemma applied to shattering
+coefficient&lt;/strong&gt;. Given function set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt; whose members map the input
+to &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{Y} = \{ 0,1 \}\)&lt;/span&gt;, a
+direct application of Massart lemma (&lt;span class=&#34;math inline&#34;&gt;\(M=1, t
+= s_\mathcal{F}(n)\)&lt;/span&gt;) gives the following bound on its empirical
+Rademacher complexity over every dataset &lt;span class=&#34;math inline&#34;&gt;\(\mathrm{X}\)&lt;/span&gt; of size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\r}{\mathsf{R}} \hat \r_\mathrm{X}(\mathcal{F}) \le
+\sqrt{\frac{2 \log s_\mathcal{F}(n)}{n}}
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\r_n(\mathcal{F}) \le \sqrt{\frac{2 \log s_\mathcal{F}(n)}{n}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;VC dimension&lt;/strong&gt;. Given a function set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt; with Boolean output in &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{Y}=\{ 0,1 \}\)&lt;/span&gt;, we define its VC
+dimension &lt;span class=&#34;math inline&#34;&gt;\(\newcommand{VC}{\mathrm{VC}}
+\VC(\mathcal{F})\)&lt;/span&gt; as the size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; of the largest dataset &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; that can be shattered by &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\VC(\mathcal{F}) = \sup\{ n: S_\mathcal{F}(n) = 2^n \}
+\]&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+S_\mathcal{F}(n) = \left| \{ [f(x_1),\dots,f(x_n)]: f \in \mathcal{F} \}
+\right|,\ x_1\dots,x_n \in S
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;VC dimension kind of reflects the richness of the function set in
+classification task.&lt;/p&gt;
+&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;
+&lt;p&gt;Here are some examples of function set:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Interval functions&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}_\text{int} = \{ f_{a,b}(x) = \one[a
+\le x \le b]: a,b \in \R \}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The VC dimension is &lt;span class=&#34;math inline&#34;&gt;\(2\)&lt;/span&gt;. Actually,
+the shattering coefficient &lt;span class=&#34;math inline&#34;&gt;\(s_{\mathcal{F}_\text{int}}(n)\)&lt;/span&gt; for the set
+of interval functions is &lt;span class=&#34;math inline&#34;&gt;\(\binom{n+1}{2} +
+1\)&lt;/span&gt;​.&lt;/p&gt;
+&lt;p&gt;The implication of this example is that the VC dimension is usually
+the dimension of parameter that characterizes the function set.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Binarized sinus functions&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\{ f(x) = \one[\sin(\omega x) \le 0]: \omega \in
+\R \}\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The VC dimension is &lt;span class=&#34;math inline&#34;&gt;\(\infty\)&lt;/span&gt;. We
+show this by construction. Consider the data points &lt;span class=&#34;math inline&#34;&gt;\(x_1,\dots,x_n\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(x_i = 2^i\)&lt;/span&gt;. Denote as &lt;span class=&#34;math inline&#34;&gt;\(y_1,\dots,y_n\)&lt;/span&gt; the output. Then it is
+necessary that &lt;span class=&#34;math inline&#34;&gt;\(\omega x_i\)&lt;/span&gt; is
+between &lt;span class=&#34;math inline&#34;&gt;\((2k_i+1)\pi\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\((2k_i + 2y_i)\pi\)&lt;/span&gt; for some &lt;span class=&#34;math inline&#34;&gt;\(k_i\)&lt;/span&gt;. We show that setting &lt;span class=&#34;math inline&#34;&gt;\(\omega = (0.y_1 \cdots y_n)_2 \pi\)&lt;/span&gt;
+suffices. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\sin(\omega x_i) &amp;amp;= \sin((y_1 \cdots y_i.y_{i+1} \cdots y_n)_2 \pi)
+\\
+&amp;amp;= \sin((y_i.y_{i+1} \cdots y_n)_2 \pi) \\
+&amp;amp;= y_i
+\end{aligned}
+\]&lt;/span&gt; This holds for any &lt;span class=&#34;math inline&#34;&gt;\(y_1,\dots,y_n\)&lt;/span&gt;. As a result, the
+shattering coefficient for the set of binarized sinus functions is &lt;span class=&#34;math inline&#34;&gt;\(2^n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The implication of this example is that even when there is only one
+parameter, the VC dimension can go to infinity.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Binarized convex functions&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}_\text{convex} = \{ f(x) = \one[g(x)
+\le 0]: \text{$g$ is convex} \}\)&lt;/span&gt;​&lt;/p&gt;
+&lt;p&gt;The VC dimension is &lt;span class=&#34;math inline&#34;&gt;\(\infty\)&lt;/span&gt;. We
+show this by construction. Consider the data points &lt;span class=&#34;math inline&#34;&gt;\(x_1,\dots,x_n \in \R^d\)&lt;/span&gt; on the &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;-dimensional sphere. Denote as &lt;span class=&#34;math inline&#34;&gt;\(y_1,\dots,y_n\)&lt;/span&gt; the arbitrary output. Let
+&lt;span class=&#34;math inline&#34;&gt;\(I = \{ i: y_i = 1 \}\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(\textrm{convex-hull}(\{ x_i: i \in I \})\)&lt;/span&gt;
+cannot contain &lt;span class=&#34;math inline&#34;&gt;\(x_j\)&lt;/span&gt;’s whose label
+are &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; (due to the geometric
+property of sphere). Let &lt;span class=&#34;math display&#34;&gt;\[
+g(x) = \one[x \in \textrm{convex-hull}(\{ x_i: i \in I \})]
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Then we have &lt;span class=&#34;math display&#34;&gt;\[
+g(x_j) = \one[x_j \in \textrm{convex-hull}(\{ x_i: i \in I \})] = y_j
+\]&lt;/span&gt; As a result, the shattering coefficient for the set of
+binarized convex functions is &lt;span class=&#34;math inline&#34;&gt;\(2^n\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;VC dimension of &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;-dimensional hyperplanes&lt;/strong&gt;.
+Consider the set of &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;​-dimensional
+linear (what about affine??) classification rules: &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{F} = \{ \one[w^\intercal x \ge 0]: w \in \R^d \}
+\]&lt;/span&gt; Then, the VC dimension &lt;span class=&#34;math inline&#34;&gt;\(\VC(\mathcal{F})\)&lt;/span&gt; of this function set
+will be &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Proof. We first show that &lt;span class=&#34;math inline&#34;&gt;\(\VC(\mathcal{F}) \le d\)&lt;/span&gt;. Suppose on the
+contrary that &lt;span class=&#34;math inline&#34;&gt;\(\VC(\mathcal{F}) &amp;gt;
+d\)&lt;/span&gt;. Then, there exists &lt;span class=&#34;math inline&#34;&gt;\(x_1,\dots,x_{d+1}\)&lt;/span&gt; that can be shattered
+by &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt;. From linear algebra
+knowledge, we know that there exists &lt;span class=&#34;math inline&#34;&gt;\(c_1,
+\dots, c_{d+1} \in \R\)&lt;/span&gt; which are not all zeros such that &lt;span class=&#34;math display&#34;&gt;\[
+c_1 x_1 + \dots + c_{d+1} x_{d+1} = 0
+\]&lt;/span&gt; Without loss of generality, suppose &lt;span class=&#34;math inline&#34;&gt;\(c_1 &amp;lt; 0\)&lt;/span&gt;. There exists &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+\forall i, y_i = \one[w^\intercal x_i \ge 0] = \one[c_i \ge 0]
+\]&lt;/span&gt; Then &lt;span class=&#34;math display&#34;&gt;\[
+c_1 w^\intercal x_1 + \dots + c_{d+1} w^\intercal x_{d+1} =
+w^\intercal(c_1 x_1 + \dots + c_{d+1} x_{d+1}) = 0
+\]&lt;/span&gt; For any &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;, if &lt;span class=&#34;math inline&#34;&gt;\(c_i \ge 0\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(w^\intercal x_i \ge 0\)&lt;/span&gt;; if &lt;span class=&#34;math inline&#34;&gt;\(c_i &amp;lt; 0\)&lt;/span&gt;, then &lt;span class=&#34;math inline&#34;&gt;\(w^\intercal x_i &amp;lt; 0\)&lt;/span&gt;. Hence, &lt;span class=&#34;math inline&#34;&gt;\(c_i w^\intercal x_i \ge 0\)&lt;/span&gt;. Specifically,
+&lt;span class=&#34;math inline&#34;&gt;\(c_1 w^\intercal x_i &amp;gt; 0\)&lt;/span&gt;.
+Therefore, &lt;span class=&#34;math display&#34;&gt;\[
+c_1 w^\intercal x_1 + \dots + c_{d+1} w^\intercal x_{d+1} &amp;gt; 0
+\]&lt;/span&gt; which is a contradiction.&lt;/p&gt;
+&lt;p&gt;Then it suffices to show that &lt;span class=&#34;math inline&#34;&gt;\(\VC(\mathcal{F}) = d\)&lt;/span&gt; if there exists
+&lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_d\)&lt;/span&gt; that can be
+shattered by &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt;. We choose
+&lt;span class=&#34;math inline&#34;&gt;\(x_i = e_i\)&lt;/span&gt; which is the &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;-th standard basis of &lt;span class=&#34;math inline&#34;&gt;\(\R^d\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(w
+= [y_1,\dots,y_d]^T\)&lt;/span&gt; would suffice. Q.E.D.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;connection-with-rademacher-complexity&#34;&gt;Connection with
+Rademacher Complexity&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lemma: &lt;strong&gt;Sauer’s lemma&lt;/strong&gt;. Consider a function set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt; with VC dimension &lt;span class=&#34;math inline&#34;&gt;\(\VC(\mathcal{F}) = d\)&lt;/span&gt;. Then, for every
+integer &lt;span class=&#34;math inline&#34;&gt;\(n \in \N\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+s_\mathcal{F}(n) \le \sum_{i=0}^d {n \choose i}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Sauer’s lemma trivially holds if &lt;span class=&#34;math inline&#34;&gt;\(n \le
+d\)&lt;/span&gt; because &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^d \binom{n}{i}
+= \sum_{i=1}^n \binom{n}{i} = 2^n\)&lt;/span&gt;. We care about the case when
+&lt;span class=&#34;math inline&#34;&gt;\(d &amp;lt; n\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(s_\mathcal{F}(n) \le \sum_{i=1}^d \binom{n}{i} \le
+(\frac{e n}{d})^d\)&lt;/span&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;Rademacher complexity bound with VC
+dimension&lt;/strong&gt;. Consider function set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt; with Boolean output in &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{Y} = \{ 0,1 \}\)&lt;/span&gt;, whose VC
+dimension is &lt;span class=&#34;math inline&#34;&gt;\(\VC(\mathcal{F}) = d\)&lt;/span&gt;.
+Then, we have the following bound on the Rademacher complexity over
+every dataset &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; of size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\hat \r(\mathcal{F}) \le \sqrt{ \frac{2d (\log (n/d) + 1)}{n} }
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\r_n(\mathcal{F}) \le \sqrt{\frac{2d (\log(n/d) + 1)}{n}}
+\]&lt;/span&gt; Proof. A direct application of Sauer’s lemma and &lt;u&gt;Massart
+lemma applied to shattering coefficient&lt;/u&gt; gives the above.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;excess risk bound via VC dimension&lt;/strong&gt;.
+Consider a hypothesis set &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}\)&lt;/span&gt; with Boolean output which has
+&lt;span class=&#34;math inline&#34;&gt;\(\VC(\mathcal{F}) = d\)&lt;/span&gt;. Suppose the
+loss function is &lt;strong&gt;zero/one loss&lt;/strong&gt;. Then, with probability
+at least &lt;span class=&#34;math inline&#34;&gt;\(1-\delta\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+L(\hat f) - L(f^*) \le \sqrt{\frac{32 d((\log n/d) + 1)}{n}} +
+\sqrt{\frac{2 \log(2/\delta)}{n}}
+\]&lt;/span&gt; Proof. A direction application of excess risk bound via
+Rademacher complexity gives &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;L(\hat f) - L(f^*) \le 4 \r_n(\mathcal{H}) + \sqrt{\frac{2
+\log(2/\delta)}{n}} \\
+&amp;amp;\le 4 \sqrt{\frac{2d(\log(n/d) + 1)}{n}} + \sqrt{\frac{2
+\log(2/\delta)}{n}} \\
+&amp;amp;= \sqrt{\frac{32d(\log(n/d) + 1)}{n}} + \sqrt{\frac{2
+\log(2/\delta)}{n}} \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>5-kernel-methods</title>
+      <link>https://chunxy.github.io/courses/machine-learning-theory/5-kernel-methods/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/courses/machine-learning-theory/5-kernel-methods/</guid>
+      <description>
+
+&lt;h2 id=&#34;kernel-methods&#34;&gt;Kernel Methods&lt;/h2&gt;
+&lt;h3 id=&#34;approximation-error&#34;&gt;Approximation Error&lt;/h3&gt;
+&lt;p&gt;While a bounded excess risk is necessary for satisfactory learning
+performance, satisfactory learning results also require a small value
+for &lt;span class=&#34;math inline&#34;&gt;\(L(f^*)\)&lt;/span&gt;, commonly called the
+approximation error.&lt;/p&gt;
+&lt;p&gt;We can decompose the loss of a supervised learning model as the sum
+of &lt;strong&gt;excess risk&lt;/strong&gt; (also called estimation error or
+variance &amp;lt;not necessarily the statistical one&amp;gt;) and
+&lt;strong&gt;approximation error&lt;/strong&gt; (also called bias): &lt;span class=&#34;math display&#34;&gt;\[
+L(\hat f) = \underbrace{L(\hat f) - L(f^*)}_{\text{excess risk}} +
+\underbrace{\color{red}{L(f^*)}}_\text{approximation eror}
+\]&lt;/span&gt; Another key question in machine learning is how to reduce the
+approximation error.&lt;/p&gt;
+&lt;h3 id=&#34;revisiting-linear-regression&#34;&gt;Revisiting Linear Regression&lt;/h3&gt;
+&lt;p&gt;Recall that in &lt;strong&gt;linear regression&lt;/strong&gt; we want to learn a
+linear model &lt;span class=&#34;math inline&#34;&gt;\(f_w(x) = w^T x\)&lt;/span&gt; to
+predict a continuous label &lt;span class=&#34;math inline&#34;&gt;\(Y \in
+\R\)&lt;/span&gt;. When using squared-error loss, we obtain the following ERM
+task: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{equation}
+\min_{w}\ \frac{1}{n} \sum_{i=1}^n \left( w^\top x_i - y_i \right)^2
+\tag{Linear Regression} \label{linreg}
+\end{equation}
+\]&lt;/span&gt; One way to empower the above formulation is to extend linear
+function set to some richer function set. This is reminiscent of
+powerful models like neural network. However, another powerful and
+well-established approach is the kernel method which substitutes &lt;span class=&#34;math inline&#34;&gt;\(x \in \R^d\)&lt;/span&gt; with a &lt;strong&gt;fixed&lt;/strong&gt;
+feature map &lt;span class=&#34;math inline&#34;&gt;\(\phi(x): \R^d \to \R^m\)&lt;/span&gt;
+transferring the input to a potentially high-dimensional space &lt;span class=&#34;math inline&#34;&gt;\(m \gg d\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{equation}
+\min_w\ \frac{1}{n} \sum_{i=1}^n (w^\top \phi(x_i) - y_i)^2 \tag{Kernel
+Method} \label{kernel-method}
+\end{equation}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The typical way to solve the above problem would be the gradient
+descent: &lt;span class=&#34;math display&#34;&gt;\[
+w^{t+1} = w^{t} - \gamma \frac{2}{n} \sum_{i=1}^n ((w^t)^\top \phi(x_i)
+- y_i) \phi(x_i)
+\]&lt;/span&gt; One observation (&lt;strong&gt;representer theorem&lt;/strong&gt;) is
+that, the update to &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; is a linear
+combination of &lt;span class=&#34;math inline&#34;&gt;\(\phi(x_i)\)&lt;/span&gt;’s. If
+&lt;span class=&#34;math inline&#34;&gt;\(w^0 = 0\)&lt;/span&gt;, we have that &lt;span class=&#34;math inline&#34;&gt;\(w^t \in \Col(\phi(x_1),\dots,\phi(x_n))\)&lt;/span&gt;.
+In this sense, the update of &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;-dimensional &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; is controlled by &lt;span class=&#34;math inline&#34;&gt;\(\phi(x_1),\dots,\phi(x_n)\)&lt;/span&gt;, which is only
+&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional. If &lt;span class=&#34;math inline&#34;&gt;\(m &amp;lt; n\)&lt;/span&gt;, the above is not interesting
+because &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;-dimensional vectors already cover &lt;span class=&#34;math inline&#34;&gt;\(\R^m\)&lt;/span&gt;. On the other hand if &lt;span class=&#34;math inline&#34;&gt;\(m &amp;gt; n\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(w^t\)&lt;/span&gt; will reside in a &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;-dimensional subspace. &lt;strong&gt;We reduce
+an &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;-dimensional optimization
+problem to an &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;-dimensional
+one.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Let’s rewrite &lt;span class=&#34;math inline&#34;&gt;\(w\)&lt;/span&gt; as the linear
+combination of &lt;span class=&#34;math inline&#34;&gt;\(\phi(x_1),\dots,\phi(x_n)\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(w = \sum_{j=1}^n \alpha_j \phi(x_j)\)&lt;/span&gt;. The
+problem becomes &lt;span class=&#34;math display&#34;&gt;\[
+\min_\alpha \frac{1}{n} \sum_{i=1}^n \left( \sum_{j=1}^n \alpha_j
+\underbrace{\langle \phi(x_j), \phi(x_i) \rangle}_{\mathcal{K}(x_j,
+x_i)} - y_i \right)^2
+\]&lt;/span&gt; It turns out that the denotation of the problem can be
+simplified as &lt;span class=&#34;math display&#34;&gt;\[
+\min_\alpha \frac{1}{n} \| y - K \alpha \|_2^2
+\]&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+y = [y_1,\dots,y_n]^\top, \alpha = [\alpha_1, \dots, \alpha_n]^\top \\
+K =
+\begin{pmatrix}
+\mathcal{K}(x_1, x_1) &amp;amp; \cdots &amp;amp; \mathcal{K}(x_1, x_n) \\
+\vdots &amp;amp; \ddots &amp;amp; \vdots \\
+\mathcal{K}(x_n, x_1) &amp;amp; \cdots &amp;amp; \mathcal{K}(x_n, x_n)
+\end{pmatrix}
+\]&lt;/span&gt; The question remains for what function &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}: \R^m \times \R^m \to \R\)&lt;/span&gt;,
+there exists a &lt;span class=&#34;math inline&#34;&gt;\(\phi: \R^d \to \R\)&lt;/span&gt;
+such that &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}(x,x&amp;#39;) = \langle
+\phi(x), \phi(x&amp;#39;) \rangle\)&lt;/span&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;kernel-function&#34;&gt;Kernel Function&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;kernel function&lt;/strong&gt;. We call &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}: \mathcal{X} \times \mathcal{X} \to
+\R\)&lt;/span&gt; a kernel function, if for every integer &lt;span class=&#34;math inline&#34;&gt;\(t \in \N\)&lt;/span&gt; and vectors &lt;span class=&#34;math inline&#34;&gt;\(x_1, \dots, x_t \in \mathcal{X}\)&lt;/span&gt;, the
+matrix &lt;span class=&#34;math inline&#34;&gt;\(K \in \R^{t \times t}\)&lt;/span&gt; with
+the &lt;span class=&#34;math inline&#34;&gt;\((i,j)\)&lt;/span&gt;-th entry &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}(x_i, x_j)\)&lt;/span&gt; will be symmetric
+and positive semi-definite (why better PSD??): &lt;span class=&#34;math display&#34;&gt;\[
+K =
+\begin{pmatrix}
+\mathcal{K}(x_1, x_1) &amp;amp; \cdots &amp;amp; \mathcal{K}(x_1, x_n) \\
+\vdots &amp;amp; \ddots &amp;amp; \vdots \\
+\mathcal{K}(x_n, x_1) &amp;amp; \cdots &amp;amp; \mathcal{K}(x_n, x_n)
+\end{pmatrix} \succeq 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}: \R^d \times \R^d
+\to \R\)&lt;/span&gt; is a kernel function if and only if there exists a
+feature map &lt;span class=&#34;math inline&#34;&gt;\(\phi: \R^d \to \R^m\)&lt;/span&gt;
+such that for every &lt;span class=&#34;math inline&#34;&gt;\(x, x&amp;#39;\)&lt;/span&gt;,
+&lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{K}(x, x&amp;#39;) = \langle \phi(x), \phi(x&amp;#39;) \rangle
+\]&lt;/span&gt; Note that there is a subtlety that &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; can be &lt;span class=&#34;math inline&#34;&gt;\(\infty\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;examples&#34;&gt;Examples&lt;/h4&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Linear kernel&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}_\text{linear}(x, x&amp;#39;) = \langle x,
+x&amp;#39; \rangle\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Degree-&lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; &lt;strong&gt;polynomial
+kernel&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}_\text{poly-$r$}(x, x&amp;#39;) = (1 +
+\langle x, x&amp;#39; \rangle)^r\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The interesting thing about the polynomial kernel is that, if we
+directly use the degree-&lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt; feature
+map &lt;span class=&#34;math inline&#34;&gt;\(\phi_r\)&lt;/span&gt;, the number of variables
+will be &lt;span class=&#34;math inline&#34;&gt;\(m = O(d^r)\)&lt;/span&gt;; but in this
+case, the number of variables is just &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;​.&lt;/p&gt;
+&lt;p&gt;As for the proof, it simply follows from the fact that sum (between
+&lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(x^\top x\)&lt;/span&gt;) and product (among &lt;span class=&#34;math inline&#34;&gt;\((1+x^\top x)\)&lt;/span&gt;’s) of kernel functions are
+kernel functions.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gaussian kernel&lt;/strong&gt; with bandwidth &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}_\text{Gaussian($\sigma^2$)}(x, x’) =
+\exp(-\frac{\|x-x&amp;#39;\|_2^2}{2\sigma^2})\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The reason why we don’t use &lt;span class=&#34;math inline&#34;&gt;\(f(x, x&amp;#39;)
+= -\|x-x&amp;#39;\|_2^2\)&lt;/span&gt;​ is that the resulting matrix is not
+PSD.&lt;/p&gt;
+&lt;p&gt;As for the proof, we can separate the terms: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\exp(-\frac{\|x-x&amp;#39;\|_2^2}{2\sigma^2}) =
+\exp(-\frac{\|x\|_2^2}{2\sigma^2} - \frac{\|x&amp;#39;\|_2^2}{2\sigma^2} +
+\frac{x^T x&amp;#39;}{\sigma^2}) \\
+&amp;amp;= \underbrace{\exp(-\frac{\|x\|_2^2}{2\sigma^2})}_{\varphi(x)}
+\underbrace{\exp(-\frac{\|x&amp;#39;\|_2^2}{2\sigma^2})}_{\varphi(x&amp;#39;)}
+\exp(\frac{x^T x&amp;#39;}{\sigma^2}) \\
+\end{aligned}
+\]&lt;/span&gt; Now it remains to show that &lt;span class=&#34;math inline&#34;&gt;\(\exp(\frac{x^T x&amp;#39;}{\sigma^2})\)&lt;/span&gt; is a
+kernel function. To show it, recall the Taylor series: &lt;span class=&#34;math display&#34;&gt;\[
+\exp(\frac{x^T x&amp;#39;}{\sigma^2}) = \sum_{i=0}^\infty \frac{(x^T
+x&amp;#39;)^m}{\sigma^{2m} i!}
+\]&lt;/span&gt; which is the sum of infinite-many kernel functions.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;properties&#34;&gt;Properties&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;sum of kernel functions&lt;/strong&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}_2\)&lt;/span&gt; are kernel functions, then
+their sum, i.e. &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{K}(x,x&amp;#39;) = \mathcal{K}_1(x,x&amp;#39;) +
+\mathcal{K}_2(x,x&amp;#39;)
+\]&lt;/span&gt; will also be a kernel function.&lt;/p&gt;
+&lt;p&gt;Proof. Consider concatenating &lt;span class=&#34;math inline&#34;&gt;\(\phi(x) =
+[\phi_1(x), \phi_2(x)]\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;product of kernel functions&lt;/strong&gt;. If &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}_2\)&lt;/span&gt; are kernel functions, then
+their product, i.e. &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{K}(x,x&amp;#39;) = \mathcal{K}_1(x,x&amp;#39;) \times
+\mathcal{K}_2(x,x&amp;#39;)
+\]&lt;/span&gt; will also be a kernel function.&lt;/p&gt;
+&lt;p&gt;Proof. Let &lt;span class=&#34;math inline&#34;&gt;\(A, B\)&lt;/span&gt; be two symmetric
+matrices whose spectral decompositions are &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+A \odot B &amp;amp;= \left( \sum_{i=1}^t \lambda_i u_i u_i^T \right) \odot
+\left( \sum_{j=1}^{t&amp;#39;} \gamma_j v_j v_j^T \right) \\
+&amp;amp;= \sum_{i=1}^t \sum_{j=1}^{t&amp;#39;} \lambda_i \gamma_j (u_i u_i^T)
+\odot (v_j v_j^T) \\
+&amp;amp;= \sum_{i=1}^t \sum_{j=1}^{t&amp;#39;} \lambda_i \gamma_j (u_i \odot
+v_j) (u_i \odot v_j)^T \\
+\end{aligned}
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math inline&#34;&gt;\(A \odot B\)&lt;/span&gt; is
+PSD.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;defining-function-space-via-kernel&#34;&gt;Defining Function Space via
+Kernel&lt;/h4&gt;
+&lt;p&gt;The motivation of RKHS is that, we need to define a function space
+(which is a linear transformation of the feature function associated
+with the kernel function) based on the kernel function &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}\)&lt;/span&gt;. The reason why we need such
+function space is that, we can never resort to optimizing over &lt;span class=&#34;math inline&#34;&gt;\(\set{w^T \phi: w \in \R^m}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; is not guaranteed to have a
+closed-form formula in kernel method. We need to find a surrogate
+function space to do the optimization.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;reproducing kernel Hilbert space (RKHS)&lt;/strong&gt;.
+For kernel function &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}\)&lt;/span&gt;, we
+define the reproducing kernel Hilbert space &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; as the following set of
+functions: &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{H} = \{ f(x) \triangleq \sum_{i=1}^t \alpha_i \mathcal{K}(x_i,
+x): t \in \N, \alpha_1,\dots,\alpha_t \in \R, x_1,\dots,x_t \in
+\mathcal{X} \}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This looks frustrating because it seems that we convert an &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;-dimensional optimization problem to an
+infinite-dimensional one. But later the &lt;em&gt;representer theorem&lt;/em&gt;
+will show us interesting conclusion.&lt;/p&gt;
+&lt;h5 id=&#34;example-rkhs-of-linear-kernel&#34;&gt;Example: RKHS of linear
+kernel&lt;/h5&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\mathcal{H} &amp;amp;= \{ \sum_{i=1}^t \alpha_i x_i^T x: t \in \N,
+\alpha_1,\dots,\alpha_t \in \R, x_1,\dots,x_t \in \mathcal{X} \} \\
+\end{aligned}
+\]&lt;/span&gt; Note that &lt;span class=&#34;math display&#34;&gt;\[
+\sum_{i=1}^t \alpha_i x_i^T x = (\sum_{i=1}^t \alpha_i x_i^T) x
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\((\sum_{i=1}^t \alpha_i
+x_i^T)\)&lt;/span&gt; can span all the &lt;span class=&#34;math inline&#34;&gt;\(w \in
+\R^d\)&lt;/span&gt;. Therefore, &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; is the set of all the linear
+functions.&lt;/p&gt;
+&lt;h5 id=&#34;example-rkhs-of-polynomial-kernel&#34;&gt;Example: RKHS of polynomial
+kernel&lt;/h5&gt;
+&lt;p&gt;Take &lt;span class=&#34;math inline&#34;&gt;\(r=2\)&lt;/span&gt;​ as an example. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\mathcal{H} &amp;amp;= \{ \sum_{i=1}^t \alpha_i (1 + x_i^T x)^2: t \in \N,
+\alpha_1,\dots,\alpha_t \in \R, x_1,\dots,x_t \in \mathcal{X} \} \\
+\end{aligned}
+\]&lt;/span&gt; Note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\sum_{i=1}^t \alpha_i (1 + x_i^T x)^2 = \sum_{i=1}^t \alpha_i (1 +
+2 x_i^T x + (x_i^T x)^2) \\
+&amp;amp;= \sum_{i=1}^t \alpha_i + (\sum_{i=1}^t 2\alpha_i x_i^T) x +
+\sum_{i=1}^t \alpha_i (x^T x_i x_i^T x) \\
+&amp;amp;= \sum_{i=1}^t \alpha_i + (\sum_{i=1}^t 2\alpha_i x_i^T) x + x^T
+(\sum_{i=1}^t \alpha_i x_i x_i^T) x \\
+\end{aligned}
+\]&lt;/span&gt; Now with the quadratic form &lt;span class=&#34;math inline&#34;&gt;\(x^T A
+x + bx + c\)&lt;/span&gt; for arbitrary symmetric matrix &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; with rank &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt;, vector &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt; and constant &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;, we first apply spectral decomposition
+to &lt;span class=&#34;math inline&#34;&gt;\(A\)&lt;/span&gt; to get &lt;span class=&#34;math display&#34;&gt;\[
+A = \sum_{i=1}^r \lambda_i v_i v_i^T
+\]&lt;/span&gt; For &lt;span class=&#34;math inline&#34;&gt;\(i=1,\dots,r\)&lt;/span&gt;, we
+choose &lt;span class=&#34;math display&#34;&gt;\[
+x_i = v_i, x_{r+i} = -v_{i}, \\
+b = \sum_{i=1}^r \gamma_i v_i ??, \\
+\alpha_i + \alpha_{r+i} = \lambda_{i}, \\
+\alpha_i - \alpha_{r+i} = \gamma_{i}/2 \\
+\]&lt;/span&gt; Further, we can choose &lt;span class=&#34;math inline&#34;&gt;\(x_{2r+1},\dots,x_{2r+k} = 0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\alpha_{2r+1},\dots,\alpha_{2r+k}\)&lt;/span&gt; such
+that &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^k \alpha_{2r+k} =
+c\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In this way, we can rewrite any quadratic function into the form of
+element of &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;. As a
+result, &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;​ is the set of
+all the quadratic functions.&lt;/p&gt;
+&lt;h4 id=&#34;hilbert-space&#34;&gt;Hilbert Space&lt;/h4&gt;
+&lt;p&gt;Note that in the above we go to RKHS via the kernel instead of the
+feature function. This is due to the same reason that the computation of
+feature function is in a higher dimension, which is more costly.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;inner product in an RKHS&lt;/strong&gt;. Given two
+functions &lt;span class=&#34;math inline&#34;&gt;\(f(x) = \sum_{i=1}^t \alpha_i
+\mathcal{K}(x_i, x)\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g(x) =
+\sum_{j=1}^{t&amp;#39;} = \alpha_j&amp;#39; \mathcal{K}(x_j&amp;#39;, x)\)&lt;/span&gt; in
+the RKHS &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; of kernel
+&lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}\)&lt;/span&gt;, we define their inner
+produce as &lt;span class=&#34;math display&#34;&gt;\[
+\langle f,g \rangle = \sum_{i=1}^t \sum_{j=1}^{t&amp;#39;} \alpha_i \beta_j
+\mathcal{K}(x_i, x_j&amp;#39;)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;RKHS with the defined inner product is a Hilbert
+space&lt;/strong&gt;. The RKHS defined for a kernel &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}\)&lt;/span&gt; coupled with the above inner
+product will result in a Hilbert space, where the following holds for
+every &lt;span class=&#34;math inline&#34;&gt;\(f, f_1, f_2, g \in
+\mathcal{H}\)&lt;/span&gt;:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Symmetry&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\langle f, g
+\rangle = \langle g, f \rangle\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linearity and homogenity&lt;/strong&gt;: for all &lt;span class=&#34;math inline&#34;&gt;\(\gamma \in \R\)&lt;/span&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\langle f_1 + \gamma f_2, g \rangle = \langle f_1,
+g \rangle + \gamma \langle f_2, g \rangle\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Positive definiteness&lt;/strong&gt;: &lt;span class=&#34;math inline&#34;&gt;\(\langle f, f \rangle \ge 0\)&lt;/span&gt; where the
+equality holds only for &lt;span class=&#34;math inline&#34;&gt;\(f = 0\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;With the Hilbert space, we can determine the norm resident in it:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;norm in an RKHS&lt;/strong&gt;. For a function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = \sum_{i=1}^t \alpha_i \mathcal{K}(x_i,
+x)\)&lt;/span&gt; in the RKHS &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;
+for kernel &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}\)&lt;/span&gt;, we define
+its norm as &lt;span class=&#34;math display&#34;&gt;\[
+\|f\|_\mathcal{H}^2 \triangleq \langle f,f \rangle = \sum_{i=1}^t
+\sum_{j=1}^t \alpha_i \alpha_j \mathcal{K}(x_i, x_j) = \alpha^\top K
+\alpha
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(K \in \R^{t \times
+t}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(K_{ij} = \mathcal{K}(x_i,
+x_j)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;learning-with-kernel-functions&#34;&gt;Learning with Kernel
+Functions&lt;/h3&gt;
+&lt;p&gt;For &lt;span class=&#34;math inline&#34;&gt;\(f(x) = w^T x\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(g(x) = (w&amp;#39;)^T x\)&lt;/span&gt; that belong to the
+&lt;u&gt;RKHS of linear kernel&lt;/u&gt; &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}_\text{linear} = \{ f_w(x) = w^\top x:
+w \in \R^d \}\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\langle f,g \rangle &amp;amp;= \sum_i \sum_j \alpha_i \beta_j x_i^T x_j \\
+&amp;amp;= \sum_i \alpha_i x_i^T \sum_j \beta_j x_j \\
+&amp;amp;= \sum_i \alpha_i x_i^T w&amp;#39; \\
+&amp;amp;= w^T w&amp;#39; \\
+\end{aligned}
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math inline&#34;&gt;\(\|f\|_{\mathcal{H}_\text{linear}} =
+\|w\|\)&lt;/span&gt;. We generalize from &lt;span class=&#34;math inline&#34;&gt;\(\eqref{linreg}\)&lt;/span&gt; to &lt;span class=&#34;math display&#34;&gt;\[
+\begin{equation}
+\min_{f \in \mathcal{H}}\ \frac{1}{n} \sum_{i=1}^n \ell(f(x_i), y_i) +
+Q(\|f\|_\mathcal{H}) \tag{Regulaized Kernel Method}
+\label{regularized-kernel-method}
+\end{equation}
+\]&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; is a
+general RKHS &lt;span class=&#34;math inline&#34;&gt;\(Q: \R^+ \to \R\)&lt;/span&gt; is an
+increasing function acting as a regularization term.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;representer theorem&lt;/strong&gt;. Given samples &lt;span class=&#34;math inline&#34;&gt;\(x_1,\dots,x_n\)&lt;/span&gt;, consider the &lt;span class=&#34;math inline&#34;&gt;\(\eqref{regularized-kernel-method}\)&lt;/span&gt;
+problem. Every optimal solution &lt;span class=&#34;math inline&#34;&gt;\(f^* \in
+\mathcal{H}\)&lt;/span&gt; satisfies the following for some real coefficients
+&lt;span class=&#34;math inline&#34;&gt;\(\alpha_1,\dots,\alpha_n \in \R\)&lt;/span&gt;:
+&lt;span class=&#34;math display&#34;&gt;\[
+f^*(x) = \sum_{j=1}^n \alpha_j \mathcal{K}(x_j, x)
+\]&lt;/span&gt; Proof. To show it, first note that &lt;span class=&#34;math inline&#34;&gt;\(f^*\)&lt;/span&gt; comes from &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;. Let &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; be the feature function associated
+with the kernel function &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}\)&lt;/span&gt;. Thus, &lt;span class=&#34;math inline&#34;&gt;\(f^*(x)\)&lt;/span&gt; can be written as &lt;span class=&#34;math inline&#34;&gt;\((w^*)^\top \phi(x)\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(w^* = \sum_{j=1}^n \alpha_j \phi(x_j) + v\)&lt;/span&gt;
+and &lt;span class=&#34;math inline&#34;&gt;\(v\)&lt;/span&gt; is the component that is
+perpendicular to &lt;span class=&#34;math inline&#34;&gt;\(\Col(\phi(x_1), \dots,
+\phi(x_n))\)&lt;/span&gt;​.&lt;/p&gt;
+&lt;p&gt;Let &lt;span class=&#34;math inline&#34;&gt;\(\tilde w = \sum_{j=1}^n \alpha_j
+\phi(x_j)\)&lt;/span&gt;. We claim that &lt;span class=&#34;math inline&#34;&gt;\(v =
+0\)&lt;/span&gt;; otherwise &lt;span class=&#34;math inline&#34;&gt;\(\tilde f(x) = \tilde
+w^\top x\)&lt;/span&gt; incurs the same loss but smaller norm, contradicting
+the fact that &lt;span class=&#34;math inline&#34;&gt;\(f^*\)&lt;/span&gt; is the
+optimal.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Representer theorem implies that the kernel method solves the
+following optimization problem: &lt;span class=&#34;math display&#34;&gt;\[
+\min_{\alpha \in \R^n} \frac{1}{n} \sum_{i=1}^n \ell \left( \sum_{j=1}^n
+\alpha_j \mathcal{K}(x_j, x_i), y_i \right) + Q(\sqrt{\alpha^\top K
+\alpha})
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Note how we drop the intractable &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; in &lt;span class=&#34;math inline&#34;&gt;\(\eqref{kernel-method}\)&lt;/span&gt; in the above
+formulation.&lt;/p&gt;
+&lt;h4 id=&#34;example-kernel-based-ridge-regression&#34;&gt;Example: Kernel-based
+Ridge Regression&lt;/h4&gt;
+&lt;p&gt;We choose &lt;span class=&#34;math inline&#34;&gt;\(\ell(\hat y, y) = (\hat
+y-y)^2\)&lt;/span&gt;. We choose &lt;span class=&#34;math inline&#34;&gt;\(Q(w) = \lambda
+\|w\|_2^2\)&lt;/span&gt;. The kernel function is the linear kernel. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\min_{w \in \R^d} \sum_{i=1}^n (w^\top x_i -y_i)^2 + \lambda \|w\|_2^2
+\\
+\Downarrow \\
+\min_{\alpha \in \R^n} \|y - K \alpha\|_2^2 + \lambda \alpha^\top K
+\alpha
+\end{gathered}
+\]&lt;/span&gt; The above is a convex optimization problem. As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+2 K (K \alpha^* - y) + 2\lambda K \alpha^* &amp;amp;= 0 \\
+K (K + \lambda) \alpha^* &amp;amp;= K y \\
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(\alpha^* = (K + \lambda I)^{-1} K
+y\)&lt;/span&gt; will be the solution.&lt;/p&gt;
+&lt;h4 id=&#34;example-kernel-based-svm&#34;&gt;Example: Kernel-based SVM&lt;/h4&gt;
+&lt;p&gt;We choose &lt;span class=&#34;math inline&#34;&gt;\(\ell(\hat y, y) = \max(0, 1 -
+\hat y y)\)&lt;/span&gt; which is the &lt;strong&gt;hinge loss&lt;/strong&gt;. We choose
+&lt;span class=&#34;math inline&#34;&gt;\(Q(w) = \lambda \|w\|_2^2\)&lt;/span&gt;. The
+kernel function is the linear kernel. &lt;span class=&#34;math display&#34;&gt;\[
+\min_{w \in \R^d} \sum_{i=1}^n \ell(w^T x_i, y_i) + \lambda \|w\|_2^2 \\
+\]&lt;/span&gt; Note that &lt;span class=&#34;math inline&#34;&gt;\(\max(0, 1-z) =
+\max_{\alpha \in [0,1]} \alpha(1-z)\)&lt;/span&gt;. The problem can be
+reformulated as &lt;span class=&#34;math display&#34;&gt;\[
+\min_{w \in \R^d} \max_{\alpha \in [0,1]^n} \sum_{i=1}^n \alpha_i (1 -
+y_i w^T x_i) + \lambda \|w\|_2^2 \\
+\]&lt;/span&gt; The &lt;u&gt;minimax theorem&lt;/u&gt; implies that (the reason for
+choosing &lt;span class=&#34;math inline&#34;&gt;\(\alpha \in [0,1]^n\)&lt;/span&gt; instead
+of &lt;span class=&#34;math inline&#34;&gt;\(\alpha \in \{ 0,1 \}^n\)&lt;/span&gt; is that
+we want to satisfy the condition of minimax theorem) we can swap the
+&lt;span class=&#34;math inline&#34;&gt;\(\min\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\max\)&lt;/span&gt;​ in the above formula to obtain
+&lt;span class=&#34;math display&#34;&gt;\[
+\max_{\alpha \in [0,1]^n} \min_{w \in \R^d} \sum_{i=1}^n \alpha_i (1 -
+y_i w^T x_i) + \lambda \|w\|_2^2 \\
+\]&lt;/span&gt; The minimization term inside gives &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\min_{w \in \R^d} \sum_{i=1}^n \alpha_i (1 - y_i w^\top x_i) +
+\lambda \|w\|_2^2 \\
+=\ &amp;amp;\sum_{i=1}^n \alpha_i + \min_{w \in \R^d} - \sum_{i=1}^n
+\alpha_i y_i x_i^\top w + \lambda \|w\|_2^2 \\
+=\ &amp;amp;\sum_{i=1}^n \alpha_i - \frac{2}{\lambda} \big\| \sum_{i=1}^n
+\alpha_i y_i x_i^\top \big\|_2^2 \\
+=\ &amp;amp;\sum_{i=1}^n \alpha_i - \frac{2}{\lambda} \sum_{i=1}^n
+\sum_{j=1}^n \alpha_i \alpha_j y_i y_j \langle x_i, x_j \rangle \\
+\end{aligned}
+\]&lt;/span&gt; Therefore, the dual optimization problem to SVM is &lt;span class=&#34;math display&#34;&gt;\[
+\max_{\alpha \in [0,1]^n} \sum_{i=1}^n \alpha_i - \frac{2}{\lambda}
+\sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j y_i y_j \underbrace{\langle
+x_i, x_j \rangle}_{\mathcal{K}(x_i, x_j)}
+\]&lt;/span&gt; If we define &lt;span class=&#34;math inline&#34;&gt;\(\tilde K = [y_i y_j
+\mathcal{K}(x_i, x_j)]\)&lt;/span&gt;, the problem becomes &lt;span class=&#34;math display&#34;&gt;\[
+\max_{\alpha \in [0,1]^n} 1^\top \alpha - \frac{2}{\lambda} \alpha^\top
+\tilde K \alpha
+\]&lt;/span&gt; The method for solving such constrained optimization would be
+the coordinate descent.&lt;/p&gt;
+&lt;h3 id=&#34;shift-invariant-kernel-functions&#34;&gt;Shift-invariant Kernel
+Functions&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;shift-invariant kernel&lt;/strong&gt;. We call a kernel
+function &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}: \mathcal{X} \times
+\mathcal{X} \to \R\)&lt;/span&gt; shift-invariant if there exists function
+&lt;span class=&#34;math inline&#34;&gt;\(\kappa: \mathcal{X} \to \R\)&lt;/span&gt; such
+that for every &lt;span class=&#34;math inline&#34;&gt;\(x,x&amp;#39; \in
+\mathcal{X}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{K}(x,x&amp;#39;) = \kappa(x-x&amp;#39;)
+\]&lt;/span&gt; Note that &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt;
+&lt;strong&gt;must be even&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;One example would be the Gaussian kernel. On the other hand, linear
+kernel and polynomial kernel are not shift-invariant (easy to verify).
+An important question to ask, &lt;strong&gt;how to determine whether a kernel
+function is shift-invariant or not&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;Fourier series&lt;/strong&gt;. Given a function &lt;span class=&#34;math inline&#34;&gt;\(f: \R^d \to \R\)&lt;/span&gt;, we define its
+&lt;strong&gt;Fourier (transform) series&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(\hat f: \R \to \R\)&lt;/span&gt; as &lt;span class=&#34;math display&#34;&gt;\[
+\hat f(\omega) \triangleq \int f(x) \exp(-i\omega^\top x) \d x
+\]&lt;/span&gt; The &lt;strong&gt;inverse Fourier transform&lt;/strong&gt; of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; would be (related to spherical
+coordinate??) &lt;span class=&#34;math display&#34;&gt;\[
+f(x) = (\frac{1}{2\pi})^d \int \hat f(\omega) \exp(i \omega^\top x) \d
+\omega \\
+\Rightarrow (\frac{1}{2\pi})^d \int \hat f(\omega) \d \omega = f(0)
+\]&lt;/span&gt; The Fouries (transform) series of &lt;span class=&#34;math inline&#34;&gt;\(\hat f\)&lt;/span&gt; would be &lt;span class=&#34;math display&#34;&gt;\[
+\hat{\hat f}(x) = \int \hat f(\omega) \exp(-i\omega^\top x) \d x =
+(\frac{1}{2 \pi})^d f(-x)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;Bochner’s theorem&lt;/strong&gt;. A function &lt;span class=&#34;math inline&#34;&gt;\(\kappa: \R^d \to \R\)&lt;/span&gt; results in a valid
+shift-invariant kernel &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}(x,x&amp;#39;)
+= \kappa(x-x&amp;#39;)\)&lt;/span&gt; if and only if its Fourier transform &lt;span class=&#34;math inline&#34;&gt;\(\hat \kappa\)&lt;/span&gt; is real and non-negative
+everywhere, i.e., &lt;span class=&#34;math display&#34;&gt;\[
+\forall \omega \in \R^d, \hat \kappa(\omega) \ge 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;example-gaussian-kernel&#34;&gt;Example: Gaussian Kernel&lt;/h4&gt;
+&lt;p&gt;The Gaussian kernel &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}(x,x&amp;#39;)
+= \kappa_\text{Gaussian}(z \triangleq x-x&amp;#39;) =
+\exp(-\frac{\|z\|_2^2}{2\sigma^2})\)&lt;/span&gt; is a valid and
+shift-invariant kernel function because &lt;span class=&#34;math display&#34;&gt;\[
+\hat \kappa_\text{Gaussian}(\omega) = ({\sqrt{2\pi}}{\sigma})^d
+\exp(-\frac{\sigma^2 \|\omega\|_2^2}{2}) \ge 0
+\]&lt;/span&gt; There are two interesting observations:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;Gaussian-shaped function is &lt;strong&gt;fixed point&lt;/strong&gt; w.r.t.
+Fourier transform in that its Fourier series is still
+Gaussian-shaped.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Note that &lt;span class=&#34;math inline&#34;&gt;\((\frac{1}{2 \pi})^d \hat
+\kappa_\text{Gaussian}\)&lt;/span&gt; is in essence the PDF of normal
+distribution &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{N}(0,
+\frac{1}{\sigma^2} I)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;If the &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; is small, &lt;span class=&#34;math inline&#34;&gt;\(\hat \kappa_\text{Gaussian}(\omega)\)&lt;/span&gt; will
+spread out; if &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt; is large,
+&lt;span class=&#34;math inline&#34;&gt;\(\hat \kappa_\text{Gaussian}(\omega)\)&lt;/span&gt;
+will concentrate.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;non-example-box-similarity-score&#34;&gt;Non-Example: Box Similarity
+Score&lt;/h4&gt;
+&lt;p&gt;A non-example of shift-invariant kernel is the &lt;strong&gt;box similarity
+score&lt;/strong&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+s(x,x&amp;#39;) = \begin{cases}
+1 &amp;amp; \text{if $\|x-x&amp;#39;\|_2 \le \epsilon$} \\
+0 &amp;amp; \text{otherwise}
+\end{cases}
+\]&lt;/span&gt; In this example, we can easily tell that &lt;span class=&#34;math inline&#34;&gt;\(s\)&lt;/span&gt; is shift-invariant. But we still have
+to check if box similarity score is a valid kernel function. We form the
+following function &lt;span class=&#34;math display&#34;&gt;\[
+\Pi_\epsilon(z) = \begin{cases}
+1 &amp;amp; \text{if $\|z\| \le \epsilon$} \\
+0 &amp;amp; \text{otherwise}
+\end{cases}
+\]&lt;/span&gt; We attempt to check both the validity and the shift-invariance
+in one gut via Bochner’s theorem. Let’s try with &lt;span class=&#34;math inline&#34;&gt;\(x \in \R\)&lt;/span&gt; first: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\hat \Pi_\epsilon(\omega) = \int_{-\infty}^{\infty} \Pi_\epsilon(x)
+\exp(-i \omega x) \d x \\
+&amp;amp;= \int_{-\epsilon}^{+\epsilon} [\cos (\omega x) + i \sin(\omega x)]
+\d x \\
+&amp;amp;= \int_{-\epsilon}^{+\epsilon} \cos (\omega x) \d x \\
+&amp;amp;= \frac{2 \sin (\omega \epsilon)}{\omega}
+\end{aligned}
+\]&lt;/span&gt; The Fourier series &lt;span class=&#34;math inline&#34;&gt;\(\hat
+\Pi_\epsilon\)&lt;/span&gt; is not non-negative everywhere. As a result, box
+similarity score is not valid or not shift-invariant. But box similarity
+score is shift-invariant. Thus, box similarity score is not valid.&lt;/p&gt;
+&lt;h4 id=&#34;example-sinc-kernel&#34;&gt;Example: Sinc Kernel&lt;/h4&gt;
+&lt;p&gt;The kernel function associated with the &lt;span class=&#34;math inline&#34;&gt;\(\DeclareMathOperator{\sinc}{sinc}
+\kappa_\text{sinc}(z) = \sinc z \triangleq \frac{\sin(\pi z)}{\pi
+z}\)&lt;/span&gt; function (note that here &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; is univariate) is a valid and
+shift-invariant kernel function. This holds because &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\hat \Pi_\epsilon(\omega) = \frac{2 \sin (\omega \epsilon)}{\omega} = 2
+\epsilon \sinc(\frac{\omega \epsilon}{\pi}) \\
+\end{gathered}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;And thus, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\begin{aligned}
+\frac{1}{2\pi} \Pi_\epsilon(-z) &amp;amp;= \hat{\hat \Pi}_\epsilon(z) \\
+&amp;amp;\Downarrow_\text{evenness of $\Pi_\epsilon$} \\
+\frac{1}{2\pi} \Pi_\epsilon(z) &amp;amp;=\int 2 \epsilon \sinc(\frac{\omega
+\epsilon}{\pi}) \exp(-i\omega z)\d \omega \\
+\frac{1}{2\pi} \Pi_\epsilon(z) &amp;amp;= C_1 \cdot \widehat{\sinc}(C_2 z)
+\ge 0
+\end{aligned} \\
+\end{gathered}
+\]&lt;/span&gt; In fact, &lt;span class=&#34;math display&#34;&gt;\[
+\widehat{\sinc}(\omega) = \mathbb{1}[-1 \le \omega \le 1] \ge 0
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The above inspires us of &lt;strong&gt;how to construct a shift-invariant
+kernel&lt;/strong&gt;: begin from a non-negative even function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; and take &lt;span class=&#34;math inline&#34;&gt;\(\hat f\)&lt;/span&gt;’s Fourier series as the kernel
+function. &lt;span class=&#34;math inline&#34;&gt;\(\hat f\)&lt;/span&gt; in this case is
+also called the &lt;strong&gt;synthesis function&lt;/strong&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;random-fourier-features&#34;&gt;Random Fourier Features&lt;/h4&gt;
+&lt;p&gt;Recall that in the synthesizing process, &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt; is the carefully-chosen
+non-negative even function to form a valid shift-invariant kernel.
+However, Fourier transform of &lt;span class=&#34;math inline&#34;&gt;\(\hat
+\kappa\)&lt;/span&gt; is not always easy to derive. To tackle it, note that
+because &lt;span class=&#34;math inline&#34;&gt;\(\kappa\)&lt;/span&gt; is non-negative and
+even, &lt;span class=&#34;math inline&#34;&gt;\(\hat \kappa\)&lt;/span&gt; is also
+non-negative and even. Recall the inverse Fourier transform: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+(\frac{1}{2\pi})^d \int \hat \kappa(\omega) \d \omega = \kappa(0) \\ \\
+\begin{aligned}
+\kappa(\underbrace{x-x&amp;#39;}_z) &amp;amp;= (\frac{1}{2 \pi})^d \int \hat
+\kappa(\omega) \exp(i \omega z) \d \omega \ge 0 \\
+% &amp;amp;\Downarrow_{\text{connecting to synthesizing due to the evenness
+of $\hat \kappa$ ??}} \\
+% &amp;amp;= (\frac{1}{2 \pi})^d \int \hat \kappa(\omega) \exp(-i \omega z)
+\d \omega \\
+&amp;amp;= (\frac{1}{2 \pi})^d \int \hat \kappa(\omega) \exp(i \omega x - i
+\omega x&amp;#39;) \d \omega \\
+\end{aligned}
+\end{gathered}
+\]&lt;/span&gt; We can intentionally rescale &lt;span class=&#34;math inline&#34;&gt;\(\kappa(0)\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;. Thus, &lt;span class=&#34;math inline&#34;&gt;\((\frac{1}{2\pi})^d \hat \kappa\)&lt;/span&gt; is a PDF
+and &lt;span class=&#34;math inline&#34;&gt;\(\kappa(z)\)&lt;/span&gt; is in a form of
+expectation: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\kappa(z) = \E_{\omega \sim (\frac{1}{2 \pi})^d \hat \kappa}[e^{i
+\omega^\top (x-x&amp;#39;)}] = \E[\underbrace{\exp(iw^\top x)}_{\phi(x)}
+\underbrace{\exp(-iw^\top x&amp;#39;)}_{\overline{\phi(x&amp;#39;)}}] \\
+&amp;amp;= \E_{\omega \sim (\frac{1}{2 \pi})^d \hat \kappa}[\cos\omega
+(x-x&amp;#39;) - i\sin\omega (x-x&amp;#39;)] \\
+&amp;amp;\Downarrow_\text{evenness of $\hat \kappa$} \\
+&amp;amp;= \E_{\omega \sim (\frac{1}{2 \pi})^d \hat \kappa}[\cos\omega
+(x-x&amp;#39;)] \\
+&amp;amp;= \E_{\omega \sim (\frac{1}{2 \pi})^d \hat \kappa}[\cos \omega x
+\cos \omega x&amp;#39; + \sin \omega x \sin \omega x&amp;#39;] \\
+&amp;amp;\Downarrow_\text{using $r$ samples} \\
+&amp;amp;\approx \frac{1}{r} \sum_{i=1}^r (\cos \omega_i x \cos \omega_i
+x&amp;#39; + \sin \omega_i x \sin \omega_i x&amp;#39;)
+\end{aligned}
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(\tilde \phi: \R^d \to
+\R^{2r}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\tilde \phi(x) =
+\frac{1}{\sqrt{r}}[\cos(\omega_1 x), \dots, \cos(\omega_r x),
+\sin(\omega_1 x), \dots, \sin(\omega_r x)]\)&lt;/span&gt;. We have &lt;span class=&#34;math display&#34;&gt;\[
+\kappa(z) \approx \tilde \phi(x)^\top \tilde \phi(x&amp;#39;)
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\tilde \phi\)&lt;/span&gt; is called the
+&lt;strong&gt;random Fourier features&lt;/strong&gt;. With this approximation, we
+obtain the proxy problem to &lt;span class=&#34;math inline&#34;&gt;\(\eqref{kernel-method}\)&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gather*}
+\min_{w \in \R^m}\ \frac{1}{n} \sum_{i=1}^n (w^\top \phi(x) - y_i)^2 \\
+\approx \\
+\min_{\tilde w \in \R^{2r}}\ \frac{1}{n} \sum_{i=1}^n (\tilde w^\top
+\tilde\phi(x) - y_i)^2 \\
+\end{gather*}
+\]&lt;/span&gt; This trick is especially helpful in Gaussian kernel case where
+&lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(\infty\)&lt;/span&gt;. Using the kernel function
+(instead of feature function) notation, we have the following
+theorem:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;approximation error of random Fourier
+features&lt;/strong&gt;. Suppose &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{K}\)&lt;/span&gt; is a shift-invariant kernel
+function. We consider a subset of the resulting RKHS &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; where the Fourier
+coefficients are bounded by &lt;span class=&#34;math inline&#34;&gt;\(C\)&lt;/span&gt; as
+&lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{H}_C \triangleq \{ (\frac{1}{2\pi})^d \int \alpha(\omega) \hat
+\kappa(\omega) \underbrace{\exp(i\omega z)}_{\phi_{\omega}(z)} \d
+\omega: |\alpha(\omega)| \le C \}
+\]&lt;/span&gt; Consider the norm &lt;span class=&#34;math inline&#34;&gt;\(\| \cdot
+\|\)&lt;/span&gt; inducted by a distribution &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;-based inner product &lt;span class=&#34;math inline&#34;&gt;\(\langle f,g \rangle = \E_q[f(x) g(x)]\)&lt;/span&gt;.
+Then for &lt;span class=&#34;math inline&#34;&gt;\(f^*\)&lt;/span&gt; and sample &lt;span class=&#34;math inline&#34;&gt;\(\omega_1,\dots,\omega_m\)&lt;/span&gt; i.i.d. drawn from
+&lt;span class=&#34;math inline&#34;&gt;\((\frac{1}{2\pi})^d \hat \kappa\)&lt;/span&gt;,
+with probability at least &lt;span class=&#34;math inline&#34;&gt;\(1-\delta\)&lt;/span&gt;,
+there exists coefficients &lt;span class=&#34;math inline&#34;&gt;\(\alpha_1,\dots,\alpha_m\)&lt;/span&gt; such that &lt;span class=&#34;math display&#34;&gt;\[
+\| \frac{1}{m} \sum_{i=1}^m \alpha_i \phi_{\omega_i} - f^* \| \le
+\sqrt{\frac{C^2}{m}} + \sqrt{\frac{2 \log(1/\delta)}{m}}
+\]&lt;/span&gt; Proof. See Homework 2.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>6-online-learning</title>
+      <link>https://chunxy.github.io/courses/machine-learning-theory/6-online-learning/</link>
+      <pubDate>Fri, 07 Jan 2022 13:39:19 +0000</pubDate>
+      <guid>https://chunxy.github.io/courses/machine-learning-theory/6-online-learning/</guid>
+      <description>
+
+&lt;p&gt;In standard supervised learning, we consider the training data are
+given in a &lt;strong&gt;batch&lt;/strong&gt; randomly sampled from a
+&lt;strong&gt;fixed&lt;/strong&gt; distribution. However, in real-world
+applications, data may come in an one-by-one fashion, while the
+underlying distribution evolves as the time goes.&lt;/p&gt;
+&lt;p&gt;In online learning, we suppose the learning task is formed as a game
+between the &lt;strong&gt;learner&lt;/strong&gt; and &lt;strong&gt;nature&lt;/strong&gt;
+players:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;at every iteration &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;, nature
+reveals the input &lt;span class=&#34;math inline&#34;&gt;\(x_t \in
+\mathcal{X}\)&lt;/span&gt; to the learner;&lt;/li&gt;
+&lt;li&gt;learner outputs a prediction &lt;span class=&#34;math inline&#34;&gt;\(p_t \in
+\mathcal{Y}\)&lt;/span&gt;;&lt;/li&gt;
+&lt;li&gt;nature reveals the true label &lt;span class=&#34;math inline&#34;&gt;\(y_t \in
+\mathcal{Y}\)&lt;/span&gt;, and Learner will suffer a loss &lt;span class=&#34;math inline&#34;&gt;\(l(y_t, p_t)\)&lt;/span&gt;;&lt;/li&gt;
+&lt;li&gt;learner updates its prediction model.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In the online learning framework, we no longer have two different
+phases of training and testing. An implicit goal in online learning is
+to distribute the computations over all the iterations as uniformly as
+possible.&lt;/p&gt;
+&lt;h2 id=&#34;online-learning&#34;&gt;Online Learning&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;regret of an online learner&lt;/strong&gt;. Given an
+&lt;strong&gt;expert&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(h: \mathcal{X} \to
+\mathcal{Y}\)&lt;/span&gt;, the regret of the online learner is defined as the
+&lt;strong&gt;extra&lt;/strong&gt; cumulative loss of the learner with respect to
+expert &lt;span class=&#34;math inline&#34;&gt;\(h\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\newcommand{\reg}{{\mathrm{Regret}}} \reg(h) \triangleq
+\sum_{t=1}^T[\ell(y_t, p_t)] - \sum_{t=1}^T[\ell(y_t, h(x_t))]
+\]&lt;/span&gt; Next, for a set of experts &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;, we define the learner’s
+regret as the worst-case regret for any expert &lt;span class=&#34;math inline&#34;&gt;\(h \in \mathcal{H}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\reg(\mathcal{H}) \triangleq \max_{h \in \mathcal{H}} \reg(h) =
+\sum_{i=1}^T[\ell(y_t, p_t)] - \min_{h \in \mathcal{H}}
+\sum_{i=1}^T[\ell(y_t, h(x_t))]
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The overall objective is to have a regret that is &lt;strong&gt;sublinear
+in &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;examples-of-learning-strategies&#34;&gt;Examples of Learning
+Strategies&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Consider a binary classification task with &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{Y} = \{ 0,1 \}\)&lt;/span&gt;, zero/one loss
+and an &lt;strong&gt;adversary nature&lt;/strong&gt; that always generates the
+opposite label to the learner’s prediction.&lt;/p&gt;
+&lt;p&gt;Consider the expert system &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H} =
+\{ h_0, h_1 \}\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(h_i(x) =
+i\)&lt;/span&gt;. We claim that the regret w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; will be at least &lt;span class=&#34;math inline&#34;&gt;\(\frac{T}{2}\)&lt;/span&gt; at iteration &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;. &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\reg(h_i) &amp;amp;= \sum_{t=1}^T[\ell(y_t, p_t)] - \sum_{t=1}^T[\ell(y_t,
+h_i(x_t))] \\
+&amp;amp;= T - \sum_{t=1}^T[\ell(y_t, h_i(x_t))] \\
+\end{aligned}
+\]&lt;/span&gt; But &lt;span class=&#34;math inline&#34;&gt;\(\reg(h_0) + \reg(h_1) =
+T\)&lt;/span&gt;. As a result, &lt;span class=&#34;math inline&#34;&gt;\(\reg(\mathcal{H}) =
+\max_{h \in \{ h_0, h_1 \}} \reg(h) \ge \frac{T}{2}\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Consider a binary classification task with &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{Y} = \{ 0,1 \}\)&lt;/span&gt;, zero/one loss
+and a &lt;strong&gt;realizable scenario&lt;/strong&gt; where nature generates the
+label according to an expert &lt;span class=&#34;math inline&#34;&gt;\(h^* \in
+\mathcal{H}\)&lt;/span&gt;. In this scenario, the cumulative loss of a
+learning algorithm is equal to its regret w.r.t &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Consider the &lt;strong&gt;follow-the-best algorithm&lt;/strong&gt; where at each
+iteration &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; we arbitrarily choose
+among the experts with the best score up to now for prediction. The
+regret w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; can be as
+large as &lt;span class=&#34;math inline&#34;&gt;\(|\mathcal{H}|-1\)&lt;/span&gt;. This is
+because every time an expert makes a mistake, it is excluded from
+candidates.&lt;/p&gt;
+&lt;p&gt;Consider the &lt;strong&gt;majority algorithm&lt;/strong&gt; where we vote for
+the label with the majority vote among experts in &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt;. The regret w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H}\)&lt;/span&gt; is upper-bounded by &lt;span class=&#34;math inline&#34;&gt;\(\log_2|\mathcal{H}|\)&lt;/span&gt;. This is because
+every time there is a mistake, half of considered experts are excluded
+from consideration.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;online-convex-optimization&#34;&gt;Online Convex Optimization&lt;/h3&gt;
+&lt;p&gt;Adversary nature and realizable scenario represents the two extreme
+wings of situations. To analyze the general non-realizable situations,
+we introduce a framework called &lt;strong&gt;online convex
+optimization&lt;/strong&gt; where&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;learner chooses model parameters &lt;span class=&#34;math inline&#34;&gt;\(w_t\)&lt;/span&gt; from a convex set &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; at iteration &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;nature chooses a convex loss function &lt;span class=&#34;math inline&#34;&gt;\(f_t\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;the regret w.r.t. model parameter &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt; will be &lt;span class=&#34;math display&#34;&gt;\[
+\reg(u) = \sum_{t=1}^T f_t(w_t) - \sum_{t=1}^T f_t(u) \\
+\reg(S) = \sum_{t=1}^T f_t(w_t) - \min_{u \in S} \sum_{t=1}^T f_t(u)
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;example-online-linear-regression&#34;&gt;Example: Online Linear
+Regression&lt;/h4&gt;
+&lt;p&gt;The setting is as follows:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;nature reveals input vector &lt;span class=&#34;math inline&#34;&gt;\(x_t \in
+\R^d\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;learner chooses model parameters &lt;span class=&#34;math inline&#34;&gt;\(w_t
+\in \R^d\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;nature reveals output &lt;span class=&#34;math inline&#34;&gt;\(y_t \in
+\R\)&lt;/span&gt; and the loss value at iteration &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+f_t(w_t) = (w_t^\top x_t - y_t)^2
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;convexification&#34;&gt;Convexification&lt;/h4&gt;
+&lt;p&gt;Consider a &lt;strong&gt;general loss&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(\ell\)&lt;/span&gt; (which doesn’t have to be convex)
+and a &lt;strong&gt;finite set&lt;/strong&gt; of experts &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{H} = \{ h_1,\dots,h_m \}\)&lt;/span&gt;. To
+convexify the problem, the learner searches for a probability
+distribution over the &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; experts
+which means &lt;span class=&#34;math inline&#34;&gt;\(w_t \in \Delta_m\)&lt;/span&gt; where
+&lt;span class=&#34;math inline&#34;&gt;\(\Delta_m\)&lt;/span&gt; is the set of all
+categorical distributions over &lt;span class=&#34;math inline&#34;&gt;\(\{ 1,\dots,m
+\}\)&lt;/span&gt;. The online learning algorithm will be as follows:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;nature reveals input vector &lt;span class=&#34;math inline&#34;&gt;\(x_t \in
+\R^d\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;learner chooses model parameters &lt;span class=&#34;math inline&#34;&gt;\(w_t
+\in \R^m\)&lt;/span&gt;;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;nature reveals output &lt;span class=&#34;math inline&#34;&gt;\(y_t \in
+\R\)&lt;/span&gt; and the loss value at iteration &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; is &lt;span class=&#34;math display&#34;&gt;\[
+f_t(w_t) = w_t^\top \underbrace{[\ell(h_1(x_t), y_t), \dots,
+\ell(h_m(x_t), y_t)]}_{L_t} \\
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We will assume a online convex optimization setting from now on.&lt;/p&gt;
+&lt;h3 id=&#34;follow-the-leader-strategy&#34;&gt;Follow-the-leader Strategy&lt;/h3&gt;
+&lt;p&gt;The &lt;strong&gt;follow-the-leader (FTL)&lt;/strong&gt; strategy seems a natural
+choice to the online learning: &lt;span class=&#34;math display&#34;&gt;\[
+w_t = \arg \min_{w \in S} \sum_{i=1}^{t-1} f_i(w)
+\]&lt;/span&gt; Note that now it is a convex optimization problem.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lemma: &lt;strong&gt;regret bound for FTL&lt;/strong&gt;. Given that &lt;span class=&#34;math inline&#34;&gt;\(w_t\)&lt;/span&gt; is chosen according to a FTL
+strategy, we have the following upper bound on the FTL learner’s regret
+at iteration &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\reg(S) \le \sum_{i=1}^T [f_t(w_t) - f_{t}(w_{t+1})]
+\]&lt;/span&gt; Proof. Recall that &lt;span class=&#34;math inline&#34;&gt;\(\reg(S) =
+\max_{u \in S} \reg(u)\)&lt;/span&gt;. We need to show for every &lt;span class=&#34;math inline&#34;&gt;\(u \in S\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\reg(u) = \sum_{t=1}^T [f_t(w_t) - f_t(u)] \le \sum_{t=1}^T [f_t(w_t) -
+f_t(w_{t+1})] \\
+\iff \\
+\sum_{t=1}^T f_t(w_{t+1}) \le \sum_{t=1}^T f_t(u)
+\]&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(w_{t+1}\)&lt;/span&gt; is the
+&lt;strong&gt;one-step-ahead&lt;/strong&gt; expert (relative to &lt;span class=&#34;math inline&#34;&gt;\(f_t\)&lt;/span&gt;); so it should perform better than
+any other choice. We use induction to show it. When &lt;span class=&#34;math inline&#34;&gt;\(T=1\)&lt;/span&gt;, we trivially have &lt;span class=&#34;math inline&#34;&gt;\(\forall u, f_1(u) \ge f_1(w_2)\)&lt;/span&gt;. Suppose
+when &lt;span class=&#34;math inline&#34;&gt;\(T=k\)&lt;/span&gt;, the above holds. Then,
+for every &lt;span class=&#34;math inline&#34;&gt;\(u \in S\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\sum_{i=1}^k f_t(w_{t+1}) \le \sum_{i=1}^k f_t(u)
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\sum_{i=1}^{k+1} f_t(w_{t+1}) &amp;amp;\le f_{k+1}(w_{k+2}) + \sum_{i=1}^k
+f_t(u) \\
+&amp;amp;\Downarrow_{u=w_{k+2}} \\
+\sum_{i=1}^{k+1} f_t(w_{t+1}) &amp;amp;\le \sum_{i=1}^{k+1} f_t(w_{k+2}) \\
+&amp;amp;= \min_{w \in S} \sum_{i=1}^{k+1} f_t(w) \\
+&amp;amp;\Downarrow \\
+\sum_{i=1}^{k+1} f_t(w_{t+1}) &amp;amp;\le \sum_{i=1}^{k+1} f_t(u)
+\end{aligned}
+\]&lt;/span&gt; which holds for every &lt;span class=&#34;math inline&#34;&gt;\(u \in
+S\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;example-i&#34;&gt;Example I&lt;/h4&gt;
+&lt;p&gt;Consider a quadratic loss function where nature chooses the input
+&lt;span class=&#34;math inline&#34;&gt;\(z_t\)&lt;/span&gt; satisfying the norm bound &lt;span class=&#34;math inline&#34;&gt;\(\|z_t\|_2 \le M\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+f_t(w) = \frac{1}{2} \|w-z_t\|_2^2
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(S = \{ x:\|x\|_2 \le M
+\}\)&lt;/span&gt;. Then the FTL strategy will choose &lt;span class=&#34;math display&#34;&gt;\[
+w_{t+1} = \arg \min_{w \in S} \sum_{i=1}^t \frac{1}{2} \|w-z_i\|_2^2 =
+\frac{1}{t} \sum_{i=1}^t z_i
+\]&lt;/span&gt; Note that &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+w_{t+1} = \frac{t-1}{t} w_t + \frac{1}{t} z_t \\
+w_{t+1} - z_t = \frac{t-1}{t}(w_t - z_t)
+\end{gathered}
+\]&lt;/span&gt; The regret bound will be &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\reg(S) \le \sum_{t=1}^T [f_t(w_t) - f_t(w_{t+1})] \\
+&amp;amp;= \sum_{t=1}^T \frac{1}{2} [\|w_t-z_t\|_2^2 - \|w_{t+1}-z_t\|_2^2]
+\\
+&amp;amp;= \sum_{t=1}^T \frac{1}{2} [\|w_t-z_t\|_2^2 - (1-\frac{1}{t})^2
+\|w_t-z_t\|_2^2] \\
+&amp;amp;= \sum_{t=1}^T \frac{1}{2} [(\frac{2}{t} -
+\frac{1}{t^2})\|w_t-z_t\|_2^2] \\
+&amp;amp;\le \sum_{t=1}^T \frac{1}{t} \|w_t-z_t\|_2^2 \\
+&amp;amp;\le \sum_{t=1}^T \frac{1}{t} 4M^2 \\
+&amp;amp;\le 4M^2 (\log T + 1)
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;example-ii&#34;&gt;Example II&lt;/h4&gt;
+&lt;p&gt;There are cases where FTL could also fail. We give an example here.
+Consider a linear loss function where nature chooses the input &lt;span class=&#34;math inline&#34;&gt;\(z_t\)&lt;/span&gt; satisfying the norm bound &lt;span class=&#34;math inline&#34;&gt;\(\|z_t\|_2 \le M\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+f_t(w) = w^\top z_t
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(S = \{ x:\|x\|_2 \le M
+\}\)&lt;/span&gt;. Then the FTL strategy will choose &lt;span class=&#34;math display&#34;&gt;\[
+w_{t+1} = \arg \min_{w \in S} \sum_{i=1}^t w^\top z_t = \arg \min_{w \in
+S} w^\top \sum_{i=1}^t z_t = \frac{M}{\|\sum_{i=1}^t z_t\|_2}
+\sum_{i=1}^t z_t
+\]&lt;/span&gt; But consider the one-dimensional input sequence &lt;span class=&#34;math inline&#34;&gt;\(-0.5, 1, -1, 1, -1, \dots\)&lt;/span&gt; The parameters
+learner gives would be &lt;span class=&#34;math inline&#34;&gt;\(M, -M, M, -M,
+\dots\)&lt;/span&gt; The loss incurred would be &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^T w_i z_i = (T-1)M = M \cdot
+O(T)\)&lt;/span&gt;. But the strategy that sets &lt;span class=&#34;math inline&#34;&gt;\(w=0\)&lt;/span&gt; will give a loss of &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The crux of the problem is the sudden change of the nature.&lt;/p&gt;
+&lt;h3 id=&#34;follow-the-regularized-leader-strategy&#34;&gt;Follow-the-regularized-leader
+Strategy&lt;/h3&gt;
+&lt;p&gt;Continuing the discussion of &lt;u&gt;Example II&lt;/u&gt;, one makeup for it is
+the &lt;strong&gt;follow-the-regularized-leader (FTRL)&lt;/strong&gt; strategy. That
+is, the learner returns &lt;span class=&#34;math display&#34;&gt;\[
+w_{t+1} = \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} f_i(w)
+\]&lt;/span&gt; Let &lt;span class=&#34;math inline&#34;&gt;\(\psi(x)\)&lt;/span&gt; be the common
+choice &lt;span class=&#34;math inline&#34;&gt;\(\frac{\lambda}{2}\|x\|_2^2\)&lt;/span&gt;
+and let &lt;span class=&#34;math inline&#34;&gt;\(f_i\)&lt;/span&gt; still be the linear
+loss. Then, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+w_{t+1} &amp;amp;= \arg \min_{w \in S} \frac{\lambda}{2} \|w\|_2^2 + w^\top
+\sum_{i=1}^{t} z_i \\
+&amp;amp;\Downarrow_{v_t = -\frac{1}{\lambda} \sum_{i=1}^t z_i}  \\
+&amp;amp;= \arg \min_{w \in S} \frac{\lambda}{2} \|w - v_t\|_2^2 -
+\frac{\lambda}{2} \|v_t\|_2^2 \\
+&amp;amp;= \arg \min_{w \in S} \frac{\lambda}{2} \|w - v_t\|_2^2 \\
+&amp;amp;= \Pi_S (v_t) \\
+\end{aligned}
+\]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\(S=\R^d\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+w_{t+1} = -\frac{1}{\lambda} v_t \\
+w_{t+1} - w_t = -\frac{1}{\lambda} z_t = -\frac{1}{\lambda} \nabla
+f_t(w_t) \\
+\end{gathered}
+\]&lt;/span&gt; The update rule resembles the formulation of gradient descent.
+If &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is too large, the update
+of learner will be too stable and learner is not able to adapt to the
+environment. If &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;​ is too
+small, learner can easily overfit to the noise.&lt;/p&gt;
+&lt;p&gt;But actually, we don’t need to update at every step. By the
+closed-form formula of &lt;span class=&#34;math inline&#34;&gt;\(w_{t+1}\)&lt;/span&gt;, we
+can accumulate via &lt;span class=&#34;math inline&#34;&gt;\(v_t\)&lt;/span&gt; and do the
+projection at the last step &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lemma: &lt;strong&gt;regret bound for FTRL&lt;/strong&gt;. Suppose that &lt;span class=&#34;math inline&#34;&gt;\(f_t(w) = w^\top z_t\)&lt;/span&gt; is &lt;strong&gt;linear
+loss&lt;/strong&gt;, &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; is a convex set
+and &lt;span class=&#34;math inline&#34;&gt;\(\psi(w) = \frac{\lambda}{2}
+\|w\|_2^2\)&lt;/span&gt;. We have the following upper bound on the FTRL
+learner’s regret at iteration &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt;:
+&lt;span class=&#34;math display&#34;&gt;\[
+\reg(u) \le \frac{\lambda}{2} \|u\|_2^2 + \frac{1}{\lambda} \sum_{i=1}^T
+\|z_t\|_2^2
+\]&lt;/span&gt; Proof. A natural idea is to reuse the conclusion from FTL. We
+may synthesize an iteration &lt;span class=&#34;math inline&#34;&gt;\(0\)&lt;/span&gt; for
+FTL such that &lt;span class=&#34;math inline&#34;&gt;\(f_0(w) = \psi(w)\)&lt;/span&gt;. By
+doing so, &lt;span class=&#34;math display&#34;&gt;\[
+w_{t+1}^\text{FTL} = \arg \min_{w \in S} \sum_{i=0}^T f_t(w) = \arg
+\min_{w \in S} [\psi(w) + \sum_{i=1}^T f_t(w)] = w_{t+1}^\text{FTRL}
+\]&lt;/span&gt; Thus, for every &lt;span class=&#34;math inline&#34;&gt;\(u\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(f_t(w_t^\text{FTRL}) - f(u) = f_t(w_t^\text{FTL})
+- f(u)\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(t=1,\dots,T\)&lt;/span&gt; and
+&lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\reg_{0:T}^\text{FTL}(u) &amp;amp;= \psi(w_0) - \psi(u) +
+\reg_{1:T}^\text{FTL}(u) \\
+&amp;amp;= \psi(w_0) - \psi(u) + \reg_{1:T}^\text{FTRL}(u)
+\end{aligned}
+\]&lt;/span&gt; Note that by FTL’s bound, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\reg_{0:T}^\text{FTL}(u) = \sum_{t=0}^T [f_t(w_t) - f_t(u)] \\
+&amp;amp;= \psi(w_0) - \psi(u) + \sum_{t=1}^T [f_t(w_t) - f_t(u)] \\
+&amp;amp;\Downarrow_\text{one step ahead} \\
+&amp;amp;\le \psi(w_0) - \psi(w_1) + \sum_{t=1}^T [f_t(w_t) - f_t(w_{t+1})]
+\\
+\end{aligned}
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\reg_{1:T}^\text{FTRL}(u) \le \psi(u) - \psi(w_1) + \sum_{t=1}^T
+[f_t(w_t) - f_t(w_{t+1})] + \psi(w_1) - \psi(w_0) \\
+&amp;amp;= \psi(u) - \psi(w_1) + \sum_{t=1}^T [f_t(w_t) - f_t(w_{t+1})] \\
+&amp;amp;= \psi(u) - \psi(w_1) + \sum_{t=1}^T z_t^\top (w_t - w_{t+1}) \\
+&amp;amp;\le \psi(u) - \psi(w_1) + \sum_{t=1}^T \|z_t\|_2 \|w_t -
+w_{t+1}\|_2 \\
+&amp;amp;= \frac{\lambda}{2} \|u\|_2^2 - \frac{\lambda}{2} \|w_1\|_2^2 +
+\sum_{t=1}^T \|z_t\|_2 \|\Pi_S (-\frac{1}{\lambda} \sum_{i=1}^{t-1} z_i)
+- \Pi_S (-\frac{1}{\lambda} \sum_{i=1}^t z_i)\|_2 \\
+&amp;amp;\Downarrow_\text{by the shrinking property of projection of Hilbert
+norm, which is $\ell_2$ here ??} \\
+&amp;amp;\le \frac{\lambda}{2} \|u\|_2^2 - \frac{\lambda}{2} \|w_1\|_2^2 +
+\sum_{t=1}^T \|z_t\|_2 \frac{1}{\lambda} \|z_t\|_2 \\
+&amp;amp;\le \frac{\lambda}{2} \|u\|_2^2 + \frac{1}{\lambda} \sum_{t=1}^T
+\|z_t\|_2^2
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Corollary: &lt;strong&gt;best choice of &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; for FTRL&lt;/strong&gt;. Given above
+inequality, suppose that &lt;span class=&#34;math inline&#34;&gt;\(\|u\|_2 \le
+B\)&lt;/span&gt; for every &lt;span class=&#34;math inline&#34;&gt;\(u \in S\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(\|z_t\| \le M\)&lt;/span&gt;. Then, &lt;span class=&#34;math display&#34;&gt;\[
+\reg(S) \le \frac{\lambda B^2}{2} + \frac{TM^2}{\lambda}
+\]&lt;/span&gt; Minimizing the upper bound over &lt;span class=&#34;math inline&#34;&gt;\(\lambda &amp;gt; 0\)&lt;/span&gt; results in &lt;span class=&#34;math inline&#34;&gt;\(\lambda^* = \frac{M}{B} \sqrt{2T}\)&lt;/span&gt;, under
+which &lt;span class=&#34;math display&#34;&gt;\[
+\reg(S) \le MB \sqrt{2T}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The above is the conclusion drawn for &lt;span class=&#34;math inline&#34;&gt;\(\ell_2\)&lt;/span&gt;-norm regularizer and linear loss.
+We would like to extend them to general case.&lt;/p&gt;
+&lt;h4 id=&#34;online-gradient-descent-general-loss&#34;&gt;Online Gradient Descent
+(General Loss)&lt;/h4&gt;
+&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; is not a linear function,
+we can “linearize” it using the Taylor expansion: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+f(w) &amp;amp;\approx f(w_t) + \nabla f(w_t)^\top (w-w_t) = [f(w_t) - \nabla
+f(w_t)^\top w_t] + \underbrace{\nabla f(w_t)^\top}_{z_t} w
+\end{aligned}
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+w_{t+1} &amp;amp;= \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} f_i(w) \\
+&amp;amp;\approx \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} \nabla
+f_{i}(w_{i})^\top w \\
+\end{aligned}
+\]&lt;/span&gt; Note that &lt;span class=&#34;math inline&#34;&gt;\(f_{t+1}\)&lt;/span&gt; first
+appears in the derivation of &lt;span class=&#34;math inline&#34;&gt;\(w_{t+1}\)&lt;/span&gt;. The latest model learner output
+is &lt;span class=&#34;math inline&#34;&gt;\(w_t\)&lt;/span&gt;​ so we just expand there.
+This gives rise to the online gradient descent algorithm. The update
+rule will be&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Algorithm: &lt;strong&gt;online gradient descent&lt;/strong&gt;.&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;&lt;p&gt;Pick an &lt;strong&gt;initial point&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(w_1 \in S\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;For &lt;span class=&#34;math inline&#34;&gt;\(t=1\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt; do:&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;Output &lt;span class=&#34;math inline&#34;&gt;\(w_t\)&lt;/span&gt; (in fact, this &lt;span class=&#34;math inline&#34;&gt;\(w_t\)&lt;/span&gt; is computed in last timestep and
+formally should have been &lt;span class=&#34;math inline&#34;&gt;\(w_{t-1}\)&lt;/span&gt;
+in the previous context) and receive &lt;span class=&#34;math inline&#34;&gt;\(f_t\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Compute &lt;span class=&#34;math inline&#34;&gt;\(z_t = \nabla
+f_t(w_t)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Pick a stepsize &lt;span class=&#34;math inline&#34;&gt;\(\alpha_t &amp;gt; 0\)&lt;/span&gt;
+(which is usually fixed w.r.t. &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;)&lt;/li&gt;
+&lt;li&gt;Update &lt;span class=&#34;math inline&#34;&gt;\(w_{t+\frac{1}{2}} \leftarrow w_t
+- \alpha_t z_t\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Project &lt;span class=&#34;math inline&#34;&gt;\(w_{t+\frac{1}{2}}\)&lt;/span&gt; onto
+&lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(w_{t+1} \leftarrow
+\Pi_S(w_{t+\frac{1}{2}})\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;regret bound for OGD learner&lt;/strong&gt;. In the online
+convex optimization setting, we have the following regret bound for the
+OGD learner initialized at &lt;span class=&#34;math inline&#34;&gt;\(w_1 = 0\)&lt;/span&gt;
+with respect to every &lt;span class=&#34;math inline&#34;&gt;\(u \in S\)&lt;/span&gt;:
+&lt;span class=&#34;math display&#34;&gt;\[
+\reg(u) \le \frac{\|u\|_2^2}{2\alpha} + \frac{\alpha}{2} \sum_{i=1}^T
+\|z_t\|_2^2
+\]&lt;/span&gt; If we assume that every &lt;span class=&#34;math inline&#34;&gt;\(f_t\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(\rho\)&lt;/span&gt;-Lipschitz (and thus &lt;span class=&#34;math inline&#34;&gt;\(\|z_t\|_2^2 = \|\nabla f_t(w_t)\|_2^2 \le
+\rho^2\)&lt;/span&gt;) and &lt;span class=&#34;math inline&#34;&gt;\(\|u\|_2 \le B\)&lt;/span&gt;
+for every &lt;span class=&#34;math inline&#34;&gt;\(u \in S\)&lt;/span&gt;, we will further
+have the following for &lt;span class=&#34;math inline&#34;&gt;\(\alpha^* =
+\frac{B}{\rho \sqrt{T}}\)&lt;/span&gt;: &lt;span class=&#34;math display&#34;&gt;\[
+\reg(S) \le B \rho \sqrt{T}
+\]&lt;/span&gt; Proof. Because &lt;span class=&#34;math inline&#34;&gt;\(w_{t+1}\)&lt;/span&gt; is
+the projection of &lt;span class=&#34;math inline&#34;&gt;\(w_{t+\frac{1}{2}}\)&lt;/span&gt;
+onto &lt;span class=&#34;math inline&#34;&gt;\(S\)&lt;/span&gt;, for every &lt;span class=&#34;math inline&#34;&gt;\(u \in S\)&lt;/span&gt;, we have &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\|w_{t+\frac{1}{2}} - u\|_2^2 = \|w_{t+\frac{1}{2}} - w_{t+1} +
+w_{t+1} - u\|_2^2 \\
+&amp;amp;= \underbrace{\|w_{t+\frac{1}{2}} - w_{t+1}\|_2^2}_{\ge 0} +
+\|w_{t+1} - u\|_2^2 \\
+&amp;amp;\quad\quad + 2\underbrace{(w_{t+\frac{1}{2}} - w_{t+1})^\top
+(w_{t+1} - u)}_{\ge 0 \text{ due to the property of projection}} \\
+&amp;amp;\ge \|w_{t+1} - u\|_2^2
+\end{aligned}
+\]&lt;/span&gt; As a result, &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;\frac{1}{2} \|w_{t+1} - u\|_2^2 - \frac{1}{2} \|w_t - u\|_2^2 \\
+\le &amp;amp;\frac{1}{2} \|w_{t+\frac{1}{2}} - u\|_2^2 - \frac{1}{2} \|w_t -
+u\|_2^2 \\
+= &amp;amp;\frac{1}{2} \|w_t - \alpha z_t - u\|_2^2 - \frac{1}{2} \|w_t -
+u\|_2^2 \\
+= &amp;amp;\frac{1}{2} \|\alpha z_t\|_2^2 - \alpha z_t^\top (w_t - u) \\
+= &amp;amp;\frac{1}{2} \alpha^2 \|z_t\|_2^2 - \alpha \nabla f_t(w_t)^\top
+(w_t - u) \\
+\le &amp;amp;\frac{1}{2} \alpha^2 \|z_t\|_2^2 - \alpha [f_t(w) - f_t(u)] \\
+\end{aligned}
+\]&lt;/span&gt; Adding up the above inequality for &lt;span class=&#34;math inline&#34;&gt;\(t=1,\dots,T\)&lt;/span&gt; gives &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+\alpha \sum_{t=1}^T (f_t(w_t) - f_t(u)) &amp;amp;\le \frac{1}{2}
+\sum_{t=1}^T \alpha^2 \|z_t\|_2^2 + \frac{1}{2} \|w_1 - u\|_2^2 -
+\frac{1}{2} \|w_{T+1} - u\|_2^2 \\
+\sum_{t=1}^T (f_t(w_t) - f_t(u)) &amp;amp;\le \frac{\alpha}{2} \sum_{t=1}^T
+\|z_t\|_2^2 + \frac{1}{2\alpha} \|w_1 - u\|_2^2 - \frac{1}{2\alpha}
+\|w_{T+1} - u\|_2^2 \\
+&amp;amp;\le \frac{\alpha}{2} \sum_{t=1}^T \|z_t\|_2^2 + \frac{1}{2\alpha}
+\|w_1 - u\|_2^2 \\
+&amp;amp;\Downarrow_{w_1=0} \\
+&amp;amp;= \frac{\alpha}{2} \sum_{t=1}^T \|z_t\|_2^2 + \frac{1}{2\alpha}
+\|u\|_2^2
+\end{aligned}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;online-mirror-descent-general-regularizer&#34;&gt;Online Mirror Descent
+(General Regularizer)&lt;/h4&gt;
+&lt;h5 id=&#34;fenchel-conjugate&#34;&gt;Fenchel Conjugate&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;Fenchel (convex) conjugate&lt;/strong&gt;. For a
+function &lt;span class=&#34;math inline&#34;&gt;\(\psi: \R^d \to \R\)&lt;/span&gt;, we
+define its Fenchel conjugate as &lt;span class=&#34;math display&#34;&gt;\[
+\psi^*(\theta) = \sup_{\omega \in \R^d} \omega^\top \theta -
+\psi(\omega)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;convexity of Fenchel conjugate&lt;/strong&gt;. For
+every function &lt;span class=&#34;math inline&#34;&gt;\(\psi: \R^d \to \R\)&lt;/span&gt;,
+its Fenchel conjugate &lt;span class=&#34;math inline&#34;&gt;\(\psi^*\)&lt;/span&gt; is a
+convex function.&lt;/p&gt;
+&lt;p&gt;Proof. &lt;span class=&#34;math inline&#34;&gt;\(\psi^*\)&lt;/span&gt; is the supremum
+over affine functions.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;gradient of Fenchel conjugate&lt;/strong&gt;. Consider
+the Fenchel conjugate of a differentiable function &lt;span class=&#34;math inline&#34;&gt;\(\psi\)&lt;/span&gt;. Then by &lt;u&gt;Danskin’s theorem&lt;/u&gt;,
+the gradient of the conjugate function will be &lt;span class=&#34;math display&#34;&gt;\[
+\nabla \psi^*(\theta) = \arg \max_{\omega \in \R^d}\ \omega^\top \theta
+- \psi(\omega)
+\]&lt;/span&gt; If &lt;span class=&#34;math inline&#34;&gt;\(\psi\)&lt;/span&gt; is convex, then
+&lt;span class=&#34;math display&#34;&gt;\[
+\nabla \psi^*(\theta) = \arg \max_{\omega \in \R^d}\ \omega^\top \theta
+- \psi(\omega) = (\nabla \psi)^{-1}(\theta)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;Fenchel conjugate of convex functions&lt;/strong&gt;.
+Consider a convex function &lt;span class=&#34;math inline&#34;&gt;\(\psi: \R^d \to
+\R\)&lt;/span&gt;. Then &lt;span class=&#34;math inline&#34;&gt;\(\psi\)&lt;/span&gt;’s double
+conjugate &lt;span class=&#34;math inline&#34;&gt;\(\psi^{**} = \psi\)&lt;/span&gt;. On the
+other hand, if &lt;span class=&#34;math inline&#34;&gt;\(\psi\)&lt;/span&gt; is not convex,
+&lt;span class=&#34;math inline&#34;&gt;\(\psi^{**}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(\psi\)&lt;/span&gt;’s &lt;strong&gt;convex
+envelope&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Proposition: &lt;strong&gt;Fenchel-Young inequality&lt;/strong&gt;. Consider
+&lt;span class=&#34;math inline&#34;&gt;\(\psi: \R^d \to \R\)&lt;/span&gt; and its Fenchel
+conjugate &lt;span class=&#34;math inline&#34;&gt;\(\psi^*\)&lt;/span&gt;. Then for every
+&lt;span class=&#34;math inline&#34;&gt;\(\omega, \theta \in \R^d\)&lt;/span&gt;, &lt;span class=&#34;math display&#34;&gt;\[
+\omega^\top \theta \le \psi(\omega) + \psi^*(\theta)
+\]&lt;/span&gt; Proof. The proof is simply an interpretation of the
+definition: &lt;span class=&#34;math display&#34;&gt;\[
+\psi^*(\theta) = \max_{\omega} [\omega^\top \theta - \psi(\omega)] \ge
+\omega^\top \theta - \psi(\omega)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Some examples of Fenchel conjugate: &lt;span class=&#34;math display&#34;&gt;\[
+\begin{gathered}
+\psi(\omega) = \frac{\lambda}{2} \|\omega\|_2^2 \to \psi^*(\theta) =
+\frac{1}{2\lambda} \|\theta\|_2^2 \\
+\psi(\omega) = \frac{1}{2} \omega^\top A \omega \to \psi^*(\theta) =
+\frac{1}{2} \theta^\top A^{-1} \theta \\
+\psi(\omega) = \sum_{i=1}^d \omega_i \log \omega_i \to \psi^*(\theta) =
+\sum_{i=1}^d \exp(\theta_i - 1)
+\end{gathered}
+\]&lt;/span&gt; Now refer to the optimization problem &lt;span class=&#34;math display&#34;&gt;\[
+\begin{aligned}
+&amp;amp;w_{t+1} = \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} f_i(w) \\
+&amp;amp;\approx \arg \min_{w \in S} \psi(w) + \sum_{i=1}^{t} \nabla
+f_{i}(w_{i})^\top w \\
+&amp;amp;= \arg \max_{w \in S} \underbrace{\left[-\sum_{i=1}^{t} \nabla
+f_{i}(w_{i})\right]^\top}_{v_{t+1}^\top} w - \psi(w) \\
+&amp;amp;= \nabla \psi^*(v_t)
+\end{aligned}
+\]&lt;/span&gt; This motivates the online mirror descent.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Algorithm: &lt;strong&gt;online mirror descent&lt;/strong&gt;.&lt;/p&gt;
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;Pick an &lt;strong&gt;initial point&lt;/strong&gt; &lt;span class=&#34;math inline&#34;&gt;\(w_1 \in S\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;For &lt;span class=&#34;math inline&#34;&gt;\(t=1\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(T\)&lt;/span&gt; do:
+&lt;ol type=&#34;1&#34;&gt;
+&lt;li&gt;Output &lt;span class=&#34;math inline&#34;&gt;\(w_t\)&lt;/span&gt; (in fact, this &lt;span class=&#34;math inline&#34;&gt;\(w_t\)&lt;/span&gt; is computed in last timestep and
+formally should have been &lt;span class=&#34;math inline&#34;&gt;\(w_{t-1}\)&lt;/span&gt;
+in the previous context) and receive &lt;span class=&#34;math inline&#34;&gt;\(f_t\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Compute &lt;span class=&#34;math inline&#34;&gt;\(z_t = -\nabla
+f_t(w_t)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Update &lt;span class=&#34;math inline&#34;&gt;\(v_t \leftarrow v_{t-1} +
+z_t\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Update &lt;span class=&#34;math inline&#34;&gt;\(w_{t+1} \leftarrow \arg \min_{w}
+\psi(w) - w^\top \theta = \nabla \psi^*(v_t)\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Definition: &lt;strong&gt;strongly-convex and smooth function&lt;/strong&gt;.
+Given a convex differentiable function &lt;span class=&#34;math inline&#34;&gt;\(\psi
+: \R^d \to \R\)&lt;/span&gt;, consider its Bregman divergence &lt;span class=&#34;math inline&#34;&gt;\(D_\psi\)&lt;/span&gt;. Then,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We call &lt;span class=&#34;math inline&#34;&gt;\(\psi\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;-strongly-convex with respect to norm
+function &lt;span class=&#34;math inline&#34;&gt;\(\| \cdot \|\)&lt;/span&gt; if for every
+&lt;span class=&#34;math inline&#34;&gt;\(w, u\)&lt;/span&gt; we have &lt;span class=&#34;math inline&#34;&gt;\(D_\psi(w \| u) \ge \mu \|w − u\|_2^2\)&lt;/span&gt;,
+which is equivalent to that for every &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(H_\psi(x)
+\succeq \mu I\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;We call &lt;span class=&#34;math inline&#34;&gt;\(\psi\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt;-smooth with respect to norm
+function &lt;span class=&#34;math inline&#34;&gt;\(\| \cdot \|\)&lt;/span&gt; if for every
+&lt;span class=&#34;math inline&#34;&gt;\(w, u\)&lt;/span&gt; we have &lt;span class=&#34;math inline&#34;&gt;\(D_\psi(w \| u) \le \frac{\lambda}{2} \|w −
+u\|_2^2\)&lt;/span&gt;, which is equivalent to &lt;span class=&#34;math inline&#34;&gt;\(\|
+\nabla \psi(w) - \nabla \psi(u)\|_2 \le \lambda \|w-u\|\)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Theorem: &lt;strong&gt;strong convexity and smoothness&lt;/strong&gt;. &lt;span class=&#34;math inline&#34;&gt;\(\psi\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;-strongly-convex w.r.t to norm &lt;span class=&#34;math inline&#34;&gt;\(\| \cdot \|\)&lt;/span&gt; if and only if its Fenchel
+conjugate &lt;span class=&#34;math inline&#34;&gt;\(\psi^*\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(\frac{1}{\mu}\)&lt;/span&gt;-smooth w.r.t. dual norm
+&lt;span class=&#34;math inline&#34;&gt;\(\| \cdot \|_*\)&lt;/span&gt; where &lt;span class=&#34;math display&#34;&gt;\[
+\| w \|_* = \max_{\|u\| \le 1} w^\top u
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

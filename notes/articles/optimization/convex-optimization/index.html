@@ -60,8 +60,7 @@
   
     
   
-  <meta name="description" content="Definitions  Convex Set
-A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X\), then \(\forall \alpha \in [0,1], \alpha x^{(1)} &#43; (1 - \alpha)x^{(2)} \in \mathcal X\)." />
+  <meta name="description" content="Definitions Definitions Convex Set A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X\), then \(\forall \alpha \in [0,1], \alpha x^{(1)} &#43; (1 - \alpha)x^{(2)}" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/optimization/convex-optimization/" />
@@ -322,8 +321,7 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/optimization/convex-optimization/" />
   <meta property="og:title" content="Convex Optimization | Chunxy&#39; Website" />
-  <meta property="og:description" content="Definitions  Convex Set
-A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X\), then \(\forall \alpha \in [0,1], \alpha x^{(1)} &#43; (1 - \alpha)x^{(2)} \in \mathcal X\)." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="Definitions Definitions Convex Set A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X\), then \(\forall \alpha \in [0,1], \alpha x^{(1)} &#43; (1 - \alpha)x^{(2)}" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -501,6 +499,36 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
 
           <li class="nav-item">
             <a class="nav-link  active" href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
           </li>
 
           
@@ -773,6 +801,10 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -781,7 +813,7 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1011,6 +1043,39 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1337,7 +1402,10 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
       <nav id="TableOfContents">
   <ul>
     <li><a href="#definitions">Definitions</a></li>
+    <li><a href="#definitions-1">Definitions</a></li>
+    <li><a href="#properties">Properties</a></li>
     <li><a href="#standard-form">Standard Form</a></li>
+    <li><a href="#convex-conjugate">Convex Conjugate</a></li>
   </ul>
 </nav>
 
@@ -1423,6 +1491,7 @@ A set \(\mathcal X\) is called a convex set if \(x^{(1)}, x^{(2)} \in \mathcal X
             
 
 <h3 id="definitions">Definitions</h3>
+<h3 id="definitions-1">Definitions</h3>
 <ul>
 <li><p>Convex Set</p>
 <p>A set <span class="math inline">\(\mathcal X\)</span> is called a
@@ -1449,13 +1518,12 @@ if <span class="math inline">\(\nabla^2f(x)_{ij} =
 <blockquote>
 <p>Theorem: Any local minima of a convex function <span class="math inline">\(f: \R^N \mapsto \R\)</span> is also a global
 minima.</p>
-<p>Proof:</p>
-<p>Suppose <span class="math inline">\(y\)</span> is a local minima.
-Then there exists a number <span class="math inline">\(r &gt; 0\)</span>
-such that <span class="math inline">\(\forall x \in dom(f) \land
-||x-y||_2 \le r \Rightarrow f(x) \ge f(y)\)</span>. Suppose instead
-there exists a global minima <span class="math inline">\(z\)</span>.
-Then it must hold that <span class="math display">\[
+<p>Proof: Suppose <span class="math inline">\(y\)</span> is a local
+minima. Then there exists a number <span class="math inline">\(r &gt;
+0\)</span> such that <span class="math inline">\(\forall x \in dom(f)
+\land ||x-y||_2 \le r \Rightarrow f(x) \ge f(y)\)</span>. Suppose
+instead there exists a global minima <span class="math inline">\(z\)</span>. Then it must hold that</p>
+<p><span class="math display">\[
 \begin{gather}
 ||y-z||_2 &gt; r \\
 0 &lt; \frac{r}{||y-z||_2} &lt; 1
@@ -1479,6 +1547,24 @@ f(\theta y + (1 - \theta)z) \le \theta f(y) + (1 - \theta)f(z) &lt;
 \]</span> which contradicts that <span class="math inline">\(f(\theta y
 + (1 - \theta)z) \ge f(y)\)</span> derived. In other words, <span class="math inline">\(y\)</span> is a global minima.</p>
 </blockquote>
+<h3 id="properties">Properties</h3>
+<ul>
+<li><p>Super-additivity</p>
+<p>For a convex function <span class="math inline">\(f\)</span> such
+that <span class="math inline">\(f(0) = 0\)</span>, it is super-additive
+in that <span class="math display">\[
+f(x) + f(y) \le f(x+y)
+\]</span> To show it, notice that <span class="math display">\[
+\begin{aligned}
+&amp; f(x) + f(y) = f(\frac{x}{x+y}(x+y)) + f(\frac{y}{x+y}(x+y)) \\
+&amp;= f(\frac{x}{x+y}(x+y) + \frac{y}{x+y} \cdot 0) +
+f(\frac{y}{x+y}(x+y) + \frac{x}{x+y} \cdot 0) \\
+&amp;\le \frac{x}{x+y} f(x+y) + \frac{y}{x+y} f(0) + \frac{y}{x+y}
+f(x+y) + \frac{x}{x+y}f(0) \\
+&amp;= f(x+y)
+\end{aligned}
+\]</span></p></li>
+</ul>
 <h3 id="standard-form">Standard Form</h3>
 <p>Standard form of the optimization problem is <span class="math display">\[
 \begin{aligned}
@@ -1494,6 +1580,27 @@ s.t.\quad &amp;f_i(x) \le 0, i = 1,\dots,r \\
 &amp;\text{$f_0,\dots,f_r$ are convex, and $a_0,\dots,a_s \in \R^N$}
 \end{aligned}
 \]</span></p>
+<h3 id="convex-conjugate">Convex Conjugate</h3>
+<p>For a convex function <span class="math inline">\(f\)</span>, its
+<strong>convex conjugate</strong> <span class="math inline">\(f^*\)</span> is defined as <span class="math display">\[
+f^*(t) = \sup_x [x^T \cdot t - f(x)]
+\]</span> By definition, a Convex Conjugate pair <span class="math inline">\((f,f^*)\)</span> has the following property: <span class="math display">\[
+f(x) + f^*(t) \ge x^T \cdot t
+\]</span> As a conjugate, <span class="math inline">\(f^{**} =
+f\)</span>: <span class="math display">\[
+\begin{aligned}
+f^{**}(t) &amp;= \sup_x [x^T \cdot t - f^*(x)] \\
+&amp;= \sup_x [x^T \cdot t - \sup_y [y^T \cdot x - f(y)]] \\
+&amp;= \sup_x [x^T \cdot t + \inf_y [f(y) - y^T \cdot x]] \\
+&amp;= \sup_x \inf_y [x^T (t-y) + f(y)] \\
+&amp;\Downarrow_\text{Mini-max Theorem} \\
+&amp;= \inf_y \sup_x [x^T (t-y) + f(y)]
+\end{aligned}
+\]</span> The above reaches the infimum only if <span class="math inline">\(y=t\)</span>. Otherwise, <span class="math inline">\(\sup_x [x^T (t-y) + f(y)]\)</span> can make it to
+infinity. Therefore, <span class="math display">\[
+f^{**}(t) = \inf_y \sup_x [f(t)] = f(t)
+\]</span> <a href="https://en.wikipedia.org/wiki/Convex_conjugate">Wiki</a> || <a href="https://zhuanlan.zhihu.com/p/188702379">凸优化-凸共轭</a> || <a href="https://mpra.ub.uni-muenchen.de/80502/1/MPRA_paper_80502.pdf">MPRA_paper_80502.pdf
+(uni-muenchen.de)</a></p>
 
 
 

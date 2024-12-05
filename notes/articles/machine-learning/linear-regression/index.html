@@ -504,6 +504,36 @@
           
           
 
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
         
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1437,7 +1504,7 @@ mean square error: <span class="math display">\[
 \mathrm{MSE}(f,\mathcal D) = \frac{1}{M}\sum_{i=1}^M(y^{(i)} -
 f(x^{(i)}))^2
 \]</span></p>
-<p>As a sidenote, it is very convenient to standardize the feature (so
+<p>As an aside, it is very convenient to standardize the feature (so
 that the solution won’t depend to unit used in the measurement) and
 pre-center the label (so that the intercept term, or the bias term <span class="math inline">\(b\)</span> can be omitted).</p>
 <h3 id="ordinary-least-squares">Ordinary Least Squares</h3>
@@ -1445,8 +1512,7 @@ pre-center the label (so that the intercept term, or the bias term <span class="
 error: <span class="math display">\[
 w^\star, b^\star = \arg \min_{w,b}\frac{1}{M}\sum_{i=1}^M(y^{(i)} -
 w^Tx^{(i)} - b)^2
-\]</span> This is equivalent to the below least squares problem. Let
-<span class="math display">\[
+\]</span> This is equivalent to the least squares problem. Let <span class="math display">\[
 \begin{gathered}
 X =
 \left [
@@ -1466,13 +1532,10 @@ y^{(1)} \\
 y^{(2)} \\
 \vdots \\
 y^{(M)}
-\end{bmatrix} \\
-\\
-XW =  Y
+\end{bmatrix}
 \end{gathered}
-\]</span> <span class="math inline">\(Y\)</span> may not lie in the
-column space of <span class="math inline">\(X\)</span>. Therefore we
-have to approximate <span class="math inline">\(W\)</span> by <span class="math display">\[
+\]</span> Least squares problem aims to find the best approximation to
+<span class="math inline">\(Y\)</span> in <span class="math inline">\(X\)</span>’s column space, which is <span class="math inline">\(Y\)</span>’s projection in <span class="math inline">\(\Col(X)\)</span>. Therefore we solve <span class="math inline">\(W\)</span> by <span class="math display">\[
 \begin{aligned}
 X\hat W = \Pi_{\Col(X)}Y \Rightarrow Y &amp;- X\hat W \in \Nul(X^T) \\
 \Downarrow\\
@@ -1480,13 +1543,13 @@ X^T(Y - X\hat W) &amp;= 0 \\
 X^TX\hat W &amp;= X^TY
 \end{aligned}
 \]</span> Columns of <span class="math inline">\(X\)</span> are
-independent <span class="math inline">\(\iff\)</span> <span class="math inline">\(X^TX\)</span> is invertible. When <span class="math inline">\(X^TX\)</span> is not invertible, there are
-infinite many solutions to <span class="math inline">\(\hat W\)</span>.
-We can get one specific <span class="math inline">\(\hat W\)</span> by
-enforcing regularization on <span class="math inline">\(\hat W\)</span>
-or adding more samples when <span class="math inline">\(M &lt; N +
-1\)</span>. When <span class="math inline">\(X^TX\)</span> is
-invertible, there is a unique solution that <span class="math inline">\(\hat W = (X^TX)^{-1}X^TY\)</span>.</p>
+independent <span class="math inline">\(\iff\)</span> <span class="math inline">\(X^TX\)</span> is invertible because they share the
+same nullspace. When <span class="math inline">\(X^TX\)</span> is not
+invertible, there are infinite many solutions to <span class="math inline">\(\hat W\)</span>. We can get one specific <span class="math inline">\(\hat W\)</span> by enforcing regularization on
+<span class="math inline">\(\hat W\)</span> or adding more samples when
+<span class="math inline">\(M &lt; N + 1\)</span>. When <span class="math inline">\(X^TX\)</span> is invertible, there is a unique
+solution that <span class="math inline">\(\hat W =
+(X^TX)^{-1}X^TY\)</span>.</p>
 <p>This gives the same result with minimizing the MSE: <span class="math display">\[
 \begin{gather}
 W^\star = \arg \min_{W} \mathrm{MSE}(W) = \frac{1}{M}(Y - XW)^T(Y - XW)
@@ -1645,7 +1708,7 @@ to <span class="math inline">\(l_1\)</span>-norm: <span class="math display">\[
 norm is that, <span class="math inline">\(1\)</span> is the least number
 that preserves convexity among the <span class="math inline">\(l_p\)</span> norms. Interestingly, when the
 penalty term on the <span class="math inline">\(l_1\)</span> norm is
-large enough, the resulting estimation will be zero (refer <a href="https://stats.stackexchange.com/questions/280823/what-is-the-mathematical-rigorous-proof-that-l1-regularization-will-give-sparse">this</a>).
+large enough, the resulting estimation will be zero (refer to <a href="https://stats.stackexchange.com/questions/280823/what-is-the-mathematical-rigorous-proof-that-l1-regularization-will-give-sparse">this</a>).
 The solution to the lasso regression can be efficiently approached using
 <a href="/notes/articles/optimization/coordinate-descent/">coordinate descent</a> or <a href="/notes/articles/optimization/least-angle-regression/">least angle regression</a>.</p>
 <h2 id="external-materials">External Materials</h2>

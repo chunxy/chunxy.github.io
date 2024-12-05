@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Advanced Topics in Distributed System | Chunxy&#39; Website</title>
+    <link>https://chunxy.github.io/courses/advanced-topics-in-distributed-system/</link>
+      <atom:link href="https://chunxy.github.io/courses/advanced-topics-in-distributed-system/index.xml" rel="self" type="application/rss+xml" />
+    <description>Advanced Topics in Distributed System</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 10 Jul 2022 12:58:49 +0000</lastBuildDate>
+    <image>
+      <url>https://chunxy.github.io/media/sharing.png</url>
+      <title>Advanced Topics in Distributed System</title>
+      <link>https://chunxy.github.io/courses/advanced-topics-in-distributed-system/</link>
+    </image>
+    
+  </channel>
+</rss>

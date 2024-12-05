@@ -1,0 +1,1588 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Chunxy&#39; personal website" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/courses/advanced-topics-in-distributed-system/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.84ebe1e3608d6fadc06cb4d7207008ff.css" />
+
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J44SJXJTFD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url, target) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           if (target !== '_blank') {
+             document.location = url;
+           }
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-J44SJXJTFD', {});
+  gtag('set', {'cookie_flags': 'SameSite=None;Secure'});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+    <link rel="alternate" href="/courses/advanced-topics-in-distributed-system/index.xml" type="application/rss+xml" title="Chunxy&#39; Website" />
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc0707d156b6b3b9945e544e63d06d5e5_16450_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://chunxy.github.io/courses/advanced-topics-in-distributed-system/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+  <meta property="og:site_name" content="Chunxy&#39; Website" />
+  <meta property="og:url" content="https://chunxy.github.io/courses/advanced-topics-in-distributed-system/" />
+  <meta property="og:title" content="Advanced Topics in Distributed System | Chunxy&#39; Website" />
+  <meta property="og:description" content="Chunxy&#39; personal website" /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+    <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta property="og:updated_time" content="2022-07-10T12:58:49&#43;00:00" />
+    
+  
+
+  
+
+
+
+  
+
+  
+
+  <title>Advanced Topics in Distributed System | Chunxy&#39; Website</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="05c05b11146b1d8da7739a4378cf031c" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.2ed908358299dd7ab553faae685c746c.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Chunxy&#39; Website</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blogs/"><span>Blogs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/courses/"><span>Courses</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+        
+          Courses
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/courses/">Courses</a></li>
+    
+      
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/energy-efficient-computing/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Efficient Computation</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/energy-efficient-computing/images/">Note</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/foundations-of-optimization/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Optimization</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/1-optimization-problem/">1-optimization-problem</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/2-convex-set/">2-convex-set</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/3-convex-function/">3-convex-function</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/4-linear-programming/">4-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/5-conic-linear-programming/">5-conic-linear-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/6-optimizaition-under-uncertainty/">6-optimizaition-under-uncertainty</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/7-quadratically-constrained-quadratic-programming/">7-quadratically-constrained-quadratic-programming</a></li>
+
+
+
+  <li class=""><a href="/courses/foundations-of-optimization/8-nonlinear-programming/">8-nonlinear-programming</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/courses/machine-learning-theory/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Machine Learning Theory</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/courses/machine-learning-theory/0-intro/">0-intro</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/1-exp-family/">1-exp-family</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/2-uniform-convergence/">2-uniform-convergence</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/3-rademacher-complexity/">3-rademacher-complexity</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/4-vc-dimension/">4-vc-dimension</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/5-kernel-methods/">5-kernel-methods</a></li>
+
+
+
+  <li class=""><a href="/courses/machine-learning-theory/6-online-learning/">6-online-learning</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link  active" href="/courses/advanced-topics-in-distributed-system/"><img src="/media/icons/header1.png" alt="header1.png" class="svg-icon svg-baseline pr-1">Distributed System</a>
+    
+
+    
+      </div>
+    
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#distributed-system-modelling">Distributed System Modelling</a>
+      <ul>
+        <li><a href="#communication-model">Communication Model</a></li>
+        <li><a href="#fault-model">Fault Model</a></li>
+        <li><a href="#consistency-model">Consistency Model</a></li>
+        <li><a href="#integrity-of-distributed-system">Integrity of Distributed System</a></li>
+      </ul>
+    </li>
+    <li><a href="#time-and-order">Time and Order</a>
+      <ul>
+        <li><a href="#implementing-total-order">Implementing Total Order</a></li>
+        <li><a href="#implementing-causal-order">Implementing Causal Order</a></li>
+        <li><a href="#implementing-fifo-order">Implementing FIFO Order</a></li>
+      </ul>
+    </li>
+    <li><a href="#leader-election">Leader Election</a>
+      <ul>
+        <li><a href="#one-line-solution">One-line Solution</a></li>
+        <li><a href="#bully-algorithm">Bully Algorithm</a></li>
+      </ul>
+    </li>
+    <li><a href="#fault-model-1">Fault Model</a>
+      <ul>
+        <li><a href="#crash-fault">Crash Fault</a></li>
+        <li><a href="#network-partitioning">Network Partitioning</a></li>
+        <li><a href="#byzantine-fault">Byzantine Fault</a></li>
+      </ul>
+    </li>
+    <li><a href="#consensus">Consensus</a>
+      <ul>
+        <li><a href="#the-problem">The Problem</a></li>
+        <li><a href="#protocols">Protocols</a></li>
+      </ul>
+    </li>
+    <li><a href="#cap-and-eventual-consistency">CAP and Eventual Consistency</a>
+      <ul>
+        <li><a href="#eventual-consistency">Eventual Consistency</a></li>
+        <li><a href="#case-study-crdt">Case Study: CRDT</a></li>
+      </ul>
+    </li>
+    <li><a href="#distributed-caching">Distributed Caching</a></li>
+    <li><a href="#blockchain">Blockchain</a>
+      <ul>
+        <li><a href="#public-blockchain">Public Blockchain</a></li>
+        <li><a href="#private-blockchain">Private Blockchain</a></li>
+      </ul>
+    </li>
+    <li><a href="#distributed-transaction">Distributed Transaction</a>
+      <ul>
+        <li><a href="#single-node-transaction">Single-node Transaction</a></li>
+        <li><a href="#multi-node-transaction">Multi-node Transaction</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+            
+  <nav class="d-none d-md-flex" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      
+  
+    
+  
+    
+  
+
+    <li class="breadcrumb-item">
+      <a href="/">
+        
+          Home
+        
+      </a>
+    </li>
+  
+
+    <li class="breadcrumb-item">
+      <a href="/courses/">
+        
+          Courses
+        
+      </a>
+    </li>
+  
+
+      <li class="breadcrumb-item active" aria-current="page">
+        Distributed System
+      </li>
+    </ol>
+  </nav>
+
+
+
+
+          
+        </div>
+
+        
+        
+
+        <div class="docs-article-container">
+          <h1>Advanced Topics in Distributed System</h1>
+
+          <div class="article-style">
+            <h2 id="distributed-system-modelling">Distributed System Modelling</h2>
+<h3 id="communication-model">Communication Model</h3>
+<p>Formally, there are two types of delay in distributed system, namely the <strong>message delay</strong> $\Delta$ and the <strong>processing delay</strong> $\Phi$. But we treat them as one in this course.</p>
+<ul>
+<li><strong>Fully synchronous</strong>: there is a known upper bound on the delay of message.</li>
+<li><strong>Weakly synchronous</strong>: the delay grows at most in polynomials w.r.t. timeout $t$.</li>
+<li><strong>Semi-synchronous</strong>: there is a known probability distribution on the delay.</li>
+<li><strong>Partially synchronous</strong>: there is an unknown upper bound on the delay.</li>
+<li><strong>Asynchronous</strong>: there is no upper bound on the delay of the message.</li>
+</ul>
+<p>Note that we don&rsquo;t contemplate that the message may be lost.</p>
+<h3 id="fault-model">Fault Model</h3>
+<p>In distributed system, everything will be fine if there is no failure.</p>
+<p><strong>Crash fault</strong> only considers that the participant goes down and (possibly) recovers. The participant will always play by the rule. This model is adopted by most tech giants. It can be proved that agreement cannot be reached in an asynchronous communication channel if even one crash fault is allowed (<a href="https://www.wikiwand.com/en/articles/Consensus_%28computer_science%29#The_FLP_impossibility_result_for_asynchronous_deterministic_consensus" target="_blank" rel="noopener">FLP theorem</a>).</p>
+<p><strong>Byzantine fault</strong> assumes the adversarial case that the participant may be hostile and may sabotage the system. This is the case in Bitcoin (check how Bitcoin tolerates the Byzantine failure).</p>
+<h3 id="consistency-model">Consistency Model</h3>
+<p>Note that consistency in distributed system (determined by the order observed)  shares some similarity with the <a href="https://www.wikiwand.com/en/articles/Consistency_model" target="_blank" rel="noopener">consistency in the memory</a>. Multi-core CPU can be treated as a distributed system, though operating system hides this fact from the user.</p>
+<p>Database is a kind of in between the distributed system and the memory. The consistency in distributed world is also referred to as <strong>external consistency</strong> in the context of database, c.f. the <strong>(internal) consistency</strong> and <strong>isolation</strong> of ACID properties.</p>
+<h3 id="integrity-of-distributed-system">Integrity of Distributed System</h3>
+<h4 id="correctness">Correctness</h4>
+<p>Aforementioned models underpin the discussion of the <strong>correctness</strong> for distributed system. The correctness can be grouped into:</p>
+<ul>
+<li>
+<p><strong>Safety property</strong></p>
+<p>Safety means that &ldquo;bad things do not happen&rdquo;. This is the system invariant that has to be maintained during the lifespan. Safety property can be proven by induction.</p>
+</li>
+<li>
+<p><strong>Liveness property</strong></p>
+<p>Liveness means &ldquo;good things do happen&rdquo;, given the allowance that it can be reached progressively instead of immediately. Particularly, it means the system won&rsquo;t get stuck. It can only be shown by logic or <a href="https://www.wikiwand.com/en/articles/TLA%2B" target="_blank" rel="noopener">TLA+</a>. Some examples of liveness include:</p>
+<ul>
+<li>progress (no starvation)</li>
+<li>termination</li>
+<li>consensus</li>
+</ul>
+</li>
+</ul>
+<h4 id="time-complexity">Time Complexity</h4>
+<p>Messaging incurred during communication is the major source of time complexity in distributed system.</p>
+<h2 id="time-and-order">Time and Order</h2>
+<p>The time of occurrence of the events naturally define an order among them. However, due to that the communication among computers is not instant, participants in the distributed system just cannot agree on the exact time and thus the order defined on time (but to check how time is synchronized over Internet, see <a href="https://stackoverflow.com/questions/389417/synchronization-of-clocks-between-two-remote-computers" target="_blank" rel="noopener">this</a> and <a href="https://lvsizhe.github.io/course/2018/09/time-in-distributed-systems-part1.html" target="_blank" rel="noopener">this</a>), since participants cannot wait indefinitely for a latecomer claiming that it is earlier.</p>
+<p>But we need the time mostly for <strong>ordering</strong>, instead of the exact value. Regardless, we can still define orders among the events.  Below lists some common orderings on events in distributed system:</p>
+<ul>
+<li><strong>Total order</strong>: a total order can be defined on the events and thus all replicas process messages in the same order; the order may not respect the real time; required by banking; system observing total order is <strong>sequentially consistent</strong> (the system behaves as if there is only one machine); total order respecting the real time gives <strong>linearizability</strong>.</li>
+<li><strong>Causal order / happen-before order</strong>: the order tells the causal relationship or the explicit dependency (e.g. reply-to) between events; typical causal order is reflected in <em>send-recv</em> or <em>reply-to</em> paradigm.</li>
+<li><strong>FIFO order</strong>: different nodes can process events in different orders so long as the order of events from the same source is preserved; viable in some social network applications.</li>
+</ul>
+<p>Note that order and consistency are different. Order is a relation defined on the events. A system observing xxx-order can be said as xxx-consistent.</p>
+<h3 id="implementing-total-order">Implementing Total Order</h3>
+<ul>
+<li>System needs a global sequencer (leader).</li>
+<li>Before sending messages, follower asks sequencer for a timestamp.</li>
+<li>System needs to handle failure case (e.g. in replicated state machine).</li>
+</ul>
+<p>The problem is that the system is <strong>bottlenecked</strong> by the central server (the global sequencer).</p>
+<h3 id="implementing-causal-order">Implementing Causal Order</h3>
+<p>The time of events on the single node are easy to compare; while for events on different nodes, this rings the bell of first principle problem of distributed system.</p>
+<p>Anyway, if an order strictly based on time is insisted, we can only ensure a <strong>partial order</strong>. A total order above can be achieved simply because we break ties arbitrarily (e.g. by node ID or leader&rsquo;s whim).</p>
+<h4 id="lamports-logical-clock">Lamport&rsquo;s Logical Clock</h4>
+<ul>
+<li>Each node has a local counter.</li>
+<li>If any local event (neither sending nor receiving) happens, increment the local counter.</li>
+<li>Piggyback the counter when sending the message.</li>
+<li>Reset the local counter as the <code>max(local counter, message counter) + 1</code> when receiving the message</li>
+</ul>
+<p>If <code>LC(x) &lt; LC(y)</code>, we can only be assured that either <code>x</code> causes (happens before) <code>y</code> or they happen concurrently. How to determine <code>x &lt; y</code> $\iff$ <code>Clock(x) &lt; Clock(y)</code>?</p>
+<h4 id="lamports-vector-clock">Lamport&rsquo;s Vector Clock</h4>
+<ul>
+<li>Each node has a local vector clock.</li>
+<li>If any local event happens, increment self entry of self vector clock, i.e. <code>VC[i][i]++</code>.</li>
+<li>When sending the message, piggyback the clock .</li>
+<li>When receiving the message, reset the local clock as <code>max(local clock, message clock)</code>, where the <code>max</code> is the element-wise max-out, increment self entry of self vector clock.</li>
+</ul>
+<p>Now when <code>VC(x) &lt; VC(y)</code>, where $&lt;$ means $\forall k, x_k \le y_k \and VC(x) \ne VC(y)$ , we can say that <code>x</code> happens before (and thus may cause) <code>y</code>.</p>
+<h3 id="implementing-fifo-order">Implementing FIFO Order</h3>
+<p>This can be achieved so long as the client labels the message.</p>
+<h2 id="leader-election">Leader Election</h2>
+<p>Leader is for efficiency sake. In most cases, it reduces the messaging cost from $O(n^2)$ to $O(n)$.</p>
+<p>Leader election is alike to <strong>mutual exclusion</strong> problem because every time exactly one machine can be the leader. However, they differ in two ways:</p>
+<ul>
+<li>mutual exclusion hates starvation while a leader stays as long as there is no failure, which violates the <em>bounded waiting</em> in mutual exclusion;</li>
+<li>mutual exclusion doesn&rsquo;t handle <strong>failed leader</strong>.</li>
+</ul>
+<h3 id="one-line-solution">One-line Solution</h3>
+<p>The node with highest ID becomes the leader. Say for example, everyone broadcasts its IP address and the node with highest IP wins the election.</p>
+<p>In distributed system, we always dig out corner case that fails the protocol. Regarding this one-line solution, it is possible that the node with highest IP repeatedly die and recover, leading to recurrent &ldquo;by-elections&rdquo;. This reinforces the idea that &ldquo;everything will be fine if there is no failure&rdquo;.</p>
+<h3 id="bully-algorithm">Bully Algorithm</h3>
+<p>Bully algorithm improves on the one-line solution. It works on <strong>fully-connected</strong> network and it assumes a <strong>synchronous, fail-stop</strong> setting by introducing a timeout.</p>
+<p>In Bully algorithm, once a node detects that the leader has failed (by timeout), it sends an <code>Election</code> message to those whose ID are greater than itself, trying to claim the leadership.</p>
+<ul>
+<li>If any node with larger ID replies, it gives up and waits for the <code>Leader</code> message;</li>
+<li>If it receives no reply about the <code>Election</code> message after timeout, it thinks it can be the leader and sends out the <code>Leader</code> message to all others;</li>
+<li>If it receives <code>Reply</code> message from larger-ID node but no further <code>Leader</code> message after timeout, it assumes the new leader has died and re-trigger the leader election;</li>
+<li>If it receives <code>Election</code> message from smaller-ID node, it sends <code>Reply</code> back and triggers the leader election.</li>
+</ul>
+<p>The trick is, sending to highest-ID node known so far and waiting for potential timeout is not worth sending to larger ID in parallel, because highest-ID node may have died.</p>
+<p>Best-case (highest-ID node detects the failure) message complexity is $O(n)$; worst-case (lowest-ID node detects the failure) message complexity is $O(n^2)$.</p>
+<h2 id="fault-model-1">Fault Model</h2>
+<p>Current <strong>dependable computing</strong> assumption makes the following speculations 1) message are not lost; 2) each peer is honest and cooperative. <u>Due to FLP</u>, in an asynchronous system, fault detection can&rsquo;t be both complete and accurate.</p>
+<blockquote>
+<ul>
+<li><strong>Complete</strong>: you don&rsquo;t miss any faulty node.</li>
+<li><strong>Accurate</strong>: you won&rsquo;t get any false alarm.</li>
+</ul>
+</blockquote>
+<p>We prefer <strong>completeness</strong> to <strong>accuracy</strong> (even if it may overkill). Some fault detection algorithms include:</p>
+<ul>
+<li>ping-ack (source-driven/demand-driven)</li>
+<li>heartbeat (target-driven)</li>
+</ul>
+<h3 id="crash-fault">Crash Fault</h3>
+<p>Crash means the node is either permanently dead, or being slow in response or dead and then recovered (under asynchronous model, one cannot differentiate slow network and node failure).</p>
+<p>On crash fault, we assume <strong>fail-stop</strong> in which case most protocols deal with:</p>
+<ul>
+<li>the node crashes like a segmentation fault;</li>
+<li>others can detect the failure; otherwise it&rsquo;s a <strong>crash-stop</strong>;</li>
+<li>the internal state in failed node is lost (logs are not assumed to be persisted).</li>
+</ul>
+<h3 id="network-partitioning">Network Partitioning</h3>
+<h3 id="byzantine-fault">Byzantine Fault</h3>
+<p>Byzantine failure generalizes the above failures. In essence, Byzantine failure is the fault in which case different symptoms are presented to different observers (e.g. the malicious node passing different messages to different nodes).</p>
+<h2 id="consensus">Consensus</h2>
+<h3 id="the-problem">The Problem</h3>
+<p>We have $n$ nodes , each labeled as $0,\dots,n-1$. Each node proposes its own initial value in an agreed domain. In the end, every node should agree upon an irrecoverable final decision value.</p>
+<p>Consensus is about reaching agreement <strong>instead of voicing out opinions</strong>. <strong>Agreement</strong> means the value of <strong>non-faulty</strong> node should be identical to other non-faulty processes. <strong>Termination</strong> means every node must reach a final value. <strong>Validity</strong> is a sanity check: the final decision must be chosen from initial proposals, instead of being a trivial value.</p>
+<p>Some examples of consensus problem include:</p>
+<ul>
+<li>
+<p>leader election (Bully algorithm);</p>
+</li>
+<li>
+<p>distributed transaction (2PC);</p>
+</li>
+<li>
+<p>agreement problem (where a node brings up a proposal and others say yes or no);</p>
+</li>
+<li>
+<p>replicated state machine (RAFT).</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>FLP Theorem (Hardness of &lt;synchronous&gt; Consensus Problem)</strong>: it is not possible for a <strong>deterministic</strong> protocol to solve consensus in an <strong>asynchronous</strong> system with $\ge 1$ processes that may <strong>crash-stop</strong>.</p>
+</blockquote>
+<p>If we switch to <strong>synchronous</strong> setting, things will be a lot better.</p>
+<blockquote>
+<p><strong>Byzantine Generals Problem</strong>: BGP allegory considers a number of generals attacking a fortress. Generals must agree upon a time to attack or simply just retreat. Any uncoordinated attack would lead to a defeat. Generals are physically separated and have to send out their votes via messengers who may fail to deliver the votes (<strong>which can be detected yet, indicating fail-stop and synchrony</strong>). The problem is complicated by the existence of traitor generals who may send different votes to different generals.</p>
+</blockquote>
+<blockquote>
+<p><strong>Byzantine Fault Tolerance Theorem (Hardness of &lt;asynchronous&gt; Consensus Problem)</strong>: When the number of malicious process $=1$, it is impossible to achieve consensus unless the number of processes $&gt; 3$. This can be generalized as such: when the number of malicious process $=f$, it is impossible to achieve consensus unless the number of processes $&gt; 3f$.</p>
+</blockquote>
+<h3 id="protocols">Protocols</h3>
+<h4 id="oral-message-protocol">Oral Message Protocol</h4>
+<p>There are two types of roles, namely commander and lieutenant. A general becomes a commander when he issues commands to other generals; he becomes lieutenant when he receives commands from others.</p>
+<p>By &ldquo;oral message&rdquo;, it means</p>
+<ul>
+<li>the receiver knows the sender of the message;</li>
+<li>the absence of a message can be detected.</li>
+</ul>
+<p>As a loyal lieutenant, before attack, a smart way is to confirm if others receive the same command as it does. Thus, everyone (as a general) should forward its received command to others. In this way, honest generals can confirm each other&rsquo;s vote and outweigh the traitors. Such is the intuition of Lamport&rsquo;s oral message solution.</p>
+<p>This solution is based on a recursive &ldquo;function&rdquo; call. Let $f$ be the number of traitors. The base case is $OM(0, v)$ where there is no traitor, in which case any commander can coordinate the attack. Otherwise,</p>
+<ul>
+<li>The commander $i$ initiates $OM(f, S - \set{i})$ and sends out a value $v$ to every lieutenant $j \notin S - \set{i}$.</li>
+<li>Upon receipt, every lieutenant $j$  initiates $OM(f-1, S - \set{i,j})$ as the commander and forwards $v_j$, which is its received vote, to every lieutenant $k \notin S - \set{i,j}$.</li>
+<li>After finishing the above recursive call, every lieutenant count votes.</li>
+</ul>
+<p>For detail, refer to this <a href="https://www.cs.fsu.edu/~xyuan/cop5611/lecture11.html" target="_blank" rel="noopener">post</a>??.</p>
+<h4 id="practical-bft">Practical-BFT</h4>
+<p>PBFT works under <strong>weak synchrony</strong>. It uses the message signature to ensure that the message from commander can&rsquo;t be tampered.</p>
+<h4 id="paxos">Paxos</h4>
+<h5 id="dummy-protocol">Dummy Protocol</h5>
+<p>The very intuition of reaching consensus is to commit so long as the majority accepts the message. This is reflected by the <strong>1-phase majority vote</strong> design. However in such design, the committed value is only known by the initiator but not shared among other learners, leading to potential inconsistency. If we make it <strong>1-phase collective vote</strong>, we lose the availability.</p>
+<p>To solve this, we either add another phase to broadcast the committed value (Paxos) or ensure that the value is agreed by the super-quorum (Fast-Paxos). Increasing the phase number means relying one node collecting information and broadcasting to others; while increasing the number of quorum means less fault tolerance. The key is tradeoff between the robustness to failure and the consistent result.</p>
+<h5 id="happy-path">Happy Path</h5>
+<p>Paxos assumes on the <strong>partial synchrony</strong> and <strong>zero Byzantine fault</strong>. There are <strong>three roles</strong> in Paxos protocol, namely proposer, voter and acceptor (developed from voter), and learner (who is outside the quorum and won&rsquo;t vote), which may or may not be exclusive. There are two phases, namely <strong>proposal election</strong> ($\ne$ leader election) and <strong>atomic total-order broadcast</strong>.</p>
+<p>In Paxos proposal, no actual value is attached during proposal election. The actual value is not attached until a majority accepts the proposer and then the proposer feels accepted by the majority and then sends out the value.</p>
+<ul>
+<li>
+<p>1a) <strong>Prepare Phase</strong></p>
+<p>Whichever <strong>proposer</strong> interested in proposing a value sends out a <code>Prepare&lt;N&gt;</code> message that contains a global unique identifier, say $N$, on which a total order can be defined (e.g. <code>&lt;proposer_ip, local_proposal_no&gt;</code>), informing all voters its attempt to be a <strong>leader</strong> (only after becoming a leader can a node propose value).</p>
+</li>
+<li>
+<p>1b) <strong>Promise Phase</strong></p>
+<p>For each <strong>voter</strong>,</p>
+<ul>
+<li>
+<p>if $N &gt; M$ where $M$ is the max identifier it has ever seen,</p>
+<ul>
+<li>if it has accepted another value $u$ (which is associated with $M$), it replies a <code>Promise&lt;M, u&gt;</code> message;</li>
+<li>else it replies a <code>Promise&lt;N, &quot;Any value is fine.&quot;&gt;</code> message;</li>
+</ul>
+</li>
+<li>
+<p>else ignore $N$&rsquo;s proposal to save communication;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>2a) Accept Phase</p>
+<p>For <strong>proposer</strong>,</p>
+<ul>
+<li>if its proposal $N$ receives a majority of promises, it becomes a <strong>&ldquo;leader&rdquo;</strong> (not the leader in the Raft sense; see later) and
+<ul>
+<li>if all received promises say <code>&quot;Any value is fine&quot;</code>, then it can decide the value as <code>v</code> and sends <code>Accept(N, v)</code> to all or the majority of voters;</li>
+<li>else probably the previous leader is dead and it shall propagate the legacy values and thus sends <code>Accept(N, v')</code> where $v&rsquo;$ is the value from the one with highest identifier among the set of replied promises;</li>
+</ul>
+</li>
+</ul>
+<p>For each <strong>voter</strong> (now as the <strong>acceptor</strong>),</p>
+<ul>
+<li>if it receives <code>Accept(N, v)</code> from proposer (leader already)
+<ul>
+<li>if $N$ is larger than the max identifier it has promised, return <code>Accepted(v)</code> to the leader;</li>
+<li>else it ignores this <code>Accept</code> message because this is an older message;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>2b) Accepted Phase</p>
+<p>For each <strong>leader</strong>, if it receives <code>Accpeted</code> message from the majority of the voters with the same proposal number $N$, the consensus is reached and the value is committed. Then it notifies others (including learners) about the accepted value.</p>
+</li>
+</ul>
+<h5 id="summary">Summary</h5>
+<p>Paxos is <strong>leaderless</strong> because every new value needs to go through the above two phases, meaning that voter is not prohibited from becoming a leader when the leader (for the current decree) exists yet. This means multiple decisions can be made in parallel (multi-decree parliament).</p>
+<p>The practical Paxos version is the <strong>Multi-Paxos</strong>, where leader is reused until it is dead (skipping Phase 1). Multi-Paxos is usually wrongly referred to as Paxos, even in the Raft paper.</p>
+<p>The downside of the Paxos paper is that it is incomplete, lacking of specifications for corner cases. For example, what if proposers propose aggressively and never let the leader gets the job done (a random cooldown period)? What if the leader dies? For detail, refer to <a href="https://understandingpaxos.wordpress.com/" target="_blank" rel="noopener">this post</a>.</p>
+<h4 id="raft">Raft</h4>
+<p>Usually reaching consensus leads to lower performance. Raft is designed for high availability in <strong>replicated state machine</strong>. It works under <strong>fail-stop</strong> setting (<strong>synchrony</strong>). The difference between RSM and broadcasting is that RSM only requires agreement on the final state while broadcasting requires agreement on the ordering of the input.</p>
+<hr>
+<hr>
+<ul>
+<li>
+<p>Three roles</p>
+<ul>
+<li>
+<p><strong>Leader</strong></p>
+<p>Leader handles all the client requests until it fails.</p>
+</li>
+<li>
+<p><strong>Follower</strong></p>
+<p>Follower forwards client request to the leader.</p>
+</li>
+<li>
+<p><strong>Candidate</strong></p>
+<p>When the leader is detected to have failed, whoever starts running for leadership becomes a candidate.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Three RPCs</p>
+<ul>
+<li>
+<p><code>AppendEntries</code></p>
+<p>This RPC may convey commands or nothing (as a heartbeat).</p>
+</li>
+<li>
+<p><code>RequestVote</code></p>
+<p>This happens when any follower detects that there is no RPC from the leader for the <strong>election timeout</strong> long.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Considerations</p>
+<ul>
+<li>leader election and log replication</li>
+<li>re-election (dead leader)</li>
+<li>split-brain (slow leader)</li>
+<li>configuration change</li>
+</ul>
+</li>
+</ul>
+<h5 id="happy-path-1">Happy Path</h5>
+<p>Raft maintains that replicas get the same input sequence, apply the log sequence serially (or serially-equivalently) and get the same output state. Every replica stores the input sequence as the input log. Each replica buffers its log entries until they are committed.</p>
+<p>Time is divided into <strong>terms</strong>. Each term begins with an election continued by normal operation with the elected leader. Term can be leaderless (and thus there is no operation in this term) due to the split vote. Each replica maintains its <strong>current term</strong> to check if it is out of date.</p>
+<p>For leader, it will request <code>AppendEntries</code> either for issuing command or as a heartbeat test. After issuing the command, it will receive from each follower whether the command has been buffered and the follower&rsquo;s current term (think why).</p>
+<p>If a follower receives nothing from the leader for the election timeout long, it will change to candidate. For candidate, when triggering election, it will increment its current term, vote for itself, and issue <code>RequestVote</code> to other replicas. This results in either <strong>majority vote</strong>, or <strong>split vote</strong> (in which case a new round of election is initiated), or &ldquo;the return of the king&rdquo; (in which case the candidate retreats).</p>
+<p>Upon new log entry, the leader firstly appends it to its own log and broadcasts the command to followers by <code>AppendEntries(cmd)</code>. Once the leader knows the command is on the majority, it applies the command and asks followers to apply by <code>AppendEntries(cmd, commitIdx)</code>.</p>
+<p>Raft maintains two <strong>safety</strong> properties:</p>
+<ol>
+<li><strong>Log matching</strong>: if two logs contain an entry with the same index and term, then the logs are identical in all entries up through the given index.</li>
+<li><strong>Leader completeness</strong>: once an entry is committed, its previous entries are also committed.</li>
+</ol>
+<h5 id="re-election">Re-election</h5>
+<p>As stated above, an entry is committed when the leader sees it replicated on the majority. Upon <code>RequestVote</code>, each replica checks candidate&rsquo;s term and log index. These two numbers of candidate&rsquo;s should be as least <strong>up-to-date</strong> as the replica&rsquo;s. This ensures that the leader always hold the most up-to-date log and log will only flow from leader to follower.</p>
+<p>On the other hand, a new leader never <strong>retries to commit</strong> its old-term entries to others (by re-broadcasting old-term entries); otherwise the system run the risk of overwriting committed entries ($\S5.4$ of Raft). These old-term entries are auto-committed if the leader is able to commit a new entry in the new term.</p>
+<h5 id="split-brain">Split-brain</h5>
+<p>This is solved by having each replica (including old leader) become the follower once it finds its term is stale upon rejection. At the same time, the stale replica should update its term as the rejecting replica.</p>
+<h5 id="configuration-change">Configuration Change</h5>
+<p>2-phase solution. Add phase to broadcast the information (kind of using one phase for synchronization).</p>
+<p>Once the follower receives and applies the C_old_and_new, it is in a joint-consensus mode. It has to accept rules in the both configuration.</p>
+<h2 id="cap-and-eventual-consistency">CAP and Eventual Consistency</h2>
+<p>Now we consider the network partition fault model.</p>
+<blockquote>
+<ul>
+<li><strong>Consistency</strong> means every read, possibly from difference client, receives the most recent write or an error (i.e. linearizability).</li>
+<li><strong>Availability</strong> means every request received by a non-faulty node in the system must result in a response.</li>
+<li><strong>Partition tolerance</strong> means the system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes.</li>
+</ul>
+<p><strong>CAP Theorem</strong>: If there is a network partition, one has to choose between consistency (linearizability) or availability.</p>
+</blockquote>
+<p>As an aside, consistency has different meanings in <u>distributed system</u>, <u>database</u> (in which it requires the validity of database rules be upheld), and <u>memory order</u>; availability has different meanings in <u>distributed system</u> and <u>software system</u>.</p>
+<p><strong>Linearizability</strong> is the de facto golden standard in terms of order in the distributed world. Depending on the order observed, the consistency level of a distributed system contains:</p>
+<ul>
+<li>strong consistency / atomic consistency (linearizability)</li>
+<li>sequential consistency (total order)</li>
+<li>causal consistency (causal order)</li>
+<li>FIFO consistency (FIFO order)</li>
+<li>eventual consistency</li>
+</ul>
+<p>Due to the CAP theorem, we have to the relax the requirement on consistency by allowing for more divergence across the replicas.</p>
+<h3 id="eventual-consistency">Eventual Consistency</h3>
+<p>Eventual consistency guarantees that there are no lost updates. Eventually, i.e. when there are no further updates, current updates will be propagated to all the replicas and replicas are identical. But during operation, there is no guarantee on the order of these update events. As such, it allows the client to see <strong>inconsistent intermediate result</strong>.</p>
+<p>To ensure there are no lost updates, a record of all the intermediate updates needs to be kept.</p>
+<h3 id="case-study-crdt">Case Study: CRDT</h3>
+<p>Amazon&rsquo;s shopping cart implementation maintains a <em>insert-set</em> and a <em>remove-set</em> on each replica and occasionally merges the sets across the replicas. Now this implementation is generalized as <strong>conflict-free replicated data type</strong>.</p>
+<p>For a data structure to be CRDT, ACI properties have to be satisfied to facilitate the merge step:</p>
+<ul>
+<li><strong>associative</strong> to handle late arrival</li>
+<li><strong>commutative</strong> to handle reordered arrival</li>
+<li><strong>idempotence</strong> to handle duplicated arrival</li>
+</ul>
+<p>Two implementations of CRDT are <strong>commutative replicated data type (CmRDT)</strong> and <strong>convergent replicated data type (CvRDT)</strong>. Google Slides is an example of CmRDT (which exchanges the operations) and GitHub of CvRDT (which exchanges the final states)?</p>
+<p>If a data structure&rsquo;s operation does not follow ACI, order of the operations on the data structure has to be preserved (by using tricks introduced in [Time and Ordering](#Time and Ordering) section).</p>
+<p>We can have <strong>availability</strong> as well as <strong>scalability</strong> under network partition by relaxing consistency, with which the coordination used for upkeeping consistency becomes the bottleneck of throughput. Eventually consistent system is said to be coordination-free. But no coordination does not indicates no communication. For example, Amazon shopping card still needs communication to merge; Google Slides still needs communication to exchange. It is just that the system does not wait for agreement.</p>
+<h2 id="distributed-caching">Distributed Caching</h2>
+<p>P2P is an overlay decentralized network. It can either be <strong>structured or unstructured</strong>. On unstructured P2P, a peer can decide which files it hosts and finding a file requires message flooding.</p>
+<p>On structured P2P, the system maintains a <u>consistent hashing</u> table to map a file to a particular set of nodes. Let $K$ be the number of files and $n$ be the number of nodes. The advantage of consistent hashing is that, when a node dies, i.e. when the number of array slots changes, on average only $K / n$ files need to be remapped.</p>
+<p>To achieve this, the nodes and the files are separately hashed, resulting in a unique identifier for each node and file. To avoid the problem of having to reassign every BLOB when a server is added or removed, node and files are firstly placed on a virtual ring by modulo their hashing value with a specific number. Then the file is assigned to the next node that appears on the circle in clockwise order, which is the <strong>system invariant</strong> that needs to maintained throughout the lifespan.</p>
+<p>Now it is simple to contemplate how consistent hashing deals with the following operations:</p>
+<ul>
+<li>a search is initiated;</li>
+<li>a peer joins;</li>
+<li>a peer leaves;</li>
+<li>a peer fails.</li>
+</ul>
+<p>In baseline implementation, each node only knows its <strong>predecessor and successor</strong>. For better efficiency, a <strong>finger table</strong> that contains $+1, +2, +4, +8, +16, +32, \dots$ neighbors relative to node&rsquo;s own hashing value can be maintained to speed up searching.</p>
+<p>When a node $N_i$ joins, it has to ask its known peer $N_j$ to help it find the predecessor and successor. When a node leaves, it can gently informs its predecessor and successor and delivers the files properly. When a node fails, the system has to recover on its own. In either case, nodes in the system have to undergo a <strong>stabilization phase</strong> to update the finger table.</p>
+<p>Consistent hashing has been widely applied in cloud systems like Amazon Dynamo. For detail, refer to the <a href="https://www.wikiwand.com/en/articles/Consistent_hashing" target="_blank" rel="noopener">Wiki</a>.</p>
+<h2 id="blockchain">Blockchain</h2>
+<h3 id="public-blockchain">Public Blockchain</h3>
+<p>Public blockchain is a decentralized (not only distributed) probabilistic (instead of deterministic, to circumvent FLP) BFT RSM (handling leader election and log replication). It is confronted with many possible Byzantine attacks:</p>
+<ul>
+<li>a node creates a number of fake identities to occupy the majority so that it can tamper the account book, namely Sybil attack (resolved by PoW/PoS);</li>
+<li>a node falsely adds value to itself or double-spends the money (resolved by &ldquo;peer review&rdquo;);</li>
+<li>a node steals money from others&rsquo; account (resolved by cryptography).</li>
+</ul>
+<p>The log is a chain of blocks, which is append-only and tamper-proof (protected by the block hash and nonce). Leader election and log replication are secured by psychology and economic: it is not worthy of diverging from the main branch for individuals, so long as there are enough participants.  In essence, there is no failure handling in Blockchain&rsquo;s log replication.</p>
+<h3 id="private-blockchain">Private Blockchain</h3>
+<p>The upside of private/permissioned/consortium Blockchain is that it does not face the Sybil attack because every participant is licensed upon whom legal action can be forced.</p>
+<h2 id="distributed-transaction">Distributed Transaction</h2>
+<p>Below lists the difference of concurrency control in operating system and database:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>OS</th>
+<th>DB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scenario</td>
+<td>R/W on single value</td>
+<td>a transaction involves R/W on multiple values</td>
+</tr>
+<tr>
+<td>Correctness</td>
+<td>linearizability</td>
+<td>ACID</td>
+</tr>
+<tr>
+<td>Solution</td>
+<td>locking; lock-free methods</td>
+<td>2PL (pessimistic); validation-based method (optimistic)</td>
+</tr>
+</tbody>
+</table>
+<p>DB has a larger granularity of atomicity because of the transaction. As a result, it downgrades the golden requirement from the linearizability to the serializability. Building DB is quite reverse to <u>building consistent transactions with inconsistent replication</u>: DB as a slack system is built atop strict system.</p>
+<h3 id="single-node-transaction">Single-node Transaction</h3>
+<h4 id="2-phase-locking">2-phase Locking</h4>
+<ul>
+<li>If a transaction needs to read/write an item (say a row), it must acquire a lock first.</li>
+<li>A transaction may read/write multiple items. But once it starts unlocking, it cannot lock anymore<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</li>
+</ul>
+<p>2PL guarantees a serializable schedule, which is deducible from the locking order. The good aspect is it requires little coordination because everyone only needs to respect the rule locally and acquires the lock from the global lock table. However, deadlock can still happen in this case (which can be resolved by aborting one transaction).</p>
+<p>To improve performance, a finer-granularity locking (like shared/exclusive locking) can be applied.</p>
+<h4 id="optimal-concurrency-control">Optimal Concurrency Control</h4>
+<p>Instead of waiting for the lock, OCC lets transactions interleave whatever. But when conflict is observed, abort all the transactions.</p>
+<ul>
+<li>OCC records and cross-checks the timestamps of transactions&rsquo; read and write.</li>
+<li>Whenever a transaction reads and finds the item has already been written by a transaction whose timestamp is later than itself, it updates its own timestamp as the last-written timestamp and restarts.</li>
+</ul>
+<p>The serial order is equivalent to the final timestamp order. A finer control can be achieved by using multiple versions of an item (<strong>multi-version timestamp ordering</strong>), so that read can read from the version history, though more space will be consumed.</p>
+<p>OCC is a concept as well as a method. A more practical implementation is referred to as <strong>validation-based method</strong>, which comes in three phases for a single transaction:</p>
+<ul>
+<li>(Execution Phase) The writes are stored into <u>thread-local</u> <u>in-memory</u> <u>write-set</u>.</li>
+<li>(Validation Phase) Validates that the timestamps of a transaction&rsquo;s <u>read-set</u> and write-set do not conflict with those transactions that have already committed.</li>
+<li>(Commit Phase) If there is no overlap <strong>or</strong> serializability conflict (note that this is not <strong>neither-nor</strong>), lock, apply the write-set, and unlock. Otherwise, restart.</li>
+</ul>
+<h3 id="multi-node-transaction">Multi-node Transaction</h3>
+<p>2-phase commit (2PC) algorithm involves two phases: one phase for reaching decision and another for <em>commit</em>. Leader/coordinator is called <strong>transaction manager</strong> and follower/participant is called <strong>remote manager</strong> in this context. The paradigm is: TM firstly proposes a transaction and all nodes need to reach a unanimous decision. The intricacy in this setting is that, the system needs to reach a <strong>unanimous</strong> decision to reach a unanimous state, instead of merely consensus.</p>
+<p>Designing a distributed database involves <strong>concurrency control</strong> (entails locking remote memory), <strong>write-ahead logging</strong> and <strong>2PC</strong>. There are two ways to achieve a distributed database:</p>
+<ul>
+<li>distributed transaction without replication (global serializability)</li>
+<li>distributed transaction with replication (1-copy serializability)</li>
+</ul>
+<p>2PC is not fault-tolerant. Every replica has to maintain a lockstep. As such, it suffers from blocking due to 9 kinds of fail-stop. As a result, <strong>3PL</strong> (Paxos Commit) is proposed to mitigate the liveliness issue of 2PL, if not completely. <strong>Paxos-Commit</strong> protocol is proposed. It adds even more liveliness and thus suffers from lower efficiency.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>For atomicity and durability, locks are released only after the <em>commit request</em> to the log buffer, namely the Strict 2PL.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Jul 10, 2022</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Chunxy. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.6b237408b24ab0ca6e1a289724ba42ac.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.06ae91c9ae146f7126c01e6cceb0a4a6.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>

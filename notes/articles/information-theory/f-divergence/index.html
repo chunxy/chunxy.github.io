@@ -60,7 +60,7 @@
   
     
   
-  <meta name="description" content="\(f\)-divergence can be treated as the generalization of the KL-divergence. It is defined as \[ D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \] where \(f\) has to satisfy that \(f(1) = 0\) and \(f\) is a convex function." />
+  <meta name="description" content="\(f\)-divergence can be treated as the generalization of the KL-divergence. For continuous random variable, it is defined as \[ D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \] where \(f\) has to satisfy that \(f(1) = 0\) and \(f\) is a convex function." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://chunxy.github.io/notes/articles/information-theory/f-divergence/" />
@@ -321,7 +321,7 @@
   <meta property="og:site_name" content="Chunxy&#39; Website" />
   <meta property="og:url" content="https://chunxy.github.io/notes/articles/information-theory/f-divergence/" />
   <meta property="og:title" content="$f$-divergence | Chunxy&#39; Website" />
-  <meta property="og:description" content="\(f\)-divergence can be treated as the generalization of the KL-divergence. It is defined as \[ D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \] where \(f\) has to satisfy that \(f(1) = 0\) and \(f\) is a convex function." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
+  <meta property="og:description" content="\(f\)-divergence can be treated as the generalization of the KL-divergence. For continuous random variable, it is defined as \[ D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \] where \(f\) has to satisfy that \(f(1) = 0\) and \(f\) is a convex function." /><meta property="og:image" content="https://chunxy.github.io/media/sharing.png" />
     <meta property="twitter:image" content="https://chunxy.github.io/media/sharing.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -499,6 +499,36 @@
 
           <li class="nav-item">
             <a class="nav-link  active" href="/notes/"><span>Notes</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/courses/"><span>Courses</span></a>
           </li>
 
           
@@ -771,6 +801,10 @@
 
 
 
+  <li class=""><a href="/notes/articles/machine-learning/receiver-operator-characteristic/">Receiver Operator Characteristic</a></li>
+
+
+
   <li class=""><a href="/notes/articles/machine-learning/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a></li>
 
 
@@ -779,7 +813,7 @@
 
 
 
-  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/"></a></li>
+  <li class=""><a href="/notes/articles/machine-learning/mean-average-precision/">Mean Average Precision</a></li>
 
       
         </ul>
@@ -1009,6 +1043,39 @@
 
 
   <li class=""><a href="/notes/articles/mathematics/probability-and-statistics/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/">特征函数</a></li>
+
+      
+        </ul>
+      
+    
+
+    
+      </div>
+    
+
+
+
+  
+    
+    
+    
+    
+    
+
+    
+      <div class="docs-toc-item">
+        <a class="docs-toc-link " href="/notes/articles/mathematics/functional-analysis/"><img src="/media/icons/header2.png" alt="header2.png" class="svg-icon svg-baseline pr-1">Functional Analysis</a>
+    
+      
+        <ul class="nav docs-sidenav">
+      
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/fourier-transform/">Fourier Transform</a></li>
+
+
+
+  <li class=""><a href="/notes/articles/mathematics/functional-analysis/stirlings-approximation/">Stirling&#39;s Approximation</a></li>
 
       
         </ul>
@@ -1420,7 +1487,8 @@
             
 
 <p><span class="math inline">\(f\)</span>-divergence can be treated as
-the generalization of the KL-divergence. It is defined as <span class="math display">\[
+the generalization of the KL-divergence. For continuous random variable,
+it is defined as <span class="math display">\[
 D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x
 \]</span> where <span class="math inline">\(f\)</span> has to satisfy
 that <span class="math inline">\(f(1) = 0\)</span> and <span class="math inline">\(f\)</span> is a convex function. The reason for
@@ -1429,9 +1497,23 @@ these two constraints is that we hope <span class="math display">\[
 D_f (p||q) = 0 \text{ when $p=q$} \\
 \forall p, q, D_f (p||q) \ge 0
 \end{gather}
+\]</span> To show it, <span class="math display">\[
+D_f (p||q) = \int f(\frac{p(x)}{q(x)}) q(x)\ \d x \ge f(\int
+\frac{p(x)}{q(x)} q(x) \d x) = f(1) = 0 \\
 \]</span> When <span class="math inline">\(f(x) = x\log x\)</span>,
-<span class="math inline">\(f\)</span>-divergence becomes
-KL-divergence.</p>
+<span class="math inline">\(f\)</span>-divergence becomes KL-divergence.
+The log sum inequality property can be derived using the formulation of
+<span class="math inline">\(f\)</span>-divergence: <span class="math display">\[
+\begin{aligned}
+\sum_{i=1}^n a_i \log \frac{a_i}{b_i} &amp;= \sum_{i=1}^n b_i
+\underbrace{\frac{a_i}{b_i} \log \frac{a_i}{b_i}}_{f(\frac{a_i}{b_i})}
+\\
+&amp;= b \sum_{i=1}^n \frac{b_i}{b} f(\frac{a_i}{b_i}) \\
+&amp;\ge b f(\sum_{i=1}^n \frac{b_i}{b} \frac{a_i}{b_i}) \\
+&amp;= b f(\frac{a}{b}) \\
+&amp;= a \log \frac{a}{b}
+\end{aligned}
+\]</span></p>
 <h2 id="variational-f-divergence">Variational <span class="math inline">\(f\)</span>-divergence</h2>
 <p>When <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> have no closed-form expression, it is
 difficult to compute the <span class="math inline">\(f\)</span>-divergence. Therefore in practice <span class="math inline">\(f\)</span>-divergence is computed with a
